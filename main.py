@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from models import User
-from routes.auth import router as auth_router
+from auth import router as auth_router
 
 # Create tables in the database on startup
 Base.metadata.create_all(bind=engine)
@@ -41,3 +41,4 @@ def read_root():
     }
 
 # Run command: uvicorn main:app --reload
+
