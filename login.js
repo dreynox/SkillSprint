@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000";
+const API_URL = "https://skillsprint-backend.onrender.com";
+
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -63,3 +64,4 @@ function clearErrors() {
         el.textContent = "";
     });
 }
+
