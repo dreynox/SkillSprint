@@ -1,5 +1,6 @@
 fastapi==0.100.1
 uvicorn[standard]==0.23.2
+sqlalchemy==2.0.23
 python-multipart==0.0.6
 passlib[bcrypt]==1.7.4
 pyjwt==2.6.0
