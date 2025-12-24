@@ -22,7 +22,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     submitBtn.textContent = "Logging in...";
 
     try {
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -64,5 +64,6 @@ function clearErrors() {
         el.textContent = "";
     });
 }
+
 
 
