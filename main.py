@@ -22,12 +22,14 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:8080",
         "http://127.0.0.1:5000",
-        # add your frontend Render URL here later
+        "https://dreynox.github.io",  # ⬅ add this
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 @app.get("/")
@@ -124,3 +126,4 @@ def login_user(payload: LoginRequest, db: Session = Depends(get_db)):
         access_token=token,
         user=user,
     )
+
