@@ -1,19 +1,26 @@
+from typing import Optional
+
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 
 from database import engine, Base, get_db
 from models import User, RoleEnum
 from auth import hash_password, verify_password, create_access_token
 
+
+# ---------- APP & DATABASE SETUP ----------
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="SkillSprint API",
     description="Competitive Coding and Hackathon Portal",
-    version="1.0.0"
+    version="1.0.0",
 )
 
+# CORS: allow GitHub Pages + local dev
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -22,7 +29,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:8080",
         "http://127.0.0.1:5000",
-        "https://dreynox.github.io",  # ⬅ add this
+        "https://dreynox.github.io",  # GitHub Pages origin
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -30,21 +37,15 @@ app.add_middleware(
 )
 
 
-
-
 @app.get("/")
 def read_root():
     return {
         "message": "SkillSprint API is running",
-        "version": "1.0.0"
+        "version": "1.0.0",
     }
 
 
-# ---------- AUTH ENDPOINTS ----------
-
-from pydantic import BaseModel, EmailStr
-from typing import Optional
-
+# ---------- SCHEMAS ----------
 
 class RegisterRequest(BaseModel):
     name: str
@@ -68,7 +69,7 @@ class UserResponse(BaseModel):
     role: RoleEnum
 
     class Config:
-        from_attributes = True  # for SQLAlchemy models
+        from_attributes = True  # pydantic v2 + SQLAlchemy
 
 
 class AuthResponse(BaseModel):
@@ -76,6 +77,8 @@ class AuthResponse(BaseModel):
     token_type: str = "bearer"
     user: UserResponse
 
+
+# ---------- AUTH ENDPOINTS ----------
 
 @app.post("/auth/register", response_model=AuthResponse)
 def register_user(payload: RegisterRequest, db: Session = Depends(get_db)):
@@ -94,7 +97,7 @@ def register_user(payload: RegisterRequest, db: Session = Depends(get_db)):
         password_hash=hash_password(payload.password),
         year=payload.year,
         branch=payload.branch,
-        role=RoleEnum.STUDENT,  # default
+        role=RoleEnum.STUDENT,  # default role
     )
     db.add(user)
     db.commit()
@@ -126,4 +129,3 @@ def login_user(payload: LoginRequest, db: Session = Depends(get_db)):
         access_token=token,
         user=user,
     )
-
