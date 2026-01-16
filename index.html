@@ -35,6 +35,27 @@
         </div>
     </div>
 
-    <script src="login.js"></script>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // stop default form submit
+
+            // TODO: add your actual login validation here
+            // Example dummy check:
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (email && password) {
+                // successful login -> redirect
+                window.location.href = 'dashboard.html';
+            } else {
+                document.getElementById('generalError').textContent = 'Please enter email and password.';
+            }
+        });
+    </script>
+
+    <!-- or keep your existing JS file if you use it -->
+    <!-- <script src="login.js"></script> -->
 </body>
 </html>
