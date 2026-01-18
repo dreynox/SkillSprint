@@ -12,7 +12,11 @@ def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
+    # bcrypt hard limit: 72 bytes
+    if len(plain_password.encode("utf-8")) > 72:
+        return False
     return pwd_context.verify(plain_password, hashed_password)
+
 
 # JWT Token
 def create_access_token(data: dict, expires_delta: timedelta = None):
@@ -37,3 +41,4 @@ def verify_token(token: str):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+
