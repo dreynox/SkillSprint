@@ -15,19 +15,20 @@ app = FastAPI(
 )
 
 # CORS middleware - allows frontend to call backend
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "https://dreynox.github.io",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:5000",
-        "http://localhost:5173",
-        "http://localhost:8080",
-        "http://127.0.0.1:5000",
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Include auth routes
 app.include_router(auth_router)
@@ -41,3 +42,4 @@ def read_root():
     }
 
 # Run command: uvicorn main:app --reload
+
