@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000"; // Change this to your backend URL
+const API_BASE_URL = "https://skillsprint-muv2.onrender.com"; // Change this to your backend URL
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();

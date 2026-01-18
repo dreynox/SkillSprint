@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_BASE_URL = "https://skillsprint-muv2.onrender.com";
 
 document.getElementById("signupForm").addEventListener("submit", async (e) => {
     e.preventDefault();
