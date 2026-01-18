@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000";
+const API_BASE_URL = "https://skillsprint-muv2.onrender.com";
+
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     submitBtn.textContent = "Logging in...";
 
     try {
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
