@@ -24,7 +24,7 @@ app = FastAPI(
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
-   
+    "https://dreynox.github.io",
     "https://dreynox.github.io/SkillSprint/",
 ]
 
@@ -130,5 +130,6 @@ def login_user(payload: LoginRequest, db: Session = Depends(get_db)):
         access_token=token,
         user=user,
     )
+
 
 
