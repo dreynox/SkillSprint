@@ -25,6 +25,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
     "https://dreynox.github.io",
+    "https://dreynox.github.io/SkillSprint",
 ]
 
 app.add_middleware(

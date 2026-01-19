@@ -5,15 +5,20 @@ from config import SECRET_KEY, ALGORITHM
 from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-# Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+MAX_BCRYPT_BYTES = 72
 
 def hash_password(password: str) -> str:
+    # Prevent bcrypt 72‑byte crash
+    if len(password.encode("utf-8")) > MAX_BCRYPT_BYTES:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Password too long. Use at most {MAX_BCRYPT_BYTES} characters.",
+        )
     return pwd_context.hash(password)
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    # bcrypt hard limit: 72 bytes
-    if len(plain_password.encode("utf-8")) > 72:
+    if len(plain_password.encode("utf-8")) > MAX_BCRYPT_BYTES:
         return False
     return pwd_context.verify(plain_password, hashed_password)
 
