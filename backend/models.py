@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Enum
 from datetime import datetime
 import enum
-from database import Base
+from .database import Base
 
 class RoleEnum(str, enum.Enum):
     STUDENT = "student"
