@@ -5,9 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 
-from database import engine, Base, get_db
-from models import User, RoleEnum
-from auth import hash_password, verify_password, create_access_token
+from .database import engine, Base, get_db
+from .models import User, RoleEnum
+from .auth import hash_password, verify_password, create_access_token
+
 
 # ---------- APP & DATABASE SETUP ----------
 
