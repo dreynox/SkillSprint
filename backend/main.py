@@ -43,7 +43,7 @@ class RegisterRequest(BaseModel):
     name: str
     email: EmailStr
     password: str
-    year: Optional[int] = None
+    year: Optional[str] = None   # ✅ FIX
     branch: Optional[str] = None
 
 class LoginRequest(BaseModel):
