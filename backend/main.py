@@ -21,14 +21,10 @@ app = FastAPI(
 )
 
 # CORS: allow GitHub Pages + local dev
-origins = [
-    "https://dreynox.github.io",
-    "https://dreynox.github.io/SkillSprint",
-]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["https://dreynox.github.io", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
