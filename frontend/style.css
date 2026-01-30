@@ -1,252 +1,121 @@
-/* =========================
-   GLOBAL RESET
-========================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "JetBrains Mono", monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* =========================
-   BODY
-========================= */
 body {
-  height: 100vh;
-  background: #050505;
-  color: #e0ffe8;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* =========================
-   MATRIX CANVAS
-========================= */
-#matrix {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-}
-
-/* =========================
-   NEON CURSOR GLOW
-========================= */
-.cursor-glow {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(0,255,136,0.25), transparent 65%);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  filter: blur(35px);
-}
-
-/* =========================
-   LOGIN / AUTH CARD
-========================= */
-.login-card,
-.auth-box {
-  position: relative;
-  z-index: 2;
-
-  width: 360px;
-  max-width: 90vw;
-
-  padding: 36px 32px;
-
-  background: rgba(10, 10, 10, 0.85);
-  border-radius: 14px;
-  border: 1px solid rgba(0, 255, 136, 0.25);
-
-  box-shadow:
-    0 0 30px rgba(0, 255, 136, 0.25),
-    0 30px 90px rgba(0, 0, 0, 0.6);
-
-  backdrop-filter: blur(12px);
-  animation: fadeIn 1s ease;
-}
-
-/* Center container for auth pages */
 .auth-container {
-  width: 100%;
-  max-width: 450px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
 }
 
-/* =========================
-   HEADER
-========================= */
-.terminal-title,
+.auth-box {
+    background: white;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
 h1 {
-  text-align: center;
-  margin-bottom: 8px;
-  font-size: 26px;
-  color: #00ff88;
-  text-shadow: 0 0 14px rgba(0,255,136,0.9);
-}
-
-.cursor {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
+    color: #667eea;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 28px;
 }
 
 .subtitle {
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.6;
-  margin-bottom: 26px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
 }
 
-/* =========================
-   INPUT FIELDS
-========================= */
-.input-group,
 .form-group {
-  position: relative;
-  margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
-.input-group input,
-input,
-select {
-  width: 100%;
-  padding: 14px 12px;
-
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 255, 136, 0.35);
-  border-radius: 8px;
-
-  color: #e0ffe8;
-  font-size: 14px;
-  outline: none;
-
-  transition: all 0.25s ease;
-}
-
-.input-group input:focus,
-input:focus,
-select:focus {
-  border-color: #00ff88;
-  box-shadow:
-    0 0 0 1px rgba(0,255,136,0.6),
-    0 0 18px rgba(0,255,136,0.6);
-}
-
-/* Two-column row for name etc. */
 .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
 label {
-  display: block;
-  font-weight: 600;
-  color: #e0ffe8;
-  margin-bottom: 8px;
-  font-size: 14px;
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 14px;
 }
 
-/* =========================
-   PASSWORD TOGGLE
-========================= */
-.input-group.password span {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  opacity: 0.6;
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
 }
 
-.input-group.password span:hover {
-  opacity: 1;
+input:focus, select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.1);
 }
 
-/* =========================
-   BUTTONS
-========================= */
-button,
 .btn-primary {
-  width: 100%;
-  padding: 14px;
-  margin-top: 6px;
-
-  background: linear-gradient(135deg, #00ff88, #00ccaa);
-  color: #000;
-
-  border: none;
-  border-radius: 8px;
-
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-
-  cursor: pointer;
-  transition: all 0.25s ease;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s;
+    margin-top: 10px;
 }
 
-button:hover,
 .btn-primary:hover {
-  box-shadow: 0 0 28px rgba(0,255,136,0.9);
-  transform: translateY(-1px);
+    opacity: 0.9;
 }
 
-button.loading,
 .btn-primary:disabled {
-  background: #0b0b0b;
-  color: #00ff88;
-  border: 1px solid #00ff88;
-  pointer-events: none;
-  opacity: 0.7;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-/* =========================
-   LINKS / FOOTER
-========================= */
-.footer-text,
-.signup-link,
-.login-link {
-  margin-top: 18px;
-  text-align: center;
-  font-size: 12px;
-  opacity: 0.6;
-  color: #e0ffe8;
+.error-message {
+    display: block;
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-.footer-text a,
-.signup-link a,
-.login-link a {
-  color: #00ff88;
-  text-decoration: none;
-  font-weight: 600;
+.signup-link, .login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
 }
 
-.signup-link a:hover,
-.login-link a:hover {
-  text-decoration: underline;
+.signup-link a, .login-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.signup-link a:hover, .login-link a:hover {
+    text-decoration: underline;
 }
