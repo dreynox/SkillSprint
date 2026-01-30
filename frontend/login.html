@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillSprint - Login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSprint | Secure Login</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-box">
-            <h1>SkillSprint</h1>
-            <p class="subtitle">Competitive Coding & Hackathons</p>
-            
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="your@college.edu">
-                    <span class="error-message" id="emailError"></span>
-                </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Enter password">
-                    <span class="error-message" id="passwordError"></span>
-                </div>
+  <!-- Neon cursor glow -->
+  <div class="cursor-glow"></div>
 
-                <button type="submit" class="btn-primary">Log In</button>
-                <span class="error-message" id="generalError"></span>
-            </form>
+  <!-- Matrix hacker background -->
+  <canvas id="matrix"></canvas>
 
-            <p class="signup-link">
-                Don't have an account? <a href="frontend/signup.html">Sign up</a>
-            </p>
-        </div>
-    </div>
+  <!-- Login Card -->
+  <div class="login-card">
+    
+    <!-- Terminal-style title -->
+    <h1 class="terminal-title">
+      SkillSprint<span class="cursor">_</span>
+    </h1>
 
-    <script src="login.js"></script>
+    <p class="subtitle">Secure access required</p>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="email" id="email" required />
+        <label>Email</label>
+      </div>
+
+      <div class="input-group password">
+        <input type="password" id="password" required />
+        <label>Password</label>
+        <span id="togglePassword">👁</span>
+      </div>
+
+      <button type="submit" id="loginBtn">
+        <span>AUTHENTICATE</span>
+        <div class="loader"></div>
+      </button>
+    </form>
+
+    <p class="footer-text">
+      New user?
+      <a href="frontend/signup.html">Create access</a>
+    </p>
+  </div>
+
+  <script src="login.js"></script>
 </body>
 </html>
-

@@ -119,3 +119,210 @@ input:focus, select:focus {
 .signup-link a:hover, .login-link a:hover {
     text-decoration: underline;
 }
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  height: 100vh;
+  background: #050505;
+  color: #e0ffe8;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   MATRIX CANVAS
+========================= */
+#matrix {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* =========================
+   NEON CURSOR GLOW
+========================= */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,255,136,0.25), transparent 65%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  filter: blur(35px);
+}
+
+/* =========================
+   LOGIN CARD (FIXED)
+========================= */
+.login-card {
+  position: relative;
+  z-index: 2;
+
+  width: 360px;
+  max-width: 90vw;
+
+  padding: 36px 32px;
+
+  background: rgba(10, 10, 10, 0.85);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 255, 136, 0.25);
+
+  box-shadow:
+    0 0 30px rgba(0, 255, 136, 0.25),
+    0 30px 90px rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(12px);
+  animation: fadeIn 1s ease;
+}
+
+/* =========================
+   HEADER
+========================= */
+.terminal-title {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 26px;
+  color: #00ff88;
+  text-shadow: 0 0 14px rgba(0,255,136,0.9);
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 26px;
+}
+
+/* =========================
+   INPUT FIELDS
+========================= */
+.input-group {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 12px;
+
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  border-radius: 8px;
+
+  color: #e0ffe8;
+  font-size: 14px;
+  outline: none;
+
+  transition: all 0.25s ease;
+}
+
+.input-group input:focus {
+  border-color: #00ff88;
+  box-shadow:
+    0 0 0 1px rgba(0,255,136,0.6),
+    0 0 18px rgba(0,255,136,0.6);
+}
+
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+.input-group.password span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.input-group.password span:hover {
+  opacity: 1;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+
+  background: linear-gradient(135deg, #00ff88, #00ccaa);
+  color: #000;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  box-shadow: 0 0 28px rgba(0,255,136,0.9);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   LOADING STATE
+========================= */
+button.loading {
+  background: #0b0b0b;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  pointer-events: none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer-text {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.footer-text a {
+  color: #00ff88;
+  text-decoration: none;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
