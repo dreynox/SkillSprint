@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkillSprint Hackathon Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="dashboard1.css" />
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo-pill"><span>SS</span></div>
+      <span>SkillSprint</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Dashboard</a>
+      <a href="hackathons.html">Hackathons</a>
+      <a href="Daily Challenges.html">Daily Challenges</a>
+      <a href="Leaderboard.html">Leaderboard</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-outline" id="facultyToggle">
+  Faculty View
+</button>
+
+      <button class="btn btn-primary">Login</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <div class="hero-card">
+      <div class="hero-header">
+        <div>
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span>Live · CSE Semester 2 SkillSprint</span>
+          </div>
+          <h1>Compete. Learn. Track your growth every week.</h1>
+          <p class="hero-subtitle">
+            Centralized portal for mini‑hackathons, DSA contests, and project submissions
+            mapped to your course outcomes.
+          </p>
+          <div class="hero-metrics">
+            <div class="metric-pill"><strong>12</strong> active hackathons</div>
+            <div class="metric-pill"><strong>184</strong> registered students</div>
+            <div class="metric-pill"><strong>27%</strong> average improvement this month</div>
+          </div>
+          <div class="hero-cta">
+<a href="Join next weekend sprint.html">
+            <button class="btn btn-primary">Join next weekend sprint</button></a>
+           
+<a href="View track.html">
+            <button class="btn btn-outline">View all tracks</button></a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-right-title">
+            <span>My semester scorecard</span>
+            <span class="grade">B+ | Target A</span>
+          </div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <span>DSA</span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" data-value="78"></div>
+              </div>
+              <span>78%</span>
+            </div>
+            <div class="progress-item">
+              <span>OOP</span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" data-value="64"></div>
+              </div>
+              <span>64%</span>
+            </div>
+            <div class="progress-item">
+              <span>Web</span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" data-value="92"></div>
+              </div>
+              <span>92%</span>
+            </div>
+          </div>
+          <div class="hero-right-footer">
+            <span>4 submissions awaiting review</span>
+            <span>Last synced: 5 min ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Upcoming hackathons</h2>
+      <span>Weekend sprints curated for 1st–2nd year</span>
+    </div>
+
+    <div class="card-grid">
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Smart AQI Monitor (Locality)</div>
+          </div>
+          <span class="status-pill">Registration open</span>
+        </div>
+        <div class="card-meta">
+          <span>Ends in 3 days · Team of 3–4</span>
+          <span>CO: IoT, DBMS</span>
+        </div>
+        <p>
+          Build a locality‑level air‑quality dashboard with live sensors or simulated data and
+          auto‑generated alerts for critical thresholds.
+        </p>
+        <div class="card-footer">
+          <div class="tag-list">
+            <span class="tag">Full‑stack</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Visualization</span>
+          </div>
+          <button class="btn-xs primary">View brief</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Data‑Structures Battle Arena</div>
+          </div>
+          <span class="status-pill">Live now</span>
+        </div>
+        <div class="card-meta">
+          <span>2 hr rated contest</span>
+          <span>CO: DSA, Problem solving</span>
+        </div>
+        <p>
+          Mixed difficulty problems on arrays, stacks, queues, and graphs with editorial unlocked
+          after the contest.
+        </p>
+        <div class="card-footer">
+          <div class="tag-list">
+            <span class="tag">C++</span>
+            <span class="tag">Time‑bound</span>
+          </div>
+          <button class="btn-xs primary">Enter arena</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">OOP Mini E‑Commerce</div>
+          </div>
+          <span class="status-pill closed">Closed · review</span>
+        </div>
+        <div class="card-meta">
+          <span>35 teams submitted</span>
+          <span>CO: OOP, UML</span>
+        </div>
+        <p>
+          Console or web‑based store implementing classes, inheritance, and exception handling with
+          basic reports.
+        </p>
+        <div class="card-footer">
+          <div class="tag-list">
+            <span class="tag">Java / C++</span>
+            <span class="tag">OOP</span>
+          </div>
+          <button class="btn-xs">View leaderboard</button>
+        </div>
+      </article>
+    </div>
+    <div class="section-title">
+  <h2>Leaderboard</h2>
+  <span>Top performers this semester</span>
+</div>
+
+<div class="card" id="leaderboardCard">
+  <div id="leaderboardList" style="display:flex; flex-direction:column; gap:0.5rem;"></div>
+</div>
+
+  </section>
+
+  <aside class="aside">
+  <div>
+  <div class="section-title" style="margin-top:0;">
+    <h2>Daily streak</h2>
+    <span>Consistency matters</span>
+  </div>
+
+  <div class="stat-row">
+    <span class="stat-label">Current streak</span>
+    <span class="stat-value" id="streakCount">🔥 0 days</span>
+  </div>
+
+  <button class="btn btn-primary" style="width:100%; margin-top:0.6rem;"
+          id="dailyCheckBtn">
+    Daily check-in
+  </button>
+  </div>
+
+    <div>
+      <div class="section-title" style="margin-top:0; margin-bottom:0.4rem;">
+        <h2>My sprint summary</h2>
+        <span>This week</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Hackathons joined</span>
+        <span class="stat-value">2</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Problems solved</span>
+        <span class="stat-value">17</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Time spent</span>
+        <span class="stat-value">06h 24m</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title" style="margin-top:0.4rem; margin-bottom:0.4rem;">
+        <h2>Tracked skills</h2>
+        <span>Mapped to COs / POs</span>
+      </div>
+      <div class="pill-group">
+        <span class="small-pill">DSA – Level 3</span>
+        <span class="small-pill">OOP – Level 2</span>
+        <span class="small-pill">Web Dev – Level 4</span>
+        <span class="small-pill">Git &amp; teamwork</span>
+        <span class="small-pill">Problem solving</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title" style="margin-top:0.4rem; margin-bottom:0.4rem;">
+        <h2>Faculty snapshot</h2>
+        <span>Auto‑generated report</span>
+      </div>
+      <p style="color:var(--muted); font-size:0.78rem;">
+        Faculty can view class‑wise participation, export CSV reports, and map activities to
+        internal marks or attendance.
+      </p>
+      <button class="btn btn-outline" style="margin-top:0.6rem; width:100%;">Preview faculty dashboard</button>
+    </div>
+    <div id="facultyPanel" style="display:none;">
+  <div class="section-title" style="margin-top:0;">
+    <h2>Faculty dashboard</h2>
+    <span>Class overview</span>
+  </div>
+
+  <div class="stat-row">
+    <span class="stat-label">Total students</span>
+    <span class="stat-value">184</span>
+  </div>
+
+  <div class="stat-row">
+    <span class="stat-label">Active this week</span>
+    <span class="stat-value">126</span>
+  </div>
+
+  <div class="stat-row">
+    <span class="stat-label">Avg XP</span>
+    <span class="stat-value">420</span>
+  </div>
+
+  <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">
+    Analytics auto-generated from student activity.  
+    Export & grading features coming soon.
+  </p>
+
+  <button class="btn btn-outline" style="width:100%; margin-top:0.6rem;">
+    Export report (CSV)
+  </button>
+</div>
+
+  </aside>
+</main>
+
+<script>
+/* =========================
+   FAKE DATABASE (localStorage)
+========================= */
+
+const defaultUser = {
+  name: "Student",
+  xp: 240,
+  level: 3,
+  badges: [],
+  stats: {
+    hackathons: 2,
+    problems: 17,
+    time: 384 // minutes
+  },
+  skills: {
+    dsa: 78,
+    oop: 64,
+    web: 92
+  }
+};
+
+if (!localStorage.getItem("skillsprint_user")) {
+  localStorage.setItem("skillsprint_user", JSON.stringify(defaultUser));
+}
+
+let user = JSON.parse(localStorage.getItem("skillsprint_user"));
+
+/* =========================
+   HELPERS
+========================= */
+
+function saveUser() {
+  localStorage.setItem("skillsprint_user", JSON.stringify(user));
+}
+
+function calcLevel(xp) {
+  return Math.floor(xp / 100) + 1;
+}
+
+function calcGrade(level) {
+  if (level >= 6) return "A+";
+  if (level >= 5) return "A";
+  if (level >= 4) return "B+";
+  return "B";
+}
+
+/* =========================
+   PROGRESS BARS
+========================= */
+
+function loadProgress() {
+  document.querySelectorAll(".progress-bar").forEach(bar => {
+    const skill = bar.parentElement.parentElement
+      .querySelector("span").innerText.toLowerCase();
+
+    bar.style.width = user.skills[skill] + "%";
+  });
+
+  document.querySelector(".grade").innerText =
+    `${calcGrade(user.level)} | Target A`;
+}
+
+/* =========================
+   STATS UPDATE
+========================= */
+
+function updateStats() {
+  const rows = document.querySelectorAll(".stat-row .stat-value");
+  rows[0].innerText = user.stats.hackathons;
+  rows[1].innerText = user.stats.problems;
+  rows[2].innerText =
+    `${Math.floor(user.stats.time / 60)}h ${user.stats.time % 60}m`;
+}
+
+/* =========================
+   XP + BADGES
+========================= */
+
+function addXP(amount) {
+  user.xp += amount;
+  user.level = calcLevel(user.xp);
+
+  if (user.xp >= 300 && !user.badges.includes("Rising Star")) {
+    user.badges.push("Rising Star");
+    alert("🏅 Badge unlocked: Rising Star");
+  }
+
+  if (user.xp >= 600 && !user.badges.includes("Sprint Master")) {
+    user.badges.push("Sprint Master");
+    alert("🔥 Badge unlocked: Sprint Master");
+  }
+
+  saveUser();
+  loadProgress();
+}
+
+/* =========================
+   HACKATHON BUTTONS
+========================= */
+
+document.querySelectorAll(".btn-xs.primary").forEach(btn => {
+  btn.addEventListener("click", () => {
+    addXP(50);
+    user.stats.hackathons += 1;
+    user.stats.time += 90;
+    saveUser();
+    updateStats();
+    showToast("🚀 Hackathon joined! +50 XP", "success");
+
+  });
+});
+
+/* =========================
+   LOGIN BUTTON (MOCK)
+========================= */
+
+document.querySelector(".btn-primary").addEventListener("click", () => {
+  alert(`👋 Welcome back, Level ${user.level} Student`);
+});
+
+/* =========================
+   INIT
+========================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadProgress();
+  updateStats();
+});
+/* =========================
+   MODAL DATA
+========================= */
+
+const hackathonData = [
+  {
+    title: "Smart AQI Monitor (Locality)",
+    desc: "Build an AQI dashboard with alerts using live or simulated data.",
+    xp: 80,
+    tags: ["Full-stack", "IoT", "APIs"]
+  },
+  {
+    title: "Data-Structures Battle Arena",
+    desc: "Timed DSA contest with mixed difficulty problems.",
+    xp: 60,
+    tags: ["C++", "DSA", "Contest"]
+  },
+  {
+    title: "OOP Mini E-Commerce",
+    desc: "Design an OOP-based store using classes and UML.",
+    xp: 50,
+    tags: ["Java", "OOP"]
+  }
+];
+
+let selectedHackathon = null;
+
+/* =========================
+   OPEN MODAL
+========================= */
+
+document.querySelectorAll(".card").forEach((card, index) => {
+  const btn = card.querySelector(".btn-xs");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    selectedHackathon = hackathonData[index];
+    openModal(selectedHackathon);
+  });
+});
+
+function openModal(data) {
+  document.getElementById("modalTitle").innerText = data.title;
+  document.getElementById("modalDesc").innerText = data.desc;
+  document.getElementById("modalXP").innerText = `+${data.xp}`;
+
+  const tagsWrap = document.getElementById("modalTags");
+  tagsWrap.innerHTML = "";
+  data.tags.forEach(tag => {
+    const span = document.createElement("span");
+    span.className = "tag";
+    span.innerText = tag;
+    tagsWrap.appendChild(span);
+  });
+
+  document.getElementById("hackathonModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("hackathonModal").style.display = "none";
+}
+
+/* =========================
+   JOIN FROM MODAL
+========================= */
+
+function joinFromModal() {
+  addXP(selectedHackathon.xp);
+  user.stats.hackathons += 1;
+  user.stats.time += 120;
+  saveUser();
+  updateStats();
+  closeModal();
+  showToast(`🔥 Joined "${selectedHackathon.title}"`, "success");
+
+}
+/* =========================
+   LEADERBOARD DATA
+========================= */
+
+const fakeUsers = [
+  { name: "Aarav", xp: 720 },
+  { name: "Diya", xp: 640 },
+  { name: "Rohan", xp: 580 },
+  { name: "Mehul", xp: 510 },
+  { name: "Sara", xp: 460 },
+  { name: "Kabir", xp: 420 },
+  { name: "Ananya", xp: 390 },
+  { name: "Ishaan", xp: 360 },
+  { name: "Neha", xp: 320 }
+];
+
+// Inject logged-in user
+fakeUsers.push({
+  name: "You",
+  xp: user.xp,
+  me: true
+});
+
+/* =========================
+   RENDER LEADERBOARD
+========================= */
+
+function renderLeaderboard() {
+  const list = document.getElementById("leaderboardList");
+  list.innerHTML = "";
+
+  fakeUsers
+    .sort((a, b) => b.xp - a.xp)
+    .slice(0, 10)
+    .forEach((u, i) => {
+      const row = document.createElement("div");
+      row.className = "leaderboard-row" + (u.me ? " me" : "");
+
+      let medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1;
+
+      row.innerHTML = `
+        <div class="lb-rank">${medal}</div>
+        <div class="lb-name">${u.name}</div>
+        <div class="lb-xp">${u.xp} XP</div>
+      `;
+
+      list.appendChild(row);
+    });
+}
+
+/* =========================
+   AUTO UPDATE LEADERBOARD
+========================= */
+
+const originalAddXP = addXP;
+addXP = function (amount) {
+  originalAddXP(amount);
+  fakeUsers.find(u => u.me).xp = user.xp;
+  renderLeaderboard();
+};
+
+window.addEventListener("DOMContentLoaded", renderLeaderboard);
+/* =========================
+   DAILY STREAK SYSTEM
+========================= */
+
+const today = new Date().toDateString();
+
+if (!user.streak) {
+  user.streak = {
+    count: 0,
+    lastCheck: null
+  };
+}
+
+function updateStreakUI() {
+  document.getElementById("streakCount").innerText =
+    `🔥 ${user.streak.count} day${user.streak.count !== 1 ? "s" : ""}`;
+}
+
+function dailyCheckIn() {
+  if (user.streak.lastCheck === today) {
+    alert("✅ Already checked in today!");
+    return;
+  }
+
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+
+  if (user.streak.lastCheck === yesterday || !user.streak.lastCheck) {
+    user.streak.count += 1;
+  } else {
+    user.streak.count = 1; // streak broken
+  }
+
+  user.streak.lastCheck = today;
+
+  let bonusXP = 20 + user.streak.count * 5;
+  addXP(bonusXP);
+
+  if (user.streak.count === 7 && !user.badges.includes("Consistency Champ")) {
+    user.badges.push("Consistency Champ");
+    showToast("🏆 Badge unlocked: Consistency Champ", "success");
+
+  }
+
+  saveUser();
+  updateStreakUI();
+
+  showToast(`🔥 Streak updated! +${bonusXP} XP`, "info");
+
+}
+
+document.getElementById("dailyCheckBtn")
+  .addEventListener("click", dailyCheckIn);
+
+window.addEventListener("DOMContentLoaded", updateStreakUI);
+/* =========================
+   FACULTY MODE
+========================= */
+
+let isFaculty = localStorage.getItem("facultyMode") === "true";
+
+const facultyBtn = document.getElementById("facultyToggle");
+const facultyPanel = document.getElementById("facultyPanel");
+
+function applyFacultyMode() {
+  facultyPanel.style.display = isFaculty ? "block" : "none";
+
+  document.querySelectorAll(".btn-xs.primary").forEach(btn => {
+    btn.disabled = isFaculty;
+    btn.style.opacity = isFaculty ? "0.5" : "1";
+    btn.style.cursor = isFaculty ? "not-allowed" : "pointer";
+  });
+
+  facultyBtn.innerText = isFaculty ? "Student View" : "Faculty View";
+}
+
+facultyBtn.addEventListener("click", () => {
+  isFaculty = !isFaculty;
+  localStorage.setItem("facultyMode", isFaculty);
+  applyFacultyMode();
+
+  (alertisFaculty
+    ? "🎓 Faculty mode enabled"
+    : "👨‍🎓 Student mode enabled");
+});
+
+window.addEventListener("DOMContentLoaded", applyFacultyMode);
+/* =========================
+   TOAST SYSTEM
+========================= */
+
+function showToast(message, type = "info") {
+  const container = document.getElementById("toastContainer");
+
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.innerText = message;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+</script>
+<!-- Hackathon Modal -->
+<div id="hackathonModal" style="
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+">
+  <div style="
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 420px;
+    padding: 1.2rem;
+  ">
+    <h3 id="modalTitle" style="margin-bottom:0.4rem;"></h3>
+    <p id="modalDesc" style="font-size:0.8rem; color:#94a3b8;"></p>
+
+    <div style="margin-top:0.6rem; font-size:0.75rem;">
+      🏆 XP Reward: <strong id="modalXP"></strong>
+    </div>
+
+    <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem;"
+         id="modalTags"></div>
+
+    <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1rem;">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="joinFromModal()">Join Sprint</button>
+    </div>
+  </div>
+</div>
+<!-- Toast Container -->
+<div id="toastContainer"
+     style="
+       position: fixed;
+       bottom: 1rem;
+       right: 1rem;
+       display: flex;
+       flex-direction: column;
+       gap: 0.5rem;
+       z-index: 999;
+     ">
+</div>
+
+</body>
+</html>
