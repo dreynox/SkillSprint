@@ -8,15 +8,23 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="../css/profile.css">
 </head>
+
 <body>
+
+  <!-- NEON BACKGROUND -->
+  <canvas id="neon-bg"></canvas>
 
   <div class="container">
 
     <!-- PROFILE CARD -->
     <div class="card profile">
-      <img src="https://avatars.githubusercontent.com/u/1?v=4" alt="User Avatar">
-      <h2>Rayhaan Shaikh</h2>
-      <p>First Year CSE · Competitive Programmer</p>
+      <img
+        id="avatar"
+        src="https://avatars.githubusercontent.com/u/1?v=4"
+        alt="User Avatar"
+      >
+      <h2 id="username">Rayhaan Shaikh</h2>
+      <p id="role">First Year CSE · Competitive Programmer</p>
 
       <div class="actions">
         <button class="btn btn-outline">Follow</button>
@@ -33,7 +41,7 @@
           <div class="icon">🏆</div>
           <div>
             <p>Contests Won</p>
-            <h3>12</h3>
+            <h3 id="contests">12</h3>
           </div>
         </div>
 
@@ -41,7 +49,7 @@
           <div class="icon">💻</div>
           <div>
             <p>Problems Solved</p>
-            <h3>340</h3>
+            <h3 id="problems">340</h3>
           </div>
         </div>
 
@@ -49,7 +57,7 @@
           <div class="icon">⭐</div>
           <div>
             <p>Skill Rating</p>
-            <h3>1820</h3>
+            <h3 id="rating">1820</h3>
           </div>
         </div>
       </div>
@@ -58,35 +66,43 @@
       <div class="card performance">
         <h3>Recent Challenge Performance</h3>
 
-        <div class="row">
-          <div>
-            <strong>DSA Sprint #21</strong><br>
-            <small>Difficulty: Medium</small>
-          </div>
-          <div class="time">⏱ 42 min</div>
-        </div>
+        <!-- JS will inject rows here -->
+        <div id="performance-list">
 
-        <div class="row">
-          <div>
-            <strong>Algo Rush</strong><br>
-            <small>Difficulty: Hard</small>
+          <!-- Fallback static rows (kept, NOT deleted) -->
+          <div class="row">
+            <div>
+              <strong>DSA Sprint #21</strong><br>
+              <small>Difficulty: Medium</small>
+            </div>
+            <div class="time">⏱ 42 min</div>
           </div>
-          <div class="time">⏱ 1 hr 10 min</div>
-        </div>
 
-        <div class="row">
-          <div>
-            <strong>Bug Bash</strong><br>
-            <small>Difficulty: Easy</small>
+          <div class="row">
+            <div>
+              <strong>Algo Rush</strong><br>
+              <small>Difficulty: Hard</small>
+            </div>
+            <div class="time">⏱ 1 hr 10 min</div>
           </div>
-          <div class="time">⏱ 25 min</div>
-        </div>
 
+          <div class="row">
+            <div>
+              <strong>Bug Bash</strong><br>
+              <small>Difficulty: Easy</small>
+            </div>
+            <div class="time">⏱ 25 min</div>
+          </div>
+
+        </div>
       </div>
 
     </div>
-
   </div>
+
+  <!-- JS FILES (MUST BE AT END) -->
+  <script src="../js/profile.js"></script>
+  <script src="../js/neonBackground.js"></script>
 
 </body>
 </html>
