@@ -1,0 +1,181 @@
+/* =========================
+   GLOBAL THEME
+========================= */
+:root {
+  --bg: #020617;
+  --panel: #020617;
+  --neon: #00ff9c;
+  --neon-soft: rgba(0, 255, 156, 0.25);
+  --text: #d1fae5;
+  --muted: #6ee7b7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: "JetBrains Mono", monospace;
+  background: radial-gradient(circle at top, #020617, #000);
+  color: var(--text);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+h1 {
+  color: var(--neon);
+  text-shadow: 0 0 12px var(--neon-soft);
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: var(--neon);
+}
+
+/* =========================
+   HEADER
+========================= */
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: linear-gradient(180deg, #020617, #000);
+  border: 1px solid var(--neon-soft);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 156, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 255, 156, 0.25);
+}
+
+.stat-card h3 {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.stat-card span {
+  font-size: 28px;
+  color: var(--neon);
+}
+
+/* =========================
+   TABLES
+========================= */
+section {
+  margin-bottom: 40px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background: rgba(0, 255, 156, 0.1);
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 255, 156, 0.1);
+}
+
+th {
+  color: var(--neon);
+  font-weight: 600;
+}
+
+td {
+  color: var(--text);
+}
+
+tr:hover td {
+  background: rgba(0, 255, 156, 0.05);
+}
+
+/* =========================
+   QUESTION STATUS
+========================= */
+#questionTable td:last-child {
+  font-size: 18px;
+}
+
+#questionTable td:last-child:contains('✔') {
+  color: #22c55e;
+}
+
+#questionTable td:last-child:contains('✘') {
+  color: #ef4444;
+}
+
+/* =========================
+   INSIGHTS
+========================= */
+.insights ul {
+  list-style: none;
+  padding: 0;
+}
+
+.insights li {
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-left: 3px solid var(--neon);
+  background: rgba(0, 255, 156, 0.05);
+  box-shadow: inset 0 0 10px rgba(0, 255, 156, 0.15);
+}
+
+/* =========================
+   SCANLINE EFFECT
+========================= */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+}
