@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSprint | Tactical Comm-Link</title>
+    <link rel="stylesheet" href="../css/message.css">
+</head>
+<body class="cyber-arena">
+    <div class="hud-background">
+        <div class="grid-overlay"></div>
+        <div class="scanline"></div>
+    </div>
+
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="user-info">
+                <div class="status-pulse"></div>
+                <div class="text-group">
+                    <h2 class="neon-text">TERMINAL_USER_02</h2>
+                    <span class="sub-text">ENCRYPTED CONNECTION</span>
+                </div>
+            </div>
+            <div class="header-metrics">
+                <span class="latency">12ms</span>
+            </div>
+        </header>
+
+        <main class="message-arena" id="message-display">
+            <div class="message incoming">
+                <div class="bubble">
+                    <span class="ref-tag">REF: USER_02</span>
+                    <p>Found a bug in the hackathon repo. Are you ready for the sprint?</p>
+                    <span class="timestamp">14:20</span>
+                </div>
+            </div>
+            <div class="message outgoing">
+                <div class="bubble">
+                    <p>System ready. Initializing debug protocol now.</p>
+                    <span class="timestamp">14:21</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="input-console">
+            <form id="chat-form">
+                <input type="text" id="msg-input" placeholder="TYPE_MESSAGE_HERE..." autocomplete="off">
+                <button type="submit" id="send-btn">SEND</button>
+            </form>
+        </footer>
+    </div>
+
+    <script src="../js/message.js"></script>
+</body>
+</html>

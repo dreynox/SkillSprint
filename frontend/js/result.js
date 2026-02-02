@@ -1,5 +1,5 @@
 // =========================
-// SAMPLE DATA (replace with backend data later)
+// SAMPLE DATA (replace with backend later)
 // =========================
 const results = [
   { id: 1, difficulty: "Easy", time: 40, correct: true },
@@ -20,13 +20,15 @@ const formatTime = (seconds) => {
   return `${m}m ${s}s`;
 };
 
-const avg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+const average = (arr) =>
+  arr.reduce((sum, val) => sum + val, 0) / arr.length;
 
 // =========================
-// BASIC STATS
+// GLOBAL STATS
 // =========================
 const times = results.map(r => r.time);
-const avgTime = Math.round(avg(times));
+
+const avgTime = Math.round(average(times));
 const longestTime = Math.max(...times);
 const shortestTime = Math.min(...times);
 
@@ -48,15 +50,19 @@ const difficulties = ["Easy", "Medium", "Hard"];
 
 difficulties.forEach(level => {
   const filtered = results.filter(r => r.difficulty === level);
-
   if (filtered.length === 0) return;
 
   const levelTimes = filtered.map(r => r.time);
   const levelCorrect = filtered.filter(r => r.correct).length;
 
-  document.getElementById(`${level.toLowerCase()}Count`).textContent = filtered.length;
-  document.getElementById(`${level.toLowerCase()}Time`).textContent = formatTime(Math.round(avg(levelTimes)));
-  document.getElementById(`${level.toLowerCase()}Accuracy`).textContent = `${Math.round((levelCorrect / filtered.length) * 100)}%`;
+  document.getElementById(`${level.toLowerCase()}Count`).textContent =
+    filtered.length;
+
+  document.getElementById(`${level.toLowerCase()}Time`).textContent =
+    formatTime(Math.round(average(levelTimes)));
+
+  document.getElementById(`${level.toLowerCase()}Accuracy`).textContent =
+    `${Math.round((levelCorrect / filtered.length) * 100)}%`;
 });
 
 // =========================
@@ -69,9 +75,11 @@ results.forEach((q, index) => {
 
   row.innerHTML = `
     <td>${index + 1}</td>
-    <td>${q.difficulty}</td>
+    <td class="${q.difficulty.toLowerCase()}">${q.difficulty}</td>
     <td>${formatTime(q.time)}</td>
-    <td>${q.correct ? "✔" : "✘"}</td>
+    <td class="${q.correct ? "correct" : "wrong"}">
+      ${q.correct ? "✔" : "✘"}
+    </td>
   `;
 
   tableBody.appendChild(row);
@@ -81,25 +89,30 @@ results.forEach((q, index) => {
 // INSIGHTS ENGINE
 // =========================
 const insightList = document.getElementById("insightList");
-
 const insights = [];
 
-const hardTime = results.filter(r => r.difficulty === "Hard").reduce((a, b) => a + b.time, 0);
-const totalTime = results.reduce((a, b) => a + b.time, 0);
-
-if (hardTime / totalTime > 0.4) {
-  insights.push("Hard questions consume most of your time.");
-}
+const totalTime = results.reduce((sum, r) => sum + r.time, 0);
+const hardTime = results
+  .filter(r => r.difficulty === "Hard")
+  .reduce((sum, r) => sum + r.time, 0);
 
 if (accuracy < 60) {
-  insights.push("Accuracy is low. Focus on fundamentals.");
+  insights.push("Accuracy is low. Strengthen fundamentals before speed.");
 }
 
 if (longestTime > avgTime * 2) {
   insights.push("Some questions took unusually long to solve.");
 }
 
-insights.push("Consistency improves with timed practice.");
+if (hardTime / totalTime > 0.4) {
+  insights.push("Hard questions consumed most of your total time.");
+}
+
+if (accuracy >= 80) {
+  insights.push("Strong accuracy. Maintain consistency under pressure.");
+}
+
+insights.push("Timed practice will significantly improve performance.");
 
 insights.forEach(text => {
   const li = document.createElement("li");

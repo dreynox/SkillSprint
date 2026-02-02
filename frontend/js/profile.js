@@ -1,7 +1,7 @@
 const userProfile = {
   name: "Rayhaan Shaikh",
   role: "First Year CSE · Competitive Programmer",
-  avatar: "https://avatars.githubusercontent.com/u/1?v=4",
+  avatar: "../images/Rayhaan1.jpeg",
 
   stats: {
     contestsWon: 12,
