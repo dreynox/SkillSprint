@@ -20,11 +20,15 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS: allow GitHub Pages + local dev
+# CORS: allow GitHub Pages + local dev + Render deployment
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://dreynox.github.io", "http://localhost:3000"],
+    allow_origins=[
+        "https://dreynox.github.io",
+        "http://localhost:3000",
+        "https://skillsprint-muv2.onrender.com",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
