@@ -1,0 +1,90 @@
+[33m56c24f3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m "
+[33mfb1b342[m "
+[33m09e85a0[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m "
+[33ma39f8cc[m Merge branch 'fix/login-cors-and-database'
+[33m0597356[m "
+[33m94871cc[m Merge pull request #2 from dreynox/fix/login-cors-and-database
+[33m276df01[m fix: resolve login failures - CORS, database path, and remove duplicate routes
+[33md8e14a3[m Initialize README with project details and setup
+[33mc1f8df8[m "
+[33m1e02410[m "
+[33m93595d0[m "
+[33m820ce65[m commiteed: Update profile page and add neon background effect
+[33md93d381[m "
+[33m913e0bb[m Rearranged project structure (html and css folders)
+[33mdae240a[m "
+[33m81132d9[m "
+[33m12155a5[m "
+[33mb6ee4bc[m "
+[33mecc595e[m "
+[33m49c48d1[m updated
+[33mcc2df17[m Done
+[33m25bb789[m Done
+[33me4308bf[m Done
+[33m5896480[m Done
+[33m94cd823[m Done
+[33m0a1077c[m Done
+[33m88d0983[m Done
+[33maf4603c[m Fix config import in auth module
+[33mf1b2b9f[m models.py: Update import statement for Base
+[33mbd61a6d[m Fix models import for database module
+[33m4ae95f7[m Done
+[33m9f10e46[m Add .python-version for Render
+[33md9d504a[m Move runtime.txt to repo root for Render
+[33m05c1d13[m Use Python 3.11 on Render
+[33m9d65b44[m using python 3.11
+[33m24db5d1[m Fix CORS and auth in main.py
+[33md5bbe12[m Done
+[33m662310d[m Merge origin/main, remove backend/main.py
+[33m348222d[m ADDED AND DELETED MANY FILES
+[33m544e380[m Update main.py
+[33ma5ebebc[m Refactor CORS settings and code structure
+[33m83fdab7[m Refactor main.py for improved organization
+[33me8bb3d2[m Update main.py
+[33mc3ef533[m Fix bcrypt length and update CORS origins
+[33m4264a67[m Fix bcrypt length and update CORS origins
+[33mf601891[m Fix bcrypt length and update CORS origins
+[33medaf016[m Fix CORS and auth; remove duplicate backend files
+[33m9fc9591[m Align backend + frontend for Render and GitHub Pages
+[33md7b20bd[m Change API URL to production endpoint
+[33ma93c785[m Update main.py
+[33m859c34b[m Enhance password verification with length check
+[33m7998ecd[m Enhance password verification with length check
+[33m51c94dc[m Update CORS origins for SkillSprint API
+[33mbc3154c[m Refactor CORS settings and clean up imports
+[33m484c178[m Fix HTML formatting and add doctype declaration
+[33m0fad5a9[m Add DOCTYPE declaration to login.html
+[33ma00bc9c[m Fix HTML formatting in login.html
+[33m21ea087[m Fix HTML formatting in login.html
+[33m19a1bd5[m Fix API_URL to API_BASE_URL in signup.js
+[33m78b44a1[m Update API base URL for signup functionality
+[33ma0808c4[m Update API base URL for login functionality
+[33mc7c36df[m Implement login form validation script
+[33m0de2136[m Update CORS settings to allow GitHub Pages
+[33mfc41115[m Update CORS middleware to include new origin
+[33m94aac26[m Fix API_BASE_URL reference in login function
+[33m5ef9efb[m Update API URL and maintain signup functionality
+[33m61fb8ba[m Update API URL and maintain login functionality
+[33m11e3e21[m Update requirements.txt
+[33m1957465[m Implement user registration and login endpoints
+[33mb3bb5f0[m Fix import path for auth router in main.py
+[33mad16550[m Add sqlalchemy to requirements.txt
+[33m0491375[m Change API URL to production endpoint
+[33m4abdd4f[m Update API URL for login functionality
+[33me1dc04e[m Modify package versions in requirements.txt
+[33mdb1410d[m Add Python version 3.12.7
+[33m3bec9b9[m Add files via upload
+[33mfb70dcf[m Update package versions in requirements.txt
+[33meb8208b[m Update package versions in requirements.txt
+[33m1b35fce[m Reformat requirements.txt for consistency
+[33m90cac0c[m Delete ASEP PROJECT/skillsprint-backend/requirements.txt
+[33m5faaf9e[m Format requirements.txt for consistency
+[33m1f8b3d1[m Reformat requirements.txt for consistency
+[33m6b6c662[m Update pydantic version in requirements.txt
+[33m7eb54f9[m Update pydantic version in requirements.txt
+[33m75e6321[m Add files via upload
+[33m083efd4[m Add files via upload
+[33m16d25d1[m Add files via upload
+[33mb8e980e[m Add files via upload
+[33mec15f78[m Add GitHub Actions workflow for GitHub Pages deployment
+[33m28484d2[m Add files via upload
