@@ -1,8 +1,10 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# For local development, use SQLite
-DATABASE_URL = "sqlite:///./skillsprint.db"
+# For local development, use SQLite with absolute path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'skillsprint.db')}".replace("\\", "/")
 
 # For production, use: DATABASE_URL = "postgresql://user:password@localhost/skillsprint"
 
