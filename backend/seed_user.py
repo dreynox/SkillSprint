@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 Seed script to add test users to the database
-Run from backend directory: python seed_user.py
+Run from parent directory: python -m backend.seed_user
+Or from backend directory: python seed_user.py
 """
 
-from database import SessionLocal, engine, Base
-from models import User, RoleEnum
-from auth import hash_password
+from .database import SessionLocal, engine, Base
+from .models import User, RoleEnum
+from .auth import hash_password
 
 # Ensure tables exist
 Base.metadata.create_all(bind=engine)

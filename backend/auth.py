@@ -1,7 +1,7 @@
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 import jwt
-from config import SECRET_KEY, ALGORITHM
+from .config import SECRET_KEY, ALGORITHM
 from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
