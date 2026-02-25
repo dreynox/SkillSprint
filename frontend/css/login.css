@@ -93,6 +93,18 @@ body {
 }
 
 /* =========================
+   ERROR MESSAGE
+========================= */
+.error-message {
+  text-align: center;
+  font-size: 13px;
+  color: #ff4444;
+  margin-bottom: 16px;
+  min-height: 18px;
+  opacity: 0.9;
+}
+
+/* =========================
    INPUT FIELDS
 ========================= */
 .input-group {

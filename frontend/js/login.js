@@ -1,4 +1,10 @@
-const API_BASE_URL = "https://skillsprint-muv2.onrender.com";
+// Detect local vs deployed environment
+const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE_URL = isDev 
+  ? `http://${window.location.hostname}:8000` 
+  : "https://skillsprint-muv2.onrender.com";
+
+console.log("API_BASE_URL:", API_BASE_URL); // Debug log
 
 /* =========================
    LOGIN FORM HANDLER
@@ -55,7 +61,7 @@ form.addEventListener("submit", async (e) => {
 
     // Redirect (adjust if you later add a separate admin page)
     setTimeout(() => {
-      window.location.href = "dashboard.html";
+      window.location.href = "frontend/html/dashboard.html";
     }, 1200);
   } catch (error) {
     loginBtn.classList.remove("loading");
