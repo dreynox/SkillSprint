@@ -1,4 +1,8 @@
-const API_BASE_URL = "https://skillsprint-muv2.onrender.com";
+// Detect local vs deployed environment
+const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const API_BASE_URL = isDev
+    ? `http://${window.location.hostname}:8000`
+    : "https://skillsprint-muv2.onrender.com";
 
 document.getElementById("signupForm").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -53,9 +57,9 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
             // Store token and redirect
             localStorage.setItem("access_token", data.access_token);
             localStorage.setItem("user", JSON.stringify(data.user));
-            window.location.href = "login.html";
+            window.location.href = "../../index.html";
         } else {
-            showError("generalError", data.detail || "Sign up failed");
+            showError("generalError", formatApiError(data));
         }
     } catch (error) {
         showError("generalError", "Connection error. Please try again.");
@@ -74,4 +78,31 @@ function clearErrors() {
     document.querySelectorAll(".error-message").forEach((el) => {
         el.textContent = "";
     });
+}
+
+function formatApiError(data) {
+    if (!data) return "Sign up failed";
+
+    const detail = data.detail;
+
+    if (typeof detail === "string") {
+        return detail;
+    }
+
+    // FastAPI validation errors often come as an array of objects.
+    if (Array.isArray(detail) && detail.length > 0) {
+        const first = detail[0];
+        if (first && typeof first === "object") {
+            const field = Array.isArray(first.loc) ? first.loc[first.loc.length - 1] : "field";
+            const message = first.msg || "Invalid value";
+            return `${field}: ${message}`;
+        }
+        return String(detail[0]);
+    }
+
+    if (detail && typeof detail === "object") {
+        return detail.message || JSON.stringify(detail);
+    }
+
+    return "Sign up failed";
 }
