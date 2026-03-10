@@ -3,10 +3,14 @@ from datetime import datetime, timedelta
 import jwt
 from .config import SECRET_KEY, ALGORITHM
 from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
+from .database import get_db
+from .models import User
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 MAX_BCRYPT_BYTES = 72
+security = HTTPBearer()
 
 def hash_password(password: str) -> str:
     # Prevent bcrypt 72‑byte crash
@@ -46,4 +50,39 @@ def verify_token(token: str):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+
+
+# Dependency to get current user from token
+def get_current_user(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    """
+    Extract user from Bearer token in Authorization header.
+    Usage: current_user: User = Depends(get_current_user)
+    """
+    token = credentials.credentials
+    user_id = verify_token(token)
+    
+    user = db.query(User).filter(User.id == int(user_id)).first()
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found"
+        )
+    return user
+
+
+# Optional: Admin-only dependency
+def require_admin(current_user: User = Depends(get_current_user)) -> User:
+    """
+    Require that the current user is an admin.
+    Usage: admin: User = Depends(require_admin)
+    """
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required"
+        )
+    return current_user
 

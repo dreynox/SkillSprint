@@ -1,5 +1,4 @@
 from typing import Optional
-
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
@@ -8,7 +7,7 @@ from sqlalchemy.orm import Session
 from .database import engine, Base, get_db
 from .models import User, RoleEnum
 from .auth import hash_password, verify_password, create_access_token
-
+from .routes import contest_routes, quiz_routes
 
 # ---------- APP & DATABASE SETUP ----------
 
@@ -47,6 +46,13 @@ def read_root():
         "message": "SkillSprint API is running",
         "version": "1.0.0",
     }
+
+
+# ---------- REGISTER ROUTERS ----------
+
+app.include_router(contest_routes.router, prefix="/contests", tags=["contests"])
+app.include_router(quiz_routes.router, prefix="/quiz", tags=["quiz"])
+
 
 # ---------- SCHEMAS ----------
 
