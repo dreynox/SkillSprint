@@ -1,3 +1,10 @@
+import os
+import sys
+
+# Ensure `backend/` is on sys.path whether uvicorn is launched from the repo
+# root (python -m uvicorn backend.main:app) or from inside backend/ (uvicorn main:app).
+sys.path.insert(0, os.path.dirname(__file__))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
