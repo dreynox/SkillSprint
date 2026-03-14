@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SkillSprint Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSprint MCQ Quiz</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>SkillSprint MCQ Test</h1>
-
-  <div id="quiz-container"></div>
-
-  <button id="submit-btn">Submit</button>
-
-  <h2 id="result"></h2>
-
-  <script src="../js/quiz.js"></script>
+    <div class="container">
+        <header>
+            <h1>SkillSprint</h1>
+            <p>Competitive Coding & Hackathon Portal</p>
+        </header>
+        <div id="quiz-container">
+            <div id="question-container">
+                <div class="progress-bar">
+                    <span id="progress">Question <span id="current-q">1</span> of 10</span>
+                    <div class="bar">
+                        <div id="progress-fill"></div>
+                    </div>
+                </div>
+                <h2 id="question"></h2>
+                <div id="options"></div>
+                <button id="next-btn" disabled>Next</button>
+            </div>
+            <div id="result-container" style="display: none;">
+                <h2>Your Score: <span id="score"></span>/10</h2>
+                <button onclick="location.reload()">Restart Quiz</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

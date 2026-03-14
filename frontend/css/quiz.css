@@ -1,0 +1,160 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 90%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+#quiz-container {
+    padding: 40px;
+}
+
+.progress-bar {
+    margin-bottom: 30px;
+}
+
+#progress {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.bar {
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option {
+    padding: 20px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    background: #f8f9fa;
+}
+
+.option:hover {
+    border-color: #ff6b6b;
+    background: #fff5f5;
+}
+
+.option.selected {
+    border-color: #ff6b6b;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+}
+
+#next-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+#next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#next-btn:not(:disabled):hover {
+    opacity: 0.9;
+}
+
+#result-container {
+    text-align: center;
+}
+
+#result-container h2 {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#result-container button {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    #quiz-container {
+        padding: 20px;
+    }
+}
