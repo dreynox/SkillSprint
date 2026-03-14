@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillSprint MCQ Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SkillSprint Quiz Demo</title>
+    <link rel="stylesheet" href="../css/quiz.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>SkillSprint</h1>
-            <p>Competitive Coding & Hackathon Portal</p>
+            <h1>SkillSprint Quiz</h1>
+            <p>Live MCQ demo backed by FastAPI</p>
+            <a href="contests.html" style="color:white;font-size:0.9em;text-decoration:underline;opacity:0.85;">Go to Contests &rarr;</a>
         </header>
+
         <div id="quiz-container">
-            <div id="question-container">
-                <div class="progress-bar">
-                    <span id="progress">Question <span id="current-q">1</span> of 10</span>
-                    <div class="bar">
-                        <div id="progress-fill"></div>
-                    </div>
-                </div>
-                <h2 id="question"></h2>
-                <div id="options"></div>
-                <button id="next-btn" disabled>Next</button>
+            <div style="display: grid; gap: 10px; margin-bottom: 20px;">
+                <label for="test-id">Test ID</label>
+                <input id="test-id" type="number" value="1" min="1" />
+
+                <label for="user-id">User ID</label>
+                <input id="user-id" type="number" value="1" min="1" />
+
+                <button id="load-btn" type="button">Load Questions</button>
             </div>
-            <div id="result-container" style="display: none;">
-                <h2>Your Score: <span id="score"></span>/10</h2>
-                <button onclick="location.reload()">Restart Quiz</button>
+
+            <p id="status" style="margin-bottom: 15px;"></p>
+            <form id="quiz-form"></form>
+
+            <div style="margin-top: 20px;">
+                <button id="submit-btn" type="button" disabled>Submit Answers</button>
             </div>
+
+            <div id="result-container" style="display: none; margin-top: 20px;"></div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="../js/quiz.js"></script>
 </body>
 </html>

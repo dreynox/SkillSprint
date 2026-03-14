@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.container {
+    max-width: 860px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    font-size: 2.4em;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.header-link {
+    color: white;
+    font-size: 0.95em;
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.header-link:hover {
+    opacity: 1;
+}
+
+/* ── User bar ──────────────────────────────────────────────────────────────── */
+#user-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: #f7f7f7;
+    border-bottom: 1px solid #eee;
+}
+
+#user-bar label {
+    font-weight: bold;
+    color: #444;
+    white-space: nowrap;
+}
+
+#user-bar input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    width: 100px;
+}
+
+/* ── Sections ──────────────────────────────────────────────────────────────── */
+#contest-list-section,
+#contest-detail-section,
+#problem-detail-section {
+    padding: 32px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.section-header h2,
+h2 {
+    color: #222;
+    font-size: 1.6em;
+}
+
+h3 {
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+#refresh-btn,
+#submit-btn {
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#submit-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    font-size: 1rem;
+}
+
+#refresh-btn:hover,
+#submit-btn:hover {
+    opacity: 0.9;
+}
+
+#submit-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid #11998e;
+    color: #11998e;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background: #f0fdf8;
+}
+
+/* ── Cards ─────────────────────────────────────────────────────────────────── */
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(17,153,142,0.15);
+    border-color: #11998e;
+}
+
+.card.active {
+    border-left: 4px solid #38ef7d;
+}
+
+.card.inactive {
+    opacity: 0.65;
+}
+
+.card-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.card-desc {
+    color: #555;
+    font-size: 0.95em;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.card-meta {
+    color: #888;
+    font-size: 0.82em;
+}
+
+/* ── Badges ────────────────────────────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.72em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-active   { background: #d4f5e9; color: #1a7a5a; }
+.badge-inactive { background: #eee;    color: #888; }
+.diff-easy      { background: #d4f5e9; color: #1a7a5a; }
+.diff-medium    { background: #fff3cd; color: #856404; }
+.diff-hard      { background: #fde8e8; color: #b00020; }
+
+/* ── Status messages ───────────────────────────────────────────────────────── */
+#list-status,
+#problem-status,
+#submit-status {
+    font-size: 0.92em;
+    margin-bottom: 14px;
+    min-height: 1.2em;
+}
+
+/* ── Problem statement ─────────────────────────────────────────────────────── */
+.problem-statement {
+    background: #f7f7f7;
+    border-left: 4px solid #11998e;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 0.97em;
+    line-height: 1.7;
+    color: #333;
+    margin: 14px 0;
+    white-space: pre-wrap;
+}
+
+/* ── Submit form ───────────────────────────────────────────────────────────── */
+.submit-form {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #eee;
+}
+
+.submit-form h3 {
+    margin-bottom: 16px;
+}
+
+.submit-form label {
+    display: block;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+.submit-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fff;
+}
+
+.submit-form textarea {
+    width: 100%;
+    height: 220px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.88rem;
+    resize: vertical;
+    background: #fafafa;
+    line-height: 1.5;
+}
+
+/* ── Verdict box ───────────────────────────────────────────────────────────── */
+.verdict {
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.verdict-pending { background: #fff9e6; color: #856404; border: 1px solid #ffe58f; }
+.verdict-accepted { background: #d4f5e9; color: #1a7a5a; border: 1px solid #52c41a; }
+.verdict-wrong_answer { background: #fde8e8; color: #b00020; border: 1px solid #ff4d4f; }

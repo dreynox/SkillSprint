@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSprint Contests</title>
+    <link rel="stylesheet" href="../css/contests.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SkillSprint Contests</h1>
+            <p>Live contest demo backed by FastAPI</p>
+            <a href="quiz.html" class="header-link">Go to Quiz Demo &rarr;</a>
+        </header>
+
+        <!-- User ID input (used for submissions) -->
+        <div id="user-bar">
+            <label for="user-id">Your User ID</label>
+            <input id="user-id" type="number" value="2" min="1" title="Use the ID returned after login (seed student = 2)" />
+        </div>
+
+        <!-- Contest list -->
+        <section id="contest-list-section">
+            <div class="section-header">
+                <h2>Available Contests</h2>
+                <button id="refresh-btn" type="button">Refresh</button>
+            </div>
+            <p id="list-status"></p>
+            <div id="contest-cards"></div>
+        </section>
+
+        <!-- Contest detail -->
+        <section id="contest-detail-section" style="display:none;">
+            <button id="back-to-list-btn" type="button" class="back-btn">&larr; Back to Contests</button>
+            <div id="contest-detail"></div>
+
+            <h3 style="margin: 24px 0 12px;">Problems</h3>
+            <p id="problem-status"></p>
+            <div id="problem-cards"></div>
+        </section>
+
+        <!-- Problem detail + submit -->
+        <section id="problem-detail-section" style="display:none;">
+            <button id="back-to-contest-btn" type="button" class="back-btn">&larr; Back to Problems</button>
+            <div id="problem-detail"></div>
+
+            <div class="submit-form">
+                <h3>Submit Solution</h3>
+
+                <label for="language">Language</label>
+                <select id="language">
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="cpp">C++</option>
+                    <option value="java">Java</option>
+                    <option value="c">C</option>
+                </select>
+
+                <label for="code">Code</label>
+                <textarea id="code" placeholder="Write your solution here..."></textarea>
+
+                <p id="submit-status"></p>
+                <button id="submit-btn" type="button">Submit Solution</button>
+
+                <div id="verdict-box" style="display:none;"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/contests.js"></script>
+</body>
+</html>

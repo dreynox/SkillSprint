@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 # For local development, use SQLite with absolute path
@@ -13,6 +13,20 @@ engine = create_engine(
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
+
+def ensure_sqlite_compatibility():
+    if not DATABASE_URL.startswith("sqlite"):
+        return
+
+    with engine.begin() as connection:
+        inspector = inspect(connection)
+        tables = set(inspector.get_table_names())
+
+        if "contest_problems" in tables:
+            columns = {column["name"] for column in inspector.get_columns("contest_problems")}
+            if "tags" not in columns:
+                connection.execute(text("ALTER TABLE contest_problems ADD COLUMN tags VARCHAR"))
 
 def get_db():
     db = SessionLocal()

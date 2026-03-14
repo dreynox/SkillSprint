@@ -1,126 +1,46 @@
-from pydantic import BaseModel, EmailStr, field_validator
-from typing import Optional, List
 from datetime import datetime
+from typing import List, Optional
 
-# ========== AUTH SCHEMAS ==========
+from pydantic import BaseModel, EmailStr, field_validator
 
-class UserRegister(BaseModel):
+
+class UserCreate(BaseModel):
     name: str
     email: EmailStr
     password: str
-    year: Optional[int] = None
-    branch: Optional[str] = None
+    role: str = "student"
 
     @field_validator("password")
     @classmethod
-    def password_length(cls, v):
-        if len(v) < 6:
+    def validate_password(cls, value: str) -> str:
+        if len(value) < 6:
             raise ValueError("Password must be at least 6 characters")
-        return v
+        return value
+
 
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
 
-class UserResponse(BaseModel):
+
+class UserOut(BaseModel):
     id: int
     name: str
-    email: str
-    year: Optional[int]
-    branch: Optional[str]
+    email: EmailStr
     role: str
-
-    class Config:
-        from_attributes = True
-
-class TokenResponse(BaseModel):
-    access_token: str
-    token_type: str = "bearer"
-    user: UserResponse
-
-
-# ========== CONTEST SCHEMAS ==========
-
-class ContestCreate(BaseModel):
-    name: str
-    description: Optional[str] = None
-    start_time: Optional[datetime] = None
-    end_time: Optional[datetime] = None
-    is_active: bool = False
-
-class ContestResponse(BaseModel):
-    id: int
-    name: str
-    description: Optional[str]
-    start_time: Optional[datetime]
-    end_time: Optional[datetime]
-    is_active: bool
     created_at: datetime
 
     class Config:
         from_attributes = True
 
 
-class ProblemCreate(BaseModel):
-    title: str
-    statement: str
-    difficulty: Optional[str] = "Medium"
-    max_score: int = 100
-
-class ProblemResponse(BaseModel):
-    id: int
-    contest_id: int
-    title: str
-    statement: str
-    difficulty: Optional[str]
-    max_score: int
-
-    class Config:
-        from_attributes = True
+class AuthResponse(BaseModel):
+    message: str
+    user: UserOut
+    token: Optional[str] = None
 
 
-class SubmissionCreate(BaseModel):
-    problem_id: int
-    language: Optional[str] = "Python"
-    code: str
-
-class SubmissionResponse(BaseModel):
-    id: int
-    user_id: int
-    contest_id: int
-    problem_id: int
-    language: Optional[str]
-    verdict: str
-    score: int
-    submitted_at: datetime
-
-    class Config:
-        from_attributes = True
-
-
-class LeaderboardEntry(BaseModel):
-    user_id: int
-    user_name: str
-    problem_id: int
-    problem_title: str
-    score: int
-    verdict: str
-    submitted_at: datetime
-
-    class Config:
-        from_attributes = True
-
-
-# ========== QUIZ (MCQ) SCHEMAS ==========
-
-class QuizCreate(BaseModel):
-    title: str
-    description: Optional[str] = None
-    is_active: bool = False
-    start_time: Optional[datetime] = None
-    end_time: Optional[datetime] = None
-
-class QuizResponse(BaseModel):
+class TestOut(BaseModel):
     id: int
     title: str
     description: Optional[str]
@@ -132,78 +52,10 @@ class QuizResponse(BaseModel):
     class Config:
         from_attributes = True
 
-
-class QuestionCreate(BaseModel):
-    text: str
-    option_a: str
-    option_b: str
-    option_c: str
-    option_d: str
-    correct_option: str  # "A" / "B" / "C" / "D"
-
-    @field_validator("correct_option")
-    @classmethod
-    def validate_option(cls, v):
-        if v.upper() not in ["A", "B", "C", "D"]:
-            raise ValueError("correct_option must be A, B, C, or D")
-        return v.upper()
-
-
-class QuestionResponse(BaseModel):
-    """Public question response (without correct answer)"""
-    id: int
-    quiz_id: int
-    text: str
-    option_a: str
-    option_b: str
-    option_c: str
-    option_d: str
-
-    class Config:
-        from_attributes = True
-
-
-class QuestionAdminResponse(BaseModel):
-    """Admin question response (with correct answer)"""
-    id: int
-    quiz_id: int
-    text: str
-    option_a: str
-    option_b: str
-    option_c: str
-    option_d: str
-    correct_option: str
-
-    class Config:
-        from_attributes = True
-
-
-class QuizAnswer(BaseModel):
-    question_id: int
-    selected: str  # "A" / "B" / "C" / "D"
-
-
-class QuizSubmissionCreate(BaseModel):
-    answers: List[QuizAnswer]
-
-
-class QuizSubmissionResponse(BaseModel):
-    id: int
-    user_id: int
-    quiz_id: int
-    score: int
-    total_questions: int
-    submitted_at: datetime
-
-    class Config:
-        from_attributes = True
-
-
-# ========== BACKWARD COMPATIBILITY SCHEMAS (from "backend for frontend") ==========
 
 class QuestionOut(BaseModel):
-    """Simplified question output (same as QuestionResponse)"""
     id: int
+    test_id: int
     text: str
     option_a: str
     option_b: str
@@ -215,18 +67,100 @@ class QuestionOut(BaseModel):
 
 
 class Answer(BaseModel):
-    """Simplified answer format (same as QuizAnswer)"""
     question_id: int
-    selected: str  # "A" / "B" / "C" / "D"
+    selected: str
+
+    @field_validator("selected")
+    @classmethod
+    def validate_selected(cls, value: str) -> str:
+        option = value.upper()
+        if option not in {"A", "B", "C", "D"}:
+            raise ValueError("selected must be one of A, B, C, D")
+        return option
 
 
-class SubmissionRequest(BaseModel):
-    """Simplified submission request (same as QuizSubmissionCreate)"""
-    user_id: int          # For backward compatibility; use auth for new code
+class QuizSubmissionRequest(BaseModel):
+    user_id: int
     answers: List[Answer]
 
 
-class SubmissionResponse(BaseModel):
-    """Simplified submission response"""
+class QuizSubmissionResponse(BaseModel):
     score: int
     total: int
+
+
+class QuizSubmissionOut(BaseModel):
+    id: int
+    user_id: int
+    test_id: int
+    score: int
+    total_questions: int
+    submitted_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class ContestCreate(BaseModel):
+    name: str
+    description: Optional[str] = None
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
+    is_active: bool = False
+
+
+class ContestProblemCreate(BaseModel):
+    title: str
+    statement: str
+    difficulty: Optional[str] = None
+    tags: Optional[str] = None
+
+
+class ContestProblemOut(BaseModel):
+    id: int
+    contest_id: int
+    title: str
+    statement: str
+    difficulty: Optional[str]
+    tags: Optional[str]
+
+    class Config:
+        from_attributes = True
+
+
+class ContestOut(BaseModel):
+    id: int
+    name: str
+    description: Optional[str]
+    start_time: Optional[datetime]
+    end_time: Optional[datetime]
+    is_active: bool
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class ContestWithProblems(ContestOut):
+    problems: List[ContestProblemOut]
+
+
+class ContestSubmissionCreate(BaseModel):
+    user_id: int
+    language: str
+    code: str
+
+
+class ContestSubmissionOut(BaseModel):
+    id: int
+    user_id: int
+    contest_id: int
+    problem_id: int
+    language: str
+    code: str
+    verdict: str
+    score: int
+    submitted_at: datetime
+
+    class Config:
+        from_attributes = True

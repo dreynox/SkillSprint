@@ -1,113 +1,144 @@
-// script.js
-const quizData = [
-    {
-        question: "What does HTML stand for?",
-        options: ["Hyper Text Markup Language", "High Text Markup Language", "Hyper Tabular Markup Language", "None of these"],
-        answer: 0
-    },
-    {
-        question: "Which HTML tag is used to create a hyperlink?",
-        options: ["<a>", "<link>", "<href>", "<url>"],
-        answer: 0
-    },
-    {
-        question: "Which CSS property controls text size?",
-        options: ["font-style", "text-size", "font-size", "text-style"],
-        answer: 2
-    },
-    {
-        question: "Which JavaScript method adds a new element to the end of an array?",
-        options: ["push()", "pop()", "shift()", "unshift()"],
-        answer: 0
-    },
-    {
-        question: "What is the correct syntax for referring to an external script?",
-        options: ['<script src="script.js"></script>', '<script href="script.js"></script>', '<script ref="script.js"></script>', '<script name="script.js"></script>'],
-        answer: 0
-    },
-    {
-        question: "How do you create a function in JavaScript?",
-        options: ["function = myFunction()", "function myFunction()", "function:myFunction()", "function myFunction"],
-        answer: 1
-    },
-    {
-        question: "Which character is used to indicate an end tag?",
-        options: ["<", "/", "*", "="],
-        answer: 1
-    },
-    {
-        question: "What does CSS stand for?",
-        options: ["Creative Style Sheets", "Colorful Style Sheets", "Cascading Style Sheets", "Computer Style Sheets"],
-        answer: 2
-    },
-    {
-        question: "Which event occurs when the user clicks on an HTML element?",
-        options: ["onmouseover", "onclick", "onmouseclick", "onload"],
-        answer: 1
-    },
-    {
-        question: "How do you insert a comment in JavaScript?",
-        options: ["<!-- This is a comment -->", "// This is a comment", "/* This is a comment */", "* This is a comment "],
-        answer: 1
-    }
-];
+const API_BASE = "http://127.0.0.1:8000";
 
-let currentQuestion = 0;
-let score = 0;
-let userAnswers = [];
+const loadBtn = document.getElementById("load-btn");
+const submitBtn = document.getElementById("submit-btn");
+const testIdInput = document.getElementById("test-id");
+const userIdInput = document.getElementById("user-id");
+const statusEl = document.getElementById("status");
+const quizForm = document.getElementById("quiz-form");
+const resultContainer = document.getElementById("result-container");
 
-const questionEl = document.getElementById('question');
-const optionsEl = document.getElementById('options');
-const nextBtn = document.getElementById('next-btn');
-const progressFill = document.getElementById('progress-fill');
-const currentQEl = document.getElementById('current-q');
-const quizContainer = document.getElementById('question-container');
-const resultContainer = document.getElementById('result-container');
-const scoreEl = document.getElementById('score');
+let questions = [];
 
-function loadQuestion() {
-    const q = quizData[currentQuestion];
-    questionEl.textContent = q.question;
-    currentQEl.textContent = currentQuestion + 1;
-    progressFill.style.width = ((currentQuestion / 9) * 100) + '%';
+function setStatus(message, isError = false) {
+  statusEl.textContent = message;
+  statusEl.style.color = isError ? "#b00020" : "#333";
+}
 
-    optionsEl.innerHTML = '';
-    q.options.forEach((option, index) => {
-        const div = document.createElement('div');
-        div.className = 'option';
-        div.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
-        div.onclick = () => selectOption(index, div);
-        optionsEl.appendChild(div);
+function renderQuestions(items) {
+  quizForm.innerHTML = "";
+
+  items.forEach((question, index) => {
+    const block = document.createElement("div");
+    block.className = "question-block";
+    block.style.marginBottom = "20px";
+
+    const title = document.createElement("h2");
+    title.textContent = `${index + 1}. ${question.text}`;
+    title.style.marginBottom = "12px";
+    block.appendChild(title);
+
+    const options = [
+      ["A", question.option_a],
+      ["B", question.option_b],
+      ["C", question.option_c],
+      ["D", question.option_d],
+    ];
+
+    options.forEach(([label, value]) => {
+      const option = document.createElement("label");
+      option.className = "option";
+      option.style.display = "block";
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = `question-${question.id}`;
+      input.value = label;
+      input.style.marginRight = "8px";
+
+      option.appendChild(input);
+      option.appendChild(document.createTextNode(`${label}. ${value}`));
+      block.appendChild(option);
     });
 
-    nextBtn.disabled = true;
+    quizForm.appendChild(block);
+  });
 }
 
-function selectOption(answer, element) {
-    document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-    element.classList.add('selected');
-    userAnswers[currentQuestion] = answer;
-    nextBtn.disabled = false;
+function collectAnswers() {
+  return questions
+    .map((question) => {
+      const selected = document.querySelector(`input[name='question-${question.id}']:checked`);
+      if (!selected) {
+        return null;
+      }
+      return {
+        question_id: question.id,
+        selected: selected.value,
+      };
+    })
+    .filter(Boolean);
 }
 
-nextBtn.onclick = () => {
-    if (userAnswers[currentQuestion] === quizData[currentQuestion].answer) {
-        score++;
+async function loadQuestions() {
+  const testId = Number(testIdInput.value);
+  if (!testId) {
+    setStatus("Please enter a valid test ID", true);
+    return;
+  }
+
+  setStatus("Loading questions...");
+  submitBtn.disabled = true;
+  resultContainer.style.display = "none";
+
+  try {
+    const response = await fetch(`${API_BASE}/quiz/tests/${testId}/questions`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.detail || "Failed to load questions");
     }
 
-    currentQuestion++;
-
-    if (currentQuestion < quizData.length) {
-        loadQuestion();
-    } else {
-        showResult();
+    questions = data;
+    if (questions.length === 0) {
+      setStatus("No questions found for this test", true);
+      quizForm.innerHTML = "";
+      return;
     }
-};
 
-function showResult() {
-    quizContainer.style.display = 'none';
-    resultContainer.style.display = 'block';
-    scoreEl.textContent = score;
+    renderQuestions(questions);
+    submitBtn.disabled = false;
+    setStatus(`Loaded ${questions.length} questions for test ${testId}`);
+  } catch (error) {
+    setStatus(error.message, true);
+    quizForm.innerHTML = "";
+  }
 }
 
-loadQuestion();
+async function submitAnswers() {
+  const testId = Number(testIdInput.value);
+  const userId = Number(userIdInput.value);
+
+  if (!testId || !userId) {
+    setStatus("Please enter valid test and user IDs", true);
+    return;
+  }
+
+  const answers = collectAnswers();
+  if (answers.length === 0) {
+    setStatus("Select at least one answer before submitting", true);
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/quiz/tests/${testId}/submit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId, answers }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.detail || "Failed to submit quiz");
+    }
+
+    resultContainer.style.display = "block";
+    resultContainer.innerHTML = `<h2>Score: ${data.score} / ${data.total}</h2>`;
+    setStatus("Submission saved successfully");
+  } catch (error) {
+    setStatus(error.message, true);
+  }
+}
+
+loadBtn.addEventListener("click", loadQuestions);
+submitBtn.addEventListener("click", submitAnswers);
