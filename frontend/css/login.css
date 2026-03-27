@@ -112,7 +112,8 @@ body {
   margin-bottom: 22px;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 14px 12px;
 
@@ -127,7 +128,8 @@ body {
   transition: all 0.25s ease;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group select:focus {
   border-color: #00ff88;
   box-shadow:
     0 0 0 1px rgba(0,255,136,0.6),

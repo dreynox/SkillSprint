@@ -32,9 +32,12 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
         return;
     }
 
-    const submitBtn = document.querySelector("button[type='submit']");
+    const submitBtn = document.getElementById("signupBtn");
+    const submitLabel = submitBtn ? submitBtn.querySelector("span") : null;
     submitBtn.disabled = true;
-    submitBtn.textContent = "Creating account...";
+    if (submitLabel) {
+        submitLabel.textContent = "CREATING ACCOUNT...";
+    }
 
     try {
         const response = await fetch(`${API_BASE_URL}/auth/register`, {
@@ -66,7 +69,9 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
         console.error("Error:", error);
     } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Sign Up";
+        if (submitLabel) {
+            submitLabel.textContent = "SIGN UP";
+        }
     }
 });
 
@@ -105,4 +110,85 @@ function formatApiError(data) {
     }
 
     return "Sign up failed";
+}
+
+/* =========================
+   NEON CURSOR GLOW
+========================= */
+const glow = document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove", (e) => {
+    if (!glow) return;
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+
+/* =========================
+   MATRIX BACKGROUND
+========================= */
+const canvas = document.getElementById("matrix");
+if (canvas) {
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+
+    const letters = "01SYSTEMHACKACCESSGRANTED";
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array.from({ length: columns }).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00ff88";
+        ctx.font = fontSize + "px monospace";
+
+        drops.forEach((y, i) => {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, y * fontSize);
+
+            if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        });
+    }
+
+    setInterval(drawMatrix, 33);
+
+    window.addEventListener("resize", () => {
+        resizeCanvas();
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array.from({ length: columns }).fill(1);
+    });
+}
+
+/* =========================
+   TOGGLE PASSWORD VISIBILITY
+========================= */
+const togglePassword = document.getElementById("togglePassword");
+const passwordInput = document.getElementById("password");
+
+if (togglePassword && passwordInput) {
+    togglePassword.addEventListener("click", () => {
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+        togglePassword.textContent = type === "password" ? "👁" : "🙈";
+    });
+}
+
+const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+const confirmPasswordInput = document.getElementById("confirmPassword");
+
+if (toggleConfirmPassword && confirmPasswordInput) {
+    toggleConfirmPassword.addEventListener("click", () => {
+        const type = confirmPasswordInput.getAttribute("type") === "password" ? "text" : "password";
+        confirmPasswordInput.setAttribute("type", type);
+        toggleConfirmPassword.textContent = type === "password" ? "👁" : "🙈";
+    });
 }

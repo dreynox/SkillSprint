@@ -4,64 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillSprint - Sign Up</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-box">
-            <h1>SkillSprint</h1>
-            <p class="subtitle">Create your account</p>
-            
-            <form id="signupForm">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Your name">
-                    <span class="error-message" id="nameError"></span>
-                </div>
+    <div class="cursor-glow"></div>
+    <canvas id="matrix"></canvas>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="your@college.edu">
-                    <span class="error-message" id="emailError"></span>
-                </div>
+    <div class="login-card">
+        <h1 class="terminal-title">
+            SkillSprint<span class="cursor">_</span>
+        </h1>
+        <p class="subtitle">Create your account</p>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="year">Year</label>
-                        <select id="year" name="year">
-                            <option value="">Select year</option>
-                            <option value="1">1st Year</option>
-                            <option value="2">2nd Year</option>
-                            <option value="3">3rd Year</option>
-                            <option value="4">4th Year</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="branch">Branch</label>
-                        <input type="text" id="branch" name="branch" placeholder="CSE, ECE, etc.">
-                    </div>
-                </div>
+        <div id="generalError" class="error-message"></div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Min 6 characters">
-                    <span class="error-message" id="passwordError"></span>
-                </div>
+        <form id="signupForm">
+            <div class="input-group">
+                <input type="text" id="name" name="name" required placeholder="Full Name" />
+                <span class="error-message" id="nameError"></span>
+            </div>
 
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm password">
-                    <span class="error-message" id="confirmPasswordError"></span>
-                </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" required placeholder="Email" />
+                <span class="error-message" id="emailError"></span>
+            </div>
 
-                <button type="submit" class="btn-primary">Sign Up</button>
-                <span class="error-message" id="generalError"></span>
-            </form>
+            <div class="input-group">
+                <select id="year" name="year" aria-label="Year">
+                    <option value="">Select year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
 
-            <p class="login-link">
-                Already have an account? <a href="../../index.html">Log in</a>
-            </p>
-        </div>
+            <div class="input-group">
+                <input type="text" id="branch" name="branch" placeholder="Branch (CSE, ECE, etc.)" />
+            </div>
+
+            <div class="input-group password">
+                <input type="password" id="password" name="password" required placeholder="Password" />
+                <span id="togglePassword">👁</span>
+                <span class="error-message" id="passwordError"></span>
+            </div>
+
+            <div class="input-group password">
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" />
+                <span id="toggleConfirmPassword">👁</span>
+                <span class="error-message" id="confirmPasswordError"></span>
+            </div>
+
+            <button type="submit" id="signupBtn">
+                <span>SIGN UP</span>
+            </button>
+        </form>
+
+        <p class="footer-text">
+            Already have an account?
+            <a href="../../index.html">Log in</a>
+        </p>
     </div>
 
     <script src="../js/signup.js"></script>
