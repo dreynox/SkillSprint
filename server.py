@@ -32,7 +32,7 @@ if __name__ == "__main__":
         print(f"📁 Serving from: {DIRECTORY}")
         print(f"\n🔗 Access your pages:")
         print(f"   • Signup: http://localhost:{PORT}/frontend/html/signup.html")
-        print(f"   • Dashboard: http://localhost:{PORT}/frontend/html/dashboard.html")
+        print(f"   • Student Dashboard: http://localhost:{PORT}/frontend/html/student-dashboard.html")
         print(f"   • Quiz: http://localhost:{PORT}/frontend/html/quiz.html")
         print(f"\n⌨️  Press Ctrl+C to stop the server\n")
         
