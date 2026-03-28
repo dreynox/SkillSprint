@@ -6,42 +6,58 @@
   <title>SkillSprint Dashboard</title>
   <style>
     :root {
-      --bg: #f4f7fb;
-      --surface: #ffffff;
-      --text: #122034;
-      --muted: #5e6c84;
-      --line: #d9e2ef;
-      --primary: #0b69ff;
-      --primary-dark: #0847a6;
-      --success: #1c9c65;
-      --warn: #b86a00;
+      --bg: #050505;
+      --surface: rgba(10, 10, 10, 0.85);
+      --text: #e0ffe8;
+      --muted: rgba(224, 255, 232, 0.68);
+      --line: rgba(0, 255, 136, 0.24);
+      --primary: #00ff88;
+      --primary-dark: #00ccaa;
+      --success: #00ff88;
+      --warn: #fbbf24;
       --radius: 14px;
-      --shadow: 0 10px 24px rgba(16, 35, 66, 0.08);
+      --shadow: 0 0 28px rgba(0, 255, 136, 0.16), 0 30px 90px rgba(0, 0, 0, 0.55);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: "JetBrains Mono", monospace;
     }
 
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background:
-        radial-gradient(circle at 0% 0%, #dbeafe 0, transparent 32%),
-        radial-gradient(circle at 100% 100%, #e0f2fe 0, transparent 28%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    #matrix {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent 65%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      filter: blur(35px);
     }
 
     .topbar {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 5;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(12px);
     }
 
     .topbar-inner {
@@ -58,6 +74,7 @@
       font-weight: 700;
       font-size: 1.05rem;
       letter-spacing: 0.02em;
+      text-shadow: 0 0 14px rgba(0, 255, 136, 0.5);
     }
 
     .brand span {
@@ -74,13 +91,14 @@
 
     .btn {
       border: 1px solid transparent;
-      background: var(--primary);
-      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #00140d;
       border-radius: 999px;
       padding: 0.5rem 0.95rem;
       font-weight: 600;
       cursor: pointer;
       transition: 0.15s ease;
+      box-shadow: 0 0 18px rgba(0, 255, 136, 0.35);
     }
 
     .btn:hover {
@@ -94,11 +112,14 @@
       padding: 1.2rem 1rem 2rem;
       display: grid;
       gap: 1rem;
+      position: relative;
+      z-index: 2;
     }
 
     .hero {
-      background: linear-gradient(125deg, #0b69ff, #0ea5e9);
-      color: #f8fbff;
+      background: linear-gradient(125deg, rgba(0, 255, 136, 0.12), rgba(0, 204, 170, 0.16));
+      color: var(--text);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 1.1rem;
@@ -128,6 +149,7 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 1rem;
+      backdrop-filter: blur(12px);
     }
 
     .panel h2 {
@@ -145,7 +167,7 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 0.7rem;
-      background: #fbfdff;
+      background: rgba(0, 0, 0, 0.42);
     }
 
     .stat .label {
@@ -173,14 +195,14 @@
       padding: 0.85rem;
       text-decoration: none;
       color: inherit;
-      background: #ffffff;
+      background: rgba(0, 0, 0, 0.4);
       transition: 0.15s ease;
     }
 
     .module-card:hover {
-      border-color: #99b8f5;
+      border-color: rgba(0, 255, 136, 0.65);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(11, 105, 255, 0.11);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.22);
     }
 
     .module-card h3 {
@@ -201,11 +223,12 @@
       font-weight: 600;
       border-radius: 999px;
       padding: 0.15rem 0.5rem;
-      color: #fff;
+      color: #00140d;
       background: var(--success);
     }
 
     .module-card .state.warn {
+      color: #2f2000;
       background: var(--warn);
     }
 
@@ -222,7 +245,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.6rem;
-      background: #fbfdff;
+      background: rgba(0, 0, 0, 0.42);
     }
 
     .list-item b {
@@ -241,9 +264,10 @@
       font-weight: 600;
       border-radius: 999px;
       padding: 0.2rem 0.55rem;
-      color: #0b3b9e;
-      background: #dbeafe;
+      color: #00140d;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       white-space: nowrap;
+      box-shadow: 0 0 14px rgba(0, 255, 136, 0.25);
     }
 
     @media (max-width: 880px) {
@@ -266,6 +290,9 @@
   </style>
 </head>
 <body>
+  <div class="cursor-glow"></div>
+  <canvas id="matrix"></canvas>
+
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">Skill<span>Sprint</span> Dashboard</div>
@@ -350,6 +377,60 @@
   </main>
 
   <script>
+    const glow = document.querySelector(".cursor-glow");
+    document.addEventListener("mousemove", function (event) {
+      if (!glow) {
+        return;
+      }
+
+      glow.style.left = event.clientX + "px";
+      glow.style.top = event.clientY + "px";
+    });
+
+    const matrixCanvas = document.getElementById("matrix");
+    if (matrixCanvas) {
+      const matrixContext = matrixCanvas.getContext("2d");
+
+      function resizeCanvas() {
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+
+      const letters = "01SYSTEMHACKACCESSGRANTED";
+      const fontSize = 14;
+      let columns = Math.floor(matrixCanvas.width / fontSize);
+      let drops = Array.from({ length: columns }).fill(1);
+
+      function drawMatrix() {
+        matrixContext.fillStyle = "rgba(0, 0, 0, 0.08)";
+        matrixContext.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+        matrixContext.fillStyle = "#00ff88";
+        matrixContext.font = fontSize + "px monospace";
+
+        drops.forEach(function (y, index) {
+          const text = letters[Math.floor(Math.random() * letters.length)];
+          matrixContext.fillText(text, index * fontSize, y * fontSize);
+
+          if (y * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+            drops[index] = 0;
+          }
+
+          drops[index] += 1;
+        });
+      }
+
+      setInterval(drawMatrix, 33);
+
+      window.addEventListener("resize", function () {
+        resizeCanvas();
+        columns = Math.floor(matrixCanvas.width / fontSize);
+        drops = Array.from({ length: columns }).fill(1);
+      });
+    }
+
     function parseUser() {
       try {
         return JSON.parse(localStorage.getItem("user") || "null");
