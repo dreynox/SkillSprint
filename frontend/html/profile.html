@@ -34,7 +34,7 @@
     <div class="card profile">
       <img
         id="avatar"
-        src="../images/Rayhaan1.jpeg"
+        src="../images/default-avatar.svg"
         alt="User Avatar"
       >
       <h2 id="username">Rayhaan Shaikh</h2>
@@ -43,6 +43,12 @@
       <div class="actions">
         <button class="btn btn-outline">Follow</button>
         <button class="btn btn-primary" id="messageBtn">Message</button>
+      </div>
+
+      <div class="avatar-upload">
+        <label class="upload-label" for="avatarUpload">Update profile image</label>
+        <input id="avatarUpload" type="file" accept="image/*" />
+        <p id="avatarUploadStatus" class="upload-status"></p>
       </div>
     </div>
 

@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from database import Base, engine, ensure_sqlite_compatibility
 from routes import auth_routes, contest_routes, hackathon_routes, quiz_routes, user_routes
@@ -21,6 +22,10 @@ app = FastAPI(
     description="SkillSprint - Competitive Coding and Hackathon Portal",
     version="1.0.0",
 )
+
+UPLOADS_DIR = os.path.join(os.path.dirname(__file__), "uploads")
+os.makedirs(UPLOADS_DIR, exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=UPLOADS_DIR), name="uploads")
 
 app.add_middleware(
     CORSMiddleware,

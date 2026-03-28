@@ -166,6 +166,35 @@ body {
   justify-content: center;
 }
 
+.avatar-upload {
+  margin-top: 14px;
+  text-align: left;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(16, 185, 129, 0.06);
+}
+
+.upload-label {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+#avatarUpload {
+  width: 100%;
+  color: #e5e7eb;
+  font-size: 12px;
+}
+
+.upload-status {
+  min-height: 16px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #9bf7c4;
+}
+
 .btn {
   padding: 10px 18px;
   border-radius: 10px;

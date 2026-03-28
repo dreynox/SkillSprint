@@ -1,4 +1,5 @@
 const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
+const DEFAULT_AVATAR = "../images/default-avatar.svg";
 
 function getToken() {
   return localStorage.getItem("access_token");
@@ -7,6 +8,72 @@ function getToken() {
 function authHeaders() {
   const token = getToken();
   return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+function resolveAvatarUrl(avatarUrl) {
+  if (!avatarUrl) {
+    return DEFAULT_AVATAR;
+  }
+
+  if (avatarUrl.startsWith("http://") || avatarUrl.startsWith("https://")) {
+    return avatarUrl;
+  }
+
+  if (avatarUrl.startsWith("/")) {
+    return `${API_BASE}${avatarUrl}`;
+  }
+
+  return avatarUrl;
+}
+
+function setUploadStatus(message, isError) {
+  const element = document.getElementById("avatarUploadStatus");
+  if (!element) {
+    return;
+  }
+  element.textContent = message || "";
+  element.style.color = isError ? "#f87171" : "#9bf7c4";
+}
+
+async function uploadAvatar(file) {
+  if (!file) {
+    return;
+  }
+
+  const token = getToken();
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  setUploadStatus("Uploading image...", false);
+
+  try {
+    const response = await fetch(`${API_BASE}/users/me/avatar`, {
+      method: "POST",
+      headers: authHeaders(),
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.detail || "Failed to upload image");
+    }
+
+    const avatar = document.getElementById("avatar");
+    if (avatar) {
+      avatar.src = resolveAvatarUrl(data.avatar_url);
+    }
+
+    const cachedUser = JSON.parse(localStorage.getItem("user") || "{}");
+    localStorage.setItem("user", JSON.stringify({ ...cachedUser, ...data }));
+    setUploadStatus("Profile image updated.", false);
+  } catch (error) {
+    setUploadStatus(error.message || "Failed to upload image", true);
+  }
 }
 
 function animateCount(id, target) {
@@ -118,7 +185,7 @@ async function loadProfile() {
 
     const avatar = document.getElementById("avatar");
     if (avatar) {
-      avatar.src = profile.avatar_url || "../images/Rayhaan1.jpeg";
+      avatar.src = resolveAvatarUrl(profile.avatar_url);
     }
 
     animateCount("contests", stats.contests_joined || 0);
@@ -146,6 +213,14 @@ const messageBtn = document.getElementById("messageBtn");
 if (messageBtn) {
   messageBtn.addEventListener("click", () => {
     window.location.href = "message.html";
+  });
+}
+
+const avatarUploadInput = document.getElementById("avatarUpload");
+if (avatarUploadInput) {
+  avatarUploadInput.addEventListener("change", (event) => {
+    const [file] = event.target.files || [];
+    uploadAvatar(file);
   });
 }
 
