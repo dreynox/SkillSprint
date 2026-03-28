@@ -49,6 +49,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
                 name,
                 email,
                 password,
+                role: "student",
                 year: year ? parseInt(year) : null,
                 branch: branch || null,
             }),

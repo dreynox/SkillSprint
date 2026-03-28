@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSprint - Admin Sign Up</title>
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div class="cursor-glow"></div>
+  <canvas id="matrix"></canvas>
+
+  <div class="login-card">
+    <h1 class="terminal-title">
+      SkillSprint<span class="cursor">_</span>
+    </h1>
+    <p class="subtitle">Create your admin account</p>
+
+    <div id="generalError" class="error-message"></div>
+
+    <form id="adminSignupForm">
+      <div class="input-group">
+        <input type="text" id="name" name="name" required placeholder="Admin Name" />
+        <span class="error-message" id="nameError"></span>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" name="email" required placeholder="Admin Email" />
+        <span class="error-message" id="emailError"></span>
+      </div>
+
+      <div class="input-group password">
+        <input type="password" id="password" name="password" required placeholder="Password" />
+        <span id="togglePassword">👁</span>
+        <span class="error-message" id="passwordError"></span>
+      </div>
+
+      <div class="input-group password">
+        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" />
+        <span id="toggleConfirmPassword">👁</span>
+        <span class="error-message" id="confirmPasswordError"></span>
+      </div>
+
+      <button type="submit" id="signupBtn">
+        <span>CREATE ADMIN</span>
+      </button>
+    </form>
+
+    <p class="footer-text">
+      Already admin?
+      <a href="admin-login.html">Admin Log in</a>
+    </p>
+
+    <p class="footer-text">
+      Student signup?
+      <a href="signup.html">Go to student sign up</a>
+    </p>
+  </div>
+
+  <script src="../js/admin-signup.js"></script>
+</body>
+</html>

@@ -1,15 +1,9 @@
-// Detect local vs deployed environment
-const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const API_BASE_URL = isDev 
-  ? `http://${window.location.hostname}:8000` 
+const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const API_BASE_URL = isDev
+  ? `http://${window.location.hostname}:8000`
   : "https://skillsprint-muv2.onrender.com";
 
-console.log("API_BASE_URL:", API_BASE_URL); // Debug log
-
-/* =========================
-   LOGIN FORM HANDLER
-========================= */
-const form = document.getElementById("loginForm");
+const form = document.getElementById("adminLoginForm");
 const loginBtn = document.getElementById("loginBtn");
 
 form.addEventListener("submit", async (e) => {
@@ -19,20 +13,19 @@ form.addEventListener("submit", async (e) => {
   const passwordInput = document.getElementById("password");
   const password = passwordInput.value.trim();
 
-  // Clear previous errors
   clearErrors();
 
-  // Basic validation
   if (!email || !password) {
     showError("generalError", "Please fill in all fields");
     return;
   }
 
-  // Button loading state
   loginBtn.disabled = true;
   loginBtn.classList.add("loading");
   const span = loginBtn.querySelector("span");
-  if (span) span.textContent = "AUTHENTICATING...";
+  if (span) {
+    span.textContent = "AUTHENTICATING...";
+  }
 
   try {
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
@@ -49,39 +42,40 @@ form.addEventListener("submit", async (e) => {
       throw new Error(data.detail || "Invalid email or password");
     }
 
-    if (!data.user || data.user.role !== "student") {
-      throw new Error("This portal is for student login. Use the admin login link.");
+    if (!data.user || data.user.role !== "admin") {
+      throw new Error("This portal is for admin accounts only.");
     }
 
-    // Store token + user
     localStorage.setItem("access_token", data.access_token);
     if (data.user) {
       localStorage.setItem("user", JSON.stringify(data.user));
     }
 
-    if (span) span.textContent = "ACCESS GRANTED";
+    if (span) {
+      span.textContent = "ACCESS GRANTED";
+    }
     loginBtn.style.background = "#00ff88";
     loginBtn.style.color = "#000";
 
-    // Redirect (adjust if you later add a separate admin page)
     setTimeout(() => {
-      window.location.href = "frontend/html/dashboard.html";
+      window.location.href = "dashboard.html";
     }, 1200);
   } catch (error) {
     loginBtn.classList.remove("loading");
     loginBtn.disabled = false;
-    if (span) span.textContent = "AUTHENTICATE";
+    if (span) {
+      span.textContent = "ADMIN AUTHENTICATE";
+    }
     showError("generalError", error.message || "Connection error. Please try again.");
-    console.error("Login error:", error);
+    console.error("Admin login error:", error);
   }
 });
 
-/* =========================
-   ERROR HELPERS
-========================= */
 function showError(elementId, message) {
   const el = document.getElementById(elementId);
-  if (el) el.textContent = message;
+  if (el) {
+    el.textContent = message;
+  }
 }
 
 function clearErrors() {
@@ -90,20 +84,16 @@ function clearErrors() {
   });
 }
 
-/* =========================
-   NEON CURSOR GLOW
-========================= */
 const glow = document.querySelector(".cursor-glow");
 
 document.addEventListener("mousemove", (e) => {
-  if (!glow) return;
+  if (!glow) {
+    return;
+  }
   glow.style.left = e.clientX + "px";
   glow.style.top = e.clientY + "px";
 });
 
-/* =========================
-   MATRIX BACKGROUND
-========================= */
 const canvas = document.getElementById("matrix");
 if (canvas) {
   const ctx = canvas.getContext("2d");
@@ -146,9 +136,6 @@ if (canvas) {
   });
 }
 
-/* =========================
-   TOGGLE PASSWORD VISIBILITY
-========================= */
 const togglePassword = document.getElementById("togglePassword");
 const passwordInput = document.getElementById("password");
 

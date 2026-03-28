@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSprint | Admin Login</title>
+  <link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+  <div class="cursor-glow"></div>
+  <canvas id="matrix"></canvas>
+
+  <div class="login-card">
+    <h1 class="terminal-title">
+      SkillSprint<span class="cursor">_</span>
+    </h1>
+
+    <p class="subtitle">Admin control portal</p>
+
+    <div id="generalError" class="error-message" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
+
+    <form id="adminLoginForm">
+      <div class="input-group">
+        <input type="email" id="email" required />
+        <label>Admin Email</label>
+      </div>
+
+      <div class="input-group password">
+        <input type="password" id="password" required />
+        <label>Password</label>
+        <span id="togglePassword">👁</span>
+      </div>
+
+      <button type="submit" id="loginBtn">
+        <span>ADMIN AUTHENTICATE</span>
+        <div class="loader"></div>
+      </button>
+    </form>
+
+    <p class="footer-text">
+      Need an admin account?
+      <a href="admin-signup.html">Create admin access</a>
+    </p>
+
+    <p class="footer-text">
+      Student login?
+      <a href="../../index.html">Go to student login</a>
+    </p>
+  </div>
+
+  <script src="../js/admin-login.js"></script>
+</body>
+</html>
