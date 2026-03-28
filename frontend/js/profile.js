@@ -2,12 +2,26 @@ const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 const DEFAULT_AVATAR = "../images/default-avatar.svg";
 
 function getToken() {
-  return localStorage.getItem("access_token");
+  const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+
+  if (!cleaned || cleaned === "undefined" || cleaned === "null") {
+    return "";
+  }
+
+  return cleaned;
 }
 
 function authHeaders() {
   const token = getToken();
   return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+function clearSessionAndGoLogin() {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "../../index.html";
 }
 
 function getCachedUser() {
@@ -65,6 +79,14 @@ async function uploadAvatar(file) {
       headers: authHeaders(),
       body: formData,
     });
+
+    if (response.status === 401) {
+      setUploadStatus("Session expired. Please login again.", true);
+      setTimeout(() => {
+        clearSessionAndGoLogin();
+      }, 700);
+      return;
+    }
 
     const data = await response.json();
     if (!response.ok) {
@@ -162,7 +184,7 @@ function renderPerformanceRows(stats) {
 async function loadProfile() {
   const token = getToken();
   if (!token) {
-    window.location.href = "../../index.html";
+    clearSessionAndGoLogin();
     return;
   }
 
@@ -171,6 +193,11 @@ async function loadProfile() {
       fetch(`${API_BASE}/users/me`, { headers: authHeaders() }),
       fetch(`${API_BASE}/users/me/stats`, { headers: authHeaders() }),
     ]);
+
+    if (profileRes.status === 401) {
+      clearSessionAndGoLogin();
+      return;
+    }
 
     if (!profileRes.ok) {
       throw new Error("Unable to load profile data");
