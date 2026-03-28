@@ -112,3 +112,15 @@ class ContestSubmission(Base):
     user = relationship("User")
     contest = relationship("Contest", back_populates="submissions")
     problem = relationship("ContestProblem", back_populates="submissions")
+
+
+class Hackathon(Base):
+    __tablename__ = "hackathons"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    start_time = Column(DateTime, nullable=True)
+    end_time = Column(DateTime, nullable=True)
+    is_active = Column(Boolean, default=False, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)

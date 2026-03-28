@@ -58,7 +58,7 @@ form.addEventListener("submit", async (e) => {
     loginBtn.style.color = "#000";
 
     setTimeout(() => {
-      window.location.href = "dashboard.html";
+      window.location.href = "admin-dashboard.html";
     }, 1200);
   } catch (error) {
     loginBtn.classList.remove("loading");

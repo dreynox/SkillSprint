@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSprint Admin Dashboard</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: rgba(10, 10, 10, 0.85);
+      --text: #e0ffe8;
+      --muted: rgba(224, 255, 232, 0.68);
+      --line: rgba(0, 255, 136, 0.24);
+      --primary: #00ff88;
+      --primary-dark: #00ccaa;
+      --radius: 14px;
+      --shadow: 0 0 28px rgba(0, 255, 136, 0.16), 0 30px 90px rgba(0, 0, 0, 0.55);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "JetBrains Mono", monospace; }
+
+    body { background: var(--bg); color: var(--text); min-height: 100vh; position: relative; overflow-x: hidden; }
+
+    #matrix { position: fixed; inset: 0; z-index: 0; }
+    .cursor-glow {
+      position: fixed; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent 65%);
+      pointer-events: none; transform: translate(-50%, -50%); z-index: 1; filter: blur(35px);
+    }
+
+    .topbar { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line); background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(12px); }
+    .topbar-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0.9rem 1rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+    }
+
+    .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; text-shadow: 0 0 14px rgba(0, 255, 136, 0.5); }
+    .brand span { color: var(--primary); }
+    .topbar-right { display: flex; align-items: center; gap: 0.7rem; font-size: 0.92rem; color: var(--muted); }
+
+    .btn {
+      border: 1px solid transparent; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #00140d;
+      border-radius: 999px; padding: 0.5rem 0.95rem; font-weight: 700; cursor: pointer; transition: 0.15s ease;
+      box-shadow: 0 0 18px rgba(0, 255, 136, 0.35);
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 1.2rem 1rem 2rem; display: grid; gap: 1rem; position: relative; z-index: 2; }
+    .hero, .panel {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 1rem; backdrop-filter: blur(12px);
+    }
+    .hero { background: linear-gradient(125deg, rgba(0, 255, 136, 0.12), rgba(0, 204, 170, 0.16)); }
+
+    .hero h1 { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .hero p { color: var(--muted); font-size: 0.92rem; }
+
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .panel h2 { font-size: 1rem; margin-bottom: 0.75rem; }
+
+    .form-grid { display: grid; gap: 0.65rem; }
+    .field-label { color: var(--muted); font-size: 0.8rem; }
+
+    input, textarea {
+      width: 100%; padding: 0.62rem 0.7rem;
+      background: rgba(0, 0, 0, 0.45); color: var(--text);
+      border: 1px solid var(--line); border-radius: 10px; outline: none;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+
+    .inline-row { display: grid; gap: 0.65rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .checkbox-row { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: 0.83rem; }
+
+    .status { min-height: 1.1rem; font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+
+    .list { display: grid; gap: 0.6rem; }
+    .list-item {
+      border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.6rem;
+      background: rgba(0, 0, 0, 0.42);
+    }
+    .list-item b { font-size: 0.88rem; display: block; margin-bottom: 0.2rem; }
+    .list-item span { font-size: 0.78rem; color: var(--muted); }
+    .badge {
+      font-size: 0.72rem; font-weight: 600; border-radius: 999px; padding: 0.2rem 0.55rem;
+      color: #00140d; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .inline-row { grid-template-columns: 1fr; }
+      .topbar-inner { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-glow"></div>
+  <canvas id="matrix"></canvas>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Skill<span>Sprint</span> Admin Dashboard</div>
+      <div class="topbar-right">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn" id="logoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 id="heroTitle">Admin control center</h1>
+      <p>Create and publish contests/hackathons. Published events appear automatically on student dashboard.</p>
+    </section>
+
+    <section class="grid">
+      <section class="panel">
+        <h2>Create Contest</h2>
+        <div class="form-grid">
+          <label class="field-label" for="contestName">Contest Name</label>
+          <input id="contestName" type="text" placeholder="Weekly DSA Battle" />
+
+          <label class="field-label" for="contestDescription">Description</label>
+          <textarea id="contestDescription" placeholder="Contest details and participation notes"></textarea>
+
+          <div class="inline-row">
+            <div>
+              <label class="field-label" for="contestStart">Start Time</label>
+              <input id="contestStart" type="datetime-local" />
+            </div>
+            <div>
+              <label class="field-label" for="contestEnd">End Time</label>
+              <input id="contestEnd" type="datetime-local" />
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input id="contestActive" type="checkbox" checked />
+            Publish as active now
+          </label>
+
+          <button class="btn" id="createContestBtn" type="button">Post Contest</button>
+          <p class="status" id="contestStatus"></p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Create Hackathon</h2>
+        <div class="form-grid">
+          <label class="field-label" for="hackathonTitle">Hackathon Title</label>
+          <input id="hackathonTitle" type="text" placeholder="Campus AI Innovation Sprint" />
+
+          <label class="field-label" for="hackathonDescription">Description</label>
+          <textarea id="hackathonDescription" placeholder="Theme, rules, team format, outcomes"></textarea>
+
+          <div class="inline-row">
+            <div>
+              <label class="field-label" for="hackathonStart">Start Time</label>
+              <input id="hackathonStart" type="datetime-local" />
+            </div>
+            <div>
+              <label class="field-label" for="hackathonEnd">End Time</label>
+              <input id="hackathonEnd" type="datetime-local" />
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input id="hackathonActive" type="checkbox" checked />
+            Publish as active now
+          </label>
+
+          <button class="btn" id="createHackathonBtn" type="button">Post Hackathon</button>
+          <p class="status" id="hackathonStatus"></p>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel">
+      <h2>Published Feed</h2>
+      <div class="list" id="adminFeed"></div>
+    </section>
+  </main>
+
+  <script src="../js/api-base.js"></script>
+  <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>
+

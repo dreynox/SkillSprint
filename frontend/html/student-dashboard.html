@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkillSprint Dashboard</title>
+  <title>SkillSprint Student Dashboard</title>
   <style>
     :root {
       --bg: #050505;
@@ -295,7 +295,7 @@
 
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand">Skill<span>Sprint</span> Dashboard</div>
+      <div class="brand">Skill<span>Sprint</span> Student Dashboard</div>
       <div class="topbar-right">
         <span id="welcomeText">Welcome</span>
         <button class="btn" id="logoutBtn" type="button">Logout</button>
@@ -356,26 +356,20 @@
     </section>
 
     <section class="panel">
-      <h2>Upcoming sprints</h2>
-      <div class="list">
+      <h2>Active contests and hackathons</h2>
+      <div class="list" id="activityFeed">
         <div class="list-item">
           <div>
-            <b>Data Structures Battle</b>
-            <span>Saturday, 10:00 AM to 12:00 PM</span>
+            <b>Loading contest feed...</b>
+            <span>Please wait while events are synced.</span>
           </div>
-          <span class="badge">2h</span>
-        </div>
-        <div class="list-item">
-          <div>
-            <b>Frontend Rapid Build</b>
-            <span>Sunday, 3:00 PM to 5:00 PM</span>
-          </div>
-          <span class="badge">2h</span>
+          <span class="badge">Live</span>
         </div>
       </div>
     </section>
   </main>
 
+  <script src="../js/api-base.js"></script>
   <script>
     const glow = document.querySelector(".cursor-glow");
     document.addEventListener("mousemove", function (event) {
@@ -440,11 +434,17 @@
     }
 
     function loadDashboard() {
+      const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
       const token = localStorage.getItem("access_token");
       const user = parseUser();
 
       if (!token) {
         window.location.href = "../../index.html";
+        return;
+      }
+
+      if (user && user.role !== "student") {
+        window.location.href = "admin-dashboard.html";
         return;
       }
 
@@ -456,6 +456,67 @@
       document.getElementById("contestsJoined").textContent = savedStats.contestsJoined || 0;
       document.getElementById("quizAttempts").textContent = savedStats.quizAttempts || 0;
       document.getElementById("streak").textContent = (savedStats.streakDays || 0) + " days";
+
+      Promise.all([
+        fetch(API_BASE + "/contests?active_only=true").then(function (response) {
+          if (!response.ok) {
+            return [];
+          }
+          return response.json();
+        }),
+        fetch(API_BASE + "/hackathons?active_only=true").then(function (response) {
+          if (!response.ok) {
+            return [];
+          }
+          return response.json();
+        })
+      ]).then(function (results) {
+        const contests = Array.isArray(results[0]) ? results[0] : [];
+        const hackathons = Array.isArray(results[1]) ? results[1] : [];
+        const feed = document.getElementById("activityFeed");
+
+        if (!feed) {
+          return;
+        }
+
+        if (!contests.length && !hackathons.length) {
+          feed.innerHTML = "<div class=\"list-item\"><div><b>No active events yet</b><span>Admin can publish contests and hackathons from the admin dashboard.</span></div><span class=\"badge\">0</span></div>";
+          return;
+        }
+
+        const contestRows = contests.map(function (contest) {
+          return "<div class=\"list-item\"><div><b>[Contest] " + escapeHtml(contest.name) + "</b><span>" + renderTimeRange(contest.start_time, contest.end_time) + "</span></div><span class=\"badge\">Contest</span></div>";
+        }).join("");
+
+        const hackathonRows = hackathons.map(function (hackathon) {
+          return "<div class=\"list-item\"><div><b>[Hackathon] " + escapeHtml(hackathon.title) + "</b><span>" + renderTimeRange(hackathon.start_time, hackathon.end_time) + "</span></div><span class=\"badge\">Hackathon</span></div>";
+        }).join("");
+
+        feed.innerHTML = contestRows + hackathonRows;
+      }).catch(function () {
+        const feed = document.getElementById("activityFeed");
+        if (feed) {
+          feed.innerHTML = "<div class=\"list-item\"><div><b>Unable to load events</b><span>Check backend availability and try again.</span></div><span class=\"badge\">Error</span></div>";
+        }
+      });
+    }
+
+    function renderTimeRange(start, end) {
+      const startText = start ? new Date(start).toLocaleString() : "TBD";
+      const endText = end ? new Date(end).toLocaleString() : "TBD";
+      return startText + " to " + endText;
+    }
+
+    function escapeHtml(str) {
+      if (!str) {
+        return "";
+      }
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
     }
 
     document.getElementById("logoutBtn").addEventListener("click", function () {
@@ -468,3 +529,4 @@
   </script>
 </body>
 </html>
+

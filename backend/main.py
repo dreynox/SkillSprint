@@ -9,7 +9,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import Base, engine, ensure_sqlite_compatibility
-from routes import auth_routes, contest_routes, quiz_routes
+from routes import auth_routes, contest_routes, hackathon_routes, quiz_routes
 
 # ---------- APP & DATABASE SETUP ----------
 
@@ -43,3 +43,4 @@ def read_root():
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 app.include_router(quiz_routes.router, prefix="/quiz", tags=["quiz"])
 app.include_router(contest_routes.router, prefix="/contests", tags=["contests"])
+app.include_router(hackathon_routes.router, prefix="/hackathons", tags=["hackathons"])

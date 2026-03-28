@@ -65,7 +65,7 @@ form.addEventListener("submit", async (e) => {
 
     // Redirect (adjust if you later add a separate admin page)
     setTimeout(() => {
-      window.location.href = "frontend/html/dashboard.html";
+      window.location.href = "frontend/html/student-dashboard.html";
     }, 1200);
   } catch (error) {
     loginBtn.classList.remove("loading");

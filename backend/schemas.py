@@ -164,3 +164,24 @@ class ContestSubmissionOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class HackathonCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
+    is_active: bool = False
+
+
+class HackathonOut(BaseModel):
+    id: int
+    title: str
+    description: Optional[str]
+    start_time: Optional[datetime]
+    end_time: Optional[datetime]
+    is_active: bool
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
