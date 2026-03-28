@@ -1,0 +1,268 @@
+﻿{
+    "language":  "JavaScript",
+    "level":  "Advanced",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q1] In a in production code scenario focused on optimization, for topic \u0027variables\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply variables according to established JavaScript optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid variables entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use variables only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over variables because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for variables under optimization."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q2] In a in interview-style problems scenario focused on optimization, for topic \u0027data types\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use data types only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over data types because it is always clearer and safer.",
+                                          "C":  "Apply data types according to established JavaScript optimization practices, considering best practices.",
+                                          "D":  "Avoid data types entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for data types under optimization."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q3] In a for maintainable project design scenario focused on optimization, for topic \u0027functions\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply functions according to established JavaScript optimization practices, considering error handling.",
+                                          "B":  "Avoid functions entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use functions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over functions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for functions under optimization."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q4] In a for secure implementation scenario focused on optimization, for topic \u0027scope\u0027 and angle \u0027portability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use scope only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over scope because it is always clearer and safer.",
+                                          "C":  "Apply scope according to established JavaScript optimization practices, considering portability.",
+                                          "D":  "Avoid scope entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for scope under optimization."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q5] In a for performance-sensitive code scenario focused on optimization, for topic \u0027hoisting\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply hoisting according to established JavaScript optimization practices, considering data handling.",
+                                          "B":  "Avoid hoisting entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use hoisting only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over hoisting because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for hoisting under optimization."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q6] In a for team collaboration scenario focused on optimization, for topic \u0027closures\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use closures only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over closures because it is always clearer and safer.",
+                                          "C":  "Apply closures according to established JavaScript optimization practices, considering memory model.",
+                                          "D":  "Avoid closures entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for closures under optimization."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q7] In a during code review scenario focused on optimization, for topic \u0027prototypes\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply prototypes according to established JavaScript optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid prototypes entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use prototypes only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over prototypes because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for prototypes under optimization."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q8] In a while debugging scenario focused on optimization, for topic \u0027classes\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use classes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over classes because it is always clearer and safer.",
+                                          "C":  "Apply classes according to established JavaScript optimization practices, considering best practices.",
+                                          "D":  "Avoid classes entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for classes under optimization."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q9] In a in production code scenario focused on optimization, for topic \u0027arrays\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply arrays according to established JavaScript optimization practices, considering error handling.",
+                                          "B":  "Avoid arrays entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use arrays only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for arrays under optimization."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q10] In a in interview-style problems scenario focused on optimization, for topic \u0027objects\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use objects only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over objects because it is always clearer and safer.",
+                                          "C":  "Apply objects according to established JavaScript optimization practices, considering portability.",
+                                          "D":  "Avoid objects entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for objects under optimization."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q11] In a for maintainable project design scenario focused on optimization, for topic \u0027promises\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply promises according to established JavaScript optimization practices, considering data handling.",
+                                          "B":  "Avoid promises entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use promises only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over promises because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for promises under optimization."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q12] In a for secure implementation scenario focused on optimization, for topic \u0027async await\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use async await only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over async await because it is always clearer and safer.",
+                                          "C":  "Apply async await according to established JavaScript optimization practices, considering memory model.",
+                                          "D":  "Avoid async await entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for async await under optimization."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q13] In a for performance-sensitive code scenario focused on optimization, for topic \u0027DOM manipulation\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply DOM manipulation according to established JavaScript optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid DOM manipulation entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use DOM manipulation only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over DOM manipulation because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for DOM manipulation under optimization."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q14] In a for team collaboration scenario focused on optimization, for topic \u0027events\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use events only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over events because it is always clearer and safer.",
+                                          "C":  "Apply events according to established JavaScript optimization practices, considering best practices.",
+                                          "D":  "Avoid events entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for events under optimization."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q15] In a during code review scenario focused on optimization, for topic \u0027fetch API\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply fetch API according to established JavaScript optimization practices, considering error handling.",
+                                          "B":  "Avoid fetch API entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use fetch API only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over fetch API because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for fetch API under optimization."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q16] In a while debugging scenario focused on optimization, for topic \u0027modules\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use modules only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over modules because it is always clearer and safer.",
+                                          "C":  "Apply modules according to established JavaScript optimization practices, considering portability.",
+                                          "D":  "Avoid modules entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for modules under optimization."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q17] In a in production code scenario focused on optimization, for topic \u0027this keyword\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply this keyword according to established JavaScript optimization practices, considering data handling.",
+                                          "B":  "Avoid this keyword entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use this keyword only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over this keyword because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for this keyword under optimization."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q18] In a in interview-style problems scenario focused on optimization, for topic \u0027strict mode\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use strict mode only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over strict mode because it is always clearer and safer.",
+                                          "C":  "Apply strict mode according to established JavaScript optimization practices, considering memory model.",
+                                          "D":  "Avoid strict mode entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for strict mode under optimization."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q19] In a for maintainable project design scenario focused on optimization, for topic \u0027error handling\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply error handling according to established JavaScript optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid error handling entirely in JavaScript because it never appears in real projects.",
+                                          "C":  "Use error handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over error handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for error handling under optimization."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Advanced][Set-1][Q20] In a for secure implementation scenario focused on optimization, for topic \u0027JSON\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use JSON only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over JSON because it is always clearer and safer.",
+                                          "C":  "Apply JSON according to established JavaScript optimization practices, considering best practices.",
+                                          "D":  "Avoid JSON entirely in JavaScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for JSON under optimization."
+                      }
+                  ]
+}

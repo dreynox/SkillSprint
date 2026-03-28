@@ -1,8 +1,6 @@
 const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 
 // ── DOM refs ─────────────────────────────────────────────────────────────────
-const userIdInput        = document.getElementById("user-id");
-
 const listSection        = document.getElementById("contest-list-section");
 const listStatusEl       = document.getElementById("list-status");
 const contestCards       = document.getElementById("contest-cards");
@@ -27,6 +25,22 @@ const verdictBox         = document.getElementById("verdict-box");
 let activeContestId  = null;
 let activeProblemId  = null;
 
+function getToken() {
+  return localStorage.getItem("access_token");
+}
+
+function getAuthHeaders(withJson = false) {
+  const token = getToken();
+  const headers = {};
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  if (withJson) {
+    headers["Content-Type"] = "application/json";
+  }
+  return headers;
+}
+
 // ── Navigation helpers ────────────────────────────────────────────────────────
 function showSection(section) {
   [listSection, detailSection, problemSection].forEach(s => s.style.display = "none");
@@ -50,6 +64,12 @@ function setSubmitStatus(msg, isError = false) {
 
 // ── Contest list ──────────────────────────────────────────────────────────────
 async function loadContests() {
+  const token = getToken();
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
+
   setListStatus("Loading contests...");
   contestCards.innerHTML = "";
 
@@ -120,6 +140,12 @@ async function openContest(contestId) {
 
     setProblemStatus(`${data.problems.length} problem(s). Click a card to submit.`);
     data.problems.forEach(renderProblemCard);
+
+    // Record that the current student joined this contest.
+    await fetch(`${API_BASE}/contests/${contestId}/join`, {
+      method: "POST",
+      headers: getAuthHeaders(),
+    });
   } catch (err) {
     setProblemStatus(err.message, true);
   }
@@ -176,14 +202,9 @@ function openProblem(problem) {
 }
 
 async function submitSolution() {
-  const userId   = Number(userIdInput.value);
   const language = languageSelect.value;
   const code     = codeTextarea.value.trim();
 
-  if (!userId) {
-    setSubmitStatus("Enter a valid User ID at the top of the page.", true);
-    return;
-  }
   if (!code) {
     setSubmitStatus("Code cannot be empty.", true);
     return;
@@ -198,8 +219,8 @@ async function submitSolution() {
       `${API_BASE}/contests/${activeContestId}/problems/${activeProblemId}/submit`,
       {
         method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ user_id: userId, language, code }),
+        headers: getAuthHeaders(true),
+        body:    JSON.stringify({ language, code }),
       }
     );
     const data = await res.json();

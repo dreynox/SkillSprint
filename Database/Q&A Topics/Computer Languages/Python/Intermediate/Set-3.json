@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Python",
+    "level":  "Intermediate",
+    "set":  "Set-3",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  41,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q1] In a for maintainable project design scenario focused on implementation, for topic \u0027classes\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use classes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over classes because it is always clearer and safer.",
+                                          "C":  "Apply classes according to established Python implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid classes entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for classes under implementation."
+                      },
+                      {
+                          "id":  42,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q2] In a for secure implementation scenario focused on implementation, for topic \u0027inheritance\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply inheritance according to established Python implementation practices, considering best practices.",
+                                          "B":  "Avoid inheritance entirely in Python because it never appears in real projects.",
+                                          "C":  "Use inheritance only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over inheritance because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for inheritance under implementation."
+                      },
+                      {
+                          "id":  43,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q3] In a for performance-sensitive code scenario focused on implementation, for topic \u0027exceptions\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use exceptions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over exceptions because it is always clearer and safer.",
+                                          "C":  "Apply exceptions according to established Python implementation practices, considering error handling.",
+                                          "D":  "Avoid exceptions entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for exceptions under implementation."
+                      },
+                      {
+                          "id":  44,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q4] In a for team collaboration scenario focused on implementation, for topic \u0027file handling\u0027 and angle \u0027portability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply file handling according to established Python implementation practices, considering portability.",
+                                          "B":  "Avoid file handling entirely in Python because it never appears in real projects.",
+                                          "C":  "Use file handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over file handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for file handling under implementation."
+                      },
+                      {
+                          "id":  45,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q5] In a during code review scenario focused on implementation, for topic \u0027modules\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use modules only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over modules because it is always clearer and safer.",
+                                          "C":  "Apply modules according to established Python implementation practices, considering data handling.",
+                                          "D":  "Avoid modules entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for modules under implementation."
+                      },
+                      {
+                          "id":  46,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q6] In a while debugging scenario focused on implementation, for topic \u0027virtual environments\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply virtual environments according to established Python implementation practices, considering memory model.",
+                                          "B":  "Avoid virtual environments entirely in Python because it never appears in real projects.",
+                                          "C":  "Use virtual environments only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over virtual environments because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for virtual environments under implementation."
+                      },
+                      {
+                          "id":  47,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q7] In a in production code scenario focused on implementation, for topic \u0027decorators\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use decorators only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over decorators because it is always clearer and safer.",
+                                          "C":  "Apply decorators according to established Python implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid decorators entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for decorators under implementation."
+                      },
+                      {
+                          "id":  48,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q8] In a in interview-style problems scenario focused on implementation, for topic \u0027generators\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply generators according to established Python implementation practices, considering best practices.",
+                                          "B":  "Avoid generators entirely in Python because it never appears in real projects.",
+                                          "C":  "Use generators only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over generators because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for generators under implementation."
+                      },
+                      {
+                          "id":  49,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q9] In a for maintainable project design scenario focused on implementation, for topic \u0027iterators\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use iterators only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over iterators because it is always clearer and safer.",
+                                          "C":  "Apply iterators according to established Python implementation practices, considering error handling.",
+                                          "D":  "Avoid iterators entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for iterators under implementation."
+                      },
+                      {
+                          "id":  50,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q10] In a for secure implementation scenario focused on implementation, for topic \u0027context managers\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply context managers according to established Python implementation practices, considering portability.",
+                                          "B":  "Avoid context managers entirely in Python because it never appears in real projects.",
+                                          "C":  "Use context managers only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over context managers because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for context managers under implementation."
+                      },
+                      {
+                          "id":  51,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q11] In a for performance-sensitive code scenario focused on implementation, for topic \u0027asyncio\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use asyncio only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over asyncio because it is always clearer and safer.",
+                                          "C":  "Apply asyncio according to established Python implementation practices, considering data handling.",
+                                          "D":  "Avoid asyncio entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for asyncio under implementation."
+                      },
+                      {
+                          "id":  52,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q12] In a for team collaboration scenario focused on implementation, for topic \u0027type hints\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply type hints according to established Python implementation practices, considering memory model.",
+                                          "B":  "Avoid type hints entirely in Python because it never appears in real projects.",
+                                          "C":  "Use type hints only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over type hints because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for type hints under implementation."
+                      },
+                      {
+                          "id":  53,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q13] In a during code review scenario focused on implementation, for topic \u0027testing\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use testing only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over testing because it is always clearer and safer.",
+                                          "C":  "Apply testing according to established Python implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid testing entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for testing under implementation."
+                      },
+                      {
+                          "id":  54,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q14] In a while debugging scenario focused on implementation, for topic \u0027pandas\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply pandas according to established Python implementation practices, considering best practices.",
+                                          "B":  "Avoid pandas entirely in Python because it never appears in real projects.",
+                                          "C":  "Use pandas only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over pandas because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for pandas under implementation."
+                      },
+                      {
+                          "id":  55,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q15] In a in production code scenario focused on implementation, for topic \u0027algorithm complexity\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use algorithm complexity only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over algorithm complexity because it is always clearer and safer.",
+                                          "C":  "Apply algorithm complexity according to established Python implementation practices, considering error handling.",
+                                          "D":  "Avoid algorithm complexity entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for algorithm complexity under implementation."
+                      },
+                      {
+                          "id":  56,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q16] In a in interview-style problems scenario focused on implementation, for topic \u0027dataclasses\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply dataclasses according to established Python implementation practices, considering portability.",
+                                          "B":  "Avoid dataclasses entirely in Python because it never appears in real projects.",
+                                          "C":  "Use dataclasses only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over dataclasses because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for dataclasses under implementation."
+                      },
+                      {
+                          "id":  57,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q17] In a for maintainable project design scenario focused on implementation, for topic \u0027package structure\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use package structure only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over package structure because it is always clearer and safer.",
+                                          "C":  "Apply package structure according to established Python implementation practices, considering data handling.",
+                                          "D":  "Avoid package structure entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for package structure under implementation."
+                      },
+                      {
+                          "id":  58,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q18] In a for secure implementation scenario focused on implementation, for topic \u0027logging\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply logging according to established Python implementation practices, considering memory model.",
+                                          "B":  "Avoid logging entirely in Python because it never appears in real projects.",
+                                          "C":  "Use logging only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over logging because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for logging under implementation."
+                      },
+                      {
+                          "id":  59,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q19] In a for performance-sensitive code scenario focused on implementation, for topic \u0027multiprocessing\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use multiprocessing only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over multiprocessing because it is always clearer and safer.",
+                                          "C":  "Apply multiprocessing according to established Python implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid multiprocessing entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for multiprocessing under implementation."
+                      },
+                      {
+                          "id":  60,
+                          "type":  "mcq",
+                          "question":  "[Python][Intermediate][Set-3][Q20] In a for team collaboration scenario focused on implementation, for topic \u0027regex\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply regex according to established Python implementation practices, considering best practices.",
+                                          "B":  "Avoid regex entirely in Python because it never appears in real projects.",
+                                          "C":  "Use regex only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over regex because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for regex under implementation."
+                      }
+                  ]
+}

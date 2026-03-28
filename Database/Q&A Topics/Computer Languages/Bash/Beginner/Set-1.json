@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Bash",
+    "level":  "Beginner",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027variables\u0027 and angle \u0027portability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply variables according to established Bash fundamentals practices, considering portability.",
+                                          "B":  "Avoid variables entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use variables only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over variables because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for variables under fundamentals."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027quoting\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use quoting only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over quoting because it is always clearer and safer.",
+                                          "C":  "Apply quoting according to established Bash fundamentals practices, considering data handling.",
+                                          "D":  "Avoid quoting entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for quoting under fundamentals."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027pipes\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply pipes according to established Bash fundamentals practices, considering memory model.",
+                                          "B":  "Avoid pipes entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use pipes only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over pipes because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for pipes under fundamentals."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027redirection\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use redirection only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over redirection because it is always clearer and safer.",
+                                          "C":  "Apply redirection according to established Bash fundamentals practices, considering syntax behavior.",
+                                          "D":  "Avoid redirection entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for redirection under fundamentals."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027grep\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply grep according to established Bash fundamentals practices, considering best practices.",
+                                          "B":  "Avoid grep entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use grep only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over grep because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for grep under fundamentals."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027awk\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use awk only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over awk because it is always clearer and safer.",
+                                          "C":  "Apply awk according to established Bash fundamentals practices, considering error handling.",
+                                          "D":  "Avoid awk entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for awk under fundamentals."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027sed\u0027 and angle \u0027portability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply sed according to established Bash fundamentals practices, considering portability.",
+                                          "B":  "Avoid sed entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use sed only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over sed because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for sed under fundamentals."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027loops\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use loops only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over loops because it is always clearer and safer.",
+                                          "C":  "Apply loops according to established Bash fundamentals practices, considering data handling.",
+                                          "D":  "Avoid loops entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for loops under fundamentals."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027conditions\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply conditions according to established Bash fundamentals practices, considering memory model.",
+                                          "B":  "Avoid conditions entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use conditions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over conditions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for conditions under fundamentals."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use functions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over functions because it is always clearer and safer.",
+                                          "C":  "Apply functions according to established Bash fundamentals practices, considering syntax behavior.",
+                                          "D":  "Avoid functions entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027exit codes\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply exit codes according to established Bash fundamentals practices, considering best practices.",
+                                          "B":  "Avoid exit codes entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use exit codes only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over exit codes because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for exit codes under fundamentals."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027cron\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use cron only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over cron because it is always clearer and safer.",
+                                          "C":  "Apply cron according to established Bash fundamentals practices, considering error handling.",
+                                          "D":  "Avoid cron entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for cron under fundamentals."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027environment variables\u0027 and angle \u0027portability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply environment variables according to established Bash fundamentals practices, considering portability.",
+                                          "B":  "Avoid environment variables entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use environment variables only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over environment variables because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for environment variables under fundamentals."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027permissions\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use permissions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over permissions because it is always clearer and safer.",
+                                          "C":  "Apply permissions according to established Bash fundamentals practices, considering data handling.",
+                                          "D":  "Avoid permissions entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for permissions under fundamentals."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027process control\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply process control according to established Bash fundamentals practices, considering memory model.",
+                                          "B":  "Avoid process control entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use process control only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over process control because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for process control under fundamentals."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027signal handling\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use signal handling only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over signal handling because it is always clearer and safer.",
+                                          "C":  "Apply signal handling according to established Bash fundamentals practices, considering syntax behavior.",
+                                          "D":  "Avoid signal handling entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for signal handling under fundamentals."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply arrays according to established Bash fundamentals practices, considering best practices.",
+                                          "B":  "Avoid arrays entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use arrays only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027string expansion\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use string expansion only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over string expansion because it is always clearer and safer.",
+                                          "C":  "Apply string expansion according to established Bash fundamentals practices, considering error handling.",
+                                          "D":  "Avoid string expansion entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for string expansion under fundamentals."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027command substitution\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply command substitution according to established Bash fundamentals practices, considering portability.",
+                                          "B":  "Avoid command substitution entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use command substitution only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over command substitution because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for command substitution under fundamentals."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[Bash][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027script safety\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use script safety only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over script safety because it is always clearer and safer.",
+                                          "C":  "Apply script safety according to established Bash fundamentals practices, considering data handling.",
+                                          "D":  "Avoid script safety entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for script safety under fundamentals."
+                      }
+                  ]
+}

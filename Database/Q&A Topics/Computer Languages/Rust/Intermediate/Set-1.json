@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Rust",
+    "level":  "Intermediate",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027ownership\u0027 and angle \u0027portability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply ownership according to established Rust implementation practices, considering portability.",
+                                          "B":  "Avoid ownership entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use ownership only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over ownership because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for ownership under implementation."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027borrowing\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use borrowing only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over borrowing because it is always clearer and safer.",
+                                          "C":  "Apply borrowing according to established Rust implementation practices, considering data handling.",
+                                          "D":  "Avoid borrowing entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for borrowing under implementation."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027lifetimes\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply lifetimes according to established Rust implementation practices, considering memory model.",
+                                          "B":  "Avoid lifetimes entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use lifetimes only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over lifetimes because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for lifetimes under implementation."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027structs\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use structs only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over structs because it is always clearer and safer.",
+                                          "C":  "Apply structs according to established Rust implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid structs entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for structs under implementation."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027enums\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply enums according to established Rust implementation practices, considering best practices.",
+                                          "B":  "Avoid enums entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use enums only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over enums because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for enums under implementation."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027pattern matching\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use pattern matching only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over pattern matching because it is always clearer and safer.",
+                                          "C":  "Apply pattern matching according to established Rust implementation practices, considering error handling.",
+                                          "D":  "Avoid pattern matching entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for pattern matching under implementation."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027traits\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply traits according to established Rust implementation practices, considering portability.",
+                                          "B":  "Avoid traits entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use traits only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over traits because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for traits under implementation."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027generics\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use generics only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over generics because it is always clearer and safer.",
+                                          "C":  "Apply generics according to established Rust implementation practices, considering data handling.",
+                                          "D":  "Avoid generics entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for generics under implementation."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027vectors\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply vectors according to established Rust implementation practices, considering memory model.",
+                                          "B":  "Avoid vectors entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use vectors only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over vectors because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for vectors under implementation."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027hash maps\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use hash maps only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over hash maps because it is always clearer and safer.",
+                                          "C":  "Apply hash maps according to established Rust implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid hash maps entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for hash maps under implementation."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027error handling\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply error handling according to established Rust implementation practices, considering best practices.",
+                                          "B":  "Avoid error handling entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use error handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over error handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for error handling under implementation."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027Option Result\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use Option Result only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over Option Result because it is always clearer and safer.",
+                                          "C":  "Apply Option Result according to established Rust implementation practices, considering error handling.",
+                                          "D":  "Avoid Option Result entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for Option Result under implementation."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027modules\u0027 and angle \u0027portability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply modules according to established Rust implementation practices, considering portability.",
+                                          "B":  "Avoid modules entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use modules only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over modules because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for modules under implementation."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027crates\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use crates only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over crates because it is always clearer and safer.",
+                                          "C":  "Apply crates according to established Rust implementation practices, considering data handling.",
+                                          "D":  "Avoid crates entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for crates under implementation."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027iterators\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply iterators according to established Rust implementation practices, considering memory model.",
+                                          "B":  "Avoid iterators entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use iterators only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over iterators because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for iterators under implementation."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027closures\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use closures only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over closures because it is always clearer and safer.",
+                                          "C":  "Apply closures according to established Rust implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid closures entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for closures under implementation."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027smart pointers\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply smart pointers according to established Rust implementation practices, considering best practices.",
+                                          "B":  "Avoid smart pointers entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use smart pointers only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over smart pointers because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for smart pointers under implementation."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027concurrency\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use concurrency only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over concurrency because it is always clearer and safer.",
+                                          "C":  "Apply concurrency according to established Rust implementation practices, considering error handling.",
+                                          "D":  "Avoid concurrency entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for concurrency under implementation."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027channels\u0027 and angle \u0027portability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply channels according to established Rust implementation practices, considering portability.",
+                                          "B":  "Avoid channels entirely in Rust because it never appears in real projects.",
+                                          "C":  "Use channels only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over channels because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for channels under implementation."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[Rust][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027macros\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use macros only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over macros because it is always clearer and safer.",
+                                          "C":  "Apply macros according to established Rust implementation practices, considering data handling.",
+                                          "D":  "Avoid macros entirely in Rust because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for macros under implementation."
+                      }
+                  ]
+}

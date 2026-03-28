@@ -1,0 +1,268 @@
+﻿{
+    "language":  "C#",
+    "level":  "Advanced",
+    "set":  "Set-4",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  61,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q1] In a while debugging scenario focused on optimization, for topic \u0027value types\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over value types because it is always clearer and safer.",
+                                          "B":  "Apply value types according to established C# optimization practices, considering error handling.",
+                                          "C":  "Avoid value types entirely in C# because it never appears in real projects.",
+                                          "D":  "Use value types only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for value types under optimization."
+                      },
+                      {
+                          "id":  62,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q2] In a in production code scenario focused on optimization, for topic \u0027reference types\u0027 and angle \u0027portability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid reference types entirely in C# because it never appears in real projects.",
+                                          "B":  "Use reference types only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over reference types because it is always clearer and safer.",
+                                          "D":  "Apply reference types according to established C# optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for reference types under optimization."
+                      },
+                      {
+                          "id":  63,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q3] In a in interview-style problems scenario focused on optimization, for topic \u0027classes\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over classes because it is always clearer and safer.",
+                                          "B":  "Apply classes according to established C# optimization practices, considering data handling.",
+                                          "C":  "Avoid classes entirely in C# because it never appears in real projects.",
+                                          "D":  "Use classes only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for classes under optimization."
+                      },
+                      {
+                          "id":  64,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q4] In a for maintainable project design scenario focused on optimization, for topic \u0027interfaces\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid interfaces entirely in C# because it never appears in real projects.",
+                                          "B":  "Use interfaces only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over interfaces because it is always clearer and safer.",
+                                          "D":  "Apply interfaces according to established C# optimization practices, considering memory model."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for interfaces under optimization."
+                      },
+                      {
+                          "id":  65,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q5] In a for secure implementation scenario focused on optimization, for topic \u0027inheritance\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over inheritance because it is always clearer and safer.",
+                                          "B":  "Apply inheritance according to established C# optimization practices, considering syntax behavior.",
+                                          "C":  "Avoid inheritance entirely in C# because it never appears in real projects.",
+                                          "D":  "Use inheritance only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for inheritance under optimization."
+                      },
+                      {
+                          "id":  66,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q6] In a for performance-sensitive code scenario focused on optimization, for topic \u0027polymorphism\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid polymorphism entirely in C# because it never appears in real projects.",
+                                          "B":  "Use polymorphism only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over polymorphism because it is always clearer and safer.",
+                                          "D":  "Apply polymorphism according to established C# optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for polymorphism under optimization."
+                      },
+                      {
+                          "id":  67,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q7] In a for team collaboration scenario focused on optimization, for topic \u0027encapsulation\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Prefer global state over encapsulation because it is always clearer and safer.",
+                                          "B":  "Apply encapsulation according to established C# optimization practices, considering error handling.",
+                                          "C":  "Avoid encapsulation entirely in C# because it never appears in real projects.",
+                                          "D":  "Use encapsulation only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for encapsulation under optimization."
+                      },
+                      {
+                          "id":  68,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q8] In a during code review scenario focused on optimization, for topic \u0027LINQ\u0027 and angle \u0027portability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Avoid LINQ entirely in C# because it never appears in real projects.",
+                                          "B":  "Use LINQ only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over LINQ because it is always clearer and safer.",
+                                          "D":  "Apply LINQ according to established C# optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for LINQ under optimization."
+                      },
+                      {
+                          "id":  69,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q9] In a while debugging scenario focused on optimization, for topic \u0027collections\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over collections because it is always clearer and safer.",
+                                          "B":  "Apply collections according to established C# optimization practices, considering data handling.",
+                                          "C":  "Avoid collections entirely in C# because it never appears in real projects.",
+                                          "D":  "Use collections only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for collections under optimization."
+                      },
+                      {
+                          "id":  70,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q10] In a in production code scenario focused on optimization, for topic \u0027delegates\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid delegates entirely in C# because it never appears in real projects.",
+                                          "B":  "Use delegates only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over delegates because it is always clearer and safer.",
+                                          "D":  "Apply delegates according to established C# optimization practices, considering memory model."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for delegates under optimization."
+                      },
+                      {
+                          "id":  71,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q11] In a in interview-style problems scenario focused on optimization, for topic \u0027events\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over events because it is always clearer and safer.",
+                                          "B":  "Apply events according to established C# optimization practices, considering syntax behavior.",
+                                          "C":  "Avoid events entirely in C# because it never appears in real projects.",
+                                          "D":  "Use events only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for events under optimization."
+                      },
+                      {
+                          "id":  72,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q12] In a for maintainable project design scenario focused on optimization, for topic \u0027async await\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid async await entirely in C# because it never appears in real projects.",
+                                          "B":  "Use async await only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over async await because it is always clearer and safer.",
+                                          "D":  "Apply async await according to established C# optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for async await under optimization."
+                      },
+                      {
+                          "id":  73,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q13] In a for secure implementation scenario focused on optimization, for topic \u0027exceptions\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over exceptions because it is always clearer and safer.",
+                                          "B":  "Apply exceptions according to established C# optimization practices, considering error handling.",
+                                          "C":  "Avoid exceptions entirely in C# because it never appears in real projects.",
+                                          "D":  "Use exceptions only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for exceptions under optimization."
+                      },
+                      {
+                          "id":  74,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q14] In a for performance-sensitive code scenario focused on optimization, for topic \u0027file I O\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid file I O entirely in C# because it never appears in real projects.",
+                                          "B":  "Use file I O only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over file I O because it is always clearer and safer.",
+                                          "D":  "Apply file I O according to established C# optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for file I O under optimization."
+                      },
+                      {
+                          "id":  75,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q15] In a for team collaboration scenario focused on optimization, for topic \u0027generics\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Prefer global state over generics because it is always clearer and safer.",
+                                          "B":  "Apply generics according to established C# optimization practices, considering data handling.",
+                                          "C":  "Avoid generics entirely in C# because it never appears in real projects.",
+                                          "D":  "Use generics only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for generics under optimization."
+                      },
+                      {
+                          "id":  76,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q16] In a during code review scenario focused on optimization, for topic \u0027nullable types\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Avoid nullable types entirely in C# because it never appears in real projects.",
+                                          "B":  "Use nullable types only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over nullable types because it is always clearer and safer.",
+                                          "D":  "Apply nullable types according to established C# optimization practices, considering memory model."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for nullable types under optimization."
+                      },
+                      {
+                          "id":  77,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q17] In a while debugging scenario focused on optimization, for topic \u0027lambda expressions\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over lambda expressions because it is always clearer and safer.",
+                                          "B":  "Apply lambda expressions according to established C# optimization practices, considering syntax behavior.",
+                                          "C":  "Avoid lambda expressions entirely in C# because it never appears in real projects.",
+                                          "D":  "Use lambda expressions only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for lambda expressions under optimization."
+                      },
+                      {
+                          "id":  78,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q18] In a in production code scenario focused on optimization, for topic \u0027properties\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid properties entirely in C# because it never appears in real projects.",
+                                          "B":  "Use properties only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over properties because it is always clearer and safer.",
+                                          "D":  "Apply properties according to established C# optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for properties under optimization."
+                      },
+                      {
+                          "id":  79,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q19] In a in interview-style problems scenario focused on optimization, for topic \u0027access modifiers\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over access modifiers because it is always clearer and safer.",
+                                          "B":  "Apply access modifiers according to established C# optimization practices, considering error handling.",
+                                          "C":  "Avoid access modifiers entirely in C# because it never appears in real projects.",
+                                          "D":  "Use access modifiers only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for access modifiers under optimization."
+                      },
+                      {
+                          "id":  80,
+                          "type":  "mcq",
+                          "question":  "[C#][Advanced][Set-4][Q20] In a for maintainable project design scenario focused on optimization, for topic \u0027dependency injection\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid dependency injection entirely in C# because it never appears in real projects.",
+                                          "B":  "Use dependency injection only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over dependency injection because it is always clearer and safer.",
+                                          "D":  "Apply dependency injection according to established C# optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for dependency injection under optimization."
+                      }
+                  ]
+}

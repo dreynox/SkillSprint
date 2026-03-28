@@ -1,0 +1,268 @@
+﻿{
+    "language":  "R",
+    "level":  "Intermediate",
+    "set":  "Set-4",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  61,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q1] In a while debugging scenario focused on implementation, for topic \u0027vectors\u0027 and angle \u0027edge cases\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over vectors because it is always clearer and safer.",
+                                          "B":  "Apply vectors according to established R implementation practices, considering edge cases.",
+                                          "C":  "Avoid vectors entirely in R because it never appears in real projects.",
+                                          "D":  "Use vectors only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for vectors under implementation."
+                      },
+                      {
+                          "id":  62,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q2] In a in production code scenario focused on implementation, for topic \u0027data frames\u0027 and angle \u0027readability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid data frames entirely in R because it never appears in real projects.",
+                                          "B":  "Use data frames only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over data frames because it is always clearer and safer.",
+                                          "D":  "Apply data frames according to established R implementation practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for data frames under implementation."
+                      },
+                      {
+                          "id":  63,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q3] In a in interview-style problems scenario focused on implementation, for topic \u0027lists\u0027 and angle \u0027tooling and workflow\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over lists because it is always clearer and safer.",
+                                          "B":  "Apply lists according to established R implementation practices, considering tooling and workflow.",
+                                          "C":  "Avoid lists entirely in R because it never appears in real projects.",
+                                          "D":  "Use lists only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for lists under implementation."
+                      },
+                      {
+                          "id":  64,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q4] In a for maintainable project design scenario focused on implementation, for topic \u0027factors\u0027 and angle \u0027type safety\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid factors entirely in R because it never appears in real projects.",
+                                          "B":  "Use factors only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over factors because it is always clearer and safer.",
+                                          "D":  "Apply factors according to established R implementation practices, considering type safety."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for factors under implementation."
+                      },
+                      {
+                          "id":  65,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q5] In a for secure implementation scenario focused on implementation, for topic \u0027functions\u0027 and angle \u0027modularity\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over functions because it is always clearer and safer.",
+                                          "B":  "Apply functions according to established R implementation practices, considering modularity.",
+                                          "C":  "Avoid functions entirely in R because it never appears in real projects.",
+                                          "D":  "Use functions only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for functions under implementation."
+                      },
+                      {
+                          "id":  66,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q6] In a for performance-sensitive code scenario focused on implementation, for topic \u0027apply family\u0027 and angle \u0027runtime behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid apply family entirely in R because it never appears in real projects.",
+                                          "B":  "Use apply family only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over apply family because it is always clearer and safer.",
+                                          "D":  "Apply apply family according to established R implementation practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for apply family under implementation."
+                      },
+                      {
+                          "id":  67,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q7] In a for team collaboration scenario focused on implementation, for topic \u0027loops\u0027 and angle \u0027edge cases\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over loops because it is always clearer and safer.",
+                                          "B":  "Apply loops according to established R implementation practices, considering edge cases.",
+                                          "C":  "Avoid loops entirely in R because it never appears in real projects.",
+                                          "D":  "Use loops only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for loops under implementation."
+                      },
+                      {
+                          "id":  68,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q8] In a during code review scenario focused on implementation, for topic \u0027conditions\u0027 and angle \u0027readability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid conditions entirely in R because it never appears in real projects.",
+                                          "B":  "Use conditions only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over conditions because it is always clearer and safer.",
+                                          "D":  "Apply conditions according to established R implementation practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for conditions under implementation."
+                      },
+                      {
+                          "id":  69,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q9] In a while debugging scenario focused on implementation, for topic \u0027tidyverse\u0027 and angle \u0027tooling and workflow\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over tidyverse because it is always clearer and safer.",
+                                          "B":  "Apply tidyverse according to established R implementation practices, considering tooling and workflow.",
+                                          "C":  "Avoid tidyverse entirely in R because it never appears in real projects.",
+                                          "D":  "Use tidyverse only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for tidyverse under implementation."
+                      },
+                      {
+                          "id":  70,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q10] In a in production code scenario focused on implementation, for topic \u0027ggplot2\u0027 and angle \u0027type safety\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid ggplot2 entirely in R because it never appears in real projects.",
+                                          "B":  "Use ggplot2 only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over ggplot2 because it is always clearer and safer.",
+                                          "D":  "Apply ggplot2 according to established R implementation practices, considering type safety."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for ggplot2 under implementation."
+                      },
+                      {
+                          "id":  71,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q11] In a in interview-style problems scenario focused on implementation, for topic \u0027dplyr verbs\u0027 and angle \u0027modularity\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over dplyr verbs because it is always clearer and safer.",
+                                          "B":  "Apply dplyr verbs according to established R implementation practices, considering modularity.",
+                                          "C":  "Avoid dplyr verbs entirely in R because it never appears in real projects.",
+                                          "D":  "Use dplyr verbs only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for dplyr verbs under implementation."
+                      },
+                      {
+                          "id":  72,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q12] In a for maintainable project design scenario focused on implementation, for topic \u0027joins\u0027 and angle \u0027runtime behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid joins entirely in R because it never appears in real projects.",
+                                          "B":  "Use joins only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over joins because it is always clearer and safer.",
+                                          "D":  "Apply joins according to established R implementation practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for joins under implementation."
+                      },
+                      {
+                          "id":  73,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q13] In a for secure implementation scenario focused on implementation, for topic \u0027missing values\u0027 and angle \u0027edge cases\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over missing values because it is always clearer and safer.",
+                                          "B":  "Apply missing values according to established R implementation practices, considering edge cases.",
+                                          "C":  "Avoid missing values entirely in R because it never appears in real projects.",
+                                          "D":  "Use missing values only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for missing values under implementation."
+                      },
+                      {
+                          "id":  74,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q14] In a for performance-sensitive code scenario focused on implementation, for topic \u0027stringr\u0027 and angle \u0027readability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid stringr entirely in R because it never appears in real projects.",
+                                          "B":  "Use stringr only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over stringr because it is always clearer and safer.",
+                                          "D":  "Apply stringr according to established R implementation practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for stringr under implementation."
+                      },
+                      {
+                          "id":  75,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q15] In a for team collaboration scenario focused on implementation, for topic \u0027date handling\u0027 and angle \u0027tooling and workflow\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over date handling because it is always clearer and safer.",
+                                          "B":  "Apply date handling according to established R implementation practices, considering tooling and workflow.",
+                                          "C":  "Avoid date handling entirely in R because it never appears in real projects.",
+                                          "D":  "Use date handling only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for date handling under implementation."
+                      },
+                      {
+                          "id":  76,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q16] In a during code review scenario focused on implementation, for topic \u0027statistical tests\u0027 and angle \u0027type safety\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid statistical tests entirely in R because it never appears in real projects.",
+                                          "B":  "Use statistical tests only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over statistical tests because it is always clearer and safer.",
+                                          "D":  "Apply statistical tests according to established R implementation practices, considering type safety."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for statistical tests under implementation."
+                      },
+                      {
+                          "id":  77,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q17] In a while debugging scenario focused on implementation, for topic \u0027linear models\u0027 and angle \u0027modularity\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over linear models because it is always clearer and safer.",
+                                          "B":  "Apply linear models according to established R implementation practices, considering modularity.",
+                                          "C":  "Avoid linear models entirely in R because it never appears in real projects.",
+                                          "D":  "Use linear models only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for linear models under implementation."
+                      },
+                      {
+                          "id":  78,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q18] In a in production code scenario focused on implementation, for topic \u0027packages\u0027 and angle \u0027runtime behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid packages entirely in R because it never appears in real projects.",
+                                          "B":  "Use packages only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over packages because it is always clearer and safer.",
+                                          "D":  "Apply packages according to established R implementation practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for packages under implementation."
+                      },
+                      {
+                          "id":  79,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q19] In a in interview-style problems scenario focused on implementation, for topic \u0027RMarkdown\u0027 and angle \u0027edge cases\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over RMarkdown because it is always clearer and safer.",
+                                          "B":  "Apply RMarkdown according to established R implementation practices, considering edge cases.",
+                                          "C":  "Avoid RMarkdown entirely in R because it never appears in real projects.",
+                                          "D":  "Use RMarkdown only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for RMarkdown under implementation."
+                      },
+                      {
+                          "id":  80,
+                          "type":  "mcq",
+                          "question":  "[R][Intermediate][Set-4][Q20] In a for maintainable project design scenario focused on implementation, for topic \u0027Shiny\u0027 and angle \u0027readability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid Shiny entirely in R because it never appears in real projects.",
+                                          "B":  "Use Shiny only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over Shiny because it is always clearer and safer.",
+                                          "D":  "Apply Shiny according to established R implementation practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for Shiny under implementation."
+                      }
+                  ]
+}

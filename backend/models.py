@@ -1,7 +1,7 @@
 from datetime import datetime
 import enum
 
-from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -20,6 +20,10 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     password_hash = Column(String, nullable=False)
     role = Column(Enum(RoleEnum), default=RoleEnum.STUDENT, nullable=False)
+    year = Column(Integer, nullable=True)
+    branch = Column(String, nullable=True)
+    bio = Column(Text, nullable=True)
+    avatar_url = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
 
@@ -112,6 +116,19 @@ class ContestSubmission(Base):
     user = relationship("User")
     contest = relationship("Contest", back_populates="submissions")
     problem = relationship("ContestProblem", back_populates="submissions")
+
+
+class ContestParticipation(Base):
+    __tablename__ = "contest_participations"
+    __table_args__ = (UniqueConstraint("user_id", "contest_id", name="uq_user_contest"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    contest_id = Column(Integer, ForeignKey("contests.id"), nullable=False)
+    joined_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    user = relationship("User")
+    contest = relationship("Contest")
 
 
 class Hackathon(Base):

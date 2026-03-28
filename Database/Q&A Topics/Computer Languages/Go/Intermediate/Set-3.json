@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Go",
+    "level":  "Intermediate",
+    "set":  "Set-3",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  41,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q1] In a for maintainable project design scenario focused on implementation, for topic \u0027interfaces\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use interfaces only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over interfaces because it is always clearer and safer.",
+                                          "C":  "Apply interfaces according to established Go implementation practices, considering data handling.",
+                                          "D":  "Avoid interfaces entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for interfaces under implementation."
+                      },
+                      {
+                          "id":  42,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q2] In a for secure implementation scenario focused on implementation, for topic \u0027goroutines\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply goroutines according to established Go implementation practices, considering memory model.",
+                                          "B":  "Avoid goroutines entirely in Go because it never appears in real projects.",
+                                          "C":  "Use goroutines only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over goroutines because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for goroutines under implementation."
+                      },
+                      {
+                          "id":  43,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q3] In a for performance-sensitive code scenario focused on implementation, for topic \u0027channels\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use channels only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over channels because it is always clearer and safer.",
+                                          "C":  "Apply channels according to established Go implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid channels entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for channels under implementation."
+                      },
+                      {
+                          "id":  44,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q4] In a for team collaboration scenario focused on implementation, for topic \u0027error handling\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply error handling according to established Go implementation practices, considering best practices.",
+                                          "B":  "Avoid error handling entirely in Go because it never appears in real projects.",
+                                          "C":  "Use error handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over error handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for error handling under implementation."
+                      },
+                      {
+                          "id":  45,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q5] In a during code review scenario focused on implementation, for topic \u0027defer\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use defer only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over defer because it is always clearer and safer.",
+                                          "C":  "Apply defer according to established Go implementation practices, considering error handling.",
+                                          "D":  "Avoid defer entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for defer under implementation."
+                      },
+                      {
+                          "id":  46,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q6] In a while debugging scenario focused on implementation, for topic \u0027packages\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply packages according to established Go implementation practices, considering portability.",
+                                          "B":  "Avoid packages entirely in Go because it never appears in real projects.",
+                                          "C":  "Use packages only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over packages because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for packages under implementation."
+                      },
+                      {
+                          "id":  47,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q7] In a in production code scenario focused on implementation, for topic \u0027modules\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use modules only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over modules because it is always clearer and safer.",
+                                          "C":  "Apply modules according to established Go implementation practices, considering data handling.",
+                                          "D":  "Avoid modules entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for modules under implementation."
+                      },
+                      {
+                          "id":  48,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q8] In a in interview-style problems scenario focused on implementation, for topic \u0027testing\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply testing according to established Go implementation practices, considering memory model.",
+                                          "B":  "Avoid testing entirely in Go because it never appears in real projects.",
+                                          "C":  "Use testing only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over testing because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for testing under implementation."
+                      },
+                      {
+                          "id":  49,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q9] In a for maintainable project design scenario focused on implementation, for topic \u0027context package\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use context package only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over context package because it is always clearer and safer.",
+                                          "C":  "Apply context package according to established Go implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid context package entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for context package under implementation."
+                      },
+                      {
+                          "id":  50,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q10] In a for secure implementation scenario focused on implementation, for topic \u0027concurrency patterns\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply concurrency patterns according to established Go implementation practices, considering best practices.",
+                                          "B":  "Avoid concurrency patterns entirely in Go because it never appears in real projects.",
+                                          "C":  "Use concurrency patterns only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over concurrency patterns because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for concurrency patterns under implementation."
+                      },
+                      {
+                          "id":  51,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q11] In a for performance-sensitive code scenario focused on implementation, for topic \u0027pointers\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use pointers only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over pointers because it is always clearer and safer.",
+                                          "C":  "Apply pointers according to established Go implementation practices, considering error handling.",
+                                          "D":  "Avoid pointers entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for pointers under implementation."
+                      },
+                      {
+                          "id":  52,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q12] In a for team collaboration scenario focused on implementation, for topic \u0027methods\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply methods according to established Go implementation practices, considering portability.",
+                                          "B":  "Avoid methods entirely in Go because it never appears in real projects.",
+                                          "C":  "Use methods only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over methods because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for methods under implementation."
+                      },
+                      {
+                          "id":  53,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q13] In a during code review scenario focused on implementation, for topic \u0027embedding\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use embedding only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over embedding because it is always clearer and safer.",
+                                          "C":  "Apply embedding according to established Go implementation practices, considering data handling.",
+                                          "D":  "Avoid embedding entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for embedding under implementation."
+                      },
+                      {
+                          "id":  54,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q14] In a while debugging scenario focused on implementation, for topic \u0027JSON handling\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply JSON handling according to established Go implementation practices, considering memory model.",
+                                          "B":  "Avoid JSON handling entirely in Go because it never appears in real projects.",
+                                          "C":  "Use JSON handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over JSON handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for JSON handling under implementation."
+                      },
+                      {
+                          "id":  55,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q15] In a in production code scenario focused on implementation, for topic \u0027race conditions\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use race conditions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over race conditions because it is always clearer and safer.",
+                                          "C":  "Apply race conditions according to established Go implementation practices, considering syntax behavior.",
+                                          "D":  "Avoid race conditions entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for race conditions under implementation."
+                      },
+                      {
+                          "id":  56,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q16] In a in interview-style problems scenario focused on implementation, for topic \u0027mutex\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply mutex according to established Go implementation practices, considering best practices.",
+                                          "B":  "Avoid mutex entirely in Go because it never appears in real projects.",
+                                          "C":  "Use mutex only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over mutex because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for mutex under implementation."
+                      },
+                      {
+                          "id":  57,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q17] In a for maintainable project design scenario focused on implementation, for topic \u0027select statement\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use select statement only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over select statement because it is always clearer and safer.",
+                                          "C":  "Apply select statement according to established Go implementation practices, considering error handling.",
+                                          "D":  "Avoid select statement entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for select statement under implementation."
+                      },
+                      {
+                          "id":  58,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q18] In a for secure implementation scenario focused on implementation, for topic \u0027nil behavior\u0027 and angle \u0027portability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply nil behavior according to established Go implementation practices, considering portability.",
+                                          "B":  "Avoid nil behavior entirely in Go because it never appears in real projects.",
+                                          "C":  "Use nil behavior only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over nil behavior because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for nil behavior under implementation."
+                      },
+                      {
+                          "id":  59,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q19] In a for performance-sensitive code scenario focused on implementation, for topic \u0027panic recover\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use panic recover only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over panic recover because it is always clearer and safer.",
+                                          "C":  "Apply panic recover according to established Go implementation practices, considering data handling.",
+                                          "D":  "Avoid panic recover entirely in Go because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for panic recover under implementation."
+                      },
+                      {
+                          "id":  60,
+                          "type":  "mcq",
+                          "question":  "[Go][Intermediate][Set-3][Q20] In a for team collaboration scenario focused on implementation, for topic \u0027dependency management\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply dependency management according to established Go implementation practices, considering memory model.",
+                                          "B":  "Avoid dependency management entirely in Go because it never appears in real projects.",
+                                          "C":  "Use dependency management only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over dependency management because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for dependency management under implementation."
+                      }
+                  ]
+}

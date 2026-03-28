@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Java",
+    "level":  "Advanced",
+    "set":  "Set-3",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  41,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q1] In a for maintainable project design scenario focused on optimization, for topic \u0027abstract classes\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use abstract classes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over abstract classes because it is always clearer and safer.",
+                                          "C":  "Apply abstract classes according to established Java optimization practices, considering memory model.",
+                                          "D":  "Avoid abstract classes entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for abstract classes under optimization."
+                      },
+                      {
+                          "id":  42,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q2] In a for secure implementation scenario focused on optimization, for topic \u0027exceptions\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply exceptions according to established Java optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid exceptions entirely in Java because it never appears in real projects.",
+                                          "C":  "Use exceptions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over exceptions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for exceptions under optimization."
+                      },
+                      {
+                          "id":  43,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q3] In a for performance-sensitive code scenario focused on optimization, for topic \u0027collections\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use collections only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over collections because it is always clearer and safer.",
+                                          "C":  "Apply collections according to established Java optimization practices, considering best practices.",
+                                          "D":  "Avoid collections entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for collections under optimization."
+                      },
+                      {
+                          "id":  44,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q4] In a for team collaboration scenario focused on optimization, for topic \u0027generics\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply generics according to established Java optimization practices, considering error handling.",
+                                          "B":  "Avoid generics entirely in Java because it never appears in real projects.",
+                                          "C":  "Use generics only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over generics because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for generics under optimization."
+                      },
+                      {
+                          "id":  45,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q5] In a during code review scenario focused on optimization, for topic \u0027streams API\u0027 and angle \u0027portability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use streams API only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over streams API because it is always clearer and safer.",
+                                          "C":  "Apply streams API according to established Java optimization practices, considering portability.",
+                                          "D":  "Avoid streams API entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for streams API under optimization."
+                      },
+                      {
+                          "id":  46,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q6] In a while debugging scenario focused on optimization, for topic \u0027lambda expressions\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply lambda expressions according to established Java optimization practices, considering data handling.",
+                                          "B":  "Avoid lambda expressions entirely in Java because it never appears in real projects.",
+                                          "C":  "Use lambda expressions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over lambda expressions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for lambda expressions under optimization."
+                      },
+                      {
+                          "id":  47,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q7] In a in production code scenario focused on optimization, for topic \u0027multithreading\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use multithreading only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over multithreading because it is always clearer and safer.",
+                                          "C":  "Apply multithreading according to established Java optimization practices, considering memory model.",
+                                          "D":  "Avoid multithreading entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for multithreading under optimization."
+                      },
+                      {
+                          "id":  48,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q8] In a in interview-style problems scenario focused on optimization, for topic \u0027synchronization\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply synchronization according to established Java optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid synchronization entirely in Java because it never appears in real projects.",
+                                          "C":  "Use synchronization only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over synchronization because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for synchronization under optimization."
+                      },
+                      {
+                          "id":  49,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q9] In a for maintainable project design scenario focused on optimization, for topic \u0027JVM basics\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use JVM basics only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over JVM basics because it is always clearer and safer.",
+                                          "C":  "Apply JVM basics according to established Java optimization practices, considering best practices.",
+                                          "D":  "Avoid JVM basics entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for JVM basics under optimization."
+                      },
+                      {
+                          "id":  50,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q10] In a for secure implementation scenario focused on optimization, for topic \u0027garbage collection\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply garbage collection according to established Java optimization practices, considering error handling.",
+                                          "B":  "Avoid garbage collection entirely in Java because it never appears in real projects.",
+                                          "C":  "Use garbage collection only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over garbage collection because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for garbage collection under optimization."
+                      },
+                      {
+                          "id":  51,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q11] In a for performance-sensitive code scenario focused on optimization, for topic \u0027file I O\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use file I O only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over file I O because it is always clearer and safer.",
+                                          "C":  "Apply file I O according to established Java optimization practices, considering portability.",
+                                          "D":  "Avoid file I O entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for file I O under optimization."
+                      },
+                      {
+                          "id":  52,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q12] In a for team collaboration scenario focused on optimization, for topic \u0027serialization\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply serialization according to established Java optimization practices, considering data handling.",
+                                          "B":  "Avoid serialization entirely in Java because it never appears in real projects.",
+                                          "C":  "Use serialization only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over serialization because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for serialization under optimization."
+                      },
+                      {
+                          "id":  53,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q13] In a during code review scenario focused on optimization, for topic \u0027annotations\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use annotations only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over annotations because it is always clearer and safer.",
+                                          "C":  "Apply annotations according to established Java optimization practices, considering memory model.",
+                                          "D":  "Avoid annotations entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for annotations under optimization."
+                      },
+                      {
+                          "id":  54,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q14] In a while debugging scenario focused on optimization, for topic \u0027Spring concepts\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply Spring concepts according to established Java optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid Spring concepts entirely in Java because it never appears in real projects.",
+                                          "C":  "Use Spring concepts only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over Spring concepts because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for Spring concepts under optimization."
+                      },
+                      {
+                          "id":  55,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q15] In a in production code scenario focused on optimization, for topic \u0027immutability\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use immutability only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over immutability because it is always clearer and safer.",
+                                          "C":  "Apply immutability according to established Java optimization practices, considering best practices.",
+                                          "D":  "Avoid immutability entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for immutability under optimization."
+                      },
+                      {
+                          "id":  56,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q16] In a in interview-style problems scenario focused on optimization, for topic \u0027equals hashCode\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply equals hashCode according to established Java optimization practices, considering error handling.",
+                                          "B":  "Avoid equals hashCode entirely in Java because it never appears in real projects.",
+                                          "C":  "Use equals hashCode only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over equals hashCode because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for equals hashCode under optimization."
+                      },
+                      {
+                          "id":  57,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q17] In a for maintainable project design scenario focused on optimization, for topic \u0027optional\u0027 and angle \u0027portability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use optional only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over optional because it is always clearer and safer.",
+                                          "C":  "Apply optional according to established Java optimization practices, considering portability.",
+                                          "D":  "Avoid optional entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for optional under optimization."
+                      },
+                      {
+                          "id":  58,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q18] In a for secure implementation scenario focused on optimization, for topic \u0027concurrency utilities\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply concurrency utilities according to established Java optimization practices, considering data handling.",
+                                          "B":  "Avoid concurrency utilities entirely in Java because it never appears in real projects.",
+                                          "C":  "Use concurrency utilities only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over concurrency utilities because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for concurrency utilities under optimization."
+                      },
+                      {
+                          "id":  59,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q19] In a for performance-sensitive code scenario focused on optimization, for topic \u0027dependency injection\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use dependency injection only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over dependency injection because it is always clearer and safer.",
+                                          "C":  "Apply dependency injection according to established Java optimization practices, considering memory model.",
+                                          "D":  "Avoid dependency injection entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for dependency injection under optimization."
+                      },
+                      {
+                          "id":  60,
+                          "type":  "mcq",
+                          "question":  "[Java][Advanced][Set-3][Q20] In a for team collaboration scenario focused on optimization, for topic \u0027package design\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply package design according to established Java optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid package design entirely in Java because it never appears in real projects.",
+                                          "C":  "Use package design only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over package design because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for package design under optimization."
+                      }
+                  ]
+}

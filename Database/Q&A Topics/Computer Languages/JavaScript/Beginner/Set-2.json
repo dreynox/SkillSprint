@@ -1,0 +1,268 @@
+﻿{
+    "language":  "JavaScript",
+    "level":  "Beginner",
+    "set":  "Set-2",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  21,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q1] In a for team collaboration scenario focused on fundamentals, for topic \u0027map filter reduce\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid map filter reduce entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use map filter reduce only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over map filter reduce because it is always clearer and safer.",
+                                          "D":  "Apply map filter reduce according to established JavaScript fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for map filter reduce under fundamentals."
+                      },
+                      {
+                          "id":  22,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q2] In a during code review scenario focused on fundamentals, for topic \u0027destructuring\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over destructuring because it is always clearer and safer.",
+                                          "B":  "Apply destructuring according to established JavaScript fundamentals practices, considering memory model.",
+                                          "C":  "Avoid destructuring entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use destructuring only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for destructuring under fundamentals."
+                      },
+                      {
+                          "id":  23,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q3] In a while debugging scenario focused on fundamentals, for topic \u0027spread rest\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid spread rest entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use spread rest only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over spread rest because it is always clearer and safer.",
+                                          "D":  "Apply spread rest according to established JavaScript fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for spread rest under fundamentals."
+                      },
+                      {
+                          "id":  24,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q4] In a in production code scenario focused on fundamentals, for topic \u0027event loop\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over event loop because it is always clearer and safer.",
+                                          "B":  "Apply event loop according to established JavaScript fundamentals practices, considering best practices.",
+                                          "C":  "Avoid event loop entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use event loop only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for event loop under fundamentals."
+                      },
+                      {
+                          "id":  25,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q5] In a in interview-style problems scenario focused on fundamentals, for topic \u0027performance\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid performance entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use performance only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over performance because it is always clearer and safer.",
+                                          "D":  "Apply performance according to established JavaScript fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for performance under fundamentals."
+                      },
+                      {
+                          "id":  26,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q6] In a for maintainable project design scenario focused on fundamentals, for topic \u0027timers\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over timers because it is always clearer and safer.",
+                                          "B":  "Apply timers according to established JavaScript fundamentals practices, considering portability.",
+                                          "C":  "Avoid timers entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use timers only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for timers under fundamentals."
+                      },
+                      {
+                          "id":  27,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q7] In a for secure implementation scenario focused on fundamentals, for topic \u0027localStorage\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid localStorage entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use localStorage only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over localStorage because it is always clearer and safer.",
+                                          "D":  "Apply localStorage according to established JavaScript fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for localStorage under fundamentals."
+                      },
+                      {
+                          "id":  28,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q8] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027debounce throttle\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over debounce throttle because it is always clearer and safer.",
+                                          "B":  "Apply debounce throttle according to established JavaScript fundamentals practices, considering memory model.",
+                                          "C":  "Avoid debounce throttle entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use debounce throttle only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for debounce throttle under fundamentals."
+                      },
+                      {
+                          "id":  29,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q9] In a for team collaboration scenario focused on fundamentals, for topic \u0027immutability patterns\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid immutability patterns entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use immutability patterns only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over immutability patterns because it is always clearer and safer.",
+                                          "D":  "Apply immutability patterns according to established JavaScript fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for immutability patterns under fundamentals."
+                      },
+                      {
+                          "id":  30,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q10] In a during code review scenario focused on fundamentals, for topic \u0027prototype chain\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over prototype chain because it is always clearer and safer.",
+                                          "B":  "Apply prototype chain according to established JavaScript fundamentals practices, considering best practices.",
+                                          "C":  "Avoid prototype chain entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use prototype chain only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for prototype chain under fundamentals."
+                      },
+                      {
+                          "id":  31,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q11] In a while debugging scenario focused on fundamentals, for topic \u0027variables\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid variables entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use variables only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over variables because it is always clearer and safer.",
+                                          "D":  "Apply variables according to established JavaScript fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for variables under fundamentals."
+                      },
+                      {
+                          "id":  32,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q12] In a in production code scenario focused on fundamentals, for topic \u0027data types\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over data types because it is always clearer and safer.",
+                                          "B":  "Apply data types according to established JavaScript fundamentals practices, considering portability.",
+                                          "C":  "Avoid data types entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use data types only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for data types under fundamentals."
+                      },
+                      {
+                          "id":  33,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q13] In a in interview-style problems scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid functions entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use functions only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over functions because it is always clearer and safer.",
+                                          "D":  "Apply functions according to established JavaScript fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
+                      },
+                      {
+                          "id":  34,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q14] In a for maintainable project design scenario focused on fundamentals, for topic \u0027scope\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over scope because it is always clearer and safer.",
+                                          "B":  "Apply scope according to established JavaScript fundamentals practices, considering memory model.",
+                                          "C":  "Avoid scope entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use scope only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for scope under fundamentals."
+                      },
+                      {
+                          "id":  35,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q15] In a for secure implementation scenario focused on fundamentals, for topic \u0027hoisting\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid hoisting entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use hoisting only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over hoisting because it is always clearer and safer.",
+                                          "D":  "Apply hoisting according to established JavaScript fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for hoisting under fundamentals."
+                      },
+                      {
+                          "id":  36,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q16] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027closures\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over closures because it is always clearer and safer.",
+                                          "B":  "Apply closures according to established JavaScript fundamentals practices, considering best practices.",
+                                          "C":  "Avoid closures entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use closures only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for closures under fundamentals."
+                      },
+                      {
+                          "id":  37,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q17] In a for team collaboration scenario focused on fundamentals, for topic \u0027prototypes\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid prototypes entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use prototypes only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over prototypes because it is always clearer and safer.",
+                                          "D":  "Apply prototypes according to established JavaScript fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for prototypes under fundamentals."
+                      },
+                      {
+                          "id":  38,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q18] In a during code review scenario focused on fundamentals, for topic \u0027classes\u0027 and angle \u0027portability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over classes because it is always clearer and safer.",
+                                          "B":  "Apply classes according to established JavaScript fundamentals practices, considering portability.",
+                                          "C":  "Avoid classes entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use classes only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for classes under fundamentals."
+                      },
+                      {
+                          "id":  39,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q19] In a while debugging scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid arrays entirely in JavaScript because it never appears in real projects.",
+                                          "B":  "Use arrays only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over arrays because it is always clearer and safer.",
+                                          "D":  "Apply arrays according to established JavaScript fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
+                      },
+                      {
+                          "id":  40,
+                          "type":  "mcq",
+                          "question":  "[JavaScript][Beginner][Set-2][Q20] In a in production code scenario focused on fundamentals, for topic \u0027objects\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over objects because it is always clearer and safer.",
+                                          "B":  "Apply objects according to established JavaScript fundamentals practices, considering memory model.",
+                                          "C":  "Avoid objects entirely in JavaScript because it never appears in real projects.",
+                                          "D":  "Use objects only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for objects under fundamentals."
+                      }
+                  ]
+}

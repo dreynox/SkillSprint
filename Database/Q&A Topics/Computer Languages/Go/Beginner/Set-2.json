@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Go",
+    "level":  "Beginner",
+    "set":  "Set-2",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  21,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q1] In a for team collaboration scenario focused on fundamentals, for topic \u0027pointers\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid pointers entirely in Go because it never appears in real projects.",
+                                          "B":  "Use pointers only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over pointers because it is always clearer and safer.",
+                                          "D":  "Apply pointers according to established Go fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for pointers under fundamentals."
+                      },
+                      {
+                          "id":  22,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q2] In a during code review scenario focused on fundamentals, for topic \u0027methods\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over methods because it is always clearer and safer.",
+                                          "B":  "Apply methods according to established Go fundamentals practices, considering best practices.",
+                                          "C":  "Avoid methods entirely in Go because it never appears in real projects.",
+                                          "D":  "Use methods only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for methods under fundamentals."
+                      },
+                      {
+                          "id":  23,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q3] In a while debugging scenario focused on fundamentals, for topic \u0027embedding\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid embedding entirely in Go because it never appears in real projects.",
+                                          "B":  "Use embedding only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over embedding because it is always clearer and safer.",
+                                          "D":  "Apply embedding according to established Go fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for embedding under fundamentals."
+                      },
+                      {
+                          "id":  24,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q4] In a in production code scenario focused on fundamentals, for topic \u0027JSON handling\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over JSON handling because it is always clearer and safer.",
+                                          "B":  "Apply JSON handling according to established Go fundamentals practices, considering portability.",
+                                          "C":  "Avoid JSON handling entirely in Go because it never appears in real projects.",
+                                          "D":  "Use JSON handling only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for JSON handling under fundamentals."
+                      },
+                      {
+                          "id":  25,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q5] In a in interview-style problems scenario focused on fundamentals, for topic \u0027race conditions\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid race conditions entirely in Go because it never appears in real projects.",
+                                          "B":  "Use race conditions only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over race conditions because it is always clearer and safer.",
+                                          "D":  "Apply race conditions according to established Go fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for race conditions under fundamentals."
+                      },
+                      {
+                          "id":  26,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q6] In a for maintainable project design scenario focused on fundamentals, for topic \u0027mutex\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over mutex because it is always clearer and safer.",
+                                          "B":  "Apply mutex according to established Go fundamentals practices, considering memory model.",
+                                          "C":  "Avoid mutex entirely in Go because it never appears in real projects.",
+                                          "D":  "Use mutex only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for mutex under fundamentals."
+                      },
+                      {
+                          "id":  27,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q7] In a for secure implementation scenario focused on fundamentals, for topic \u0027select statement\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid select statement entirely in Go because it never appears in real projects.",
+                                          "B":  "Use select statement only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over select statement because it is always clearer and safer.",
+                                          "D":  "Apply select statement according to established Go fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for select statement under fundamentals."
+                      },
+                      {
+                          "id":  28,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q8] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027nil behavior\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over nil behavior because it is always clearer and safer.",
+                                          "B":  "Apply nil behavior according to established Go fundamentals practices, considering best practices.",
+                                          "C":  "Avoid nil behavior entirely in Go because it never appears in real projects.",
+                                          "D":  "Use nil behavior only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for nil behavior under fundamentals."
+                      },
+                      {
+                          "id":  29,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q9] In a for team collaboration scenario focused on fundamentals, for topic \u0027panic recover\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid panic recover entirely in Go because it never appears in real projects.",
+                                          "B":  "Use panic recover only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over panic recover because it is always clearer and safer.",
+                                          "D":  "Apply panic recover according to established Go fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for panic recover under fundamentals."
+                      },
+                      {
+                          "id":  30,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q10] In a during code review scenario focused on fundamentals, for topic \u0027dependency management\u0027 and angle \u0027portability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over dependency management because it is always clearer and safer.",
+                                          "B":  "Apply dependency management according to established Go fundamentals practices, considering portability.",
+                                          "C":  "Avoid dependency management entirely in Go because it never appears in real projects.",
+                                          "D":  "Use dependency management only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for dependency management under fundamentals."
+                      },
+                      {
+                          "id":  31,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q11] In a while debugging scenario focused on fundamentals, for topic \u0027variables\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid variables entirely in Go because it never appears in real projects.",
+                                          "B":  "Use variables only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over variables because it is always clearer and safer.",
+                                          "D":  "Apply variables according to established Go fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for variables under fundamentals."
+                      },
+                      {
+                          "id":  32,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q12] In a in production code scenario focused on fundamentals, for topic \u0027type inference\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over type inference because it is always clearer and safer.",
+                                          "B":  "Apply type inference according to established Go fundamentals practices, considering memory model.",
+                                          "C":  "Avoid type inference entirely in Go because it never appears in real projects.",
+                                          "D":  "Use type inference only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for type inference under fundamentals."
+                      },
+                      {
+                          "id":  33,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q13] In a in interview-style problems scenario focused on fundamentals, for topic \u0027if switch\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid if switch entirely in Go because it never appears in real projects.",
+                                          "B":  "Use if switch only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over if switch because it is always clearer and safer.",
+                                          "D":  "Apply if switch according to established Go fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for if switch under fundamentals."
+                      },
+                      {
+                          "id":  34,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q14] In a for maintainable project design scenario focused on fundamentals, for topic \u0027for loop\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over for loop because it is always clearer and safer.",
+                                          "B":  "Apply for loop according to established Go fundamentals practices, considering best practices.",
+                                          "C":  "Avoid for loop entirely in Go because it never appears in real projects.",
+                                          "D":  "Use for loop only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for for loop under fundamentals."
+                      },
+                      {
+                          "id":  35,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q15] In a for secure implementation scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid functions entirely in Go because it never appears in real projects.",
+                                          "B":  "Use functions only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over functions because it is always clearer and safer.",
+                                          "D":  "Apply functions according to established Go fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
+                      },
+                      {
+                          "id":  36,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q16] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027multiple returns\u0027 and angle \u0027portability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over multiple returns because it is always clearer and safer.",
+                                          "B":  "Apply multiple returns according to established Go fundamentals practices, considering portability.",
+                                          "C":  "Avoid multiple returns entirely in Go because it never appears in real projects.",
+                                          "D":  "Use multiple returns only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for multiple returns under fundamentals."
+                      },
+                      {
+                          "id":  37,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q17] In a for team collaboration scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid arrays entirely in Go because it never appears in real projects.",
+                                          "B":  "Use arrays only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over arrays because it is always clearer and safer.",
+                                          "D":  "Apply arrays according to established Go fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
+                      },
+                      {
+                          "id":  38,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q18] In a during code review scenario focused on fundamentals, for topic \u0027slices\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over slices because it is always clearer and safer.",
+                                          "B":  "Apply slices according to established Go fundamentals practices, considering memory model.",
+                                          "C":  "Avoid slices entirely in Go because it never appears in real projects.",
+                                          "D":  "Use slices only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for slices under fundamentals."
+                      },
+                      {
+                          "id":  39,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q19] In a while debugging scenario focused on fundamentals, for topic \u0027maps\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid maps entirely in Go because it never appears in real projects.",
+                                          "B":  "Use maps only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over maps because it is always clearer and safer.",
+                                          "D":  "Apply maps according to established Go fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for maps under fundamentals."
+                      },
+                      {
+                          "id":  40,
+                          "type":  "mcq",
+                          "question":  "[Go][Beginner][Set-2][Q20] In a in production code scenario focused on fundamentals, for topic \u0027structs\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over structs because it is always clearer and safer.",
+                                          "B":  "Apply structs according to established Go fundamentals practices, considering best practices.",
+                                          "C":  "Avoid structs entirely in Go because it never appears in real projects.",
+                                          "D":  "Use structs only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for structs under fundamentals."
+                      }
+                  ]
+}

@@ -1,0 +1,268 @@
+﻿{
+    "language":  "MATLAB",
+    "level":  "Beginner",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027matrices\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply matrices according to established MATLAB fundamentals practices, considering data handling.",
+                                          "B":  "Avoid matrices entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use matrices only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over matrices because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for matrices under fundamentals."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027vectorization\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use vectorization only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over vectorization because it is always clearer and safer.",
+                                          "C":  "Apply vectorization according to established MATLAB fundamentals practices, considering memory model.",
+                                          "D":  "Avoid vectorization entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for vectorization under fundamentals."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027plotting\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply plotting according to established MATLAB fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid plotting entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use plotting only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over plotting because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for plotting under fundamentals."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use functions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over functions because it is always clearer and safer.",
+                                          "C":  "Apply functions according to established MATLAB fundamentals practices, considering best practices.",
+                                          "D":  "Avoid functions entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027scripts\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply scripts according to established MATLAB fundamentals practices, considering error handling.",
+                                          "B":  "Avoid scripts entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use scripts only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over scripts because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for scripts under fundamentals."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027if else\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use if else only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over if else because it is always clearer and safer.",
+                                          "C":  "Apply if else according to established MATLAB fundamentals practices, considering portability.",
+                                          "D":  "Avoid if else entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for if else under fundamentals."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027loops\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply loops according to established MATLAB fundamentals practices, considering data handling.",
+                                          "B":  "Avoid loops entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use loops only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over loops because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for loops under fundamentals."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027logical indexing\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use logical indexing only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over logical indexing because it is always clearer and safer.",
+                                          "C":  "Apply logical indexing according to established MATLAB fundamentals practices, considering memory model.",
+                                          "D":  "Avoid logical indexing entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for logical indexing under fundamentals."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027file I O\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply file I O according to established MATLAB fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid file I O entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use file I O only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over file I O because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for file I O under fundamentals."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027toolboxes\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use toolboxes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over toolboxes because it is always clearer and safer.",
+                                          "C":  "Apply toolboxes according to established MATLAB fundamentals practices, considering best practices.",
+                                          "D":  "Avoid toolboxes entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for toolboxes under fundamentals."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027anonymous functions\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply anonymous functions according to established MATLAB fundamentals practices, considering error handling.",
+                                          "B":  "Avoid anonymous functions entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use anonymous functions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over anonymous functions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for anonymous functions under fundamentals."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027cell arrays\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use cell arrays only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over cell arrays because it is always clearer and safer.",
+                                          "C":  "Apply cell arrays according to established MATLAB fundamentals practices, considering portability.",
+                                          "D":  "Avoid cell arrays entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for cell arrays under fundamentals."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027structures\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply structures according to established MATLAB fundamentals practices, considering data handling.",
+                                          "B":  "Avoid structures entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use structures only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over structures because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for structures under fundamentals."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027symbolic math\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use symbolic math only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over symbolic math because it is always clearer and safer.",
+                                          "C":  "Apply symbolic math according to established MATLAB fundamentals practices, considering memory model.",
+                                          "D":  "Avoid symbolic math entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for symbolic math under fundamentals."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027optimization toolbox\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply optimization toolbox according to established MATLAB fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid optimization toolbox entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use optimization toolbox only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over optimization toolbox because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for optimization toolbox under fundamentals."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027numerical methods\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use numerical methods only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over numerical methods because it is always clearer and safer.",
+                                          "C":  "Apply numerical methods according to established MATLAB fundamentals practices, considering best practices.",
+                                          "D":  "Avoid numerical methods entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for numerical methods under fundamentals."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027signal processing\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply signal processing according to established MATLAB fundamentals practices, considering error handling.",
+                                          "B":  "Avoid signal processing entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use signal processing only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over signal processing because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for signal processing under fundamentals."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027image processing\u0027 and angle \u0027portability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use image processing only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over image processing because it is always clearer and safer.",
+                                          "C":  "Apply image processing according to established MATLAB fundamentals practices, considering portability.",
+                                          "D":  "Avoid image processing entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for image processing under fundamentals."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027debugging\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply debugging according to established MATLAB fundamentals practices, considering data handling.",
+                                          "B":  "Avoid debugging entirely in MATLAB because it never appears in real projects.",
+                                          "C":  "Use debugging only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over debugging because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for debugging under fundamentals."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[MATLAB][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027workspace management\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use workspace management only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over workspace management because it is always clearer and safer.",
+                                          "C":  "Apply workspace management according to established MATLAB fundamentals practices, considering memory model.",
+                                          "D":  "Avoid workspace management entirely in MATLAB because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for workspace management under fundamentals."
+                      }
+                  ]
+}

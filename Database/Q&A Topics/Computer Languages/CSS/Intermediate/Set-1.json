@@ -1,0 +1,268 @@
+﻿{
+    "language":  "CSS",
+    "level":  "Intermediate",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027selectors\u0027 and angle \u0027readability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply selectors according to established CSS implementation practices, considering readability.",
+                                          "B":  "Avoid selectors entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use selectors only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over selectors because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for selectors under implementation."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027specificity\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use specificity only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over specificity because it is always clearer and safer.",
+                                          "C":  "Apply specificity according to established CSS implementation practices, considering tooling and workflow.",
+                                          "D":  "Avoid specificity entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for specificity under implementation."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027box model\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply box model according to established CSS implementation practices, considering type safety.",
+                                          "B":  "Avoid box model entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use box model only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over box model because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for box model under implementation."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027display property\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use display property only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over display property because it is always clearer and safer.",
+                                          "C":  "Apply display property according to established CSS implementation practices, considering modularity.",
+                                          "D":  "Avoid display property entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for display property under implementation."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027positioning\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply positioning according to established CSS implementation practices, considering runtime behavior.",
+                                          "B":  "Avoid positioning entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use positioning only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over positioning because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for positioning under implementation."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027flexbox\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use flexbox only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over flexbox because it is always clearer and safer.",
+                                          "C":  "Apply flexbox according to established CSS implementation practices, considering edge cases.",
+                                          "D":  "Avoid flexbox entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for flexbox under implementation."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027grid\u0027 and angle \u0027readability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply grid according to established CSS implementation practices, considering readability.",
+                                          "B":  "Avoid grid entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use grid only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over grid because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for grid under implementation."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027media queries\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use media queries only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over media queries because it is always clearer and safer.",
+                                          "C":  "Apply media queries according to established CSS implementation practices, considering tooling and workflow.",
+                                          "D":  "Avoid media queries entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for media queries under implementation."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027units\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply units according to established CSS implementation practices, considering type safety.",
+                                          "B":  "Avoid units entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use units only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over units because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for units under implementation."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027colors\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use colors only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over colors because it is always clearer and safer.",
+                                          "C":  "Apply colors according to established CSS implementation practices, considering modularity.",
+                                          "D":  "Avoid colors entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for colors under implementation."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027typography\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply typography according to established CSS implementation practices, considering runtime behavior.",
+                                          "B":  "Avoid typography entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use typography only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over typography because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for typography under implementation."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027pseudo classes\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use pseudo classes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over pseudo classes because it is always clearer and safer.",
+                                          "C":  "Apply pseudo classes according to established CSS implementation practices, considering edge cases.",
+                                          "D":  "Avoid pseudo classes entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for pseudo classes under implementation."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027pseudo elements\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply pseudo elements according to established CSS implementation practices, considering readability.",
+                                          "B":  "Avoid pseudo elements entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use pseudo elements only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over pseudo elements because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for pseudo elements under implementation."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027transitions\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use transitions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over transitions because it is always clearer and safer.",
+                                          "C":  "Apply transitions according to established CSS implementation practices, considering tooling and workflow.",
+                                          "D":  "Avoid transitions entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for transitions under implementation."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027animations\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply animations according to established CSS implementation practices, considering type safety.",
+                                          "B":  "Avoid animations entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use animations only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over animations because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for animations under implementation."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027transforms\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use transforms only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over transforms because it is always clearer and safer.",
+                                          "C":  "Apply transforms according to established CSS implementation practices, considering modularity.",
+                                          "D":  "Avoid transforms entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for transforms under implementation."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027z index\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply z index according to established CSS implementation practices, considering runtime behavior.",
+                                          "B":  "Avoid z index entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use z index only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over z index because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for z index under implementation."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027overflow\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use overflow only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over overflow because it is always clearer and safer.",
+                                          "C":  "Apply overflow according to established CSS implementation practices, considering edge cases.",
+                                          "D":  "Avoid overflow entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for overflow under implementation."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027responsive design\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply responsive design according to established CSS implementation practices, considering readability.",
+                                          "B":  "Avoid responsive design entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use responsive design only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over responsive design because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for responsive design under implementation."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[CSS][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027custom properties\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use custom properties only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over custom properties because it is always clearer and safer.",
+                                          "C":  "Apply custom properties according to established CSS implementation practices, considering tooling and workflow.",
+                                          "D":  "Avoid custom properties entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for custom properties under implementation."
+                      }
+                  ]
+}

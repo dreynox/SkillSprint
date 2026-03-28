@@ -452,10 +452,26 @@
       document.getElementById("welcomeText").textContent = "Welcome, " + name;
       document.getElementById("heroTitle").textContent = "Hello " + name + ", ready for your next sprint?";
 
-      const savedStats = JSON.parse(localStorage.getItem("dashboard_stats") || "{}");
-      document.getElementById("contestsJoined").textContent = savedStats.contestsJoined || 0;
-      document.getElementById("quizAttempts").textContent = savedStats.quizAttempts || 0;
-      document.getElementById("streak").textContent = (savedStats.streakDays || 0) + " days";
+      const authHeaders = {
+        Authorization: "Bearer " + token,
+      };
+
+      fetch(API_BASE + "/users/me/stats", { headers: authHeaders })
+        .then(function (response) {
+          if (!response.ok) {
+            return null;
+          }
+          return response.json();
+        })
+        .then(function (stats) {
+          if (!stats) {
+            return;
+          }
+
+          document.getElementById("contestsJoined").textContent = stats.contests_joined || 0;
+          document.getElementById("quizAttempts").textContent = stats.quiz_attempts || 0;
+          document.getElementById("streak").textContent = (stats.quiz_attempts || 0) + " days";
+        });
 
       Promise.all([
         fetch(API_BASE + "/contests?active_only=true").then(function (response) {

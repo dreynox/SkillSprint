@@ -1,0 +1,268 @@
+﻿{
+    "language":  "C++",
+    "level":  "Advanced",
+    "set":  "Set-2",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  21,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q1] In a for team collaboration scenario focused on optimization, for topic \u0027friend functions\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid friend functions entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use friend functions only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over friend functions because it is always clearer and safer.",
+                                          "D":  "Apply friend functions according to established C++ optimization practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for friend functions under optimization."
+                      },
+                      {
+                          "id":  22,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q2] In a during code review scenario focused on optimization, for topic \u0027virtual functions\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over virtual functions because it is always clearer and safer.",
+                                          "B":  "Apply virtual functions according to established C++ optimization practices, considering edge cases.",
+                                          "C":  "Avoid virtual functions entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use virtual functions only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for virtual functions under optimization."
+                      },
+                      {
+                          "id":  23,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q3] In a while debugging scenario focused on optimization, for topic \u0027const methods\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid const methods entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use const methods only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over const methods because it is always clearer and safer.",
+                                          "D":  "Apply const methods according to established C++ optimization practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for const methods under optimization."
+                      },
+                      {
+                          "id":  24,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q4] In a in production code scenario focused on optimization, for topic \u0027threading basics\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over threading basics because it is always clearer and safer.",
+                                          "B":  "Apply threading basics according to established C++ optimization practices, considering tooling and workflow.",
+                                          "C":  "Avoid threading basics entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use threading basics only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for threading basics under optimization."
+                      },
+                      {
+                          "id":  25,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q5] In a in interview-style problems scenario focused on optimization, for topic \u0027copy semantics\u0027 and angle \u0027type safety\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid copy semantics entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use copy semantics only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over copy semantics because it is always clearer and safer.",
+                                          "D":  "Apply copy semantics according to established C++ optimization practices, considering type safety."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for copy semantics under optimization."
+                      },
+                      {
+                          "id":  26,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q6] In a for maintainable project design scenario focused on optimization, for topic \u0027rule of five\u0027 and angle \u0027modularity\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Prefer global state over rule of five because it is always clearer and safer.",
+                                          "B":  "Apply rule of five according to established C++ optimization practices, considering modularity.",
+                                          "C":  "Avoid rule of five entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use rule of five only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for rule of five under optimization."
+                      },
+                      {
+                          "id":  27,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q7] In a for secure implementation scenario focused on optimization, for topic \u0027memory ownership\u0027 and angle \u0027runtime behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Avoid memory ownership entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use memory ownership only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over memory ownership because it is always clearer and safer.",
+                                          "D":  "Apply memory ownership according to established C++ optimization practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for memory ownership under optimization."
+                      },
+                      {
+                          "id":  28,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q8] In a for performance-sensitive code scenario focused on optimization, for topic \u0027template specialization\u0027 and angle \u0027edge cases\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over template specialization because it is always clearer and safer.",
+                                          "B":  "Apply template specialization according to established C++ optimization practices, considering edge cases.",
+                                          "C":  "Avoid template specialization entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use template specialization only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for template specialization under optimization."
+                      },
+                      {
+                          "id":  29,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q9] In a for team collaboration scenario focused on optimization, for topic \u0027constexpr\u0027 and angle \u0027readability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid constexpr entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use constexpr only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over constexpr because it is always clearer and safer.",
+                                          "D":  "Apply constexpr according to established C++ optimization practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for constexpr under optimization."
+                      },
+                      {
+                          "id":  30,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q10] In a during code review scenario focused on optimization, for topic \u0027container complexity\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over container complexity because it is always clearer and safer.",
+                                          "B":  "Apply container complexity according to established C++ optimization practices, considering tooling and workflow.",
+                                          "C":  "Avoid container complexity entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use container complexity only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for container complexity under optimization."
+                      },
+                      {
+                          "id":  31,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q11] In a while debugging scenario focused on optimization, for topic \u0027references\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid references entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use references only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over references because it is always clearer and safer.",
+                                          "D":  "Apply references according to established C++ optimization practices, considering type safety."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for references under optimization."
+                      },
+                      {
+                          "id":  32,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q12] In a in production code scenario focused on optimization, for topic \u0027pointers\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over pointers because it is always clearer and safer.",
+                                          "B":  "Apply pointers according to established C++ optimization practices, considering modularity.",
+                                          "C":  "Avoid pointers entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use pointers only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for pointers under optimization."
+                      },
+                      {
+                          "id":  33,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q13] In a in interview-style problems scenario focused on optimization, for topic \u0027classes\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid classes entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use classes only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over classes because it is always clearer and safer.",
+                                          "D":  "Apply classes according to established C++ optimization practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for classes under optimization."
+                      },
+                      {
+                          "id":  34,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q14] In a for maintainable project design scenario focused on optimization, for topic \u0027constructors\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Prefer global state over constructors because it is always clearer and safer.",
+                                          "B":  "Apply constructors according to established C++ optimization practices, considering edge cases.",
+                                          "C":  "Avoid constructors entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use constructors only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for constructors under optimization."
+                      },
+                      {
+                          "id":  35,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q15] In a for secure implementation scenario focused on optimization, for topic \u0027destructors\u0027 and angle \u0027readability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Avoid destructors entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use destructors only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over destructors because it is always clearer and safer.",
+                                          "D":  "Apply destructors according to established C++ optimization practices, considering readability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for destructors under optimization."
+                      },
+                      {
+                          "id":  36,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q16] In a for performance-sensitive code scenario focused on optimization, for topic \u0027inheritance\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over inheritance because it is always clearer and safer.",
+                                          "B":  "Apply inheritance according to established C++ optimization practices, considering tooling and workflow.",
+                                          "C":  "Avoid inheritance entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use inheritance only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for inheritance under optimization."
+                      },
+                      {
+                          "id":  37,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q17] In a for team collaboration scenario focused on optimization, for topic \u0027polymorphism\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid polymorphism entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use polymorphism only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over polymorphism because it is always clearer and safer.",
+                                          "D":  "Apply polymorphism according to established C++ optimization practices, considering type safety."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for polymorphism under optimization."
+                      },
+                      {
+                          "id":  38,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q18] In a during code review scenario focused on optimization, for topic \u0027templates\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over templates because it is always clearer and safer.",
+                                          "B":  "Apply templates according to established C++ optimization practices, considering modularity.",
+                                          "C":  "Avoid templates entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use templates only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for templates under optimization."
+                      },
+                      {
+                          "id":  39,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q19] In a while debugging scenario focused on optimization, for topic \u0027STL vector\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid STL vector entirely in C++ because it never appears in real projects.",
+                                          "B":  "Use STL vector only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over STL vector because it is always clearer and safer.",
+                                          "D":  "Apply STL vector according to established C++ optimization practices, considering runtime behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for STL vector under optimization."
+                      },
+                      {
+                          "id":  40,
+                          "type":  "mcq",
+                          "question":  "[C++][Advanced][Set-2][Q20] In a in production code scenario focused on optimization, for topic \u0027STL map\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over STL map because it is always clearer and safer.",
+                                          "B":  "Apply STL map according to established C++ optimization practices, considering edge cases.",
+                                          "C":  "Avoid STL map entirely in C++ because it never appears in real projects.",
+                                          "D":  "Use STL map only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for STL map under optimization."
+                      }
+                  ]
+}

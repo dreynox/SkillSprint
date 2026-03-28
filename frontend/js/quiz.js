@@ -2,13 +2,18 @@ const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 
 const loadBtn = document.getElementById("load-btn");
 const submitBtn = document.getElementById("submit-btn");
+const startRandomBtn = document.getElementById("start-random-btn");
 const testIdInput = document.getElementById("test-id");
 const userIdInput = document.getElementById("user-id");
+const languageInput = document.getElementById("language");
+const levelInput = document.getElementById("level");
 const statusEl = document.getElementById("status");
 const quizForm = document.getElementById("quiz-form");
 const resultContainer = document.getElementById("result-container");
 
 let questions = [];
+let randomSessionId = null;
+let currentMode = "test";
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -29,10 +34,10 @@ function renderQuestions(items) {
     block.appendChild(title);
 
     const options = [
-      ["A", question.option_a],
-      ["B", question.option_b],
-      ["C", question.option_c],
-      ["D", question.option_d],
+      ["A", question.options.A],
+      ["B", question.options.B],
+      ["C", question.options.C],
+      ["D", question.options.D],
     ];
 
     options.forEach(([label, value]) => {
@@ -89,7 +94,17 @@ async function loadQuestions() {
       throw new Error(data.detail || "Failed to load questions");
     }
 
-    questions = data;
+    questions = data.map((question) => ({
+      id: question.id,
+      text: question.text,
+      options: {
+        A: question.option_a,
+        B: question.option_b,
+        C: question.option_c,
+        D: question.option_d,
+      },
+    }));
+
     if (questions.length === 0) {
       setStatus("No questions found for this test", true);
       quizForm.innerHTML = "";
@@ -98,6 +113,8 @@ async function loadQuestions() {
 
     renderQuestions(questions);
     submitBtn.disabled = false;
+    currentMode = "test";
+    randomSessionId = null;
     setStatus(`Loaded ${questions.length} questions for test ${testId}`);
   } catch (error) {
     setStatus(error.message, true);
@@ -105,15 +122,54 @@ async function loadQuestions() {
   }
 }
 
-async function submitAnswers() {
-  const testId = Number(testIdInput.value);
-  const userId = Number(userIdInput.value);
+async function startRandomSession() {
+  const language = languageInput ? languageInput.value : "C";
+  const level = levelInput ? levelInput.value : "Beginner";
 
-  if (!testId || !userId) {
-    setStatus("Please enter valid test and user IDs", true);
-    return;
+  setStatus("Creating random question session...");
+  submitBtn.disabled = true;
+  resultContainer.style.display = "none";
+
+  try {
+    const response = await fetch(`${API_BASE}/quiz/random-bank/start`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        language,
+        level,
+        question_count: 20,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.detail || "Failed to create random session");
+    }
+
+    randomSessionId = data.session_id;
+    currentMode = "random";
+
+    questions = data.questions.map((question) => ({
+      id: question.question_id,
+      text: question.question,
+      options: {
+        A: question.options.A,
+        B: question.options.B,
+        C: question.options.C,
+        D: question.options.D,
+      },
+    }));
+
+    renderQuestions(questions);
+    submitBtn.disabled = false;
+    setStatus(`Random session ready: ${language} ${level} (${questions.length} questions from pool of ${data.total_pool})`);
+  } catch (error) {
+    setStatus(error.message || "Failed to create random session", true);
+    quizForm.innerHTML = "";
   }
+}
 
+async function submitAnswers() {
   const answers = collectAnswers();
   if (answers.length === 0) {
     setStatus("Select at least one answer before submitting", true);
@@ -121,11 +177,34 @@ async function submitAnswers() {
   }
 
   try {
-    const response = await fetch(`${API_BASE}/quiz/tests/${testId}/submit`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: userId, answers }),
-    });
+    let response;
+    if (currentMode === "random") {
+      if (!randomSessionId) {
+        setStatus("Start a random session first", true);
+        return;
+      }
+
+      const userId = Number(userIdInput.value) || null;
+      response = await fetch(`${API_BASE}/quiz/random-bank/${randomSessionId}/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, answers }),
+      });
+    } else {
+      const testId = Number(testIdInput.value);
+      const userId = Number(userIdInput.value);
+
+      if (!testId || !userId) {
+        setStatus("Please enter valid test and user IDs", true);
+        return;
+      }
+
+      response = await fetch(`${API_BASE}/quiz/tests/${testId}/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, answers }),
+      });
+    }
 
     const data = await response.json();
     if (!response.ok) {
@@ -133,7 +212,8 @@ async function submitAnswers() {
     }
 
     resultContainer.style.display = "block";
-    resultContainer.innerHTML = `<h2>Score: ${data.score} / ${data.total}</h2>`;
+    const unansweredText = typeof data.unanswered === "number" ? `<p>Unanswered: ${data.unanswered}</p>` : "";
+    resultContainer.innerHTML = `<h2>Score: ${data.score} / ${data.total}</h2>${unansweredText}`;
     setStatus("Submission saved successfully");
   } catch (error) {
     setStatus(error.message, true);
@@ -142,3 +222,6 @@ async function submitAnswers() {
 
 loadBtn.addEventListener("click", loadQuestions);
 submitBtn.addEventListener("click", submitAnswers);
+if (startRandomBtn) {
+  startRandomBtn.addEventListener("click", startRandomSession);
+}

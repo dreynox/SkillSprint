@@ -1,0 +1,268 @@
+﻿{
+    "language":  "TypeScript",
+    "level":  "Beginner",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027basic types\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply basic types according to established TypeScript fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid basic types entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use basic types only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over basic types because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for basic types under fundamentals."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027interfaces\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use interfaces only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over interfaces because it is always clearer and safer.",
+                                          "C":  "Apply interfaces according to established TypeScript fundamentals practices, considering best practices.",
+                                          "D":  "Avoid interfaces entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for interfaces under fundamentals."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027type aliases\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply type aliases according to established TypeScript fundamentals practices, considering error handling.",
+                                          "B":  "Avoid type aliases entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use type aliases only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over type aliases because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for type aliases under fundamentals."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027generics\u0027 and angle \u0027portability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use generics only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over generics because it is always clearer and safer.",
+                                          "C":  "Apply generics according to established TypeScript fundamentals practices, considering portability.",
+                                          "D":  "Avoid generics entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for generics under fundamentals."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027enums\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply enums according to established TypeScript fundamentals practices, considering data handling.",
+                                          "B":  "Avoid enums entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use enums only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over enums because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for enums under fundamentals."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027union types\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use union types only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over union types because it is always clearer and safer.",
+                                          "C":  "Apply union types according to established TypeScript fundamentals practices, considering memory model.",
+                                          "D":  "Avoid union types entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for union types under fundamentals."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027intersection types\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply intersection types according to established TypeScript fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid intersection types entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use intersection types only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over intersection types because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for intersection types under fundamentals."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027type guards\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use type guards only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over type guards because it is always clearer and safer.",
+                                          "C":  "Apply type guards according to established TypeScript fundamentals practices, considering best practices.",
+                                          "D":  "Avoid type guards entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for type guards under fundamentals."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027classes\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply classes according to established TypeScript fundamentals practices, considering error handling.",
+                                          "B":  "Avoid classes entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use classes only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over classes because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for classes under fundamentals."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027access modifiers\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use access modifiers only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over access modifiers because it is always clearer and safer.",
+                                          "C":  "Apply access modifiers according to established TypeScript fundamentals practices, considering portability.",
+                                          "D":  "Avoid access modifiers entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for access modifiers under fundamentals."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027modules\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply modules according to established TypeScript fundamentals practices, considering data handling.",
+                                          "B":  "Avoid modules entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use modules only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over modules because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for modules under fundamentals."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027decorators\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use decorators only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over decorators because it is always clearer and safer.",
+                                          "C":  "Apply decorators according to established TypeScript fundamentals practices, considering memory model.",
+                                          "D":  "Avoid decorators entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for decorators under fundamentals."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027async await\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply async await according to established TypeScript fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid async await entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use async await only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over async await because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for async await under fundamentals."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027utility types\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use utility types only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over utility types because it is always clearer and safer.",
+                                          "C":  "Apply utility types according to established TypeScript fundamentals practices, considering best practices.",
+                                          "D":  "Avoid utility types entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for utility types under fundamentals."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027mapped types\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply mapped types according to established TypeScript fundamentals practices, considering error handling.",
+                                          "B":  "Avoid mapped types entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use mapped types only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over mapped types because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for mapped types under fundamentals."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027conditional types\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use conditional types only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over conditional types because it is always clearer and safer.",
+                                          "C":  "Apply conditional types according to established TypeScript fundamentals practices, considering portability.",
+                                          "D":  "Avoid conditional types entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for conditional types under fundamentals."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027literal types\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply literal types according to established TypeScript fundamentals practices, considering data handling.",
+                                          "B":  "Avoid literal types entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use literal types only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over literal types because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for literal types under fundamentals."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027strict mode\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use strict mode only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over strict mode because it is always clearer and safer.",
+                                          "C":  "Apply strict mode according to established TypeScript fundamentals practices, considering memory model.",
+                                          "D":  "Avoid strict mode entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for strict mode under fundamentals."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027tsconfig\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply tsconfig according to established TypeScript fundamentals practices, considering syntax behavior.",
+                                          "B":  "Avoid tsconfig entirely in TypeScript because it never appears in real projects.",
+                                          "C":  "Use tsconfig only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over tsconfig because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for tsconfig under fundamentals."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[TypeScript][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027declaration files\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use declaration files only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over declaration files because it is always clearer and safer.",
+                                          "C":  "Apply declaration files according to established TypeScript fundamentals practices, considering best practices.",
+                                          "D":  "Avoid declaration files entirely in TypeScript because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for declaration files under fundamentals."
+                      }
+                  ]
+}

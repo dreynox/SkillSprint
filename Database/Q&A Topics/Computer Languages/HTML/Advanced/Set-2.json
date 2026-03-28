@@ -1,0 +1,268 @@
+﻿{
+    "language":  "HTML",
+    "level":  "Advanced",
+    "set":  "Set-2",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  21,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q1] In a for team collaboration scenario focused on optimization, for topic \u0027SVG\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid SVG entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use SVG only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over SVG because it is always clearer and safer.",
+                                          "D":  "Apply SVG according to established HTML optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for SVG under optimization."
+                      },
+                      {
+                          "id":  22,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q2] In a during code review scenario focused on optimization, for topic \u0027custom data attributes\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over custom data attributes because it is always clearer and safer.",
+                                          "B":  "Apply custom data attributes according to established HTML optimization practices, considering error handling.",
+                                          "C":  "Avoid custom data attributes entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use custom data attributes only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for custom data attributes under optimization."
+                      },
+                      {
+                          "id":  23,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q3] In a while debugging scenario focused on optimization, for topic \u0027progress element\u0027 and angle \u0027portability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid progress element entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use progress element only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over progress element because it is always clearer and safer.",
+                                          "D":  "Apply progress element according to established HTML optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for progress element under optimization."
+                      },
+                      {
+                          "id":  24,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q4] In a in production code scenario focused on optimization, for topic \u0027details summary\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over details summary because it is always clearer and safer.",
+                                          "B":  "Apply details summary according to established HTML optimization practices, considering data handling.",
+                                          "C":  "Avoid details summary entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use details summary only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for details summary under optimization."
+                      },
+                      {
+                          "id":  25,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q5] In a in interview-style problems scenario focused on optimization, for topic \u0027web components\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid web components entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use web components only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over web components because it is always clearer and safer.",
+                                          "D":  "Apply web components according to established HTML optimization practices, considering memory model."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for web components under optimization."
+                      },
+                      {
+                          "id":  26,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q6] In a for maintainable project design scenario focused on optimization, for topic \u0027landmark roles\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over landmark roles because it is always clearer and safer.",
+                                          "B":  "Apply landmark roles according to established HTML optimization practices, considering syntax behavior.",
+                                          "C":  "Avoid landmark roles entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use landmark roles only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for landmark roles under optimization."
+                      },
+                      {
+                          "id":  27,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q7] In a for secure implementation scenario focused on optimization, for topic \u0027tab order\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid tab order entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use tab order only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over tab order because it is always clearer and safer.",
+                                          "D":  "Apply tab order according to established HTML optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for tab order under optimization."
+                      },
+                      {
+                          "id":  28,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q8] In a for performance-sensitive code scenario focused on optimization, for topic \u0027alt text\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over alt text because it is always clearer and safer.",
+                                          "B":  "Apply alt text according to established HTML optimization practices, considering error handling.",
+                                          "C":  "Avoid alt text entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use alt text only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for alt text under optimization."
+                      },
+                      {
+                          "id":  29,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q9] In a for team collaboration scenario focused on optimization, for topic \u0027figure figcaption\u0027 and angle \u0027portability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid figure figcaption entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use figure figcaption only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over figure figcaption because it is always clearer and safer.",
+                                          "D":  "Apply figure figcaption according to established HTML optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for figure figcaption under optimization."
+                      },
+                      {
+                          "id":  30,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q10] In a during code review scenario focused on optimization, for topic \u0027script loading\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over script loading because it is always clearer and safer.",
+                                          "B":  "Apply script loading according to established HTML optimization practices, considering data handling.",
+                                          "C":  "Avoid script loading entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use script loading only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for script loading under optimization."
+                      },
+                      {
+                          "id":  31,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q11] In a while debugging scenario focused on optimization, for topic \u0027document structure\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid document structure entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use document structure only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over document structure because it is always clearer and safer.",
+                                          "D":  "Apply document structure according to established HTML optimization practices, considering memory model."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for document structure under optimization."
+                      },
+                      {
+                          "id":  32,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q12] In a in production code scenario focused on optimization, for topic \u0027semantic tags\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over semantic tags because it is always clearer and safer.",
+                                          "B":  "Apply semantic tags according to established HTML optimization practices, considering syntax behavior.",
+                                          "C":  "Avoid semantic tags entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use semantic tags only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for semantic tags under optimization."
+                      },
+                      {
+                          "id":  33,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q13] In a in interview-style problems scenario focused on optimization, for topic \u0027forms\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid forms entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use forms only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over forms because it is always clearer and safer.",
+                                          "D":  "Apply forms according to established HTML optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for forms under optimization."
+                      },
+                      {
+                          "id":  34,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q14] In a for maintainable project design scenario focused on optimization, for topic \u0027input types\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over input types because it is always clearer and safer.",
+                                          "B":  "Apply input types according to established HTML optimization practices, considering error handling.",
+                                          "C":  "Avoid input types entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use input types only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for input types under optimization."
+                      },
+                      {
+                          "id":  35,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q15] In a for secure implementation scenario focused on optimization, for topic \u0027labels\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid labels entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use labels only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over labels because it is always clearer and safer.",
+                                          "D":  "Apply labels according to established HTML optimization practices, considering portability."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for labels under optimization."
+                      },
+                      {
+                          "id":  36,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q16] In a for performance-sensitive code scenario focused on optimization, for topic \u0027tables\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over tables because it is always clearer and safer.",
+                                          "B":  "Apply tables according to established HTML optimization practices, considering data handling.",
+                                          "C":  "Avoid tables entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use tables only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for tables under optimization."
+                      },
+                      {
+                          "id":  37,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q17] In a for team collaboration scenario focused on optimization, for topic \u0027lists\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid lists entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use lists only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over lists because it is always clearer and safer.",
+                                          "D":  "Apply lists according to established HTML optimization practices, considering memory model."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for lists under optimization."
+                      },
+                      {
+                          "id":  38,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q18] In a during code review scenario focused on optimization, for topic \u0027links\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over links because it is always clearer and safer.",
+                                          "B":  "Apply links according to established HTML optimization practices, considering syntax behavior.",
+                                          "C":  "Avoid links entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use links only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for links under optimization."
+                      },
+                      {
+                          "id":  39,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q19] In a while debugging scenario focused on optimization, for topic \u0027images\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid images entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use images only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over images because it is always clearer and safer.",
+                                          "D":  "Apply images according to established HTML optimization practices, considering best practices."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for images under optimization."
+                      },
+                      {
+                          "id":  40,
+                          "type":  "mcq",
+                          "question":  "[HTML][Advanced][Set-2][Q20] In a in production code scenario focused on optimization, for topic \u0027audio video\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over audio video because it is always clearer and safer.",
+                                          "B":  "Apply audio video according to established HTML optimization practices, considering error handling.",
+                                          "C":  "Avoid audio video entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use audio video only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for audio video under optimization."
+                      }
+                  ]
+}

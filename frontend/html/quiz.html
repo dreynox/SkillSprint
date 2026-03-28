@@ -15,7 +15,41 @@
         </header>
 
         <div id="quiz-container">
-            <div style="display: grid; gap: 10px; margin-bottom: 20px;">
+            <div style="display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid rgba(0,255,136,0.25); padding: 12px; border-radius: 10px;">
+                <h3 style="margin: 0; color: #00ff88;">Random Question Bank Session</h3>
+
+                <label for="language">Language</label>
+                <select id="language" style="padding: 10px; border-radius: 8px; border: 1px solid rgba(0,255,136,0.35); background: rgba(0,0,0,0.7); color: #e0ffe8;">
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="TypeScript">TypeScript</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="SQL">SQL</option>
+                    <option value="Go">Go</option>
+                    <option value="Rust">Rust</option>
+                    <option value="PHP">PHP</option>
+                    <option value="R">R</option>
+                    <option value="MATLAB">MATLAB</option>
+                    <option value="Bash">Bash</option>
+                </select>
+
+                <label for="level">Level</label>
+                <select id="level" style="padding: 10px; border-radius: 8px; border: 1px solid rgba(0,255,136,0.35); background: rgba(0,0,0,0.7); color: #e0ffe8;">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+
+                <button id="start-random-btn" type="button">Start Random 20 Questions</button>
+            </div>
+
+            <div style="display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid rgba(0,255,136,0.15); padding: 12px; border-radius: 10px;">
+                <h3 style="margin: 0; color: #9bf7c4;">Legacy Test Mode</h3>
                 <label for="test-id">Test ID</label>
                 <input id="test-id" type="number" value="1" min="1" />
 

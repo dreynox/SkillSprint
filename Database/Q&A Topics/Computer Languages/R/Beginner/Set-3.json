@@ -1,0 +1,268 @@
+﻿{
+    "language":  "R",
+    "level":  "Beginner",
+    "set":  "Set-3",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  41,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q1] In a for maintainable project design scenario focused on fundamentals, for topic \u0027dplyr verbs\u0027 and angle \u0027tooling and workflow\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use dplyr verbs only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over dplyr verbs because it is always clearer and safer.",
+                                          "C":  "Apply dplyr verbs according to established R fundamentals practices, considering tooling and workflow.",
+                                          "D":  "Avoid dplyr verbs entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for dplyr verbs under fundamentals."
+                      },
+                      {
+                          "id":  42,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q2] In a for secure implementation scenario focused on fundamentals, for topic \u0027joins\u0027 and angle \u0027type safety\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply joins according to established R fundamentals practices, considering type safety.",
+                                          "B":  "Avoid joins entirely in R because it never appears in real projects.",
+                                          "C":  "Use joins only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over joins because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for joins under fundamentals."
+                      },
+                      {
+                          "id":  43,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q3] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027missing values\u0027 and angle \u0027modularity\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use missing values only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over missing values because it is always clearer and safer.",
+                                          "C":  "Apply missing values according to established R fundamentals practices, considering modularity.",
+                                          "D":  "Avoid missing values entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for missing values under fundamentals."
+                      },
+                      {
+                          "id":  44,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q4] In a for team collaboration scenario focused on fundamentals, for topic \u0027stringr\u0027 and angle \u0027runtime behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply stringr according to established R fundamentals practices, considering runtime behavior.",
+                                          "B":  "Avoid stringr entirely in R because it never appears in real projects.",
+                                          "C":  "Use stringr only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over stringr because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for stringr under fundamentals."
+                      },
+                      {
+                          "id":  45,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q5] In a during code review scenario focused on fundamentals, for topic \u0027date handling\u0027 and angle \u0027edge cases\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use date handling only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over date handling because it is always clearer and safer.",
+                                          "C":  "Apply date handling according to established R fundamentals practices, considering edge cases.",
+                                          "D":  "Avoid date handling entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for date handling under fundamentals."
+                      },
+                      {
+                          "id":  46,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q6] In a while debugging scenario focused on fundamentals, for topic \u0027statistical tests\u0027 and angle \u0027readability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply statistical tests according to established R fundamentals practices, considering readability.",
+                                          "B":  "Avoid statistical tests entirely in R because it never appears in real projects.",
+                                          "C":  "Use statistical tests only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over statistical tests because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for statistical tests under fundamentals."
+                      },
+                      {
+                          "id":  47,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q7] In a in production code scenario focused on fundamentals, for topic \u0027linear models\u0027 and angle \u0027tooling and workflow\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use linear models only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over linear models because it is always clearer and safer.",
+                                          "C":  "Apply linear models according to established R fundamentals practices, considering tooling and workflow.",
+                                          "D":  "Avoid linear models entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for linear models under fundamentals."
+                      },
+                      {
+                          "id":  48,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q8] In a in interview-style problems scenario focused on fundamentals, for topic \u0027packages\u0027 and angle \u0027type safety\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply packages according to established R fundamentals practices, considering type safety.",
+                                          "B":  "Avoid packages entirely in R because it never appears in real projects.",
+                                          "C":  "Use packages only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over packages because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for packages under fundamentals."
+                      },
+                      {
+                          "id":  49,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q9] In a for maintainable project design scenario focused on fundamentals, for topic \u0027RMarkdown\u0027 and angle \u0027modularity\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use RMarkdown only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over RMarkdown because it is always clearer and safer.",
+                                          "C":  "Apply RMarkdown according to established R fundamentals practices, considering modularity.",
+                                          "D":  "Avoid RMarkdown entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for RMarkdown under fundamentals."
+                      },
+                      {
+                          "id":  50,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q10] In a for secure implementation scenario focused on fundamentals, for topic \u0027Shiny\u0027 and angle \u0027runtime behavior\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply Shiny according to established R fundamentals practices, considering runtime behavior.",
+                                          "B":  "Avoid Shiny entirely in R because it never appears in real projects.",
+                                          "C":  "Use Shiny only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over Shiny because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for Shiny under fundamentals."
+                      },
+                      {
+                          "id":  51,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q11] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027data import\u0027 and angle \u0027edge cases\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use data import only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over data import because it is always clearer and safer.",
+                                          "C":  "Apply data import according to established R fundamentals practices, considering edge cases.",
+                                          "D":  "Avoid data import entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for data import under fundamentals."
+                      },
+                      {
+                          "id":  52,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q12] In a for team collaboration scenario focused on fundamentals, for topic \u0027data export\u0027 and angle \u0027readability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply data export according to established R fundamentals practices, considering readability.",
+                                          "B":  "Avoid data export entirely in R because it never appears in real projects.",
+                                          "C":  "Use data export only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over data export because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for data export under fundamentals."
+                      },
+                      {
+                          "id":  53,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q13] In a during code review scenario focused on fundamentals, for topic \u0027group summaries\u0027 and angle \u0027tooling and workflow\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use group summaries only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over group summaries because it is always clearer and safer.",
+                                          "C":  "Apply group summaries according to established R fundamentals practices, considering tooling and workflow.",
+                                          "D":  "Avoid group summaries entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for group summaries under fundamentals."
+                      },
+                      {
+                          "id":  54,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q14] In a while debugging scenario focused on fundamentals, for topic \u0027debugging\u0027 and angle \u0027type safety\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply debugging according to established R fundamentals practices, considering type safety.",
+                                          "B":  "Avoid debugging entirely in R because it never appears in real projects.",
+                                          "C":  "Use debugging only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over debugging because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for debugging under fundamentals."
+                      },
+                      {
+                          "id":  55,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q15] In a in production code scenario focused on fundamentals, for topic \u0027performance tuning\u0027 and angle \u0027modularity\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use performance tuning only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over performance tuning because it is always clearer and safer.",
+                                          "C":  "Apply performance tuning according to established R fundamentals practices, considering modularity.",
+                                          "D":  "Avoid performance tuning entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for performance tuning under fundamentals."
+                      },
+                      {
+                          "id":  56,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q16] In a in interview-style problems scenario focused on fundamentals, for topic \u0027forcats\u0027 and angle \u0027runtime behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply forcats according to established R fundamentals practices, considering runtime behavior.",
+                                          "B":  "Avoid forcats entirely in R because it never appears in real projects.",
+                                          "C":  "Use forcats only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over forcats because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for forcats under fundamentals."
+                      },
+                      {
+                          "id":  57,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q17] In a for maintainable project design scenario focused on fundamentals, for topic \u0027tidyr\u0027 and angle \u0027edge cases\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use tidyr only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over tidyr because it is always clearer and safer.",
+                                          "C":  "Apply tidyr according to established R fundamentals practices, considering edge cases.",
+                                          "D":  "Avoid tidyr entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for tidyr under fundamentals."
+                      },
+                      {
+                          "id":  58,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q18] In a for secure implementation scenario focused on fundamentals, for topic \u0027purrr\u0027 and angle \u0027readability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply purrr according to established R fundamentals practices, considering readability.",
+                                          "B":  "Avoid purrr entirely in R because it never appears in real projects.",
+                                          "C":  "Use purrr only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over purrr because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for purrr under fundamentals."
+                      },
+                      {
+                          "id":  59,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q19] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027caret basics\u0027 and angle \u0027tooling and workflow\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use caret basics only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over caret basics because it is always clearer and safer.",
+                                          "C":  "Apply caret basics according to established R fundamentals practices, considering tooling and workflow.",
+                                          "D":  "Avoid caret basics entirely in R because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for caret basics under fundamentals."
+                      },
+                      {
+                          "id":  60,
+                          "type":  "mcq",
+                          "question":  "[R][Beginner][Set-3][Q20] In a for team collaboration scenario focused on fundamentals, for topic \u0027model validation\u0027 and angle \u0027type safety\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply model validation according to established R fundamentals practices, considering type safety.",
+                                          "B":  "Avoid model validation entirely in R because it never appears in real projects.",
+                                          "C":  "Use model validation only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over model validation because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for model validation under fundamentals."
+                      }
+                  ]
+}

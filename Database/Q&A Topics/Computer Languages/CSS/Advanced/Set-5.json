@@ -1,0 +1,268 @@
+﻿{
+    "language":  "CSS",
+    "level":  "Advanced",
+    "set":  "Set-5",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  81,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q1] In a for performance-sensitive code scenario focused on optimization, for topic \u0027inheritance cascade\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply inheritance cascade according to established CSS optimization practices, considering runtime behavior.",
+                                          "B":  "Avoid inheritance cascade entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use inheritance cascade only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over inheritance cascade because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for inheritance cascade under optimization."
+                      },
+                      {
+                          "id":  82,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q2] In a for team collaboration scenario focused on optimization, for topic \u0027object fit\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use object fit only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over object fit because it is always clearer and safer.",
+                                          "C":  "Apply object fit according to established CSS optimization practices, considering edge cases.",
+                                          "D":  "Avoid object fit entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for object fit under optimization."
+                      },
+                      {
+                          "id":  83,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q3] In a during code review scenario focused on optimization, for topic \u0027accessibility styling\u0027 and angle \u0027readability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply accessibility styling according to established CSS optimization practices, considering readability.",
+                                          "B":  "Avoid accessibility styling entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use accessibility styling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over accessibility styling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for accessibility styling under optimization."
+                      },
+                      {
+                          "id":  84,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q4] In a while debugging scenario focused on optimization, for topic \u0027render performance\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use render performance only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over render performance because it is always clearer and safer.",
+                                          "C":  "Apply render performance according to established CSS optimization practices, considering tooling and workflow.",
+                                          "D":  "Avoid render performance entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for render performance under optimization."
+                      },
+                      {
+                          "id":  85,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q5] In a in production code scenario focused on optimization, for topic \u0027stacking context\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply stacking context according to established CSS optimization practices, considering type safety.",
+                                          "B":  "Avoid stacking context entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use stacking context only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over stacking context because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for stacking context under optimization."
+                      },
+                      {
+                          "id":  86,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q6] In a in interview-style problems scenario focused on optimization, for topic \u0027layout containment\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use layout containment only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over layout containment because it is always clearer and safer.",
+                                          "C":  "Apply layout containment according to established CSS optimization practices, considering modularity.",
+                                          "D":  "Avoid layout containment entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for layout containment under optimization."
+                      },
+                      {
+                          "id":  87,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q7] In a for maintainable project design scenario focused on optimization, for topic \u0027font loading\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply font loading according to established CSS optimization practices, considering runtime behavior.",
+                                          "B":  "Avoid font loading entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use font loading only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over font loading because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for font loading under optimization."
+                      },
+                      {
+                          "id":  88,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q8] In a for secure implementation scenario focused on optimization, for topic \u0027BEM naming\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use BEM naming only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over BEM naming because it is always clearer and safer.",
+                                          "C":  "Apply BEM naming according to established CSS optimization practices, considering edge cases.",
+                                          "D":  "Avoid BEM naming entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for BEM naming under optimization."
+                      },
+                      {
+                          "id":  89,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q9] In a for performance-sensitive code scenario focused on optimization, for topic \u0027CSS resets\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply CSS resets according to established CSS optimization practices, considering readability.",
+                                          "B":  "Avoid CSS resets entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use CSS resets only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over CSS resets because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for CSS resets under optimization."
+                      },
+                      {
+                          "id":  90,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q10] In a for team collaboration scenario focused on optimization, for topic \u0027logical properties\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use logical properties only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over logical properties because it is always clearer and safer.",
+                                          "C":  "Apply logical properties according to established CSS optimization practices, considering tooling and workflow.",
+                                          "D":  "Avoid logical properties entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for logical properties under optimization."
+                      },
+                      {
+                          "id":  91,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q11] In a during code review scenario focused on optimization, for topic \u0027selectors\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply selectors according to established CSS optimization practices, considering type safety.",
+                                          "B":  "Avoid selectors entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use selectors only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over selectors because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for selectors under optimization."
+                      },
+                      {
+                          "id":  92,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q12] In a while debugging scenario focused on optimization, for topic \u0027specificity\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use specificity only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over specificity because it is always clearer and safer.",
+                                          "C":  "Apply specificity according to established CSS optimization practices, considering modularity.",
+                                          "D":  "Avoid specificity entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for specificity under optimization."
+                      },
+                      {
+                          "id":  93,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q13] In a in production code scenario focused on optimization, for topic \u0027box model\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply box model according to established CSS optimization practices, considering runtime behavior.",
+                                          "B":  "Avoid box model entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use box model only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over box model because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for box model under optimization."
+                      },
+                      {
+                          "id":  94,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q14] In a in interview-style problems scenario focused on optimization, for topic \u0027display property\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use display property only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over display property because it is always clearer and safer.",
+                                          "C":  "Apply display property according to established CSS optimization practices, considering edge cases.",
+                                          "D":  "Avoid display property entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for display property under optimization."
+                      },
+                      {
+                          "id":  95,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q15] In a for maintainable project design scenario focused on optimization, for topic \u0027positioning\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply positioning according to established CSS optimization practices, considering readability.",
+                                          "B":  "Avoid positioning entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use positioning only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over positioning because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for positioning under optimization."
+                      },
+                      {
+                          "id":  96,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q16] In a for secure implementation scenario focused on optimization, for topic \u0027flexbox\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use flexbox only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over flexbox because it is always clearer and safer.",
+                                          "C":  "Apply flexbox according to established CSS optimization practices, considering tooling and workflow.",
+                                          "D":  "Avoid flexbox entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for flexbox under optimization."
+                      },
+                      {
+                          "id":  97,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q17] In a for performance-sensitive code scenario focused on optimization, for topic \u0027grid\u0027 and angle \u0027type safety\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply grid according to established CSS optimization practices, considering type safety.",
+                                          "B":  "Avoid grid entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use grid only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over grid because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for grid under optimization."
+                      },
+                      {
+                          "id":  98,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q18] In a for team collaboration scenario focused on optimization, for topic \u0027media queries\u0027 and angle \u0027modularity\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use media queries only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over media queries because it is always clearer and safer.",
+                                          "C":  "Apply media queries according to established CSS optimization practices, considering modularity.",
+                                          "D":  "Avoid media queries entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for media queries under optimization."
+                      },
+                      {
+                          "id":  99,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q19] In a during code review scenario focused on optimization, for topic \u0027units\u0027 and angle \u0027runtime behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply units according to established CSS optimization practices, considering runtime behavior.",
+                                          "B":  "Avoid units entirely in CSS because it never appears in real projects.",
+                                          "C":  "Use units only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over units because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for units under optimization."
+                      },
+                      {
+                          "id":  100,
+                          "type":  "mcq",
+                          "question":  "[CSS][Advanced][Set-5][Q20] In a while debugging scenario focused on optimization, for topic \u0027colors\u0027 and angle \u0027edge cases\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use colors only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over colors because it is always clearer and safer.",
+                                          "C":  "Apply colors according to established CSS optimization practices, considering edge cases.",
+                                          "D":  "Avoid colors entirely in CSS because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for colors under optimization."
+                      }
+                  ]
+}

@@ -1,0 +1,268 @@
+﻿{
+    "language":  "HTML",
+    "level":  "Beginner",
+    "set":  "Set-4",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  61,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q1] In a while debugging scenario focused on fundamentals, for topic \u0027document structure\u0027 and angle \u0027portability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over document structure because it is always clearer and safer.",
+                                          "B":  "Apply document structure according to established HTML fundamentals practices, considering portability.",
+                                          "C":  "Avoid document structure entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use document structure only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for document structure under fundamentals."
+                      },
+                      {
+                          "id":  62,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q2] In a in production code scenario focused on fundamentals, for topic \u0027semantic tags\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid semantic tags entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use semantic tags only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over semantic tags because it is always clearer and safer.",
+                                          "D":  "Apply semantic tags according to established HTML fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for semantic tags under fundamentals."
+                      },
+                      {
+                          "id":  63,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q3] In a in interview-style problems scenario focused on fundamentals, for topic \u0027forms\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over forms because it is always clearer and safer.",
+                                          "B":  "Apply forms according to established HTML fundamentals practices, considering memory model.",
+                                          "C":  "Avoid forms entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use forms only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for forms under fundamentals."
+                      },
+                      {
+                          "id":  64,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q4] In a for maintainable project design scenario focused on fundamentals, for topic \u0027input types\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid input types entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use input types only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over input types because it is always clearer and safer.",
+                                          "D":  "Apply input types according to established HTML fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for input types under fundamentals."
+                      },
+                      {
+                          "id":  65,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q5] In a for secure implementation scenario focused on fundamentals, for topic \u0027labels\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Prefer global state over labels because it is always clearer and safer.",
+                                          "B":  "Apply labels according to established HTML fundamentals practices, considering best practices.",
+                                          "C":  "Avoid labels entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use labels only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for labels under fundamentals."
+                      },
+                      {
+                          "id":  66,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q6] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027tables\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Avoid tables entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use tables only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over tables because it is always clearer and safer.",
+                                          "D":  "Apply tables according to established HTML fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for tables under fundamentals."
+                      },
+                      {
+                          "id":  67,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q7] In a for team collaboration scenario focused on fundamentals, for topic \u0027lists\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over lists because it is always clearer and safer.",
+                                          "B":  "Apply lists according to established HTML fundamentals practices, considering portability.",
+                                          "C":  "Avoid lists entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use lists only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for lists under fundamentals."
+                      },
+                      {
+                          "id":  68,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q8] In a during code review scenario focused on fundamentals, for topic \u0027links\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid links entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use links only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over links because it is always clearer and safer.",
+                                          "D":  "Apply links according to established HTML fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for links under fundamentals."
+                      },
+                      {
+                          "id":  69,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q9] In a while debugging scenario focused on fundamentals, for topic \u0027images\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over images because it is always clearer and safer.",
+                                          "B":  "Apply images according to established HTML fundamentals practices, considering memory model.",
+                                          "C":  "Avoid images entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use images only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for images under fundamentals."
+                      },
+                      {
+                          "id":  70,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q10] In a in production code scenario focused on fundamentals, for topic \u0027audio video\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid audio video entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use audio video only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over audio video because it is always clearer and safer.",
+                                          "D":  "Apply audio video according to established HTML fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for audio video under fundamentals."
+                      },
+                      {
+                          "id":  71,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q11] In a in interview-style problems scenario focused on fundamentals, for topic \u0027meta tags\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over meta tags because it is always clearer and safer.",
+                                          "B":  "Apply meta tags according to established HTML fundamentals practices, considering best practices.",
+                                          "C":  "Avoid meta tags entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use meta tags only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for meta tags under fundamentals."
+                      },
+                      {
+                          "id":  72,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q12] In a for maintainable project design scenario focused on fundamentals, for topic \u0027accessibility\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid accessibility entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use accessibility only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over accessibility because it is always clearer and safer.",
+                                          "D":  "Apply accessibility according to established HTML fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for accessibility under fundamentals."
+                      },
+                      {
+                          "id":  73,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q13] In a for secure implementation scenario focused on fundamentals, for topic \u0027ARIA\u0027 and angle \u0027portability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Prefer global state over ARIA because it is always clearer and safer.",
+                                          "B":  "Apply ARIA according to established HTML fundamentals practices, considering portability.",
+                                          "C":  "Avoid ARIA entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use ARIA only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for ARIA under fundamentals."
+                      },
+                      {
+                          "id":  74,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q14] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027iframes\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Avoid iframes entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use iframes only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over iframes because it is always clearer and safer.",
+                                          "D":  "Apply iframes according to established HTML fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for iframes under fundamentals."
+                      },
+                      {
+                          "id":  75,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q15] In a for team collaboration scenario focused on fundamentals, for topic \u0027head body separation\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Prefer global state over head body separation because it is always clearer and safer.",
+                                          "B":  "Apply head body separation according to established HTML fundamentals practices, considering memory model.",
+                                          "C":  "Avoid head body separation entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use head body separation only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for head body separation under fundamentals."
+                      },
+                      {
+                          "id":  76,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q16] In a during code review scenario focused on fundamentals, for topic \u0027block inline elements\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Avoid block inline elements entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use block inline elements only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over block inline elements because it is always clearer and safer.",
+                                          "D":  "Apply block inline elements according to established HTML fundamentals practices, considering syntax behavior."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for block inline elements under fundamentals."
+                      },
+                      {
+                          "id":  77,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q17] In a while debugging scenario focused on fundamentals, for topic \u0027entities\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Prefer global state over entities because it is always clearer and safer.",
+                                          "B":  "Apply entities according to established HTML fundamentals practices, considering best practices.",
+                                          "C":  "Avoid entities entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use entities only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for entities under fundamentals."
+                      },
+                      {
+                          "id":  78,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q18] In a in production code scenario focused on fundamentals, for topic \u0027validation\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Avoid validation entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use validation only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over validation because it is always clearer and safer.",
+                                          "D":  "Apply validation according to established HTML fundamentals practices, considering error handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for validation under fundamentals."
+                      },
+                      {
+                          "id":  79,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q19] In a in interview-style problems scenario focused on fundamentals, for topic \u0027SEO basics\u0027 and angle \u0027portability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Prefer global state over SEO basics because it is always clearer and safer.",
+                                          "B":  "Apply SEO basics according to established HTML fundamentals practices, considering portability.",
+                                          "C":  "Avoid SEO basics entirely in HTML because it never appears in real projects.",
+                                          "D":  "Use SEO basics only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for SEO basics under fundamentals."
+                      },
+                      {
+                          "id":  80,
+                          "type":  "mcq",
+                          "question":  "[HTML][Beginner][Set-4][Q20] In a for maintainable project design scenario focused on fundamentals, for topic \u0027canvas\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Avoid canvas entirely in HTML because it never appears in real projects.",
+                                          "B":  "Use canvas only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over canvas because it is always clearer and safer.",
+                                          "D":  "Apply canvas according to established HTML fundamentals practices, considering data handling."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for canvas under fundamentals."
+                      }
+                  ]
+}

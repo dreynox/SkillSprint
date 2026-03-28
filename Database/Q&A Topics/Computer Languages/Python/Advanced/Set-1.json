@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Python",
+    "level":  "Advanced",
+    "set":  "Set-1",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  1,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q1] In a in production code scenario focused on optimization, for topic \u0027variables\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply variables according to established Python optimization practices, considering data handling.",
+                                          "B":  "Avoid variables entirely in Python because it never appears in real projects.",
+                                          "C":  "Use variables only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over variables because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for variables under optimization."
+                      },
+                      {
+                          "id":  2,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q2] In a in interview-style problems scenario focused on optimization, for topic \u0027data types\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use data types only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over data types because it is always clearer and safer.",
+                                          "C":  "Apply data types according to established Python optimization practices, considering memory model.",
+                                          "D":  "Avoid data types entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for data types under optimization."
+                      },
+                      {
+                          "id":  3,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q3] In a for maintainable project design scenario focused on optimization, for topic \u0027lists\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply lists according to established Python optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid lists entirely in Python because it never appears in real projects.",
+                                          "C":  "Use lists only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over lists because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for lists under optimization."
+                      },
+                      {
+                          "id":  4,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q4] In a for secure implementation scenario focused on optimization, for topic \u0027tuples\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use tuples only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over tuples because it is always clearer and safer.",
+                                          "C":  "Apply tuples according to established Python optimization practices, considering best practices.",
+                                          "D":  "Avoid tuples entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for tuples under optimization."
+                      },
+                      {
+                          "id":  5,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q5] In a for performance-sensitive code scenario focused on optimization, for topic \u0027dictionaries\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply dictionaries according to established Python optimization practices, considering error handling.",
+                                          "B":  "Avoid dictionaries entirely in Python because it never appears in real projects.",
+                                          "C":  "Use dictionaries only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over dictionaries because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for dictionaries under optimization."
+                      },
+                      {
+                          "id":  6,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q6] In a for team collaboration scenario focused on optimization, for topic \u0027sets\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use sets only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over sets because it is always clearer and safer.",
+                                          "C":  "Apply sets according to established Python optimization practices, considering portability.",
+                                          "D":  "Avoid sets entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for sets under optimization."
+                      },
+                      {
+                          "id":  7,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q7] In a during code review scenario focused on optimization, for topic \u0027loops\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply loops according to established Python optimization practices, considering data handling.",
+                                          "B":  "Avoid loops entirely in Python because it never appears in real projects.",
+                                          "C":  "Use loops only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over loops because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for loops under optimization."
+                      },
+                      {
+                          "id":  8,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q8] In a while debugging scenario focused on optimization, for topic \u0027functions\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use functions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over functions because it is always clearer and safer.",
+                                          "C":  "Apply functions according to established Python optimization practices, considering memory model.",
+                                          "D":  "Avoid functions entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for functions under optimization."
+                      },
+                      {
+                          "id":  9,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q9] In a in production code scenario focused on optimization, for topic \u0027lambda\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply lambda according to established Python optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid lambda entirely in Python because it never appears in real projects.",
+                                          "C":  "Use lambda only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over lambda because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for lambda under optimization."
+                      },
+                      {
+                          "id":  10,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q10] In a in interview-style problems scenario focused on optimization, for topic \u0027comprehensions\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use comprehensions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over comprehensions because it is always clearer and safer.",
+                                          "C":  "Apply comprehensions according to established Python optimization practices, considering best practices.",
+                                          "D":  "Avoid comprehensions entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for comprehensions under optimization."
+                      },
+                      {
+                          "id":  11,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q11] In a for maintainable project design scenario focused on optimization, for topic \u0027classes\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply classes according to established Python optimization practices, considering error handling.",
+                                          "B":  "Avoid classes entirely in Python because it never appears in real projects.",
+                                          "C":  "Use classes only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over classes because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for classes under optimization."
+                      },
+                      {
+                          "id":  12,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q12] In a for secure implementation scenario focused on optimization, for topic \u0027inheritance\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use inheritance only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over inheritance because it is always clearer and safer.",
+                                          "C":  "Apply inheritance according to established Python optimization practices, considering portability.",
+                                          "D":  "Avoid inheritance entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for inheritance under optimization."
+                      },
+                      {
+                          "id":  13,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q13] In a for performance-sensitive code scenario focused on optimization, for topic \u0027exceptions\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply exceptions according to established Python optimization practices, considering data handling.",
+                                          "B":  "Avoid exceptions entirely in Python because it never appears in real projects.",
+                                          "C":  "Use exceptions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over exceptions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for exceptions under optimization."
+                      },
+                      {
+                          "id":  14,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q14] In a for team collaboration scenario focused on optimization, for topic \u0027file handling\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use file handling only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over file handling because it is always clearer and safer.",
+                                          "C":  "Apply file handling according to established Python optimization practices, considering memory model.",
+                                          "D":  "Avoid file handling entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for file handling under optimization."
+                      },
+                      {
+                          "id":  15,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q15] In a during code review scenario focused on optimization, for topic \u0027modules\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply modules according to established Python optimization practices, considering syntax behavior.",
+                                          "B":  "Avoid modules entirely in Python because it never appears in real projects.",
+                                          "C":  "Use modules only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over modules because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for modules under optimization."
+                      },
+                      {
+                          "id":  16,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q16] In a while debugging scenario focused on optimization, for topic \u0027virtual environments\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use virtual environments only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over virtual environments because it is always clearer and safer.",
+                                          "C":  "Apply virtual environments according to established Python optimization practices, considering best practices.",
+                                          "D":  "Avoid virtual environments entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for virtual environments under optimization."
+                      },
+                      {
+                          "id":  17,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q17] In a in production code scenario focused on optimization, for topic \u0027decorators\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply decorators according to established Python optimization practices, considering error handling.",
+                                          "B":  "Avoid decorators entirely in Python because it never appears in real projects.",
+                                          "C":  "Use decorators only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over decorators because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for decorators under optimization."
+                      },
+                      {
+                          "id":  18,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q18] In a in interview-style problems scenario focused on optimization, for topic \u0027generators\u0027 and angle \u0027portability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use generators only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over generators because it is always clearer and safer.",
+                                          "C":  "Apply generators according to established Python optimization practices, considering portability.",
+                                          "D":  "Avoid generators entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for generators under optimization."
+                      },
+                      {
+                          "id":  19,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q19] In a for maintainable project design scenario focused on optimization, for topic \u0027iterators\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply iterators according to established Python optimization practices, considering data handling.",
+                                          "B":  "Avoid iterators entirely in Python because it never appears in real projects.",
+                                          "C":  "Use iterators only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over iterators because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for iterators under optimization."
+                      },
+                      {
+                          "id":  20,
+                          "type":  "mcq",
+                          "question":  "[Python][Advanced][Set-1][Q20] In a for secure implementation scenario focused on optimization, for topic \u0027context managers\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use context managers only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over context managers because it is always clearer and safer.",
+                                          "C":  "Apply context managers according to established Python optimization practices, considering memory model.",
+                                          "D":  "Avoid context managers entirely in Python because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for context managers under optimization."
+                      }
+                  ]
+}

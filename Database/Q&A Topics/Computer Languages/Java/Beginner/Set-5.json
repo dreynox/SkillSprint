@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Java",
+    "level":  "Beginner",
+    "set":  "Set-5",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  81,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q1] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027file I O\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply file I O according to established Java fundamentals practices, considering best practices.",
+                                          "B":  "Avoid file I O entirely in Java because it never appears in real projects.",
+                                          "C":  "Use file I O only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over file I O because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for file I O under fundamentals."
+                      },
+                      {
+                          "id":  82,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q2] In a for team collaboration scenario focused on fundamentals, for topic \u0027serialization\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use serialization only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over serialization because it is always clearer and safer.",
+                                          "C":  "Apply serialization according to established Java fundamentals practices, considering error handling.",
+                                          "D":  "Avoid serialization entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for serialization under fundamentals."
+                      },
+                      {
+                          "id":  83,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q3] In a during code review scenario focused on fundamentals, for topic \u0027annotations\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply annotations according to established Java fundamentals practices, considering portability.",
+                                          "B":  "Avoid annotations entirely in Java because it never appears in real projects.",
+                                          "C":  "Use annotations only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over annotations because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for annotations under fundamentals."
+                      },
+                      {
+                          "id":  84,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q4] In a while debugging scenario focused on fundamentals, for topic \u0027Spring concepts\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use Spring concepts only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over Spring concepts because it is always clearer and safer.",
+                                          "C":  "Apply Spring concepts according to established Java fundamentals practices, considering data handling.",
+                                          "D":  "Avoid Spring concepts entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for Spring concepts under fundamentals."
+                      },
+                      {
+                          "id":  85,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q5] In a in production code scenario focused on fundamentals, for topic \u0027immutability\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply immutability according to established Java fundamentals practices, considering memory model.",
+                                          "B":  "Avoid immutability entirely in Java because it never appears in real projects.",
+                                          "C":  "Use immutability only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over immutability because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for immutability under fundamentals."
+                      },
+                      {
+                          "id":  86,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q6] In a in interview-style problems scenario focused on fundamentals, for topic \u0027equals hashCode\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use equals hashCode only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over equals hashCode because it is always clearer and safer.",
+                                          "C":  "Apply equals hashCode according to established Java fundamentals practices, considering syntax behavior.",
+                                          "D":  "Avoid equals hashCode entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for equals hashCode under fundamentals."
+                      },
+                      {
+                          "id":  87,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q7] In a for maintainable project design scenario focused on fundamentals, for topic \u0027optional\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply optional according to established Java fundamentals practices, considering best practices.",
+                                          "B":  "Avoid optional entirely in Java because it never appears in real projects.",
+                                          "C":  "Use optional only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over optional because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for optional under fundamentals."
+                      },
+                      {
+                          "id":  88,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q8] In a for secure implementation scenario focused on fundamentals, for topic \u0027concurrency utilities\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use concurrency utilities only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over concurrency utilities because it is always clearer and safer.",
+                                          "C":  "Apply concurrency utilities according to established Java fundamentals practices, considering error handling.",
+                                          "D":  "Avoid concurrency utilities entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for concurrency utilities under fundamentals."
+                      },
+                      {
+                          "id":  89,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q9] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027dependency injection\u0027 and angle \u0027portability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply dependency injection according to established Java fundamentals practices, considering portability.",
+                                          "B":  "Avoid dependency injection entirely in Java because it never appears in real projects.",
+                                          "C":  "Use dependency injection only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over dependency injection because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for dependency injection under fundamentals."
+                      },
+                      {
+                          "id":  90,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q10] In a for team collaboration scenario focused on fundamentals, for topic \u0027package design\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use package design only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over package design because it is always clearer and safer.",
+                                          "C":  "Apply package design according to established Java fundamentals practices, considering data handling.",
+                                          "D":  "Avoid package design entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for package design under fundamentals."
+                      },
+                      {
+                          "id":  91,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q11] In a during code review scenario focused on fundamentals, for topic \u0027primitive types\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply primitive types according to established Java fundamentals practices, considering memory model.",
+                                          "B":  "Avoid primitive types entirely in Java because it never appears in real projects.",
+                                          "C":  "Use primitive types only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over primitive types because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for primitive types under fundamentals."
+                      },
+                      {
+                          "id":  92,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q12] In a while debugging scenario focused on fundamentals, for topic \u0027control flow\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use control flow only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over control flow because it is always clearer and safer.",
+                                          "C":  "Apply control flow according to established Java fundamentals practices, considering syntax behavior.",
+                                          "D":  "Avoid control flow entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for control flow under fundamentals."
+                      },
+                      {
+                          "id":  93,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q13] In a in production code scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply arrays according to established Java fundamentals practices, considering best practices.",
+                                          "B":  "Avoid arrays entirely in Java because it never appears in real projects.",
+                                          "C":  "Use arrays only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
+                      },
+                      {
+                          "id":  94,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q14] In a in interview-style problems scenario focused on fundamentals, for topic \u0027strings\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use strings only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over strings because it is always clearer and safer.",
+                                          "C":  "Apply strings according to established Java fundamentals practices, considering error handling.",
+                                          "D":  "Avoid strings entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for strings under fundamentals."
+                      },
+                      {
+                          "id":  95,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q15] In a for maintainable project design scenario focused on fundamentals, for topic \u0027methods\u0027 and angle \u0027portability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply methods according to established Java fundamentals practices, considering portability.",
+                                          "B":  "Avoid methods entirely in Java because it never appears in real projects.",
+                                          "C":  "Use methods only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over methods because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for methods under fundamentals."
+                      },
+                      {
+                          "id":  96,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q16] In a for secure implementation scenario focused on fundamentals, for topic \u0027classes\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use classes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over classes because it is always clearer and safer.",
+                                          "C":  "Apply classes according to established Java fundamentals practices, considering data handling.",
+                                          "D":  "Avoid classes entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for classes under fundamentals."
+                      },
+                      {
+                          "id":  97,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q17] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027objects\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply objects according to established Java fundamentals practices, considering memory model.",
+                                          "B":  "Avoid objects entirely in Java because it never appears in real projects.",
+                                          "C":  "Use objects only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over objects because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for objects under fundamentals."
+                      },
+                      {
+                          "id":  98,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q18] In a for team collaboration scenario focused on fundamentals, for topic \u0027constructors\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use constructors only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over constructors because it is always clearer and safer.",
+                                          "C":  "Apply constructors according to established Java fundamentals practices, considering syntax behavior.",
+                                          "D":  "Avoid constructors entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for constructors under fundamentals."
+                      },
+                      {
+                          "id":  99,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q19] In a during code review scenario focused on fundamentals, for topic \u0027inheritance\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply inheritance according to established Java fundamentals practices, considering best practices.",
+                                          "B":  "Avoid inheritance entirely in Java because it never appears in real projects.",
+                                          "C":  "Use inheritance only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over inheritance because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for inheritance under fundamentals."
+                      },
+                      {
+                          "id":  100,
+                          "type":  "mcq",
+                          "question":  "[Java][Beginner][Set-5][Q20] In a while debugging scenario focused on fundamentals, for topic \u0027interfaces\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use interfaces only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over interfaces because it is always clearer and safer.",
+                                          "C":  "Apply interfaces according to established Java fundamentals practices, considering error handling.",
+                                          "D":  "Avoid interfaces entirely in Java because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for interfaces under fundamentals."
+                      }
+                  ]
+}

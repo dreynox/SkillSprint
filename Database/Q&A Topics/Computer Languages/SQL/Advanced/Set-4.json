@@ -1,0 +1,268 @@
+﻿{
+    "language":  "SQL",
+    "level":  "Advanced",
+    "set":  "Set-4",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  61,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q1] In a while debugging scenario focused on optimization, for topic \u0027SELECT\u0027 and angle \u0027readability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over SELECT because it is always clearer and safer.",
+                                          "B":  "Apply SELECT according to established SQL optimization practices, considering readability.",
+                                          "C":  "Avoid SELECT entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use SELECT only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for SELECT under optimization."
+                      },
+                      {
+                          "id":  62,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q2] In a in production code scenario focused on optimization, for topic \u0027WHERE\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid WHERE entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use WHERE only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over WHERE because it is always clearer and safer.",
+                                          "D":  "Apply WHERE according to established SQL optimization practices, considering tooling and workflow."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for WHERE under optimization."
+                      },
+                      {
+                          "id":  63,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q3] In a in interview-style problems scenario focused on optimization, for topic \u0027ORDER BY\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over ORDER BY because it is always clearer and safer.",
+                                          "B":  "Apply ORDER BY according to established SQL optimization practices, considering type safety.",
+                                          "C":  "Avoid ORDER BY entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use ORDER BY only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for ORDER BY under optimization."
+                      },
+                      {
+                          "id":  64,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q4] In a for maintainable project design scenario focused on optimization, for topic \u0027GROUP BY\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid GROUP BY entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use GROUP BY only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over GROUP BY because it is always clearer and safer.",
+                                          "D":  "Apply GROUP BY according to established SQL optimization practices, considering modularity."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for GROUP BY under optimization."
+                      },
+                      {
+                          "id":  65,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q5] In a for secure implementation scenario focused on optimization, for topic \u0027HAVING\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over HAVING because it is always clearer and safer.",
+                                          "B":  "Apply HAVING according to established SQL optimization practices, considering runtime behavior.",
+                                          "C":  "Avoid HAVING entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use HAVING only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for HAVING under optimization."
+                      },
+                      {
+                          "id":  66,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q6] In a for performance-sensitive code scenario focused on optimization, for topic \u0027JOINs\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid JOINs entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use JOINs only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over JOINs because it is always clearer and safer.",
+                                          "D":  "Apply JOINs according to established SQL optimization practices, considering edge cases."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for JOINs under optimization."
+                      },
+                      {
+                          "id":  67,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q7] In a for team collaboration scenario focused on optimization, for topic \u0027subqueries\u0027 and angle \u0027readability\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over subqueries because it is always clearer and safer.",
+                                          "B":  "Apply subqueries according to established SQL optimization practices, considering readability.",
+                                          "C":  "Avoid subqueries entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use subqueries only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for subqueries under optimization."
+                      },
+                      {
+                          "id":  68,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q8] In a during code review scenario focused on optimization, for topic \u0027CTEs\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid CTEs entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use CTEs only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over CTEs because it is always clearer and safer.",
+                                          "D":  "Apply CTEs according to established SQL optimization practices, considering tooling and workflow."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for CTEs under optimization."
+                      },
+                      {
+                          "id":  69,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q9] In a while debugging scenario focused on optimization, for topic \u0027window functions\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over window functions because it is always clearer and safer.",
+                                          "B":  "Apply window functions according to established SQL optimization practices, considering type safety.",
+                                          "C":  "Avoid window functions entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use window functions only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for window functions under optimization."
+                      },
+                      {
+                          "id":  70,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q10] In a in production code scenario focused on optimization, for topic \u0027indexes\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid indexes entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use indexes only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over indexes because it is always clearer and safer.",
+                                          "D":  "Apply indexes according to established SQL optimization practices, considering modularity."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for indexes under optimization."
+                      },
+                      {
+                          "id":  71,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q11] In a in interview-style problems scenario focused on optimization, for topic \u0027normalization\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over normalization because it is always clearer and safer.",
+                                          "B":  "Apply normalization according to established SQL optimization practices, considering runtime behavior.",
+                                          "C":  "Avoid normalization entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use normalization only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for normalization under optimization."
+                      },
+                      {
+                          "id":  72,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q12] In a for maintainable project design scenario focused on optimization, for topic \u0027transactions\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid transactions entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use transactions only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over transactions because it is always clearer and safer.",
+                                          "D":  "Apply transactions according to established SQL optimization practices, considering edge cases."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for transactions under optimization."
+                      },
+                      {
+                          "id":  73,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q13] In a for secure implementation scenario focused on optimization, for topic \u0027ACID\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Prefer global state over ACID because it is always clearer and safer.",
+                                          "B":  "Apply ACID according to established SQL optimization practices, considering readability.",
+                                          "C":  "Avoid ACID entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use ACID only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for ACID under optimization."
+                      },
+                      {
+                          "id":  74,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q14] In a for performance-sensitive code scenario focused on optimization, for topic \u0027constraints\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Avoid constraints entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use constraints only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over constraints because it is always clearer and safer.",
+                                          "D":  "Apply constraints according to established SQL optimization practices, considering tooling and workflow."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for constraints under optimization."
+                      },
+                      {
+                          "id":  75,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q15] In a for team collaboration scenario focused on optimization, for topic \u0027views\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Prefer global state over views because it is always clearer and safer.",
+                                          "B":  "Apply views according to established SQL optimization practices, considering type safety.",
+                                          "C":  "Avoid views entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use views only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for views under optimization."
+                      },
+                      {
+                          "id":  76,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q16] In a during code review scenario focused on optimization, for topic \u0027stored procedures\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Avoid stored procedures entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use stored procedures only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over stored procedures because it is always clearer and safer.",
+                                          "D":  "Apply stored procedures according to established SQL optimization practices, considering modularity."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for stored procedures under optimization."
+                      },
+                      {
+                          "id":  77,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q17] In a while debugging scenario focused on optimization, for topic \u0027user functions\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Prefer global state over user functions because it is always clearer and safer.",
+                                          "B":  "Apply user functions according to established SQL optimization practices, considering runtime behavior.",
+                                          "C":  "Avoid user functions entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use user functions only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for user functions under optimization."
+                      },
+                      {
+                          "id":  78,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q18] In a in production code scenario focused on optimization, for topic \u0027triggers\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Avoid triggers entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use triggers only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over triggers because it is always clearer and safer.",
+                                          "D":  "Apply triggers according to established SQL optimization practices, considering edge cases."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for triggers under optimization."
+                      },
+                      {
+                          "id":  79,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q19] In a in interview-style problems scenario focused on optimization, for topic \u0027aggregates\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Prefer global state over aggregates because it is always clearer and safer.",
+                                          "B":  "Apply aggregates according to established SQL optimization practices, considering readability.",
+                                          "C":  "Avoid aggregates entirely in SQL because it never appears in real projects.",
+                                          "D":  "Use aggregates only in comments; executable code should not include it."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Correct option follows language-specific best practice for aggregates under optimization."
+                      },
+                      {
+                          "id":  80,
+                          "type":  "mcq",
+                          "question":  "[SQL][Advanced][Set-4][Q20] In a for maintainable project design scenario focused on optimization, for topic \u0027NULL handling\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Avoid NULL handling entirely in SQL because it never appears in real projects.",
+                                          "B":  "Use NULL handling only in comments; executable code should not include it.",
+                                          "C":  "Prefer global state over NULL handling because it is always clearer and safer.",
+                                          "D":  "Apply NULL handling according to established SQL optimization practices, considering tooling and workflow."
+                                      },
+                          "answer":  "D",
+                          "explanation":  "Correct option follows language-specific best practice for NULL handling under optimization."
+                      }
+                  ]
+}

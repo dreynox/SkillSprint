@@ -1,84 +1,146 @@
-const userProfile = {
-  name: "Rayhaan Shaikh",
-  role: "First Year CSE · Competitive Programmer",
-  avatar: "../images/Rayhaan1.jpeg",
+const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 
-  stats: {
-    contestsWon: 12,
-    problemsSolved: 340,
-    rating: 1820
-  },
+function getToken() {
+  return localStorage.getItem("access_token");
+}
 
-  performances: [
-    { title: "DSA Sprint #21", difficulty: "Medium", time: "42 min" },
-    { title: "Algo Rush", difficulty: "Hard", time: "1 hr 10 min" },
-    { title: "Bug Bash", difficulty: "Easy", time: "25 min" }
-  ]
-};
+function authHeaders() {
+  const token = getToken();
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
 
-// Inject profile data
-document.getElementById("username").textContent = userProfile.name;
-document.getElementById("role").textContent = userProfile.role;
-document.getElementById("avatar").src = userProfile.avatar;
-
-// Animated counter
 function animateCount(id, target) {
-  let count = 0;
-  const speed = target / 40;
+  const element = document.getElementById(id);
+  if (!element) {
+    return;
+  }
 
+  const end = Math.max(0, Number(target) || 0);
+  if (end === 0) {
+    element.textContent = "0";
+    return;
+  }
+
+  let count = 0;
+  const speed = end / 40;
   const interval = setInterval(() => {
     count += speed;
-    if (count >= target) {
-      document.getElementById(id).textContent = target;
+    if (count >= end) {
+      element.textContent = String(end);
       clearInterval(interval);
     } else {
-      document.getElementById(id).textContent = Math.floor(count);
+      element.textContent = String(Math.floor(count));
     }
   }, 25);
 }
 
-animateCount("contests", userProfile.stats.contestsWon);
-animateCount("problems", userProfile.stats.problemsSolved);
-animateCount("rating", userProfile.stats.rating);
+function renderPerformanceRows(stats) {
+  const list = document.getElementById("performance-list");
+  if (!list) {
+    return;
+  }
 
-// Performance list
-const list = document.getElementById("performance-list");
+  list.innerHTML = "";
+  const rows = [
+    {
+      title: "Contests Joined",
+      difficulty: "Easy",
+      time: String(stats.contests_joined || 0),
+    },
+    {
+      title: "Contest Submissions",
+      difficulty: "Medium",
+      time: String(stats.contest_submissions || 0),
+    },
+    {
+      title: "Quiz Attempts",
+      difficulty: "Hard",
+      time: String(stats.quiz_attempts || 0),
+    },
+  ];
 
-userProfile.performances.forEach((item, index) => {
-  const row = document.createElement("div");
-  row.className = "row";
-  row.style.animation = `fadeUp 0.5s ease ${index * 0.15}s forwards`;
-  row.style.opacity = 0;
+  rows.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.style.animation = `fadeUp 0.5s ease ${index * 0.15}s forwards`;
+    row.style.opacity = 0;
 
-  const difficultyClass =
-    item.difficulty === "Easy" ? "easy" :
-    item.difficulty === "Medium" ? "medium" : "hard";
+    const difficultyClass =
+      item.difficulty === "Easy"
+        ? "easy"
+        : item.difficulty === "Medium"
+          ? "medium"
+          : "hard";
 
-  row.innerHTML = `
-    <div>
-      <strong>${item.title}</strong><br>
-      <small class="${difficultyClass}">Difficulty: ${item.difficulty}</small>
-    </div>
-    <div class="time">⏱ ${item.time}</div>
-  `;
+    row.innerHTML = `
+      <div>
+        <strong>${item.title}</strong><br>
+        <small class="${difficultyClass}">Updated from your account history</small>
+      </div>
+      <div class="time">${item.time}</div>
+    `;
 
-  row.addEventListener("click", () => {
-    alert(
-      `Challenge: ${item.title}\nDifficulty: ${item.difficulty}\nTime: ${item.time}`
-    );
+    list.appendChild(row);
   });
+}
 
-  list.appendChild(row);
-});
+async function loadProfile() {
+  const token = getToken();
+  if (!token) {
+    window.location.href = "../../index.html";
+    return;
+  }
 
-// Follow button toggle
+  try {
+    const [profileRes, statsRes] = await Promise.all([
+      fetch(`${API_BASE}/users/me`, { headers: authHeaders() }),
+      fetch(`${API_BASE}/users/me/stats`, { headers: authHeaders() }),
+    ]);
+
+    if (!profileRes.ok || !statsRes.ok) {
+      throw new Error("Unable to load profile data");
+    }
+
+    const profile = await profileRes.json();
+    const stats = await statsRes.json();
+
+    const roleParts = [];
+    if (profile.year) {
+      roleParts.push(`Year ${profile.year}`);
+    }
+    if (profile.branch) {
+      roleParts.push(profile.branch);
+    }
+    roleParts.push((profile.role || "student").toUpperCase());
+
+    document.getElementById("username").textContent = profile.name || "Student";
+    document.getElementById("role").textContent = roleParts.join(" · ");
+
+    const avatar = document.getElementById("avatar");
+    if (avatar) {
+      avatar.src = profile.avatar_url || "../images/Rayhaan1.jpeg";
+    }
+
+    animateCount("contests", stats.contests_joined || 0);
+    animateCount("problems", stats.contest_submissions || 0);
+    animateCount("rating", stats.total_quiz_score || 0);
+    renderPerformanceRows(stats);
+
+    localStorage.setItem("user", JSON.stringify(profile));
+  } catch (_error) {
+    document.getElementById("username").textContent = "Profile unavailable";
+    document.getElementById("role").textContent = "Please login again";
+  }
+}
+
 const followBtn = document.querySelector(".btn-outline");
-let following = false;
-
-followBtn.addEventListener("click", () => {
-  following = !following;
-  followBtn.textContent = following ? "Following ✓" : "Follow";
-});
+if (followBtn) {
+  let following = false;
+  followBtn.addEventListener("click", () => {
+    following = !following;
+    followBtn.textContent = following ? "Following" : "Follow";
+  });
+}
 
 const messageBtn = document.getElementById("messageBtn");
 if (messageBtn) {
@@ -86,3 +148,5 @@ if (messageBtn) {
     window.location.href = "message.html";
   });
 }
+
+loadProfile();

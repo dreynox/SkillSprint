@@ -28,6 +28,17 @@ def ensure_sqlite_compatibility():
             if "tags" not in columns:
                 connection.execute(text("ALTER TABLE contest_problems ADD COLUMN tags VARCHAR"))
 
+        if "users" in tables:
+            user_columns = {column["name"] for column in inspector.get_columns("users")}
+            if "year" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN year INTEGER"))
+            if "branch" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN branch VARCHAR"))
+            if "bio" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN bio TEXT"))
+            if "avatar_url" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN avatar_url VARCHAR"))
+
 def get_db():
     db = SessionLocal()
     try:

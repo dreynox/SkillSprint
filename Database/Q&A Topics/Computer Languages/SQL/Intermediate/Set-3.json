@@ -1,0 +1,268 @@
+﻿{
+    "language":  "SQL",
+    "level":  "Intermediate",
+    "set":  "Set-3",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  41,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q1] In a for maintainable project design scenario focused on implementation, for topic \u0027normalization\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use normalization only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over normalization because it is always clearer and safer.",
+                                          "C":  "Apply normalization according to established SQL implementation practices, considering type safety.",
+                                          "D":  "Avoid normalization entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for normalization under implementation."
+                      },
+                      {
+                          "id":  42,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q2] In a for secure implementation scenario focused on implementation, for topic \u0027transactions\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply transactions according to established SQL implementation practices, considering modularity.",
+                                          "B":  "Avoid transactions entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use transactions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over transactions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for transactions under implementation."
+                      },
+                      {
+                          "id":  43,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q3] In a for performance-sensitive code scenario focused on implementation, for topic \u0027ACID\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use ACID only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over ACID because it is always clearer and safer.",
+                                          "C":  "Apply ACID according to established SQL implementation practices, considering runtime behavior.",
+                                          "D":  "Avoid ACID entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for ACID under implementation."
+                      },
+                      {
+                          "id":  44,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q4] In a for team collaboration scenario focused on implementation, for topic \u0027constraints\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply constraints according to established SQL implementation practices, considering edge cases.",
+                                          "B":  "Avoid constraints entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use constraints only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over constraints because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for constraints under implementation."
+                      },
+                      {
+                          "id":  45,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q5] In a during code review scenario focused on implementation, for topic \u0027views\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use views only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over views because it is always clearer and safer.",
+                                          "C":  "Apply views according to established SQL implementation practices, considering readability.",
+                                          "D":  "Avoid views entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for views under implementation."
+                      },
+                      {
+                          "id":  46,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q6] In a while debugging scenario focused on implementation, for topic \u0027stored procedures\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply stored procedures according to established SQL implementation practices, considering tooling and workflow.",
+                                          "B":  "Avoid stored procedures entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use stored procedures only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over stored procedures because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for stored procedures under implementation."
+                      },
+                      {
+                          "id":  47,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q7] In a in production code scenario focused on implementation, for topic \u0027user functions\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use user functions only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over user functions because it is always clearer and safer.",
+                                          "C":  "Apply user functions according to established SQL implementation practices, considering type safety.",
+                                          "D":  "Avoid user functions entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for user functions under implementation."
+                      },
+                      {
+                          "id":  48,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q8] In a in interview-style problems scenario focused on implementation, for topic \u0027triggers\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply triggers according to established SQL implementation practices, considering modularity.",
+                                          "B":  "Avoid triggers entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use triggers only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over triggers because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for triggers under implementation."
+                      },
+                      {
+                          "id":  49,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q9] In a for maintainable project design scenario focused on implementation, for topic \u0027aggregates\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use aggregates only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over aggregates because it is always clearer and safer.",
+                                          "C":  "Apply aggregates according to established SQL implementation practices, considering runtime behavior.",
+                                          "D":  "Avoid aggregates entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for aggregates under implementation."
+                      },
+                      {
+                          "id":  50,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q10] In a for secure implementation scenario focused on implementation, for topic \u0027NULL handling\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply NULL handling according to established SQL implementation practices, considering edge cases.",
+                                          "B":  "Avoid NULL handling entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use NULL handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over NULL handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for NULL handling under implementation."
+                      },
+                      {
+                          "id":  51,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q11] In a for performance-sensitive code scenario focused on implementation, for topic \u0027UNION\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use UNION only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over UNION because it is always clearer and safer.",
+                                          "C":  "Apply UNION according to established SQL implementation practices, considering readability.",
+                                          "D":  "Avoid UNION entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for UNION under implementation."
+                      },
+                      {
+                          "id":  52,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q12] In a for team collaboration scenario focused on implementation, for topic \u0027EXISTS\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply EXISTS according to established SQL implementation practices, considering tooling and workflow.",
+                                          "B":  "Avoid EXISTS entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use EXISTS only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over EXISTS because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for EXISTS under implementation."
+                      },
+                      {
+                          "id":  53,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q13] In a during code review scenario focused on implementation, for topic \u0027performance tuning\u0027 and angle \u0027type safety\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Use performance tuning only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over performance tuning because it is always clearer and safer.",
+                                          "C":  "Apply performance tuning according to established SQL implementation practices, considering type safety.",
+                                          "D":  "Avoid performance tuning entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for performance tuning under implementation."
+                      },
+                      {
+                          "id":  54,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q14] In a while debugging scenario focused on implementation, for topic \u0027security\u0027 and angle \u0027modularity\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Apply security according to established SQL implementation practices, considering modularity.",
+                                          "B":  "Avoid security entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use security only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over security because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for security under implementation."
+                      },
+                      {
+                          "id":  55,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q15] In a in production code scenario focused on implementation, for topic \u0027schema design\u0027 and angle \u0027runtime behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Use schema design only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over schema design because it is always clearer and safer.",
+                                          "C":  "Apply schema design according to established SQL implementation practices, considering runtime behavior.",
+                                          "D":  "Avoid schema design entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for schema design under implementation."
+                      },
+                      {
+                          "id":  56,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q16] In a in interview-style problems scenario focused on implementation, for topic \u0027query plans\u0027 and angle \u0027edge cases\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Apply query plans according to established SQL implementation practices, considering edge cases.",
+                                          "B":  "Avoid query plans entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use query plans only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over query plans because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for query plans under implementation."
+                      },
+                      {
+                          "id":  57,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q17] In a for maintainable project design scenario focused on implementation, for topic \u0027foreign keys\u0027 and angle \u0027readability\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Use foreign keys only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over foreign keys because it is always clearer and safer.",
+                                          "C":  "Apply foreign keys according to established SQL implementation practices, considering readability.",
+                                          "D":  "Avoid foreign keys entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for foreign keys under implementation."
+                      },
+                      {
+                          "id":  58,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q18] In a for secure implementation scenario focused on implementation, for topic \u0027pagination\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Apply pagination according to established SQL implementation practices, considering tooling and workflow.",
+                                          "B":  "Avoid pagination entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use pagination only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over pagination because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for pagination under implementation."
+                      },
+                      {
+                          "id":  59,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q19] In a for performance-sensitive code scenario focused on implementation, for topic \u0027upserts\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Use upserts only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over upserts because it is always clearer and safer.",
+                                          "C":  "Apply upserts according to established SQL implementation practices, considering type safety.",
+                                          "D":  "Avoid upserts entirely in SQL because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for upserts under implementation."
+                      },
+                      {
+                          "id":  60,
+                          "type":  "mcq",
+                          "question":  "[SQL][Intermediate][Set-3][Q20] In a for team collaboration scenario focused on implementation, for topic \u0027isolation levels\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Apply isolation levels according to established SQL implementation practices, considering modularity.",
+                                          "B":  "Avoid isolation levels entirely in SQL because it never appears in real projects.",
+                                          "C":  "Use isolation levels only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over isolation levels because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for isolation levels under implementation."
+                      }
+                  ]
+}

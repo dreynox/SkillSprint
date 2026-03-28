@@ -3,13 +3,15 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
+from auth import get_current_user
 from database import get_db
-from models import Contest, ContestProblem, ContestSubmission
+from models import Contest, ContestParticipation, ContestProblem, ContestSubmission, User
 from schemas import (
     ContestCreate,
     ContestOut,
     ContestProblemCreate,
     ContestProblemOut,
+    ContestParticipationOut,
     ContestSubmissionCreate,
     ContestSubmissionOut,
     ContestWithProblems,
@@ -66,6 +68,7 @@ def submit_code(
     problem_id: int,
     payload: ContestSubmissionCreate,
     db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
@@ -80,7 +83,7 @@ def submit_code(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found in this contest")
 
     submission = ContestSubmission(
-        user_id=payload.user_id,
+        user_id=current_user.id,
         contest_id=contest_id,
         problem_id=problem_id,
         language=payload.language,
@@ -107,3 +110,31 @@ def list_contest_submissions(contest_id: int, db: Session = Depends(get_db)):
         .all()
     )
     return submissions
+
+
+@router.post("/{contest_id}/join", response_model=ContestParticipationOut, status_code=status.HTTP_201_CREATED)
+def join_contest(
+    contest_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    contest = db.query(Contest).filter(Contest.id == contest_id).first()
+    if not contest:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+
+    existing = (
+        db.query(ContestParticipation)
+        .filter(
+            ContestParticipation.contest_id == contest_id,
+            ContestParticipation.user_id == current_user.id,
+        )
+        .first()
+    )
+    if existing:
+        return existing
+
+    participation = ContestParticipation(user_id=current_user.id, contest_id=contest_id)
+    db.add(participation)
+    db.commit()
+    db.refresh(participation)
+    return participation

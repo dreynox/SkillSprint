@@ -1,0 +1,268 @@
+﻿{
+    "language":  "Bash",
+    "level":  "Intermediate",
+    "set":  "Set-3",
+    "questionCount":  20,
+    "questions":  [
+                      {
+                          "id":  41,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q1] In a for maintainable project design scenario focused on implementation, for topic \u0027exit codes\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use exit codes only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over exit codes because it is always clearer and safer.",
+                                          "C":  "Apply exit codes according to established Bash implementation practices, considering memory model.",
+                                          "D":  "Avoid exit codes entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for exit codes under implementation."
+                      },
+                      {
+                          "id":  42,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q2] In a for secure implementation scenario focused on implementation, for topic \u0027cron\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply cron according to established Bash implementation practices, considering syntax behavior.",
+                                          "B":  "Avoid cron entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use cron only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over cron because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for cron under implementation."
+                      },
+                      {
+                          "id":  43,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q3] In a for performance-sensitive code scenario focused on implementation, for topic \u0027environment variables\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use environment variables only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over environment variables because it is always clearer and safer.",
+                                          "C":  "Apply environment variables according to established Bash implementation practices, considering best practices.",
+                                          "D":  "Avoid environment variables entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for environment variables under implementation."
+                      },
+                      {
+                          "id":  44,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q4] In a for team collaboration scenario focused on implementation, for topic \u0027permissions\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply permissions according to established Bash implementation practices, considering error handling.",
+                                          "B":  "Avoid permissions entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use permissions only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over permissions because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for permissions under implementation."
+                      },
+                      {
+                          "id":  45,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q5] In a during code review scenario focused on implementation, for topic \u0027process control\u0027 and angle \u0027portability\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use process control only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over process control because it is always clearer and safer.",
+                                          "C":  "Apply process control according to established Bash implementation practices, considering portability.",
+                                          "D":  "Avoid process control entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for process control under implementation."
+                      },
+                      {
+                          "id":  46,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q6] In a while debugging scenario focused on implementation, for topic \u0027signal handling\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply signal handling according to established Bash implementation practices, considering data handling.",
+                                          "B":  "Avoid signal handling entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use signal handling only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over signal handling because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for signal handling under implementation."
+                      },
+                      {
+                          "id":  47,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q7] In a in production code scenario focused on implementation, for topic \u0027arrays\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use arrays only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over arrays because it is always clearer and safer.",
+                                          "C":  "Apply arrays according to established Bash implementation practices, considering memory model.",
+                                          "D":  "Avoid arrays entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for arrays under implementation."
+                      },
+                      {
+                          "id":  48,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q8] In a in interview-style problems scenario focused on implementation, for topic \u0027string expansion\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply string expansion according to established Bash implementation practices, considering syntax behavior.",
+                                          "B":  "Avoid string expansion entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use string expansion only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over string expansion because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for string expansion under implementation."
+                      },
+                      {
+                          "id":  49,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q9] In a for maintainable project design scenario focused on implementation, for topic \u0027command substitution\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use command substitution only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over command substitution because it is always clearer and safer.",
+                                          "C":  "Apply command substitution according to established Bash implementation practices, considering best practices.",
+                                          "D":  "Avoid command substitution entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for command substitution under implementation."
+                      },
+                      {
+                          "id":  50,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q10] In a for secure implementation scenario focused on implementation, for topic \u0027script safety\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply script safety according to established Bash implementation practices, considering error handling.",
+                                          "B":  "Avoid script safety entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use script safety only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over script safety because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for script safety under implementation."
+                      },
+                      {
+                          "id":  51,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q11] In a for performance-sensitive code scenario focused on implementation, for topic \u0027SSH automation\u0027 and angle \u0027portability\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use SSH automation only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over SSH automation because it is always clearer and safer.",
+                                          "C":  "Apply SSH automation according to established Bash implementation practices, considering portability.",
+                                          "D":  "Avoid SSH automation entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for SSH automation under implementation."
+                      },
+                      {
+                          "id":  52,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q12] In a for team collaboration scenario focused on implementation, for topic \u0027aliases\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply aliases according to established Bash implementation practices, considering data handling.",
+                                          "B":  "Avoid aliases entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use aliases only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over aliases because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for aliases under implementation."
+                      },
+                      {
+                          "id":  53,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q13] In a during code review scenario focused on implementation, for topic \u0027shell options\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
+                          "options":  {
+                                          "A":  "Use shell options only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over shell options because it is always clearer and safer.",
+                                          "C":  "Apply shell options according to established Bash implementation practices, considering memory model.",
+                                          "D":  "Avoid shell options entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for shell options under implementation."
+                      },
+                      {
+                          "id":  54,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q14] In a while debugging scenario focused on implementation, for topic \u0027stdin stdout stderr\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
+                          "options":  {
+                                          "A":  "Apply stdin stdout stderr according to established Bash implementation practices, considering syntax behavior.",
+                                          "B":  "Avoid stdin stdout stderr entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use stdin stdout stderr only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over stdin stdout stderr because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for stdin stdout stderr under implementation."
+                      },
+                      {
+                          "id":  55,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q15] In a in production code scenario focused on implementation, for topic \u0027trap handling\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
+                          "options":  {
+                                          "A":  "Use trap handling only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over trap handling because it is always clearer and safer.",
+                                          "C":  "Apply trap handling according to established Bash implementation practices, considering best practices.",
+                                          "D":  "Avoid trap handling entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for trap handling under implementation."
+                      },
+                      {
+                          "id":  56,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q16] In a in interview-style problems scenario focused on implementation, for topic \u0027test command\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
+                          "options":  {
+                                          "A":  "Apply test command according to established Bash implementation practices, considering error handling.",
+                                          "B":  "Avoid test command entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use test command only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over test command because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for test command under implementation."
+                      },
+                      {
+                          "id":  57,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q17] In a for maintainable project design scenario focused on implementation, for topic \u0027subshells\u0027 and angle \u0027portability\u0027, choose the valid approach.",
+                          "options":  {
+                                          "A":  "Use subshells only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over subshells because it is always clearer and safer.",
+                                          "C":  "Apply subshells according to established Bash implementation practices, considering portability.",
+                                          "D":  "Avoid subshells entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for subshells under implementation."
+                      },
+                      {
+                          "id":  58,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q18] In a for secure implementation scenario focused on implementation, for topic \u0027file globbing\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
+                          "options":  {
+                                          "A":  "Apply file globbing according to established Bash implementation practices, considering data handling.",
+                                          "B":  "Avoid file globbing entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use file globbing only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over file globbing because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for file globbing under implementation."
+                      },
+                      {
+                          "id":  59,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q19] In a for performance-sensitive code scenario focused on implementation, for topic \u0027xargs\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
+                          "options":  {
+                                          "A":  "Use xargs only in comments; executable code should not include it.",
+                                          "B":  "Prefer global state over xargs because it is always clearer and safer.",
+                                          "C":  "Apply xargs according to established Bash implementation practices, considering memory model.",
+                                          "D":  "Avoid xargs entirely in Bash because it never appears in real projects."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Correct option follows language-specific best practice for xargs under implementation."
+                      },
+                      {
+                          "id":  60,
+                          "type":  "mcq",
+                          "question":  "[Bash][Intermediate][Set-3][Q20] In a for team collaboration scenario focused on implementation, for topic \u0027find command\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
+                          "options":  {
+                                          "A":  "Apply find command according to established Bash implementation practices, considering syntax behavior.",
+                                          "B":  "Avoid find command entirely in Bash because it never appears in real projects.",
+                                          "C":  "Use find command only in comments; executable code should not include it.",
+                                          "D":  "Prefer global state over find command because it is always clearer and safer."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Correct option follows language-specific best practice for find command under implementation."
+                      }
+                  ]
+}

@@ -1,4 +1,9 @@
+import json
+import random
+import time
+import uuid
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -6,9 +11,88 @@ from sqlalchemy.orm import Session
 
 from database import get_db
 from models import Question, QuizSubmission, Test
-from schemas import QuestionOut, QuizSubmissionRequest, QuizSubmissionResponse, TestOut
+from schemas import (
+    QuestionOut,
+    QuizSubmissionRequest,
+    QuizSubmissionResponse,
+    RandomQuizStartRequest,
+    RandomQuizStartResponse,
+    RandomQuizSubmitRequest,
+    RandomQuizSubmitResponse,
+    TestOut,
+)
 
 router = APIRouter()
+
+RANDOM_QUIZ_SESSIONS = {}
+SESSION_TTL_SECONDS = 6 * 60 * 60
+
+
+def _cleanup_expired_sessions() -> None:
+    now = time.time()
+    expired = [
+        key
+        for key, value in RANDOM_QUIZ_SESSIONS.items()
+        if now - value.get("created_at", now) > SESSION_TTL_SECONDS
+    ]
+    for key in expired:
+        RANDOM_QUIZ_SESSIONS.pop(key, None)
+
+
+def _resolve_folder_case_insensitive(parent: Path, desired_name: str) -> Path | None:
+    desired = desired_name.strip().lower()
+    for child in parent.iterdir():
+        if child.is_dir() and child.name.lower() == desired:
+            return child
+    return None
+
+
+def _load_language_level_questions(language: str, level: str) -> list[dict]:
+    base = Path(__file__).resolve().parents[2] / "Database" / "Q&A Topics" / "Computer Languages"
+    if not base.exists():
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Question bank base folder not found")
+
+    lang_dir = _resolve_folder_case_insensitive(base, language)
+    if not lang_dir:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Language folder not found")
+
+    level_dir = _resolve_folder_case_insensitive(lang_dir, level)
+    if not level_dir:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Level folder not found")
+
+    files = sorted(level_dir.glob("Set-*.json"))
+    if not files:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No set files found for the selected language and level")
+
+    questions: list[dict] = []
+    for file_path in files:
+        with file_path.open("r", encoding="utf-8") as source:
+            payload = json.load(source)
+            for item in payload.get("questions", []):
+                options = item.get("options", {})
+                answer = str(item.get("answer", "")).strip().upper()
+                if answer not in {"A", "B", "C", "D"}:
+                    continue
+                if not all(key in options for key in ["A", "B", "C", "D"]):
+                    continue
+
+                questions.append(
+                    {
+                        "question": item.get("question", ""),
+                        "options": {
+                            "A": options.get("A", ""),
+                            "B": options.get("B", ""),
+                            "C": options.get("C", ""),
+                            "D": options.get("D", ""),
+                        },
+                        "answer": answer,
+                    }
+                )
+
+    if not questions:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No valid questions found in the selected bank")
+
+    return questions
 
 
 @router.get("/tests", response_model=List[TestOut])
@@ -86,3 +170,72 @@ def get_test_submissions(test_id: int, db: Session = Depends(get_db)):
         }
         for submission in submissions
     ]
+
+
+@router.post("/random-bank/start", response_model=RandomQuizStartResponse)
+def start_random_bank_session(payload: RandomQuizStartRequest):
+    _cleanup_expired_sessions()
+
+    pool = _load_language_level_questions(payload.language, payload.level)
+    if payload.question_count > len(pool):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Requested {payload.question_count} questions, but only {len(pool)} available",
+        )
+
+    selected = random.sample(pool, payload.question_count)
+
+    session_id = str(uuid.uuid4())
+    questions_for_client = []
+    answers = {}
+
+    for index, question in enumerate(selected, start=1):
+        answers[index] = question["answer"]
+        questions_for_client.append(
+            {
+                "question_id": index,
+                "question": question["question"],
+                "options": question["options"],
+            }
+        )
+
+    RANDOM_QUIZ_SESSIONS[session_id] = {
+        "created_at": time.time(),
+        "language": payload.language,
+        "level": payload.level,
+        "answers": answers,
+        "total": payload.question_count,
+    }
+
+    return RandomQuizStartResponse(
+        session_id=session_id,
+        language=payload.language,
+        level=payload.level,
+        question_count=payload.question_count,
+        total_pool=len(pool),
+        questions=questions_for_client,
+    )
+
+
+@router.post("/random-bank/{session_id}/submit", response_model=RandomQuizSubmitResponse)
+def submit_random_bank_session(session_id: str, payload: RandomQuizSubmitRequest):
+    _cleanup_expired_sessions()
+
+    session = RANDOM_QUIZ_SESSIONS.get(session_id)
+    if not session:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Session not found or expired")
+
+    answers_map = session["answers"]
+    total = session["total"]
+    answered = 0
+    score = 0
+
+    for answer in payload.answers:
+        correct = answers_map.get(answer.question_id)
+        if not correct:
+            continue
+        answered += 1
+        if answer.selected.upper() == correct:
+            score += 1
+
+    return RandomQuizSubmitResponse(score=score, total=total, unanswered=max(total - answered, 0))
