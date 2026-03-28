@@ -29,6 +29,35 @@ class UserLogin(BaseModel):
     password: str
 
 
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ForgotPasswordVerifyRequest(BaseModel):
+    email: EmailStr
+    otp: str
+    new_password: str
+
+    @field_validator("otp")
+    @classmethod
+    def validate_otp(cls, value: str) -> str:
+        code = value.strip()
+        if len(code) != 6 or not code.isdigit():
+            raise ValueError("OTP must be a 6-digit number")
+        return code
+
+    @field_validator("new_password")
+    @classmethod
+    def validate_new_password(cls, value: str) -> str:
+        if len(value) < 6:
+            raise ValueError("Password must be at least 6 characters")
+        return value
+
+
+class MessageResponse(BaseModel):
+    message: str
+
+
 class UserOut(BaseModel):
     id: int
     name: str
