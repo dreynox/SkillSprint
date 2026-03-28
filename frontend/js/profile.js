@@ -79,3 +79,10 @@ followBtn.addEventListener("click", () => {
   following = !following;
   followBtn.textContent = following ? "Following ✓" : "Follow";
 });
+
+const messageBtn = document.getElementById("messageBtn");
+if (messageBtn) {
+  messageBtn.addEventListener("click", () => {
+    window.location.href = "message.html";
+  });
+}

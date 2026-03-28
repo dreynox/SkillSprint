@@ -5,8 +5,9 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    font-family: "JetBrains Mono", monospace;
+    background: radial-gradient(circle at top, #020617, #000);
+    color: #e0ffe8;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
@@ -17,17 +18,19 @@ body {
 .container {
     max-width: 860px;
     width: 100%;
-    background: white;
+    background: rgba(8, 8, 8, 0.86);
+    border: 1px solid rgba(0, 255, 136, 0.24);
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 0 24px rgba(0, 255, 136, 0.18), 0 20px 40px rgba(0,0,0,0.45);
     overflow: hidden;
 }
 
 header {
-    background: linear-gradient(135deg, #11998e, #38ef7d);
-    color: white;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.22), rgba(0, 204, 170, 0.2));
+    color: #e0ffe8;
     text-align: center;
     padding: 30px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
 }
 
 header h1 {
@@ -42,7 +45,7 @@ header p {
 }
 
 .header-link {
-    color: white;
+    color: #00ff88;
     font-size: 0.95em;
     text-decoration: underline;
     opacity: 0.85;
@@ -58,19 +61,21 @@ header p {
     align-items: center;
     gap: 12px;
     padding: 16px 32px;
-    background: #f7f7f7;
-    border-bottom: 1px solid #eee;
+    background: rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid rgba(0, 255, 136, 0.12);
 }
 
 #user-bar label {
     font-weight: bold;
-    color: #444;
+    color: #9bf7c4;
     white-space: nowrap;
 }
 
 #user-bar input {
     padding: 8px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    background: rgba(0, 0, 0, 0.7);
+    color: #e0ffe8;
     border-radius: 8px;
     font-size: 0.95rem;
     width: 100px;
@@ -92,12 +97,12 @@ header p {
 
 .section-header h2,
 h2 {
-    color: #222;
+    color: #00ff88;
     font-size: 1.6em;
 }
 
 h3 {
-    color: #333;
+    color: #9bf7c4;
     font-size: 1.2em;
 }
 
@@ -105,13 +110,14 @@ h3 {
 #refresh-btn,
 #submit-btn {
     padding: 10px 22px;
-    background: linear-gradient(135deg, #11998e, #38ef7d);
-    color: white;
+    background: linear-gradient(135deg, #00ff88, #00ccaa);
+    color: #00140d;
     border: none;
     border-radius: 10px;
     font-size: 0.95rem;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.3);
 }
 
 #submit-btn {
@@ -133,8 +139,8 @@ h3 {
 
 .back-btn {
     background: none;
-    border: 1px solid #11998e;
-    color: #11998e;
+    border: 1px solid rgba(0, 255, 136, 0.45);
+    color: #00ff88;
     border-radius: 8px;
     padding: 8px 16px;
     cursor: pointer;
@@ -143,12 +149,13 @@ h3 {
 }
 
 .back-btn:hover {
-    background: #f0fdf8;
+    background: rgba(0, 255, 136, 0.08);
 }
 
 /* ── Cards ─────────────────────────────────────────────────────────────────── */
 .card {
-    border: 1px solid #e0e0e0;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    background: rgba(0, 0, 0, 0.35);
     border-radius: 12px;
     padding: 18px 20px;
     margin-bottom: 14px;
@@ -157,8 +164,8 @@ h3 {
 }
 
 .card:hover {
-    box-shadow: 0 4px 16px rgba(17,153,142,0.15);
-    border-color: #11998e;
+    box-shadow: 0 0 18px rgba(0,255,136,0.2);
+    border-color: rgba(0,255,136,0.6);
 }
 
 .card.active {
@@ -172,7 +179,7 @@ h3 {
 .card-title {
     font-size: 1.1em;
     font-weight: bold;
-    color: #222;
+    color: #e0ffe8;
     margin-bottom: 6px;
     display: flex;
     align-items: center;
@@ -181,14 +188,14 @@ h3 {
 }
 
 .card-desc {
-    color: #555;
+    color: rgba(224, 255, 232, 0.76);
     font-size: 0.95em;
     margin-bottom: 6px;
     line-height: 1.5;
 }
 
 .card-meta {
-    color: #888;
+    color: rgba(224, 255, 232, 0.6);
     font-size: 0.82em;
 }
 
@@ -203,7 +210,7 @@ h3 {
 }
 
 .badge-active   { background: #d4f5e9; color: #1a7a5a; }
-.badge-inactive { background: #eee;    color: #888; }
+.badge-inactive { background: #1f2937; color: #9ca3af; }
 .diff-easy      { background: #d4f5e9; color: #1a7a5a; }
 .diff-medium    { background: #fff3cd; color: #856404; }
 .diff-hard      { background: #fde8e8; color: #b00020; }
@@ -219,13 +226,13 @@ h3 {
 
 /* ── Problem statement ─────────────────────────────────────────────────────── */
 .problem-statement {
-    background: #f7f7f7;
-    border-left: 4px solid #11998e;
+    background: rgba(0, 0, 0, 0.45);
+    border-left: 4px solid #00ff88;
     border-radius: 6px;
     padding: 14px 18px;
     font-size: 0.97em;
     line-height: 1.7;
-    color: #333;
+    color: #e0ffe8;
     margin: 14px 0;
     white-space: pre-wrap;
 }
@@ -234,7 +241,7 @@ h3 {
 .submit-form {
     margin-top: 28px;
     padding-top: 24px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(0, 255, 136, 0.2);
 }
 
 .submit-form h3 {
@@ -244,7 +251,7 @@ h3 {
 .submit-form label {
     display: block;
     font-weight: bold;
-    color: #444;
+    color: #9bf7c4;
     margin-bottom: 6px;
     margin-top: 14px;
 }
@@ -252,22 +259,24 @@ h3 {
 .submit-form select {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 255, 136, 0.35);
     border-radius: 8px;
     font-size: 0.95rem;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    color: #e0ffe8;
 }
 
 .submit-form textarea {
     width: 100%;
     height: 220px;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 255, 136, 0.3);
     border-radius: 8px;
     font-family: 'Courier New', monospace;
     font-size: 0.88rem;
     resize: vertical;
-    background: #fafafa;
+    background: rgba(0, 0, 0, 0.7);
+    color: #e0ffe8;
     line-height: 1.5;
 }
 

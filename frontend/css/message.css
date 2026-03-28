@@ -18,6 +18,63 @@ body {
     overflow: hidden;
 }
 
+.topbar {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 2;
+    border: 1px solid rgba(0, 255, 102, 0.25);
+    border-radius: 14px;
+    background: rgba(4, 4, 4, 0.75);
+    backdrop-filter: blur(10px);
+}
+
+.topbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.brand {
+    color: #eafff2;
+    text-decoration: none;
+    font-weight: 700;
+    white-space: nowrap;
+    text-shadow: 0 0 14px rgba(0, 255, 102, 0.5);
+}
+
+.brand span {
+    color: var(--neon-green);
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dim);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--neon-green);
+    border-color: rgba(0, 255, 102, 0.4);
+    background: rgba(0, 255, 102, 0.08);
+}
+
 /* --- DYNAMIC BACKGROUND --- */
 .hud-background {
     position: fixed;
@@ -64,6 +121,18 @@ body {
     flex-direction: column;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 255, 102, 0.1);
+    margin-top: 70px;
+}
+
+@media (max-width: 780px) {
+    .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+    }
 }
 
 .chat-header {

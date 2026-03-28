@@ -4,7 +4,7 @@ function checkAuth() {
     const user = localStorage.getItem("user");
 
     if (!token || !user) {
-        window.location.href = "login.html";
+        window.location.href = "../../index.html";
         return;
     }
 
@@ -16,19 +16,24 @@ function checkAuth() {
 }
 
 // Show section
-function showSection(sectionId) {
+function showSection(sectionId, event) {
     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
     document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
     
     document.getElementById(sectionId).classList.add("active");
-    event.target.closest(".nav-item").classList.add("active");
+    if (event && event.target) {
+        const navItem = event.target.closest(".nav-item");
+        if (navItem) {
+            navItem.classList.add("active");
+        }
+    }
 }
 
 // Logout
 function logout() {
     localStorage.removeItem("access_token");
     localStorage.removeItem("user");
-    window.location.href = "login.html";
+    window.location.href = "../../index.html";
 }
 
 // Run on page load
