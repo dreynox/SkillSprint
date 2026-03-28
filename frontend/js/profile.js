@@ -57,6 +57,24 @@ function setUploadStatus(message, isError) {
   element.style.color = isError ? "#f87171" : "#9bf7c4";
 }
 
+function renderProfileDetails(profile) {
+  const set = (id, value) => {
+    const element = document.getElementById(id);
+    if (!element) {
+      return;
+    }
+    element.textContent = value ? String(value) : "-";
+  };
+
+  // Required order: SRN, PRN, YEAR, BRANCH, DIVISION, ROLL NO
+  set("detailSrn", profile.srn);
+  set("detailPrn", profile.prn);
+  set("detailYear", profile.year);
+  set("detailBranch", profile.branch);
+  set("detailDivision", profile.division);
+  set("detailRollNo", profile.roll_no);
+}
+
 async function uploadAvatar(file) {
   if (!file) {
     return;
@@ -234,6 +252,7 @@ async function loadProfile() {
     animateCount("problems", stats.contest_submissions || 0);
     animateCount("rating", stats.total_quiz_score || 0);
     renderPerformanceRows(stats);
+    renderProfileDetails(profile);
 
     localStorage.setItem("user", JSON.stringify(profile));
   } catch (_error) {
@@ -250,9 +269,11 @@ async function loadProfile() {
       }
       roleParts.push((cachedUser.role || "student").toUpperCase());
       document.getElementById("role").textContent = roleParts.join(" · ");
+      renderProfileDetails(cachedUser);
     } else {
       document.getElementById("username").textContent = "Profile unavailable";
       document.getElementById("role").textContent = "Please login again";
+      renderProfileDetails({});
     }
 
     const avatar = document.getElementById("avatar");
@@ -283,6 +304,16 @@ if (avatarUploadInput) {
   avatarUploadInput.addEventListener("change", (event) => {
     const [file] = event.target.files || [];
     uploadAvatar(file);
+  });
+}
+
+const profileDetailsBtn = document.getElementById("profileDetailsBtn");
+const profileDetailsPanel = document.getElementById("profileDetailsPanel");
+if (profileDetailsBtn && profileDetailsPanel) {
+  profileDetailsBtn.addEventListener("click", () => {
+    const isHidden = profileDetailsPanel.style.display === "none" || !profileDetailsPanel.style.display;
+    profileDetailsPanel.style.display = isHidden ? "block" : "none";
+    profileDetailsBtn.textContent = isHidden ? "Hide Details" : "Profile Details";
   });
 }
 

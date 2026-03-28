@@ -9,8 +9,12 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
+    const srn = document.getElementById("srn").value.trim();
+    const prn = document.getElementById("prn").value.trim();
     const year = document.getElementById("year").value;
     const branch = document.getElementById("branch").value.trim();
+    const division = document.getElementById("division").value.trim();
+    const rollNo = document.getElementById("rollNo").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -50,8 +54,12 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
                 email,
                 password,
                 role: "student",
+                srn: srn || null,
+                prn: prn || null,
                 year: year ? parseInt(year) : null,
                 branch: branch || null,
+                division: division || null,
+                roll_no: rollNo || null,
             }),
         });
 

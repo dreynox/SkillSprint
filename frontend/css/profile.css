@@ -195,6 +195,45 @@ body {
   color: #9bf7c4;
 }
 
+.profile-details-panel {
+  margin-top: 12px;
+  text-align: left;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(16, 185, 129, 0.06);
+}
+
+.profile-details-panel h4 {
+  margin-bottom: 8px;
+  color: #d1fae5;
+  font-size: 14px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.detail-row strong {
+  color: #ecfdf5;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .btn {
   padding: 10px 18px;
   border-radius: 10px;

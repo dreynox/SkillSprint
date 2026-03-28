@@ -9,8 +9,12 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     role: str = "student"
+    srn: Optional[str] = None
+    prn: Optional[str] = None
     year: Optional[int] = None
     branch: Optional[str] = None
+    division: Optional[str] = None
+    roll_no: Optional[str] = None
 
     @field_validator("password")
     @classmethod
@@ -30,8 +34,12 @@ class UserOut(BaseModel):
     name: str
     email: EmailStr
     role: str
+    srn: Optional[str]
+    prn: Optional[str]
     year: Optional[int]
     branch: Optional[str]
+    division: Optional[str]
+    roll_no: Optional[str]
     bio: Optional[str]
     avatar_url: Optional[str]
     created_at: datetime
@@ -48,8 +56,12 @@ class AuthResponse(BaseModel):
 
 class UserProfileUpdate(BaseModel):
     name: Optional[str] = None
+    srn: Optional[str] = None
+    prn: Optional[str] = None
     year: Optional[int] = None
     branch: Optional[str] = None
+    division: Optional[str] = None
+    roll_no: Optional[str] = None
     bio: Optional[str] = None
     avatar_url: Optional[str] = None
 

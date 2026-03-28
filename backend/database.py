@@ -30,10 +30,18 @@ def ensure_sqlite_compatibility():
 
         if "users" in tables:
             user_columns = {column["name"] for column in inspector.get_columns("users")}
+            if "srn" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN srn VARCHAR"))
+            if "prn" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN prn VARCHAR"))
             if "year" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN year INTEGER"))
             if "branch" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN branch VARCHAR"))
+            if "division" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN division VARCHAR"))
+            if "roll_no" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN roll_no VARCHAR"))
             if "bio" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN bio TEXT"))
             if "avatar_url" not in user_columns:
