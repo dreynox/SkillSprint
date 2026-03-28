@@ -10,6 +10,14 @@ function authHeaders() {
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
+function getCachedUser() {
+  try {
+    return JSON.parse(localStorage.getItem("user") || "null");
+  } catch (_err) {
+    return null;
+  }
+}
+
 function resolveAvatarUrl(avatarUrl) {
   if (!avatarUrl) {
     return DEFAULT_AVATAR;
@@ -202,8 +210,24 @@ async function loadProfile() {
 
     localStorage.setItem("user", JSON.stringify(profile));
   } catch (_error) {
-    document.getElementById("username").textContent = "Profile unavailable";
-    document.getElementById("role").textContent = "Please login again";
+    const cachedUser = getCachedUser();
+    if (cachedUser && cachedUser.name) {
+      document.getElementById("username").textContent = cachedUser.name;
+
+      const roleParts = [];
+      if (cachedUser.year) {
+        roleParts.push(`Year ${cachedUser.year}`);
+      }
+      if (cachedUser.branch) {
+        roleParts.push(cachedUser.branch);
+      }
+      roleParts.push((cachedUser.role || "student").toUpperCase());
+      document.getElementById("role").textContent = roleParts.join(" · ");
+    } else {
+      document.getElementById("username").textContent = "Profile unavailable";
+      document.getElementById("role").textContent = "Please login again";
+    }
+
     const avatar = document.getElementById("avatar");
     if (avatar) {
       avatar.src = DEFAULT_AVATAR;
