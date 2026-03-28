@@ -164,12 +164,19 @@ async function loadProfile() {
       fetch(`${API_BASE}/users/me/stats`, { headers: authHeaders() }),
     ]);
 
-    if (!profileRes.ok || !statsRes.ok) {
+    if (!profileRes.ok) {
       throw new Error("Unable to load profile data");
     }
 
     const profile = await profileRes.json();
-    const stats = await statsRes.json();
+    const stats = statsRes.ok
+      ? await statsRes.json()
+      : {
+          contests_joined: 0,
+          contest_submissions: 0,
+          quiz_attempts: 0,
+          total_quiz_score: 0,
+        };
 
     const roleParts = [];
     if (profile.year) {
@@ -197,6 +204,10 @@ async function loadProfile() {
   } catch (_error) {
     document.getElementById("username").textContent = "Profile unavailable";
     document.getElementById("role").textContent = "Please login again";
+    const avatar = document.getElementById("avatar");
+    if (avatar) {
+      avatar.src = DEFAULT_AVATAR;
+    }
   }
 }
 

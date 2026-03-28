@@ -59,7 +59,11 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
         if (response.ok) {
             // Store token and redirect
-            localStorage.setItem("access_token", data.access_token);
+            const token = data.token || data.access_token;
+            if (!token) {
+                throw new Error("Signup succeeded but token was missing in response.");
+            }
+            localStorage.setItem("access_token", token);
             localStorage.setItem("user", JSON.stringify(data.user));
             window.location.href = "../../index.html";
         } else {

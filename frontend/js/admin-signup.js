@@ -52,7 +52,11 @@ document.getElementById("adminSignupForm").addEventListener("submit", async (e) 
     const data = await response.json();
 
     if (response.ok) {
-      localStorage.setItem("access_token", data.access_token);
+      const token = data.token || data.access_token;
+      if (!token) {
+        throw new Error("Signup succeeded but token was missing in response.");
+      }
+      localStorage.setItem("access_token", token);
       localStorage.setItem("user", JSON.stringify(data.user));
       window.location.href = "admin-login.html";
     } else {
