@@ -1,6 +1,9 @@
 const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 const DEFAULT_AVATAR = "../images/default-avatar.svg";
+const AVATAR_MAX_BYTES = 1024 * 1024;
 let currentProfile = null;
+let pendingAvatarFile = null;
+let pendingAvatarPreviewUrl = "";
 
 function getToken() {
   const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
@@ -60,6 +63,15 @@ function setUploadStatus(message, isError) {
   element.style.color = isError ? "#f87171" : "#9bf7c4";
 }
 
+function setAvatarModalStatus(message, isError) {
+  const element = document.getElementById("avatarModalStatus");
+  if (!element) {
+    return;
+  }
+  element.textContent = message || "";
+  element.style.color = isError ? "#f87171" : "#9bf7c4";
+}
+
 function setDeleteStatus(message, isError) {
   const element = document.getElementById("deleteAccountStatus");
   if (!element) {
@@ -76,6 +88,32 @@ function setDetailsStatus(message, isError) {
   }
   element.textContent = message || "";
   element.style.color = isError ? "#f87171" : "#9bf7c4";
+}
+
+function closeDetailsModal() {
+  const detailsEditModal = document.getElementById("detailsEditModal");
+  const detailsEditBtn = document.getElementById("detailsEditBtn");
+
+  if (!detailsEditModal || !detailsEditBtn) {
+    return;
+  }
+
+  detailsEditModal.hidden = true;
+  detailsEditBtn.setAttribute("aria-expanded", "false");
+}
+
+function openDetailsModal() {
+  const detailsEditModal = document.getElementById("detailsEditModal");
+  const detailsEditBtn = document.getElementById("detailsEditBtn");
+
+  if (!detailsEditModal || !detailsEditBtn) {
+    return;
+  }
+
+  fillDetailsForm(currentProfile || {});
+  setDetailsStatus("", false);
+  detailsEditModal.hidden = false;
+  detailsEditBtn.setAttribute("aria-expanded", "true");
 }
 
 function buildRoleText(profile) {
@@ -187,12 +225,10 @@ async function saveProfileDetails() {
     fillDetailsForm(data);
     localStorage.setItem("user", JSON.stringify(data));
 
-    const detailsEditForm = document.getElementById("detailsEditForm");
-    if (detailsEditForm) {
-      detailsEditForm.hidden = true;
-    }
-
     setDetailsStatus("Profile details updated.", false);
+    setTimeout(() => {
+      closeDetailsModal();
+    }, 350);
   } catch (error) {
     setDetailsStatus(error.message || "Failed to update profile details", true);
   }
@@ -200,13 +236,13 @@ async function saveProfileDetails() {
 
 async function uploadAvatar(file) {
   if (!file) {
-    return;
+    return false;
   }
 
   const token = getToken();
   if (!token) {
     window.location.href = "../../index.html";
-    return;
+    return false;
   }
 
   const formData = new FormData();
@@ -226,7 +262,7 @@ async function uploadAvatar(file) {
       setTimeout(() => {
         clearSessionAndGoLogin();
       }, 700);
-      return;
+      return false;
     }
 
     const data = await response.json();
@@ -240,10 +276,14 @@ async function uploadAvatar(file) {
     }
 
     const cachedUser = JSON.parse(localStorage.getItem("user") || "{}");
-    localStorage.setItem("user", JSON.stringify({ ...cachedUser, ...data }));
+    const nextUser = { ...cachedUser, ...data };
+    currentProfile = nextUser;
+    localStorage.setItem("user", JSON.stringify(nextUser));
     setUploadStatus("Profile image updated.", false);
+    return true;
   } catch (error) {
     setUploadStatus(error.message || "Failed to upload image", true);
+    return false;
   }
 }
 
@@ -474,51 +514,139 @@ if (messageBtn) {
 const avatarUploadInput = document.getElementById("avatarUpload");
 const avatarCaptureInput = document.getElementById("avatarCapture");
 const avatarEditBtn = document.getElementById("avatarEditBtn");
-const avatarEditMenu = document.getElementById("avatarEditMenu");
-const chooseFolderBtn = document.getElementById("chooseFolderBtn");
-const takePhotoBtn = document.getElementById("takePhotoBtn");
+const avatarUploadModal = document.getElementById("avatarUploadModal");
+const avatarModalCloseBtn = document.getElementById("avatarModalCloseBtn");
+const avatarModalCancelBtn = document.getElementById("avatarModalCancelBtn");
+const avatarModalSaveBtn = document.getElementById("avatarModalSaveBtn");
+const avatarModalPreview = document.getElementById("avatarModalPreview");
+const avatarDropZone = document.getElementById("avatarDropZone");
+const avatarBrowseBtn = document.getElementById("avatarBrowseBtn");
+const avatarModalTakePhotoBtn = document.getElementById("avatarModalTakePhotoBtn");
+const avatarFileChip = document.getElementById("avatarFileChip");
+const avatarFileName = document.getElementById("avatarFileName");
+const avatarFileClearBtn = document.getElementById("avatarFileClearBtn");
 
-function closeAvatarMenu() {
-  if (!avatarEditMenu || !avatarEditBtn) {
+function syncAvatarPreviewToCurrent() {
+  if (!avatarModalPreview) {
     return;
   }
-  avatarEditMenu.hidden = true;
-  avatarEditBtn.setAttribute("aria-expanded", "false");
+
+  const avatar = document.getElementById("avatar");
+  avatarModalPreview.src = avatar ? avatar.src : DEFAULT_AVATAR;
 }
 
-function toggleAvatarMenu() {
-  if (!avatarEditMenu || !avatarEditBtn) {
+function updateAvatarSaveState() {
+  if (avatarModalSaveBtn) {
+    avatarModalSaveBtn.disabled = !pendingAvatarFile;
+  }
+}
+
+function clearPendingAvatar(resetStatus) {
+  if (pendingAvatarPreviewUrl) {
+    URL.revokeObjectURL(pendingAvatarPreviewUrl);
+    pendingAvatarPreviewUrl = "";
+  }
+
+  pendingAvatarFile = null;
+
+  if (avatarFileChip) {
+    avatarFileChip.hidden = true;
+  }
+
+  if (avatarFileName) {
+    avatarFileName.textContent = "";
+  }
+
+  syncAvatarPreviewToCurrent();
+  updateAvatarSaveState();
+
+  if (resetStatus) {
+    setAvatarModalStatus("", false);
+  }
+}
+
+function openAvatarModal() {
+  if (!avatarUploadModal || !avatarEditBtn) {
     return;
   }
 
-  const nextHidden = !avatarEditMenu.hidden;
-  avatarEditMenu.hidden = nextHidden;
-  avatarEditBtn.setAttribute("aria-expanded", String(!nextHidden));
+  clearPendingAvatar(true);
+  avatarUploadModal.hidden = false;
+  avatarEditBtn.setAttribute("aria-expanded", "true");
+}
+
+function closeAvatarModal() {
+  if (!avatarUploadModal || !avatarEditBtn) {
+    return;
+  }
+
+  avatarUploadModal.hidden = true;
+  avatarEditBtn.setAttribute("aria-expanded", "false");
+  clearPendingAvatar(true);
+}
+
+function setPendingAvatarFile(file) {
+  if (!file) {
+    return;
+  }
+
+  if (!file.type || !file.type.startsWith("image/")) {
+    setAvatarModalStatus("Only image files are supported.", true);
+    return;
+  }
+
+  if (file.size > AVATAR_MAX_BYTES) {
+    setAvatarModalStatus("Image must be 1 MB or smaller.", true);
+    return;
+  }
+
+  if (pendingAvatarPreviewUrl) {
+    URL.revokeObjectURL(pendingAvatarPreviewUrl);
+    pendingAvatarPreviewUrl = "";
+  }
+
+  pendingAvatarFile = file;
+  pendingAvatarPreviewUrl = URL.createObjectURL(file);
+
+  if (avatarModalPreview) {
+    avatarModalPreview.src = pendingAvatarPreviewUrl;
+  }
+
+  if (avatarFileChip && avatarFileName) {
+    avatarFileChip.hidden = false;
+    avatarFileName.textContent = file.name;
+  }
+
+  updateAvatarSaveState();
+  setAvatarModalStatus("Image ready. Click Save to update your profile photo.", false);
 }
 
 if (avatarEditBtn) {
-  avatarEditBtn.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleAvatarMenu();
+  avatarEditBtn.addEventListener("click", () => {
+    openAvatarModal();
   });
 }
 
-if (avatarEditMenu) {
-  avatarEditMenu.addEventListener("click", (event) => {
-    event.stopPropagation();
+if (avatarModalCloseBtn) {
+  avatarModalCloseBtn.addEventListener("click", () => {
+    closeAvatarModal();
   });
 }
 
-if (chooseFolderBtn && avatarUploadInput) {
-  chooseFolderBtn.addEventListener("click", () => {
-    closeAvatarMenu();
+if (avatarModalCancelBtn) {
+  avatarModalCancelBtn.addEventListener("click", () => {
+    closeAvatarModal();
+  });
+}
+
+if (avatarBrowseBtn && avatarUploadInput) {
+  avatarBrowseBtn.addEventListener("click", () => {
     avatarUploadInput.click();
   });
 }
 
-if (takePhotoBtn && avatarCaptureInput) {
-  takePhotoBtn.addEventListener("click", () => {
-    closeAvatarMenu();
+if (avatarModalTakePhotoBtn && avatarCaptureInput) {
+  avatarModalTakePhotoBtn.addEventListener("click", () => {
     avatarCaptureInput.click();
   });
 }
@@ -526,7 +654,7 @@ if (takePhotoBtn && avatarCaptureInput) {
 if (avatarUploadInput) {
   avatarUploadInput.addEventListener("change", (event) => {
     const [file] = event.target.files || [];
-    uploadAvatar(file);
+    setPendingAvatarFile(file);
     event.target.value = "";
   });
 }
@@ -534,8 +662,51 @@ if (avatarUploadInput) {
 if (avatarCaptureInput) {
   avatarCaptureInput.addEventListener("change", (event) => {
     const [file] = event.target.files || [];
-    uploadAvatar(file);
+    setPendingAvatarFile(file);
     event.target.value = "";
+  });
+}
+
+if (avatarFileClearBtn) {
+  avatarFileClearBtn.addEventListener("click", () => {
+    clearPendingAvatar(true);
+  });
+}
+
+if (avatarDropZone) {
+  avatarDropZone.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    avatarDropZone.classList.add("is-dragover");
+  });
+
+  avatarDropZone.addEventListener("dragleave", () => {
+    avatarDropZone.classList.remove("is-dragover");
+  });
+
+  avatarDropZone.addEventListener("drop", (event) => {
+    event.preventDefault();
+    avatarDropZone.classList.remove("is-dragover");
+    const [file] = event.dataTransfer?.files || [];
+    setPendingAvatarFile(file);
+  });
+}
+
+if (avatarModalSaveBtn) {
+  avatarModalSaveBtn.addEventListener("click", async () => {
+    if (!pendingAvatarFile) {
+      setAvatarModalStatus("Please choose an image first.", true);
+      return;
+    }
+
+    avatarModalSaveBtn.disabled = true;
+    setAvatarModalStatus("Uploading image...", false);
+    const saved = await uploadAvatar(pendingAvatarFile);
+    if (saved) {
+      closeAvatarModal();
+    } else {
+      updateAvatarSaveState();
+      setAvatarModalStatus("Upload failed. Please try again.", true);
+    }
   });
 }
 
@@ -545,56 +716,26 @@ if (profileDetailsPanel) {
 }
 
 const detailsEditBtn = document.getElementById("detailsEditBtn");
-const detailsEditMenu = document.getElementById("detailsEditMenu");
-const openDetailsFormBtn = document.getElementById("openDetailsFormBtn");
+const detailsEditModal = document.getElementById("detailsEditModal");
+const detailsModalCloseBtn = document.getElementById("detailsModalCloseBtn");
 const detailsEditForm = document.getElementById("detailsEditForm");
 const cancelDetailsBtn = document.getElementById("cancelDetailsBtn");
 
-function closeDetailsMenu() {
-  if (!detailsEditMenu || !detailsEditBtn) {
-    return;
-  }
-  detailsEditMenu.hidden = true;
-  detailsEditBtn.setAttribute("aria-expanded", "false");
-}
-
-function toggleDetailsMenu() {
-  if (!detailsEditMenu || !detailsEditBtn) {
-    return;
-  }
-
-  const nextHidden = !detailsEditMenu.hidden;
-  detailsEditMenu.hidden = nextHidden;
-  detailsEditBtn.setAttribute("aria-expanded", String(!nextHidden));
-}
-
 if (detailsEditBtn) {
-  detailsEditBtn.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleDetailsMenu();
+  detailsEditBtn.addEventListener("click", () => {
+    openDetailsModal();
   });
 }
 
-if (detailsEditMenu) {
-  detailsEditMenu.addEventListener("click", (event) => {
-    event.stopPropagation();
-  });
-}
-
-if (openDetailsFormBtn && detailsEditForm) {
-  openDetailsFormBtn.addEventListener("click", () => {
-    closeDetailsMenu();
-    fillDetailsForm(currentProfile || {});
-    detailsEditForm.hidden = false;
-    setDetailsStatus("", false);
+if (detailsModalCloseBtn) {
+  detailsModalCloseBtn.addEventListener("click", () => {
+    closeDetailsModal();
   });
 }
 
 if (cancelDetailsBtn && detailsEditForm) {
   cancelDetailsBtn.addEventListener("click", () => {
-    detailsEditForm.hidden = true;
-    fillDetailsForm(currentProfile || {});
-    setDetailsStatus("", false);
+    closeDetailsModal();
   });
 }
 
@@ -605,17 +746,28 @@ if (detailsEditForm) {
   });
 }
 
-document.addEventListener("click", () => {
-  closeAvatarMenu();
-  closeDetailsMenu();
-});
-
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    closeAvatarMenu();
-    closeDetailsMenu();
+    closeAvatarModal();
+    closeDetailsModal();
   }
 });
+
+if (avatarUploadModal) {
+  avatarUploadModal.addEventListener("click", (event) => {
+    if (event.target === avatarUploadModal) {
+      closeAvatarModal();
+    }
+  });
+}
+
+if (detailsEditModal) {
+  detailsEditModal.addEventListener("click", (event) => {
+    if (event.target === detailsEditModal) {
+      closeDetailsModal();
+    }
+  });
+}
 
 const deleteAccountBtn = document.getElementById("deleteAccountBtn");
 if (deleteAccountBtn) {

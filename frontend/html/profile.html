@@ -44,13 +44,8 @@
           type="button"
           aria-label="Edit profile image"
           aria-expanded="false"
-          aria-controls="avatarEditMenu"
-        >✏️</button>
-
-        <div class="avatar-edit-menu" id="avatarEditMenu" hidden>
-          <button type="button" id="chooseFolderBtn">Choose from folder</button>
-          <button type="button" id="takePhotoBtn">Take photo</button>
-        </div>
+          aria-controls="avatarUploadModal"
+        >📷</button>
       </div>
       <h2 id="username">Rayhaan Shaikh</h2>
       <p id="role">First Year CSE · Competitive Programmer</p>
@@ -69,11 +64,8 @@
             type="button"
             aria-label="Edit profile details"
             aria-expanded="false"
-            aria-controls="detailsEditMenu"
+            aria-controls="detailsEditModal"
           >✏️</button>
-        </div>
-        <div class="details-edit-menu" id="detailsEditMenu" hidden>
-          <button id="openDetailsFormBtn" type="button">Edit profile details</button>
         </div>
 
         <div class="detail-row"><span>SRN</span><strong id="detailSrn">-</strong></div>
@@ -82,42 +74,6 @@
         <div class="detail-row"><span>BRANCH</span><strong id="detailBranch">-</strong></div>
         <div class="detail-row"><span>DIVISION</span><strong id="detailDivision">-</strong></div>
         <div class="detail-row"><span>ROLL NO</span><strong id="detailRollNo">-</strong></div>
-
-        <form id="detailsEditForm" class="details-edit-form" hidden>
-          <label>
-            Name
-            <input id="editName" type="text" maxlength="80" />
-          </label>
-          <label>
-            SRN
-            <input id="editSrn" type="text" maxlength="40" />
-          </label>
-          <label>
-            PRN
-            <input id="editPrn" type="text" maxlength="40" />
-          </label>
-          <label>
-            Year
-            <input id="editYear" type="number" min="1" max="8" />
-          </label>
-          <label>
-            Branch
-            <input id="editBranch" type="text" maxlength="60" />
-          </label>
-          <label>
-            Division
-            <input id="editDivision" type="text" maxlength="20" />
-          </label>
-          <label>
-            Roll No
-            <input id="editRollNo" type="text" maxlength="20" />
-          </label>
-          <div class="details-edit-actions">
-            <button id="saveDetailsBtn" class="btn btn-primary" type="submit">Save</button>
-            <button id="cancelDetailsBtn" class="btn btn-outline" type="button">Cancel</button>
-          </div>
-        </form>
-        <p id="detailsUpdateStatus" class="details-status"></p>
       </div>
 
       <input id="avatarUpload" type="file" accept="image/*" hidden />
@@ -196,6 +152,85 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <div class="avatar-modal" id="avatarUploadModal" hidden>
+    <div class="avatar-modal-card" role="dialog" aria-modal="true" aria-labelledby="avatarModalTitle">
+      <div class="avatar-modal-head">
+        <h3 id="avatarModalTitle">Upload Profile Image</h3>
+        <button id="avatarModalCloseBtn" class="avatar-modal-close" type="button" aria-label="Close upload dialog">×</button>
+      </div>
+
+      <div class="avatar-modal-body">
+        <div class="avatar-preview-box">
+          <img id="avatarModalPreview" src="../images/default-avatar.svg" alt="Selected profile preview" />
+        </div>
+
+        <div class="avatar-drop-box" id="avatarDropZone">
+          <p>Drop your image here or <button id="avatarBrowseBtn" type="button">browse</button></p>
+          <small>Supports image files up to 1 MB.</small>
+          <small>Aspect Ratio: 1:1 recommended</small>
+          <button id="avatarModalTakePhotoBtn" class="avatar-modal-photo" type="button">Take photo</button>
+        </div>
+      </div>
+
+      <div class="avatar-file-chip" id="avatarFileChip" hidden>
+        <span id="avatarFileName"></span>
+        <button id="avatarFileClearBtn" type="button" aria-label="Remove selected file">×</button>
+      </div>
+
+      <p id="avatarModalStatus" class="avatar-modal-status"></p>
+
+      <div class="avatar-modal-actions">
+        <button id="avatarModalCancelBtn" class="btn btn-outline" type="button">Cancel</button>
+        <button id="avatarModalSaveBtn" class="btn btn-primary" type="button" disabled>Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="details-modal" id="detailsEditModal" hidden>
+    <div class="details-modal-card" role="dialog" aria-modal="true" aria-labelledby="detailsModalTitle">
+      <div class="details-modal-head">
+        <h3 id="detailsModalTitle">Edit Profile Details</h3>
+        <button id="detailsModalCloseBtn" class="details-modal-close" type="button" aria-label="Close details dialog">×</button>
+      </div>
+
+      <form id="detailsEditForm" class="details-edit-form">
+        <label>
+          Name
+          <input id="editName" type="text" maxlength="80" />
+        </label>
+        <label>
+          SRN
+          <input id="editSrn" type="text" maxlength="40" />
+        </label>
+        <label>
+          PRN
+          <input id="editPrn" type="text" maxlength="40" />
+        </label>
+        <label>
+          Year
+          <input id="editYear" type="number" min="1" max="8" />
+        </label>
+        <label>
+          Branch
+          <input id="editBranch" type="text" maxlength="60" />
+        </label>
+        <label>
+          Division
+          <input id="editDivision" type="text" maxlength="20" />
+        </label>
+        <label>
+          Roll No
+          <input id="editRollNo" type="text" maxlength="20" />
+        </label>
+        <p id="detailsUpdateStatus" class="details-status"></p>
+        <div class="details-modal-actions">
+          <button id="cancelDetailsBtn" class="btn btn-outline" type="button">Cancel</button>
+          <button id="saveDetailsBtn" class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
     </div>
   </div>
 
