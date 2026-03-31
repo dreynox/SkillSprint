@@ -206,6 +206,16 @@ function openProblem(problem) {
     <p class="problem-statement">${escapeHtml(problem.statement || "")}</p>
     ${problem.tags ? `<p class="card-meta">Tags: ${escapeHtml(problem.tags)}</p>` : ""}
   `;
+
+  // Add button to go to code editor
+  const editorBtn = document.createElement("button");
+  editorBtn.type = "button";
+  editorBtn.style.marginTop = "16px";
+  editorBtn.textContent = "📝 Open in Code Editor";
+  editorBtn.onclick = () => {
+    window.location.href = `coding.html?contest_id=${activeContestId}&problem_id=${problem.id}`;
+  };
+  problemDetailEl.appendChild(editorBtn);
 }
 
 async function submitSolution() {

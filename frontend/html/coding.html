@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSprint | Coding Contest</title>
+  <link rel="stylesheet" href="../css/coding.css">
+</head>
+
+<body>
+
+  <!-- NEON BACKGROUND -->
+  <canvas id="neon-bg"></canvas>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="student-dashboard.html">Skill<span>Sprint</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+        <a class="nav-link active" href="contests.html">Contests</a>
+        <a class="nav-link" href="quiz.html">Quiz</a>
+        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="message.html">Message</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- PROBLEM PANEL -->
+    <div class="problem-panel">
+      <div class="card problem-card">
+        <h2 id="problemTitle">Loading...</h2>
+        <div id="problemStatement" class="problem-statement">
+          <p>Loading problem...</p>
+        </div>
+
+        <div class="test-cases-section">
+          <h3>Test Cases</h3>
+          <div id="testCasesList" class="test-cases-list">
+            <p>Loading test cases...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDITOR PANEL -->
+    <div class="editor-panel">
+      <div class="card editor-card">
+        <div class="editor-header">
+          <h3>Code Editor</h3>
+          <div class="editor-actions">
+            <select id="languageSelect" class="language-select">
+              <option value="c">C (C99)</option>
+            </select>
+          </div>
+        </div>
+
+        <textarea id="codeEditor" class="code-editor" placeholder="Write your C code here..."></textarea>
+
+        <div class="editor-footer">
+          <div class="button-group">
+            <button id="runBtn" class="btn btn-primary">▶ Run Tests</button>
+            <button id="submitBtn" class="btn btn-success">✓ Submit</button>
+          </div>
+          <div id="executionStatus" class="execution-status"></div>
+        </div>
+      </div>
+
+      <!-- RESULTS PANEL -->
+      <div class="card results-card">
+        <h3>Results</h3>
+        <div id="resultsList" class="results-list">
+          <p class="empty-state">Run tests to see results</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS FILES -->
+  <script src="../js/api-base.js"></script>
+  <script src="../js/coding.js"></script>
+  <script src="../js/neonBackground.js"></script>
+
+</body>
+</html>

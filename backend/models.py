@@ -101,6 +101,7 @@ class ContestProblem(Base):
     tags = Column(String, nullable=True)
 
     contest = relationship("Contest", back_populates="problems")
+    test_cases = relationship("TestCase", back_populates="problem", cascade="all, delete-orphan")
     submissions = relationship("ContestSubmission", back_populates="problem", cascade="all, delete-orphan")
 
 
@@ -115,6 +116,7 @@ class ContestSubmission(Base):
     code = Column(Text, nullable=False)
     verdict = Column(String, default="PENDING", nullable=False)
     score = Column(Integer, default=0, nullable=False)
+    execution_results = Column(Text, nullable=True)  # JSON string of test results
     submitted_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     user = relationship("User")
@@ -145,6 +147,18 @@ class Hackathon(Base):
     end_time = Column(DateTime, nullable=True)
     is_active = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class TestCase(Base):
+    __tablename__ = "test_cases"
+
+    id = Column(Integer, primary_key=True, index=True)
+    problem_id = Column(Integer, ForeignKey("contest_problems.id"), nullable=False)
+    input_data = Column(Text, nullable=True)  # Expected input
+    expected_output = Column(Text, nullable=False)  # Expected output
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    problem = relationship("ContestProblem", back_populates="test_cases")
 
 
 class PasswordResetOTP(Base):

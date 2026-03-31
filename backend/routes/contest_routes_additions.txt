@@ -1,0 +1,126 @@
+    participation = ContestParticipation(user_id=current_user.id, contest_id=contest_id)
+    db.add(participation)
+    db.commit()
+    db.refresh(participation)
+    return participation
+
+
+@router.post(
+    "/{contest_id}/problems/{problem_id}/test-cases",
+    response_model=TestCaseOut,
+    status_code=status.HTTP_201_CREATED,
+)
+def add_test_case(
+    contest_id: int,
+    problem_id: int,
+    payload: TestCaseCreate,
+    db: Session = Depends(get_db),
+):
+    """Add a test case to a problem (admin only)"""
+    problem = (
+        db.query(ContestProblem)
+        .filter(ContestProblem.id == problem_id, ContestProblem.contest_id == contest_id)
+        .first()
+    )
+    if not problem:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found")
+
+    test_case = TestCase(
+        problem_id=problem_id,
+        input_data=payload.input_data,
+        expected_output=payload.expected_output,
+    )
+    db.add(test_case)
+    db.commit()
+    db.refresh(test_case)
+    return test_case
+
+
+@router.get("/{contest_id}/problems/{problem_id}/test-cases", response_model=List[TestCaseOut])
+def get_problem_test_cases(
+    contest_id: int,
+    problem_id: int,
+    db: Session = Depends(get_db),
+):
+    """Get all test cases for a problem"""
+    problem = (
+        db.query(ContestProblem)
+        .filter(ContestProblem.id == problem_id, ContestProblem.contest_id == contest_id)
+        .first()
+    )
+    if not problem:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found")
+
+    test_cases = db.query(TestCase).filter(TestCase.problem_id == problem_id).all()
+    return test_cases
+
+
+@router.post(
+    "/{contest_id}/problems/{problem_id}/execute",
+    response_model=CodeExecutionResponse,
+)
+def execute_code_for_problem(
+    contest_id: int,
+    problem_id: int,
+    payload: ContestSubmissionCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Execute code against test cases and return results"""
+    problem = (
+        db.query(ContestProblem)
+        .filter(ContestProblem.id == problem_id, ContestProblem.contest_id == contest_id)
+        .first()
+    )
+    if not problem:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found")
+
+    # Get test cases
+    test_cases = db.query(TestCase).filter(TestCase.problem_id == problem_id).all()
+    if not test_cases:
+        return CodeExecutionResponse(
+            status="NO_TESTS",
+            message="No test cases available for this problem",
+            passed=0,
+            total=0,
+        )
+
+    # Convert to format expected by compiler
+    test_data = [
+        {"input": tc.input_data or "", "expected_output": tc.expected_output}
+        for tc in test_cases
+    ]
+
+    # Only support C for now
+    if payload.language.lower() not in ["c", "c99"]:
+        return CodeExecutionResponse(
+            status="UNSUPPORTED_LANGUAGE",
+            message="Only C language is supported",
+            passed=0,
+            total=len(test_data),
+        )
+
+    # Execute code
+    result = test_code(payload.code, test_data)
+
+    # Convert TestResult objects from compiler
+    test_results = []
+    for res in result.get("results", []):
+        test_results.append(
+            {
+                "test_case": res.get("test_case"),
+                "status": res.get("status"),
+                "input": res.get("input"),
+                "expected": res.get("expected"),
+                "actual": res.get("actual"),
+                "error": res.get("error"),
+            }
+        )
+
+    return CodeExecutionResponse(
+        status=result.get("status"),
+        message=result.get("message"),
+        passed=result.get("passed", 0),
+        total=result.get("total", 0),
+        results=test_results,
+    )

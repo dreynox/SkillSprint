@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
@@ -246,6 +246,39 @@ class ContestOut(BaseModel):
         from_attributes = True
 
 
+class TestCaseCreate(BaseModel):
+    input_data: Optional[str] = None
+    expected_output: str
+
+
+class TestCaseOut(BaseModel):
+    id: int
+    problem_id: int
+    input_data: Optional[str]
+    expected_output: str
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class TestResult(BaseModel):
+    test_case: int
+    status: str  # PASS, FAIL, RUNTIME_ERROR, TIMEOUT
+    input: Optional[str] = None
+    expected: Optional[str] = None
+    actual: Optional[str] = None
+    error: Optional[str] = None
+
+
+class CodeExecutionResponse(BaseModel):
+    status: str  # ACCEPTED, PARTIAL, COMPILATION_ERROR, RUNTIME_ERROR
+    message: Optional[str] = None
+    passed: int
+    total: int
+    results: List[TestResult] = []
+
+
 class ContestWithProblems(ContestOut):
     problems: List[ContestProblemOut]
 
@@ -265,6 +298,7 @@ class ContestSubmissionOut(BaseModel):
     code: str
     verdict: str
     score: int
+    execution_results: Optional[str] = None
     submitted_at: datetime
 
     class Config:
