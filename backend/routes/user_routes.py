@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from auth import get_current_user
 from database import get_db
 from models import ContestParticipation, ContestSubmission, QuizSubmission, User
-from schemas import UserOut, UserProfileUpdate, UserStatsOut
+from schemas import MessageResponse, UserOut, UserProfileUpdate, UserStatsOut
 
 router = APIRouter()
 
@@ -78,6 +78,33 @@ def update_my_profile(
     db.commit()
     db.refresh(current_user)
     return current_user
+
+
+@router.delete("/me", response_model=MessageResponse)
+def delete_my_account(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    # Remove dependent rows first to avoid foreign key violations.
+    db.query(ContestParticipation).filter(ContestParticipation.user_id == current_user.id).delete(
+        synchronize_session=False
+    )
+    db.query(ContestSubmission).filter(ContestSubmission.user_id == current_user.id).delete(
+        synchronize_session=False
+    )
+    db.query(QuizSubmission).filter(QuizSubmission.user_id == current_user.id).delete(
+        synchronize_session=False
+    )
+
+    if current_user.avatar_url and current_user.avatar_url.startswith("/uploads/"):
+        avatar_path = Path(__file__).resolve().parents[1] / current_user.avatar_url.lstrip("/")
+        if avatar_path.exists() and avatar_path.is_file():
+            avatar_path.unlink(missing_ok=True)
+
+    db.delete(current_user)
+    db.commit()
+
+    return {"message": "Account deleted successfully."}
 
 
 @router.get("/me/stats", response_model=UserStatsOut)

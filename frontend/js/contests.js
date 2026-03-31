@@ -26,7 +26,14 @@ let activeContestId  = null;
 let activeProblemId  = null;
 
 function getToken() {
-  return localStorage.getItem("access_token");
+  const raw =
+    localStorage.getItem("access_token") ||
+    localStorage.getItem("token") ||
+    sessionStorage.getItem("access_token") ||
+    sessionStorage.getItem("token") ||
+    "";
+  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  return cleaned && cleaned !== "undefined" && cleaned !== "null" ? cleaned : "";
 }
 
 function getAuthHeaders(withJson = false) {

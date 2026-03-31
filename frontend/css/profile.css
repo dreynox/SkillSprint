@@ -195,6 +195,38 @@ body {
   color: #9bf7c4;
 }
 
+.danger-zone {
+  margin-top: 14px;
+  text-align: left;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.danger-label {
+  font-size: 12px;
+  color: #fca5a5;
+  margin-bottom: 8px;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+}
+
+.btn-danger:hover {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+}
+
+.delete-status {
+  min-height: 16px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #fecaca;
+}
+
 .profile-details-panel {
   margin-top: 12px;
   text-align: left;

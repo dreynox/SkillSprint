@@ -21,6 +21,8 @@ function clearSessionAndGoLogin() {
   localStorage.removeItem("access_token");
   localStorage.removeItem("token");
   localStorage.removeItem("user");
+  sessionStorage.removeItem("access_token");
+  sessionStorage.removeItem("token");
   window.location.href = "../../index.html";
 }
 
@@ -55,6 +57,15 @@ function setUploadStatus(message, isError) {
   }
   element.textContent = message || "";
   element.style.color = isError ? "#f87171" : "#9bf7c4";
+}
+
+function setDeleteStatus(message, isError) {
+  const element = document.getElementById("deleteAccountStatus");
+  if (!element) {
+    return;
+  }
+  element.textContent = message || "";
+  element.style.color = isError ? "#fca5a5" : "#fecaca";
 }
 
 function renderProfileDetails(profile) {
@@ -283,6 +294,66 @@ async function loadProfile() {
   }
 }
 
+async function deleteMyAccount() {
+  const token = getToken();
+  if (!token) {
+    clearSessionAndGoLogin();
+    return;
+  }
+
+  const firstConfirm = window.confirm(
+    "Delete your account permanently? This cannot be undone and will remove your profile and activity history."
+  );
+  if (!firstConfirm) {
+    return;
+  }
+
+  const secondConfirm = window.confirm("Are you absolutely sure you want to delete your account?");
+  if (!secondConfirm) {
+    return;
+  }
+
+  const typedConfirmation = window.prompt('Type DELETE to permanently remove your account:');
+  if (typedConfirmation === null) {
+    setDeleteStatus("Account deletion canceled.", true);
+    return;
+  }
+
+  if (typedConfirmation.trim() !== "DELETE") {
+    setDeleteStatus('Confirmation text did not match. Type exactly DELETE to proceed.', true);
+    return;
+  }
+
+  setDeleteStatus("Deleting account...", false);
+
+  try {
+    const response = await fetch(`${API_BASE}/users/me`, {
+      method: "DELETE",
+      headers: authHeaders(),
+    });
+
+    if (response.status === 401) {
+      setDeleteStatus("Session expired. Please login again.", true);
+      setTimeout(() => {
+        clearSessionAndGoLogin();
+      }, 700);
+      return;
+    }
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.detail || "Failed to delete account");
+    }
+
+    setDeleteStatus("Account deleted. Redirecting...", false);
+    setTimeout(() => {
+      clearSessionAndGoLogin();
+    }, 500);
+  } catch (error) {
+    setDeleteStatus(error.message || "Failed to delete account", true);
+  }
+}
+
 const followBtn = document.querySelector(".btn-outline");
 if (followBtn) {
   let following = false;
@@ -314,6 +385,13 @@ if (profileDetailsBtn && profileDetailsPanel) {
     const isHidden = profileDetailsPanel.style.display === "none" || !profileDetailsPanel.style.display;
     profileDetailsPanel.style.display = isHidden ? "block" : "none";
     profileDetailsBtn.textContent = isHidden ? "Hide Details" : "Profile Details";
+  });
+}
+
+const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener("click", () => {
+    deleteMyAccount();
   });
 }
 

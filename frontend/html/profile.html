@@ -64,6 +64,12 @@
         <input id="avatarUpload" type="file" accept="image/*" />
         <p id="avatarUploadStatus" class="upload-status"></p>
       </div>
+
+      <div class="danger-zone">
+        <p class="danger-label">Danger Zone</p>
+        <button class="btn btn-danger" id="deleteAccountBtn" type="button">Delete Account</button>
+        <p id="deleteAccountStatus" class="delete-status"></p>
+      </div>
     </div>
 
     <!-- RIGHT SECTION -->
@@ -135,6 +141,7 @@
   </div>
 
   <!-- JS FILES (MUST BE AT END) -->
+  <script src="../js/api-base.js"></script>
   <script src="../js/profile.js"></script>
   <script src="../js/neonBackground.js"></script>
 

@@ -59,6 +59,9 @@ form.addEventListener("submit", async (e) => {
       throw new Error("Login succeeded but token was missing in response.");
     }
     localStorage.setItem("access_token", token);
+    localStorage.setItem("token", token);
+    sessionStorage.setItem("access_token", token);
+    sessionStorage.setItem("token", token);
     if (data.user) {
       localStorage.setItem("user", JSON.stringify(data.user));
     }
