@@ -32,38 +32,97 @@
 
     <!-- PROFILE CARD -->
     <div class="card profile">
-      <img
-        id="avatar"
-        src="../images/default-avatar.svg"
-        alt="User Avatar"
-      >
+      <div class="avatar-wrap">
+        <img
+          id="avatar"
+          src="../images/default-avatar.svg"
+          alt="User Avatar"
+        >
+        <button
+          id="avatarEditBtn"
+          class="avatar-edit-btn"
+          type="button"
+          aria-label="Edit profile image"
+          aria-expanded="false"
+          aria-controls="avatarEditMenu"
+        >✏️</button>
+
+        <div class="avatar-edit-menu" id="avatarEditMenu" hidden>
+          <button type="button" id="chooseFolderBtn">Choose from folder</button>
+          <button type="button" id="takePhotoBtn">Take photo</button>
+        </div>
+      </div>
       <h2 id="username">Rayhaan Shaikh</h2>
       <p id="role">First Year CSE · Competitive Programmer</p>
 
       <div class="actions">
-        <button class="btn btn-outline">Follow</button>
+        <button class="btn btn-outline" id="followBtn">Follow</button>
         <button class="btn btn-primary" id="messageBtn">Message</button>
       </div>
 
-      <div class="actions" style="margin-top: 10px;">
-        <button class="btn btn-outline" id="profileDetailsBtn" type="button">Profile Details</button>
-      </div>
-
       <div class="profile-details-panel" id="profileDetailsPanel" style="display: none;">
-        <h4>Profile Details</h4>
+        <div class="details-head">
+          <h4>Profile Details</h4>
+          <button
+            id="detailsEditBtn"
+            class="details-edit-btn"
+            type="button"
+            aria-label="Edit profile details"
+            aria-expanded="false"
+            aria-controls="detailsEditMenu"
+          >✏️</button>
+        </div>
+        <div class="details-edit-menu" id="detailsEditMenu" hidden>
+          <button id="openDetailsFormBtn" type="button">Edit profile details</button>
+        </div>
+
         <div class="detail-row"><span>SRN</span><strong id="detailSrn">-</strong></div>
         <div class="detail-row"><span>PRN</span><strong id="detailPrn">-</strong></div>
         <div class="detail-row"><span>YEAR</span><strong id="detailYear">-</strong></div>
         <div class="detail-row"><span>BRANCH</span><strong id="detailBranch">-</strong></div>
         <div class="detail-row"><span>DIVISION</span><strong id="detailDivision">-</strong></div>
         <div class="detail-row"><span>ROLL NO</span><strong id="detailRollNo">-</strong></div>
+
+        <form id="detailsEditForm" class="details-edit-form" hidden>
+          <label>
+            Name
+            <input id="editName" type="text" maxlength="80" />
+          </label>
+          <label>
+            SRN
+            <input id="editSrn" type="text" maxlength="40" />
+          </label>
+          <label>
+            PRN
+            <input id="editPrn" type="text" maxlength="40" />
+          </label>
+          <label>
+            Year
+            <input id="editYear" type="number" min="1" max="8" />
+          </label>
+          <label>
+            Branch
+            <input id="editBranch" type="text" maxlength="60" />
+          </label>
+          <label>
+            Division
+            <input id="editDivision" type="text" maxlength="20" />
+          </label>
+          <label>
+            Roll No
+            <input id="editRollNo" type="text" maxlength="20" />
+          </label>
+          <div class="details-edit-actions">
+            <button id="saveDetailsBtn" class="btn btn-primary" type="submit">Save</button>
+            <button id="cancelDetailsBtn" class="btn btn-outline" type="button">Cancel</button>
+          </div>
+        </form>
+        <p id="detailsUpdateStatus" class="details-status"></p>
       </div>
 
-      <div class="avatar-upload">
-        <label class="upload-label" for="avatarUpload">Update profile image</label>
-        <input id="avatarUpload" type="file" accept="image/*" />
-        <p id="avatarUploadStatus" class="upload-status"></p>
-      </div>
+      <input id="avatarUpload" type="file" accept="image/*" hidden />
+      <input id="avatarCapture" type="file" accept="image/*" capture="environment" hidden />
+      <p id="avatarUploadStatus" class="upload-status"></p>
 
       <div class="danger-zone">
         <p class="danger-label">Danger Zone</p>
