@@ -14,6 +14,11 @@ const resultContainer = document.getElementById("result-container");
 let questions = [];
 let randomSessionId = null;
 let currentMode = "test";
+let timerIntervalId = null;
+let quizEndsAt = null;
+let quizInProgress = false;
+
+const QUIZ_DURATION_SECONDS = 30 * 60;
 
 function saveQuizResult(result) {
   sessionStorage.setItem("quiz_result", JSON.stringify(result));
@@ -64,6 +69,109 @@ function renderQuestions(items) {
   });
 }
 
+function formatCountdown(seconds) {
+  const totalSeconds = Math.max(0, seconds);
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
+function getUnansweredQuestionNumbers() {
+  return questions
+    .map((question, index) => {
+      const selected = document.querySelector(`input[name='question-${question.id}']:checked`);
+      return selected ? null : index + 1;
+    })
+    .filter(Boolean);
+}
+
+function buildUnansweredMessage(unansweredNumbers) {
+  if (!unansweredNumbers.length) {
+    return "";
+  }
+
+  const labels = unansweredNumbers.map((number) => `Q.${number} Unanswered`);
+  return `${labels.join(", ")}. Attempt all questions.`;
+}
+
+function renderSubmitHint() {
+  if (!quizInProgress || !questions.length) {
+    return;
+  }
+
+  const unansweredNumbers = getUnansweredQuestionNumbers();
+  if (unansweredNumbers.length) {
+    setStatus(`${unansweredNumbers.length} question(s) remaining.`, false);
+  } else {
+    setStatus("All questions answered. You can submit now.", false);
+  }
+}
+
+function renderResultLink(summary) {
+  resultContainer.style.display = "block";
+  const unansweredText = typeof summary.unanswered === "number" ? `<p>Unanswered: ${summary.unanswered}</p>` : "";
+  resultContainer.innerHTML = `
+    <h2>Score: ${summary.score} / ${summary.total}</h2>
+    ${unansweredText}
+    <a class="view-score-link" href="result.html">View Score</a>
+  `;
+}
+
+function updateTimerDisplay(remainingSeconds) {
+  const timerBox = document.getElementById("timer-box");
+  const timerValue = document.getElementById("timer-value");
+
+  if (!timerBox || !timerValue) {
+    return;
+  }
+
+  timerBox.style.display = "block";
+  timerValue.textContent = formatCountdown(remainingSeconds);
+}
+
+function resetTimer() {
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+  }
+
+  quizEndsAt = null;
+  quizInProgress = false;
+
+  const timerBox = document.getElementById("timer-box");
+  const timerValue = document.getElementById("timer-value");
+  if (timerBox) {
+    timerBox.style.display = "none";
+  }
+  if (timerValue) {
+    timerValue.textContent = formatCountdown(QUIZ_DURATION_SECONDS);
+  }
+}
+
+function startTimer() {
+  resetTimer();
+  quizEndsAt = Date.now() + QUIZ_DURATION_SECONDS * 1000;
+  quizInProgress = true;
+
+  const tick = () => {
+    const remainingSeconds = Math.max(0, Math.floor((quizEndsAt - Date.now()) / 1000));
+    updateTimerDisplay(remainingSeconds);
+
+    if (remainingSeconds <= 0) {
+      if (timerIntervalId) {
+        clearInterval(timerIntervalId);
+        timerIntervalId = null;
+      }
+      quizInProgress = false;
+      setStatus("Time is up. Submitting automatically...", false);
+      submitAnswers({ autoSubmit: true });
+    }
+  };
+
+  tick();
+  timerIntervalId = setInterval(tick, 1000);
+}
+
 function collectAnswers() {
   return questions
     .map((question) => {
@@ -89,6 +197,7 @@ async function loadQuestions() {
   setStatus("Loading questions...");
   submitBtn.disabled = true;
   resultContainer.style.display = "none";
+  resetTimer();
 
   try {
     const response = await fetch(`${API_BASE}/quiz/tests/${testId}/questions`);
@@ -119,7 +228,9 @@ async function loadQuestions() {
     submitBtn.disabled = false;
     currentMode = "test";
     randomSessionId = null;
+    startTimer();
     setStatus(`Loaded ${questions.length} questions for test ${testId}`);
+    renderSubmitHint();
   } catch (error) {
     setStatus(error.message, true);
     quizForm.innerHTML = "";
@@ -133,6 +244,7 @@ async function startRandomSession() {
   setStatus("Creating random question session...");
   submitBtn.disabled = true;
   resultContainer.style.display = "none";
+  resetTimer();
 
   try {
     const response = await fetch(`${API_BASE}/quiz/random-bank/start`, {
@@ -166,18 +278,44 @@ async function startRandomSession() {
 
     renderQuestions(questions);
     submitBtn.disabled = false;
+    startTimer();
     setStatus(`Random session ready: ${language} ${level} (${questions.length} questions from pool of ${data.total_pool})`);
+    renderSubmitHint();
   } catch (error) {
     setStatus(error.message || "Failed to create random session", true);
     quizForm.innerHTML = "";
   }
 }
 
-async function submitAnswers() {
+async function submitAnswers(options = {}) {
+  const { autoSubmit = false } = options;
+  if (!questions.length) {
+    setStatus("Load questions before submitting.", true);
+    return;
+  }
+
+  const unansweredNumbers = getUnansweredQuestionNumbers();
+  if (unansweredNumbers.length && !autoSubmit) {
+    const message = buildUnansweredMessage(unansweredNumbers);
+    window.alert(message);
+    setStatus(message, true);
+    return;
+  }
+
   const answers = collectAnswers();
-  if (answers.length === 0) {
+  if (answers.length === 0 && !autoSubmit) {
     setStatus("Select at least one answer before submitting", true);
     return;
+  }
+
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+  }
+  quizInProgress = false;
+  const timerBox = document.getElementById("timer-box");
+  if (timerBox) {
+    timerBox.style.display = "none";
   }
 
   try {
@@ -219,7 +357,7 @@ async function submitAnswers() {
       mode: currentMode,
       score: data.score,
       total: data.total,
-      unanswered: typeof data.unanswered === "number" ? data.unanswered : null,
+      unanswered: typeof data.unanswered === "number" ? data.unanswered : unansweredNumbers.length || null,
       test_id: currentMode === "test" ? Number(testIdInput.value) || null : null,
       random_session_id: currentMode === "random" ? randomSessionId : null,
       language: currentMode === "random" ? (languageInput ? languageInput.value : "C") : null,
@@ -227,15 +365,26 @@ async function submitAnswers() {
       submitted_at: new Date().toISOString(),
     });
 
-    window.location.href = "result.html";
-    setStatus("Submission saved successfully");
+    renderResultLink({
+      score: data.score,
+      total: data.total,
+      unanswered: typeof data.unanswered === "number" ? data.unanswered : unansweredNumbers.length || null,
+    });
+    setStatus("Submission saved successfully. Click View Score below.");
   } catch (error) {
     setStatus(error.message, true);
   }
 }
 
+function handleQuestionChange() {
+  if (quizInProgress) {
+    renderSubmitHint();
+  }
+}
+
 loadBtn.addEventListener("click", loadQuestions);
-submitBtn.addEventListener("click", submitAnswers);
+submitBtn.addEventListener("click", () => submitAnswers({ autoSubmit: false }));
 if (startRandomBtn) {
   startRandomBtn.addEventListener("click", startRandomSession);
 }
+quizForm.addEventListener("change", handleQuestionChange);

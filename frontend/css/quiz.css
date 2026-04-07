@@ -154,24 +154,45 @@ h2 {
     opacity: 0.9;
 }
 
+#timer-box {
+    color: #9bf7c4;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+#timer-value {
+    color: #00ff88;
+    font-size: 1.15rem;
+}
+
 #result-container {
     text-align: center;
+    border: 1px solid rgba(0, 255, 136, 0.22);
+    border-radius: 14px;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.32);
 }
 
 #result-container h2 {
-    font-size: 3em;
+    font-size: 2.2em;
     color: #00ff88;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
 }
 
-#result-container button {
-    padding: 15px 40px;
+.view-score-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 14px 26px;
     background: linear-gradient(135deg, #00ff88, #00ccaa);
     color: #00140d;
-    border: none;
     border-radius: 12px;
-    font-size: 1.2em;
-    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.05em;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.3);
+}
+
+.view-score-link:hover {
+    opacity: 0.92;
 }
 
 @media (max-width: 600px) {
