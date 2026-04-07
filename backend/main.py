@@ -34,6 +34,7 @@ app.add_middleware(
         "http://127.0.0.1:5500",
         "https://dreynox.github.io",
     ],
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1|(10|192\.168|172\.(1[6-9]|2\d|3[01]))\.[0-9]{1,3}\.[0-9]{1,3})(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

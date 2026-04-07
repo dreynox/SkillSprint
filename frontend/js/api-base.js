@@ -3,8 +3,12 @@
     return;
   }
 
-  const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+  const hostname = window.location.hostname;
+  const isLocalhost = !hostname || hostname === "localhost" || hostname === "127.0.0.1";
+  const isPrivateIp = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
+  const isDev = isLocalhost || isPrivateIp;
+  const apiHost = hostname || "127.0.0.1";
   window.API_BASE_URL = isDev
-    ? "http://" + window.location.hostname + ":8000"
+    ? "http://" + apiHost + ":8000"
     : "https://skillsprint-muv2.onrender.com";
 })();
