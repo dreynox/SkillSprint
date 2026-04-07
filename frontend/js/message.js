@@ -161,18 +161,21 @@ function renderConversations(conversations) {
             </div>
         `;
 
-        convDiv.addEventListener('click', () => selectConversation(conv.user_id, conv.name));
+        convDiv.addEventListener('click', (event) => selectConversation(conv.user_id, conv.name, event));
         conversationsList.appendChild(convDiv);
     });
 }
 
-async function selectConversation(userId, userName) {
+async function selectConversation(userId, userName, clickEvent = null) {
     currentChatUserId = userId;
     currentChatUserName = userName;
 
     // Update active conversation
     document.querySelectorAll('.conversation-item').forEach((el) => el.classList.remove('active'));
-    event.target.closest('.conversation-item')?.classList.add('active');
+    const activeConversation = clickEvent?.target?.closest('.conversation-item');
+    if (activeConversation) {
+        activeConversation.classList.add('active');
+    }
 
     // Show chat area
     document.getElementById('chat-empty').style.display = 'none';
@@ -408,8 +411,8 @@ function renderUsersList(users) {
             </div>
         `;
 
-        userDiv.addEventListener('click', () => {
-            selectConversation(user.id, user.name);
+        userDiv.addEventListener('click', (event) => {
+            selectConversation(user.id, user.name, event);
             document.getElementById('user-modal').style.display = 'none';
             loadConversations();
         });
