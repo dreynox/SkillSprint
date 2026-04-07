@@ -66,7 +66,7 @@ def _load_language_level_questions(language: str, level: str) -> list[dict]:
 
     questions: list[dict] = []
     for file_path in files:
-        with file_path.open("r", encoding="utf-8") as source:
+        with file_path.open("r", encoding="utf-8-sig") as source:
             payload = json.load(source)
             for item in payload.get("questions", []):
                 options = item.get("options", {})
