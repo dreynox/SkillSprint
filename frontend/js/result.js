@@ -1,121 +1,163 @@
-// =========================
-// SAMPLE DATA (replace with backend later)
-// =========================
-const results = [
-  { id: 1, difficulty: "Easy", time: 40, correct: true },
-  { id: 2, difficulty: "Easy", time: 55, correct: true },
-  { id: 3, difficulty: "Medium", time: 95, correct: false },
-  { id: 4, difficulty: "Medium", time: 80, correct: true },
-  { id: 5, difficulty: "Hard", time: 190, correct: false },
-  { id: 6, difficulty: "Hard", time: 160, correct: true }
-];
+const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 
-// =========================
-// HELPER FUNCTIONS
-// =========================
-const formatTime = (seconds) => {
-  if (seconds < 60) return `${seconds}s`;
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}m ${s}s`;
-};
+function getToken() {
+  const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
 
-const average = (arr) =>
-  arr.reduce((sum, val) => sum + val, 0) / arr.length;
+  if (!cleaned || cleaned === "undefined" || cleaned === "null") {
+    return "";
+  }
 
-// =========================
-// GLOBAL STATS
-// =========================
-const times = results.map(r => r.time);
+  return cleaned;
+}
 
-const avgTime = Math.round(average(times));
-const longestTime = Math.max(...times);
-const shortestTime = Math.min(...times);
+function authHeaders() {
+  const token = getToken();
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
 
-const correctCount = results.filter(r => r.correct).length;
-const accuracy = Math.round((correctCount / results.length) * 100);
+function getCachedUser() {
+  try {
+    return JSON.parse(localStorage.getItem("user") || "null");
+  } catch (_error) {
+    return null;
+  }
+}
 
-// =========================
-// UPDATE SUMMARY UI
-// =========================
-document.getElementById("avgTime").textContent = formatTime(avgTime);
-document.getElementById("longestTime").textContent = formatTime(longestTime);
-document.getElementById("shortestTime").textContent = formatTime(shortestTime);
-document.getElementById("accuracy").textContent = `${accuracy}%`;
+function getStoredQuizResult() {
+  try {
+    return JSON.parse(sessionStorage.getItem("quiz_result") || "null");
+  } catch (_error) {
+    return null;
+  }
+}
 
-// =========================
-// DIFFICULTY BREAKDOWN
-// =========================
-const difficulties = ["Easy", "Medium", "Hard"];
+function formatDateTime(value) {
+  if (!value) {
+    return "-";
+  }
 
-difficulties.forEach(level => {
-  const filtered = results.filter(r => r.difficulty === level);
-  if (filtered.length === 0) return;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return String(value);
+  }
 
-  const levelTimes = filtered.map(r => r.time);
-  const levelCorrect = filtered.filter(r => r.correct).length;
+  return date.toLocaleString();
+}
 
-  document.getElementById(`${level.toLowerCase()}Count`).textContent =
-    filtered.length;
+function renderStat(id, value) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.textContent = value;
+  }
+}
 
-  document.getElementById(`${level.toLowerCase()}Time`).textContent =
-    formatTime(Math.round(average(levelTimes)));
+function addProfileRow(label, value) {
+  const table = document.getElementById("profileTable");
+  if (!table) {
+    return;
+  }
 
-  document.getElementById(`${level.toLowerCase()}Accuracy`).textContent =
-    `${Math.round((levelCorrect / filtered.length) * 100)}%`;
-});
-
-// =========================
-// QUESTION TABLE
-// =========================
-const tableBody = document.getElementById("questionTable");
-
-results.forEach((q, index) => {
   const row = document.createElement("tr");
-
   row.innerHTML = `
-    <td>${index + 1}</td>
-    <td class="${q.difficulty.toLowerCase()}">${q.difficulty}</td>
-    <td>${formatTime(q.time)}</td>
-    <td class="${q.correct ? "correct" : "wrong"}">
-      ${q.correct ? "✔" : "✘"}
-    </td>
+    <td>${label}</td>
+    <td>${value || "-"}</td>
   `;
-
-  tableBody.appendChild(row);
-});
-
-// =========================
-// INSIGHTS ENGINE
-// =========================
-const insightList = document.getElementById("insightList");
-const insights = [];
-
-const totalTime = results.reduce((sum, r) => sum + r.time, 0);
-const hardTime = results
-  .filter(r => r.difficulty === "Hard")
-  .reduce((sum, r) => sum + r.time, 0);
-
-if (accuracy < 60) {
-  insights.push("Accuracy is low. Strengthen fundamentals before speed.");
+  table.appendChild(row);
 }
 
-if (longestTime > avgTime * 2) {
-  insights.push("Some questions took unusually long to solve.");
+function renderProfile(profile) {
+  const table = document.getElementById("profileTable");
+  if (!table) {
+    return;
+  }
+
+  table.innerHTML = "";
+
+  addProfileRow("Name", profile.name);
+  addProfileRow("Email", profile.email);
+  addProfileRow("SRN", profile.srn);
+  addProfileRow("PRN", profile.prn);
+  addProfileRow("Year", profile.year);
+  addProfileRow("Class / Division", profile.division || profile.branch);
+  addProfileRow("Branch", profile.branch);
+  addProfileRow("Roll No.", profile.roll_no);
+  addProfileRow("Role", profile.role);
 }
 
-if (hardTime / totalTime > 0.4) {
-  insights.push("Hard questions consumed most of your total time.");
+function renderNotes(result) {
+  const noteList = document.getElementById("noteList");
+  if (!noteList) {
+    return;
+  }
+
+  noteList.innerHTML = "";
+
+  const notes = [];
+  if (!result) {
+    notes.push("No quiz submission was found in this session.");
+  }
+  if (result?.mode === "random") {
+    notes.push("This score was generated from a random question bank session.");
+  } else if (result?.mode === "test") {
+    notes.push("This score was generated from a legacy test submission.");
+  }
+
+  if (typeof result?.unanswered === "number") {
+    notes.push(`Unanswered questions: ${result.unanswered}.`);
+  }
+
+  notes.push("The profile details shown here are loaded from your account.");
+
+  notes.forEach((text) => {
+    const item = document.createElement("li");
+    item.textContent = text;
+    noteList.appendChild(item);
+  });
 }
 
-if (accuracy >= 80) {
-  insights.push("Strong accuracy. Maintain consistency under pressure.");
+async function loadResultPage() {
+  const result = getStoredQuizResult();
+
+  renderStat("scoreValue", result ? `${result.score} / ${result.total}` : "-");
+  renderStat("totalValue", result ? String(result.total) : "-");
+  renderStat("unansweredValue", result && typeof result.unanswered === "number" ? String(result.unanswered) : "-");
+  renderStat("modeValue", result ? (result.mode === "random" ? "Random Bank" : "Test Mode") : "-");
+  renderStat("quizTypeValue", result ? (result.mode === "random" ? "Random Question Bank" : `Test ${result.test_id || "-"}`) : "-");
+  renderStat("languageValue", result?.language || "-");
+  renderStat("levelValue", result?.level || "-");
+  renderStat("submittedAtValue", formatDateTime(result?.submitted_at));
+
+  renderNotes(result);
+
+  const token = getToken();
+  const cachedUser = getCachedUser();
+
+  if (!token && cachedUser) {
+    renderProfile(cachedUser);
+    return;
+  }
+
+  if (!token) {
+    renderProfile({});
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/users/me`, {
+      headers: authHeaders(),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.detail || "Failed to load profile");
+    }
+
+    renderProfile(data);
+    localStorage.setItem("user", JSON.stringify(data));
+  } catch (_error) {
+    renderProfile(cachedUser || {});
+  }
 }
 
-insights.push("Timed practice will significantly improve performance.");
-
-insights.forEach(text => {
-  const li = document.createElement("li");
-  li.textContent = text;
-  insightList.appendChild(li);
-});
+loadResultPage();

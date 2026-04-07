@@ -15,6 +15,10 @@ let questions = [];
 let randomSessionId = null;
 let currentMode = "test";
 
+function saveQuizResult(result) {
+  sessionStorage.setItem("quiz_result", JSON.stringify(result));
+}
+
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
   statusEl.style.color = isError ? "#b00020" : "#333";
@@ -211,9 +215,19 @@ async function submitAnswers() {
       throw new Error(data.detail || "Failed to submit quiz");
     }
 
-    resultContainer.style.display = "block";
-    const unansweredText = typeof data.unanswered === "number" ? `<p>Unanswered: ${data.unanswered}</p>` : "";
-    resultContainer.innerHTML = `<h2>Score: ${data.score} / ${data.total}</h2>${unansweredText}`;
+    saveQuizResult({
+      mode: currentMode,
+      score: data.score,
+      total: data.total,
+      unanswered: typeof data.unanswered === "number" ? data.unanswered : null,
+      test_id: currentMode === "test" ? Number(testIdInput.value) || null : null,
+      random_session_id: currentMode === "random" ? randomSessionId : null,
+      language: currentMode === "random" ? (languageInput ? languageInput.value : "C") : null,
+      level: currentMode === "random" ? (levelInput ? levelInput.value : "Beginner") : null,
+      submitted_at: new Date().toISOString(),
+    });
+
+    window.location.href = "result.html";
     setStatus("Submission saved successfully");
   } catch (error) {
     setStatus(error.message, true);
