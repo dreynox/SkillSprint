@@ -370,10 +370,22 @@ async function loadProfile() {
   }
 
   try {
-    const [profileRes, statsRes] = await Promise.all([
-      fetch(`${API_BASE}/users/me`, { headers: authHeaders() }),
-      fetch(`${API_BASE}/users/me/stats`, { headers: authHeaders() }),
-    ]);
+    // Check if viewing another user's profile via URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewingUserId = urlParams.get("user_id");
+    const currentUser = getCachedUser();
+    
+    let profileRes, statsRes;
+    
+    if (viewingUserId && parseInt(viewingUserId) !== currentUser?.id) {
+      // Load another user's profile
+      profileRes = await fetch(`${API_BASE}/users/${viewingUserId}`, { headers: authHeaders() });
+      statsRes = fetch(`${API_BASE}/users/${viewingUserId}/stats`, { headers: authHeaders() });
+    } else {
+      // Load current user's profile
+      profileRes = await fetch(`${API_BASE}/users/me`, { headers: authHeaders() });
+      statsRes = await fetch(`${API_BASE}/users/me/stats`, { headers: authHeaders() });
+    }
 
     if (profileRes.status === 401) {
       clearSessionAndGoLogin();
@@ -385,8 +397,8 @@ async function loadProfile() {
     }
 
     const profile = await profileRes.json();
-    const stats = statsRes.ok
-      ? await statsRes.json()
+    const stats = (await statsRes)?.ok
+      ? await (await statsRes).json()
       : {
           contests_joined: 0,
           contest_submissions: 0,
@@ -409,7 +421,42 @@ async function loadProfile() {
     animateCount("rating", stats.total_quiz_score || 0);
     renderPerformanceRows(stats);
     renderProfileDetails(profile);
-    fillDetailsForm(profile);
+    
+    // Show/hide edit UI based on whether viewing own or other user's profile
+    const isOwnProfile = !viewingUserId || (parseInt(viewingUserId) === currentUser?.id);
+    const detailsPanel = document.getElementById("profileDetailsPanel");
+    const detailsEditBtn = document.getElementById("detailsEditBtn");
+    const avatarEditBtn = document.getElementById("avatarEditBtn");
+    const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+    const dangerZone = document.querySelector(".danger-zone");
+    
+    if (detailsPanel) {
+      detailsPanel.style.display = isOwnProfile ? "block" : "none";
+    }
+    if (avatarEditBtn) {
+      avatarEditBtn.style.display = isOwnProfile ? "block" : "none";
+    }
+    if (dangerZone) {
+      dangerZone.style.display = isOwnProfile ? "block" : "none";
+    }
+    
+    // Update follow button visibility and state
+    const followBtn = document.getElementById("followBtn");
+    if (followBtn) {
+      if (isOwnProfile) {
+        followBtn.style.display = "none";
+      } else {
+        followBtn.style.display = "block";
+        // Check if currently following this user
+        checkFollowingStatus(profile.id, followBtn);
+      }
+    }
+    
+    if (!isOwnProfile) {
+      fillDetailsForm(profile);
+    } else {
+      fillDetailsForm(profile);
+    }
 
     localStorage.setItem("user", JSON.stringify(profile));
   } catch (_error) {
@@ -432,6 +479,27 @@ async function loadProfile() {
     if (avatar) {
       avatar.src = DEFAULT_AVATAR;
     }
+  }
+}
+
+async function checkFollowingStatus(userId, followBtn) {
+  try {
+    const response = await fetch(`${API_BASE}/users/${userId}/is-following`, {
+      headers: authHeaders()
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      if (data.is_following) {
+        followBtn.textContent = "Following";
+        followBtn.dataset.following = "true";
+      } else {
+        followBtn.textContent = "Follow";
+        followBtn.dataset.following = "false";
+      }
+    }
+  } catch (error) {
+    console.error("Failed to check follow status:", error);
   }
 }
 
@@ -497,16 +565,49 @@ async function deleteMyAccount() {
 
 const followBtn = document.getElementById("followBtn");
 if (followBtn) {
-  let following = false;
-  followBtn.addEventListener("click", () => {
-    following = !following;
-    followBtn.textContent = following ? "Following" : "Follow";
+  followBtn.addEventListener("click", async function () {
+    if (!currentProfile || !currentProfile.id) {
+      alert("Profile not loaded yet");
+      return;
+    }
+
+    const userId = currentProfile.id;
+    const isFollowing = followBtn.dataset.following === "true";
+    
+    try {
+      const method = isFollowing ? "DELETE" : "POST";
+      const response = await fetch(`${API_BASE}/users/${userId}/follow`, {
+        method: method,
+        headers: authHeaders()
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || "Failed to update follow status");
+      }
+
+      // Toggle the button state
+      const newState = !isFollowing;
+      followBtn.textContent = newState ? "Following" : "Follow";
+      followBtn.dataset.following = newState ? "true" : "false";
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
   });
 }
 
 const messageBtn = document.getElementById("messageBtn");
 if (messageBtn) {
   messageBtn.addEventListener("click", () => {
+    if (currentProfile && currentProfile.id) {
+      // If viewing another user's profile, open message conversation with them
+      const urlParams = new URLSearchParams(window.location.search);
+      const viewingUserId = urlParams.get("user_id");
+      if (viewingUserId && parseInt(viewingUserId) !== getCachedUser()?.id) {
+        // Store the recipient ID for the message page to pre-load
+        sessionStorage.setItem("selectedRecipientId", viewingUserId);
+      }
+    }
     window.location.href = "message.html";
   });
 }

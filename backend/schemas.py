@@ -348,3 +348,27 @@ class MessageOut(BaseModel):
 
 class MessageWithSender(MessageOut):
     sender: UserOut
+
+
+class FollowOut(BaseModel):
+    id: int
+    follower_id: int
+    following_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class SearchResult(BaseModel):
+    type: str  # "user", "contest", "hackathon"
+    id: int
+    name: Optional[str] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    is_active: Optional[bool] = None
+    email: Optional[str] = None
+    avatar_url: Optional[str] = None
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
+    bio: Optional[str] = None

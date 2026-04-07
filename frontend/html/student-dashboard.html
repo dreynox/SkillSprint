@@ -296,12 +296,28 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">Skill<span>Sprint</span> Student Dashboard</div>
+      <div style="flex: 1; display: flex; gap: 0.8rem; padding: 0 1rem;">
+        <input type="text" id="searchInput" placeholder="Search users, events, hackathons..." style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 0.5rem 0.8rem; font-size: 0.9rem; width: 200px; flex: 1; max-width: 300px;" />
+      </div>
       <div class="topbar-right">
         <span id="welcomeText">Welcome</span>
         <button class="btn" id="logoutBtn" type="button">Logout</button>
       </div>
     </div>
   </header>
+
+  <!-- Search Results Modal -->
+  <div id="searchModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); z-index: 100; align-items: center; justify-content: center;">
+    <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 1.5rem; box-shadow: var(--shadow);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="margin: 0;">Search Results</h2>
+        <button onclick="document.getElementById('searchModal').style.display='none'" style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+      <div id="searchResults" style="display: grid; gap: 0.8rem;">
+        <div style="text-align: center; color: var(--muted);">Start typing to search...</div>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section class="hero">
@@ -539,6 +555,108 @@
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
       window.location.href = "../../index.html";
+    });
+
+    // Search functionality
+    let searchTimeout;
+    document.getElementById("searchInput").addEventListener("input", function (event) {
+      clearTimeout(searchTimeout);
+      const query = event.target.value.trim();
+      const modal = document.getElementById("searchModal");
+      const resultsContainer = document.getElementById("searchResults");
+
+      if (!query || query.length < 2) {
+        modal.style.display = "none";
+        return;
+      }
+
+      searchTimeout = setTimeout(function () {
+        const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
+        const token = localStorage.getItem("access_token");
+
+        fetch(API_BASE + "/users/search?q=" + encodeURIComponent(query), {
+          headers: { Authorization: "Bearer " + token }
+        })
+          .then(function (response) {
+            if (!response.ok) return [];
+            return response.json();
+          })
+          .then(function (results) {
+            if (!results || results.length === 0) {
+              resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">No results found</div>";
+              modal.style.display = "flex";
+              return;
+            }
+
+            const html = results.map(function (result) {
+              if (result.type === "user") {
+                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\" class=\"search-result-user\" data-user-id=\"" + result.id + "\">" +
+                  "<div style=\"display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;\">" +
+                  "<div>" +
+                  "<div style=\"font-weight: 600;\">" + escapeHtml(result.name) + "</div>" +
+                  "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.email) + "</div>" +
+                  (result.bio ? "<div style=\"font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem;\">" + escapeHtml(result.bio) + "</div>" : "") +
+                  "</div>" +
+                  "<button class=\"btn follow-btn\" data-user-id=\"" + result.id + "\" style=\"padding: 0.4rem 0.8rem;\">Follow</button>" +
+                  "</div>" +
+                  "</div>";
+              } else if (result.type === "contest") {
+                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\">" +
+                  "<div style=\"display: flex; justify-content: space-between; align-items: center;\">" +
+                  "<div>" +
+                  "<div style=\"font-weight: 600;\">[Contest] " + escapeHtml(result.title) + "</div>" +
+                  (result.description ? "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 100)) + "...</div>" : "") +
+                  "</div>" +
+                  "<span class=\"badge\" style=\"margin-left: 0.5rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
+                  "</div>" +
+                  "</div>";
+              } else if (result.type === "hackathon") {
+                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\">" +
+                  "<div style=\"display: flex; justify-content: space-between; align-items: center;\">" +
+                  "<div>" +
+                  "<div style=\"font-weight: 600;\">[Hackathon] " + escapeHtml(result.title) + "</div>" +
+                  (result.description ? "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 100)) + "...</div>" : "") +
+                  "</div>" +
+                  "<span class=\"badge\" style=\"margin-left: 0.5rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
+                  "</div>" +
+                  "</div>";
+              }
+              return "";
+            }).join("");
+
+            resultsContainer.innerHTML = html;
+            modal.style.display = "flex";
+
+            // Add follow button listeners
+            resultsContainer.querySelectorAll(".follow-btn").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                const userId = btn.getAttribute("data-user-id");
+                const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
+                const token = localStorage.getItem("access_token");
+
+                fetch(API_BASE + "/users/" + userId + "/follow", {
+                  method: "POST",
+                  headers: { Authorization: "Bearer " + token }
+                })
+                  .then(function (response) {
+                    if (!response.ok) return response.json().then(function (e) { throw new Error(e.detail); });
+                    return response.json();
+                  })
+                  .then(function () {
+                    btn.textContent = "Following";
+                    btn.disabled = true;
+                  })
+                  .catch(function (error) {
+                    alert("Error: " + (error.message || "Failed to follow user"));
+                  });
+              });
+            });
+          })
+          .catch(function () {
+            resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">Error fetching results</div>";
+            modal.style.display = "flex";
+          });
+      }, 300);
     });
 
     loadDashboard();
