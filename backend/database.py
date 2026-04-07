@@ -7,9 +7,16 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'skillsprint.db')}".replace("\\", "/")
 
 # For production, use: DATABASE_URL = "postgresql://user:password@localhost/skillsprint"
+raw_database_url = os.getenv("DATABASE_URL")
+if raw_database_url:
+    DATABASE_URL = raw_database_url.replace("postgres://", "postgresql://", 1)
+else:
+    DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'skillsprint.db')}".replace("\\", "/")
 
 engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+    DATABASE_URL,
+    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},
+    pool_pre_ping=not DATABASE_URL.startswith("sqlite"),
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
