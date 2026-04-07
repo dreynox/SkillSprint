@@ -10,6 +10,7 @@ from auth import get_current_user
 from database import get_db
 from models import ContestParticipation, ContestSubmission, QuizSubmission, User
 from schemas import MessageResponse, UserOut, UserProfileUpdate, UserStatsOut
+from typing import List
 
 router = APIRouter()
 
@@ -151,3 +152,13 @@ def get_my_stats(db: Session = Depends(get_db), current_user: User = Depends(get
         total_quiz_score=int(quiz_score_sum),
         quiz_questions_attempted=int(quiz_questions_sum),
     )
+
+
+@router.get("", response_model=List[UserOut])
+def list_all_users(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """List all users for messaging"""
+    users = db.query(User).all()
+    return users

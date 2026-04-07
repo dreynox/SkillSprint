@@ -324,3 +324,27 @@ class HackathonOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class MessageCreate(BaseModel):
+    recipient_id: int
+    content: Optional[str] = None
+    media_type: Optional[str] = None
+
+
+class MessageOut(BaseModel):
+    id: int
+    sender_id: int
+    recipient_id: int
+    content: Optional[str]
+    media_type: Optional[str]
+    file_path: Optional[str]
+    is_read: bool
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class MessageWithSender(MessageOut):
+    sender: UserOut

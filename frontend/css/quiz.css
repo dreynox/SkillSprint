@@ -10,13 +10,67 @@ body {
     background: radial-gradient(circle at top, #020617, #000);
     color: #e0ffe8;
     min-height: 100vh;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.24);
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(12px);
+}
+
+.topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.9rem 1rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    gap: 0.8rem;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 14px rgba(0, 255, 136, 0.5);
+    color: #e0ffe8;
+    text-decoration: none;
+}
+
+.brand span {
+    color: #00ff88;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgba(224, 255, 232, 0.68);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #00ff88;
+    border-color: rgba(0, 255, 136, 0.42);
+    background: rgba(0, 255, 136, 0.08);
 }
 
 .container {
     max-width: 800px;
+    margin: 2rem auto;
     width: 90%;
     background: rgba(8, 8, 8, 0.86);
     border: 1px solid rgba(0, 255, 136, 0.24);
@@ -25,7 +79,7 @@ body {
     overflow: hidden;
 }
 
-header {
+.page-header {
     background: linear-gradient(135deg, rgba(0, 255, 136, 0.22), rgba(0, 204, 170, 0.2));
     color: #e0ffe8;
     text-align: center;
@@ -33,12 +87,12 @@ header {
     border-bottom: 1px solid rgba(0, 255, 136, 0.2);
 }
 
-header h1 {
+.page-header h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
 }
 
-header p {
+.page-header p {
     font-size: 1.2em;
     opacity: 0.9;
 }
@@ -195,13 +249,36 @@ h2 {
     opacity: 0.92;
 }
 
+@media (max-width: 768px) {
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 600px) {
+    .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
     .container {
         width: 95%;
-        margin: 20px;
+        margin: 20px auto;
     }
     
-    header h1 {
+    .page-header h1 {
         font-size: 2em;
     }
     

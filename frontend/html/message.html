@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillSprint | Tactical Comm-Link</title>
+    <title>SkillSprint | Messages</title>
     <link rel="stylesheet" href="../css/message.css">
 </head>
 <body class="cyber-arena">
@@ -26,44 +26,103 @@
         </div>
     </header>
 
-    <div class="chat-container">
-        <header class="chat-header">
-            <div class="user-info">
-                <div class="status-pulse"></div>
-                <div class="text-group">
-                    <h2 class="neon-text">TERMINAL_USER_02</h2>
-                    <span class="sub-text">ENCRYPTED CONNECTION</span>
-                </div>
+    <div class="chat-wrapper">
+        <!-- Conversations Sidebar -->
+        <aside class="conversations-panel">
+            <div class="panel-header">
+                <h3>Conversations</h3>
+                <button id="new-chat-btn" class="new-chat-btn" title="Start new chat">+</button>
             </div>
-            <div class="header-metrics">
-                <span class="latency">12ms</span>
+            <div class="conversations-list" id="conversations-list">
+                <div class="placeholder">Loading conversations...</div>
             </div>
-        </header>
+        </aside>
 
-        <main class="message-arena" id="message-display">
-            <div class="message incoming">
-                <div class="bubble">
-                    <span class="ref-tag">REF: USER_02</span>
-                    <p>Found a bug in the hackathon repo. Are you ready for the sprint?</p>
-                    <span class="timestamp">14:20</span>
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <div id="chat-empty" class="chat-empty" style="display: flex;">
+                <div class="empty-state">
+                    <h2>No Conversation Selected</h2>
+                    <p>Select a contact from the left panel to start chatting</p>
                 </div>
             </div>
-            <div class="message outgoing">
-                <div class="bubble">
-                    <p>System ready. Initializing debug protocol now.</p>
-                    <span class="timestamp">14:21</span>
-                </div>
+
+            <div id="chat-area" class="chat-area" style="display: none;">
+                <header class="chat-header">
+                    <div class="user-info">
+                        <div class="status-pulse"></div>
+                        <div class="text-group">
+                            <h2 class="neon-text" id="chat-user-name">User Name</h2>
+                            <span class="sub-text" id="chat-user-status">Online</span>
+                        </div>
+                    </div>
+                    <div class="header-metrics">
+                        <button id="voice-call-btn" class="call-btn" title="Voice call">🎤</button>
+                    </div>
+                </header>
+
+                <main class="message-arena" id="message-display">
+                    <div class="placeholder">No messages yet</div>
+                </main>
+
+                <footer class="input-console">
+                    <form id="chat-form" class="message-input-form">
+                        <div class="input-wrapper">
+                            <div class="input-toolbar">
+                                <button type="button" id="emoji-btn" class="tool-btn" title="Emoji">😊</button>
+                                <button type="button" id="file-btn" class="tool-btn" title="Upload file">📎</button>
+                                <input type="file" id="file-input" style="display: none;">
+                            </div>
+                            <textarea 
+                                id="msg-input" 
+                                placeholder="TYPE_MESSAGE_HERE..." 
+                                autocomplete="off"
+                                rows="2"
+                            ></textarea>
+                            <button type="submit" id="send-btn" class="send-btn">SEND</button>
+                        </div>
+                    </form>
+                    <div id="upload-progress" class="upload-progress" style="display: none;">
+                        <div class="progress-bar">
+                            <div id="progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <span id="progress-text">Uploading...</span>
+                    </div>
+                </footer>
             </div>
         </main>
-
-        <footer class="input-console">
-            <form id="chat-form">
-                <input type="text" id="msg-input" placeholder="TYPE_MESSAGE_HERE..." autocomplete="off">
-                <button type="submit" id="send-btn">SEND</button>
-            </form>
-        </footer>
     </div>
 
+    <!-- Voice Call Modal -->
+    <div id="voice-modal" class="modal" style="display: none;">
+        <div class="modal-content voice-modal">
+            <button class="close-btn" id="close-voice-modal">&times;</button>
+            <div class="voice-call-container">
+                <h2>Voice Call with <span id="voice-call-user"></span></h2>
+                <div class="voice-status">
+                    <div class="status-indicator"></div>
+                    <span id="call-duration">0:00</span>
+                </div>
+                <div class="voice-controls">
+                    <button id="end-call-btn" class="btn btn-danger">End Call</button>
+                    <button id="mute-btn" class="btn btn-secondary">Mute</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Selection Modal -->
+    <div id="user-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="close-btn" id="close-user-modal">&times;</button>
+            <h2>Select User to Chat</h2>
+            <div class="users-list" id="users-list">
+                <div class="placeholder">Loading users...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api-base.js"></script>
     <script src="../js/message.js"></script>
 </body>
 </html>
