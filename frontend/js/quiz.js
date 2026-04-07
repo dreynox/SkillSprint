@@ -109,10 +109,7 @@ function renderSubmitHint() {
 
 function renderResultLink(summary) {
   resultContainer.style.display = "block";
-  const unansweredText = typeof summary.unanswered === "number" ? `<p>Unanswered: ${summary.unanswered}</p>` : "";
   resultContainer.innerHTML = `
-    <h2>Score: ${summary.score} / ${summary.total}</h2>
-    ${unansweredText}
     <a class="view-score-link" href="result.html">View Score</a>
   `;
 }

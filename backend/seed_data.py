@@ -16,11 +16,11 @@ def seed_users(db):
             )
         )
 
-    if not db.query(User).filter(User.email == "student@skillsprint-demo.com").first():
+    if not db.query(User).filter(User.email == "student@skillsprint.com").first():
         db.add(
             User(
-                name="Demo Student",
-                email="student@skillsprint-demo.com",
+                name="Test Student",
+                email="student@skillsprint.com",
                 password_hash=hash_password("student123"),
                 role=RoleEnum.STUDENT,
             )
@@ -35,7 +35,7 @@ def seed_quiz(db):
         now = datetime.now(UTC).replace(tzinfo=None)
         test = Test(
             title="Python Basics Test",
-            description="Simple MCQ round for demo",
+            description="Simple MCQ round for skill assessment",
             is_active=True,
             start_time=now - timedelta(hours=1),
             end_time=now + timedelta(days=2),
@@ -85,7 +85,7 @@ def seed_contest(db):
         now = datetime.now(UTC).replace(tzinfo=None)
         contest = Contest(
             name="Weekly Coding Sprint",
-            description="Demo coding contest with starter problems",
+            description="Competitive coding contest with multiple difficulty levels",
             start_time=now - timedelta(hours=2),
             end_time=now + timedelta(days=1),
             is_active=True,

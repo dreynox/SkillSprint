@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkillSprint | Result Analysis</title>
+  <title>SkillSprint | Quiz Result</title>
   <link rel="stylesheet" href="../css/result.css">
 </head>
 <body>
-
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="student-dashboard.html">Skill<span>Sprint</span></a>
@@ -22,75 +21,75 @@
     </div>
   </header>
 
-  <header class="app-header">
-    <h1>QUIZ RESULT</h1>
-    <p class="tagline">Your score and profile details</p>
-  </header>
-
-  <section class="summary">
-    <div class="stat-card">
-      <h3>Score</h3>
-      <span id="scoreValue">--</span>
+  <main>
+    <div class="hero">
+      <h1>Quiz Result</h1>
+      <p>Your performance and profile summary</p>
     </div>
 
-    <div class="stat-card">
-      <h3>Total Questions</h3>
-      <span id="totalValue">--</span>
+    <div class="grid-2col">
+      <section class="panel">
+        <h2>Score Summary</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">Score</div>
+            <div class="stat-value" id="scoreValue">--</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Total Questions</div>
+            <div class="stat-value" id="totalValue">--</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Unanswered</div>
+            <div class="stat-value" id="unansweredValue">--</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Mode</div>
+            <div class="stat-value" id="modeValue">--</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Quiz Details</h2>
+        <div class="details-list">
+          <div class="detail-row">
+            <span class="detail-label">Quiz Type:</span>
+            <span class="detail-value" id="quizTypeValue">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Language:</span>
+            <span class="detail-value" id="languageValue">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Level:</span>
+            <span class="detail-value" id="levelValue">--</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Submitted:</span>
+            <span class="detail-value" id="submittedAtValue">--</span>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="stat-card">
-      <h3>Unanswered</h3>
-      <span id="unansweredValue">--</span>
+    <section class="panel">
+      <h2>Student Profile</h2>
+      <div class="profile-table">
+        <tbody id="profileTable"></tbody>
+      </div>
+    </section>
+
+    <section class="panel notes-panel">
+      <h2>Summary</h2>
+      <ul id="noteList" class="notes-list"></ul>
+    </section>
+
+    <div class="action-buttons">
+      <a href="quiz.html" class="btn btn-secondary">Take Another Quiz</a>
+      <a href="student-dashboard.html" class="btn btn-primary">Back to Dashboard</a>
     </div>
-
-    <div class="stat-card">
-      <h3>Mode</h3>
-      <span id="modeValue">--</span>
-    </div>
-  </section>
-
-  <section class="difficulty">
-    <h2>Student Details</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody id="profileTable">
-      </tbody>
-    </table>
-  </section>
-
-  <section class="questions">
-    <h2>Quiz Summary</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Quiz Type</th>
-          <th>Language</th>
-          <th>Level</th>
-          <th>Submitted At</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td id="quizTypeValue">--</td>
-          <td id="languageValue">--</td>
-          <td id="levelValue">--</td>
-          <td id="submittedAtValue">--</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="insights">
-    <h2>Notes</h2>
-    <ul id="noteList"></ul>
-  </section>
+  </main>
 
   <script src="../js/result.js"></script>
 </body>
