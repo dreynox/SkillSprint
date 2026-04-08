@@ -1,5 +1,12 @@
 const RENDER_API_URL = "https://skillsprint-backend-i8q6.onrender.com";
-const API_BASE_URL = localStorage.getItem("SKILLSPRINT_API_BASE_URL") || window.API_BASE_URL || RENDER_API_URL;
+const LEGACY_API_URL = "https://skillsprint-muv2.onrender.com";
+const storedApiOverride = localStorage.getItem("SKILLSPRINT_API_BASE_URL");
+if (storedApiOverride === LEGACY_API_URL) {
+    localStorage.removeItem("SKILLSPRINT_API_BASE_URL");
+}
+const API_BASE_URL = (storedApiOverride && storedApiOverride !== LEGACY_API_URL)
+    ? storedApiOverride
+    : (window.API_BASE_URL || RENDER_API_URL);
 
 document.getElementById("signupForm").addEventListener("submit", async (e) => {
     e.preventDefault();
