@@ -1,10 +1,10 @@
 const RENDER_API_URL = "https://skillsprint-backend-i8q6.onrender.com";
-const LEGACY_API_URL = "https://skillsprint-muv2.onrender.com";
 const storedApiOverride = localStorage.getItem("SKILLSPRINT_API_BASE_URL");
-if (storedApiOverride === LEGACY_API_URL) {
+const isLegacyOverride = storedApiOverride && storedApiOverride.indexOf("skillsprint-muv2.onrender.com") !== -1;
+if (isLegacyOverride) {
     localStorage.removeItem("SKILLSPRINT_API_BASE_URL");
 }
-const API_BASE_URL = (storedApiOverride && storedApiOverride !== LEGACY_API_URL)
+const API_BASE_URL = (storedApiOverride && !isLegacyOverride)
     ? storedApiOverride
     : (window.API_BASE_URL || RENDER_API_URL);
 
