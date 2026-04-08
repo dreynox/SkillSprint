@@ -1,8 +1,5 @@
-// Detect local vs deployed environment
-const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-const API_BASE_URL = isDev
-    ? `http://${window.location.hostname}:8000`
-    : "https://skillsprint-muv2.onrender.com";
+const RENDER_API_URL = "https://skillsprint-backend-i8q6.onrender.com";
+const API_BASE_URL = localStorage.getItem("SKILLSPRINT_API_BASE_URL") || window.API_BASE_URL || RENDER_API_URL;
 
 document.getElementById("signupForm").addEventListener("submit", async (e) => {
     e.preventDefault();

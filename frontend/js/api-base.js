@@ -4,11 +4,12 @@
   }
 
   const hostname = window.location.hostname;
-  const isLocalhost = !hostname || hostname === "localhost" || hostname === "127.0.0.1";
-  const isPrivateIp = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
-  const isDev = isLocalhost || isPrivateIp;
+  const renderApiUrl = "https://skillsprint-backend-i8q6.onrender.com";
   const apiHost = hostname || "127.0.0.1";
-  window.API_BASE_URL = isDev
-    ? "http://" + apiHost + ":8000"
-    : "https://skillsprint-muv2.onrender.com";
+  const localApiUrl = "http://" + apiHost + ":8000";
+  const explicitOverride = localStorage.getItem("SKILLSPRINT_API_BASE_URL");
+
+  // Default to Render; keep localhost reachable through override when needed.
+  window.API_BASE_URL = explicitOverride || renderApiUrl;
+  window.SKILLSPRINT_LOCAL_API_URL = localApiUrl;
 })();
