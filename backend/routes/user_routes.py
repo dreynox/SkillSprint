@@ -171,19 +171,35 @@ def search(
     current_user: User = Depends(get_current_user),
 ):
     """Search for users, contests, and hackathons"""
-    if not q or len(q.strip()) < 2:
+    query_text = q.strip() if q else ""
+    if len(query_text) < 2:
         return []
-    
-    query_term = f"%{q}%"
+
+    search_terms = [term for term in query_text.split() if term]
+    query_term = f"%{query_text}%"
     results = []
     
     # Search users
-    users = db.query(User).filter(
-        or_(
-            User.name.ilike(query_term),
-            User.email.ilike(query_term)
+    user_filters = []
+    for term in search_terms:
+        term_pattern = f"%{term}%"
+        user_filters.append(
+            or_(
+                User.name.ilike(term_pattern),
+                User.email.ilike(term_pattern),
+                User.srn.ilike(term_pattern),
+                User.prn.ilike(term_pattern),
+                User.branch.ilike(term_pattern),
+                User.division.ilike(term_pattern),
+                User.roll_no.ilike(term_pattern),
+            )
         )
-    ).all()
+
+    users_query = db.query(User)
+    if user_filters:
+        for user_filter in user_filters:
+            users_query = users_query.filter(user_filter)
+    users = users_query.all()
     
     for user in users:
         results.append(SearchResult(
