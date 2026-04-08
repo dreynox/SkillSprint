@@ -1,5 +1,6 @@
 import os
 import sys
+import traceback
 
 # Ensure `backend/` is on sys.path whether uvicorn is launched from the repo
 # root (python -m uvicorn backend.main:app) or from inside backend/ (uvicorn main:app).
@@ -14,8 +15,17 @@ from routes import auth_routes, contest_routes, hackathon_routes, message_routes
 
 # ---------- APP & DATABASE SETUP ----------
 
-ensure_sqlite_compatibility()
-Base.metadata.create_all(bind=engine)
+def initialize_database():
+    try:
+        ensure_sqlite_compatibility()
+        Base.metadata.create_all(bind=engine)
+        print("[startup] Database initialization completed")
+    except Exception as exc:
+        print(f"[startup] Database initialization failed: {exc}")
+        traceback.print_exc()
+
+
+initialize_database()
 
 app = FastAPI(
     title="SkillSprint API",
