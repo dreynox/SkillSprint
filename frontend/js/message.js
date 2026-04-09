@@ -447,17 +447,25 @@ function toggleMute() {
 
 async function openUserSelectionModal() {
     try {
+        document.getElementById('user-modal').style.display = 'flex';
+        const usersList = document.getElementById('users-list');
+        usersList.innerHTML = '<div class="placeholder">Loading users...</div>';
+
         const response = await fetch(`${API_BASE}/users`, {
             headers: authHeaders(),
         });
 
-        if (!response.ok) throw new Error('Failed to load users');
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.detail || `Failed to load users (${response.status})`);
+        }
 
         const users = await response.json();
         renderUsersList(users);
-        document.getElementById('user-modal').style.display = 'flex';
     } catch (error) {
         console.error('Error loading users:', error);
+        const usersList = document.getElementById('users-list');
+        usersList.innerHTML = `<div class="placeholder" style="color: #ff6b6b; font-size: 0.9rem;">${error.message || 'Failed to load users'}<br><small style="margin-top: 0.5rem; display: block;">Close this and try again</small></div>`;
     }
 }
 

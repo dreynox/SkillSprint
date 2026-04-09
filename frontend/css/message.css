@@ -583,6 +583,15 @@ body {
     color: var(--neon-green);
     font-size: 1.5rem;
     cursor: pointer;
+    z-index: 1001;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #00ffff;
+    transform: scale(1.2);
 }
 
 .users-list {
