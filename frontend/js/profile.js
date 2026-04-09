@@ -489,7 +489,7 @@ async function loadProfile() {
     if (viewingUserId && parseInt(viewingUserId) !== currentUser?.id) {
       // Load another user's profile
       profileRes = await fetch(`${API_BASE}/users/${viewingUserId}`, { headers: authHeaders() });
-      statsRes = fetch(`${API_BASE}/users/${viewingUserId}/stats`, { headers: authHeaders() });
+      statsRes = await fetch(`${API_BASE}/users/${viewingUserId}/stats`, { headers: authHeaders() });
     } else {
       // Load current user's profile
       profileRes = await fetch(`${API_BASE}/users/me`, { headers: authHeaders() });
@@ -506,8 +506,8 @@ async function loadProfile() {
     }
 
     const profile = await profileRes.json();
-    const stats = (await statsRes)?.ok
-      ? await (await statsRes).json()
+    const stats = statsRes?.ok
+      ? await statsRes.json()
       : {
           contests_joined: 0,
           contest_submissions: 0,

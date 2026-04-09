@@ -210,6 +210,10 @@ function renderConversations(conversations) {
             </div>
         `;
 
+        convDiv.addEventListener('dblclick', () => {
+            window.location.href = `profile.html?user_id=${conv.user_id}`;
+        });
+
         convDiv.addEventListener('click', (event) => selectConversation(conv.user_id, conv.name, event));
         conversationsList.appendChild(convDiv);
     });
@@ -483,6 +487,10 @@ function renderUsersList(users) {
             selectConversation(user.id, user.name, event);
             document.getElementById('user-modal').style.display = 'none';
             loadConversations();
+        });
+
+        userDiv.addEventListener('dblclick', () => {
+            window.location.href = `profile.html?user_id=${user.id}`;
         });
 
         usersList.appendChild(userDiv);

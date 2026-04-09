@@ -6,6 +6,16 @@ let currentProblem = null;
 let currentContest = null;
 let testCases = [];
 let isExecuting = false;
+const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
+
+function getToken() {
+  const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  if (!cleaned || cleaned === "undefined" || cleaned === "null") {
+    return "";
+  }
+  return cleaned;
+}
 
 // =========================
 // INITIALIZATION
@@ -34,15 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadProblemData(contestId, problemId) {
   try {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     if (!token) {
       alert("Not authenticated. Please log in first.");
-      window.location.href = "/html/login.html";
+      window.location.href = "../../index.html";
       return;
     }
 
     // Load contest details
-    const contestRes = await fetch(`${API_BASE_URL}/contests/${contestId}`, {
+    const contestRes = await fetch(`${API_BASE}/contests/${contestId}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -54,7 +64,7 @@ async function loadProblemData(contestId, problemId) {
 
     // Load problem details
     const problemRes = await fetch(
-      `${API_BASE_URL}/contests/${contestId}/problems/${problemId}`,
+      `${API_BASE}/contests/${contestId}/problems/${problemId}`,
       {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -68,7 +78,7 @@ async function loadProblemData(contestId, problemId) {
 
     // Load test cases
     const testRes = await fetch(
-      `${API_BASE_URL}/contests/${contestId}/problems/${problemId}/test-cases`,
+      `${API_BASE}/contests/${contestId}/problems/${problemId}/test-cases`,
       {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -162,13 +172,13 @@ async function runTests() {
   updateExecutionStatus("Running tests...", "loading");
 
   try {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     const params = new URLSearchParams(window.location.search);
     const contestId = params.get("contest_id");
     const problemId = params.get("problem_id");
 
     const response = await fetch(
-      `${API_BASE_URL}/contests/${contestId}/problems/${problemId}/execute`,
+      `${API_BASE}/contests/${contestId}/problems/${problemId}/execute`,
       {
         method: "POST",
         headers: {
@@ -301,13 +311,13 @@ async function submitCode() {
 
   // Submit the code
   try {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     const params = new URLSearchParams(window.location.search);
     const contestId = params.get("contest_id");
     const problemId = params.get("problem_id");
 
     const response = await fetch(
-      `${API_BASE_URL}/contests/${contestId}/submissions`,
+      `${API_BASE}/contests/${contestId}/submissions`,
       {
         method: "POST",
         headers: {
