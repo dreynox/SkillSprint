@@ -590,14 +590,14 @@
 
             const html = results.map(function (result) {
               if (result.type === "user") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\" class=\"search-result-user\" data-user-id=\"" + result.id + "\">" +
+                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem; cursor: pointer; transition: background 0.2s;\" class=\"search-result-user\" data-user-id=\"" + result.id + "\" onmouseover=\"this.style.background='rgba(0,255,136,0.05)'\" onmouseout=\"this.style.background='transparent'\" onclick=\"if(event.target.classList.contains('follow-btn')) return; window.location.href='profile.html?user_id=" + result.id + "';\">" +
                   "<div style=\"display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;\">" +
-                  "<div>" +
+                  "<div style=\"flex: 1; cursor: pointer;\">" +
                   "<div style=\"font-weight: 600;\">" + escapeHtml(result.name) + "</div>" +
                   "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.email) + "</div>" +
                   (result.bio ? "<div style=\"font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem;\">" + escapeHtml(result.bio) + "</div>" : "") +
                   "</div>" +
-                  "<button class=\"btn follow-btn\" data-user-id=\"" + result.id + "\" style=\"padding: 0.4rem 0.8rem;\">Follow</button>" +
+                  "<button class=\"btn follow-btn\" data-user-id=\"" + result.id + "\" style=\"padding: 0.4rem 0.8rem; white-space: nowrap;\">Follow</button>" +
                   "</div>" +
                   "</div>";
               } else if (result.type === "contest") {

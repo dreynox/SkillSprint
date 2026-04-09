@@ -568,7 +568,7 @@ async function loadProfile() {
 
     const browsePeopleBtnEl = document.getElementById("browsePeopleBtn");
     if (browsePeopleBtnEl) {
-      browsePeopleBtnEl.style.display = isOwnProfile ? "inline-block" : "none";
+      browsePeopleBtnEl.style.display = isOwnProfile ? "none" : "inline-block";
     }
 
     const myProfileBtnEl = document.getElementById("myProfileBtn");
