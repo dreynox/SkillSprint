@@ -100,6 +100,23 @@ def get_messages_with_user(
             msg.is_read = True
     db.commit()
 
+    # Debug logging: print full thread in server terminal for easier verification.
+    print(
+        f"[messages] thread current_user={current_user.id} peer_user={user_id} total={len(messages)}"
+    )
+    for msg in messages:
+        print(
+            "[messages]",
+            {
+                "id": msg.id,
+                "sender_id": msg.sender_id,
+                "recipient_id": msg.recipient_id,
+                "media_type": msg.media_type,
+                "content": msg.content,
+                "created_at": msg.created_at.isoformat() if msg.created_at else None,
+            },
+        )
+
     return messages
 
 
@@ -122,6 +139,19 @@ def send_message(
     db.add(db_message)
     db.commit()
     db.refresh(db_message)
+
+    print(
+        "[messages] sent",
+        {
+            "id": db_message.id,
+            "sender_id": db_message.sender_id,
+            "recipient_id": db_message.recipient_id,
+            "media_type": db_message.media_type,
+            "content": db_message.content,
+            "created_at": db_message.created_at.isoformat() if db_message.created_at else None,
+        },
+    )
+
     return db_message
 
 
