@@ -22,7 +22,6 @@ let callActive = false;
 let callStartTime = null;
 let isMuted = false;
 let conversationByUserId = new Map();
-let currentConversationMeta = null;
 let userSearchDebounce = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -260,7 +259,6 @@ function renderConversations(conversations) {
 async function selectConversation(userId, userName, clickEvent = null) {
     currentChatUserId = Number(userId);
     currentChatUserName = userName;
-    currentConversationMeta = conversationByUserId.get(Number(userId)) || null;
 
     // Update active conversation
     document.querySelectorAll('.conversation-item').forEach((el) => el.classList.remove('active'));
@@ -300,12 +298,6 @@ async function loadMessages(userId, silent = false) {
         const data = await response.json();
         const messages = Array.isArray(data) ? data : (Array.isArray(data?.messages) ? data.messages : []);
 
-        // If thread API is empty but conversation preview exists, keep center panel informative.
-        if (!messages.length && currentConversationMeta && currentConversationMeta.last_message) {
-            renderConversationFallbackBubble(currentConversationMeta);
-            return;
-        }
-
         if (!silent) {
             renderMessages(messages);
         } else {
@@ -318,42 +310,12 @@ async function loadMessages(userId, silent = false) {
     } catch (error) {
         console.error('Error loading messages:', error);
         if (!silent) {
-            renderConversationErrorFallback(error);
+            const messageArena = document.getElementById('message-display');
+            if (messageArena) {
+                messageArena.innerHTML = `<div class="placeholder" style="color:#ff8484;">${escapeHtml(error?.message || 'Failed to load messages')}</div>`;
+            }
         }
     }
-}
-
-function renderConversationFallbackBubble(conv) {
-    const messageArena = document.getElementById('message-display');
-    if (!messageArena) {
-        return;
-    }
-
-    const prettyTime = conv?.last_message_time ? formatTime(conv.last_message_time) : '';
-    const safePreview = escapeHtml(conv?.last_message || 'Message preview unavailable');
-    messageArena.innerHTML = `
-        <div class="message incoming">
-            <div class="bubble">
-                <span class="ref-tag">REF: ${escapeHtml(conv?.name || currentChatUserName || 'User')}</span>
-                <p>${safePreview}</p>
-                <span class="timestamp">${prettyTime}</span>
-            </div>
-        </div>
-    `;
-}
-
-function renderConversationErrorFallback(error) {
-    const messageArena = document.getElementById('message-display');
-    if (!messageArena) {
-        return;
-    }
-
-    if (currentConversationMeta && currentConversationMeta.last_message) {
-        renderConversationFallbackBubble(currentConversationMeta);
-        return;
-    }
-
-    messageArena.innerHTML = `<div class="placeholder" style="color:#ff8484;">${escapeHtml(error?.message || 'Failed to load messages')}</div>`;
 }
 
 function renderMessages(messages) {
@@ -396,7 +358,7 @@ function renderMessages(messages) {
 
         msgDiv.innerHTML = `
             <div class="bubble">
-                ${!isOutgoing ? `<span class="ref-tag">REF: ${escapeHtml(msg.sender?.name || 'User')}</span>` : ''}
+                ${!isOutgoing ? `<span class="ref-tag">REF: ${escapeHtml(currentChatUserName || 'User')}</span>` : ''}
                 ${bubbleContent}
                 <span class="timestamp">${time}</span>
             </div>

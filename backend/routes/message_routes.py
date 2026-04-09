@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from auth import get_current_user
 from database import SessionLocal
 from models import Message, User
-from schemas import MessageCreate, MessageOut, MessageWithSender
+from schemas import MessageCreate, MessageOut
 
 router = APIRouter(prefix="/messages", tags=["messages"])
 
@@ -69,7 +69,7 @@ def get_conversations(
     return list(conv_map.values())
 
 
-@router.get("/with/{user_id}", response_model=List[dict])
+@router.get("/with/{user_id}", response_model=List[MessageOut])
 def get_messages_with_user(
     user_id: int,
     current_user: User = Depends(get_current_user),
@@ -100,38 +100,7 @@ def get_messages_with_user(
             msg.is_read = True
     db.commit()
 
-    payload = []
-    for msg in messages:
-        sender = db.query(User).filter(User.id == msg.sender_id).first()
-        payload.append(
-            {
-                "id": msg.id,
-                "sender_id": msg.sender_id,
-                "recipient_id": msg.recipient_id,
-                "content": msg.content,
-                "media_type": msg.media_type,
-                "file_path": msg.file_path,
-                "is_read": msg.is_read,
-                "created_at": msg.created_at.isoformat() if msg.created_at else None,
-                "sender": {
-                    "id": sender.id if sender else msg.sender_id,
-                    "name": sender.name if sender else "Unknown User",
-                    "email": sender.email if sender else "",
-                    "role": sender.role if sender else "student",
-                    "srn": sender.srn if sender else None,
-                    "prn": sender.prn if sender else None,
-                    "year": sender.year if sender else None,
-                    "branch": sender.branch if sender else None,
-                    "division": sender.division if sender else None,
-                    "roll_no": sender.roll_no if sender else None,
-                    "bio": sender.bio if sender else None,
-                    "avatar_url": sender.avatar_url if sender else None,
-                    "created_at": sender.created_at.isoformat() if sender and sender.created_at else None,
-                },
-            }
-        )
-
-    return payload
+    return messages
 
 
 @router.post("/send", response_model=MessageOut)
