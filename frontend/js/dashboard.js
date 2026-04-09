@@ -1,6 +1,13 @@
+// Get token with robust fallback
+function getToken() {
+    const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+    const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+    return cleaned && cleaned !== "undefined" && cleaned !== "null" ? cleaned : "";
+}
+
 // Check if user is logged in
 function checkAuth() {
-    const token = localStorage.getItem("access_token");
+    const token = getToken();
     const user = localStorage.getItem("user");
 
     if (!token || !user) {

@@ -1,5 +1,4 @@
-const RENDER_API_URL = "https://skillsprint-backend-i8q6.onrender.com";
-const API_BASE_URL = window.API_BASE_URL || RENDER_API_URL;
+const API_BASE = window.API_BASE_URL || "https://skillsprint-backend-i8q6.onrender.com";
 
 document.getElementById("adminSignupForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -34,7 +33,7 @@ document.getElementById("adminSignupForm").addEventListener("submit", async (e) 
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+    const response = await fetch(`${API_BASE}/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

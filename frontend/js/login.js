@@ -1,7 +1,10 @@
-const RENDER_API_URL = "https://skillsprint-backend-i8q6.onrender.com";
-const API_BASE_URL = window.API_BASE_URL || RENDER_API_URL;
+const API_BASE = window.API_BASE_URL || "https://skillsprint-backend-i8q6.onrender.com";
 
-console.log("API_BASE_URL:", API_BASE_URL); // Debug log
+function getToken() {
+  const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  return cleaned && cleaned !== "undefined" && cleaned !== "null" ? cleaned : "";
+}
 
 /* =========================
    LOGIN FORM HANDLER
@@ -32,7 +35,7 @@ form.addEventListener("submit", async (e) => {
   if (span) span.textContent = "AUTHENTICATING...";
 
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    const response = await fetch(`${API_BASE}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,5 +1,4 @@
-const RENDER_API_URL = "https://skillsprint-backend-i8q6.onrender.com";
-const API_BASE_URL = window.API_BASE_URL || RENDER_API_URL;
+const API_BASE = window.API_BASE_URL || "https://skillsprint-backend-i8q6.onrender.com";
 
 const requestOtpForm = document.getElementById("requestOtpForm");
 const verifyOtpForm = document.getElementById("verifyOtpForm");
@@ -28,7 +27,7 @@ requestOtpForm.addEventListener("submit", async (e) => {
   label.textContent = "SENDING OTP...";
 
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/forgot-password/request-otp`, {
+    const response = await fetch(`${API_BASE}/auth/forgot-password/request-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -79,7 +78,7 @@ verifyOtpForm.addEventListener("submit", async (e) => {
   label.textContent = "VERIFYING...";
 
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/forgot-password/verify-otp`, {
+    const response = await fetch(`${API_BASE}/auth/forgot-password/verify-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
