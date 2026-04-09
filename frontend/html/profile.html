@@ -53,6 +53,8 @@
       <div class="actions">
         <button class="btn btn-outline" id="followBtn">Follow</button>
         <button class="btn btn-primary" id="messageBtn">Message</button>
+        <button class="btn btn-outline" id="browsePeopleBtn" type="button">Browse People</button>
+        <button class="btn btn-outline" id="myProfileBtn" type="button" style="display: none;">My Profile</button>
       </div>
 
       <div class="profile-details-panel" id="profileDetailsPanel" style="display: none;">
@@ -231,6 +233,23 @@
           <button id="saveDetailsBtn" class="btn btn-primary" type="submit">Save</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div class="details-modal" id="peopleModal" hidden>
+    <div class="details-modal-card" role="dialog" aria-modal="true" aria-labelledby="peopleModalTitle">
+      <div class="details-modal-head">
+        <h3 id="peopleModalTitle">Browse People</h3>
+        <button id="peopleModalCloseBtn" class="details-modal-close" type="button" aria-label="Close people browser">×</button>
+      </div>
+
+      <div class="people-search-row">
+        <input id="peopleSearchInput" type="text" placeholder="Search by name or email" autocomplete="off" />
+      </div>
+
+      <div id="peopleList" class="people-list">
+        <div class="people-empty">Loading users...</div>
+      </div>
     </div>
   </div>
 

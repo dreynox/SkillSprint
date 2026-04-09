@@ -20,20 +20,23 @@ let voiceStream = null;
 let mediaRecorder = null;
 let callActive = false;
 let callStartTime = null;
+let isMuted = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const chatForm = document.getElementById('chat-form');
     const msgInput = document.getElementById('msg-input');
-    const messageArena = document.getElementById('message-display');
     const fileBtn = document.getElementById('file-btn');
     const fileInput = document.getElementById('file-input');
     const newChatBtn = document.getElementById('new-chat-btn');
     const voiceCallBtn = document.getElementById('voice-call-btn');
     const endCallBtn = document.getElementById('end-call-btn');
     const closeVoiceModal = document.getElementById('close-voice-modal');
+    const emojiBtn = document.getElementById('emoji-btn');
+    const muteBtn = document.getElementById('mute-btn');
 
     // Load conversations on page load
-    loadConversations();
+    const conversations = await loadConversations();
+    await maybeAutoOpenSelectedRecipient(conversations || []);
 
     // Send message
     chatForm.addEventListener('submit', async (e) => {
@@ -63,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (response.ok) {
                     msgInput.value = '';
                     await loadMessages(currentChatUserId);
+                    await loadConversations();
                 }
             } catch (error) {
                 console.error('Error sending message:', error);
@@ -88,6 +92,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // New chat
     newChatBtn.addEventListener('click', openUserSelectionModal);
 
+    // Quick emoji insert
+    emojiBtn.addEventListener('click', () => {
+        msgInput.value += '😊';
+        msgInput.focus();
+    });
+
     // Voice call
     voiceCallBtn.addEventListener('click', () => {
         if (currentChatUserId) {
@@ -99,6 +109,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // End call
     endCallBtn.addEventListener('click', endVoiceCall);
+
+    // Mute/unmute local mic during recording
+    muteBtn.addEventListener('click', toggleMute);
 
     // Close modals
     closeVoiceModal.addEventListener('click', () => {
@@ -113,6 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setInterval(() => {
         if (currentChatUserId) {
             loadMessages(currentChatUserId, true);
+            loadConversations();
         }
     }, 2000);
 });
@@ -127,8 +141,43 @@ async function loadConversations() {
 
         const conversations = await response.json();
         renderConversations(conversations);
+        return conversations;
     } catch (error) {
         console.error('Error loading conversations:', error);
+        return [];
+    }
+}
+
+async function maybeAutoOpenSelectedRecipient(conversations) {
+    const selectedRecipientIdRaw = sessionStorage.getItem('selectedRecipientId');
+    if (!selectedRecipientIdRaw) {
+        return;
+    }
+
+    sessionStorage.removeItem('selectedRecipientId');
+    const selectedRecipientId = Number(selectedRecipientIdRaw);
+    if (!Number.isFinite(selectedRecipientId)) {
+        return;
+    }
+
+    const existingConversation = conversations.find((conv) => conv.user_id === selectedRecipientId);
+    if (existingConversation) {
+        await selectConversation(existingConversation.user_id, existingConversation.name);
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE}/users/${selectedRecipientId}`, {
+            headers: authHeaders(),
+        });
+        if (!response.ok) {
+            throw new Error('Recipient not found');
+        }
+
+        const user = await response.json();
+        await selectConversation(user.id, user.name || `User ${user.id}`);
+    } catch (error) {
+        console.error('Could not auto-open selected recipient:', error);
     }
 }
 
@@ -236,13 +285,13 @@ function renderMessages(messages) {
         if (msg.media_type === 'text') {
             bubbleContent = `<p>${escapeHtml(msg.content || '')}</p>`;
         } else if (msg.media_type === 'image') {
-            bubbleContent = `<img src="${msg.file_path}" alt="image" class="media-preview">`;
+            bubbleContent = `<img src="${normalizeMediaUrl(msg.file_path)}" alt="image" class="media-preview">`;
         } else if (msg.media_type === 'video') {
-            bubbleContent = `<video controls class="media-preview"><source src="${msg.file_path}"></video>`;
+            bubbleContent = `<video controls class="media-preview"><source src="${normalizeMediaUrl(msg.file_path)}"></video>`;
         } else if (msg.media_type === 'voice') {
-            bubbleContent = `<audio controls><source src="${msg.file_path}"></audio>`;
+            bubbleContent = `<audio controls><source src="${normalizeMediaUrl(msg.file_path)}"></audio>`;
         } else if (msg.media_type === 'file') {
-            bubbleContent = `<a href="${msg.file_path}" download class="file-link">📄 ${msg.content}</a>`;
+            bubbleContent = `<a href="${normalizeMediaUrl(msg.file_path)}" download class="file-link">📄 ${msg.content}</a>`;
         } else {
             bubbleContent = `<p>${msg.content || 'Unknown media'}</p>`;
         }
@@ -281,6 +330,7 @@ async function uploadMedia(file, recipientId, mediaType) {
         if (response.ok) {
             document.getElementById('upload-progress').style.display = 'none';
             await loadMessages(recipientId);
+            await loadConversations();
         } else {
             throw new Error('Upload failed');
         }
@@ -304,9 +354,11 @@ async function startVoiceCall() {
         voiceStream = await navigator.mediaDevices.getUserMedia({ audio: true });
         callActive = true;
         callStartTime = Date.now();
+        isMuted = false;
 
         document.getElementById('voice-modal').style.display = 'flex';
         document.getElementById('voice-call-user').textContent = currentChatUserName;
+        document.getElementById('mute-btn').textContent = 'Mute';
 
         // Start recording
         mediaRecorder = new MediaRecorder(voiceStream);
@@ -334,6 +386,7 @@ async function startVoiceCall() {
 
                 if (response.ok) {
                     await loadMessages(currentChatUserId);
+                    await loadConversations();
                 }
             } catch (error) {
                 console.error('Error sending voice message:', error);
@@ -370,7 +423,22 @@ function endVoiceCall() {
     }
 
     callActive = false;
+    isMuted = false;
     document.getElementById('voice-modal').style.display = 'none';
+    document.getElementById('mute-btn').textContent = 'Mute';
+}
+
+function toggleMute() {
+    if (!voiceStream) {
+        return;
+    }
+
+    isMuted = !isMuted;
+    voiceStream.getAudioTracks().forEach((track) => {
+        track.enabled = !isMuted;
+    });
+
+    document.getElementById('mute-btn').textContent = isMuted ? 'Unmute' : 'Mute';
 }
 
 async function openUserSelectionModal() {
@@ -439,4 +507,20 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function normalizeMediaUrl(path) {
+    if (!path) {
+        return '';
+    }
+
+    if (/^https?:\/\//i.test(path)) {
+        return path;
+    }
+
+    if (path.startsWith('/')) {
+        return `${API_BASE}${path}`;
+    }
+
+    return `${API_BASE}/${path}`;
 }

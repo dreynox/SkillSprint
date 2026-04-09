@@ -32,12 +32,17 @@ def get_conversations(
     db: Session = Depends(get_db),
 ):
     """Get list of all conversations for the current user"""
-    conversations = db.query(Message).filter(
-        or_(
-            Message.sender_id == current_user.id,
-            Message.recipient_id == current_user.id,
+    conversations = (
+        db.query(Message)
+        .filter(
+            or_(
+                Message.sender_id == current_user.id,
+                Message.recipient_id == current_user.id,
+            )
         )
-    ).all()
+        .order_by(Message.created_at.desc())
+        .all()
+    )
 
     # Build unique conversations
     conv_map = {}

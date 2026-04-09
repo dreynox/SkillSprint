@@ -4,6 +4,7 @@ const AVATAR_MAX_BYTES = 1024 * 1024;
 let currentProfile = null;
 let pendingAvatarFile = null;
 let pendingAvatarPreviewUrl = "";
+let allUsers = [];
 
 function getToken() {
   const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
@@ -164,6 +165,114 @@ function fillDetailsForm(profile) {
   set("editRollNo", profile.roll_no);
 }
 
+function openPeopleModal() {
+  const modal = document.getElementById("peopleModal");
+  const searchInput = document.getElementById("peopleSearchInput");
+  if (!modal) {
+    return;
+  }
+
+  modal.hidden = false;
+  if (searchInput) {
+    searchInput.value = "";
+  }
+  loadPeopleList();
+}
+
+function closePeopleModal() {
+  const modal = document.getElementById("peopleModal");
+  if (!modal) {
+    return;
+  }
+
+  modal.hidden = true;
+}
+
+function renderPeopleList(users) {
+  const peopleList = document.getElementById("peopleList");
+  const currentUser = getCachedUser();
+
+  if (!peopleList) {
+    return;
+  }
+
+  peopleList.innerHTML = "";
+
+  if (!users.length) {
+    peopleList.innerHTML = '<div class="people-empty">No matching users found.</div>';
+    return;
+  }
+
+  users.forEach((user) => {
+    const row = document.createElement("div");
+    row.className = "people-item";
+
+    const isMe = user.id === currentUser?.id;
+    row.innerHTML = `
+      <div class="people-meta">
+        <div class="people-name">${user.name || `User ${user.id}`}</div>
+        <div class="people-email">${user.email || "-"}${isMe ? " • You" : ""}</div>
+      </div>
+      <button class="btn btn-outline" type="button">${isMe ? "Open" : "View Profile"}</button>
+    `;
+
+    const actionBtn = row.querySelector("button");
+    actionBtn?.addEventListener("click", () => {
+      if (isMe) {
+        window.location.href = "profile.html";
+      } else {
+        window.location.href = `profile.html?user_id=${user.id}`;
+      }
+    });
+
+    peopleList.appendChild(row);
+  });
+}
+
+async function loadPeopleList() {
+  const peopleList = document.getElementById("peopleList");
+  const searchInput = document.getElementById("peopleSearchInput");
+
+  if (!peopleList) {
+    return;
+  }
+
+  peopleList.innerHTML = '<div class="people-empty">Loading users...</div>';
+
+  try {
+    const response = await fetch(`${API_BASE}/users`, {
+      headers: authHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to load users");
+    }
+
+    allUsers = await response.json();
+    renderPeopleList(allUsers);
+
+    if (searchInput && !searchInput.dataset.bound) {
+      searchInput.dataset.bound = "true";
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          renderPeopleList(allUsers);
+          return;
+        }
+
+        const filtered = allUsers.filter((user) => {
+          const name = String(user.name || "").toLowerCase();
+          const email = String(user.email || "").toLowerCase();
+          return name.includes(query) || email.includes(query);
+        });
+
+        renderPeopleList(filtered);
+      });
+    }
+  } catch (error) {
+    peopleList.innerHTML = `<div class="people-empty">${error.message || "Could not load users."}</div>`;
+  }
+}
 async function saveProfileDetails() {
   const token = getToken();
   if (!token) {
@@ -442,6 +551,7 @@ async function loadProfile() {
     
     // Update follow button visibility and state
     const followBtn = document.getElementById("followBtn");
+    const messageBtn = document.getElementById("messageBtn");
     if (followBtn) {
       if (isOwnProfile) {
         followBtn.style.display = "none";
@@ -450,6 +560,20 @@ async function loadProfile() {
         // Check if currently following this user
         checkFollowingStatus(profile.id, followBtn);
       }
+    }
+
+    if (messageBtn) {
+      messageBtn.style.display = isOwnProfile ? "none" : "block";
+    }
+
+    const browsePeopleBtnEl = document.getElementById("browsePeopleBtn");
+    if (browsePeopleBtnEl) {
+      browsePeopleBtnEl.style.display = isOwnProfile ? "inline-block" : "none";
+    }
+
+    const myProfileBtnEl = document.getElementById("myProfileBtn");
+    if (myProfileBtnEl) {
+      myProfileBtnEl.style.display = isOwnProfile ? "none" : "inline-block";
     }
     
     if (!isOwnProfile) {
@@ -851,6 +975,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeAvatarModal();
     closeDetailsModal();
+    closePeopleModal();
   }
 });
 
@@ -874,6 +999,37 @@ const deleteAccountBtn = document.getElementById("deleteAccountBtn");
 if (deleteAccountBtn) {
   deleteAccountBtn.addEventListener("click", () => {
     deleteMyAccount();
+  });
+}
+
+const browsePeopleBtn = document.getElementById("browsePeopleBtn");
+if (browsePeopleBtn) {
+  browsePeopleBtn.addEventListener("click", () => {
+    openPeopleModal();
+  });
+}
+
+const myProfileBtn = document.getElementById("myProfileBtn");
+if (myProfileBtn) {
+  myProfileBtn.addEventListener("click", () => {
+    window.location.href = "profile.html";
+  });
+}
+
+const peopleModal = document.getElementById("peopleModal");
+const peopleModalCloseBtn = document.getElementById("peopleModalCloseBtn");
+
+if (peopleModalCloseBtn) {
+  peopleModalCloseBtn.addEventListener("click", () => {
+    closePeopleModal();
+  });
+}
+
+if (peopleModal) {
+  peopleModal.addEventListener("click", (event) => {
+    if (event.target === peopleModal) {
+      closePeopleModal();
+    }
   });
 }
 

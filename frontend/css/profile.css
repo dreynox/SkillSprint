@@ -556,6 +556,62 @@ body {
   margin-top: 8px;
 }
 
+.people-search-row {
+  margin-bottom: 10px;
+}
+
+.people-search-row input {
+  width: 100%;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 10px;
+  background: rgba(7, 20, 14, 0.88);
+  color: #ecfdf5;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.people-list {
+  max-height: 360px;
+  overflow-y: auto;
+  display: grid;
+  gap: 8px;
+}
+
+.people-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(3, 14, 9, 0.8);
+}
+
+.people-meta {
+  min-width: 0;
+}
+
+.people-name {
+  color: #ecfdf5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.people-email {
+  color: #9ca3af;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.people-empty {
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 8px 2px;
+}
+
 .btn {
   padding: 10px 18px;
   border-radius: 10px;
