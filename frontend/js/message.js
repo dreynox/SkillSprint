@@ -376,7 +376,7 @@ function renderMessages(messages) {
         msgDiv.className = `message ${isOutgoing ? 'outgoing' : 'incoming'}`;
 
         const time = msg.created_at
-            ? new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            ? parseServerDate(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             : '';
         let bubbleContent = '';
 
@@ -630,9 +630,9 @@ function renderUsersList(users) {
 }
 
 function formatTime(isoString) {
-    const date = new Date(isoString);
+    const date = parseServerDate(isoString);
     const now = new Date();
-    const diffMs = now - date;
+    const diffMs = Math.max(0, now - date);
     const diffMins = Math.floor(diffMs / 60000);
 
     if (diffMins < 1) return 'now';
@@ -641,6 +641,19 @@ function formatTime(isoString) {
     if (diffMins < 10080) return `${Math.floor(diffMins / 1440)}d ago`;
 
     return date.toLocaleDateString();
+}
+
+function parseServerDate(value) {
+    const raw = String(value || '').trim();
+    if (!raw) {
+        return new Date();
+    }
+
+    // Backend emits naive UTC timestamps (no timezone suffix). Treat them as UTC.
+    const hasTimezone = /(?:Z|[+-]\d{2}:?\d{2})$/i.test(raw);
+    const normalized = hasTimezone ? raw : `${raw}Z`;
+    const date = new Date(normalized);
+    return Number.isNaN(date.getTime()) ? new Date() : date;
 }
 
 function escapeHtml(text) {
