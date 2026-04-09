@@ -2,6 +2,7 @@ const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 const DEFAULT_AVATAR = "../images/default-avatar.svg";
 const AVATAR_MAX_BYTES = 1024 * 1024;
 let currentProfile = null;
+let isViewingOwnProfile = true;
 let pendingAvatarFile = null;
 let pendingAvatarPreviewUrl = "";
 let allUsers = [];
@@ -533,6 +534,7 @@ async function loadProfile() {
     
     // Show/hide edit UI based on whether viewing own or other user's profile
     const isOwnProfile = !viewingUserId || (parseInt(viewingUserId) === currentUser?.id);
+    isViewingOwnProfile = isOwnProfile;
     const detailsPanel = document.getElementById("profileDetailsPanel");
     const detailsEditBtn = document.getElementById("detailsEditBtn");
     const avatarEditBtn = document.getElementById("avatarEditBtn");
@@ -582,7 +584,10 @@ async function loadProfile() {
       fillDetailsForm(profile);
     }
 
-    localStorage.setItem("user", JSON.stringify(profile));
+    // Never overwrite the logged-in user cache when viewing someone else's profile.
+    if (isOwnProfile) {
+      localStorage.setItem("user", JSON.stringify(profile));
+    }
   } catch (_error) {
     const cachedUser = getCachedUser();
     if (cachedUser && cachedUser.name) {
@@ -723,14 +728,9 @@ if (followBtn) {
 const messageBtn = document.getElementById("messageBtn");
 if (messageBtn) {
   messageBtn.addEventListener("click", () => {
-    if (currentProfile && currentProfile.id) {
-      // If viewing another user's profile, open message conversation with them
-      const urlParams = new URLSearchParams(window.location.search);
-      const viewingUserId = urlParams.get("user_id");
-      if (viewingUserId && parseInt(viewingUserId) !== getCachedUser()?.id) {
-        // Store the recipient ID for the message page to pre-load
-        sessionStorage.setItem("selectedRecipientId", viewingUserId);
-      }
+    if (!isViewingOwnProfile && currentProfile && currentProfile.id) {
+      // Open message page with this profile preselected as recipient.
+      sessionStorage.setItem("selectedRecipientId", String(currentProfile.id));
     }
     window.location.href = "message.html";
   });

@@ -176,6 +176,12 @@ async function maybeAutoOpenSelectedRecipient(conversations) {
 
         const user = await response.json();
         await selectConversation(user.id, user.name || `User ${user.id}`);
+
+        // Ensure the user picker is hidden when arriving from profile->message flow.
+        const userModal = document.getElementById('user-modal');
+        if (userModal) {
+            userModal.style.display = 'none';
+        }
     } catch (error) {
         console.error('Could not auto-open selected recipient:', error);
     }
