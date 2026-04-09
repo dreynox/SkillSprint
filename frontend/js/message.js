@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const conversations = await loadConversations();
     await maybeAutoOpenSelectedRecipient(conversations || []);
 
+    // If no preselected recipient, open the latest conversation automatically.
+    if (!currentChatUserId && Array.isArray(conversations) && conversations.length > 0) {
+        const first = conversations[0];
+        await selectConversation(Number(first.user_id), first.name || `User ${first.user_id}`);
+    }
+
     // Send message
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -253,9 +259,19 @@ async function loadMessages(userId, silent = false) {
             headers: authHeaders(),
         });
 
-        if (!response.ok) throw new Error('Failed to load messages');
+        if (!response.ok) {
+            let detail = 'Failed to load messages';
+            try {
+                const errData = await response.json();
+                detail = errData?.detail || `${detail} (${response.status})`;
+            } catch (_err) {
+                detail = `${detail} (${response.status})`;
+            }
+            throw new Error(detail);
+        }
 
-        const messages = await response.json();
+        const data = await response.json();
+        const messages = Array.isArray(data) ? data : (Array.isArray(data?.messages) ? data.messages : []);
         if (!silent) {
             renderMessages(messages);
         } else {
@@ -289,7 +305,9 @@ function renderMessages(messages) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${isOutgoing ? 'outgoing' : 'incoming'}`;
 
-        const time = new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const time = msg.created_at
+            ? new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            : '';
         let bubbleContent = '';
 
         if (msg.media_type === 'text') {
@@ -308,7 +326,7 @@ function renderMessages(messages) {
 
         msgDiv.innerHTML = `
             <div class="bubble">
-                ${!isOutgoing ? `<span class="ref-tag">REF: ${msg.sender.name}</span>` : ''}
+                ${!isOutgoing ? `<span class="ref-tag">REF: ${escapeHtml(msg.sender?.name || 'User')}</span>` : ''}
                 ${bubbleContent}
                 <span class="timestamp">${time}</span>
             </div>
