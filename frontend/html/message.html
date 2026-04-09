@@ -115,9 +115,16 @@
     <div id="user-modal" class="modal" style="display: none;">
         <div class="modal-content">
             <button class="close-btn" id="close-user-modal">&times;</button>
-            <h2>Select User to Chat</h2>
+            <h2>Search for People</h2>
+            <input
+                type="text"
+                id="user-search-input"
+                placeholder="Type a name to start DM..."
+                autocomplete="off"
+                style="width: 100%; margin: 0 0 14px; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(0,255,102,0.25); background: rgba(0,0,0,0.45); color: #dffff0;"
+            >
             <div class="users-list" id="users-list">
-                <div class="placeholder">Loading users...</div>
+                <div class="placeholder">Type at least 2 letters to find people.</div>
             </div>
         </div>
     </div>

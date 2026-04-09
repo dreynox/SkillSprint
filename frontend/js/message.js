@@ -21,6 +21,9 @@ let mediaRecorder = null;
 let callActive = false;
 let callStartTime = null;
 let isMuted = false;
+let conversationByUserId = new Map();
+let currentConversationMeta = null;
+let userSearchDebounce = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const chatForm = document.getElementById('chat-form');
@@ -33,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const closeVoiceModal = document.getElementById('close-voice-modal');
     const emojiBtn = document.getElementById('emoji-btn');
     const muteBtn = document.getElementById('mute-btn');
+    const userSearchInput = document.getElementById('user-search-input');
 
     // Load conversations on page load
     const conversations = await loadConversations();
@@ -128,6 +132,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('user-modal').style.display = 'none';
     });
 
+    if (userSearchInput) {
+        userSearchInput.addEventListener('input', () => {
+            const query = userSearchInput.value.trim();
+            clearTimeout(userSearchDebounce);
+            userSearchDebounce = setTimeout(() => {
+                searchUsersForChat(query);
+            }, 220);
+        });
+
+        userSearchInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const first = document.querySelector('#users-list .user-item');
+                if (first) {
+                    first.click();
+                }
+            }
+        });
+    }
+
     // Auto-refresh messages every 2 seconds
     setInterval(() => {
         if (currentChatUserId) {
@@ -195,6 +219,8 @@ async function maybeAutoOpenSelectedRecipient(conversations) {
 
 function renderConversations(conversations) {
     const conversationsList = document.getElementById('conversations-list');
+    conversationByUserId = new Map((conversations || []).map((conv) => [Number(conv.user_id), conv]));
+
     if (conversations.length === 0) {
         conversationsList.innerHTML = '<div class="placeholder">No conversations yet</div>';
         return;
@@ -232,8 +258,9 @@ function renderConversations(conversations) {
 }
 
 async function selectConversation(userId, userName, clickEvent = null) {
-    currentChatUserId = userId;
+    currentChatUserId = Number(userId);
     currentChatUserName = userName;
+    currentConversationMeta = conversationByUserId.get(Number(userId)) || null;
 
     // Update active conversation
     document.querySelectorAll('.conversation-item').forEach((el) => el.classList.remove('active'));
@@ -272,6 +299,13 @@ async function loadMessages(userId, silent = false) {
 
         const data = await response.json();
         const messages = Array.isArray(data) ? data : (Array.isArray(data?.messages) ? data.messages : []);
+
+        // If thread API is empty but conversation preview exists, keep center panel informative.
+        if (!messages.length && currentConversationMeta && currentConversationMeta.last_message) {
+            renderConversationFallbackBubble(currentConversationMeta);
+            return;
+        }
+
         if (!silent) {
             renderMessages(messages);
         } else {
@@ -283,7 +317,43 @@ async function loadMessages(userId, silent = false) {
         }
     } catch (error) {
         console.error('Error loading messages:', error);
+        if (!silent) {
+            renderConversationErrorFallback(error);
+        }
     }
+}
+
+function renderConversationFallbackBubble(conv) {
+    const messageArena = document.getElementById('message-display');
+    if (!messageArena) {
+        return;
+    }
+
+    const prettyTime = conv?.last_message_time ? formatTime(conv.last_message_time) : '';
+    const safePreview = escapeHtml(conv?.last_message || 'Message preview unavailable');
+    messageArena.innerHTML = `
+        <div class="message incoming">
+            <div class="bubble">
+                <span class="ref-tag">REF: ${escapeHtml(conv?.name || currentChatUserName || 'User')}</span>
+                <p>${safePreview}</p>
+                <span class="timestamp">${prettyTime}</span>
+            </div>
+        </div>
+    `;
+}
+
+function renderConversationErrorFallback(error) {
+    const messageArena = document.getElementById('message-display');
+    if (!messageArena) {
+        return;
+    }
+
+    if (currentConversationMeta && currentConversationMeta.last_message) {
+        renderConversationFallbackBubble(currentConversationMeta);
+        return;
+    }
+
+    messageArena.innerHTML = `<div class="placeholder" style="color:#ff8484;">${escapeHtml(error?.message || 'Failed to load messages')}</div>`;
 }
 
 function renderMessages(messages) {
@@ -470,26 +540,56 @@ function toggleMute() {
 }
 
 async function openUserSelectionModal() {
-    try {
-        document.getElementById('user-modal').style.display = 'flex';
-        const usersList = document.getElementById('users-list');
-        usersList.innerHTML = '<div class="placeholder">Loading users...</div>';
+    document.getElementById('user-modal').style.display = 'flex';
+    const usersList = document.getElementById('users-list');
+    const userSearchInput = document.getElementById('user-search-input');
 
-        const response = await fetch(`${API_BASE}/users`, {
+    if (usersList) {
+        usersList.innerHTML = '<div class="placeholder">Type at least 2 letters to find people.</div>';
+    }
+
+    if (userSearchInput) {
+        userSearchInput.value = '';
+        userSearchInput.focus();
+    }
+}
+
+async function searchUsersForChat(query) {
+    const usersList = document.getElementById('users-list');
+    if (!usersList) {
+        return;
+    }
+
+    if (!query || query.length < 2) {
+        usersList.innerHTML = '<div class="placeholder">Type at least 2 letters to find people.</div>';
+        return;
+    }
+
+    usersList.innerHTML = '<div class="placeholder">Searching...</div>';
+
+    try {
+        const response = await fetch(`${API_BASE}/users/search?q=${encodeURIComponent(query)}`, {
             headers: authHeaders(),
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.detail || `Failed to load users (${response.status})`);
+            throw new Error(`Search failed (${response.status})`);
         }
 
-        const users = await response.json();
+        const results = await response.json();
+        const users = (Array.isArray(results) ? results : [])
+            .filter((item) => item.type === 'user')
+            .map((item) => ({
+                id: item.id,
+                name: item.name || `User ${item.id}`,
+                email: item.email || '',
+                avatar_url: item.avatar_url || null,
+            }));
+
         renderUsersList(users);
     } catch (error) {
-        console.error('Error loading users:', error);
-        const usersList = document.getElementById('users-list');
-        usersList.innerHTML = `<div class="placeholder" style="color: #ff6b6b; font-size: 0.9rem;">${error.message || 'Failed to load users'}<br><small style="margin-top: 0.5rem; display: block;">Close this and try again</small></div>`;
+        console.error('Error searching users:', error);
+        usersList.innerHTML = '<div class="placeholder">Search is unavailable right now.</div>';
     }
 }
 
@@ -507,7 +607,7 @@ function renderUsersList(users) {
 
         userDiv.innerHTML = `
             <div class="user-avatar">
-                ${user.avatar_url ? `<img src="${user.avatar_url}" alt="${user.name}">` : '<div class="avatar-placeholder">' + user.name[0].toUpperCase() + '</div>'}
+                ${user.avatar_url ? `<img src="${normalizeMediaUrl(user.avatar_url)}" alt="${user.name}">` : '<div class="avatar-placeholder">' + user.name[0].toUpperCase() + '</div>'}
             </div>
             <div class="user-info">
                 <h4>${user.name}</h4>
