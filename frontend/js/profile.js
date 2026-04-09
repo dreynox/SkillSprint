@@ -568,12 +568,12 @@ async function loadProfile() {
 
     const browsePeopleBtnEl = document.getElementById("browsePeopleBtn");
     if (browsePeopleBtnEl) {
-      browsePeopleBtnEl.style.display = isOwnProfile ? "none" : "inline-block";
+      browsePeopleBtnEl.style.display = isOwnProfile ? "inline-block" : "none";
     }
 
     const myProfileBtnEl = document.getElementById("myProfileBtn");
     if (myProfileBtnEl) {
-      myProfileBtnEl.style.display = isOwnProfile ? "none" : "inline-block";
+      myProfileBtnEl.style.display = isOwnProfile ? "inline-block" : "none";
     }
     
     if (!isOwnProfile) {
