@@ -17,27 +17,29 @@
     </h1>
     <p class="subtitle">Create your admin account</p>
 
-    <div id="generalError" class="error-message"></div>
+    <div id="generalError" class="error-message" role="alert" aria-live="assertive"></div>
+    <p id="adminSignupStatus" class="helper-text" role="status" aria-live="polite">Create an admin account with strong credentials.</p>
 
     <form id="adminSignupForm">
       <div class="input-group">
-        <input type="text" id="name" name="name" required placeholder="Admin Name" />
+        <input type="text" id="name" name="name" required placeholder="Admin Name" autocomplete="name" />
         <span class="error-message" id="nameError"></span>
       </div>
 
       <div class="input-group">
-        <input type="email" id="email" name="email" required placeholder="Admin Email" />
+        <input type="email" id="email" name="email" required placeholder="Admin Email" autocomplete="email" />
         <span class="error-message" id="emailError"></span>
       </div>
 
       <div class="input-group password">
-        <input type="password" id="password" name="password" required placeholder="Password" />
+        <input type="password" id="password" name="password" required placeholder="Password" autocomplete="new-password" aria-describedby="adminPasswordHelp" />
         <span id="togglePassword">👁</span>
         <span class="error-message" id="passwordError"></span>
       </div>
+      <p id="adminPasswordHelp" class="helper-text">Use at least 6 characters. Prefer a longer passphrase.</p>
 
       <div class="input-group password">
-        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" />
+        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" autocomplete="new-password" />
         <span id="toggleConfirmPassword">👁</span>
         <span class="error-message" id="confirmPasswordError"></span>
       </div>

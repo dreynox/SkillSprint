@@ -2,6 +2,7 @@ const API_BASE = window.API_BASE_URL || "https://skillsprint-backend-i8q6.onrend
 
 const form = document.getElementById("adminLoginForm");
 const loginBtn = document.getElementById("loginBtn");
+const adminLoginStatus = document.getElementById("adminLoginStatus");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -14,6 +15,7 @@ form.addEventListener("submit", async (e) => {
 
   if (!email || !password) {
     showError("generalError", "Please fill in all fields");
+    setStatus("Please fill in all required fields.");
     return;
   }
 
@@ -23,6 +25,7 @@ form.addEventListener("submit", async (e) => {
   if (span) {
     span.textContent = "AUTHENTICATING...";
   }
+  setStatus("Authenticating...");
 
   try {
     const response = await fetch(`${API_BASE}/auth/login`, {
@@ -57,6 +60,7 @@ form.addEventListener("submit", async (e) => {
     }
     loginBtn.style.background = "#00ff88";
     loginBtn.style.color = "#000";
+    setStatus("Login successful. Redirecting to admin dashboard...");
 
     setTimeout(() => {
       window.location.href = "admin-dashboard.html";
@@ -68,6 +72,7 @@ form.addEventListener("submit", async (e) => {
       span.textContent = "ADMIN AUTHENTICATE";
     }
     showError("generalError", error.message || "Connection error. Please try again.");
+    setStatus("Login failed. Check credentials and try again.");
     console.error("Admin login error:", error);
   }
 });
@@ -83,6 +88,15 @@ function clearErrors() {
   document.querySelectorAll(".error-message").forEach((el) => {
     el.textContent = "";
   });
+}
+
+function setStatus(message) {
+  if (adminLoginStatus) {
+    adminLoginStatus.textContent = message;
+  }
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(message, "info");
+  }
 }
 
 const glow = document.querySelector(".cursor-glow");
@@ -146,5 +160,16 @@ if (togglePassword && passwordInput) {
       passwordInput.getAttribute("type") === "password" ? "text" : "password";
     passwordInput.setAttribute("type", type);
     togglePassword.textContent = type === "password" ? "👁" : "🙈";
+  });
+
+  passwordInput.addEventListener("keydown", (event) => {
+    const hint = document.getElementById("adminCapsLockHint");
+    if (!hint || typeof event.getModifierState !== "function") return;
+    hint.style.display = event.getModifierState("CapsLock") ? "block" : "none";
+  });
+
+  passwordInput.addEventListener("blur", () => {
+    const hint = document.getElementById("adminCapsLockHint");
+    if (hint) hint.style.display = "none";
   });
 }

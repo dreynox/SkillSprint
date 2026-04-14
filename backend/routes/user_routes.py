@@ -2,14 +2,14 @@ import os
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
 from auth import get_current_user
 from database import get_db
 from models import ContestParticipation, ContestSubmission, QuizSubmission, User, Follow, Contest, Hackathon, Message
-from schemas import MessageResponse, UserOut, UserProfileUpdate, UserStatsOut, FollowOut, SearchResult
+from schemas import LeaderboardEntryOut, MessageResponse, UserOut, UserProfileUpdate, UserStatsOut, FollowOut, SearchResult
 from typing import List
 
 router = APIRouter()
@@ -152,6 +152,100 @@ def get_my_stats(db: Session = Depends(get_db), current_user: User = Depends(get
         total_quiz_score=int(quiz_score_sum),
         quiz_questions_attempted=int(quiz_questions_sum),
     )
+
+
+def _badge_for_points(points: int) -> str:
+    if points >= 1500:
+        return "Elite"
+    if points >= 1000:
+        return "Pro"
+    if points >= 500:
+        return "Advanced"
+    if points >= 200:
+        return "Intermediate"
+    return "Starter"
+
+
+@router.get("/leaderboard", response_model=List[LeaderboardEntryOut])
+def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(get_db)):
+    quiz_stats = (
+        db.query(
+            QuizSubmission.user_id.label("user_id"),
+            func.count(QuizSubmission.id).label("quiz_attempts"),
+            func.coalesce(func.sum(QuizSubmission.score), 0).label("quiz_score"),
+        )
+        .group_by(QuizSubmission.user_id)
+        .subquery()
+    )
+
+    contest_stats = (
+        db.query(
+            ContestSubmission.user_id.label("user_id"),
+            func.count(ContestSubmission.id).label("contest_submissions"),
+        )
+        .group_by(ContestSubmission.user_id)
+        .subquery()
+    )
+
+    participation_stats = (
+        db.query(
+            ContestParticipation.user_id.label("user_id"),
+            func.count(ContestParticipation.id).label("contests_joined"),
+        )
+        .group_by(ContestParticipation.user_id)
+        .subquery()
+    )
+
+    total_points = (
+        func.coalesce(quiz_stats.c.quiz_score, 0) * 10
+        + func.coalesce(quiz_stats.c.quiz_attempts, 0) * 5
+        + func.coalesce(participation_stats.c.contests_joined, 0) * 15
+        + func.coalesce(contest_stats.c.contest_submissions, 0) * 20
+    )
+
+    rows = (
+        db.query(
+            User.id.label("id"),
+            User.name.label("name"),
+            User.avatar_url.label("avatar_url"),
+            User.branch.label("branch"),
+            User.year.label("year"),
+            func.coalesce(quiz_stats.c.quiz_attempts, 0).label("quiz_attempts"),
+            func.coalesce(quiz_stats.c.quiz_score, 0).label("quiz_score"),
+            func.coalesce(participation_stats.c.contests_joined, 0).label("contests_joined"),
+            func.coalesce(contest_stats.c.contest_submissions, 0).label("contest_submissions"),
+            total_points.label("total_points"),
+        )
+        .outerjoin(quiz_stats, quiz_stats.c.user_id == User.id)
+        .outerjoin(contest_stats, contest_stats.c.user_id == User.id)
+        .outerjoin(participation_stats, participation_stats.c.user_id == User.id)
+        .filter(total_points > 0)
+        .order_by(total_points.desc(), User.name.asc())
+        .limit(limit)
+        .all()
+    )
+
+    leaderboard = []
+    for index, row in enumerate(rows, start=1):
+        points = int(row.total_points or 0)
+        leaderboard.append(
+            LeaderboardEntryOut(
+                id=row.id,
+                name=row.name,
+                avatar_url=row.avatar_url,
+                branch=row.branch,
+                year=row.year,
+                quiz_attempts=int(row.quiz_attempts or 0),
+                quiz_score=int(row.quiz_score or 0),
+                contests_joined=int(row.contests_joined or 0),
+                contest_submissions=int(row.contest_submissions or 0),
+                total_points=points,
+                badge=_badge_for_points(points),
+                rank=index,
+            )
+        )
+
+    return leaderboard
 
 
 @router.get("", response_model=List[UserOut])

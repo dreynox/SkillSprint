@@ -1,4 +1,5 @@
 const API_BASE = window.API_BASE_URL || "https://skillsprint-backend-i8q6.onrender.com";
+const adminSignupStatus = document.getElementById("adminSignupStatus");
 
 document.getElementById("adminSignupForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -12,16 +13,19 @@ document.getElementById("adminSignupForm").addEventListener("submit", async (e) 
 
   if (!name || !email || !password || !confirmPassword) {
     showError("generalError", "Please fill in all required fields");
+    setStatus("Complete the form before submitting.");
     return;
   }
 
   if (password.length < 6) {
     showError("passwordError", "Password must be at least 6 characters");
+    setStatus("Password is too short.");
     return;
   }
 
   if (password !== confirmPassword) {
     showError("confirmPasswordError", "Passwords do not match");
+    setStatus("Passwords must match.");
     return;
   }
 
@@ -31,6 +35,7 @@ document.getElementById("adminSignupForm").addEventListener("submit", async (e) 
   if (submitLabel) {
     submitLabel.textContent = "CREATING ACCOUNT...";
   }
+  setStatus("Creating admin account...");
 
   try {
     const response = await fetch(`${API_BASE}/auth/register`, {
@@ -55,12 +60,15 @@ document.getElementById("adminSignupForm").addEventListener("submit", async (e) 
       }
       localStorage.setItem("access_token", token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      setStatus("Admin account created. Redirecting to admin login...");
       window.location.href = "admin-login.html";
     } else {
       showError("generalError", formatApiError(data));
+      setStatus("Admin account could not be created.");
     }
   } catch (error) {
     showError("generalError", "Connection error. Please try again.");
+    setStatus("Network issue. Please retry.");
     console.error("Error:", error);
   } finally {
     submitBtn.disabled = false;
@@ -69,6 +77,48 @@ document.getElementById("adminSignupForm").addEventListener("submit", async (e) 
     }
   }
 });
+
+const passwordField = document.getElementById("password");
+const confirmPasswordField = document.getElementById("confirmPassword");
+
+function setStatus(message) {
+  if (adminSignupStatus) {
+    adminSignupStatus.textContent = message;
+  }
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(message, "info");
+  }
+}
+
+if (passwordField) {
+  passwordField.addEventListener("input", () => {
+    const strength = getPasswordStrength(passwordField.value || "");
+    setStatus(strength.message);
+  });
+}
+
+if (confirmPasswordField) {
+  confirmPasswordField.addEventListener("input", () => {
+    if (!passwordField) return;
+    if (confirmPasswordField.value && confirmPasswordField.value !== passwordField.value) {
+      showError("confirmPasswordError", "Passwords do not match");
+    } else {
+      showError("confirmPasswordError", "");
+    }
+  });
+}
+
+function getPasswordStrength(value) {
+  let score = 0;
+  if (value.length >= 6) score += 1;
+  if (/[A-Z]/.test(value) && /[a-z]/.test(value)) score += 1;
+  if (/\d/.test(value)) score += 1;
+  if (/[^A-Za-z0-9]/.test(value) || value.length >= 10) score += 1;
+  if (score <= 1) return { message: "Weak password. Add more characters and variety." };
+  if (score === 2) return { message: "Fair password. Add numbers or symbols." };
+  if (score === 3) return { message: "Good password. Consider adding a symbol." };
+  return { message: "Strong password." };
+}
 
 function showError(elementId, message) {
   const el = document.getElementById(elementId);

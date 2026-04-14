@@ -18,19 +18,21 @@
 
     <p class="subtitle">Admin control portal</p>
 
-    <div id="generalError" class="error-message" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
+    <div id="generalError" class="error-message" role="alert" aria-live="assertive" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
+    <p id="adminLoginStatus" class="helper-text" role="status" aria-live="polite">Use an admin account to access the control center.</p>
 
     <form id="adminLoginForm">
       <div class="input-group">
-        <input type="email" id="email" required />
+        <input type="email" id="email" required autocomplete="email" />
         <label>Admin Email</label>
       </div>
 
       <div class="input-group password">
-        <input type="password" id="password" required />
+        <input type="password" id="password" required autocomplete="current-password" aria-describedby="adminCapsLockHint" />
         <label>Password</label>
         <span id="togglePassword">👁</span>
       </div>
+      <p id="adminCapsLockHint" class="helper-text" style="display:none;">Caps Lock appears to be on.</p>
 
       <button type="submit" id="loginBtn">
         <span>ADMIN AUTHENTICATE</span>

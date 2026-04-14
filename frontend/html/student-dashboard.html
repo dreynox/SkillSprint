@@ -322,7 +322,7 @@
     <div class="topbar-inner">
       <div class="brand">Skill<span>Sprint</span> Student Dashboard</div>
       <div style="flex: 1; display: flex; gap: 0.8rem; padding: 0 1rem;">
-        <input type="text" id="searchInput" placeholder="Search users, events, hackathons..." style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 0.5rem 0.8rem; font-size: 0.9rem; width: 200px; flex: 1; max-width: 300px;" />
+        <input type="text" id="searchInput" placeholder="Search users, events, hackathons..." aria-label="Search users, events, and hackathons" style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 0.5rem 0.8rem; font-size: 0.9rem; width: 200px; flex: 1; max-width: 300px;" />
       </div>
       <div class="topbar-right">
         <a class="icon-btn" id="messagesTopLink" href="message.html" aria-label="Open Messages" title="Messages">💬</a>
@@ -336,8 +336,8 @@
   <div id="searchModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); z-index: 100; align-items: center; justify-content: center;">
     <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 1.5rem; box-shadow: var(--shadow);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-        <h2 style="margin: 0;">Search Results</h2>
-        <button onclick="document.getElementById('searchModal').style.display='none'" style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">✕</button>
+        <h2 id="searchModalTitle" style="margin: 0;">Search Results</h2>
+        <button id="closeSearchBtn" type="button" aria-label="Close search results" style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">✕</button>
       </div>
       <div id="searchResults" style="display: grid; gap: 0.8rem;">
         <div style="text-align: center; color: var(--muted);">Start typing to search...</div>
@@ -349,6 +349,7 @@
     <section class="hero">
       <h1 id="heroTitle">Welcome to your learning dashboard</h1>
       <p>Track progress, join contests, and launch quizzes from one place.</p>
+      <p id="dashboardStatus" role="status" aria-live="polite" style="margin-top: 0.25rem; color: rgba(224, 255, 232, 0.72); font-size: 0.92rem;">Loading dashboard...</p>
     </section>
 
     <section class="grid">
@@ -479,6 +480,7 @@
       const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
       const token = localStorage.getItem("access_token");
       const user = parseUser();
+      const dashboardStatus = document.getElementById("dashboardStatus");
 
       if (!token) {
         window.location.href = "../../index.html";
@@ -493,6 +495,9 @@
       const name = user && user.name ? user.name : "Student";
       document.getElementById("welcomeText").textContent = "Welcome, " + name;
       document.getElementById("heroTitle").textContent = "Hello " + name + ", ready for your next sprint?";
+      if (dashboardStatus) {
+        dashboardStatus.textContent = "Loading your stats and live events...";
+      }
 
       const authHeaders = {
         Authorization: "Bearer " + token,
@@ -513,6 +518,9 @@
           document.getElementById("contestsJoined").textContent = stats.contests_joined || 0;
           document.getElementById("quizAttempts").textContent = stats.quiz_attempts || 0;
           document.getElementById("streak").textContent = (stats.quiz_attempts || 0) + " days";
+          if (dashboardStatus) {
+            dashboardStatus.textContent = "Stats loaded successfully.";
+          }
         });
 
       Promise.all([
@@ -537,8 +545,14 @@
           return;
         }
 
+        feed.setAttribute("aria-busy", "true");
+
         if (!contests.length && !hackathons.length) {
           feed.innerHTML = "<div class=\"list-item\"><div><b>No active events yet</b><span>Admin can publish contests and hackathons from the admin dashboard.</span></div><span class=\"badge\">0</span></div>";
+          if (dashboardStatus) {
+            dashboardStatus.textContent = "No active events yet.";
+          }
+          feed.removeAttribute("aria-busy");
           return;
         }
 
@@ -551,10 +565,18 @@
         }).join("");
 
         feed.innerHTML = contestRows + hackathonRows;
+        feed.removeAttribute("aria-busy");
+        if (dashboardStatus) {
+          dashboardStatus.textContent = "Live events loaded.";
+        }
       }).catch(function () {
         const feed = document.getElementById("activityFeed");
         if (feed) {
           feed.innerHTML = "<div class=\"list-item\"><div><b>Unable to load events</b><span>Check backend availability and try again.</span></div><span class=\"badge\">Error</span></div>";
+          feed.removeAttribute("aria-busy");
+        }
+        if (dashboardStatus) {
+          dashboardStatus.textContent = "Could not load live events right now.";
         }
       });
     }
@@ -590,10 +612,18 @@
       const query = event.target.value.trim();
       const modal = document.getElementById("searchModal");
       const resultsContainer = document.getElementById("searchResults");
+      const dashboardStatus = document.getElementById("dashboardStatus");
 
       if (!query || query.length < 2) {
         modal.style.display = "none";
+        if (dashboardStatus) {
+          dashboardStatus.textContent = "Search closed.";
+        }
         return;
+      }
+
+      if (dashboardStatus) {
+        dashboardStatus.textContent = "Searching...";
       }
 
       searchTimeout = setTimeout(function () {
@@ -611,6 +641,9 @@
             if (!results || results.length === 0) {
               resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">No results found</div>";
               modal.style.display = "flex";
+              if (dashboardStatus) {
+                dashboardStatus.textContent = "No results found.";
+              }
               return;
             }
 
@@ -652,6 +685,9 @@
 
             resultsContainer.innerHTML = html;
             modal.style.display = "flex";
+            if (dashboardStatus) {
+              dashboardStatus.textContent = results.length + " result(s) found.";
+            }
 
             // Add follow button listeners
             resultsContainer.querySelectorAll(".follow-btn").forEach(function (btn) {
@@ -681,8 +717,19 @@
           .catch(function () {
             resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">Error fetching results</div>";
             modal.style.display = "flex";
+            if (dashboardStatus) {
+              dashboardStatus.textContent = "Search failed.";
+            }
           });
       }, 300);
+    });
+
+    document.getElementById("closeSearchBtn").addEventListener("click", function () {
+      document.getElementById("searchModal").style.display = "none";
+      const dashboardStatus = document.getElementById("dashboardStatus");
+      if (dashboardStatus) {
+        dashboardStatus.textContent = "Search closed.";
+      }
     });
 
     loadDashboard();

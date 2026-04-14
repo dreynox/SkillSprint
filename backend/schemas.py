@@ -105,6 +105,21 @@ class UserStatsOut(BaseModel):
     quiz_questions_attempted: int
 
 
+class LeaderboardEntryOut(BaseModel):
+    id: int
+    name: str
+    avatar_url: Optional[str] = None
+    branch: Optional[str] = None
+    year: Optional[int] = None
+    quiz_attempts: int
+    quiz_score: int
+    contests_joined: int
+    contest_submissions: int
+    total_points: int
+    badge: str
+    rank: int
+
+
 class ContestParticipationOut(BaseModel):
     id: int
     user_id: int

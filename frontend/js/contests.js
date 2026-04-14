@@ -57,16 +57,25 @@ function showSection(section) {
 function setListStatus(msg, isError = false) {
   listStatusEl.textContent = msg;
   listStatusEl.style.color = isError ? "#b00020" : "#555";
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(msg, isError ? "error" : "info");
+  }
 }
 
 function setProblemStatus(msg, isError = false) {
   problemStatusEl.textContent = msg;
   problemStatusEl.style.color = isError ? "#b00020" : "#555";
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(msg, isError ? "error" : "info");
+  }
 }
 
 function setSubmitStatus(msg, isError = false) {
   submitStatusEl.textContent = msg;
   submitStatusEl.style.color = isError ? "#b00020" : "#555";
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(msg, isError ? "error" : "info");
+  }
 }
 
 // ── Contest list ──────────────────────────────────────────────────────────────
@@ -79,6 +88,8 @@ async function loadContests() {
 
   setListStatus("Loading contests...");
   contestCards.innerHTML = "";
+  refreshBtn.disabled = true;
+  listSection.setAttribute("aria-busy", "true");
 
   try {
     const res  = await fetch(`${API_BASE}/contests`);
@@ -94,6 +105,9 @@ async function loadContests() {
     data.forEach(renderContestCard);
   } catch (err) {
     setListStatus(err.message, true);
+  } finally {
+    refreshBtn.disabled = false;
+    listSection.removeAttribute("aria-busy");
   }
 }
 
@@ -129,6 +143,7 @@ async function openContest(contestId) {
   problemCards.innerHTML    = "";
   setProblemStatus("Loading problems...");
   showSection(detailSection);
+  detailSection.setAttribute("aria-busy", "true");
 
   try {
     const res  = await fetch(`${API_BASE}/contests/${contestId}`);
@@ -155,6 +170,8 @@ async function openContest(contestId) {
     });
   } catch (err) {
     setProblemStatus(err.message, true);
+  } finally {
+    detailSection.removeAttribute("aria-busy");
   }
 }
 
@@ -230,6 +247,7 @@ async function submitSolution() {
   setSubmitStatus("Submitting...");
   submitBtn.disabled = true;
   verdictBox.style.display = "none";
+  problemSection.setAttribute("aria-busy", "true");
 
   try {
     const res  = await fetch(
@@ -256,6 +274,7 @@ async function submitSolution() {
     setSubmitStatus(err.message, true);
   } finally {
     submitBtn.disabled = false;
+    problemSection.removeAttribute("aria-busy");
   }
 }
 

@@ -10,6 +10,7 @@ const levelInput = document.getElementById("level");
 const statusEl = document.getElementById("status");
 const quizForm = document.getElementById("quiz-form");
 const resultContainer = document.getElementById("result-container");
+const quizContainer = document.getElementById("quiz-container");
 
 let questions = [];
 let randomSessionId = null;
@@ -27,6 +28,9 @@ function saveQuizResult(result) {
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
   statusEl.style.color = isError ? "#b00020" : "#333";
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(message, isError ? "error" : "info");
+  }
 }
 
 function renderQuestions(items) {
@@ -36,8 +40,11 @@ function renderQuestions(items) {
     const block = document.createElement("div");
     block.className = "question-block";
     block.style.marginBottom = "20px";
+    block.setAttribute("role", "group");
+    block.setAttribute("aria-labelledby", `question-title-${question.id}`);
 
     const title = document.createElement("h2");
+    title.id = `question-title-${question.id}`;
     title.textContent = `${index + 1}. ${question.text}`;
     title.style.marginBottom = "12px";
     block.appendChild(title);
@@ -53,15 +60,19 @@ function renderQuestions(items) {
       const option = document.createElement("label");
       option.className = "option";
       option.style.display = "block";
+      option.style.cursor = "pointer";
 
       const input = document.createElement("input");
       input.type = "radio";
       input.name = `question-${question.id}`;
       input.value = label;
+      input.id = `question-${question.id}-${label}`;
       input.style.marginRight = "8px";
 
       option.appendChild(input);
-      option.appendChild(document.createTextNode(`${label}. ${value}`));
+      const optionText = document.createElement("span");
+      optionText.textContent = `${label}. ${value}`;
+      option.appendChild(optionText);
       block.appendChild(option);
     });
 
@@ -193,8 +204,12 @@ async function loadQuestions() {
 
   setStatus("Loading questions...");
   submitBtn.disabled = true;
+  loadBtn.disabled = true;
   resultContainer.style.display = "none";
   resetTimer();
+  if (quizContainer) {
+    quizContainer.setAttribute("aria-busy", "true");
+  }
 
   try {
     const response = await fetch(`${API_BASE}/quiz/tests/${testId}/questions`);
@@ -231,6 +246,11 @@ async function loadQuestions() {
   } catch (error) {
     setStatus(error.message, true);
     quizForm.innerHTML = "";
+  } finally {
+    loadBtn.disabled = false;
+    if (quizContainer) {
+      quizContainer.removeAttribute("aria-busy");
+    }
   }
 }
 
@@ -240,8 +260,12 @@ async function startRandomSession() {
 
   setStatus("Creating random question session...");
   submitBtn.disabled = true;
+  startRandomBtn.disabled = true;
   resultContainer.style.display = "none";
   resetTimer();
+  if (quizContainer) {
+    quizContainer.setAttribute("aria-busy", "true");
+  }
 
   try {
     const response = await fetch(`${API_BASE}/quiz/random-bank/start`, {
@@ -281,6 +305,11 @@ async function startRandomSession() {
   } catch (error) {
     setStatus(error.message || "Failed to create random session", true);
     quizForm.innerHTML = "";
+  } finally {
+    startRandomBtn.disabled = false;
+    if (quizContainer) {
+      quizContainer.removeAttribute("aria-busy");
+    }
   }
 }
 
@@ -313,6 +342,10 @@ async function submitAnswers(options = {}) {
   const timerBox = document.getElementById("timer-box");
   if (timerBox) {
     timerBox.style.display = "none";
+  }
+
+  if (quizContainer) {
+    quizContainer.setAttribute("aria-busy", "true");
   }
 
   try {
@@ -370,6 +403,10 @@ async function submitAnswers(options = {}) {
     setStatus("Submission saved successfully. Click View Score below.");
   } catch (error) {
     setStatus(error.message, true);
+  } finally {
+    if (quizContainer) {
+      quizContainer.removeAttribute("aria-busy");
+    }
   }
 }
 

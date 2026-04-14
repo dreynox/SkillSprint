@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillSprint - Leaderboard</title>
   <link rel="stylesheet" href="../css/info-pages.css">
-    <link rel="stylesheet" href="../css/ux-foundation.css">
+  <link rel="stylesheet" href="../css/leaderboard.css">
+  <link rel="stylesheet" href="../css/ux-foundation.css">
 </head>
 <body>
   <div class="cursor-glow"></div>
@@ -28,74 +29,47 @@
   <main class="page">
     <section class="hero">
       <h1>College Leaderboard</h1>
-      <p>Track top performers based on daily challenges, hackathons, and consistency streaks.</p>
+      <p>Track top performers based on quiz performance, contest activity, and overall participation.</p>
       <div class="stats">
         <div class="stat">Live Rankings</div>
         <div class="stat">Points-Based System</div>
-        <div class="stat">Streak Rewards</div>
-        <div class="stat">Faculty Verified</div>
+        <div class="stat">Quiz Activity</div>
+        <div class="stat">Contest Activity</div>
       </div>
     </section>
 
     <section class="panel">
-      <h2 class="section-title">Top Performers</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Student Name</th>
-              <th>Challenges Solved</th>
-              <th>Hackathons</th>
-              <th>Total Points</th>
-              <th>Badge</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="rank">1</td>
-              <td>Aarav Sharma</td>
-              <td>120</td>
-              <td>6</td>
-              <td>1850</td>
-              <td><span class="badge">Elite</span></td>
-            </tr>
-            <tr>
-              <td class="rank">2</td>
-              <td>Priya Mehta</td>
-              <td>110</td>
-              <td>5</td>
-              <td>1720</td>
-              <td><span class="badge">Pro</span></td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
-              <td>Rohan Verma</td>
-              <td>95</td>
-              <td>4</td>
-              <td>1580</td>
-              <td><span class="badge">Advanced</span></td>
-            </tr>
-            <tr>
-              <td class="rank">4</td>
-              <td>Ananya Singh</td>
-              <td>88</td>
-              <td>3</td>
-              <td>1420</td>
-              <td><span class="badge">Intermediate</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="leaderboard-header">
+        <div>
+          <h2 class="section-title">Top Performers</h2>
+          <p class="leaderboard-note">Scores refresh from live backend data.</p>
+        </div>
+        <div class="leaderboard-toolbar">
+          <button class="btn leaderboard-refresh" type="button" id="refreshLeaderboard">Refresh rankings</button>
+          <span class="leaderboard-updated" id="leaderboardUpdated">Loading latest results...</span>
+        </div>
+      </div>
+      <p class="leaderboard-status" id="leaderboardStatus" aria-live="polite"></p>
+      <div class="leaderboard-podium" id="leaderboardPodium" aria-label="Top three leaderboard positions">
+        <div class="leaderboard-empty">Loading podium...</div>
+      </div>
+      <div class="leaderboard-list-wrap">
+        <h3 class="leaderboard-list-title">Ranks 4 to 50</h3>
+        <ul class="leaderboard-list" id="leaderboardList" aria-describedby="leaderboardStatus">
+          <li class="leaderboard-empty">Loading rankings...</li>
+        </ul>
       </div>
     </section>
 
     <section class="footer-panel">
       <h3>How Rankings Work</h3>
-      <p>Points are awarded from challenge completion, hackathon participation, difficulty level, and streak consistency. Rankings refresh daily.</p>
+      <p>Points are awarded from quiz results, contest participation, and submission activity. Rankings refresh from the backend whenever this page loads.</p>
     </section>
   </main>
 
+  <script src="../js/api-base.js"></script>
   <script src="../js/info-pages.js"></script>
-    <script src="../js/ux-foundation.js"></script>
+  <script src="../js/ux-foundation.js"></script>
+  <script src="../js/leaderboard.js"></script>
 </body>
 </html>

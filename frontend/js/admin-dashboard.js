@@ -150,6 +150,9 @@
     }
     element.textContent = message;
     element.style.color = isError ? "#f87171" : "#9bf7c4";
+    if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+      window.SkillSprintUX.showStatus(message, isError ? "error" : "info");
+    }
   }
 
   function toIsoOrNull(value) {
@@ -186,6 +189,8 @@
     }
 
     setStatus("contestStatus", "Posting contest...", false);
+    const btn = document.getElementById("createContestBtn");
+    btn.disabled = true;
 
     try {
       const response = await fetch(API_BASE + "/contests", {
@@ -213,6 +218,8 @@
       await loadFeed();
     } catch (error) {
       setStatus("contestStatus", error.message || "Unable to create contest", true);
+    } finally {
+      btn.disabled = false;
     }
   }
 
@@ -229,6 +236,8 @@
     }
 
     setStatus("hackathonStatus", "Posting hackathon...", false);
+    const btn = document.getElementById("createHackathonBtn");
+    btn.disabled = true;
 
     try {
       const response = await fetch(API_BASE + "/hackathons", {
@@ -256,6 +265,8 @@
       await loadFeed();
     } catch (error) {
       setStatus("hackathonStatus", error.message || "Unable to create hackathon", true);
+    } finally {
+      btn.disabled = false;
     }
   }
 

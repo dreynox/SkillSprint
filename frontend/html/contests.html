@@ -34,7 +34,7 @@
                 <h2>Available Contests</h2>
                 <button id="refresh-btn" type="button">Refresh</button>
             </div>
-            <p id="list-status"></p>
+            <p id="list-status" role="status" aria-live="polite"></p>
             <div id="contest-cards"></div>
         </section>
 
@@ -44,7 +44,7 @@
             <div id="contest-detail"></div>
 
             <h3 style="margin: 24px 0 12px;">Problems</h3>
-            <p id="problem-status"></p>
+            <p id="problem-status" role="status" aria-live="polite"></p>
             <div id="problem-cards"></div>
         </section>
 
@@ -68,7 +68,7 @@
                 <label for="code">Code</label>
                 <textarea id="code" placeholder="Write your solution here..."></textarea>
 
-                <p id="submit-status"></p>
+                <p id="submit-status" role="status" aria-live="polite"></p>
                 <button id="submit-btn" type="button">Submit Solution</button>
 
                 <div id="verdict-box" style="display:none;"></div>
