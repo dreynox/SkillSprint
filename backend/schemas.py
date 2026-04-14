@@ -306,6 +306,13 @@ class ContestSubmissionCreate(BaseModel):
     code: str
 
 
+class ContestSubmissionDirectCreate(BaseModel):
+    problem_id: int
+    user_id: Optional[int] = None
+    language: str
+    code: str
+
+
 class ContestSubmissionOut(BaseModel):
     id: int
     user_id: int

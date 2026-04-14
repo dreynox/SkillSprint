@@ -14,6 +14,7 @@ from schemas import (
     ContestProblemOut,
     ContestParticipationOut,
     ContestSubmissionCreate,
+    ContestSubmissionDirectCreate,
     ContestSubmissionOut,
     ContestWithProblems,
     TestCaseCreate,
@@ -103,6 +104,45 @@ def submit_code(
         user_id=current_user.id,
         contest_id=contest_id,
         problem_id=problem_id,
+        language=payload.language,
+        code=payload.code,
+        verdict="PENDING",
+        score=0,
+    )
+    db.add(submission)
+    db.commit()
+    db.refresh(submission)
+    return submission
+
+
+@router.post(
+    "/{contest_id}/submissions",
+    response_model=ContestSubmissionOut,
+    status_code=status.HTTP_201_CREATED,
+)
+def submit_code_legacy_path(
+    contest_id: int,
+    payload: ContestSubmissionDirectCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Backward-compatible submission path used by older frontend builds."""
+    contest = db.query(Contest).filter(Contest.id == contest_id).first()
+    if not contest:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+
+    problem = (
+        db.query(ContestProblem)
+        .filter(ContestProblem.id == payload.problem_id, ContestProblem.contest_id == contest_id)
+        .first()
+    )
+    if not problem:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found in this contest")
+
+    submission = ContestSubmission(
+        user_id=current_user.id,
+        contest_id=contest_id,
+        problem_id=payload.problem_id,
         language=payload.language,
         code=payload.code,
         verdict="PENDING",

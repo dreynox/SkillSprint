@@ -22,6 +22,18 @@ function getToken() {
   return cleaned;
 }
 
+async function parseJsonSafe(response) {
+  const text = await response.text();
+  if (!text) {
+    return null;
+  }
+  try {
+    return JSON.parse(text);
+  } catch (_err) {
+    return null;
+  }
+}
+
 // =========================
 // INITIALIZATION
 // =========================
@@ -112,7 +124,12 @@ async function loadProblemData(contestId, problemId) {
 
 function renderProblem() {
   const problemPanel = document.getElementById("problemStatement");
+  const problemTitle = document.getElementById("problemTitle");
   if (!problemPanel || !currentProblem) return;
+
+  if (problemTitle) {
+    problemTitle.textContent = currentProblem.title || "Problem";
+  }
 
   problemPanel.innerHTML = `
     <div class="problem-card">
@@ -298,15 +315,16 @@ async function submitCode() {
 
   if (isExecuting) return; // Wait for execution to finish
 
-  // If all tests passed, submit
+  // If all tests passed, submit. When there are no tests, allow direct submit.
   const resultsContainer = document.getElementById("resultsList");
+  const hasNoTests = !testCases || testCases.length === 0;
   const allPassed =
     resultsContainer &&
     resultsContainer.querySelectorAll(".test-result").length > 0 &&
     !resultsContainer.innerHTML.includes("failed") &&
     !resultsContainer.innerHTML.includes("error");
 
-  if (!allPassed) {
+  if (!allPassed && !hasNoTests) {
     // Ask user if they want to submit anyway
     const confirmSubmit = confirm(
       "Not all tests are passing. Do you still want to submit?"
@@ -317,36 +335,65 @@ async function submitCode() {
   // Submit the code
   try {
     const token = getToken();
+    if (!token) {
+      throw new Error("Not authenticated. Please log in again.");
+    }
+
     const params = new URLSearchParams(window.location.search);
     const contestId = params.get("contest_id");
     const problemId = params.get("problem_id");
 
-    const response = await fetch(
-      `${API_BASE}/contests/${contestId}/problems/${problemId}/submit`,
+    const submitCandidates = [
       {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          language: "c",
-          code: code
-        })
+        url: `${API_BASE}/contests/${contestId}/problems/${problemId}/submit`,
+        body: { language: "c", code }
+      },
+      {
+        url: `${API_BASE}/contests/${contestId}/submissions`,
+        body: { problem_id: Number(problemId), language: "c", code }
       }
-    );
+    ];
 
-    const result = await response.json();
+    let lastError = "Submission failed";
+    let submitted = false;
 
-    if (!response.ok) {
-      throw new Error(result.detail || "Submission failed");
+    for (const candidate of submitCandidates) {
+      try {
+        const response = await fetch(candidate.url, {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(candidate.body)
+        });
+
+        const result = await parseJsonSafe(response);
+
+        if (!response.ok) {
+          lastError =
+            (result && (result.detail || result.message)) ||
+            `${response.status} ${response.statusText}` ||
+            "Submission failed";
+          continue;
+        }
+
+        submitted = true;
+        updateExecutionStatus("Submission saved successfully.", "success");
+        alert("Code submitted successfully!");
+        break;
+      } catch (error) {
+        lastError = error.message || "Network error";
+      }
     }
 
-    alert("Code submitted successfully!");
-    // Optionally redirect to contest page after successful submission
-    // window.location.href = `/html/contests.html?id=${contestId}`;
+    if (!submitted) {
+      throw new Error(lastError);
+    }
+
   } catch (error) {
     console.error("Submission error:", error);
+    updateExecutionStatus(`Submission failed: ${error.message}`, "error");
     alert(`Submission failed: ${error.message}`);
   }
 }
