@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/message.css">
 </head>
 <body class="cyber-arena">
+    <a href="#message-display" class="skip-link">Skip to messages</a>
     <div class="hud-background">
         <div class="grid-overlay"></div>
         <div class="scanline"></div>
@@ -26,12 +27,12 @@
         </div>
     </header>
 
-    <div class="chat-wrapper">
+    <div class="chat-wrapper" id="chat-wrapper">
         <!-- Conversations Sidebar -->
-        <aside class="conversations-panel">
+        <aside class="conversations-panel" id="conversations-panel" aria-label="Conversations">
             <div class="panel-header">
                 <h3>Conversations</h3>
-                <button id="new-chat-btn" class="new-chat-btn" title="Start new chat">+</button>
+                <button id="new-chat-btn" class="new-chat-btn" title="Start new chat" aria-label="Start new chat">+</button>
             </div>
             <div class="retention-banner" id="retention-banner">
                 <div class="retention-copy">
@@ -47,6 +48,9 @@
 
         <!-- Main Chat Area -->
         <main class="chat-main">
+            <button id="mobile-conversations-btn" class="mobile-conversations-btn" type="button" aria-controls="conversations-panel" aria-label="Open conversations">
+                Conversations
+            </button>
             <div id="chat-empty" class="chat-empty" style="display: flex;">
                 <div class="empty-state">
                     <h2>No Conversation Selected</h2>
@@ -64,29 +68,31 @@
                         </div>
                     </div>
                     <div class="header-metrics">
-                        <button id="voice-call-btn" class="call-btn" title="Voice call">🎤</button>
+                        <button id="voice-call-btn" class="call-btn" title="Voice call" aria-label="Start voice call">🎤</button>
                     </div>
                 </header>
 
-                <main class="message-arena" id="message-display">
+                <main class="message-arena" id="message-display" role="log" aria-live="polite" aria-label="Chat messages">
                     <div class="placeholder">No messages yet</div>
                 </main>
 
                 <footer class="input-console">
+                    <p id="chat-status" class="chat-status" role="status" aria-live="polite">Ready</p>
                     <form id="chat-form" class="message-input-form">
                         <div class="input-wrapper">
                             <div class="input-toolbar">
-                                <button type="button" id="emoji-btn" class="tool-btn" title="Emoji">😊</button>
-                                <button type="button" id="file-btn" class="tool-btn" title="Upload file">📎</button>
+                                <button type="button" id="emoji-btn" class="tool-btn" title="Emoji" aria-label="Insert emoji">😊</button>
+                                <button type="button" id="file-btn" class="tool-btn" title="Upload file" aria-label="Upload file">📎</button>
                                 <input type="file" id="file-input" style="display: none;">
                             </div>
                             <textarea 
                                 id="msg-input" 
                                 placeholder="TYPE_MESSAGE_HERE..." 
+                                aria-label="Type your message"
                                 autocomplete="off"
                                 rows="2"
                             ></textarea>
-                            <button type="submit" id="send-btn" class="send-btn">SEND</button>
+                            <button type="submit" id="send-btn" class="send-btn" aria-label="Send message">SEND</button>
                         </div>
                     </form>
                     <div id="upload-progress" class="upload-progress" style="display: none;">
@@ -149,6 +155,8 @@
             </div>
         </div>
     </div>
+
+    <div id="chat-toast" class="chat-toast" role="alert" aria-live="assertive" style="display: none;"></div>
 
     <script src="../js/api-base.js"></script>
     <script src="../js/message.js"></script>

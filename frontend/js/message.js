@@ -25,6 +25,7 @@ let conversationByUserId = new Map();
 let userSearchDebounce = null;
 let currentUserProfile = null;
 let premiumPlanData = null;
+let pendingUndo = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const chatForm = document.getElementById('chat-form');
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const openPremiumModalBtn = document.getElementById('open-premium-modal');
     const closePremiumModalBtn = document.getElementById('close-premium-modal');
     const buyPremiumBtn = document.getElementById('buy-premium-btn');
+    const mobileConversationsBtn = document.getElementById('mobile-conversations-btn');
 
     currentUserProfile = await loadCurrentUserProfile();
     await loadPremiumPlans();
@@ -153,6 +155,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (buyPremiumBtn) {
         buyPremiumBtn.addEventListener('click', buyPremiumPlan);
     }
+
+    if (mobileConversationsBtn) {
+        mobileConversationsBtn.addEventListener('click', () => {
+            document.getElementById('chat-wrapper')?.classList.toggle('show-conversations');
+        });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+        document.getElementById('voice-modal').style.display = 'none';
+        document.getElementById('user-modal').style.display = 'none';
+        document.getElementById('premium-modal').style.display = 'none';
+        document.getElementById('chat-wrapper')?.classList.remove('show-conversations');
+    });
 
     if (userSearchInput) {
         userSearchInput.addEventListener('input', () => {

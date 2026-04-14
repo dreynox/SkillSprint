@@ -303,6 +303,42 @@ def mark_as_read(
     return {"status": "ok"}
 
 
+@router.delete("/{message_id}")
+def delete_message(
+    message_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Delete a message sent by current user"""
+    cleanup_expired_messages(db)
+
+    message = (
+        db.query(Message)
+        .filter(and_(Message.id == message_id, Message.sender_id == current_user.id))
+        .first()
+    )
+    if not message:
+        raise HTTPException(status_code=404, detail="Message not found or not owned by you")
+
+    snapshot = {
+        "id": message.id,
+        "sender_id": message.sender_id,
+        "recipient_id": message.recipient_id,
+        "content": message.content,
+        "media_type": message.media_type,
+    }
+
+    if message.file_path and message.file_path.startswith("/messages/file/"):
+        filename = message.file_path.split("/")[-1]
+        file_path = os.path.join(UPLOAD_DIR, filename)
+        if os.path.exists(file_path):
+            os.remove(file_path)
+
+    db.delete(message)
+    db.commit()
+    return {"status": "ok", "deleted": snapshot}
+
+
 @router.get("/premium/plans")
 def get_premium_plans():
     return {
