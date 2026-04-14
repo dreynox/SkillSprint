@@ -283,17 +283,8 @@ def execute_code_for_problem(
         for tc in test_cases
     ]
 
-    # Only support C for now
-    if payload.language.lower() not in ["c", "c99"]:
-        return CodeExecutionResponse(
-            status="UNSUPPORTED_LANGUAGE",
-            message="Only C language is supported",
-            passed=0,
-            total=len(test_data),
-        )
-
-    # Execute code
-    result = test_code(payload.code, test_data)
+    # Execute code for selected language
+    result = test_code(payload.code, test_data, payload.language)
 
     # Convert TestResult objects from compiler
     test_results = []

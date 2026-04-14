@@ -49,11 +49,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadProblemData(contestId, problemId);
+  loadLanguageCapabilities();
 
   // Add event listeners
   document.getElementById("runBtn")?.addEventListener("click", runTests);
   document.getElementById("submitBtn")?.addEventListener("click", submitCode);
 });
+
+async function loadLanguageCapabilities() {
+  const select = document.getElementById("languageSelect");
+  if (!select) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/compiler/languages`);
+    if (!response.ok) {
+      return;
+    }
+
+    const capabilities = await parseJsonSafe(response);
+    if (!Array.isArray(capabilities)) {
+      return;
+    }
+
+    const map = new Map(capabilities.map((item) => [item.key, item]));
+
+    Array.from(select.options).forEach((option) => {
+      const capability = map.get(option.value);
+      if (!capability) {
+        return;
+      }
+
+      if (!capability.available && capability.type !== "web") {
+        option.disabled = true;
+        option.textContent = `${option.textContent} (unavailable)`;
+      }
+    });
+  } catch (_err) {
+    // Keep selector usable even when capability check fails.
+  }
+}
 
 // =========================
 // LOAD PROBLEM DATA
@@ -185,11 +221,6 @@ async function runTests() {
     return;
   }
 
-  if (language !== "c") {
-    alert("Only C language is currently supported");
-    return;
-  }
-
   isExecuting = true;
   updateExecutionStatus("Running tests...", "loading");
 
@@ -208,7 +239,7 @@ async function runTests() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          language: "c",
+          language,
           code: code
         })
       }
@@ -220,8 +251,14 @@ async function runTests() {
       throw new Error(result.detail || "Execution failed");
     }
 
-    displayResults(result);
-    updateExecutionStatus("Tests complete", "success");
+    if (result.status === "UNSUPPORTED_LANGUAGE" || result.status === "TOOL_UNAVAILABLE" || result.status === "WEB_PREVIEW_ONLY") {
+      const message = result.message || result.status;
+      updateExecutionStatus(message, "error");
+      alert(message);
+    } else {
+      displayResults(result);
+      updateExecutionStatus("Tests complete", "success");
+    }
   } catch (error) {
     console.error("Execution error:", error);
     updateExecutionStatus(`Error: ${error.message}`, "error");
@@ -305,6 +342,7 @@ async function submitCode() {
   }
 
   const code = document.getElementById("codeEditor")?.value;
+  const language = document.getElementById("languageSelect")?.value || "c";
   if (!code || code.trim().length === 0) {
     alert("Please enter some code before submitting");
     return;
@@ -346,11 +384,11 @@ async function submitCode() {
     const submitCandidates = [
       {
         url: `${API_BASE}/contests/${contestId}/problems/${problemId}/submit`,
-        body: { language: "c", code }
+        body: { language, code }
       },
       {
         url: `${API_BASE}/contests/${contestId}/submissions`,
-        body: { problem_id: Number(problemId), language: "c", code }
+        body: { problem_id: Number(problemId), language, code }
       }
     ];
 

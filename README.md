@@ -79,6 +79,21 @@ Open:
 - `POST /contests/{contest_id}/problems/{problem_id}/submit`
 - `GET /contests/{contest_id}/submissions`
 
+### Compiler
+- `GET /compiler/languages`
+- `POST /compiler/run`
+- `POST /compiler/debug`
+
+Supported execution languages in the backend engine:
+- `c`, `cpp`, `python`, `javascript`, `java`, `php`, `go`, `rust`, `r`
+
+Web-oriented languages are recognized with preview-only responses:
+- `html`, `css`, `react`, `typescript`
+
+For full multi-language execution in deployment, install runtime/toolchain binaries on the host/container:
+- `gcc`, `g++`, `python`, `node`, `javac/java`, `php`, `go`, `rustc`, `Rscript`
+- Optional debug support: `gdb` (for C/C++ debug endpoint)
+
 ## CORS origins configured
 - `http://localhost:5500`
 - `http://127.0.0.1:5500`

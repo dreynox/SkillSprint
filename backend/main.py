@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from database import Base, engine, ensure_sqlite_compatibility
-from routes import auth_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
+from routes import auth_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
 
 # ---------- APP & DATABASE SETUP ----------
 
@@ -62,3 +62,4 @@ app.include_router(contest_routes.router, prefix="/contests", tags=["contests"])
 app.include_router(hackathon_routes.router, prefix="/hackathons", tags=["hackathons"])
 app.include_router(user_routes.router, prefix="/users", tags=["users"])
 app.include_router(message_routes.router, tags=["messages"])
+app.include_router(compiler_routes.router, prefix="/compiler", tags=["compiler"])

@@ -296,6 +296,47 @@ class CodeExecutionResponse(BaseModel):
     results: List[TestResult] = []
 
 
+class CompilerLanguageOut(BaseModel):
+    key: str
+    name: str
+    type: str
+    available: bool
+    missing: List[str] = []
+    debugger: bool = False
+    note: Optional[str] = None
+
+
+class CompilerRunRequest(BaseModel):
+    language: str
+    code: str
+    stdin: str = ""
+    timeout: int = Field(default=5, ge=1, le=30)
+
+
+class CompilerRunResponse(BaseModel):
+    status: str
+    language: str
+    stdout: str = ""
+    stderr: str = ""
+    exit_code: int = 0
+    execution_time_ms: int = 0
+    message: Optional[str] = None
+
+
+class CompilerDebugRequest(BaseModel):
+    language: str
+    code: str
+    stdin: str = ""
+    breakpoints: List[int] = []
+
+
+class CompilerDebugResponse(BaseModel):
+    status: str
+    message: Optional[str] = None
+    stdout: str = ""
+    stderr: str = ""
+
+
 class ContestWithProblems(ContestOut):
     problems: List[ContestProblemOut]
 
