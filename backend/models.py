@@ -28,6 +28,8 @@ class User(Base):
     roll_no = Column(String, nullable=True)
     bio = Column(Text, nullable=True)
     avatar_url = Column(String, nullable=True)
+    is_premium = Column(Boolean, default=False, nullable=False)
+    premium_expires_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
 
@@ -182,6 +184,7 @@ class Message(Base):
     content = Column(Text, nullable=True)
     media_type = Column(String, nullable=True)  # "text", "image", "video", "file", "voice"
     file_path = Column(String, nullable=True)  # Path to uploaded file/media
+    expires_at = Column(DateTime, nullable=True)
     is_read = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 

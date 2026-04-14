@@ -71,6 +71,8 @@ class UserOut(BaseModel):
     roll_no: Optional[str]
     bio: Optional[str]
     avatar_url: Optional[str]
+    is_premium: bool = False
+    premium_expires_at: Optional[datetime] = None
     created_at: datetime
 
     class Config:
@@ -339,6 +341,7 @@ class MessageOut(BaseModel):
     content: Optional[str]
     media_type: Optional[str]
     file_path: Optional[str]
+    expires_at: Optional[datetime]
     is_read: bool
     created_at: datetime
 

@@ -38,9 +38,6 @@ Base = declarative_base()
 
 
 def ensure_sqlite_compatibility():
-    if not DATABASE_URL.startswith("sqlite"):
-        return
-
     with engine.begin() as connection:
         inspector = inspect(connection)
         tables = set(inspector.get_table_names())
@@ -68,6 +65,15 @@ def ensure_sqlite_compatibility():
                 connection.execute(text("ALTER TABLE users ADD COLUMN bio TEXT"))
             if "avatar_url" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN avatar_url VARCHAR"))
+            if "is_premium" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN is_premium BOOLEAN DEFAULT FALSE"))
+            if "premium_expires_at" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN premium_expires_at DATETIME"))
+
+        if "messages" in tables:
+            message_columns = {column["name"] for column in inspector.get_columns("messages")}
+            if "expires_at" not in message_columns:
+                connection.execute(text("ALTER TABLE messages ADD COLUMN expires_at DATETIME"))
 
 def get_db():
     db = SessionLocal()

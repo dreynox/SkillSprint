@@ -23,6 +23,8 @@ let callStartTime = null;
 let isMuted = false;
 let conversationByUserId = new Map();
 let userSearchDebounce = null;
+let currentUserProfile = null;
+let premiumPlanData = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const chatForm = document.getElementById('chat-form');
@@ -36,6 +38,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const emojiBtn = document.getElementById('emoji-btn');
     const muteBtn = document.getElementById('mute-btn');
     const userSearchInput = document.getElementById('user-search-input');
+    const openPremiumModalBtn = document.getElementById('open-premium-modal');
+    const closePremiumModalBtn = document.getElementById('close-premium-modal');
+    const buyPremiumBtn = document.getElementById('buy-premium-btn');
+
+    currentUserProfile = await loadCurrentUserProfile();
+    await loadPremiumPlans();
+    updateRetentionBanner();
 
     // Load conversations on page load
     const conversations = await loadConversations();
@@ -130,6 +139,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('close-user-modal').addEventListener('click', () => {
         document.getElementById('user-modal').style.display = 'none';
     });
+
+    if (openPremiumModalBtn) {
+        openPremiumModalBtn.addEventListener('click', openPremiumModal);
+    }
+
+    if (closePremiumModalBtn) {
+        closePremiumModalBtn.addEventListener('click', () => {
+            document.getElementById('premium-modal').style.display = 'none';
+        });
+    }
+
+    if (buyPremiumBtn) {
+        buyPremiumBtn.addEventListener('click', buyPremiumPlan);
+    }
 
     if (userSearchInput) {
         userSearchInput.addEventListener('input', () => {
@@ -638,4 +661,142 @@ function normalizeMediaUrl(path) {
     }
 
     return `${API_BASE}/${path}`;
+}
+
+async function loadCurrentUserProfile() {
+    try {
+        const response = await fetch(`${API_BASE}/users/me`, {
+            headers: authHeaders(),
+        });
+
+        if (!response.ok) {
+            return JSON.parse(localStorage.getItem('user') || '{}');
+        }
+
+        const user = await response.json();
+        if (user && user.id) {
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+        return user;
+    } catch (error) {
+        console.error('Error loading current user profile:', error);
+        return JSON.parse(localStorage.getItem('user') || '{}');
+    }
+}
+
+async function loadPremiumPlans() {
+    try {
+        const response = await fetch(`${API_BASE}/messages/premium/plans`, {
+            headers: authHeaders(),
+        });
+        if (!response.ok) {
+            throw new Error('Failed to load premium plan details');
+        }
+        premiumPlanData = await response.json();
+    } catch (error) {
+        console.error('Error loading premium plan details:', error);
+        premiumPlanData = null;
+    }
+}
+
+function isPremiumUser(user) {
+    if (!user || !user.is_premium) {
+        return false;
+    }
+
+    if (!user.premium_expires_at) {
+        return true;
+    }
+
+    return parseServerDate(user.premium_expires_at) > new Date();
+}
+
+function updateRetentionBanner() {
+    const planName = document.getElementById('plan-name');
+    const retentionText = document.getElementById('retention-text');
+    const premiumBtn = document.getElementById('open-premium-modal');
+    const isPremium = isPremiumUser(currentUserProfile);
+
+    if (!planName || !retentionText || !premiumBtn) {
+        return;
+    }
+
+    if (isPremium) {
+        planName.textContent = 'Premium Plan';
+        retentionText.textContent = 'Your messages are stored forever.';
+        premiumBtn.textContent = 'Manage Plan';
+    } else {
+        const hours = premiumPlanData?.retention_hours_free || 24;
+        planName.textContent = 'Free Plan';
+        retentionText.textContent = `Messages auto-delete after ${hours} hours.`;
+        premiumBtn.textContent = 'Buy Premium';
+    }
+}
+
+function openPremiumModal() {
+    const modal = document.getElementById('premium-modal');
+    if (!modal) {
+        return;
+    }
+
+    renderPremiumComparison();
+    modal.style.display = 'flex';
+}
+
+function renderPremiumComparison() {
+    const host = document.getElementById('premium-comparison');
+    if (!host) {
+        return;
+    }
+
+    const currency = premiumPlanData?.currency || 'INR';
+    const price = premiumPlanData?.premium?.price_monthly ?? 99;
+
+    host.innerHTML = `
+        <table class="premium-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Free</th>
+                    <th>Premium (${currency} ${price}/month)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Message retention</td><td>24 hours</td><td>Forever</td></tr>
+                <tr><td>Media uploads</td><td>Yes</td><td>Yes + priority delivery</td></tr>
+                <tr><td>Pinned conversations</td><td>No</td><td>Up to 20 pins</td></tr>
+                <tr><td>Message search</td><td>No</td><td>Full history search</td></tr>
+                <tr><td>Read insights</td><td>Basic read status</td><td>Read time analytics</td></tr>
+                <tr><td>Support</td><td>Standard</td><td>Priority support</td></tr>
+            </tbody>
+        </table>
+    `;
+}
+
+async function buyPremiumPlan() {
+    try {
+        const response = await fetch(`${API_BASE}/messages/premium/activate?months=1`, {
+            method: 'POST',
+            headers: authHeaders(),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data?.detail || 'Could not activate premium');
+        }
+
+        currentUserProfile = {
+            ...(currentUserProfile || {}),
+            is_premium: Boolean(data.is_premium),
+            premium_expires_at: data.premium_expires_at || null,
+        };
+        localStorage.setItem('user', JSON.stringify(currentUserProfile));
+
+        updateRetentionBanner();
+        alert(`Premium activated for 1 month (INR ${data.price_paid_inr}).`);
+        document.getElementById('premium-modal').style.display = 'none';
+    } catch (error) {
+        console.error('Error activating premium:', error);
+        alert(error?.message || 'Premium activation failed');
+    }
 }
