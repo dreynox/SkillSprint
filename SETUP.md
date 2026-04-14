@@ -48,7 +48,7 @@ Backend will be running at: `http://localhost:8000`
 - Use the `render.yaml` blueprint in the repository root.
 - Deploy from the `render-main` branch.
 - Render will provision the `skillsprint-backend` web service and `skillsprint-db` database.
-- The backend reads `DATABASE_URL` from Render and falls back to SQLite locally.
+- The backend reads `DATABASE_URL` from Render, uses psycopg3 for PostgreSQL, and falls back to SQLite locally.
 
 ### Step 4: Serve the Frontend
 You MUST use a web server (not file://). Choose one:

@@ -1,22 +1,37 @@
 import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# For local development, use SQLite with absolute path
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'skillsprint.db')}".replace("\\", "/")
+load_dotenv()
 
-# For production, use: DATABASE_URL = "postgresql://user:password@localhost/skillsprint"
-raw_database_url = os.getenv("DATABASE_URL")
-if raw_database_url:
-    DATABASE_URL = raw_database_url.replace("postgres://", "postgresql://", 1)
-else:
-    DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'skillsprint.db')}".replace("\\", "/")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _resolve_database_url() -> str:
+    raw_database_url = os.getenv("DATABASE_URL")
+    if raw_database_url:
+        normalized_url = raw_database_url.replace("postgres://", "postgresql://", 1)
+        return normalized_url.replace("postgresql://", "postgresql+psycopg://", 1)
+
+    sqlite_path = os.path.join(BASE_DIR, "skillsprint.db").replace("\\", "/")
+    return f"sqlite:///{sqlite_path}"
+
+
+DATABASE_URL = _resolve_database_url()
+
+engine_kwargs = {
+    "connect_args": {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},
+    "pool_pre_ping": not DATABASE_URL.startswith("sqlite"),
+}
+
+if not DATABASE_URL.startswith("sqlite"):
+    engine_kwargs["pool_recycle"] = 300
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},
-    pool_pre_ping=not DATABASE_URL.startswith("sqlite"),
+    **engine_kwargs,
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

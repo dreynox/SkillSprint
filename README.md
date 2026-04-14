@@ -12,7 +12,8 @@ SkillSprint is a full-stack ASEP/capstone project that centralizes coding contes
 ## Backend stack
 - FastAPI
 - SQLAlchemy
-- SQLite (`backend/skillsprint.db`)
+- SQLite locally (`backend/skillsprint.db`)
+- PostgreSQL on Render via `DATABASE_URL` using psycopg3
 
 ## Backend structure
 - `backend/database.py`: DB engine, `SessionLocal`, `Base`, `get_db`
@@ -31,6 +32,17 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 python seed_data.py
 uvicorn main:app --reload
+```
+
+## Migrate local data to Render Postgres
+1. Set `DATABASE_URL` to your Render PostgreSQL connection string.
+2. From the `backend` folder, run:
+```bash
+python migrate_sqlite_to_postgres.py
+```
+3. If you want to overwrite rows already in Postgres, run:
+```bash
+python migrate_sqlite_to_postgres.py --clear-target
 ```
 
 Open:
