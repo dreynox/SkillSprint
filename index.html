@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkillSprint | Student Login</title>
   <link rel="stylesheet" href="frontend/css/login.css" />
+  <link rel="stylesheet" href="frontend/css/ux-foundation.css" />
 </head>
 <body>
 
@@ -24,19 +25,21 @@
 
     <p class="subtitle">Student access portal</p>
 
-    <div id="generalError" class="error-message" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
+    <div id="generalError" class="error-message" role="alert" aria-live="assertive" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
+    <p id="authStatus" class="helper-text" role="status" aria-live="polite">Enter your credentials to continue.</p>
 
     <form id="loginForm">
       <div class="input-group">
-        <input type="email" id="email" required />
+        <input type="email" id="email" required autocomplete="email" aria-describedby="authStatus" />
         <label>Email</label>
       </div>
 
       <div class="input-group password">
-        <input type="password" id="password" required />
+        <input type="password" id="password" required autocomplete="current-password" aria-describedby="capsLockHint" />
         <label>Password</label>
         <span id="togglePassword">👁</span>
       </div>
+      <p id="capsLockHint" class="helper-text" style="display:none;">Caps Lock appears to be on.</p>
 
       <button type="submit" id="loginBtn">
         <span>AUTHENTICATE</span>
@@ -66,5 +69,6 @@
 
   <script src="frontend/js/api-base.js"></script>
   <script src="frontend/js/login.js"></script>
+  <script src="frontend/js/ux-foundation.js"></script>
 </body>
 </html>

@@ -3,6 +3,8 @@ const API_BASE = window.API_BASE_URL || "https://skillsprint-backend-i8q6.onrend
 const requestOtpForm = document.getElementById("requestOtpForm");
 const verifyOtpForm = document.getElementById("verifyOtpForm");
 const otpMessage = document.getElementById("otpMessage");
+const forgotStatus = document.getElementById("forgotStatus");
+let otpCooldownTimer = null;
 
 function showError(message) {
   const errorEl = document.getElementById("generalError");
@@ -18,6 +20,7 @@ requestOtpForm.addEventListener("submit", async (e) => {
   const email = document.getElementById("email").value.trim().toLowerCase();
   if (!email) {
     showError("Please enter your email");
+    setStatus("Enter a valid email to request OTP.");
     return;
   }
 
@@ -25,6 +28,7 @@ requestOtpForm.addEventListener("submit", async (e) => {
   const label = btn.querySelector("span");
   btn.disabled = true;
   label.textContent = "SENDING OTP...";
+  setStatus("Sending OTP...");
 
   try {
     const response = await fetch(`${API_BASE}/auth/forgot-password/request-otp`, {
@@ -40,11 +44,16 @@ requestOtpForm.addEventListener("submit", async (e) => {
 
     otpMessage.textContent = data.message || `A 6-digit OTP(One-Time-Password) has been sent to you email adrress "${email}", Please verify it within 5 minutes before it expires`;
     verifyOtpForm.style.display = "block";
+    setStatus("OTP sent. Check your email and enter the code.");
+    startOtpCooldown(btn, label, 30);
   } catch (error) {
     showError(error.message || "Failed to send OTP");
+    setStatus("Could not send OTP. Try again.");
   } finally {
-    btn.disabled = false;
-    label.textContent = "SEND OTP";
+    if (!otpCooldownTimer) {
+      btn.disabled = false;
+      label.textContent = "SEND OTP";
+    }
   }
 });
 
@@ -59,16 +68,19 @@ verifyOtpForm.addEventListener("submit", async (e) => {
 
   if (!otp || otp.length !== 6) {
     showError("Please enter a valid 6-digit OTP");
+    setStatus("OTP should be exactly 6 digits.");
     return;
   }
 
   if (!newPassword || newPassword.length < 6) {
     showError("New password must be at least 6 characters");
+    setStatus("Use at least 6 characters for the new password.");
     return;
   }
 
   if (newPassword !== confirmNewPassword) {
     showError("Passwords do not match");
+    setStatus("Passwords must match.");
     return;
   }
 
@@ -76,6 +88,7 @@ verifyOtpForm.addEventListener("submit", async (e) => {
   const label = btn.querySelector("span");
   btn.disabled = true;
   label.textContent = "VERIFYING...";
+  setStatus("Verifying OTP and resetting password...");
 
   try {
     const response = await fetch(`${API_BASE}/auth/forgot-password/verify-otp`, {
@@ -94,16 +107,57 @@ verifyOtpForm.addEventListener("submit", async (e) => {
     }
 
     otpMessage.textContent = data.message || "Password reset successful. Redirecting to login...";
+    setStatus("Password reset successful. Redirecting...");
     setTimeout(() => {
       window.location.href = "../../index.html";
     }, 1200);
   } catch (error) {
     showError(error.message || "OTP verification failed");
+    setStatus("OTP verification failed.");
   } finally {
     btn.disabled = false;
     label.textContent = "VERIFY OTP & RESET";
   }
 });
+
+const otpInput = document.getElementById("otp");
+if (otpInput) {
+  otpInput.addEventListener("input", () => {
+    otpInput.value = otpInput.value.replace(/\D/g, "").slice(0, 6);
+  });
+}
+
+function setStatus(message) {
+  if (forgotStatus) {
+    forgotStatus.textContent = message;
+  }
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(message, "info");
+  }
+}
+
+function startOtpCooldown(button, labelEl, seconds) {
+  if (otpCooldownTimer) {
+    clearInterval(otpCooldownTimer);
+    otpCooldownTimer = null;
+  }
+
+  let remaining = seconds;
+  button.disabled = true;
+  labelEl.textContent = `RESEND IN ${remaining}s`;
+
+  otpCooldownTimer = setInterval(() => {
+    remaining -= 1;
+    if (remaining <= 0) {
+      clearInterval(otpCooldownTimer);
+      otpCooldownTimer = null;
+      button.disabled = false;
+      labelEl.textContent = "SEND OTP";
+      return;
+    }
+    labelEl.textContent = `RESEND IN ${remaining}s`;
+  }, 1000);
+}
 
 const glow = document.querySelector(".cursor-glow");
 document.addEventListener("mousemove", (e) => {

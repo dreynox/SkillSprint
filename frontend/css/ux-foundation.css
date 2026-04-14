@@ -1,0 +1,148 @@
+:root {
+  --ux-focus: #9cf7cf;
+  --ux-focus-shadow: rgba(156, 247, 207, 0.35);
+  --ux-surface: rgba(4, 18, 12, 0.95);
+  --ux-border: rgba(110, 230, 170, 0.4);
+  --ux-text: #d9fff0;
+  --ux-danger: #ff7b7b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+}
+
+.ux-skip-link {
+  position: absolute;
+  left: -1000px;
+  top: 10px;
+  z-index: 9999;
+  background: #00351f;
+  color: var(--ux-text);
+  border: 1px solid var(--ux-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.ux-skip-link:focus {
+  left: 10px;
+}
+
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--ux-focus) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--ux-focus-shadow);
+}
+
+.ux-live-region {
+  position: fixed;
+  bottom: 14px;
+  right: 14px;
+  z-index: 2100;
+  max-width: min(420px, 86vw);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  color: var(--ux-text);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.38);
+}
+
+.ux-live-region[data-tone="error"] {
+  border-color: var(--ux-danger);
+}
+
+.ux-nav-toggle {
+  display: none;
+  border: 1px solid var(--ux-border);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--ux-text);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-right: 8px;
+}
+
+.ux-feedback-fab {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  z-index: 2000;
+  border: 1px solid var(--ux-border);
+  background: rgba(0, 18, 10, 0.9);
+  color: var(--ux-text);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.ux-feedback-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 2200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.ux-feedback-card {
+  width: min(520px, 92vw);
+  background: var(--ux-surface);
+  color: var(--ux-text);
+  border: 1px solid var(--ux-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ux-feedback-card h3 {
+  margin-bottom: 8px;
+}
+
+.ux-feedback-card textarea {
+  width: 100%;
+  min-height: 120px;
+  margin: 8px 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--ux-border);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--ux-text);
+  padding: 10px;
+}
+
+.ux-feedback-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.ux-feedback-actions button {
+  border: 1px solid var(--ux-border);
+  border-radius: 8px;
+  background: rgba(0, 25, 16, 0.8);
+  color: var(--ux-text);
+  padding: 7px 12px;
+}
+
+@media (max-width: 920px) {
+  .ux-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links.ux-mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

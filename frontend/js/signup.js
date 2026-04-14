@@ -19,22 +19,26 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     const rollNo = document.getElementById("rollNo").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
+    const statusEl = document.getElementById("signupStatus");
 
     clearErrors();
 
     // Validation
     if (!name || !email || !password || !confirmPassword) {
         showError("generalError", "Please fill in all required fields");
+        if (statusEl) statusEl.textContent = "Complete required fields before submitting.";
         return;
     }
 
     if (password.length < 6) {
         showError("passwordError", "Password must be at least 6 characters");
+        if (statusEl) statusEl.textContent = "Choose a stronger password.";
         return;
     }
 
     if (password !== confirmPassword) {
         showError("confirmPasswordError", "Passwords do not match");
+        if (statusEl) statusEl.textContent = "Passwords must match exactly.";
         return;
     }
 
@@ -44,6 +48,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     if (submitLabel) {
         submitLabel.textContent = "CREATING ACCOUNT...";
     }
+    if (statusEl) statusEl.textContent = "Creating your account...";
 
     try {
         const response = await fetch(`${API_BASE}/auth/register`, {
@@ -75,12 +80,15 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
             }
             localStorage.setItem("access_token", token);
             localStorage.setItem("user", JSON.stringify(data.user));
+            if (statusEl) statusEl.textContent = "Account created. Redirecting to login...";
             window.location.href = "../../index.html";
         } else {
             showError("generalError", formatApiError(data));
+            if (statusEl) statusEl.textContent = "Sign up failed. Please review errors.";
         }
     } catch (error) {
         showError("generalError", "Connection error. Please try again.");
+        if (statusEl) statusEl.textContent = "Network issue. Please retry.";
         console.error("Error:", error);
     } finally {
         submitBtn.disabled = false;
@@ -89,6 +97,39 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
         }
     }
 });
+
+const passwordField = document.getElementById("password");
+const confirmPasswordField = document.getElementById("confirmPassword");
+const strengthBar = document.getElementById("passwordStrengthBar");
+
+if (passwordField && strengthBar) {
+    passwordField.addEventListener("input", () => {
+        const value = passwordField.value || "";
+        const score = getPasswordScore(value);
+        strengthBar.style.width = `${Math.min(100, score * 25)}%`;
+        strengthBar.style.backgroundColor = score <= 1 ? "#ff6b6b" : score === 2 ? "#ffb86b" : score === 3 ? "#f7ff6b" : "#4dff8b";
+    });
+}
+
+if (confirmPasswordField) {
+    confirmPasswordField.addEventListener("input", () => {
+        if (!passwordField) return;
+        if (confirmPasswordField.value && confirmPasswordField.value !== passwordField.value) {
+            showError("confirmPasswordError", "Passwords do not match");
+        } else {
+            showError("confirmPasswordError", "");
+        }
+    });
+}
+
+function getPasswordScore(value) {
+    let score = 0;
+    if (value.length >= 6) score += 1;
+    if (/[A-Z]/.test(value) && /[a-z]/.test(value)) score += 1;
+    if (/\d/.test(value)) score += 1;
+    if (/[^A-Za-z0-9]/.test(value) || value.length >= 10) score += 1;
+    return score;
+}
 
 function showError(elementId, message) {
     document.getElementById(elementId).textContent = message;

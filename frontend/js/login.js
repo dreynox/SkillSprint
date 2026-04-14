@@ -11,6 +11,7 @@ function getToken() {
 ========================= */
 const form = document.getElementById("loginForm");
 const loginBtn = document.getElementById("loginBtn");
+const authStatus = document.getElementById("authStatus");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -25,6 +26,7 @@ form.addEventListener("submit", async (e) => {
   // Basic validation
   if (!email || !password) {
     showError("generalError", "Please fill in all fields");
+    setStatus("Please fill all required fields.");
     return;
   }
 
@@ -33,6 +35,7 @@ form.addEventListener("submit", async (e) => {
   loginBtn.classList.add("loading");
   const span = loginBtn.querySelector("span");
   if (span) span.textContent = "AUTHENTICATING...";
+  setStatus("Authenticating...");
 
   try {
     const response = await fetch(`${API_BASE}/auth/login`, {
@@ -69,6 +72,7 @@ form.addEventListener("submit", async (e) => {
     if (span) span.textContent = "ACCESS GRANTED";
     loginBtn.style.background = "#00ff88";
     loginBtn.style.color = "#000";
+    setStatus("Login successful. Redirecting...");
 
     // Redirect (adjust if you later add a separate admin page)
     setTimeout(() => {
@@ -79,6 +83,7 @@ form.addEventListener("submit", async (e) => {
     loginBtn.disabled = false;
     if (span) span.textContent = "AUTHENTICATE";
     showError("generalError", error.message || "Connection error. Please try again.");
+    setStatus("Login failed. Check your credentials and try again.");
     console.error("Login error:", error);
   }
 });
@@ -95,6 +100,15 @@ function clearErrors() {
   document.querySelectorAll(".error-message").forEach((el) => {
     el.textContent = "";
   });
+}
+
+function setStatus(message) {
+  if (authStatus) {
+    authStatus.textContent = message;
+  }
+  if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+    window.SkillSprintUX.showStatus(message, "info");
+  }
 }
 
 /* =========================
@@ -165,5 +179,16 @@ if (togglePassword && passwordInput) {
       passwordInput.getAttribute("type") === "password" ? "text" : "password";
     passwordInput.setAttribute("type", type);
     togglePassword.textContent = type === "password" ? "👁" : "🙈";
+  });
+
+  passwordInput.addEventListener("keydown", (event) => {
+    const hint = document.getElementById("capsLockHint");
+    if (!hint || typeof event.getModifierState !== "function") return;
+    hint.style.display = event.getModifierState("CapsLock") ? "block" : "none";
+  });
+
+  passwordInput.addEventListener("blur", () => {
+    const hint = document.getElementById("capsLockHint");
+    if (hint) hint.style.display = "none";
   });
 }

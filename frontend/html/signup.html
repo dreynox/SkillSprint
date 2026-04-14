@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillSprint - Student Sign Up</title>
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/ux-foundation.css">
 </head>
 <body>
     <div class="cursor-glow"></div>
@@ -16,16 +17,17 @@
         </h1>
         <p class="subtitle">Create your student account</p>
 
-        <div id="generalError" class="error-message"></div>
+        <div id="generalError" class="error-message" role="alert" aria-live="assertive"></div>
+        <p id="signupStatus" class="helper-text" role="status" aria-live="polite">Fill details to create your account.</p>
 
         <form id="signupForm">
             <div class="input-group">
-                <input type="text" id="name" name="name" required placeholder="Full Name" />
+                <input type="text" id="name" name="name" required placeholder="Full Name" autocomplete="name" />
                 <span class="error-message" id="nameError"></span>
             </div>
 
             <div class="input-group">
-                <input type="email" id="email" name="email" required placeholder="Email" />
+                <input type="email" id="email" name="email" required placeholder="Email" autocomplete="email" />
                 <span class="error-message" id="emailError"></span>
             </div>
 
@@ -60,13 +62,15 @@
             </div>
 
             <div class="input-group password">
-                <input type="password" id="password" name="password" required placeholder="Password" />
+                <input type="password" id="password" name="password" required placeholder="Password" autocomplete="new-password" aria-describedby="passwordHelp" />
                 <span id="togglePassword">👁</span>
                 <span class="error-message" id="passwordError"></span>
             </div>
+            <p id="passwordHelp" class="helper-text">Use at least 6 characters. Stronger passwords are safer.</p>
+            <div class="strength-meter" aria-hidden="true"><span id="passwordStrengthBar"></span></div>
 
             <div class="input-group password">
-                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" />
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" autocomplete="new-password" />
                 <span id="toggleConfirmPassword">👁</span>
                 <span class="error-message" id="confirmPasswordError"></span>
             </div>
@@ -92,7 +96,9 @@
         </p>
     </div>
 
+    <script src="../js/api-base.js"></script>
     <script src="../js/signup.js"></script>
+    <script src="../js/ux-foundation.js"></script>
 </body>
 </html>
 
