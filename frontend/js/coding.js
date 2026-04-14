@@ -9,7 +9,12 @@ let isExecuting = false;
 const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 
 function getToken() {
-  const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+  const raw =
+    localStorage.getItem("access_token") ||
+    localStorage.getItem("token") ||
+    sessionStorage.getItem("access_token") ||
+    sessionStorage.getItem("token") ||
+    "";
   const cleaned = String(raw).trim().replace(/^"|"$/g, "");
   if (!cleaned || cleaned === "undefined" || cleaned === "null") {
     return "";
@@ -62,19 +67,15 @@ async function loadProblemData(contestId, problemId) {
     if (!contestRes.ok) throw new Error(`Contest load failed: ${contestRes.status}`);
     currentContest = await contestRes.json();
 
-    // Load problem details
-    const problemRes = await fetch(
-      `${API_BASE}/contests/${contestId}/problems/${problemId}`,
-      {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        }
-      }
+    // The backend exposes contest problems through /contests/{id}, so resolve
+    // the selected problem from that payload instead of calling a missing route.
+    currentProblem = (currentContest.problems || []).find(
+      (problem) => String(problem.id) === String(problemId)
     );
 
-    if (!problemRes.ok) throw new Error(`Problem load failed: ${problemRes.status}`);
-    currentProblem = await problemRes.json();
+    if (!currentProblem) {
+      throw new Error("Problem not found in this contest");
+    }
 
     // Load test cases
     const testRes = await fetch(
@@ -96,8 +97,12 @@ async function loadProblemData(contestId, problemId) {
     renderTestCases();
   } catch (error) {
     console.error("Error loading problem:", error);
-    alert("Failed to load problem. Trying to reload...");
-    setTimeout(() => window.location.reload(), 1000);
+    const statusEl = document.getElementById("executionStatus");
+    if (statusEl) {
+      statusEl.textContent = `Failed to load problem: ${error.message}`;
+      statusEl.className = "execution-status error";
+    }
+    alert(`Failed to load problem: ${error.message}`);
   }
 }
 
@@ -113,7 +118,7 @@ function renderProblem() {
     <div class="problem-card">
       <h2>${escapeHtml(currentProblem.title || "Untitled Problem")}</h2>
       <div class="problem-statement">${escapeHtml(
-        currentProblem.description || "No description provided"
+        currentProblem.statement || currentProblem.description || "No description provided"
       )}</div>
     </div>
   `;
@@ -317,7 +322,7 @@ async function submitCode() {
     const problemId = params.get("problem_id");
 
     const response = await fetch(
-      `${API_BASE}/contests/${contestId}/submissions`,
+      `${API_BASE}/contests/${contestId}/problems/${problemId}/submit`,
       {
         method: "POST",
         headers: {
@@ -325,7 +330,6 @@ async function submitCode() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          problem_id: problemId,
           language: "c",
           code: code
         })
