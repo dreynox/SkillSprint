@@ -63,6 +63,18 @@ def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = De
     return problem
 
 
+@router.get("/{contest_id}/problems/{problem_id}", response_model=ContestProblemOut)
+def get_problem(contest_id: int, problem_id: int, db: Session = Depends(get_db)):
+    problem = (
+        db.query(ContestProblem)
+        .filter(ContestProblem.id == problem_id, ContestProblem.contest_id == contest_id)
+        .first()
+    )
+    if not problem:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found in this contest")
+    return problem
+
+
 @router.post(
     "/{contest_id}/problems/{problem_id}/submit",
     response_model=ContestSubmissionOut,

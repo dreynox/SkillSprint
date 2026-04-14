@@ -230,7 +230,8 @@ function openProblem(problem) {
   editorBtn.style.marginTop = "16px";
   editorBtn.textContent = "📝 Open in Code Editor";
   editorBtn.onclick = () => {
-    window.location.href = `coding.html?contest_id=${activeContestId}&problem_id=${problem.id}`;
+    const cacheBust = "20260414";
+    window.location.href = `coding.html?v=${cacheBust}&contest_id=${activeContestId}&problem_id=${problem.id}`;
   };
   problemDetailEl.appendChild(editorBtn);
 }
