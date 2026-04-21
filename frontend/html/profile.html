@@ -18,14 +18,35 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="student-dashboard.html">Skill<span>Sprint</span></a>
-      <nav class="nav-links" aria-label="Main">
-        <a class="nav-link" href="student-dashboard.html">Dashboard</a>
-        <a class="nav-link" href="contests.html">Contests</a>
-        <a class="nav-link" href="quiz.html">Quiz</a>
-        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
-        <a class="nav-link active" href="profile.html">Profile</a>
-        <a class="nav-link" href="message.html">Message</a>
-      </nav>
+      <div class="topbar-actions">
+        <nav class="nav-links" aria-label="Main">
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="contests.html">Contests</a>
+          <a class="nav-link" href="quiz.html">Quiz</a>
+          <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+          <a class="nav-link active" href="profile.html">Profile</a>
+          <a class="nav-link" href="message.html">Message</a>
+        </nav>
+
+        <div class="profile-menu" id="profileMenu">
+          <button
+            id="profileMenuBtn"
+            class="profile-menu-trigger"
+            type="button"
+            aria-label="Open profile menu"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img id="topbarAvatar" class="profile-avatar" src="../images/default-avatar.svg" alt="Current user avatar">
+            <span class="profile-caret" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="profile-menu-dropdown" id="profileMenuDropdown" aria-label="Profile menu">
+            <button id="editProfileMenuBtn" type="button">Edit profile</button>
+            <button id="topbarLogoutBtn" class="danger" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 

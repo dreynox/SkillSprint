@@ -39,6 +39,12 @@ body {
   justify-content: space-between;
   gap: 14px;
 }
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
 
 .brand {
   color: #fff;
@@ -58,6 +64,93 @@ body {
   gap: 6px;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+.profile-menu {
+  position: relative;
+}
+.profile-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ecfdf5;
+  padding: 0.25rem 0.65rem 0.25rem 0.28rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.16);
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.profile-menu-trigger:hover,
+.profile-menu-trigger:focus-visible,
+.profile-menu.open .profile-menu-trigger {
+  transform: translateY(-1px);
+  border-color: rgba(16, 185, 129, 0.55);
+  background: rgba(16, 185, 129, 0.1);
+}
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #10b981;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.32);
+  background: rgba(0, 0, 0, 0.45);
+}
+.profile-caret {
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+.profile-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 180px;
+  padding: 0.45rem;
+  border-radius: 14px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(4, 14, 9, 0.96);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: 0.18s ease;
+  z-index: 20;
+}
+.profile-menu:hover .profile-menu-dropdown,
+.profile-menu:focus-within .profile-menu-dropdown,
+.profile-menu.open .profile-menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.profile-menu-dropdown button,
+.profile-menu-dropdown a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0;
+  background: transparent;
+  color: #ecfdf5;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 0.72rem 0.8rem;
+  cursor: pointer;
+  font: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.profile-menu-dropdown button:hover,
+.profile-menu-dropdown a:hover,
+.profile-menu-dropdown button:focus-visible,
+.profile-menu-dropdown a:focus-visible {
+  background: rgba(16, 185, 129, 0.12);
+  color: #d1fae5;
+}
+.profile-menu-dropdown .danger {
+  color: #fecaca;
 }
 
 .nav-link {
@@ -750,6 +843,18 @@ body {
 @media (max-width: 900px) {
   body {
     padding: 18px;
+  }
+  .topbar-inner {
+    flex-wrap: wrap;
+  }
+  .topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+  .profile-menu-dropdown {
+    right: 0;
   }
 
   .topbar-inner {
