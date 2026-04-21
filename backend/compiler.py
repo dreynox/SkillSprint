@@ -138,9 +138,14 @@ def _tool_exists(command: str) -> bool:
 
 
 def _ensure_dependencies(spec: LanguageSpec):
-    checks = [spec.run_command[0]]
+    checks: list[str] = []
+
+    # For compiled languages the runtime executable is generated in a temp
+    # workspace, so only the compiler binary should be pre-checked.
     if spec.compile_command:
         checks.append(spec.compile_command[0])
+    else:
+        checks.append(spec.run_command[0])
 
     missing = sorted({cmd for cmd in checks if not _tool_exists(cmd)})
     if missing:
@@ -165,9 +170,19 @@ def list_supported_languages() -> list[dict[str, Any]]:
     result: list[dict[str, Any]] = []
 
     for spec in LANGUAGE_SPECS.values():
-        runtime_ok = _tool_exists(spec.run_command[0])
+        runtime_ok = True if spec.compile_command else _tool_exists(spec.run_command[0])
         compile_ok = True if not spec.compile_command else _tool_exists(spec.compile_command[0])
         available = runtime_ok and compile_ok
+
+        missing: list[str] = []
+        if spec.compile_command:
+            compiler_cmd = spec.compile_command[0]
+            if not _tool_exists(compiler_cmd):
+                missing.append(compiler_cmd)
+        else:
+            runtime_cmd = spec.run_command[0]
+            if not _tool_exists(runtime_cmd):
+                missing.append(runtime_cmd)
 
         result.append(
             {
@@ -175,11 +190,7 @@ def list_supported_languages() -> list[dict[str, Any]]:
                 "name": spec.display_name,
                 "type": "compiled" if spec.compile_command else "interpreted",
                 "available": available,
-                "missing": [
-                    cmd
-                    for cmd in [spec.run_command[0], spec.compile_command[0] if spec.compile_command else None]
-                    if cmd and not _tool_exists(cmd)
-                ],
+                "missing": missing,
                 "debugger": spec.key in {"c", "cpp"} and _tool_exists("gdb"),
             }
         )
