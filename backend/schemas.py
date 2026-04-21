@@ -370,6 +370,28 @@ class ContestSubmissionOut(BaseModel):
         from_attributes = True
 
 
+class ContestSubmissionAdminOut(BaseModel):
+    id: int
+    contest_id: int
+    contest_name: str
+    problem_id: int
+    problem_title: str
+    user_id: int
+    user_name: str
+    user_email: str
+    srn: Optional[str] = None
+    prn: Optional[str] = None
+    year: Optional[int] = None
+    branch: Optional[str] = None
+    division: Optional[str] = None
+    roll_no: Optional[str] = None
+    language: str
+    verdict: str
+    score: int
+    submitted_at: datetime
+    execution_results: Optional[Any] = None
+
+
 class HackathonCreate(BaseModel):
     title: str
     description: Optional[str] = None

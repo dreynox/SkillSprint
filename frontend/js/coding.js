@@ -251,13 +251,22 @@ async function runTests() {
       throw new Error(result.detail || "Execution failed");
     }
 
-    if (result.status === "UNSUPPORTED_LANGUAGE" || result.status === "TOOL_UNAVAILABLE" || result.status === "WEB_PREVIEW_ONLY") {
-      const message = result.message || result.status;
+    displayResults(result);
+
+    const status = String(result.status || "").toUpperCase();
+    if (["UNSUPPORTED_LANGUAGE", "TOOL_UNAVAILABLE", "WEB_PREVIEW_ONLY", "COMPILATION_ERROR"].includes(status)) {
+      const message = result.message || result.status || "Execution failed";
       updateExecutionStatus(message, "error");
       alert(message);
+      return;
+    }
+
+    const passed = Number(result.passed || 0);
+    const total = Number(result.total || 0);
+    if (status === "NO_TESTS") {
+      updateExecutionStatus("Tests complete (no test cases configured).", "success");
     } else {
-      displayResults(result);
-      updateExecutionStatus("Tests complete", "success");
+      updateExecutionStatus(`Tests complete: ${passed}/${total} passed (${status || "UNKNOWN"})`, "success");
     }
   } catch (error) {
     console.error("Execution error:", error);
@@ -272,9 +281,54 @@ function displayResults(executionResult) {
   const resultsContainer = document.getElementById("resultsList");
   if (!resultsContainer) return;
 
+  const status = String(executionResult?.status || "").toUpperCase();
+  const message = executionResult?.message || "";
+
+  if (status === "NO_TESTS") {
+    resultsContainer.innerHTML = `
+      <div class="test-result info">
+        <div class="result-header">
+          <span>Execution Summary</span>
+          <span class="result-status">NO_TESTS</span>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Message:</span>
+          <div class="result-value">${escapeHtml(message || "No test cases available for this problem.")}</div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  if (["UNSUPPORTED_LANGUAGE", "TOOL_UNAVAILABLE", "WEB_PREVIEW_ONLY", "COMPILATION_ERROR"].includes(status)) {
+    resultsContainer.innerHTML = `
+      <div class="test-result runtime_error">
+        <div class="result-header">
+          <span>Execution Summary</span>
+          <span class="result-status runtime_error">${escapeHtml(status || "ERROR")}</span>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Message:</span>
+          <div class="result-value">${escapeHtml(message || "Execution failed")}</div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
   if (!executionResult.results || executionResult.results.length === 0) {
-    resultsContainer.innerHTML =
-      '<div class="empty-state">No test results available</div>';
+    resultsContainer.innerHTML = `
+      <div class="test-result info">
+        <div class="result-header">
+          <span>Execution Summary</span>
+          <span class="result-status">${escapeHtml(status || "UNKNOWN")}</span>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Message:</span>
+          <div class="result-value">${escapeHtml(message || "No detailed test-case output returned.")}</div>
+        </div>
+      </div>
+    `;
     return;
   }
 

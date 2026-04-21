@@ -131,6 +131,58 @@
     feed.innerHTML = rows.join("");
   }
 
+  function renderSubmissionFeed(submissions) {
+    const feed = document.getElementById("submissionFeed");
+    if (!feed) {
+      return;
+    }
+
+    if (!Array.isArray(submissions) || submissions.length === 0) {
+      feed.innerHTML = "<div class=\"list-item\"><div><b>No submissions yet</b><span>Submitted contest solutions will appear here with student credentials.</span></div><span class=\"badge\">0</span></div>";
+      return;
+    }
+
+    const rows = submissions.slice(0, 50).map(function (item) {
+      const submittedAt = formatDateText(item.submitted_at);
+      const credentials = [
+        item.srn ? "SRN: " + escapeHtml(item.srn) : null,
+        item.prn ? "PRN: " + escapeHtml(item.prn) : null,
+        item.roll_no ? "Roll: " + escapeHtml(item.roll_no) : null,
+        item.year ? "Year: " + escapeHtml(String(item.year)) : null,
+        item.branch ? "Branch: " + escapeHtml(item.branch) : null,
+        item.division ? "Division: " + escapeHtml(item.division) : null,
+      ].filter(Boolean).join(" | ");
+
+      const detailLine = credentials || "No credential details available";
+
+      return (
+        "<div class=\"list-item\"><div><b>" +
+        escapeHtml(item.contest_name || "Contest") +
+        " | " +
+        escapeHtml(item.problem_title || "Problem") +
+        "</b><span>By " +
+        escapeHtml(item.user_name || "Unknown User") +
+        " (" +
+        escapeHtml(item.user_email || "-") +
+        ") | " +
+        detailLine +
+        " | Language: " +
+        escapeHtml(item.language || "-") +
+        " | Verdict: " +
+        escapeHtml(item.verdict || "PENDING") +
+        " | Score: " +
+        escapeHtml(String(item.score ?? 0)) +
+        " | Submitted: " +
+        escapeHtml(submittedAt) +
+        "</span></div><span class=\"badge\">" +
+        escapeHtml(item.verdict || "PENDING") +
+        "</span></div>"
+      );
+    });
+
+    feed.innerHTML = rows.join("");
+  }
+
   function escapeHtml(str) {
     if (!str) {
       return "";
@@ -173,6 +225,34 @@
       renderFeed(Array.isArray(contests) ? contests : [], Array.isArray(hackathons) ? hackathons : []);
     } catch (_error) {
       renderFeed([], []);
+    }
+  }
+
+  async function loadSubmissionFeed() {
+    const user = parseUser();
+    const token = localStorage.getItem("access_token");
+    if (!user || user.role !== "admin" || !token) {
+      return;
+    }
+
+    const feed = document.getElementById("submissionFeed");
+    if (feed) {
+      feed.innerHTML = "<div class=\"list-item\"><div><b>Loading submissions...</b><span>Fetching recent code submissions.</span></div><span class=\"badge\">...</span></div>";
+    }
+
+    try {
+      const response = await fetch(API_BASE + "/contests/admin/submissions", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      const data = response.ok ? await response.json() : [];
+      renderSubmissionFeed(Array.isArray(data) ? data : []);
+    } catch (_error) {
+      if (feed) {
+        feed.innerHTML = "<div class=\"list-item\"><div><b>Could not load submissions</b><span>Please check API availability and admin auth.</span></div><span class=\"badge\">Error</span></div>";
+      }
     }
   }
 
@@ -287,4 +367,5 @@
   document.getElementById("heroTitle").textContent = "Hello " + user.name + ", publish new events";
 
   loadFeed();
+  loadSubmissionFeed();
 })();
