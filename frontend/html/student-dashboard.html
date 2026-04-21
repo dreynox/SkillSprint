@@ -439,7 +439,6 @@
           <div class="profile-menu-dropdown" id="profileMenuDropdown" aria-label="Profile menu">
             <a href="profile.html">Edit profile</a>
             <a href="profile.html">View profile</a>
-            <button class="danger" id="logoutBtn" type="button">Logout</button>
           </div>
         </div>
       </div>
@@ -768,11 +767,14 @@
         .replace(/'/g, "&#39;");
     }
 
-    document.getElementById("logoutBtn").addEventListener("click", function () {
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("user");
-      window.location.href = "../../index.html";
-    });
+    const dashboardLogoutBtn = document.getElementById("logoutBtn");
+    if (dashboardLogoutBtn) {
+      dashboardLogoutBtn.addEventListener("click", function () {
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("user");
+        window.location.href = "../../index.html";
+      });
+    }
 
     // Search functionality
     let searchTimeout;

@@ -32,6 +32,28 @@ function clearSessionAndGoLogin() {
   window.location.href = "../../index.html";
 }
 
+function syncTopbarProfileMenu(profile, isOwnProfile) {
+  const menu = document.getElementById("profileMenu");
+  const button = document.getElementById("profileMenuBtn");
+  const avatar = document.getElementById("topbarAvatar");
+  const editBtn = document.getElementById("editProfileMenuBtn");
+
+  if (avatar) {
+    const cachedUser = getCachedUser();
+    const source = cachedUser || (isOwnProfile ? profile : null);
+    avatar.src = resolveAvatarUrl(source?.avatar_url);
+  }
+
+  if (editBtn) {
+    editBtn.style.display = isOwnProfile ? "flex" : "none";
+  }
+
+  if (button && menu) {
+    button.setAttribute("aria-expanded", "false");
+    menu.classList.remove("open");
+  }
+}
+
 function getCachedUser() {
   try {
     return JSON.parse(localStorage.getItem("user") || "null");
@@ -389,6 +411,7 @@ async function uploadAvatar(file) {
     const nextUser = { ...cachedUser, ...data };
     currentProfile = nextUser;
     localStorage.setItem("user", JSON.stringify(nextUser));
+    syncTopbarProfileMenu(nextUser, isViewingOwnProfile);
     setUploadStatus("Profile image updated.", false);
     return true;
   } catch (error) {
@@ -588,6 +611,8 @@ async function loadProfile() {
     if (isOwnProfile) {
       localStorage.setItem("user", JSON.stringify(profile));
     }
+
+    syncTopbarProfileMenu(isOwnProfile ? profile : currentUser, isOwnProfile);
   } catch (_error) {
     const cachedUser = getCachedUser();
     if (cachedUser && cachedUser.name) {
@@ -608,6 +633,8 @@ async function loadProfile() {
     if (avatar) {
       avatar.src = DEFAULT_AVATAR;
     }
+
+    syncTopbarProfileMenu(cachedUser || null, Boolean(cachedUser));
   }
 }
 
@@ -750,6 +777,10 @@ const avatarModalTakePhotoBtn = document.getElementById("avatarModalTakePhotoBtn
 const avatarFileChip = document.getElementById("avatarFileChip");
 const avatarFileName = document.getElementById("avatarFileName");
 const avatarFileClearBtn = document.getElementById("avatarFileClearBtn");
+const profileMenu = document.getElementById("profileMenu");
+const profileMenuBtn = document.getElementById("profileMenuBtn");
+const editProfileMenuBtn = document.getElementById("editProfileMenuBtn");
+const topbarLogoutBtn = document.getElementById("topbarLogoutBtn");
 
 function syncAvatarPreviewToCurrent() {
   if (!avatarModalPreview) {
@@ -932,6 +963,50 @@ if (avatarModalSaveBtn) {
       updateAvatarSaveState();
       setAvatarModalStatus("Upload failed. Please try again.", true);
     }
+  });
+}
+
+if (profileMenuBtn && profileMenu) {
+  profileMenuBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = profileMenu.classList.toggle("open");
+    profileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!profileMenu.contains(event.target)) {
+      profileMenu.classList.remove("open");
+      profileMenuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      profileMenu.classList.remove("open");
+      profileMenuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+if (editProfileMenuBtn) {
+  editProfileMenuBtn.addEventListener("click", () => {
+    if (!isViewingOwnProfile) {
+      return;
+    }
+
+    openDetailsModal();
+    if (profileMenu) {
+      profileMenu.classList.remove("open");
+    }
+    if (profileMenuBtn) {
+      profileMenuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+if (topbarLogoutBtn) {
+  topbarLogoutBtn.addEventListener("click", () => {
+    clearSessionAndGoLogin();
   });
 }
 
