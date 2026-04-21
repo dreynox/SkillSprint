@@ -439,6 +439,7 @@
           <div class="profile-menu-dropdown" id="profileMenuDropdown" aria-label="Profile menu">
             <a href="profile.html">Edit profile</a>
             <a href="profile.html">View profile</a>
+            <button id="profileMenuLogoutBtn" class="danger" type="button">Logout</button>
           </div>
         </div>
       </div>
@@ -610,6 +611,7 @@
       const button = document.getElementById("profileMenuBtn");
       const avatar = document.getElementById("profileMenuAvatar");
       const label = document.getElementById("profileMenuLabel");
+      const logoutBtn = document.getElementById("profileMenuLogoutBtn");
 
       if (avatar) {
         avatar.src = resolveAvatarUrl(user && user.avatar_url ? user.avatar_url : "");
@@ -642,6 +644,17 @@
           button.setAttribute("aria-expanded", "false");
         }
       });
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          sessionStorage.removeItem("access_token");
+          sessionStorage.removeItem("token");
+          window.location.href = "../../index.html";
+        });
+      }
     }
 
     function loadDashboard() {
