@@ -6,7 +6,41 @@ let currentProblem = null;
 let currentContest = null;
 let testCases = [];
 let isExecuting = false;
-const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
+
+function resolveApiBase() {
+  if (window.API_BASE_URL) {
+    return window.API_BASE_URL;
+  }
+
+  const hostname = window.location.hostname || "";
+  const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
+  const isPrivateIp = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
+
+  if (isLocalhost || isPrivateIp || !hostname) {
+    return `http://${hostname || "127.0.0.1"}:8000`;
+  }
+
+  // Production-safe fallback if api-base.js is missing or failed to load.
+  return "https://skillsprint-backend-i8q6.onrender.com";
+}
+
+function getApiBaseCandidates() {
+  const candidates = [
+    resolveApiBase(),
+    "https://skillsprint-backend-i8q6.onrender.com",
+    "https://skillsprint-muv2.onrender.com"
+  ];
+
+  const unique = [];
+  for (const item of candidates) {
+    if (item && !unique.includes(item)) {
+      unique.push(item);
+    }
+  }
+  return unique;
+}
+
+const API_BASE = resolveApiBase();
 
 function getToken() {
   const raw =
@@ -434,17 +468,23 @@ async function submitCode() {
     const params = new URLSearchParams(window.location.search);
     const contestId = params.get("contest_id");
     const problemId = params.get("problem_id");
+    if (!contestId || !problemId) {
+      throw new Error("Missing contest or problem ID in URL.");
+    }
 
-    const submitCandidates = [
-      {
-        url: `${API_BASE}/contests/${contestId}/problems/${problemId}/submit`,
+    const apiBases = getApiBaseCandidates();
+
+    const submitCandidates = [];
+    apiBases.forEach((baseUrl) => {
+      submitCandidates.push({
+        url: `${baseUrl}/contests/${contestId}/problems/${problemId}/submit`,
         body: { language, code }
-      },
-      {
-        url: `${API_BASE}/contests/${contestId}/submissions`,
+      });
+      submitCandidates.push({
+        url: `${baseUrl}/contests/${contestId}/submissions`,
         body: { problem_id: Number(problemId), language, code }
-      }
-    ];
+      });
+    });
 
     let lastError = "Submission failed";
     let submitted = false;
@@ -475,7 +515,11 @@ async function submitCode() {
         alert("Code submitted successfully!");
         break;
       } catch (error) {
-        lastError = error.message || "Network error";
+        if (error && error.name === "TypeError") {
+          lastError = "Network error while submitting. Please check backend connectivity.";
+        } else {
+          lastError = error.message || "Network error";
+        }
       }
     }
 
