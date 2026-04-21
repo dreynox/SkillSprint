@@ -488,6 +488,7 @@ async function submitCode() {
 
     let lastError = "Submission failed";
     let submitted = false;
+    let hasConcreteServerError = false;
 
     for (const candidate of submitCandidates) {
       try {
@@ -507,6 +508,7 @@ async function submitCode() {
             (result && (result.detail || result.message)) ||
             `${response.status} ${response.statusText}` ||
             "Submission failed";
+          hasConcreteServerError = true;
           continue;
         }
 
@@ -516,7 +518,9 @@ async function submitCode() {
         break;
       } catch (error) {
         if (error && error.name === "TypeError") {
-          lastError = "Could not submit from browser. Refresh this page and log in again, then retry.";
+          if (!hasConcreteServerError) {
+            lastError = "Could not submit from browser. Refresh this page and log in again, then retry.";
+          }
         } else {
           lastError = error.message || "Network error";
         }

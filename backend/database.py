@@ -75,6 +75,17 @@ def ensure_sqlite_compatibility():
             if "expires_at" not in message_columns:
                 connection.execute(text("ALTER TABLE messages ADD COLUMN expires_at DATETIME"))
 
+        if "contest_submissions" in tables:
+            submission_columns = {column["name"] for column in inspector.get_columns("contest_submissions")}
+            if "verdict" not in submission_columns:
+                connection.execute(text("ALTER TABLE contest_submissions ADD COLUMN verdict VARCHAR DEFAULT 'PENDING'"))
+            if "score" not in submission_columns:
+                connection.execute(text("ALTER TABLE contest_submissions ADD COLUMN score INTEGER DEFAULT 0"))
+            if "execution_results" not in submission_columns:
+                connection.execute(text("ALTER TABLE contest_submissions ADD COLUMN execution_results TEXT"))
+            if "submitted_at" not in submission_columns:
+                connection.execute(text("ALTER TABLE contest_submissions ADD COLUMN submitted_at DATETIME"))
+
 def get_db():
     db = SessionLocal()
     try:

@@ -2,6 +2,7 @@ from typing import List
 import json
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from auth import get_current_user, require_admin
@@ -208,9 +209,16 @@ def submit_code(
         score=score,
         execution_results=execution_results,
     )
-    db.add(submission)
-    db.commit()
-    db.refresh(submission)
+    try:
+        db.add(submission)
+        db.commit()
+        db.refresh(submission)
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to persist contest submission: {exc.__class__.__name__}",
+        ) from exc
     return submission
 
 
@@ -255,9 +263,16 @@ def submit_code_legacy_path(
         score=score,
         execution_results=execution_results,
     )
-    db.add(submission)
-    db.commit()
-    db.refresh(submission)
+    try:
+        db.add(submission)
+        db.commit()
+        db.refresh(submission)
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to persist contest submission: {exc.__class__.__name__}",
+        ) from exc
     return submission
 
 
