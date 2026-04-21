@@ -32,7 +32,8 @@ function getToken() {
     sessionStorage.getItem("access_token") ||
     sessionStorage.getItem("token") ||
     "";
-  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  let cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  cleaned = cleaned.replace(/^Bearer\s+/i, "").trim();
   return cleaned && cleaned !== "undefined" && cleaned !== "null" ? cleaned : "";
 }
 

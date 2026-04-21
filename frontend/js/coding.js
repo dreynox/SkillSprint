@@ -27,8 +27,7 @@ function resolveApiBase() {
 function getApiBaseCandidates() {
   const candidates = [
     resolveApiBase(),
-    "https://skillsprint-backend-i8q6.onrender.com",
-    "https://skillsprint-muv2.onrender.com"
+    "https://skillsprint-backend-i8q6.onrender.com"
   ];
 
   const unique = [];
@@ -49,7 +48,8 @@ function getToken() {
     sessionStorage.getItem("access_token") ||
     sessionStorage.getItem("token") ||
     "";
-  const cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  let cleaned = String(raw).trim().replace(/^"|"$/g, "");
+  cleaned = cleaned.replace(/^Bearer\s+/i, "").trim();
   if (!cleaned || cleaned === "undefined" || cleaned === "null") {
     return "";
   }
@@ -516,7 +516,7 @@ async function submitCode() {
         break;
       } catch (error) {
         if (error && error.name === "TypeError") {
-          lastError = "Network error while submitting. Please check backend connectivity.";
+          lastError = "Could not submit from browser. Refresh this page and log in again, then retry.";
         } else {
           lastError = error.message || "Network error";
         }
