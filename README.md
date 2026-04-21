@@ -34,6 +34,16 @@ python seed_data.py
 uvicorn main:app --reload
 ```
 
+## Run with Docker (compiler-ready)
+```bash
+docker build -t skillsprint-backend .
+docker run -p 8000:8000 --env-file backend/.env skillsprint-backend
+```
+
+The Docker image includes the toolchains required for the compiler engine:
+- gcc, g++, gdb
+- Python, Node.js, Java, PHP, Go, Rust, R
+
 ## Migrate local data to Render Postgres
 1. Set `DATABASE_URL` to your Render PostgreSQL connection string.
 2. From the `backend` folder, run:

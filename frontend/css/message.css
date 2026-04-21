@@ -238,48 +238,6 @@ a:focus-visible {
     font-size: 1rem;
 }
 
-.retention-banner {
-    margin: 10px 12px;
-    padding: 10px;
-    border: 1px solid rgba(0, 255, 136, 0.26);
-    border-radius: 12px;
-    background: rgba(0, 255, 136, 0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.retention-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.retention-copy strong {
-    color: #d3ffeb;
-    font-size: 0.88rem;
-}
-
-.retention-copy span {
-    color: rgba(224, 255, 232, 0.72);
-    font-size: 0.76rem;
-    line-height: 1.4;
-}
-
-.premium-btn {
-    border: 1px solid rgba(0, 255, 136, 0.46);
-    background: rgba(0, 255, 136, 0.16);
-    color: #b7ffe0;
-    border-radius: 8px;
-    padding: 8px 10px;
-    font-size: 0.82rem;
-    cursor: pointer;
-}
-
-.premium-btn:hover {
-    background: rgba(0, 255, 136, 0.26);
-}
-
 .new-chat-btn {
     background: var(--neon-green);
     color: #000;
@@ -427,53 +385,6 @@ a:focus-visible {
 .empty-state h2 {
     color: var(--neon-green);
     margin-bottom: 10px;
-}
-
-.premium-modal {
-    width: min(820px, 92vw);
-    max-height: 88vh;
-    overflow-y: auto;
-}
-
-.premium-subtitle {
-    color: rgba(224, 255, 232, 0.72);
-    margin-top: 8px;
-    margin-bottom: 14px;
-}
-
-.premium-comparison {
-    border: 1px solid rgba(0, 255, 136, 0.24);
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.premium-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.premium-table th,
-.premium-table td {
-    border-bottom: 1px solid rgba(0, 255, 136, 0.14);
-    padding: 10px;
-    text-align: left;
-    font-size: 0.85rem;
-}
-
-.premium-table th {
-    background: rgba(0, 255, 136, 0.1);
-    color: #ccffe9;
-    font-weight: 700;
-}
-
-.premium-table td {
-    color: rgba(224, 255, 232, 0.86);
-}
-
-.premium-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 14px;
 }
 
 #chat-area {

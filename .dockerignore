@@ -1,0 +1,11 @@
+.git
+.github
+.vscode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+backend/exec_cache
+backend/uploads
+frontend/images
