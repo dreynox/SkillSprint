@@ -1,4 +1,5 @@
 import os
+import base64
 from pathlib import Path
 from uuid import uuid4
 
@@ -44,16 +45,12 @@ async def upload_my_avatar(
             detail="Image too large. Max allowed size is 5MB.",
         )
 
-    original_ext = os.path.splitext(file.filename or "")[1].lower()
-    if original_ext not in {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}:
-        original_ext = ".png"
+    mime_type = file.content_type or "image/png"
+    if mime_type not in {"image/png", "image/jpeg", "image/gif", "image/webp", "image/svg+xml"}:
+        mime_type = "image/png"
 
-    filename = f"avatar_{current_user.id}_{uuid4().hex}{original_ext}"
-    destination = UPLOADS_DIR / filename
-    destination.write_bytes(content)
-
-    # Keep URL backend-relative so frontend can combine it with API base.
-    current_user.avatar_url = f"/uploads/{filename}"
+    encoded_image = base64.b64encode(content).decode("ascii")
+    current_user.avatar_url = f"data:{mime_type};base64,{encoded_image}"
     db.add(current_user)
     db.commit()
     db.refresh(current_user)
