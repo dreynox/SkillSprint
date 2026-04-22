@@ -68,6 +68,43 @@ async function parseJsonSafe(response) {
   }
 }
 
+async function runDirectCode(code, language, stdin = "") {
+  const apiBases = getApiBaseCandidates();
+  let lastError = "Compiler run failed";
+
+  for (const baseUrl of apiBases) {
+    try {
+      const response = await fetch(`${baseUrl}/compiler/run`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          language,
+          code,
+          stdin,
+          timeout: 5
+        })
+      });
+
+      const result = await parseJsonSafe(response);
+      if (!response.ok) {
+        lastError =
+          (result && (result.detail || result.message)) ||
+          `${response.status} ${response.statusText}` ||
+          "Compiler run failed";
+        continue;
+      }
+
+      return result;
+    } catch (error) {
+      lastError = error?.message || "Compiler run failed";
+    }
+  }
+
+  throw new Error(lastError);
+}
+
 // =========================
 // INITIALIZATION
 // =========================
@@ -285,9 +322,26 @@ async function runTests() {
       throw new Error(result.detail || "Execution failed");
     }
 
+    const status = String(result.status || "").toUpperCase();
+    if (status === "NO_TESTS") {
+      try {
+        const directRun = await runDirectCode(code, language, "");
+        result.direct_run = directRun;
+      } catch (directError) {
+        result.direct_run = {
+          status: "ERROR",
+          message: directError.message || "Unable to execute code directly.",
+          stdout: "",
+          stderr: "",
+          execution_time_ms: 0,
+          exit_code: 1,
+          language
+        };
+      }
+    }
+
     displayResults(result);
 
-    const status = String(result.status || "").toUpperCase();
     if (["UNSUPPORTED_LANGUAGE", "TOOL_UNAVAILABLE", "WEB_PREVIEW_ONLY", "COMPILATION_ERROR"].includes(status)) {
       const message = result.message || result.status || "Execution failed";
       updateExecutionStatus(message, "error");
@@ -298,7 +352,12 @@ async function runTests() {
     const passed = Number(result.passed || 0);
     const total = Number(result.total || 0);
     if (status === "NO_TESTS") {
-      updateExecutionStatus("Tests complete (no test cases configured).", "success");
+      const directStatus = String(result.direct_run?.status || "").toUpperCase();
+      if (directStatus && directStatus !== "SUCCESS") {
+        updateExecutionStatus(`No test cases configured. Direct run status: ${directStatus}.`, "error");
+      } else {
+        updateExecutionStatus("No test cases configured. Direct run output shown below.", "success");
+      }
     } else {
       updateExecutionStatus(`Tests complete: ${passed}/${total} passed (${status || "UNKNOWN"})`, "success");
     }
@@ -317,6 +376,49 @@ function displayResults(executionResult) {
 
   const status = String(executionResult?.status || "").toUpperCase();
   const message = executionResult?.message || "";
+  const directRun = executionResult?.direct_run || null;
+
+  function renderDirectRunCard(run) {
+    if (!run) {
+      return "";
+    }
+
+    const runStatus = String(run.status || "UNKNOWN").toUpperCase();
+    const runMessage = run.message || "";
+    const stdout = run.stdout || "";
+    const stderr = run.stderr || "";
+    const exitCode = typeof run.exit_code === "number" ? run.exit_code : "-";
+    const elapsed = typeof run.execution_time_ms === "number" ? `${run.execution_time_ms} ms` : "-";
+
+    return `
+      <div class="test-result info">
+        <div class="result-header">
+          <span>Direct Run Output</span>
+          <span class="result-status">${escapeHtml(runStatus)}</span>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Message:</span>
+          <div class="result-value">${escapeHtml(runMessage || "Execution finished")}</div>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Stdout:</span>
+          <div class="result-value">${escapeHtml(stdout || "(empty)")}</div>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Stderr:</span>
+          <div class="result-value">${escapeHtml(stderr || "(empty)")}</div>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Exit Code:</span>
+          <div class="result-value">${escapeHtml(String(exitCode))}</div>
+        </div>
+        <div class="result-detail">
+          <span class="result-label">Execution Time:</span>
+          <div class="result-value">${escapeHtml(elapsed)}</div>
+        </div>
+      </div>
+    `;
+  }
 
   if (status === "NO_TESTS") {
     resultsContainer.innerHTML = `
@@ -330,6 +432,7 @@ function displayResults(executionResult) {
           <div class="result-value">${escapeHtml(message || "No test cases available for this problem.")}</div>
         </div>
       </div>
+      ${renderDirectRunCard(directRun)}
     `;
     return;
   }

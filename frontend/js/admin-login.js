@@ -7,7 +7,7 @@ const adminLoginStatus = document.getElementById("adminLoginStatus");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const email = document.getElementById("email").value.trim();
+  const email = document.getElementById("email").value.trim().toLowerCase();
   const passwordInput = document.getElementById("password");
   const password = passwordInput.value.trim();
 

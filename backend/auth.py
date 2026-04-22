@@ -12,9 +12,15 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import User
 
+try:
+    from passlib.context import CryptContext
+except Exception:
+    CryptContext = None
+
 MAX_BCRYPT_BYTES = 72
 security = HTTPBearer()
 PBKDF2_ITERATIONS = 100000
+_legacy_pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto") if CryptContext else None
 
 
 def _pbkdf2_hash(password: str, salt: bytes) -> str:
@@ -51,6 +57,13 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
                 stored_hash,
             )
         except (ValueError, TypeError):
+            return False
+
+    # Backward compatibility for accounts created with older bcrypt hashing.
+    if hashed_password.startswith("$2") and _legacy_pwd_context is not None:
+        try:
+            return _legacy_pwd_context.verify(plain_password, hashed_password)
+        except Exception:
             return False
 
     return False
