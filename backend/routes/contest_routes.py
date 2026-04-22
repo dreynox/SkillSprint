@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 import json
 
@@ -26,6 +27,33 @@ from schemas import (
 from compiler import test_code
 
 router = APIRouter()
+
+
+def _utcnow() -> datetime:
+        return datetime.utcnow()
+
+
+def _contest_has_ended(contest: Contest) -> bool:
+        return bool(contest.end_time and _utcnow() > contest.end_time)
+
+
+def _contest_is_live(contest: Contest) -> bool:
+        now = _utcnow()
+        if not contest.is_active:
+            return False
+        if contest.start_time and now < contest.start_time:
+            return False
+        if contest.end_time and now > contest.end_time:
+            return False
+        return True
+
+
+def _sync_expired_contest(contest: Contest, db: Session) -> None:
+        if contest.is_active and _contest_has_ended(contest):
+                contest.is_active = False
+                db.add(contest)
+                db.commit()
+                db.refresh(contest)
 
 
 def _evaluate_submission(db: Session, problem_id: int, language: str, code: str) -> tuple[str, int, str]:
@@ -69,7 +97,7 @@ def _evaluate_submission(db: Session, problem_id: int, language: str, code: str)
 
 
 @router.post("", response_model=ContestOut, status_code=status.HTTP_201_CREATED)
-def create_contest(payload: ContestCreate, db: Session = Depends(get_db)):
+def create_contest(payload: ContestCreate, db: Session = Depends(get_db), _admin: User = Depends(require_admin)):
     contest = Contest(**payload.model_dump())
     db.add(contest)
     db.commit()
@@ -79,10 +107,14 @@ def create_contest(payload: ContestCreate, db: Session = Depends(get_db)):
 
 @router.get("", response_model=List[ContestOut])
 def list_contests(active_only: bool = Query(False), db: Session = Depends(get_db)):
-    query = db.query(Contest)
+    contests = db.query(Contest).order_by(Contest.id.asc()).all()
+    for contest in contests:
+        _sync_expired_contest(contest, db)
+
     if active_only:
-        query = query.filter(Contest.is_active.is_(True))
-    return query.order_by(Contest.id.asc()).all()
+        contests = [contest for contest in contests if _contest_is_live(contest)]
+
+    return contests
 
 
 @router.get("/admin/submissions", response_model=List[ContestSubmissionAdminOut])
@@ -141,14 +173,20 @@ def get_contest(contest_id: int, db: Session = Depends(get_db)):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    _sync_expired_contest(contest, db)
+    if not _contest_is_live(contest):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Contest is not currently active")
     return contest
 
 
 @router.post("/{contest_id}/problems", response_model=ContestProblemOut, status_code=status.HTTP_201_CREATED)
-def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = Depends(get_db)):
+def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = Depends(get_db), _admin: User = Depends(require_admin)):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    _sync_expired_contest(contest, db)
+    if _contest_has_ended(contest):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Contest has ended")
 
     problem = ContestProblem(contest_id=contest_id, **payload.model_dump())
     db.add(problem)
@@ -184,6 +222,9 @@ def submit_code(
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    _sync_expired_contest(contest, db)
+    if not _contest_is_live(contest):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Contest is not currently active")
 
     problem = (
         db.query(ContestProblem)
@@ -238,6 +279,9 @@ def submit_code_legacy_path(
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    _sync_expired_contest(contest, db)
+    if not _contest_is_live(contest):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Contest is not currently active")
 
     problem = (
         db.query(ContestProblem)
@@ -301,6 +345,9 @@ def join_contest(
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    _sync_expired_contest(contest, db)
+    if not _contest_is_live(contest):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Contest is not currently active")
 
     existing = (
         db.query(ContestParticipation)
@@ -330,6 +377,7 @@ def add_test_case(
     problem_id: int,
     payload: TestCaseCreate,
     db: Session = Depends(get_db),
+    _admin: User = Depends(require_admin),
 ):
     """Add a test case to a problem (admin only)"""
     problem = (
@@ -339,6 +387,12 @@ def add_test_case(
     )
     if not problem:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Problem not found")
+    contest = db.query(Contest).filter(Contest.id == contest_id).first()
+    if not contest:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    _sync_expired_contest(contest, db)
+    if _contest_has_ended(contest):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Contest has ended")
 
     test_case = TestCase(
         problem_id=problem_id,

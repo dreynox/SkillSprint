@@ -765,7 +765,26 @@
     function renderTimeRange(start, end) {
       const startText = start ? new Date(start).toLocaleString() : "TBD";
       const endText = end ? new Date(end).toLocaleString() : "TBD";
-      return startText + " to " + endText;
+      return startText + " to " + endText + " · " + renderDuration(start, end);
+    }
+
+    function renderDuration(start, end) {
+      if (!start || !end) {
+        return "Duration TBD";
+      }
+
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      const diffMs = Math.max(0, endDate - startDate);
+      const totalMinutes = Math.max(1, Math.round(diffMs / 60000));
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+
+      if (!hours) {
+        return minutes + "m";
+      }
+
+      return hours + "h" + (minutes ? " " + minutes + "m" : "");
     }
 
     function escapeHtml(str) {

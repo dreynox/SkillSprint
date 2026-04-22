@@ -1,5 +1,6 @@
 (function () {
   const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
+  let cachedContests = [];
 
   const glow = document.querySelector(".cursor-glow");
   document.addEventListener("mousemove", function (event) {
@@ -85,6 +86,115 @@
       return "TBD";
     }
     return new Date(value).toLocaleString();
+  }
+
+  function formatDuration(start, end) {
+    if (!start || !end) {
+      return "Duration TBD";
+    }
+
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const diffMs = Math.max(0, endDate - startDate);
+    const totalMinutes = Math.max(1, Math.round(diffMs / 60000));
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    if (!hours) {
+      return `Duration: ${minutes}m`;
+    }
+
+    return `Duration: ${hours}h ${minutes ? `${minutes}m` : ""}`.trim();
+  }
+
+  function populateQuestionContestSelect(contests) {
+    const select = document.getElementById("questionContestId");
+    if (!select) {
+      return;
+    }
+
+    select.innerHTML = "";
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = contests.length ? "Select a contest" : "No contests available";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    select.appendChild(placeholder);
+
+    contests.forEach(function (contest) {
+      const option = document.createElement("option");
+      option.value = String(contest.id);
+      option.textContent = contest.name + " | " + formatDuration(contest.start_time, contest.end_time);
+      select.appendChild(option);
+    });
+  }
+
+  function populateTestContestSelect(contests) {
+    const select = document.getElementById("testContestId");
+    if (!select) {
+      return;
+    }
+
+    select.innerHTML = "";
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = contests.length ? "Select a contest" : "No contests available";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    select.appendChild(placeholder);
+
+    contests.forEach(function (contest) {
+      const option = document.createElement("option");
+      option.value = String(contest.id);
+      option.textContent = contest.name + " | " + formatDuration(contest.start_time, contest.end_time);
+      select.appendChild(option);
+    });
+  }
+
+  async function populateProblemSelect(contestId) {
+    const select = document.getElementById("testProblemId");
+    if (!select) {
+      return;
+    }
+
+    select.innerHTML = "";
+    const emptyOption = document.createElement("option");
+    emptyOption.value = "";
+    emptyOption.textContent = contestId ? "Loading questions..." : "Select a contest first";
+    emptyOption.disabled = true;
+    emptyOption.selected = true;
+    select.appendChild(emptyOption);
+
+    if (!contestId) {
+      return;
+    }
+
+    try {
+      const response = await fetch(API_BASE + "/contests/" + contestId);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || "Unable to load questions");
+      }
+
+      select.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = data.problems && data.problems.length ? "Select a question" : "No questions in this contest";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+
+      (data.problems || []).forEach(function (problem) {
+        const option = document.createElement("option");
+        option.value = String(problem.id);
+        option.textContent = problem.title;
+        select.appendChild(option);
+      });
+    } catch (_error) {
+      select.innerHTML = "<option value=\"\" disabled selected>Unable to load questions</option>";
+    }
   }
 
   function renderFeed(contests, hackathons) {
@@ -224,13 +334,121 @@
     try {
       const contestResponse = await fetch(API_BASE + "/contests");
       const contests = contestResponse.ok ? await contestResponse.json() : [];
+      cachedContests = Array.isArray(contests) ? contests : [];
 
       const hackathonResponse = await fetch(API_BASE + "/hackathons");
       const hackathons = hackathonResponse.ok ? await hackathonResponse.json() : [];
 
+      populateQuestionContestSelect(cachedContests);
+      populateTestContestSelect(cachedContests);
       renderFeed(Array.isArray(contests) ? contests : [], Array.isArray(hackathons) ? hackathons : []);
     } catch (_error) {
+      populateQuestionContestSelect([]);
+      populateTestContestSelect([]);
       renderFeed([], []);
+    }
+  }
+
+  async function createQuestion() {
+    const contestId = document.getElementById("questionContestId").value;
+    const title = document.getElementById("questionTitle").value.trim();
+    const statement = document.getElementById("questionStatement").value.trim();
+    const difficulty = document.getElementById("questionDifficulty").value.trim();
+    const tags = document.getElementById("questionTags").value.trim();
+
+    if (!contestId) {
+      setStatus("questionStatus", "Please choose a contest.", true);
+      return;
+    }
+
+    if (!title || !statement) {
+      setStatus("questionStatus", "Question title and statement are required.", true);
+      return;
+    }
+
+    setStatus("questionStatus", "Adding question...", false);
+    const btn = document.getElementById("createQuestionBtn");
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(API_BASE + "/contests/" + contestId + "/problems", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("access_token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: title,
+          statement: statement,
+          difficulty: difficulty || null,
+          tags: tags || null,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || "Unable to add question");
+      }
+
+      setStatus("questionStatus", "Question added successfully. It will appear inside the contest.", false);
+      document.getElementById("questionTitle").value = "";
+      document.getElementById("questionStatement").value = "";
+      document.getElementById("questionDifficulty").value = "";
+      document.getElementById("questionTags").value = "";
+      await loadFeed();
+      await populateProblemSelect(contestId);
+    } catch (error) {
+      setStatus("questionStatus", error.message || "Unable to add question", true);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  async function createTestCase() {
+    const contestId = document.getElementById("testContestId").value;
+    const problemId = document.getElementById("testProblemId").value;
+    const inputData = document.getElementById("testInputData").value;
+    const expectedOutput = document.getElementById("testExpectedOutput").value.trim();
+
+    if (!contestId || !problemId) {
+      setStatus("testCaseStatus", "Please choose a contest and question.", true);
+      return;
+    }
+
+    if (!expectedOutput) {
+      setStatus("testCaseStatus", "Expected output is required.", true);
+      return;
+    }
+
+    setStatus("testCaseStatus", "Adding test case...", false);
+    const btn = document.getElementById("createTestCaseBtn");
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(API_BASE + "/contests/" + contestId + "/problems/" + problemId + "/test-cases", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("access_token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          input_data: inputData || null,
+          expected_output: expectedOutput,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || "Unable to add test case");
+      }
+
+      setStatus("testCaseStatus", "Test case added successfully.", false);
+      document.getElementById("testInputData").value = "";
+      document.getElementById("testExpectedOutput").value = "";
+    } catch (error) {
+      setStatus("testCaseStatus", error.message || "Unable to add test case", true);
+    } finally {
+      btn.disabled = false;
     }
   }
 
@@ -358,6 +576,11 @@
 
   document.getElementById("createContestBtn").addEventListener("click", createContest);
   document.getElementById("createHackathonBtn").addEventListener("click", createHackathon);
+  document.getElementById("createQuestionBtn").addEventListener("click", createQuestion);
+  document.getElementById("createTestCaseBtn").addEventListener("click", createTestCase);
+  document.getElementById("testContestId").addEventListener("change", function (event) {
+    populateProblemSelect(event.target.value);
+  });
   document.getElementById("logoutBtn").addEventListener("click", function () {
     localStorage.removeItem("access_token");
     localStorage.removeItem("user");

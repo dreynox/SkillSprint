@@ -61,7 +61,7 @@
     .form-grid { display: grid; gap: 0.65rem; }
     .field-label { color: var(--muted); font-size: 0.8rem; }
 
-    input, textarea {
+    input, textarea, select {
       width: 100%; padding: 0.62rem 0.7rem;
       background: rgba(0, 0, 0, 0.45); color: var(--text);
       border: 1px solid var(--line); border-radius: 10px; outline: none;
@@ -174,6 +174,54 @@
           <p class="status" id="hackathonStatus"></p>
         </div>
       </section>
+    </section>
+
+    <section class="panel">
+      <h2>Add Contest Question</h2>
+      <div class="form-grid">
+        <label class="field-label" for="questionContestId">Contest</label>
+        <select id="questionContestId"></select>
+
+        <label class="field-label" for="questionTitle">Question Title</label>
+        <input id="questionTitle" type="text" placeholder="Sum of Two Numbers" />
+
+        <label class="field-label" for="questionStatement">Question Statement</label>
+        <textarea id="questionStatement" placeholder="Describe the coding problem, input/output format, and constraints."></textarea>
+
+        <div class="inline-row">
+          <div>
+            <label class="field-label" for="questionDifficulty">Difficulty</label>
+            <input id="questionDifficulty" type="text" placeholder="Easy / Medium / Hard" />
+          </div>
+          <div>
+            <label class="field-label" for="questionTags">Tags</label>
+            <input id="questionTags" type="text" placeholder="arrays, math, loops" />
+          </div>
+        </div>
+
+        <button class="btn" id="createQuestionBtn" type="button">Add Question</button>
+        <p class="status" id="questionStatus"></p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Add Test Case</h2>
+      <div class="form-grid">
+        <label class="field-label" for="testContestId">Contest</label>
+        <select id="testContestId"></select>
+
+        <label class="field-label" for="testProblemId">Question</label>
+        <select id="testProblemId"></select>
+
+        <label class="field-label" for="testInputData">Input Data</label>
+        <textarea id="testInputData" placeholder="Optional input for the code runner."></textarea>
+
+        <label class="field-label" for="testExpectedOutput">Expected Output</label>
+        <textarea id="testExpectedOutput" placeholder="Expected exact output, including line breaks."></textarea>
+
+        <button class="btn" id="createTestCaseBtn" type="button">Add Test Case</button>
+        <p class="status" id="testCaseStatus"></p>
+      </div>
     </section>
 
     <section class="panel">

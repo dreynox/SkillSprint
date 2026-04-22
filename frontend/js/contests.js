@@ -93,7 +93,7 @@ async function loadContests() {
   listSection.setAttribute("aria-busy", "true");
 
   try {
-    const res  = await fetch(`${API_BASE}/contests`);
+    const res  = await fetch(`${API_BASE}/contests?active_only=true`);
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail || "Failed to load contests");
 
@@ -126,15 +126,35 @@ function renderContestCard(contest) {
   const end = contest.end_time
     ? new Date(contest.end_time).toLocaleString()
     : "TBD";
+  const duration = renderDuration(contest.start_time, contest.end_time);
 
   card.innerHTML = `
     <div class="card-title">${badge} ${escapeHtml(contest.name)}</div>
     <div class="card-desc">${escapeHtml(contest.description || "")}</div>
-    <div class="card-meta">${start} &rarr; ${end}</div>
+    <div class="card-meta">${start} &rarr; ${end} | ${duration}</div>
   `;
 
   card.addEventListener("click", () => openContest(contest.id));
   contestCards.appendChild(card);
+}
+
+function renderDuration(start, end) {
+  if (!start || !end) {
+    return "Duration TBD";
+  }
+
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const diffMs = Math.max(0, endDate - startDate);
+  const totalMinutes = Math.max(1, Math.round(diffMs / 60000));
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if (!hours) {
+    return `${minutes}m`;
+  }
+
+  return `${hours}h${minutes ? ` ${minutes}m` : ""}`;
 }
 
 // ── Contest detail ────────────────────────────────────────────────────────────
