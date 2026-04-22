@@ -26,6 +26,8 @@ class User(Base):
     branch = Column(String, nullable=True)
     division = Column(String, nullable=True)
     roll_no = Column(String, nullable=True)
+    domain = Column(String, nullable=True)
+    subject = Column(String, nullable=True)
     bio = Column(Text, nullable=True)
     avatar_url = Column(String, nullable=True)
     is_premium = Column(Boolean, default=False, nullable=False)

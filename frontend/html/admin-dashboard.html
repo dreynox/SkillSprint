@@ -38,6 +38,111 @@
     .brand span { color: var(--primary); }
     .topbar-right { display: flex; align-items: center; gap: 0.7rem; font-size: 0.92rem; color: var(--muted); }
 
+    .profile-menu {
+      position: relative;
+    }
+
+    .profile-menu-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--text);
+      padding: 0.28rem 0.7rem 0.28rem 0.3rem;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(0, 255, 136, 0.14);
+      transition: 0.15s ease;
+      font: inherit;
+    }
+
+    .profile-menu-trigger:hover,
+    .profile-menu-trigger:focus-visible,
+    .profile-menu.open .profile-menu-trigger {
+      border-color: rgba(0, 255, 136, 0.55);
+      background: rgba(0, 255, 136, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .profile-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 14px rgba(0, 255, 136, 0.26);
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .profile-menu-label {
+      font-size: 0.82rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .profile-caret {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .profile-menu-dropdown {
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      right: 0;
+      min-width: 180px;
+      padding: 0.45rem;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.92);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: 0.18s ease;
+      z-index: 20;
+    }
+
+    .profile-menu:hover .profile-menu-dropdown,
+    .profile-menu:focus-within .profile-menu-dropdown,
+    .profile-menu.open .profile-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .profile-menu-dropdown a,
+    .profile-menu-dropdown button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.7rem 0.75rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font: inherit;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .profile-menu-dropdown a:hover,
+    .profile-menu-dropdown button:hover,
+    .profile-menu-dropdown a:focus-visible,
+    .profile-menu-dropdown button:focus-visible {
+      background: rgba(0, 255, 136, 0.12);
+      color: #d9fff0;
+    }
+
+    .profile-menu-dropdown .danger {
+      color: #ffb4b4;
+    }
+
     .btn {
       border: 1px solid transparent; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #00140d;
       border-radius: 999px; padding: 0.5rem 0.95rem; font-weight: 700; cursor: pointer; transition: 0.15s ease;
@@ -103,6 +208,18 @@
       <div class="brand">Skill<span>Sprint</span> Admin Dashboard</div>
       <div class="topbar-right">
         <span id="welcomeText">Welcome</span>
+        <div class="profile-menu" id="profileMenu">
+          <button class="profile-menu-trigger" id="profileMenuBtn" type="button" aria-label="Open profile menu" aria-haspopup="true" aria-expanded="false">
+            <img id="topbarAvatar" class="profile-avatar" src="../images/default-avatar.svg" alt="Admin avatar" />
+            <span class="profile-menu-label" id="profileMenuLabel">Profile</span>
+            <span class="profile-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="profile-menu-dropdown" id="profileMenuDropdown" aria-label="Profile menu">
+            <a href="profile.html">View profile</a>
+            <a href="profile.html">Edit profile</a>
+            <button id="profileMenuLogoutBtn" class="danger" type="button">Logout</button>
+          </div>
+        </div>
         <button class="btn" id="logoutBtn" type="button">Logout</button>
       </div>
     </div>

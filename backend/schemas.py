@@ -69,6 +69,8 @@ class UserOut(BaseModel):
     branch: Optional[str]
     division: Optional[str]
     roll_no: Optional[str]
+    domain: Optional[str]
+    subject: Optional[str]
     bio: Optional[str]
     avatar_url: Optional[str]
     is_premium: bool = False
@@ -93,6 +95,8 @@ class UserProfileUpdate(BaseModel):
     branch: Optional[str] = None
     division: Optional[str] = None
     roll_no: Optional[str] = None
+    domain: Optional[str] = None
+    subject: Optional[str] = None
     bio: Optional[str] = None
     avatar_url: Optional[str] = None
 

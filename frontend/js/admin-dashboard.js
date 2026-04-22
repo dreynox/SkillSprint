@@ -108,6 +108,42 @@
     return user;
   }
 
+  function resolveAvatarUrl(avatarUrl) {
+    if (!avatarUrl) {
+      return "../images/default-avatar.svg";
+    }
+
+    if (avatarUrl.startsWith("http://") || avatarUrl.startsWith("https://") || avatarUrl.startsWith("data:")) {
+      return avatarUrl;
+    }
+
+    if (avatarUrl.startsWith("/")) {
+      return API_BASE + avatarUrl;
+    }
+
+    return avatarUrl;
+  }
+
+  function syncProfileMenu(user) {
+    const menu = document.getElementById("profileMenu");
+    const button = document.getElementById("profileMenuBtn");
+    const avatar = document.getElementById("topbarAvatar");
+    const label = document.getElementById("profileMenuLabel");
+
+    if (avatar) {
+      avatar.src = resolveAvatarUrl(user && user.avatar_url ? user.avatar_url : "");
+    }
+
+    if (label) {
+      label.textContent = user && user.name ? user.name : "Profile";
+    }
+
+    if (button && menu) {
+      button.setAttribute("aria-expanded", "false");
+      menu.classList.remove("open");
+    }
+  }
+
   function formatDateText(value) {
     if (!value) {
       return "TBD";
@@ -624,9 +660,39 @@
   document.getElementById("testContestId").addEventListener("change", function (event) {
     populateProblemSelect(event.target.value);
   });
+  const profileMenuBtn = document.getElementById("profileMenuBtn");
+  const profileMenu = document.getElementById("profileMenu");
+  if (profileMenuBtn && profileMenu) {
+    profileMenuBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      const isOpen = profileMenu.classList.toggle("open");
+      profileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
+
+  document.getElementById("profileMenuLogoutBtn").addEventListener("click", function () {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("token");
+    window.location.href = "../../index.html";
+  });
+
+  document.addEventListener("click", function (event) {
+    if (profileMenu && !profileMenu.contains(event.target)) {
+      profileMenu.classList.remove("open");
+      if (profileMenuBtn) {
+        profileMenuBtn.setAttribute("aria-expanded", "false");
+      }
+    }
+  });
   document.getElementById("logoutBtn").addEventListener("click", function () {
     localStorage.removeItem("access_token");
+    localStorage.removeItem("token");
     localStorage.removeItem("user");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("token");
     window.location.href = "../../index.html";
   });
 
@@ -637,6 +703,7 @@
 
   document.getElementById("welcomeText").textContent = "Welcome, " + user.name;
   document.getElementById("heroTitle").textContent = "Hello " + user.name + ", publish new events";
+  syncProfileMenu(user);
 
   loadFeed();
   loadSubmissionFeed();

@@ -61,6 +61,10 @@ def ensure_sqlite_compatibility():
                 connection.execute(text("ALTER TABLE users ADD COLUMN division VARCHAR"))
             if "roll_no" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN roll_no VARCHAR"))
+            if "domain" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN domain VARCHAR"))
+            if "subject" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN subject VARCHAR"))
             if "bio" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN bio TEXT"))
             if "avatar_url" not in user_columns:

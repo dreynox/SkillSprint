@@ -207,6 +207,8 @@ def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(g
             User.avatar_url.label("avatar_url"),
             User.branch.label("branch"),
             User.year.label("year"),
+            User.domain.label("domain"),
+            User.subject.label("subject"),
             func.coalesce(quiz_stats.c.quiz_attempts, 0).label("quiz_attempts"),
             func.coalesce(quiz_stats.c.quiz_score, 0).label("quiz_score"),
             func.coalesce(participation_stats.c.contests_joined, 0).label("contests_joined"),
@@ -232,6 +234,8 @@ def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(g
                 avatar_url=row.avatar_url,
                 branch=row.branch,
                 year=row.year,
+                domain=row.domain,
+                subject=row.subject,
                 quiz_attempts=int(row.quiz_attempts or 0),
                 quiz_score=int(row.quiz_score or 0),
                 contests_joined=int(row.contests_joined or 0),
@@ -283,6 +287,8 @@ def search(
                 User.branch.ilike(term_pattern),
                 User.division.ilike(term_pattern),
                 User.roll_no.ilike(term_pattern),
+                User.domain.ilike(term_pattern),
+                User.subject.ilike(term_pattern),
             )
         )
 

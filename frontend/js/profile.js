@@ -142,6 +142,20 @@ function openDetailsModal() {
 
 function buildRoleText(profile) {
   const roleParts = [];
+  if (String(profile.role || "").toLowerCase() === "admin") {
+    if (profile.domain) {
+      roleParts.push(profile.domain);
+    }
+    if (profile.subject) {
+      roleParts.push(profile.subject);
+    }
+    if (profile.year) {
+      roleParts.push(`Year ${profile.year}`);
+    }
+    roleParts.push("ADMIN");
+    return roleParts.join(" · ");
+  }
+
   if (profile.year) {
     roleParts.push(`Year ${profile.year}`);
   }
@@ -161,13 +175,15 @@ function renderProfileDetails(profile) {
     element.textContent = value ? String(value) : "-";
   };
 
-  // Required order: SRN, PRN, YEAR, BRANCH, DIVISION, ROLL NO
+  // Required order: SRN, PRN, YEAR, BRANCH, DIVISION, ROLL NO, DOMAIN, SUBJECT
   set("detailSrn", profile.srn);
   set("detailPrn", profile.prn);
   set("detailYear", profile.year);
   set("detailBranch", profile.branch);
   set("detailDivision", profile.division);
   set("detailRollNo", profile.roll_no);
+  set("detailDomain", profile.domain);
+  set("detailSubject", profile.subject);
 }
 
 function fillDetailsForm(profile) {
@@ -186,6 +202,8 @@ function fillDetailsForm(profile) {
   set("editBranch", profile.branch);
   set("editDivision", profile.division);
   set("editRollNo", profile.roll_no);
+  set("editDomain", profile.domain);
+  set("editSubject", profile.subject);
 }
 
 function openPeopleModal() {
@@ -323,6 +341,8 @@ async function saveProfileDetails() {
     branch: getValue("editBranch") || null,
     division: getValue("editDivision") || null,
     roll_no: getValue("editRollNo") || null,
+    domain: getValue("editDomain") || null,
+    subject: getValue("editSubject") || null,
   };
 
   setDetailsStatus("Saving profile details...", false);
