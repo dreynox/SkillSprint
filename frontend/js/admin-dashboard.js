@@ -64,6 +64,33 @@
     }
   }
 
+  function getToken() {
+    const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+    const cleaned = String(raw).trim().replace(/^"|"$/g, "").replace(/^Bearer\s+/i, "").trim();
+    return cleaned && cleaned !== "undefined" && cleaned !== "null" ? cleaned : "";
+  }
+
+  function authHeaders(withJson = false) {
+    const token = getToken();
+    const headers = {};
+    if (token) {
+      headers.Authorization = "Bearer " + token;
+    }
+    if (withJson) {
+      headers["Content-Type"] = "application/json";
+    }
+    return headers;
+  }
+
+  function clearSessionAndRedirect() {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("token");
+    window.location.href = "../../index.html";
+  }
+
   function requireAdmin() {
     const token = localStorage.getItem("access_token");
     const user = parseUser();
@@ -172,7 +199,9 @@
     }
 
     try {
-      const response = await fetch(API_BASE + "/contests/" + contestId);
+      const response = await fetch(API_BASE + "/contests/" + contestId + "/admin", {
+        headers: authHeaders(),
+      });
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.detail || "Unable to load questions");
@@ -373,10 +402,7 @@
     try {
       const response = await fetch(API_BASE + "/contests/" + contestId + "/problems", {
         method: "POST",
-        headers: {
-          "Authorization": "Bearer " + localStorage.getItem("access_token"),
-          "Content-Type": "application/json",
-        },
+        headers: authHeaders(true),
         body: JSON.stringify({
           title: title,
           statement: statement,
@@ -387,6 +413,11 @@
 
       const data = await response.json();
       if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          setStatus("questionStatus", data.detail || "Session expired. Please log in again.", true);
+          clearSessionAndRedirect();
+          return;
+        }
         throw new Error(data.detail || "Unable to add question");
       }
 
@@ -427,10 +458,7 @@
     try {
       const response = await fetch(API_BASE + "/contests/" + contestId + "/problems/" + problemId + "/test-cases", {
         method: "POST",
-        headers: {
-          "Authorization": "Bearer " + localStorage.getItem("access_token"),
-          "Content-Type": "application/json",
-        },
+        headers: authHeaders(true),
         body: JSON.stringify({
           input_data: inputData || null,
           expected_output: expectedOutput,
@@ -439,6 +467,11 @@
 
       const data = await response.json();
       if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          setStatus("testCaseStatus", data.detail || "Session expired. Please log in again.", true);
+          clearSessionAndRedirect();
+          return;
+        }
         throw new Error(data.detail || "Unable to add test case");
       }
 
@@ -499,7 +532,7 @@
     try {
       const response = await fetch(API_BASE + "/contests", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: authHeaders(true),
         body: JSON.stringify({
           name: name,
           description: description || null,
@@ -511,6 +544,11 @@
 
       const data = await response.json();
       if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          setStatus("contestStatus", data.detail || "Session expired. Please log in again.", true);
+          clearSessionAndRedirect();
+          return;
+        }
         throw new Error(data.detail || "Unable to create contest");
       }
 
@@ -546,7 +584,7 @@
     try {
       const response = await fetch(API_BASE + "/hackathons", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: authHeaders(true),
         body: JSON.stringify({
           title: title,
           description: description || null,
@@ -558,6 +596,11 @@
 
       const data = await response.json();
       if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          setStatus("hackathonStatus", data.detail || "Session expired. Please log in again.", true);
+          clearSessionAndRedirect();
+          return;
+        }
         throw new Error(data.detail || "Unable to create hackathon");
       }
 

@@ -179,6 +179,18 @@ def get_contest(contest_id: int, db: Session = Depends(get_db)):
     return contest
 
 
+@router.get("/{contest_id}/admin", response_model=ContestWithProblems)
+def get_contest_for_admin(
+    contest_id: int,
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_admin),
+):
+    contest = db.query(Contest).filter(Contest.id == contest_id).first()
+    if not contest:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
+    return contest
+
+
 @router.post("/{contest_id}/problems", response_model=ContestProblemOut, status_code=status.HTTP_201_CREATED)
 def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = Depends(get_db), _admin: User = Depends(require_admin)):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
