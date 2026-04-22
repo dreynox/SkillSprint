@@ -160,6 +160,52 @@
     .hero h1 { font-size: 1.4rem; margin-bottom: 0.4rem; }
     .hero p { color: var(--muted); font-size: 0.92rem; }
 
+    .workflow-panel {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .workflow-intro {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .workflow-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .workflow-tab {
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.45);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 0.7rem 0.6rem;
+      font: inherit;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.15s ease;
+    }
+
+    .workflow-tab:hover,
+    .workflow-tab.active {
+      border-color: rgba(0, 255, 136, 0.6);
+      background: rgba(0, 255, 136, 0.14);
+      color: #d9fff0;
+    }
+
+    .panel-purpose {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin: -0.2rem 0 0.6rem;
+    }
+
+    .admin-hidden {
+      display: none !important;
+    }
+
     .grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .panel h2 { font-size: 1rem; margin-bottom: 0.75rem; }
 
@@ -195,6 +241,7 @@
       .grid { grid-template-columns: 1fr; }
       .inline-row { grid-template-columns: 1fr; }
       .topbar-inner { flex-wrap: wrap; }
+      .workflow-tabs { grid-template-columns: 1fr; }
     }
   </style>
     <link rel="stylesheet" href="../css/ux-foundation.css">
@@ -231,9 +278,21 @@
       <p>Create and publish contests/hackathons. Published events appear automatically on student dashboard.</p>
     </section>
 
-    <section class="grid">
+    <section class="panel workflow-panel">
+      <h2>Admin Workflows</h2>
+      <p class="workflow-intro">Choose one workflow at a time. This keeps the page focused and presentation-friendly.</p>
+      <div class="workflow-tabs" role="tablist" aria-label="Admin workflows">
+        <button class="workflow-tab active" type="button" data-target="contest-setup">Contest Setup</button>
+        <button class="workflow-tab" type="button" data-target="contest-review">Contest Review</button>
+        <button class="workflow-tab" type="button" data-target="quiz-setup">Quiz Setup</button>
+        <button class="workflow-tab" type="button" data-target="quiz-review">Quiz Review</button>
+      </div>
+    </section>
+
+    <section class="grid" data-admin-group="contest-setup">
       <section class="panel">
         <h2>Create Contest</h2>
+        <p class="panel-purpose">Use this to publish a time-bound coding contest visible to students.</p>
         <div class="form-grid">
           <label class="field-label" for="contestName">Contest Name</label>
           <input id="contestName" type="text" placeholder="Weekly DSA Battle" />
@@ -264,6 +323,7 @@
 
       <section class="panel">
         <h2>Create Hackathon</h2>
+        <p class="panel-purpose">Use this to publish non-code-event announcements for student participation.</p>
         <div class="form-grid">
           <label class="field-label" for="hackathonTitle">Hackathon Title</label>
           <input id="hackathonTitle" type="text" placeholder="Campus AI Innovation Sprint" />
@@ -293,8 +353,9 @@
       </section>
     </section>
 
-    <section class="panel">
+    <section class="panel" data-admin-group="contest-setup">
       <h2>Add Contest Question</h2>
+      <p class="panel-purpose">Attach coding questions to a selected contest after creating the contest.</p>
       <div class="form-grid">
         <label class="field-label" for="questionContestId">Contest</label>
         <select id="questionContestId"></select>
@@ -321,8 +382,9 @@
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" data-admin-group="contest-setup">
       <h2>Add Test Case</h2>
+      <p class="panel-purpose">Define expected input/output so student code can be judged automatically.</p>
       <div class="form-grid">
         <label class="field-label" for="testContestId">Contest</label>
         <select id="testContestId"></select>
@@ -341,9 +403,10 @@
       </div>
     </section>
 
-    <section class="grid">
+    <section class="grid" data-admin-group="quiz-setup">
       <section class="panel">
         <h2>Create Quiz Test</h2>
+        <p class="panel-purpose">Create a quiz shell with schedule, then add objective questions.</p>
         <div class="form-grid">
           <label class="field-label" for="quizTitle">Quiz Title</label>
           <input id="quizTitle" type="text" placeholder="Python Basics Round" />
@@ -374,6 +437,7 @@
 
       <section class="panel">
         <h2>Add Quiz Question</h2>
+        <p class="panel-purpose">Add multiple-choice questions to the selected quiz test.</p>
         <div class="form-grid">
           <label class="field-label" for="quizTestId">Quiz Test</label>
           <select id="quizTestId"></select>
@@ -407,13 +471,15 @@
       </section>
     </section>
 
-    <section class="panel">
+    <section class="panel" data-admin-group="contest-review">
       <h2>Published Feed</h2>
+      <p class="panel-purpose">Review currently published contests and hackathons.</p>
       <div class="list" id="adminFeed"></div>
     </section>
 
-    <section class="panel">
+    <section class="panel" data-admin-group="contest-review">
       <h2>Recent Code Submissions</h2>
+      <p class="panel-purpose">Inspect student contest submissions, verdicts, and source code.</p>
       <div class="list" id="submissionFeed">
         <div class="list-item">
           <div>
@@ -425,8 +491,9 @@
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" data-admin-group="quiz-review">
       <h2>Quiz Submissions</h2>
+      <p class="panel-purpose">Load and review quiz scores submitted by students.</p>
       <div class="form-grid" style="margin-bottom: 0.6rem;">
         <label class="field-label" for="quizSubmissionTestId">Quiz Test</label>
         <select id="quizSubmissionTestId"></select>

@@ -49,6 +49,32 @@ function setUpdatedLabel(message) {
   element.textContent = message;
 }
 
+function activateLeaderboardView(viewName) {
+  const podium = document.getElementById("leaderboardPodium");
+  const listWrap = document.getElementById("leaderboardListWrap");
+  const isPodium = viewName === "podium";
+
+  if (podium) {
+    podium.classList.toggle("ux-hidden", !isPodium);
+  }
+  if (listWrap) {
+    listWrap.classList.toggle("ux-hidden", isPodium);
+  }
+
+  const podiumTab = document.getElementById("podiumTab");
+  const fullRankTab = document.getElementById("fullRankTab");
+  if (podiumTab) {
+    podiumTab.classList.toggle("active", isPodium);
+    podiumTab.setAttribute("aria-selected", String(isPodium));
+  }
+  if (fullRankTab) {
+    fullRankTab.classList.toggle("active", !isPodium);
+    fullRankTab.setAttribute("aria-selected", String(!isPodium));
+  }
+
+  setStatus(isPodium ? "Podium view active." : "Full rankings view active.");
+}
+
 function badgeClass(badge) {
   return `badge badge-${String(badge || "").toLowerCase()}`;
 }
@@ -186,7 +212,21 @@ function bindControls() {
       loadLeaderboard();
     });
   }
+
+  const podiumTab = document.getElementById("podiumTab");
+  const fullRankTab = document.getElementById("fullRankTab");
+
+  if (podiumTab && !podiumTab.dataset.bound) {
+    podiumTab.dataset.bound = "true";
+    podiumTab.addEventListener("click", () => activateLeaderboardView("podium"));
+  }
+
+  if (fullRankTab && !fullRankTab.dataset.bound) {
+    fullRankTab.dataset.bound = "true";
+    fullRankTab.addEventListener("click", () => activateLeaderboardView("full"));
+  }
 }
 
 bindControls();
+activateLeaderboardView("podium");
 loadLeaderboard();

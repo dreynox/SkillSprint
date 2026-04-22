@@ -38,6 +38,20 @@
       </div>
     </section>
 
+    <section class="ux-purpose-block" aria-label="Leaderboard guide">
+      <h3>How to use leaderboard</h3>
+      <p>Use this page to identify top performers and compare your score progression over time.</p>
+      <div class="ux-steps">
+        <div class="ux-step"><strong>Step 1:</strong> Click Refresh Live Rankings to sync with backend.</div>
+        <div class="ux-step"><strong>Step 2:</strong> Start with Podium View for top 3 overview.</div>
+        <div class="ux-step"><strong>Step 3:</strong> Switch to Full Rankings to inspect broader ranks.</div>
+      </div>
+      <ul class="ux-key-map">
+        <li>Podium View: highlights rank 1 to 3 summary cards.</li>
+        <li>Full Rankings: shows rank 4 onward for detailed comparison.</li>
+      </ul>
+    </section>
+
     <section class="panel">
       <div class="leaderboard-header">
         <div>
@@ -45,15 +59,19 @@
           <p class="leaderboard-note">Scores refresh from live backend data.</p>
         </div>
         <div class="leaderboard-toolbar">
-          <button class="btn leaderboard-refresh" type="button" id="refreshLeaderboard">Refresh rankings</button>
+          <button class="btn leaderboard-refresh" type="button" id="refreshLeaderboard">Refresh Live Rankings</button>
           <span class="leaderboard-updated" id="leaderboardUpdated">Loading latest results...</span>
         </div>
       </div>
+      <div class="ux-mode-tabs" role="tablist" aria-label="Leaderboard views" style="margin-top: 0.2rem;">
+        <button id="podiumTab" class="ux-mode-tab active" type="button" data-view="podium">Podium View</button>
+        <button id="fullRankTab" class="ux-mode-tab" type="button" data-view="full">Full Rankings</button>
+      </div>
       <p class="leaderboard-status" id="leaderboardStatus" aria-live="polite"></p>
-      <div class="leaderboard-podium" id="leaderboardPodium" aria-label="Top three leaderboard positions">
+      <div class="leaderboard-podium" id="leaderboardPodium" aria-label="Top three leaderboard positions" data-leaderboard-view="podium">
         <div class="leaderboard-empty">Loading podium...</div>
       </div>
-      <div class="leaderboard-list-wrap">
+      <div class="leaderboard-list-wrap" id="leaderboardListWrap" data-leaderboard-view="full">
         <h3 class="leaderboard-list-title">Ranks 4 to 50</h3>
         <ul class="leaderboard-list" id="leaderboardList" aria-describedby="leaderboardStatus">
           <li class="leaderboard-empty">Loading rankings...</li>

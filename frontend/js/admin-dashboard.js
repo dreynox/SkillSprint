@@ -415,6 +415,65 @@
     }
   }
 
+  function isAuthFailure(statusCode) {
+    return statusCode === 401 || statusCode === 403;
+  }
+
+  function handleAuthFailure(statusId, detailMessage) {
+    setStatus(statusId, detailMessage || "Session expired. Please log in again.", true);
+    clearSessionAndRedirect();
+  }
+
+  async function requestJson(url, options) {
+    const response = await fetch(url, options);
+    let data = null;
+    try {
+      data = await response.json();
+    } catch (_error) {
+      data = null;
+    }
+    return { response, data };
+  }
+
+  function activateWorkflow(targetGroup) {
+    document.querySelectorAll("[data-admin-group]").forEach(function (section) {
+      const group = section.getAttribute("data-admin-group");
+      if (!group) {
+        return;
+      }
+      section.classList.toggle("admin-hidden", group !== targetGroup);
+    });
+
+    document.querySelectorAll(".workflow-tab").forEach(function (button) {
+      const isActive = button.getAttribute("data-target") === targetGroup;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+    });
+  }
+
+  function wireWorkflowTabs() {
+    const tabs = Array.from(document.querySelectorAll(".workflow-tab"));
+    if (!tabs.length) {
+      return;
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        const target = tab.getAttribute("data-target");
+        if (!target) {
+          return;
+        }
+        activateWorkflow(target);
+        if (window.SkillSprintUX && typeof window.SkillSprintUX.showStatus === "function") {
+          window.SkillSprintUX.showStatus("Switched to " + target.replace("-", " ") + " workflow.", "info");
+        }
+      });
+    });
+
+    const defaultTarget = tabs[0].getAttribute("data-target") || "contest-setup";
+    activateWorkflow(defaultTarget);
+  }
+
   function toIsoOrNull(value) {
     if (!value) {
       return null;
@@ -483,7 +542,7 @@
     btn.disabled = true;
 
     try {
-      const response = await fetch(API_BASE + "/contests/" + contestId + "/problems", {
+      const result = await requestJson(API_BASE + "/contests/" + contestId + "/problems", {
         method: "POST",
         headers: authHeaders(true),
         body: JSON.stringify({
@@ -493,12 +552,12 @@
           tags: tags || null,
         }),
       });
+      const response = result.response;
+      const data = result.data || {};
 
-      const data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          setStatus("questionStatus", data.detail || "Session expired. Please log in again.", true);
-          clearSessionAndRedirect();
+        if (isAuthFailure(response.status)) {
+          handleAuthFailure("questionStatus", data.detail);
           return;
         }
         throw new Error(data.detail || "Unable to add question");
@@ -539,7 +598,7 @@
     btn.disabled = true;
 
     try {
-      const response = await fetch(API_BASE + "/contests/" + contestId + "/problems/" + problemId + "/test-cases", {
+      const result = await requestJson(API_BASE + "/contests/" + contestId + "/problems/" + problemId + "/test-cases", {
         method: "POST",
         headers: authHeaders(true),
         body: JSON.stringify({
@@ -547,12 +606,12 @@
           expected_output: expectedOutput,
         }),
       });
+      const response = result.response;
+      const data = result.data || {};
 
-      const data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          setStatus("testCaseStatus", data.detail || "Session expired. Please log in again.", true);
-          clearSessionAndRedirect();
+        if (isAuthFailure(response.status)) {
+          handleAuthFailure("testCaseStatus", data.detail);
           return;
         }
         throw new Error(data.detail || "Unable to add test case");
@@ -613,7 +672,7 @@
     btn.disabled = true;
 
     try {
-      const response = await fetch(API_BASE + "/contests", {
+      const result = await requestJson(API_BASE + "/contests", {
         method: "POST",
         headers: authHeaders(true),
         body: JSON.stringify({
@@ -624,12 +683,12 @@
           is_active: isActive,
         }),
       });
+      const response = result.response;
+      const data = result.data || {};
 
-      const data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          setStatus("contestStatus", data.detail || "Session expired. Please log in again.", true);
-          clearSessionAndRedirect();
+        if (isAuthFailure(response.status)) {
+          handleAuthFailure("contestStatus", data.detail);
           return;
         }
         throw new Error(data.detail || "Unable to create contest");
@@ -665,7 +724,7 @@
     btn.disabled = true;
 
     try {
-      const response = await fetch(API_BASE + "/hackathons", {
+      const result = await requestJson(API_BASE + "/hackathons", {
         method: "POST",
         headers: authHeaders(true),
         body: JSON.stringify({
@@ -676,12 +735,12 @@
           is_active: isActive,
         }),
       });
+      const response = result.response;
+      const data = result.data || {};
 
-      const data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          setStatus("hackathonStatus", data.detail || "Session expired. Please log in again.", true);
-          clearSessionAndRedirect();
+        if (isAuthFailure(response.status)) {
+          handleAuthFailure("hackathonStatus", data.detail);
           return;
         }
         throw new Error(data.detail || "Unable to create hackathon");
@@ -717,7 +776,7 @@
     btn.disabled = true;
 
     try {
-      const response = await fetch(API_BASE + "/quiz/admin/tests", {
+      const result = await requestJson(API_BASE + "/quiz/admin/tests", {
         method: "POST",
         headers: authHeaders(true),
         body: JSON.stringify({
@@ -728,12 +787,12 @@
           end_time: toIsoOrNull(endTime),
         }),
       });
+      const response = result.response;
+      const data = result.data || {};
 
-      const data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          setStatus("quizStatus", data.detail || "Session expired. Please log in again.", true);
-          clearSessionAndRedirect();
+        if (isAuthFailure(response.status)) {
+          handleAuthFailure("quizStatus", data.detail);
           return;
         }
         throw new Error(data.detail || "Unable to create quiz test");
@@ -776,7 +835,7 @@
     btn.disabled = true;
 
     try {
-      const response = await fetch(API_BASE + "/quiz/admin/tests/" + testId + "/questions", {
+      const result = await requestJson(API_BASE + "/quiz/admin/tests/" + testId + "/questions", {
         method: "POST",
         headers: authHeaders(true),
         body: JSON.stringify({
@@ -788,12 +847,12 @@
           correct_option: correctOption,
         }),
       });
+      const response = result.response;
+      const data = result.data || {};
 
-      const data = await response.json();
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          setStatus("quizQuestionStatus", data.detail || "Session expired. Please log in again.", true);
-          clearSessionAndRedirect();
+        if (isAuthFailure(response.status)) {
+          handleAuthFailure("quizQuestionStatus", data.detail);
           return;
         }
         throw new Error(data.detail || "Unable to add quiz question");
@@ -918,6 +977,7 @@
   document.getElementById("welcomeText").textContent = "Welcome, " + user.name;
   document.getElementById("heroTitle").textContent = "Hello " + user.name + ", publish new events";
   syncProfileMenu(user);
+  wireWorkflowTabs();
 
   loadFeed();
   loadSubmissionFeed();

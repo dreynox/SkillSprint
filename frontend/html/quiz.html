@@ -29,7 +29,22 @@
         </header>
 
         <div id="quiz-container">
-            <div style="display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid rgba(0,255,136,0.25); padding: 12px; border-radius: 10px;">
+            <section class="ux-purpose-block" aria-label="Quiz guide">
+                <h3>How to use quiz</h3>
+                <p>Choose one mode first, then load questions, answer all, and submit before timer ends.</p>
+                <div class="ux-steps">
+                    <div class="ux-step"><strong>Step 1:</strong> Pick Random Question Bank or Legacy Test mode.</div>
+                    <div class="ux-step"><strong>Step 2:</strong> Load questions and answer each MCQ.</div>
+                    <div class="ux-step"><strong>Step 3:</strong> Submit answers and open score page.</div>
+                </div>
+            </section>
+
+            <div class="ux-mode-tabs" role="tablist" aria-label="Quiz modes">
+                <button id="randomModeTab" class="ux-mode-tab active" type="button" data-quiz-mode="random">Random Question Bank</button>
+                <button id="legacyModeTab" class="ux-mode-tab" type="button" data-quiz-mode="legacy">Legacy Test Mode</button>
+            </div>
+
+            <div id="randomModePanel" style="display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid rgba(0,255,136,0.25); padding: 12px; border-radius: 10px;">
                 <h3 style="margin: 0; color: #00ff88;">Random Question Bank Session</h3>
 
                 <label for="language">Language</label>
@@ -62,7 +77,7 @@
                 <button id="start-random-btn" type="button">Start Random 20 Questions</button>
             </div>
 
-            <div style="display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid rgba(0,255,136,0.15); padding: 12px; border-radius: 10px;">
+            <div id="legacyModePanel" class="ux-hidden" style="display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid rgba(0,255,136,0.15); padding: 12px; border-radius: 10px;">
                 <h3 style="margin: 0; color: #9bf7c4;">Legacy Test Mode</h3>
                 <label for="test-id">Test ID</label>
                 <input id="test-id" type="number" value="1" min="1" />
@@ -89,6 +104,30 @@
 
     <script src="../js/api-base.js"></script>
     <script src="../js/quiz.js"></script>
+        <script>
+            (function () {
+                const randomTab = document.getElementById("randomModeTab");
+                const legacyTab = document.getElementById("legacyModeTab");
+                const randomPanel = document.getElementById("randomModePanel");
+                const legacyPanel = document.getElementById("legacyModePanel");
+
+                function setMode(mode) {
+                    const randomActive = mode === "random";
+                    randomTab.classList.toggle("active", randomActive);
+                    legacyTab.classList.toggle("active", !randomActive);
+                    randomPanel.classList.toggle("ux-hidden", !randomActive);
+                    legacyPanel.classList.toggle("ux-hidden", randomActive);
+                }
+
+                randomTab.addEventListener("click", function () {
+                    setMode("random");
+                });
+
+                legacyTab.addEventListener("click", function () {
+                    setMode("legacy");
+                });
+            })();
+        </script>
     <script src="../js/ux-foundation.js"></script>
 </body>
 </html>

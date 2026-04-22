@@ -33,7 +33,7 @@
         <aside class="conversations-panel" id="conversations-panel" aria-label="Conversations">
             <div class="panel-header">
                 <h3>Conversations</h3>
-                <button id="new-chat-btn" class="new-chat-btn" title="Start new chat" aria-label="Start new chat">+</button>
+                <button id="new-chat-btn" class="new-chat-btn" title="Start new chat" aria-label="Start new chat">New Chat</button>
             </div>
             <div class="conversations-list" id="conversations-list">
                 <div class="placeholder">Loading conversations...</div>
@@ -43,8 +43,17 @@
         <!-- Main Chat Area -->
         <main class="chat-main">
             <button id="mobile-conversations-btn" class="mobile-conversations-btn" type="button" aria-controls="conversations-panel" aria-label="Open conversations">
-                Conversations
+                Open Conversations List
             </button>
+            <section class="ux-purpose-block" style="margin: 10px 12px 0;" aria-label="Messages guide">
+                <h3>How to use messages</h3>
+                <p>Choose a conversation, send messages or files, and monitor delivery in the active chat panel.</p>
+                <div class="ux-steps">
+                    <div class="ux-step"><strong>Step 1:</strong> Click New Chat to find a person.</div>
+                    <div class="ux-step"><strong>Step 2:</strong> Select a conversation from the left list.</div>
+                    <div class="ux-step"><strong>Step 3:</strong> Type message and click Send Message.</div>
+                </div>
+            </section>
             <div id="chat-empty" class="chat-empty" style="display: flex;">
                 <div class="empty-state">
                     <h2>No Conversation Selected</h2>
@@ -86,7 +95,7 @@
                                 autocomplete="off"
                                 rows="2"
                             ></textarea>
-                            <button type="submit" id="send-btn" class="send-btn" aria-label="Send message">SEND</button>
+                            <button type="submit" id="send-btn" class="send-btn" aria-label="Send message">Send Message</button>
                         </div>
                     </form>
                     <div id="upload-progress" class="upload-progress" style="display: none;">
@@ -111,8 +120,8 @@
                     <span id="call-duration">0:00</span>
                 </div>
                 <div class="voice-controls">
-                    <button id="end-call-btn" class="btn btn-danger">End Call</button>
-                    <button id="mute-btn" class="btn btn-secondary">Mute</button>
+                    <button id="end-call-btn" class="btn btn-danger">End Voice Call</button>
+                    <button id="mute-btn" class="btn btn-secondary">Mute Microphone</button>
                 </div>
             </div>
         </div>
@@ -122,7 +131,7 @@
     <div id="user-modal" class="modal" style="display: none;">
         <div class="modal-content">
             <button class="close-btn" id="close-user-modal">&times;</button>
-            <h2>Search for People</h2>
+            <h2>Search and Start New Chat</h2>
             <input
                 type="text"
                 id="user-search-input"

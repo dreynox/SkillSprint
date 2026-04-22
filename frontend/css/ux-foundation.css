@@ -127,6 +127,86 @@ body {
   padding: 7px 12px;
 }
 
+.ux-purpose-block {
+  border: 1px solid var(--ux-border);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  margin: 12px 0 16px;
+}
+
+.ux-purpose-block h3 {
+  margin: 0 0 6px;
+  color: #9bf7c4;
+  font-size: 0.95rem;
+}
+
+.ux-purpose-block p {
+  margin: 0;
+  color: rgba(224, 255, 232, 0.82);
+  font-size: 0.85rem;
+}
+
+.ux-steps {
+  margin: 10px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ux-step {
+  border: 1px solid rgba(110, 230, 170, 0.26);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.24);
+  padding: 8px;
+  font-size: 0.8rem;
+  color: #d9fff0;
+}
+
+.ux-step strong {
+  color: #9bf7c4;
+}
+
+.ux-key-map {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.ux-key-map li {
+  font-size: 0.82rem;
+  color: rgba(224, 255, 232, 0.8);
+}
+
+.ux-mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ux-mode-tab {
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #d9fff0;
+  padding: 10px;
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.ux-mode-tab.active {
+  border-color: rgba(0, 255, 136, 0.65);
+  background: rgba(0, 255, 136, 0.14);
+}
+
+.ux-hidden {
+  display: none !important;
+}
+
 @media (max-width: 920px) {
   .ux-nav-toggle {
     display: inline-flex;
@@ -136,6 +216,14 @@ body {
 
   .nav-links.ux-mobile-hidden {
     display: none !important;
+  }
+
+  .ux-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .ux-mode-tabs {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -435,7 +435,7 @@ async function startVoiceCall() {
 
         document.getElementById('voice-modal').style.display = 'flex';
         document.getElementById('voice-call-user').textContent = currentChatUserName;
-        document.getElementById('mute-btn').textContent = 'Mute';
+        document.getElementById('mute-btn').textContent = 'Mute Microphone';
 
         // Start recording
         mediaRecorder = new MediaRecorder(voiceStream);
@@ -502,7 +502,7 @@ function endVoiceCall() {
     callActive = false;
     isMuted = false;
     document.getElementById('voice-modal').style.display = 'none';
-    document.getElementById('mute-btn').textContent = 'Mute';
+    document.getElementById('mute-btn').textContent = 'Mute Microphone';
 }
 
 function toggleMute() {
@@ -515,7 +515,7 @@ function toggleMute() {
         track.enabled = !isMuted;
     });
 
-    document.getElementById('mute-btn').textContent = isMuted ? 'Unmute' : 'Mute';
+    document.getElementById('mute-btn').textContent = isMuted ? 'Unmute Microphone' : 'Mute Microphone';
 }
 
 async function openUserSelectionModal() {
