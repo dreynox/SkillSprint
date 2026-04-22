@@ -9,9 +9,13 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
+from auth import get_current_user, require_admin
 from database import get_db
-from models import Question, QuizSubmission, Test
+from models import Question, QuizSubmission, Test, User
 from schemas import (
+    QuizAdminSubmissionOut,
+    QuizQuestionCreate,
+    QuizTestCreate,
     QuestionOut,
     QuizSubmissionRequest,
     QuizSubmissionResponse,
@@ -103,6 +107,45 @@ def list_tests(active_only: bool = Query(False), db: Session = Depends(get_db)):
     return query.order_by(Test.id.asc()).all()
 
 
+@router.get("/admin/tests", response_model=List[TestOut])
+def list_tests_for_admin(
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_admin),
+):
+    return db.query(Test).order_by(Test.id.asc()).all()
+
+
+@router.post("/admin/tests", response_model=TestOut, status_code=status.HTTP_201_CREATED)
+def create_test(
+    payload: QuizTestCreate,
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_admin),
+):
+    test = Test(**payload.model_dump())
+    db.add(test)
+    db.commit()
+    db.refresh(test)
+    return test
+
+
+@router.post("/admin/tests/{test_id}/questions", response_model=QuestionOut, status_code=status.HTTP_201_CREATED)
+def add_test_question(
+    test_id: int,
+    payload: QuizQuestionCreate,
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_admin),
+):
+    test = db.query(Test).filter(Test.id == test_id).first()
+    if not test:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Test not found")
+
+    question = Question(test_id=test_id, **payload.model_dump())
+    db.add(question)
+    db.commit()
+    db.refresh(question)
+    return question
+
+
 @router.get("/tests/{test_id}/questions", response_model=List[QuestionOut])
 def get_test_questions(test_id: int, db: Session = Depends(get_db)):
     test = db.query(Test).filter(Test.id == test_id).first()
@@ -120,10 +163,21 @@ def get_test_questions(test_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/tests/{test_id}/submit", response_model=QuizSubmissionResponse)
-def submit_test_answers(test_id: int, payload: QuizSubmissionRequest, db: Session = Depends(get_db)):
+def submit_test_answers(
+    test_id: int,
+    payload: QuizSubmissionRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     test = db.query(Test).filter(Test.id == test_id).first()
     if not test:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Test not found")
+
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
+    if test.start_time and now < test.start_time:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Test has not started yet")
+    if test.end_time and now > test.end_time:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Test has ended")
 
     questions = db.query(Question).filter(Question.test_id == test_id).all()
     if not questions:
@@ -138,7 +192,7 @@ def submit_test_answers(test_id: int, payload: QuizSubmissionRequest, db: Sessio
             score += 1
 
     submission = QuizSubmission(
-        user_id=payload.user_id,
+        user_id=current_user.id,
         test_id=test_id,
         score=score,
         total_questions=len(questions),
@@ -150,25 +204,33 @@ def submit_test_answers(test_id: int, payload: QuizSubmissionRequest, db: Sessio
 
 
 @router.get("/admin/tests/{test_id}/submissions")
-def get_test_submissions(test_id: int, db: Session = Depends(get_db)):
+def get_test_submissions(
+    test_id: int,
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_admin),
+):
     test = db.query(Test).filter(Test.id == test_id).first()
     if not test:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Test not found")
 
     submissions = (
-        db.query(QuizSubmission)
+        db.query(QuizSubmission, User)
+        .join(User, QuizSubmission.user_id == User.id)
         .filter(QuizSubmission.test_id == test_id)
         .order_by(QuizSubmission.score.desc(), QuizSubmission.submitted_at.asc())
         .all()
     )
 
     return [
-        {
-            "user_id": submission.user_id,
-            "score": submission.score,
-            "submitted_at": submission.submitted_at,
-        }
-        for submission in submissions
+        QuizAdminSubmissionOut(
+            user_id=submission.user_id,
+            user_name=user.name,
+            user_email=user.email,
+            score=submission.score,
+            total_questions=submission.total_questions,
+            submitted_at=submission.submitted_at,
+        )
+        for submission, user in submissions
     ]
 
 

@@ -147,6 +147,31 @@ class TestOut(BaseModel):
         from_attributes = True
 
 
+class QuizTestCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
+    is_active: bool = False
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
+
+
+class QuizQuestionCreate(BaseModel):
+    text: str
+    option_a: str
+    option_b: str
+    option_c: str
+    option_d: str
+    correct_option: str
+
+    @field_validator("correct_option")
+    @classmethod
+    def validate_correct_option(cls, value: str) -> str:
+        option = value.upper().strip()
+        if option not in {"A", "B", "C", "D"}:
+            raise ValueError("correct_option must be one of A, B, C, D")
+        return option
+
+
 class QuestionOut(BaseModel):
     id: int
     test_id: int
@@ -174,7 +199,7 @@ class Answer(BaseModel):
 
 
 class QuizSubmissionRequest(BaseModel):
-    user_id: int
+    user_id: Optional[int] = None
     answers: List[Answer]
 
 
@@ -225,6 +250,15 @@ class QuizSubmissionOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class QuizAdminSubmissionOut(BaseModel):
+    user_id: int
+    user_name: str
+    user_email: str
+    score: int
+    total_questions: int
+    submitted_at: datetime
 
 
 class ContestCreate(BaseModel):

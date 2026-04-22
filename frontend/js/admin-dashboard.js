@@ -1,6 +1,7 @@
 (function () {
   const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
   let cachedContests = [];
+  let cachedQuizTests = [];
 
   const glow = document.querySelector(".cursor-glow");
   document.addEventListener("mousemove", function (event) {
@@ -216,6 +217,32 @@
     });
   }
 
+  function populateQuizTestSelect() {
+    const quizSelect = document.getElementById("quizTestId");
+    const submissionSelect = document.getElementById("quizSubmissionTestId");
+
+    [quizSelect, submissionSelect].forEach(function (select) {
+      if (!select) {
+        return;
+      }
+
+      select.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = cachedQuizTests.length ? "Select a quiz test" : "No quiz tests available";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+
+      cachedQuizTests.forEach(function (test) {
+        const option = document.createElement("option");
+        option.value = String(test.id);
+        option.textContent = `${test.title} (ID: ${test.id})`;
+        select.appendChild(option);
+      });
+    });
+  }
+
   async function populateProblemSelect(contestId) {
     const select = document.getElementById("testProblemId");
     if (!select) {
@@ -411,6 +438,26 @@
       populateQuestionContestSelect([]);
       populateTestContestSelect([]);
       renderFeed([], []);
+    }
+  }
+
+  async function loadQuizTests() {
+    try {
+      const response = await fetch(API_BASE + "/quiz/admin/tests", {
+        headers: authHeaders(),
+      });
+      if (!response.ok) {
+        cachedQuizTests = [];
+        populateQuizTestSelect();
+        return;
+      }
+
+      const data = await response.json();
+      cachedQuizTests = Array.isArray(data) ? data : [];
+      populateQuizTestSelect();
+    } catch (_error) {
+      cachedQuizTests = [];
+      populateQuizTestSelect();
     }
   }
 
@@ -653,10 +700,177 @@
     }
   }
 
+  async function createQuizTest() {
+    const title = document.getElementById("quizTitle").value.trim();
+    const description = document.getElementById("quizDescription").value.trim();
+    const startTime = document.getElementById("quizStart").value;
+    const endTime = document.getElementById("quizEnd").value;
+    const isActive = document.getElementById("quizActive").checked;
+
+    if (!title) {
+      setStatus("quizStatus", "Quiz title is required.", true);
+      return;
+    }
+
+    setStatus("quizStatus", "Creating quiz test...", false);
+    const btn = document.getElementById("createQuizBtn");
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(API_BASE + "/quiz/admin/tests", {
+        method: "POST",
+        headers: authHeaders(true),
+        body: JSON.stringify({
+          title: title,
+          description: description || null,
+          is_active: isActive,
+          start_time: toIsoOrNull(startTime),
+          end_time: toIsoOrNull(endTime),
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          setStatus("quizStatus", data.detail || "Session expired. Please log in again.", true);
+          clearSessionAndRedirect();
+          return;
+        }
+        throw new Error(data.detail || "Unable to create quiz test");
+      }
+
+      setStatus("quizStatus", `Quiz test created (ID: ${data.id}).`, false);
+      document.getElementById("quizTitle").value = "";
+      document.getElementById("quizDescription").value = "";
+      document.getElementById("quizStart").value = "";
+      document.getElementById("quizEnd").value = "";
+      await loadQuizTests();
+    } catch (error) {
+      setStatus("quizStatus", error.message || "Unable to create quiz test", true);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  async function createQuizQuestion() {
+    const testId = document.getElementById("quizTestId").value;
+    const text = document.getElementById("quizQuestionText").value.trim();
+    const optionA = document.getElementById("quizOptionA").value.trim();
+    const optionB = document.getElementById("quizOptionB").value.trim();
+    const optionC = document.getElementById("quizOptionC").value.trim();
+    const optionD = document.getElementById("quizOptionD").value.trim();
+    const correctOption = document.getElementById("quizCorrectOption").value;
+
+    if (!testId) {
+      setStatus("quizQuestionStatus", "Please select a quiz test.", true);
+      return;
+    }
+
+    if (!text || !optionA || !optionB || !optionC || !optionD) {
+      setStatus("quizQuestionStatus", "Question and all options are required.", true);
+      return;
+    }
+
+    setStatus("quizQuestionStatus", "Adding quiz question...", false);
+    const btn = document.getElementById("createQuizQuestionBtn");
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(API_BASE + "/quiz/admin/tests/" + testId + "/questions", {
+        method: "POST",
+        headers: authHeaders(true),
+        body: JSON.stringify({
+          text: text,
+          option_a: optionA,
+          option_b: optionB,
+          option_c: optionC,
+          option_d: optionD,
+          correct_option: correctOption,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          setStatus("quizQuestionStatus", data.detail || "Session expired. Please log in again.", true);
+          clearSessionAndRedirect();
+          return;
+        }
+        throw new Error(data.detail || "Unable to add quiz question");
+      }
+
+      setStatus("quizQuestionStatus", `Question added to quiz ${testId}.`, false);
+      document.getElementById("quizQuestionText").value = "";
+      document.getElementById("quizOptionA").value = "";
+      document.getElementById("quizOptionB").value = "";
+      document.getElementById("quizOptionC").value = "";
+      document.getElementById("quizOptionD").value = "";
+    } catch (error) {
+      setStatus("quizQuestionStatus", error.message || "Unable to add quiz question", true);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  async function loadQuizSubmissionFeed() {
+    const testId = document.getElementById("quizSubmissionTestId").value;
+    const feed = document.getElementById("quizSubmissionFeed");
+    if (!feed) {
+      return;
+    }
+
+    if (!testId) {
+      feed.innerHTML = "<div class=\"list-item\"><div><b>Select a quiz test first</b><span>Choose a test above to view student quiz responses.</span></div><span class=\"badge\">Quiz</span></div>";
+      return;
+    }
+
+    feed.innerHTML = "<div class=\"list-item\"><div><b>Loading quiz submissions...</b><span>Fetching student responses.</span></div><span class=\"badge\">...</span></div>";
+
+    try {
+      const response = await fetch(API_BASE + "/quiz/admin/tests/" + testId + "/submissions", {
+        headers: authHeaders(),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || "Unable to load quiz submissions");
+      }
+
+      if (!Array.isArray(data) || !data.length) {
+        feed.innerHTML = "<div class=\"list-item\"><div><b>No quiz submissions yet</b><span>Student quiz responses will appear here.</span></div><span class=\"badge\">0</span></div>";
+        return;
+      }
+
+      feed.innerHTML = data
+        .slice(0, 50)
+        .map(function (row) {
+          return "<div class=\"list-item\"><div><b>" +
+            escapeHtml(row.user_name || "Student") +
+            " (" +
+            escapeHtml(row.user_email || "-") +
+            ")</b><span>Score: " +
+            escapeHtml(String(row.score ?? 0)) +
+            " / " +
+            escapeHtml(String(row.total_questions ?? 0)) +
+            " | Submitted: " +
+            escapeHtml(formatDateText(row.submitted_at)) +
+            "</span></div><span class=\"badge\">" +
+            escapeHtml(String(row.score ?? 0)) +
+            "</span></div>";
+        })
+        .join("");
+    } catch (error) {
+      feed.innerHTML = "<div class=\"list-item\"><div><b>Could not load quiz submissions</b><span>" + escapeHtml(error.message || "Try again") + "</span></div><span class=\"badge\">Error</span></div>";
+    }
+  }
+
   document.getElementById("createContestBtn").addEventListener("click", createContest);
   document.getElementById("createHackathonBtn").addEventListener("click", createHackathon);
   document.getElementById("createQuestionBtn").addEventListener("click", createQuestion);
   document.getElementById("createTestCaseBtn").addEventListener("click", createTestCase);
+  document.getElementById("createQuizBtn").addEventListener("click", createQuizTest);
+  document.getElementById("createQuizQuestionBtn").addEventListener("click", createQuizQuestion);
+  document.getElementById("loadQuizSubmissionsBtn").addEventListener("click", loadQuizSubmissionFeed);
   document.getElementById("testContestId").addEventListener("change", function (event) {
     populateProblemSelect(event.target.value);
   });
@@ -707,4 +921,5 @@
 
   loadFeed();
   loadSubmissionFeed();
+  loadQuizTests();
 })();

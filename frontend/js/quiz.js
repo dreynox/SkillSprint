@@ -21,6 +21,24 @@ let quizInProgress = false;
 
 const QUIZ_DURATION_SECONDS = 30 * 60;
 
+function getToken() {
+  const raw = localStorage.getItem("access_token") || localStorage.getItem("token") || "";
+  const cleaned = String(raw).trim().replace(/^"|"$/g, "").replace(/^Bearer\s+/i, "").trim();
+  return cleaned && cleaned !== "undefined" && cleaned !== "null" ? cleaned : "";
+}
+
+function authHeaders(withJson = false) {
+  const headers = {};
+  const token = getToken();
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  if (withJson) {
+    headers["Content-Type"] = "application/json";
+  }
+  return headers;
+}
+
 function saveQuizResult(result) {
   sessionStorage.setItem("quiz_result", JSON.stringify(result));
 }
@@ -364,17 +382,22 @@ async function submitAnswers(options = {}) {
       });
     } else {
       const testId = Number(testIdInput.value);
-      const userId = Number(userIdInput.value);
+      const token = getToken();
 
-      if (!testId || !userId) {
-        setStatus("Please enter valid test and user IDs", true);
+      if (!testId) {
+        setStatus("Please enter a valid test ID", true);
+        return;
+      }
+
+      if (!token) {
+        setStatus("Please login before submitting quiz answers", true);
         return;
       }
 
       response = await fetch(`${API_BASE}/quiz/tests/${testId}/submit`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId, answers }),
+        headers: authHeaders(true),
+        body: JSON.stringify({ answers }),
       });
     }
 
