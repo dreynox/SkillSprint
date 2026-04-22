@@ -386,6 +386,7 @@ class ContestSubmissionAdminOut(BaseModel):
     division: Optional[str] = None
     roll_no: Optional[str] = None
     language: str
+    code: str
     verdict: str
     score: int
     submitted_at: datetime

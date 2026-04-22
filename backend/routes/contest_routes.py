@@ -125,6 +125,7 @@ def list_all_submissions_for_admin(
                 division=user.division,
                 roll_no=user.roll_no,
                 language=submission.language,
+                code=submission.code,
                 verdict=submission.verdict,
                 score=submission.score,
                 submitted_at=submission.submitted_at,

@@ -144,6 +144,12 @@
 
     const rows = submissions.slice(0, 50).map(function (item) {
       const submittedAt = formatDateText(item.submitted_at);
+      const codePreview = String(item.code || "").trim();
+      const renderedCode = codePreview
+        ? "<details class=\"submission-code\"><summary>View Code</summary><pre>" +
+          escapeHtml(codePreview) +
+          "</pre></details>"
+        : "<span class=\"submission-code-empty\">No code attached</span>";
       const credentials = [
         item.srn ? "SRN: " + escapeHtml(item.srn) : null,
         item.prn ? "PRN: " + escapeHtml(item.prn) : null,
@@ -174,7 +180,7 @@
         escapeHtml(String(item.score ?? 0)) +
         " | Submitted: " +
         escapeHtml(submittedAt) +
-        "</span></div><span class=\"badge\">" +
+        "</span>" + renderedCode + "</div><span class=\"badge\">" +
         escapeHtml(item.verdict || "PENDING") +
         "</span></div>"
       );
