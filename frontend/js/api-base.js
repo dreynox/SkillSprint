@@ -4,7 +4,7 @@
   }
 
   const hostname = window.location.hostname;
-  const renderApiUrl = "https://skillsprint-backend-i8q6.onrender.com";
+  const renderApiUrl = "https://skillsprint-ai-backend.onrender.com";
   const isLocalhost = !hostname || hostname === "localhost" || hostname === "127.0.0.1";
   const isPrivateIp = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
   const isDevHost = isLocalhost || isPrivateIp;
