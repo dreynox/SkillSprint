@@ -2,14 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirecting...</title>
-  <script>
-    window.location.replace("../index.html");
-  </script>
+  <title>SkillSprint | Competitive Coding and Hackathon Portal</title>
+  <meta
+    name="description"
+    content="SkillSprint is a competitive coding and hackathon portal for college students to practice coding, join contests, track rankings, and grow with structured learning tracks."
+  />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/ux-foundation.css" />
 </head>
 <body>
-  <p>Redirecting to login...</p>
+  <div class="landing-bg" aria-hidden="true"></div>
+  <canvas id="matrix" aria-hidden="true"></canvas>
+
+  <header class="landing-topbar">
+    <a class="brand" href="index.html">Skill<span>Sprint</span></a>
+    <div class="top-actions">
+      <a class="ghost-btn" href="../index.html">Login</a>
+      <a class="primary-btn" href="html/signup.html">Sign Up</a>
+    </div>
+  </header>
+
+  <main class="landing-shell">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">Built for college programmers</p>
+        <h1>Practice. Compete. Rank up.</h1>
+        <p class="hero-text">
+          SkillSprint brings coding practice, quizzes, contests, hackathons, and progress tracking into one
+          focused platform so students can learn consistently and stay motivated.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-btn" href="../index.html">Login</a>
+          <a class="ghost-btn" href="html/signup.html">Create Account</a>
+        </div>
+
+        <div class="hero-stats" aria-label="Platform highlights">
+          <div class="stat-pill"><strong>Live</strong><span>Rankings</span></div>
+          <div class="stat-pill"><strong>Quiz</strong><span>Assessment</span></div>
+          <div class="stat-pill"><strong>Contest</strong><span>Practice</span></div>
+          <div class="stat-pill"><strong>Hack</strong><span>Events</span></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-card">
+          <span class="panel-label">What you can do</span>
+          <ul class="feature-list">
+            <li>Solve coding problems with integrated compiler support.</li>
+            <li>Attempt quizzes and see score-based outcomes.</li>
+            <li>Join contests, hackathons, and weekend sprint tracks.</li>
+            <li>Track achievements through live points and badges.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-grid">
+      <article class="info-card">
+        <h2>Unified Student Workflow</h2>
+        <p>Everything is organized in one place so learners do not need to jump between multiple tools.</p>
+      </article>
+      <article class="info-card">
+        <h2>Transparent Progress</h2>
+        <p>Leaderboards, quiz scores, and contest submissions help students measure growth clearly.</p>
+      </article>
+      <article class="info-card">
+        <h2>Motivating Experience</h2>
+        <p>Badges, rankings, and structured tracks keep practice engaging and goal-oriented.</p>
+      </article>
+    </section>
+
+    <section class="landing-footer-card">
+      <h2>Start with your account</h2>
+      <p>
+        Login if you already have an account, or sign up to begin using the platform as a student.
+      </p>
+    </section>
+  </main>
+
+  <script src="js/info-pages.js"></script>
 </body>
 </html>
