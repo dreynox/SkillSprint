@@ -20,6 +20,8 @@ Be concise, clear, and encouraging. Provide code examples when relevant with lan
 Keep responses under 150 words for the widget. Always be friendly and supportive.`;
 
     this.init();
+    this.rateLimitInterval = null;
+    this.rateLimitMessageEl = null;
   }
 
   init() {
@@ -219,29 +221,58 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
 
   handleRateLimit(seconds) {
     try {
+      // Clear any existing rate-limit interval/message to avoid duplicates
+      if (this.rateLimitInterval) {
+        clearInterval(this.rateLimitInterval);
+        this.rateLimitInterval = null;
+      }
+      if (this.rateLimitMessageEl) {
+        this.rateLimitMessageEl.remove();
+        this.rateLimitMessageEl = null;
+      }
+
+      // Ensure at least 1 second for visible countdown; if <=0 treat as lifted
+      seconds = Number(seconds) || 0;
+      if (seconds <= 0) {
+        this.addMessage("system", `✅ Rate limit lifted. You may try again.`);
+        this.sendBtn.disabled = false;
+        return;
+      }
+
       this.sendBtn.disabled = true;
       const start = Date.now();
       const end = start + seconds * 1000;
-      // add a persistent system message that we can update
-      this.addMessage("system", `⏳ Rate limit: retrying in ${seconds}s`);
 
-      const interval = setInterval(() => {
+      // Create a dedicated system message element we can update
+      const msgEl = document.createElement("div");
+      msgEl.className = "chat-message system";
+      msgEl.innerHTML = `<div class="chat-bubble">⏳ Rate limit: retrying in ${Math.ceil(seconds)}s</div>`;
+      this.messagesContainer.appendChild(msgEl);
+      this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+      this.rateLimitMessageEl = msgEl;
+
+      this.rateLimitInterval = setInterval(() => {
         const remains = Math.max(0, Math.ceil((end - Date.now()) / 1000));
-        // update last system message bubble
-        const sysBubbles = Array.from(this.messagesContainer.querySelectorAll('.chat-message.system .chat-bubble'));
-        if (sysBubbles.length > 0) {
-          const last = sysBubbles[sysBubbles.length - 1];
-          last.textContent = `⏳ Rate limit: retrying in ${remains}s`;
+        if (this.rateLimitMessageEl) {
+          const bubble = this.rateLimitMessageEl.querySelector('.chat-bubble');
+          if (bubble) bubble.textContent = `⏳ Rate limit: retrying in ${remains}s`;
         }
         if (remains <= 0) {
-          clearInterval(interval);
-          this.addMessage("system", `✅ Rate limit lifted. You may try again.`);
+          clearInterval(this.rateLimitInterval);
+          this.rateLimitInterval = null;
+          if (this.rateLimitMessageEl) {
+            const bubble = this.rateLimitMessageEl.querySelector('.chat-bubble');
+            if (bubble) bubble.textContent = `✅ Rate limit lifted. You may try again.`;
+            this.rateLimitMessageEl = null;
+          } else {
+            this.addMessage("system", `✅ Rate limit lifted. You may try again.`);
+          }
           this.sendBtn.disabled = false;
         }
       }, 1000);
     } catch (e) {
       console.warn('Could not start rate-limit countdown', e);
-      this.addMessage("system", `❌ Error: ${error.message}`);
+      this.addMessage("system", `❌ Error: ${e.message || e}`);
       this.sendBtn.disabled = false;
     }
   }
