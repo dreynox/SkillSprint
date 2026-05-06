@@ -117,6 +117,11 @@ class SkillSprintChatWidget {
     const text = this.input.value.trim();
     if (!text || this.isLoading) return;
 
+    // Re-check API base in case it changed/loaded late
+    if (window.API_BASE_URL && !this.apiBase.includes("onrender.com")) {
+       this.apiBase = `${window.API_BASE_URL}/chatbot`;
+    }
+
     // Add user message
     this.addMessage("user", text);
     this.input.value = "";
