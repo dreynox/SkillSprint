@@ -1,27 +1,19 @@
 /**
- * SkillSprint AI Chat Widget
- * Floating chat widget with Google Gemini API integration (FREE)
+ * SkillSprint Premium AI Chat Widget
+ * Secure backend integration with TTS and Translation support
  */
 
 class SkillSprintChatWidget {
   constructor(options = {}) {
-    this.apiKey = options.apiKey || window.GEMINI_API_KEY || localStorage.getItem("skillsprint_gemini_key") || null;
-    this.model = options.model || "gemini-1.5-flash";
+    this.apiBase = options.apiBase || "http://127.0.0.1:8000/chatbot";
     this.messages = [];
     this.isOpen = false;
     this.isLoading = false;
     this.unreadCount = 0;
-
-    // System context for the AI
-    this.systemPrompt =
-      options.systemPrompt ||
-      `You are SkillSprint Assistant, a helpful AI tutor supporting students with coding, programming, and learning questions. 
-Be concise, clear, and encouraging. Provide code examples when relevant with language hints (e.g., # Python, // JavaScript).
-Keep responses under 150 words for the widget. Always be friendly and supportive.`;
+    this.isSpeaking = false;
+    this.currentUtterance = null;
 
     this.init();
-    this.rateLimitInterval = null;
-    this.rateLimitMessageEl = null;
   }
 
   init() {
@@ -31,7 +23,7 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
   }
 
   createWidgetHTML() {
-    // Button
+    // Floating Button
     const button = document.createElement("button");
     button.className = "chat-widget-button";
     button.id = "chat-widget-button";
@@ -39,7 +31,7 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
     button.setAttribute("aria-label", "Open chat");
     document.body.appendChild(button);
 
-    // Container
+    // Chat Container
     const container = document.createElement("div");
     container.className = "chat-widget-container";
     container.id = "chat-widget-container";
@@ -49,8 +41,11 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
         <button class="close-btn" aria-label="Close chat">✕</button>
       </div>
       <div class="chat-widget-messages" id="chat-messages">
-        <div class="chat-message system">
-          <div class="chat-bubble">👋 Hi! I'm here to help. Ask me anything!</div>
+        <div class="chat-message assistant">
+          <div class="chat-bubble">👋 Hi! I'm SkillSprint AI. How can I help you with your coding journey today?</div>
+          <div class="message-actions">
+             <button class="action-btn tts-btn" title="Speak">🔊</button>
+          </div>
         </div>
       </div>
       <div class="chat-widget-input-area">
@@ -61,7 +56,9 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
           rows="1"
           aria-label="Type your message"
         ></textarea>
-        <button class="chat-widget-send" id="chat-send" aria-label="Send message">📤</button>
+        <button class="chat-widget-send" id="chat-send" aria-label="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
       </div>
     `;
     document.body.appendChild(container);
@@ -91,14 +88,11 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
       this.input.style.height = Math.min(this.input.scrollHeight, 100) + "px";
     });
 
-    // Close widget when clicking outside
-    document.addEventListener("click", (e) => {
-      if (
-        !this.container.contains(e.target) &&
-        !this.button.contains(e.target) &&
-        this.isOpen
-      ) {
-        this.toggleWidget();
+    // Delegate message actions (TTS, etc)
+    this.messagesContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("tts-btn")) {
+        const bubble = e.target.closest(".chat-message").querySelector(".chat-bubble");
+        this.speakText(bubble.textContent);
       }
     });
   }
@@ -114,18 +108,13 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
     } else {
       this.container.classList.remove("open");
       this.button.classList.remove("open");
+      this.stopSpeaking();
     }
   }
 
   async sendMessage() {
     const text = this.input.value.trim();
     if (!text || this.isLoading) return;
-
-    // Check API key
-    if (!this.apiKey) {
-      this.addMessage("system", "⚠️ API key not configured. Please set your Google Gemini API key");
-      return;
-    }
 
     // Add user message
     this.addMessage("user", text);
@@ -138,141 +127,27 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
     this.addTypingIndicator();
 
     try {
-      const candidateModels = [
-        this.model,
-        "gemini-1.5-flash",
-        "gemini-1.5-flash-latest",
-        "gemini-2.0-flash",
-      ];
-      let data = null;
-      let lastError = null;
+      const response = await fetch(`${this.apiBase}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: text,
+          history: this.messages.slice(-10) // Send last 10 messages for context
+        })
+      });
 
-      for (const modelName of candidateModels) {
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${this.apiKey}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              contents: [
-                {
-                  role: "user",
-                  parts: [{ text: this.systemPrompt + "\n\nUser: " + text }],
-                },
-              ],
-              generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 300,
-              },
-            }),
-          }
-        );
-
-        if (response.ok) {
-          this.model = modelName;
-          data = await response.json();
-          break;
-        }
-
-        const error = await response.json();
-        const errorMsg = error.error?.message || JSON.stringify(error);
-        lastError = new Error(`API Error (${response.status}): ${errorMsg}`);
-
-        // If issue is not model availability, stop retrying.
-        const modelIssue = response.status === 404 || /not found|unsupported/i.test(errorMsg);
-        if (!modelIssue) {
-          break;
-        }
-      }
-
-      if (!data) {
-        throw lastError || new Error("No supported Gemini model available for this key.");
-      }
+      if (!response.ok) throw new Error("Backend server error");
       
-      // Extract response text
-      const aiResponse =
-        data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "No response received";
-
-      // Remove typing indicator and add response
+      const data = await response.json();
       this.removeTypingIndicator();
-      this.addMessage("assistant", aiResponse);
-
-      // Save to localStorage
+      this.addMessage("assistant", data.response);
       this.saveMessageHistory();
     } catch (error) {
       this.removeTypingIndicator();
-      // Handle rate-limit style errors with retry suggestions
-      const retryMatch = String(error.message).match(/retry in\s*([0-9]+(?:\.[0-9]+)?)s/i);
-      if (retryMatch) {
-        const secs = Math.ceil(Number(retryMatch[1]));
-        this.handleRateLimit(secs);
-      } else {
-        this.addMessage("system", `❌ Error: ${error.message}`);
-      }
+      this.addMessage("system", `❌ Error: ${error.message}. Is the backend running?`);
       console.error("Chat error:", error);
     } finally {
       this.isLoading = false;
-      this.sendBtn.disabled = false;
-    }
-  }
-
-  handleRateLimit(seconds) {
-    try {
-      // Clear any existing rate-limit interval/message to avoid duplicates
-      if (this.rateLimitInterval) {
-        clearInterval(this.rateLimitInterval);
-        this.rateLimitInterval = null;
-      }
-      if (this.rateLimitMessageEl) {
-        this.rateLimitMessageEl.remove();
-        this.rateLimitMessageEl = null;
-      }
-
-      // Ensure at least 1 second for visible countdown; if <=0 treat as lifted
-      seconds = Number(seconds) || 0;
-      if (seconds <= 0) {
-        this.addMessage("system", `✅ Rate limit lifted. You may try again.`);
-        this.sendBtn.disabled = false;
-        return;
-      }
-
-      this.sendBtn.disabled = true;
-      const start = Date.now();
-      const end = start + seconds * 1000;
-
-      // Create a dedicated system message element we can update
-      const msgEl = document.createElement("div");
-      msgEl.className = "chat-message system";
-      msgEl.innerHTML = `<div class="chat-bubble">⏳ Rate limit: retrying in ${Math.ceil(seconds)}s</div>`;
-      this.messagesContainer.appendChild(msgEl);
-      this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-      this.rateLimitMessageEl = msgEl;
-
-      this.rateLimitInterval = setInterval(() => {
-        const remains = Math.max(0, Math.ceil((end - Date.now()) / 1000));
-        if (this.rateLimitMessageEl) {
-          const bubble = this.rateLimitMessageEl.querySelector('.chat-bubble');
-          if (bubble) bubble.textContent = `⏳ Rate limit: retrying in ${remains}s`;
-        }
-        if (remains <= 0) {
-          clearInterval(this.rateLimitInterval);
-          this.rateLimitInterval = null;
-          if (this.rateLimitMessageEl) {
-            const bubble = this.rateLimitMessageEl.querySelector('.chat-bubble');
-            if (bubble) bubble.textContent = `✅ Rate limit lifted. You may try again.`;
-            this.rateLimitMessageEl = null;
-          } else {
-            this.addMessage("system", `✅ Rate limit lifted. You may try again.`);
-          }
-          this.sendBtn.disabled = false;
-        }
-      }, 1000);
-    } catch (e) {
-      console.warn('Could not start rate-limit countdown', e);
-      this.addMessage("system", `❌ Error: ${e.message || e}`);
       this.sendBtn.disabled = false;
     }
   }
@@ -283,12 +158,24 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
 
     const messageEl = document.createElement("div");
     messageEl.className = `chat-message ${role}`;
-    messageEl.innerHTML = `<div class="chat-bubble">${this.escapeHtml(content)}</div>`;
+    
+    let actionsHtml = "";
+    if (role === "assistant") {
+      actionsHtml = `
+        <div class="message-actions">
+          <button class="action-btn tts-btn" title="Speak">🔊</button>
+        </div>
+      `;
+    }
+
+    messageEl.innerHTML = `
+      <div class="chat-bubble">${this.escapeHtml(content)}</div>
+      ${actionsHtml}
+    `;
 
     this.messagesContainer.appendChild(messageEl);
     this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
 
-    // Update unread count if widget is closed and assistant message
     if (!this.isOpen && role === "assistant") {
       this.unreadCount++;
       this.updateBadge();
@@ -325,45 +212,51 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
         badge.className = "chat-widget-badge";
         this.button.appendChild(badge);
       }
-      badge.textContent = Math.min(this.unreadCount, 9) + (this.unreadCount > 9 ? "+" : "");
+      badge.textContent = this.unreadCount;
     } else if (badge) {
       badge.remove();
     }
   }
 
-  saveMessageHistory() {
-    try {
-      // Keep last 20 messages to save space
-      const toSave = this.messages.slice(-20);
-      localStorage.setItem("skillsprint_chat_history", JSON.stringify(toSave));
-    } catch (e) {
-      console.warn("Could not save chat history:", e);
+  speakText(text) {
+    if (this.isSpeaking) {
+      this.stopSpeaking();
+      return;
     }
+
+    if (!('speechSynthesis' in window)) {
+      alert("TTS not supported in this browser");
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.onstart = () => { this.isSpeaking = true; };
+    utterance.onend = () => { this.isSpeaking = false; };
+    utterance.onerror = () => { this.isSpeaking = false; };
+    
+    this.currentUtterance = utterance;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  stopSpeaking() {
+    window.speechSynthesis.cancel();
+    this.isSpeaking = false;
+  }
+
+  saveMessageHistory() {
+    const toSave = this.messages.slice(-20);
+    localStorage.setItem("skillsprint_chat_history", JSON.stringify(toSave));
   }
 
   loadMessageHistory() {
-    try {
-      const saved = localStorage.getItem("skillsprint_chat_history");
-      if (saved) {
-        const history = JSON.parse(saved);
-        // Load messages but only if less than 1 hour old
-        const oneHourAgo = Date.now() - 3600000;
-        const recentMessages = history.filter((m) => m.timestamp > oneHourAgo);
-
-        if (recentMessages.length > 0) {
-          this.messages = recentMessages;
-          // Render loaded messages
-          recentMessages.forEach((msg) => {
-            const messageEl = document.createElement("div");
-            messageEl.className = `chat-message ${msg.role}`;
-            messageEl.innerHTML = `<div class="chat-bubble">${this.escapeHtml(msg.content)}</div>`;
-            this.messagesContainer.appendChild(messageEl);
-          });
-          this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-        }
-      }
-    } catch (e) {
-      console.warn("Could not load chat history:", e);
+    const saved = localStorage.getItem("skillsprint_chat_history");
+    if (saved) {
+      const history = JSON.parse(saved);
+      const oneHourAgo = Date.now() - 3600000;
+      this.messages = history.filter(m => m.timestamp > oneHourAgo);
+      this.messages.forEach(msg => {
+        if (msg.role !== "system") this.addMessage(msg.role, msg.content);
+      });
     }
   }
 
@@ -372,30 +265,9 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
     div.textContent = text;
     return div.innerHTML;
   }
-
-  setApiKey(key) {
-    this.apiKey = key;
-    localStorage.setItem("skillsprint_gemini_key", key);
-  }
-
-  getApiKey() {
-    return this.apiKey || localStorage.getItem("skillsprint_gemini_key");
-  }
-
-  clearHistory() {
-    this.messages = [];
-    localStorage.removeItem("skillsprint_chat_history");
-    this.messagesContainer.innerHTML = `
-      <div class="chat-message system">
-        <div class="chat-bubble">👋 Hi! I'm here to help. Ask me anything!</div>
-      </div>
-    `;
-  }
 }
 
-// Initialize widget on page load
+// Auto-init
 document.addEventListener("DOMContentLoaded", () => {
-  window.chatWidget = new SkillSprintChatWidget({
-    apiKey: window.GEMINI_API_KEY || localStorage.getItem("skillsprint_gemini_key"),
-  });
+  window.chatWidget = new SkillSprintChatWidget();
 });

@@ -7,4 +7,5 @@ pyjwt==2.6.0
 python-dotenv==1.0.0
 psycopg[binary]==3.3.3
 email-validator==2.2.0
+google-generativeai==0.8.3
 
