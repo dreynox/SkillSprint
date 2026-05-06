@@ -3,72 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkillSprint | Student Login</title>
-  <link rel="stylesheet" href="frontend/css/login.css" />
+  <title>SkillSprint | Competitive Coding and Hackathon Portal</title>
+  <meta
+    name="description"
+    content="SkillSprint is a competitive coding and hackathon portal for college students to practice coding, join contests, track rankings, and grow with structured learning tracks."
+  />
+  <link rel="stylesheet" href="frontend/css/landing.css" />
   <link rel="stylesheet" href="frontend/css/ux-foundation.css" />
 </head>
 <body>
+  <div class="landing-bg" aria-hidden="true"></div>
+  <canvas id="matrix" aria-hidden="true"></canvas>
 
-  <!-- Neon cursor glow -->
-  <div class="cursor-glow"></div>
+  <header class="landing-topbar">
+    <a class="brand" href="index.html">Skill<span>Sprint</span></a>
+    <div class="top-actions">
+      <a class="ghost-btn" href="frontend/html/login.html">Login</a>
+      <a class="primary-btn" href="frontend/html/signup.html">Sign Up</a>
+    </div>
+  </header>
 
-  <!-- Matrix hacker background -->
-  <canvas id="matrix"></canvas>
+  <main class="landing-shell">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">Built for college programmers</p>
+        <h1>Practice. Compete. Rank up.</h1>
+        <p class="hero-text">
+          SkillSprint brings coding practice, quizzes, contests, hackathons, and progress tracking into one
+          focused platform so students can learn consistently and stay motivated.
+        </p>
 
-  <!-- Login Card -->
-  <div class="login-card">
-    
-    <!-- Terminal-style title -->
-    <h1 class="terminal-title">
-      SkillSprint<span class="cursor">_</span>
-    </h1>
+        <div class="hero-actions">
+          <a class="primary-btn" href="frontend/html/login.html">Login</a>
+          <a class="ghost-btn" href="frontend/html/signup.html">Create Account</a>
+        </div>
 
-    <p class="subtitle">Student access portal</p>
-
-    <div id="generalError" class="error-message" role="alert" aria-live="assertive" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
-    <p id="authStatus" class="helper-text" role="status" aria-live="polite">Enter your credentials to continue.</p>
-
-    <form id="loginForm">
-      <div class="input-group">
-        <input type="email" id="email" required autocomplete="email" aria-describedby="authStatus" />
-        <label>Email</label>
+        <div class="hero-stats" aria-label="Platform highlights">
+          <div class="stat-pill"><strong>Live</strong><span>Rankings</span></div>
+          <div class="stat-pill"><strong>Quiz</strong><span>Assessment</span></div>
+          <div class="stat-pill"><strong>Contest</strong><span>Practice</span></div>
+          <div class="stat-pill"><strong>Hack</strong><span>Events</span></div>
+        </div>
       </div>
 
-      <div class="input-group password">
-        <input type="password" id="password" required autocomplete="current-password" aria-describedby="capsLockHint" />
-        <label>Password</label>
-        <span id="togglePassword">👁</span>
-      </div>
-      <p id="capsLockHint" class="helper-text" style="display:none;">Caps Lock appears to be on.</p>
+      <aside class="hero-panel">
+        <div class="panel-card">
+          <span class="panel-label">What you can do</span>
+          <ul class="feature-list">
+            <li>Solve coding problems with integrated compiler support.</li>
+            <li>Attempt quizzes and see score-based outcomes.</li>
+            <li>Join contests, hackathons, and weekend sprint tracks.</li>
+            <li>Track achievements through live points and badges.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
 
-      <button type="submit" id="loginBtn">
-        <span>AUTHENTICATE</span>
-        <div class="loader"></div>
-      </button>
-    </form>
+    <section class="section-grid">
+      <article class="info-card">
+        <h2>Unified Student Workflow</h2>
+        <p>Everything is organized in one place so learners do not need to jump between multiple tools.</p>
+      </article>
+      <article class="info-card">
+        <h2>Transparent Progress</h2>
+        <p>Leaderboards, quiz scores, and contest submissions help students measure growth clearly.</p>
+      </article>
+      <article class="info-card">
+        <h2>Motivating Experience</h2>
+        <p>Badges, rankings, and structured tracks keep practice engaging and goal-oriented.</p>
+      </article>
+    </section>
 
-    <p class="footer-text">
-      New user?
-      <a href="frontend/html/signup.html">Create access</a>
-    </p>
+    <section class="landing-footer-card">
+      <h2>Start with your account</h2>
+      <p>
+        Login if you already have an account, or sign up to begin using the platform as a student.
+      </p>
+    </section>
+  </main>
 
-    <p class="footer-text">
-      Forgot password?
-      <a href="frontend/html/forgot-password.html">Reset with OTP</a>
-    </p>
-
-    <p class="footer-text">
-      Admin?
-      <a href="frontend/html/admin-login.html">Log in as admin</a>
-    </p>
-
-    <p class="footer-text" style="margin-top: 1.2rem; font-size: 0.85rem; opacity: 0.7;">
-      Sign in to access your dashboard modules.
-    </p>
-  </div>
-
-  <script src="frontend/js/api-base.js"></script>
-  <script src="frontend/js/login.js"></script>
-  <script src="frontend/js/ux-foundation.js"></script>
+  <script src="frontend/js/info-pages.js"></script>
 </body>
 </html>

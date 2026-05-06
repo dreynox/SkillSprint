@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSprint | Student Login</title>
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="../css/ux-foundation.css" />
+</head>
+<body>
+  <div class="cursor-glow"></div>
+  <canvas id="matrix"></canvas>
+
+  <div class="login-card">
+    <h1 class="terminal-title">
+      SkillSprint<span class="cursor">_</span>
+    </h1>
+
+    <p class="subtitle">Student access portal</p>
+
+    <div id="generalError" class="error-message" role="alert" aria-live="assertive" style="color: #ff4444; margin-bottom: 1rem; text-align: center;"></div>
+    <p id="authStatus" class="helper-text" role="status" aria-live="polite">Enter your credentials to continue.</p>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="email" id="email" required autocomplete="email" aria-describedby="authStatus" />
+        <label>Email</label>
+      </div>
+
+      <div class="input-group password">
+        <input type="password" id="password" required autocomplete="current-password" aria-describedby="capsLockHint" />
+        <label>Password</label>
+        <span id="togglePassword">👁</span>
+      </div>
+      <p id="capsLockHint" class="helper-text" style="display:none;">Caps Lock appears to be on.</p>
+
+      <button type="submit" id="loginBtn">
+        <span>AUTHENTICATE</span>
+        <div class="loader"></div>
+      </button>
+    </form>
+
+    <p class="footer-text">
+      New user?
+      <a href="signup.html">Create access</a>
+    </p>
+
+    <p class="footer-text">
+      Forgot password?
+      <a href="forgot-password.html">Reset with OTP</a>
+    </p>
+
+    <p class="footer-text">
+      Admin?
+      <a href="admin-login.html">Log in as admin</a>
+    </p>
+
+    <p class="footer-text" style="margin-top: 1.2rem; font-size: 0.85rem; opacity: 0.7;">
+      Sign in to access your dashboard modules.
+    </p>
+  </div>
+
+  <script src="../js/api-base.js"></script>
+  <script src="../js/login.js"></script>
+  <script src="../js/ux-foundation.js"></script>
+</body>
+</html>
