@@ -1,12 +1,16 @@
 # SkillSprint AI Chatbot Setup Guide
 
 ## Overview
-Your SkillSprint website now has an integrated AI chatbot powered by OpenAI's GPT models. The chatbot appears as:
+Your SkillSprint website now has an integrated AI chatbot powered by **Google Gemini (FREE!)** 🎉
+
+The chatbot appears as:
 - **Floating widget** (💬 button) on all student pages
 - **Dedicated chat page** at `/frontend/html/chat.html`
 
 ## Features
 ✅ Ask any question about coding, programming, learning, or SkillSprint  
+✅ **100% FREE** - Google Gemini free tier included  
+✅ 60 requests/minute limit (more than enough!)  
 ✅ Floating widget on Dashboard, Contests, Quiz, Leaderboard, Profile, Messages  
 ✅ Full-page chat interface with history persistence  
 ✅ Typing indicators and real-time responses  
@@ -15,46 +19,45 @@ Your SkillSprint website now has an integrated AI chatbot powered by OpenAI's GP
 
 ---
 
-## Setup: Getting an OpenAI API Key
+## Setup: Getting a FREE Google Gemini API Key
 
-### Step 1: Create OpenAI Account
-1. Visit [platform.openai.com](https://platform.openai.com)
-2. Click **Sign up** (or sign in if you have an account)
-3. Complete email verification
+### Step 1: Go to Google AI Studio
+1. Visit [ai.google.dev](https://ai.google.dev)
+2. Click **Get API Key** (top-right)
+3. Click **Create API key in new Google Cloud project**
 
-### Step 2: Generate API Key
-1. Go to **API keys** section: https://platform.openai.com/api-keys
-2. Click **+ Create new secret key**
-3. Copy the key (you won't see it again!)
-4. Keep it safe — never share it publicly
+### Step 2: Copy Your API Key
+1. Your key will be displayed (starts with `AIza...`)
+2. Click **Copy** to copy it
+3. Save it somewhere safe
 
-### Step 3: Set API Key in Your Website
+---
 
-#### Option A: Local Development (Easy)
-Open browser DevTools (F12 → Console) on any SkillSprint page and run:
-```javascript
-localStorage.setItem("skillsprint_openai_key", "sk-your-api-key-here");
-```
-Replace `sk-your-api-key-here` with your actual API key.
+## Using Your API Key
 
-#### Option B: Chat Page Setup
+### Option A: Chat Page Setup (Easiest)
 1. Navigate to `/frontend/html/chat.html`
 2. You'll see an "API Key Required" banner
-3. Paste your API key in the input field
+3. Paste your Google Gemini API key in the input field
 4. Click **Save Key**
-5. The key is stored locally in your browser
+5. Done! Start chatting! 🚀
 
-#### Option C: Code-Based Setup (Production)
-In your `backend/config.py` or environment:
-```python
-# Store as environment variable
-OPENAI_API_KEY = "sk-your-api-key"
+### Option B: Local Storage (for development)
+Open browser DevTools (F12 → Console) and run:
+```javascript
+localStorage.setItem("skillsprint_gemini_key", "AIza_your_key_here");
 ```
 
-Then inject it into pages:
+### Option C: Environment Variable (Production)
+Add to your environment or config:
+```bash
+GEMINI_API_KEY=AIza_your_key_here
+```
+
+Then inject into pages:
 ```html
 <script>
-  window.OPENAI_API_KEY = "sk-your-api-key";
+  window.GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 </script>
 ```
 
@@ -72,7 +75,7 @@ Then inject it into pages:
 1. Go to **Dashboard** → Click **AI Chat** card
    OR
 2. Navigate directly to `/frontend/html/chat.html`
-3. Enter your API key if prompted
+3. Enter your Google Gemini API key if prompted
 4. Type questions and chat away!
 
 ### Example Questions
@@ -84,30 +87,21 @@ Then inject it into pages:
 
 ---
 
-## Features & Tips
+## Pricing & Limits
 
-### Message History
-- Your last 20 messages are saved for **1 hour**
-- Close and reopen the chat to see previous messages
-- Click **Clear** button to delete all history
+**Google Gemini Free Tier (NO CREDIT CARD REQUIRED):**
+- ✅ **60 requests/minute** (plenty!)
+- ✅ **100 requests/day** (for free tier)
+- ✅ **No billing needed**
+- ✅ Completely free to use
 
-### Unread Badge
-- When the widget is closed and you get a new AI response, a red badge appears
-- Shows number of unread messages
-
-### Mobile Friendly
-- Widget adapts to phone screens
-- Full chat page is fully responsive
-
-### Cost Estimation
-OpenAI charges per token:
-- GPT-3.5-turbo: ~$0.0005 per 1K tokens (~0.05¢ per chat)
-- GPT-4: ~$0.03 per 1K tokens (more expensive but smarter)
-
-**Budget tip:** Set usage limits in your OpenAI account:
-1. Go to [Billing Settings](https://platform.openai.com/account/billing/overview)
-2. Click **Usage limits**
-3. Set a monthly cap
+**Comparison:**
+| Feature | Gemini | OpenAI GPT-3.5 |
+|---------|--------|---|
+| Cost | FREE | $0.0005 per 1K tokens |
+| Setup | 2 minutes | Needs credit card |
+| Quality | Excellent | Excellent |
+| Speed | Fast | Fast |
 
 ---
 
@@ -119,7 +113,7 @@ frontend/
   css/
     chat-widget.css         # Widget & chat page styles
   js/
-    chat-widget.js          # Chat widget initialization
+    chat-widget.js          # Chat widget initialization (Gemini-powered)
   html/
     chat.html               # Full-page chat interface
 ```
@@ -134,20 +128,27 @@ Chat widget CSS & JS added to:
 - `message.html`
 
 ### API Integration
-- **Endpoint:** `https://api.openai.com/v1/chat/completions`
-- **Model:** `gpt-3.5-turbo` (configurable in `chat-widget.js`)
+- **Provider:** Google Generative AI (Gemini)
+- **Endpoint:** `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent`
+- **Model:** `gemini-pro` (free tier)
 - **Max tokens:** 300 (widget), 500 (full page)
 - **Temperature:** 0.7 (balanced creativity & consistency)
+- **Cost:** FREE (within limits)
 
 ---
 
 ## Customization
 
 ### Change AI Model
-Edit `frontend/js/chat-widget.js` line 12:
+Edit `frontend/js/chat-widget.js` line 9:
 ```javascript
-this.model = options.model || "gpt-4";  // Change to "gpt-4" or "gpt-4-turbo"
+this.model = options.model || "gemini-1.5-pro";  // Other options: "gemini-pro", "gemini-1.5-flash"
 ```
+
+Available models:
+- `gemini-pro` — Fastest, free tier
+- `gemini-1.5-pro` — Better reasoning (may need upgrade)
+- `gemini-1.5-flash` — Balanced speed and quality
 
 ### Change System Prompt
 Edit the `systemPrompt` in `chat-widget.js` (~line 14):
@@ -167,7 +168,7 @@ Edit `frontend/css/chat-widget.css`:
 ### Adjust Response Length
 Edit `chat-widget.js` and `chat.html`:
 ```javascript
-max_tokens: 200,  // Shorter responses
+maxOutputTokens: 200,  // Shorter responses
 ```
 
 ---
@@ -175,30 +176,31 @@ max_tokens: 200,  // Shorter responses
 ## Troubleshooting
 
 ### "API key not configured" Message
-→ Set your API key using Option A, B, or C above
+→ Set your Google Gemini API key using Option A, B, or C above
 
 ### No response / Typing indicator stuck
-→ Check your OpenAI API key is valid at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
-→ Check your account has credits/billing setup
+→ Check your Google Gemini API key is valid at [ai.google.dev](https://ai.google.dev)
+→ Check you haven't exceeded free tier limits (60 requests/minute, 100/day)
+→ Verify key format starts with `AIza...`
 
 ### CORS Error (blocked by browser)
-→ This is normal for client-side API calls. If severe, proxy through your backend:
-```python
-# backend/routes/chat_routes.py
-@router.post("/api/chat")
-async def chat_proxy(request: ChatRequest):
-    response = requests.post(
-        "https://api.openai.com/v1/chat/completions",
-        headers={"Authorization": f"Bearer {OPENAI_API_KEY}"},
-        json={...}
-    )
-    return response.json()
-```
+→ Google Gemini API handles CORS properly, shouldn't be an issue
+→ If it persists, check browser console for specific error
+
+### "Quota exceeded" Error
+→ You've hit the free tier limit (60 req/min or 100/day)
+→ Wait a bit and try again
+→ Upgrade to paid tier at [Google Cloud Console](https://console.cloud.google.com/) for higher limits
 
 ### Widget not appearing
 → Check browser console (F12) for JavaScript errors
 → Verify `chat-widget.css` is loaded (Network tab)
 → Ensure `chat-widget.js` is loaded before DOM content
+
+### API key not saving
+→ Check browser allows localStorage (not in private/incognito mode)
+→ Clear browser cache and try again
+→ Check console for storage permission errors
 
 ---
 
@@ -210,18 +212,21 @@ async def chat_proxy(request: ChatRequest):
 ```
 *.env
 *.local
+*.keys
 ```
 
 2. Use environment variables in production (never hardcode)
 
-3. Set API usage limits on your OpenAI account
+3. Google Gemini free tier has no billing concerns, but:
+   - Monitor your usage at [console.cloud.google.com](https://console.cloud.google.com/)
+   - Set quotas to prevent accidental overages if you upgrade to paid tier
 
-4. Rotate your key periodically: https://platform.openai.com/api-keys
+4. Rotate your key periodically if exposed at [ai.google.dev](https://ai.google.dev)
 
-5. Consider backend proxy for production:
+5. For production with sensitive data:
+   - Use backend proxy (your server calls Google, frontend calls your server)
    - Store API key on backend only
-   - Frontend calls your backend endpoint
-   - Backend forwards to OpenAI
+   - This prevents key exposure in client code
 
 ---
 
@@ -247,10 +252,17 @@ async def chat_proxy(request: ChatRequest):
 ## Support
 
 For issues:
-1. Check OpenAI status: https://status.openai.com/
-2. Review API documentation: https://platform.openai.com/docs/
+1. Check Google Generative AI status: https://status.cloud.google.com/
+2. Review Gemini API docs: https://ai.google.dev/docs
 3. Check console errors (F12 → Console tab)
-4. Verify API key permissions in account settings
+4. Verify API key format (starts with `AIza...`)
+5. Try the API key in [Google AI Studio](https://aistudio.google.com/) first
+
+**Helpful links:**
+- Google Generative AI: https://ai.google.dev
+- API Documentation: https://ai.google.dev/docs
+- Gemini Models: https://ai.google.dev/models
+- Free Tier Info: https://ai.google.dev/pricing
 
 ---
 

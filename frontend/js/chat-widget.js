@@ -1,18 +1,18 @@
 /**
  * SkillSprint AI Chat Widget
- * Floating chat widget with OpenAI GPT integration
+ * Floating chat widget with Google Gemini API integration (FREE)
  */
 
 class SkillSprintChatWidget {
   constructor(options = {}) {
-    this.apiKey = options.apiKey || window.OPENAI_API_KEY || null;
-    this.model = options.model || "gpt-3.5-turbo";
+    this.apiKey = options.apiKey || window.GEMINI_API_KEY || localStorage.getItem("skillsprint_gemini_key") || null;
+    this.model = options.model || "gemini-pro";
     this.messages = [];
     this.isOpen = false;
     this.isLoading = false;
     this.unreadCount = 0;
 
-    // System prompt for the AI
+    // System context for the AI
     this.systemPrompt =
       options.systemPrompt ||
       `You are SkillSprint Assistant, a helpful AI tutor supporting students with coding, programming, and learning questions. 
@@ -121,7 +121,7 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
 
     // Check API key
     if (!this.apiKey) {
-      this.addMessage("system", "⚠️ API key not configured. Please set window.OPENAI_API_KEY");
+      this.addMessage("system", "⚠️ API key not configured. Please set your Google Gemini API key");
       return;
     }
 
@@ -136,34 +136,49 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
     this.addTypingIndicator();
 
     try {
-      // Call OpenAI API
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${this.apiKey}`,
-        },
-        body: JSON.stringify({
-          model: this.model,
-          messages: [
-            { role: "system", content: this.systemPrompt },
-            ...this.messages.map((m) => ({
-              role: m.role === "user" ? "user" : "assistant",
-              content: m.content,
-            })),
-          ],
-          temperature: 0.7,
-          max_tokens: 300,
-        }),
-      });
+      // Build conversation history for context
+      const conversationHistory = this.messages
+        .slice(-10) // Last 10 messages for context
+        .map((m) => ({
+          role: m.role === "user" ? "user" : "model",
+          parts: [{ text: m.content }],
+        }));
+
+      // Call Google Gemini API
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                role: "user",
+                parts: [{ text: this.systemPrompt + "\n\nUser: " + text }],
+              },
+            ],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 300,
+            },
+          }),
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error?.message || "API request failed");
+        const errorMsg = error.error?.message || "API request failed";
+        throw new Error(errorMsg);
       }
 
       const data = await response.json();
-      const aiResponse = data.choices[0].message.content;
+      
+      // Extract response text
+      const aiResponse =
+        data.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "No response received";
 
       // Remove typing indicator and add response
       this.removeTypingIndicator();
@@ -279,11 +294,11 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
 
   setApiKey(key) {
     this.apiKey = key;
-    localStorage.setItem("skillsprint_openai_key", key);
+    localStorage.setItem("skillsprint_gemini_key", key);
   }
 
   getApiKey() {
-    return this.apiKey || localStorage.getItem("skillsprint_openai_key");
+    return this.apiKey || localStorage.getItem("skillsprint_gemini_key");
   }
 
   clearHistory() {
@@ -300,6 +315,6 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
 // Initialize widget on page load
 document.addEventListener("DOMContentLoaded", () => {
   window.chatWidget = new SkillSprintChatWidget({
-    apiKey: window.OPENAI_API_KEY || localStorage.getItem("skillsprint_openai_key"),
+    apiKey: window.GEMINI_API_KEY || localStorage.getItem("skillsprint_gemini_key"),
   });
 });
