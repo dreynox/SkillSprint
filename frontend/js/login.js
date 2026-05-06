@@ -74,9 +74,9 @@ form.addEventListener("submit", async (e) => {
     loginBtn.style.color = "#000";
     setStatus("Login successful. Redirecting...");
 
-    // Redirect (adjust if you later add a separate admin page)
+    // Redirect to student dashboard (same folder as this login page)
     setTimeout(() => {
-      window.location.href = "frontend/html/student-dashboard.html";
+      window.location.href = "student-dashboard.html";
     }, 1200);
   } catch (error) {
     loginBtn.classList.remove("loading");
