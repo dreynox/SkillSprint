@@ -441,6 +441,7 @@
             aria-label="Google Gemini API Key"
           />
           <button class="btn btn-small" id="saveApiKeyBtn">Save Key</button>
+          <button class="btn secondary btn-small" id="resetApiKeyBtn" style="background: rgba(255, 68, 68, 0.12); border-color: rgba(255, 68, 68, 0.3); color: #ffb4b4;">Reset</button>
         </div>
       </div>
 
@@ -480,6 +481,7 @@
     const apiKeySetup = document.getElementById("apiKeySetup");
     const apiKeyInput = document.getElementById("apiKeyInput");
     const saveApiKeyBtn = document.getElementById("saveApiKeyBtn");
+    const resetApiKeyBtn = document.getElementById("resetApiKeyBtn");
 
     let chatSession = null;
 
@@ -507,10 +509,25 @@
     saveApiKeyBtn.addEventListener("click", () => {
       const key = apiKeyInput.value.trim();
       if (key) {
+        if (!key.startsWith("AIza")) {
+          alert("⚠️ Invalid format! Google Gemini keys start with 'AIza...'");
+          return;
+        }
         chatSession.setApiKey(key);
         apiKeyInput.value = "";
         updateApiKeyUI();
-        alert("API key saved!");
+        alert("✅ API key saved! Try sending a message.");
+      }
+    });
+
+    // NEW: Reset button to clear wrong key
+    resetApiKeyBtn.addEventListener("click", () => {
+      if (confirm("Clear saved API key? You'll need to enter a new one.")) {
+        localStorage.removeItem("skillsprint_gemini_key");
+        chatSession.apiKey = null;
+        apiKeyInput.value = "";
+        apiKeySetup.classList.remove("hidden");
+        alert("✅ API key cleared! Enter your correct key and try again.");
       }
     });
 
@@ -583,7 +600,8 @@
 
         if (!response.ok) {
           const error = await response.json();
-          throw new Error(error.error?.message || "API request failed");
+          const errorMsg = error.error?.message || JSON.stringify(error);
+          throw new Error(`API Error (${response.status}): ${errorMsg}`);
         }
 
         const data = await response.json();

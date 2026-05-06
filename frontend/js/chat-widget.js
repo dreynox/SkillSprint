@@ -169,8 +169,8 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
 
       if (!response.ok) {
         const error = await response.json();
-        const errorMsg = error.error?.message || "API request failed";
-        throw new Error(errorMsg);
+        const errorMsg = error.error?.message || JSON.stringify(error);
+        throw new Error(`API Error (${response.status}): ${errorMsg}`);
       }
 
       const data = await response.json();
