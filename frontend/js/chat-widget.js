@@ -202,10 +202,46 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
       this.saveMessageHistory();
     } catch (error) {
       this.removeTypingIndicator();
-      this.addMessage("system", `❌ Error: ${error.message}`);
+      // Handle rate-limit style errors with retry suggestions
+      const retryMatch = String(error.message).match(/retry in\s*([0-9]+(?:\.[0-9]+)?)s/i);
+      if (retryMatch) {
+        const secs = Math.ceil(Number(retryMatch[1]));
+        this.handleRateLimit(secs);
+      } else {
+        this.addMessage("system", `❌ Error: ${error.message}`);
+      }
       console.error("Chat error:", error);
     } finally {
       this.isLoading = false;
+      this.sendBtn.disabled = false;
+    }
+  }
+
+  handleRateLimit(seconds) {
+    try {
+      this.sendBtn.disabled = true;
+      const start = Date.now();
+      const end = start + seconds * 1000;
+      // add a persistent system message that we can update
+      this.addMessage("system", `⏳ Rate limit: retrying in ${seconds}s`);
+
+      const interval = setInterval(() => {
+        const remains = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+        // update last system message bubble
+        const sysBubbles = Array.from(this.messagesContainer.querySelectorAll('.chat-message.system .chat-bubble'));
+        if (sysBubbles.length > 0) {
+          const last = sysBubbles[sysBubbles.length - 1];
+          last.textContent = `⏳ Rate limit: retrying in ${remains}s`;
+        }
+        if (remains <= 0) {
+          clearInterval(interval);
+          this.addMessage("system", `✅ Rate limit lifted. You may try again.`);
+          this.sendBtn.disabled = false;
+        }
+      }, 1000);
+    } catch (e) {
+      console.warn('Could not start rate-limit countdown', e);
+      this.addMessage("system", `❌ Error: ${error.message}`);
       this.sendBtn.disabled = false;
     }
   }
