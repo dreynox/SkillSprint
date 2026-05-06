@@ -5,7 +5,8 @@
 
 class SkillSprintChatWidget {
   constructor(options = {}) {
-    this.apiBase = options.apiBase || "http://127.0.0.1:8000/chatbot";
+    const defaultBase = window.API_BASE_URL ? `${window.API_BASE_URL}/chatbot` : "http://127.0.0.1:8000/chatbot";
+    this.apiBase = options.apiBase || defaultBase;
     this.messages = [];
     this.isOpen = false;
     this.isLoading = false;
