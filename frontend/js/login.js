@@ -74,9 +74,17 @@ form.addEventListener("submit", async (e) => {
     loginBtn.style.color = "#000";
     setStatus("Login successful. Redirecting...");
 
-    // Redirect to student dashboard (same folder as this login page)
+    // Redirect to student dashboard. Use an absolute path when the
+    // current URL is not inside `/frontend/html/` (fixes GitHub Pages 404).
     setTimeout(() => {
-      window.location.href = "student-dashboard.html";
+      try {
+        const inHtmlFolder = window.location.pathname.includes("/frontend/html/");
+        window.location.href = inHtmlFolder
+          ? "student-dashboard.html"
+          : "/frontend/html/student-dashboard.html";
+      } catch (e) {
+        window.location.href = "/frontend/html/student-dashboard.html";
+      }
     }, 1200);
   } catch (error) {
     loginBtn.classList.remove("loading");
