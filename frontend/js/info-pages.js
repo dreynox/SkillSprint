@@ -1,4 +1,35 @@
 (function () {
+  const revealTargets = document.querySelectorAll(
+    ".hero, .ux-purpose-block, .panel, .footer-panel, .card, .stat"
+  );
+
+  revealTargets.forEach(function (node, index) {
+    node.classList.add("reveal-item");
+    node.style.setProperty("--reveal-delay", `${Math.min(index * 30, 420)}ms`);
+  });
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    revealTargets.forEach(function (node) {
+      observer.observe(node);
+    });
+  } else {
+    revealTargets.forEach(function (node) {
+      node.classList.add("is-visible");
+    });
+  }
+
   const glow = document.querySelector(".cursor-glow");
   document.addEventListener("mousemove", function (event) {
     if (!glow) {

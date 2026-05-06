@@ -150,6 +150,7 @@ body {
   font-size: 0.82rem;
   color: var(--text);
   text-align: center;
+  animation: statPulse 4.5s ease-in-out infinite;
 }
 
 .section-title {
@@ -168,6 +169,13 @@ body {
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 0.85rem;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 136, 0.48);
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.2);
 }
 
 .card h3 {
@@ -198,6 +206,28 @@ body {
   color: var(--text);
   padding: 0.12rem 0.5rem;
   font-size: 0.7rem;
+}
+
+@keyframes statPulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 rgba(0, 255, 136, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 16px rgba(0, 255, 136, 0.12);
+  }
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease var(--reveal-delay, 0ms),
+    transform 0.45s ease var(--reveal-delay, 0ms);
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .table-wrap {
