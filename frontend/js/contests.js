@@ -21,9 +21,14 @@ const submitBtn          = document.getElementById("submit-btn");
 const submitStatusEl     = document.getElementById("submit-status");
 const verdictBox         = document.getElementById("verdict-box");
 
+const LIVE_REFRESH_MS = 30000;
+const COUNTDOWN_TICK_MS = 1000;
+
 // Active selection state
 let activeContestId  = null;
 let activeProblemId  = null;
+let listAutoRefreshTimer = null;
+let countdownTicker = null;
 
 function getToken() {
   const raw =
@@ -80,16 +85,19 @@ function setSubmitStatus(msg, isError = false) {
 }
 
 // ── Contest list ──────────────────────────────────────────────────────────────
-async function loadContests() {
+async function loadContests(options = {}) {
+  const { silent = false } = options;
   const token = getToken();
   if (!token) {
     window.location.href = "../../index.html";
     return;
   }
 
-  setListStatus("Loading contests...");
-  contestCards.innerHTML = "";
-  refreshBtn.disabled = true;
+  if (!silent) {
+    setListStatus("Loading contests...");
+    contestCards.innerHTML = "";
+    refreshBtn.disabled = true;
+  }
   listSection.setAttribute("aria-busy", "true");
 
   try {
@@ -102,8 +110,12 @@ async function loadContests() {
       return;
     }
 
-    setListStatus(`${data.length} contest(s) found. Click a card to view problems.`);
+    setListStatus(
+      `${data.length} contest(s) found. Live contest windows auto-refresh every 30 seconds.`
+    );
+    contestCards.innerHTML = "";
     data.forEach(renderContestCard);
+    refreshContestCountdowns();
   } catch (err) {
     setListStatus(err.message, true);
   } finally {
@@ -115,6 +127,8 @@ async function loadContests() {
 function renderContestCard(contest) {
   const card = document.createElement("div");
   card.className = "card" + (contest.is_active ? " active" : " inactive");
+
+  const state = contestLiveState(contest.start_time, contest.end_time, contest.is_active);
 
   const badge = contest.is_active
     ? `<span class="badge badge-active">ACTIVE</span>`
@@ -132,10 +146,83 @@ function renderContestCard(contest) {
     <div class="card-title">${badge} ${escapeHtml(contest.name)}</div>
     <div class="card-desc">${escapeHtml(contest.description || "")}</div>
     <div class="card-meta">${start} &rarr; ${end} | ${duration}</div>
+    <div
+      class="card-live ${escapeHtml(state.className)}"
+      data-live-start="${escapeHtml(contest.start_time || "")}" 
+      data-live-end="${escapeHtml(contest.end_time || "")}" 
+      data-live-active="${contest.is_active ? "1" : "0"}"
+    >${escapeHtml(state.message)}</div>
   `;
 
   card.addEventListener("click", () => openContest(contest.id));
   contestCards.appendChild(card);
+}
+
+function formatRemaining(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  return `${hours}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+}
+
+function contestLiveState(startRaw, endRaw, isActiveFlag) {
+  const now = Date.now();
+  const start = startRaw ? new Date(startRaw).getTime() : null;
+  const end = endRaw ? new Date(endRaw).getTime() : null;
+
+  if (start && now < start) {
+    return {
+      className: "live-upcoming",
+      message: `Starts in ${formatRemaining(start - now)}`,
+    };
+  }
+
+  if (end && now < end) {
+    return {
+      className: "live-running",
+      message: `Live now • Ends in ${formatRemaining(end - now)}`,
+    };
+  }
+
+  if (end && now >= end) {
+    return {
+      className: "live-ended",
+      message: "Contest window ended",
+    };
+  }
+
+  return {
+    className: isActiveFlag ? "live-running" : "live-upcoming",
+    message: isActiveFlag ? "Live now" : "Contest schedule to be announced",
+  };
+}
+
+function refreshContestCountdowns() {
+  const nodes = document.querySelectorAll(".card-live");
+  nodes.forEach((node) => {
+    const start = node.getAttribute("data-live-start");
+    const end = node.getAttribute("data-live-end");
+    const active = node.getAttribute("data-live-active") === "1";
+    const state = contestLiveState(start, end, active);
+    node.classList.remove("live-upcoming", "live-running", "live-ended");
+    node.classList.add(state.className);
+    node.textContent = state.message;
+  });
+}
+
+function startContestLiveFeed() {
+  if (!listAutoRefreshTimer) {
+    listAutoRefreshTimer = window.setInterval(() => {
+      if (listSection.style.display !== "none") {
+        loadContests({ silent: true });
+      }
+    }, LIVE_REFRESH_MS);
+  }
+
+  if (!countdownTicker) {
+    countdownTicker = window.setInterval(refreshContestCountdowns, COUNTDOWN_TICK_MS);
+  }
 }
 
 function renderDuration(start, end) {
@@ -311,10 +398,15 @@ function escapeHtml(str) {
 }
 
 // ── Event listeners ───────────────────────────────────────────────────────────
-refreshBtn.addEventListener("click", loadContests);
-backToListBtn.addEventListener("click", () => { activeContestId = null; showSection(listSection); });
+refreshBtn.addEventListener("click", () => loadContests());
+backToListBtn.addEventListener("click", () => {
+  activeContestId = null;
+  showSection(listSection);
+  loadContests({ silent: true });
+});
 backToContestBtn.addEventListener("click", () => { activeProblemId = null; openContest(activeContestId); });
 submitBtn.addEventListener("click", submitSolution);
 
 // Auto-load on page open
+startContestLiveFeed();
 loadContests();

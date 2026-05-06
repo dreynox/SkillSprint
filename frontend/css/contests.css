@@ -241,6 +241,35 @@ h3 {
     font-size: 0.82em;
 }
 
+.card-live {
+    margin-top: 8px;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.card-live.live-upcoming {
+    color: #fcd34d;
+    background: rgba(252, 211, 77, 0.14);
+    border-color: rgba(252, 211, 77, 0.45);
+}
+
+.card-live.live-running {
+    color: #86efac;
+    background: rgba(52, 211, 153, 0.14);
+    border-color: rgba(52, 211, 153, 0.45);
+}
+
+.card-live.live-ended {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.14);
+    border-color: rgba(239, 68, 68, 0.42);
+}
+
 /* ── Badges ────────────────────────────────────────────────────────────────── */
 .badge {
     display: inline-block;

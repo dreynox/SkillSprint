@@ -1,5 +1,11 @@
 const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
 const DEFAULT_AVATAR = "../images/default-avatar.svg";
+const LIVE_REFRESH_MS = 30000;
+
+let autoRefreshTimer = null;
+let countdownTimer = null;
+let autoRefreshSecondsRemaining = Math.floor(LIVE_REFRESH_MS / 1000);
+let lastUpdatedMessage = "Loading latest results...";
 
 function escapeHtml(value) {
   return String(value)
@@ -47,6 +53,11 @@ function setUpdatedLabel(message) {
   }
 
   element.textContent = message;
+}
+
+function renderUpdatedLabel() {
+  const suffix = ` | Auto refresh in ${autoRefreshSecondsRemaining}s`;
+  setUpdatedLabel(`${lastUpdatedMessage}${suffix}`);
 }
 
 function activateLeaderboardView(viewName) {
@@ -168,17 +179,20 @@ function renderList(rows) {
     .join("");
 }
 
-async function loadLeaderboard() {
+async function loadLeaderboard(options = {}) {
+  const { silent = false } = options;
   const podium = document.getElementById("leaderboardPodium");
   const list = document.getElementById("leaderboardList");
-  if (podium) {
+  if (!silent && podium) {
     podium.innerHTML = '<div class="leaderboard-empty">Loading podium...</div>';
   }
-  if (list) {
+  if (!silent && list) {
     list.innerHTML = '<li class="leaderboard-empty">Loading rankings...</li>';
   }
 
-  setStatus("Fetching the latest leaderboard standings...");
+  if (!silent) {
+    setStatus("Fetching the latest leaderboard standings...");
+  }
 
   try {
     const response = await fetch(`${API_BASE}/users/leaderboard?limit=50`);
@@ -190,7 +204,9 @@ async function loadLeaderboard() {
     renderPodium(rows);
     renderList(rows.slice(3));
     setStatus(rows.length ? `Showing ${rows.length} ranked students.` : "No ranked users yet.");
-    setUpdatedLabel(`Updated ${new Date().toLocaleString()}`);
+    lastUpdatedMessage = `Updated ${new Date().toLocaleString()}`;
+    autoRefreshSecondsRemaining = Math.floor(LIVE_REFRESH_MS / 1000);
+    renderUpdatedLabel();
   } catch (error) {
     if (podium) {
       podium.innerHTML = '<div class="leaderboard-empty">Could not load leaderboard data right now.</div>';
@@ -199,8 +215,25 @@ async function loadLeaderboard() {
       list.innerHTML = '<li class="leaderboard-empty">Could not load leaderboard data right now.</li>';
     }
     setStatus("Leaderboard data could not be loaded. Try refreshing the page.", true);
-    setUpdatedLabel("Update failed");
+    lastUpdatedMessage = "Update failed";
+    autoRefreshSecondsRemaining = Math.floor(LIVE_REFRESH_MS / 1000);
+    renderUpdatedLabel();
     console.error(error);
+  }
+}
+
+function startLiveRefresh() {
+  if (!autoRefreshTimer) {
+    autoRefreshTimer = window.setInterval(() => {
+      loadLeaderboard({ silent: true });
+    }, LIVE_REFRESH_MS);
+  }
+
+  if (!countdownTimer) {
+    countdownTimer = window.setInterval(() => {
+      autoRefreshSecondsRemaining = Math.max(0, autoRefreshSecondsRemaining - 1);
+      renderUpdatedLabel();
+    }, 1000);
   }
 }
 
@@ -229,4 +262,5 @@ function bindControls() {
 
 bindControls();
 activateLeaderboardView("podium");
+startLiveRefresh();
 loadLeaderboard();
