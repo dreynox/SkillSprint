@@ -78,10 +78,17 @@ form.addEventListener("submit", async (e) => {
     // current URL is not inside `/frontend/html/` (fixes GitHub Pages 404).
     setTimeout(() => {
       try {
-        const inHtmlFolder = window.location.pathname.includes("/frontend/html/");
-        window.location.href = inHtmlFolder
-          ? "student-dashboard.html"
-          : "/frontend/html/student-dashboard.html";
+        const pathname = window.location.pathname || "/";
+        const marker = "/frontend/html";
+        const idx = pathname.indexOf(marker);
+        let basePath;
+        if (idx !== -1) {
+          basePath = pathname.slice(0, idx + marker.length);
+        } else {
+          basePath = pathname.substring(0, pathname.lastIndexOf('/')) || '/';
+        }
+        basePath = basePath.replace(/\/+/g, '/');
+        window.location.href = basePath + "/student-dashboard.html";
       } catch (e) {
         window.location.href = "/frontend/html/student-dashboard.html";
       }
