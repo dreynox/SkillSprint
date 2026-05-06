@@ -6,7 +6,7 @@
 class SkillSprintChatWidget {
   constructor(options = {}) {
     this.apiKey = options.apiKey || window.GEMINI_API_KEY || localStorage.getItem("skillsprint_gemini_key") || null;
-    this.model = options.model || "gemini-pro";
+    this.model = options.model || "gemini-1.5-flash";
     this.messages = [];
     this.isOpen = false;
     this.isLoading = false;
@@ -136,44 +136,58 @@ Keep responses under 150 words for the widget. Always be friendly and supportive
     this.addTypingIndicator();
 
     try {
-      // Build conversation history for context
-      const conversationHistory = this.messages
-        .slice(-10) // Last 10 messages for context
-        .map((m) => ({
-          role: m.role === "user" ? "user" : "model",
-          parts: [{ text: m.content }],
-        }));
+      const candidateModels = [
+        this.model,
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-latest",
+        "gemini-2.0-flash",
+      ];
+      let data = null;
+      let lastError = null;
 
-      // Call Google Gemini API
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                role: "user",
-                parts: [{ text: this.systemPrompt + "\n\nUser: " + text }],
-              },
-            ],
-            generationConfig: {
-              temperature: 0.7,
-              maxOutputTokens: 300,
+      for (const modelName of candidateModels) {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${this.apiKey}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
             },
-          }),
-        }
-      );
+            body: JSON.stringify({
+              contents: [
+                {
+                  role: "user",
+                  parts: [{ text: this.systemPrompt + "\n\nUser: " + text }],
+                },
+              ],
+              generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 300,
+              },
+            }),
+          }
+        );
 
-      if (!response.ok) {
+        if (response.ok) {
+          this.model = modelName;
+          data = await response.json();
+          break;
+        }
+
         const error = await response.json();
         const errorMsg = error.error?.message || JSON.stringify(error);
-        throw new Error(`API Error (${response.status}): ${errorMsg}`);
+        lastError = new Error(`API Error (${response.status}): ${errorMsg}`);
+
+        // If issue is not model availability, stop retrying.
+        const modelIssue = response.status === 404 || /not found|unsupported/i.test(errorMsg);
+        if (!modelIssue) {
+          break;
+        }
       }
 
-      const data = await response.json();
+      if (!data) {
+        throw lastError || new Error("No supported Gemini model available for this key.");
+      }
       
       // Extract response text
       const aiResponse =
