@@ -12,7 +12,7 @@ router = APIRouter()
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
-    genAI.configure(api_key=api_key)
+    genAI.configure(api_key=api_key, transport='rest')
     # Print available models for debugging
     try:
         print("--- Available Gemini Models ---")
