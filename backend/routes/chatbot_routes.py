@@ -55,17 +55,18 @@ Guidelines:
 @router.post("/chat")
 async def chat(request: ChatRequest):
     if not api_key:
+        print("[Chat] ERROR: GEMINI_API_KEY is missing")
         raise HTTPException(status_code=500, detail="Gemini API Key not configured on server")
 
     try:
+        print(f"[Chat] Incoming request: {request.message[:50]}...")
         # Initialize model
         model = genAI.GenerativeModel(
-            model_name="gemini-2.5-flash",
+            model_name="models/gemini-2.5-flash",
             system_instruction=SYSTEM_PROMPT
         )
 
         # Prepare history for Gemini
-        # Gemini expects roles to be 'user' and 'model'
         gemini_history = []
         for msg in request.history:
             role = "user" if msg.role == "user" else "model"
@@ -74,13 +75,14 @@ async def chat(request: ChatRequest):
         chat_session = model.start_chat(history=gemini_history)
         
         response = chat_session.send_message(request.message)
+        print("[Chat] Response generated successfully")
         
         return {
             "response": response.text,
             "status": "success"
         }
     except Exception as e:
-        print(f"DEBUG: Gemini Chat Error: {str(e)}")
+        print(f"[Chat] EXCEPTION: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/translate")
@@ -89,7 +91,7 @@ async def translate(request: TranslateRequest):
         raise HTTPException(status_code=500, detail="Gemini API Key not configured on server")
 
     try:
-        model = genAI.GenerativeModel("gemini-2.5-flash")
+        model = genAI.GenerativeModel("models/gemini-2.5-flash")
         prompt = f"Translate the following text to {request.target_lang}. Only return the translated text, nothing else:\n\n{request.text}"
         
         response = model.generate_content(prompt)
