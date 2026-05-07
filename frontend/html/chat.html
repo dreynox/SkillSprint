@@ -154,6 +154,30 @@
       gap: 16px;
     }
 
+    #api-prompt {
+      display: none;
+      padding: 1rem;
+      background: rgba(255, 100, 100, 0.1);
+      border: 1px solid rgba(255, 100, 100, 0.2);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .api-input-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    #api-key-input {
+      flex: 1;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(110, 230, 170, 0.3);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
     .input-wrapper {
       display: flex;
       gap: 16px;
@@ -276,6 +300,14 @@
           <div id="connection-status" style="font-size: 0.75rem; color: #00ff88;">● Connected</div>
         </div>
         
+        <div id="api-prompt">
+          <p style="font-size: 0.9rem; color: #ff8888;">Render server location is restricted. Use Direct Mode?</p>
+          <div class="api-input-group">
+            <input type="password" id="api-key-input" placeholder="Paste Gemini API Key here...">
+            <button id="save-api-key" class="premium-send" style="padding: 0 15px; font-size: 0.8rem; height: 35px;">Save</button>
+          </div>
+        </div>
+
         <div class="input-wrapper">
           <textarea id="full-input" placeholder="Type your coding question here..." rows="1"></textarea>
           <button id="full-send" class="premium-send">
@@ -340,6 +372,21 @@
       if (confirm("Are you sure you want to clear your chat history?")) {
         localStorage.removeItem("skillsprint_chat_history");
         window.location.reload();
+      }
+    });
+
+    // Handle API Prompt
+    window.addEventListener("skillsprint-show-api-prompt", () => {
+      document.getElementById("api-prompt").style.display = "block";
+    });
+
+    document.getElementById("save-api-key").addEventListener("click", () => {
+      const key = document.getElementById("api-key-input").value.trim();
+      if (key) {
+        localStorage.setItem("skillsprint_gemini_key", key);
+        document.getElementById("api-prompt").style.display = "none";
+        alert("API Key saved! Sending your message directly now...");
+        window.chatWidget.sendMessage();
       }
     });
 

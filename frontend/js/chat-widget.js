@@ -117,8 +117,8 @@ class SkillSprintChatWidget {
     const text = this.input.value.trim();
     if (!text || this.isLoading) return;
 
-    // Re-check API base in case it changed/loaded late
-    if (window.API_BASE_URL && !this.apiBase.includes("onrender.com")) {
+    // Re-check API base
+    if (window.API_BASE_URL && !this.apiBase.includes("onrender.com") && !this.apiBase.includes("localhost")) {
        this.apiBase = `${window.API_BASE_URL}/chatbot`;
     }
 
@@ -129,33 +129,93 @@ class SkillSprintChatWidget {
     this.isLoading = true;
     this.sendBtn.disabled = true;
 
-    // Show typing indicator
     this.addTypingIndicator();
 
+    // Check if we should use Direct Frontend Mode (if a key is saved locally)
+    const localKey = localStorage.getItem("skillsprint_gemini_key");
+    
     try {
-      const response = await fetch(`${this.apiBase}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: text,
-          history: this.messages.slice(-10) // Send last 10 messages for context
-        })
-      });
+      if (localKey) {
+        await this.sendDirectMessage(text, localKey);
+      } else {
+        const response = await fetch(`${this.apiBase}/chat`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: text,
+            history: this.messages.slice(-10)
+          })
+        });
 
-      if (!response.ok) throw new Error("Backend server error");
-      
-      const data = await response.json();
-      this.removeTypingIndicator();
-      this.addMessage("assistant", data.response);
-      this.saveMessageHistory();
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          // If backend says location is not supported, or 500, suggest Direct Mode
+          if (response.status === 500 || response.status === 400) {
+            throw new Error(errorData.detail || "Regional restriction or server error");
+          }
+          throw new Error("Backend server error");
+        }
+        
+        const data = await response.json();
+        this.removeTypingIndicator();
+        this.addMessage("assistant", data.response);
+        this.saveMessageHistory();
+      }
     } catch (error) {
       this.removeTypingIndicator();
-      this.addMessage("system", `❌ Error: ${error.message}. Is the backend running?`);
       console.error("Chat error:", error);
+      
+      let errorMsg = `❌ Error: ${error.message}.`;
+      if (!localKey) {
+        errorMsg += " Click 'Set API Key' below to use Direct Mode (bypasses Render limits).";
+        this.showApiKeyPrompt();
+      }
+      
+      this.addMessage("system", errorMsg);
     } finally {
       this.isLoading = false;
       this.sendBtn.disabled = false;
     }
+  }
+
+  async sendDirectMessage(text, apiKey) {
+    try {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+      
+      // Map history to Gemini format
+      const contents = this.messages.slice(-10).map(msg => ({
+        role: msg.role === "user" ? "user" : "model",
+        parts: [{ text: msg.content }]
+      }));
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contents })
+      });
+
+      const data = await response.json();
+      
+      if (data.error) {
+        if (data.error.status === "INVALID_ARGUMENT" || data.error.message.includes("API key")) {
+          localStorage.removeItem("skillsprint_gemini_key");
+          throw new Error("Invalid API Key. Please reset it.");
+        }
+        throw new Error(data.error.message);
+      }
+
+      const aiText = data.candidates[0].content.parts[0].text;
+      this.removeTypingIndicator();
+      this.addMessage("assistant", aiText);
+      this.saveMessageHistory();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  showApiKeyPrompt() {
+    // Dispatch event for chat.html to handle
+    window.dispatchEvent(new CustomEvent("skillsprint-show-api-prompt"));
   }
 
   addMessage(role, content) {
