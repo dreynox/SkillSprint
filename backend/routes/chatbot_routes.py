@@ -11,7 +11,20 @@ router = APIRouter()
 
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
+
+# Safety check for leaked keys (AIzaSyDNA2... was the leaked prefix)
+if api_key and api_key.startswith("AIzaSyDNA2"):
+    print("[Chat] WARNING: Detected leaked key from file. Attempting to override with OS environment...")
+    # Try to find a key that isn't the leaked one
+    if "GEMINI_API_KEY" in os.environ and not os.environ["GEMINI_API_KEY"].startswith("AIzaSyDNA2"):
+        api_key = os.environ["GEMINI_API_KEY"]
+        print("[Chat] SUCCESS: Found valid key in OS environment.")
+    else:
+        print("[Chat] ERROR: No valid key found. Please update Render environment variables.")
+        api_key = None
+
 if api_key:
+    print(f"[Chat] API Key initialized. Prefix: {api_key[:8]}...")
     genAI.configure(api_key=api_key, transport='rest')
     # Print available models for debugging
     try:
