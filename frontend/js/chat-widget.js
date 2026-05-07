@@ -180,7 +180,7 @@ class SkillSprintChatWidget {
 
   async sendDirectMessage(text, apiKey) {
     try {
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
       
       // Map history to Gemini format
       const contents = this.messages.slice(-10).map(msg => ({

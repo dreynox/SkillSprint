@@ -62,7 +62,7 @@ async def chat(request: ChatRequest):
         print(f"[Chat] Incoming request: {request.message[:50]}...")
         # Initialize model
         model = genAI.GenerativeModel(
-            model_name="models/gemini-2.5-flash",
+            model_name="models/gemini-2.0-flash",
             system_instruction=SYSTEM_PROMPT
         )
 
@@ -91,7 +91,7 @@ async def translate(request: TranslateRequest):
         raise HTTPException(status_code=500, detail="Gemini API Key not configured on server")
 
     try:
-        model = genAI.GenerativeModel("models/gemini-2.5-flash")
+        model = genAI.GenerativeModel("models/gemini-2.0-flash")
         prompt = f"Translate the following text to {request.target_lang}. Only return the translated text, nothing else:\n\n{request.text}"
         
         response = model.generate_content(prompt)
