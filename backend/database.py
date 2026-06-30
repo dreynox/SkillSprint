@@ -73,6 +73,8 @@ def ensure_sqlite_compatibility():
                 connection.execute(text("ALTER TABLE users ADD COLUMN is_premium BOOLEAN DEFAULT FALSE"))
             if "premium_expires_at" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN premium_expires_at DATETIME"))
+            if "extra_xp" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN extra_xp INTEGER DEFAULT 0"))
 
         if "messages" in tables:
             message_columns = {column["name"] for column in inspector.get_columns("messages")}

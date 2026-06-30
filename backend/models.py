@@ -33,6 +33,7 @@ class User(Base):
     is_premium = Column(Boolean, default=False, nullable=False)
     premium_expires_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    extra_xp = Column(Integer, default=0, nullable=False)
 
 
 class Test(Base):

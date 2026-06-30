@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from auth import get_current_user
 from database import get_db
 from models import ContestParticipation, ContestSubmission, QuizSubmission, User, Follow, Contest, Hackathon, Message
-from schemas import LeaderboardEntryOut, MessageResponse, UserOut, UserProfileUpdate, UserStatsOut, FollowOut, SearchResult
+from schemas import AddXPRequest, LeaderboardEntryOut, MessageResponse, UserOut, UserProfileUpdate, UserStatsOut, FollowOut, SearchResult
 from typing import List
 
 router = APIRouter()
@@ -151,6 +151,22 @@ def get_my_stats(db: Session = Depends(get_db), current_user: User = Depends(get
     )
 
 
+@router.post("/me/add-xp", response_model=UserOut)
+def add_my_xp(
+    payload: AddXPRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Award extra XP to the logged-in user (from Practice or Quiz)."""
+    if payload.xp < 1:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="XP must be a positive integer")
+    current_user.extra_xp = (current_user.extra_xp or 0) + payload.xp
+    db.add(current_user)
+    db.commit()
+    db.refresh(current_user)
+    return current_user
+
+
 def _badge_for_points(points: int) -> str:
     if points >= 1500:
         return "Elite"
@@ -198,6 +214,7 @@ def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(g
         + func.coalesce(quiz_stats.c.quiz_attempts, 0) * 5
         + func.coalesce(participation_stats.c.contests_joined, 0) * 15
         + func.coalesce(contest_stats.c.contest_submissions, 0) * 20
+        + func.coalesce(User.extra_xp, 0)
     )
 
     rows = (
@@ -209,6 +226,7 @@ def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(g
             User.year.label("year"),
             User.domain.label("domain"),
             User.subject.label("subject"),
+            User.extra_xp.label("extra_xp"),
             func.coalesce(quiz_stats.c.quiz_attempts, 0).label("quiz_attempts"),
             func.coalesce(quiz_stats.c.quiz_score, 0).label("quiz_score"),
             func.coalesce(participation_stats.c.contests_joined, 0).label("contests_joined"),

@@ -76,6 +76,7 @@ class UserOut(BaseModel):
     is_premium: bool = False
     premium_expires_at: Optional[datetime] = None
     created_at: datetime
+    extra_xp: int = 0
 
     class Config:
         from_attributes = True
@@ -107,6 +108,10 @@ class UserStatsOut(BaseModel):
     quiz_attempts: int
     total_quiz_score: int
     quiz_questions_attempted: int
+
+
+class AddXPRequest(BaseModel):
+    xp: int
 
 
 class LeaderboardEntryOut(BaseModel):

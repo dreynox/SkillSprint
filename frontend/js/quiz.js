@@ -418,6 +418,9 @@ async function submitAnswers(options = {}) {
       submitted_at: new Date().toISOString(),
     });
 
+    // Award XP for correct answers (both test and random modes)
+    await awardXP(data.score);
+
     renderResultLink({
       score: data.score,
       total: data.total,
@@ -436,6 +439,22 @@ async function submitAnswers(options = {}) {
 function handleQuestionChange() {
   if (quizInProgress) {
     renderSubmitHint();
+  }
+}
+
+async function awardXP(score) {
+  if (!score || score < 1) return;
+  try {
+    const token = getToken();
+    if (!token) return;
+    const xp = score * 10; // 10 XP per correct answer in quiz
+    await fetch(`${API_BASE}/users/me/add-xp`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ xp }),
+    });
+  } catch (e) {
+    console.warn("XP award error:", e);
   }
 }
 

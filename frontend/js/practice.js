@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const endPractice = () => {
+    const endPractice = async () => {
         practiceArea.style.display = 'none';
         resultContainer.style.display = 'block';
 
@@ -129,14 +129,30 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('result-stats').innerHTML = `You answered <b style="color:#00ff88">${correctCount}</b> out of ${totalQuestions} correctly.`;
         document.getElementById('xp-earned').textContent = `+${xp} XP Earned!`;
 
-        // Update local user state for mockup
+        if (xp > 0) {
+            await persistXP(xp);
+        }
+    };
+
+    const persistXP = async (xp) => {
         try {
-            let user = JSON.parse(localStorage.getItem('user'));
-            if (user) {
-                user.xp = (user.xp || 0) + xp;
-                localStorage.setItem('user', JSON.stringify(user));
+            const raw = localStorage.getItem('access_token') || localStorage.getItem('token') || '';
+            const token = String(raw).trim().replace(/^"|"$/g, '').replace(/^Bearer\s+/i, '').trim();
+            if (!token || token === 'undefined' || token === 'null') return;
+
+            const API_BASE = window.API_BASE_URL || 'http://127.0.0.1:8000';
+            const res = await fetch(`${API_BASE}/users/me/add-xp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ xp }),
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                console.warn('Failed to persist XP:', err.detail || res.status);
             }
-        } catch(e) {}
+        } catch (e) {
+            console.warn('XP persist error:', e);
+        }
     };
 
     if (startBtn) {
