@@ -243,5 +243,34 @@ button.loading {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
+}
+
+/* =========================
+   SIGNUP GRID
+========================= */
+.login-card.signup-card {
+  width: 650px;
+  max-width: 95vw;
+}
+
+.signup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.footer-links .footer-text {
+  margin-top: 10px;
 }

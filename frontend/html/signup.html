@@ -11,16 +11,16 @@
     <div class="cursor-glow"></div>
     <canvas id="matrix"></canvas>
 
-    <div class="login-card">
+    <div class="login-card signup-card">
         <h1 class="terminal-title">
             SkillSprint<span class="cursor">_</span>
         </h1>
         <p class="subtitle">Create your student account</p>
 
-        <div id="generalError" class="error-message" role="alert" aria-live="assertive"></div>
-        <p id="signupStatus" class="helper-text" role="status" aria-live="polite">Fill details to create your account.</p>
+        <div id="generalError" class="error-message full-width" role="alert" aria-live="assertive"></div>
+        <p id="signupStatus" class="helper-text full-width" role="status" aria-live="polite">Fill details to create your account.</p>
 
-        <form id="signupForm">
+        <form id="signupForm" class="signup-grid">
             <div class="input-group">
                 <input type="text" id="name" name="name" required placeholder="Full Name" autocomplete="name" />
                 <span class="error-message" id="nameError"></span>
@@ -66,8 +66,6 @@
                 <span id="togglePassword">👁</span>
                 <span class="error-message" id="passwordError"></span>
             </div>
-            <p id="passwordHelp" class="helper-text">Use at least 6 characters. Stronger passwords are safer.</p>
-            <div class="strength-meter" aria-hidden="true"><span id="passwordStrengthBar"></span></div>
 
             <div class="input-group password">
                 <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" autocomplete="new-password" />
@@ -75,25 +73,27 @@
                 <span class="error-message" id="confirmPasswordError"></span>
             </div>
 
-            <button type="submit" id="signupBtn">
-                <span>SIGN UP</span>
-            </button>
+            <div class="full-width">
+                <p id="passwordHelp" class="helper-text">Use at least 6 characters. Stronger passwords are safer.</p>
+                <div class="strength-meter" aria-hidden="true"><span id="passwordStrengthBar"></span></div>
+                
+                <button type="submit" id="signupBtn">
+                    <span>SIGN UP</span>
+                </button>
+            </div>
         </form>
 
-        <p class="footer-text">
-            Already have an account?
-            <a href="../../index.html">Log in</a>
-        </p>
-
-        <p class="footer-text">
-            Admin onboarding?
-            <a href="admin-signup.html">Admin Sign Up</a>
-        </p>
-
-        <p class="footer-text">
-            Already an admin?
-            <a href="admin-login.html">Admin Log In</a>
-        </p>
+        <div class="footer-links">
+            <p class="footer-text">
+                Already have an account? <a href="../../index.html">Log in</a>
+            </p>
+            <p class="footer-text">
+                Admin onboarding? <a href="admin-signup.html">Admin Sign Up</a>
+            </p>
+            <p class="footer-text">
+                Already an admin? <a href="admin-login.html">Admin Log In</a>
+            </p>
+        </div>
     </div>
 
     <script src="../js/api-base.js"></script>
