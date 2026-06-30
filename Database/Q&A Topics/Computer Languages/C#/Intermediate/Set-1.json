@@ -1,268 +1,506 @@
-﻿{
-    "language":  "C#",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027value types\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply value types according to established C# implementation practices, considering error handling.",
-                                          "B":  "Avoid value types entirely in C# because it never appears in real projects.",
-                                          "C":  "Use value types only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over value types because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for value types under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027reference types\u0027 and angle \u0027portability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use reference types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over reference types because it is always clearer and safer.",
-                                          "C":  "Apply reference types according to established C# implementation practices, considering portability.",
-                                          "D":  "Avoid reference types entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for reference types under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027classes\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply classes according to established C# implementation practices, considering data handling.",
-                                          "B":  "Avoid classes entirely in C# because it never appears in real projects.",
-                                          "C":  "Use classes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over classes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for classes under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027interfaces\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use interfaces only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over interfaces because it is always clearer and safer.",
-                                          "C":  "Apply interfaces according to established C# implementation practices, considering memory model.",
-                                          "D":  "Avoid interfaces entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for interfaces under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027inheritance\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply inheritance according to established C# implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid inheritance entirely in C# because it never appears in real projects.",
-                                          "C":  "Use inheritance only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over inheritance because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for inheritance under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027polymorphism\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use polymorphism only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over polymorphism because it is always clearer and safer.",
-                                          "C":  "Apply polymorphism according to established C# implementation practices, considering best practices.",
-                                          "D":  "Avoid polymorphism entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for polymorphism under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027encapsulation\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply encapsulation according to established C# implementation practices, considering error handling.",
-                                          "B":  "Avoid encapsulation entirely in C# because it never appears in real projects.",
-                                          "C":  "Use encapsulation only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over encapsulation because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for encapsulation under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027LINQ\u0027 and angle \u0027portability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use LINQ only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over LINQ because it is always clearer and safer.",
-                                          "C":  "Apply LINQ according to established C# implementation practices, considering portability.",
-                                          "D":  "Avoid LINQ entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for LINQ under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027collections\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply collections according to established C# implementation practices, considering data handling.",
-                                          "B":  "Avoid collections entirely in C# because it never appears in real projects.",
-                                          "C":  "Use collections only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over collections because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for collections under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027delegates\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use delegates only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over delegates because it is always clearer and safer.",
-                                          "C":  "Apply delegates according to established C# implementation practices, considering memory model.",
-                                          "D":  "Avoid delegates entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for delegates under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027events\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply events according to established C# implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid events entirely in C# because it never appears in real projects.",
-                                          "C":  "Use events only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over events because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for events under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027async await\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use async await only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over async await because it is always clearer and safer.",
-                                          "C":  "Apply async await according to established C# implementation practices, considering best practices.",
-                                          "D":  "Avoid async await entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for async await under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027exceptions\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply exceptions according to established C# implementation practices, considering error handling.",
-                                          "B":  "Avoid exceptions entirely in C# because it never appears in real projects.",
-                                          "C":  "Use exceptions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over exceptions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for exceptions under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027file I O\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use file I O only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over file I O because it is always clearer and safer.",
-                                          "C":  "Apply file I O according to established C# implementation practices, considering portability.",
-                                          "D":  "Avoid file I O entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for file I O under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027generics\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply generics according to established C# implementation practices, considering data handling.",
-                                          "B":  "Avoid generics entirely in C# because it never appears in real projects.",
-                                          "C":  "Use generics only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over generics because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for generics under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027nullable types\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use nullable types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over nullable types because it is always clearer and safer.",
-                                          "C":  "Apply nullable types according to established C# implementation practices, considering memory model.",
-                                          "D":  "Avoid nullable types entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for nullable types under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027lambda expressions\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply lambda expressions according to established C# implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid lambda expressions entirely in C# because it never appears in real projects.",
-                                          "C":  "Use lambda expressions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lambda expressions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lambda expressions under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027properties\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use properties only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over properties because it is always clearer and safer.",
-                                          "C":  "Apply properties according to established C# implementation practices, considering best practices.",
-                                          "D":  "Avoid properties entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for properties under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027access modifiers\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply access modifiers according to established C# implementation practices, considering error handling.",
-                                          "B":  "Avoid access modifiers entirely in C# because it never appears in real projects.",
-                                          "C":  "Use access modifiers only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over access modifiers because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for access modifiers under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[C#][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027dependency injection\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use dependency injection only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over dependency injection because it is always clearer and safer.",
-                                          "C":  "Apply dependency injection according to established C# implementation practices, considering portability.",
-                                          "D":  "Avoid dependency injection entirely in C# because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for dependency injection under implementation."
-                      }
-                  ]
+{
+  "language": "C#",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "In C#, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in C#?",
+      "options": {
+        "A": "It depends",
+        "B": "1",
+        "C": "-1",
+        "D": "0"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in C#?",
+      "options": {
+        "A": "var x = 910;",
+        "B": "int x = 910;",
+        "C": "$x = 910;",
+        "D": "let x = 910;"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in C#?",
+      "options": {
+        "A": "cmath",
+        "B": "Math",
+        "C": "math",
+        "D": "numpy"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in C#?",
+      "options": {
+        "A": "function",
+        "B": "void",
+        "C": "def",
+        "D": "func"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which operator is used for strict equality in C# (if applicable)?",
+      "options": {
+        "A": "eq",
+        "B": "is",
+        "C": "==",
+        "D": "==="
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '205' in C#?",
+      "options": {
+        "A": "echo \"205\"",
+        "B": "console.log(\"205\")",
+        "C": "System.out.println(\"205\")",
+        "D": "print(\"205\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 584 + 10 evaluate to in C#?",
+      "options": {
+        "A": "58410",
+        "B": "574",
+        "C": "Error",
+        "D": "594"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 414 + 21 evaluate to in C#?",
+      "options": {
+        "A": "393",
+        "B": "435",
+        "C": "41421",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you handle exceptions or errors in C#?",
+      "options": {
+        "A": "try/except",
+        "B": "On Error Resume Next",
+        "C": "begin/rescue",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '137' in C#?",
+      "options": {
+        "A": "echo \"137\"",
+        "B": "System.out.println(\"137\")",
+        "C": "console.log(\"137\")",
+        "D": "print(\"137\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 380 + 18 evaluate to in C#?",
+      "options": {
+        "A": "398",
+        "B": "Error",
+        "C": "362",
+        "D": "38018"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 851 + 40 evaluate to in C#?",
+      "options": {
+        "A": "891",
+        "B": "85140",
+        "C": "811",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '605' in C#?",
+      "options": {
+        "A": "echo \"605\"",
+        "B": "print(\"605\")",
+        "C": "System.out.println(\"605\")",
+        "D": "console.log(\"605\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In C#, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '170' in C#?",
+      "options": {
+        "A": "print(\"170\")",
+        "B": "echo \"170\"",
+        "C": "System.out.println(\"170\")",
+        "D": "console.log(\"170\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you write a single-line comment in C#?",
+      "options": {
+        "A": "# comment",
+        "B": "// comment",
+        "C": "<!-- comment -->",
+        "D": "/* comment */"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 294 + 46 evaluate to in C#?",
+      "options": {
+        "A": "Error",
+        "B": "248",
+        "C": "340",
+        "D": "29446"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 112 + 43 evaluate to in C#?",
+      "options": {
+        "A": "11243",
+        "B": "69",
+        "C": "Error",
+        "D": "155"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '974' in C#?",
+      "options": {
+        "A": "print(\"974\")",
+        "B": "System.out.println(\"974\")",
+        "C": "console.log(\"974\")",
+        "D": "echo \"974\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C#, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 743 + 37 evaluate to in C#?",
+      "options": {
+        "A": "Error",
+        "B": "74337",
+        "C": "780",
+        "D": "706"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '716' in C#?",
+      "options": {
+        "A": "System.out.println(\"716\")",
+        "B": "print(\"716\")",
+        "C": "console.log(\"716\")",
+        "D": "echo \"716\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In C#, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '992' in C#?",
+      "options": {
+        "A": "System.out.println(\"992\")",
+        "B": "echo \"992\"",
+        "C": "print(\"992\")",
+        "D": "console.log(\"992\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '529' in C#?",
+      "options": {
+        "A": "print(\"529\")",
+        "B": "System.out.println(\"529\")",
+        "C": "console.log(\"529\")",
+        "D": "echo \"529\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '652' in C#?",
+      "options": {
+        "A": "System.out.println(\"652\")",
+        "B": "print(\"652\")",
+        "C": "echo \"652\"",
+        "D": "console.log(\"652\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 39 + 31 evaluate to in C#?",
+      "options": {
+        "A": "8",
+        "B": "3931",
+        "C": "70",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '741' in C#?",
+      "options": {
+        "A": "print(\"741\")",
+        "B": "console.log(\"741\")",
+        "C": "echo \"741\"",
+        "D": "System.out.println(\"741\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 945 + 14 evaluate to in C#?",
+      "options": {
+        "A": "94514",
+        "B": "Error",
+        "C": "959",
+        "D": "931"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '324' in C#?",
+      "options": {
+        "A": "console.log(\"324\")",
+        "B": "print(\"324\")",
+        "C": "System.out.println(\"324\")",
+        "D": "echo \"324\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 588 + 39 evaluate to in C#?",
+      "options": {
+        "A": "627",
+        "B": "58839",
+        "C": "Error",
+        "D": "549"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '490' in C#?",
+      "options": {
+        "A": "echo \"490\"",
+        "B": "print(\"490\")",
+        "C": "System.out.println(\"490\")",
+        "D": "console.log(\"490\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 39 + 49 evaluate to in C#?",
+      "options": {
+        "A": "88",
+        "B": "-10",
+        "C": "Error",
+        "D": "3949"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 824 + 23 evaluate to in C#?",
+      "options": {
+        "A": "847",
+        "B": "82423",
+        "C": "Error",
+        "D": "801"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C#, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 602 + 12 evaluate to in C#?",
+      "options": {
+        "A": "Error",
+        "B": "590",
+        "C": "614",
+        "D": "60212"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In C#, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 943 + 36 evaluate to in C#?",
+      "options": {
+        "A": "907",
+        "B": "Error",
+        "C": "94336",
+        "D": "979"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '717' in C#?",
+      "options": {
+        "A": "System.out.println(\"717\")",
+        "B": "console.log(\"717\")",
+        "C": "echo \"717\"",
+        "D": "print(\"717\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '846' in C#?",
+      "options": {
+        "A": "System.out.println(\"846\")",
+        "B": "echo \"846\"",
+        "C": "print(\"846\")",
+        "D": "console.log(\"846\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 963 + 27 evaluate to in C#?",
+      "options": {
+        "A": "96327",
+        "B": "Error",
+        "C": "990",
+        "D": "936"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '378' in C#?",
+      "options": {
+        "A": "echo \"378\"",
+        "B": "print(\"378\")",
+        "C": "System.out.println(\"378\")",
+        "D": "console.log(\"378\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '890' in C#?",
+      "options": {
+        "A": "System.out.println(\"890\")",
+        "B": "print(\"890\")",
+        "C": "console.log(\"890\")",
+        "D": "echo \"890\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '374' in C#?",
+      "options": {
+        "A": "console.log(\"374\")",
+        "B": "print(\"374\")",
+        "C": "System.out.println(\"374\")",
+        "D": "echo \"374\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '577' in C#?",
+      "options": {
+        "A": "echo \"577\"",
+        "B": "print(\"577\")",
+        "C": "System.out.println(\"577\")",
+        "D": "console.log(\"577\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '368' in C#?",
+      "options": {
+        "A": "echo \"368\"",
+        "B": "console.log(\"368\")",
+        "C": "print(\"368\")",
+        "D": "System.out.println(\"368\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 837 + 25 evaluate to in C#?",
+      "options": {
+        "A": "862",
+        "B": "Error",
+        "C": "812",
+        "D": "83725"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 118 + 35 evaluate to in C#?",
+      "options": {
+        "A": "83",
+        "B": "11835",
+        "C": "Error",
+        "D": "153"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 698 + 32 evaluate to in C#?",
+      "options": {
+        "A": "730",
+        "B": "666",
+        "C": "69832",
+        "D": "Error"
+      },
+      "answer": "A"
+    }
+  ]
 }

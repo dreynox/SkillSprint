@@ -1,268 +1,506 @@
-﻿{
-    "language":  "HTML",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027document structure\u0027 and angle \u0027portability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply document structure according to established HTML implementation practices, considering portability.",
-                                          "B":  "Avoid document structure entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use document structure only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over document structure because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for document structure under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027semantic tags\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use semantic tags only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over semantic tags because it is always clearer and safer.",
-                                          "C":  "Apply semantic tags according to established HTML implementation practices, considering data handling.",
-                                          "D":  "Avoid semantic tags entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for semantic tags under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027forms\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply forms according to established HTML implementation practices, considering memory model.",
-                                          "B":  "Avoid forms entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use forms only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over forms because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for forms under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027input types\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use input types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over input types because it is always clearer and safer.",
-                                          "C":  "Apply input types according to established HTML implementation practices, considering syntax behavior.",
-                                          "D":  "Avoid input types entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for input types under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027labels\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply labels according to established HTML implementation practices, considering best practices.",
-                                          "B":  "Avoid labels entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use labels only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over labels because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for labels under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027tables\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use tables only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over tables because it is always clearer and safer.",
-                                          "C":  "Apply tables according to established HTML implementation practices, considering error handling.",
-                                          "D":  "Avoid tables entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for tables under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027lists\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply lists according to established HTML implementation practices, considering portability.",
-                                          "B":  "Avoid lists entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use lists only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lists because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lists under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027links\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use links only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over links because it is always clearer and safer.",
-                                          "C":  "Apply links according to established HTML implementation practices, considering data handling.",
-                                          "D":  "Avoid links entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for links under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027images\u0027 and angle \u0027memory model\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply images according to established HTML implementation practices, considering memory model.",
-                                          "B":  "Avoid images entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use images only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over images because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for images under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027audio video\u0027 and angle \u0027syntax behavior\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use audio video only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over audio video because it is always clearer and safer.",
-                                          "C":  "Apply audio video according to established HTML implementation practices, considering syntax behavior.",
-                                          "D":  "Avoid audio video entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for audio video under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027meta tags\u0027 and angle \u0027best practices\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply meta tags according to established HTML implementation practices, considering best practices.",
-                                          "B":  "Avoid meta tags entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use meta tags only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over meta tags because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for meta tags under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027accessibility\u0027 and angle \u0027error handling\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use accessibility only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over accessibility because it is always clearer and safer.",
-                                          "C":  "Apply accessibility according to established HTML implementation practices, considering error handling.",
-                                          "D":  "Avoid accessibility entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for accessibility under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027ARIA\u0027 and angle \u0027portability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply ARIA according to established HTML implementation practices, considering portability.",
-                                          "B":  "Avoid ARIA entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use ARIA only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over ARIA because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for ARIA under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027iframes\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use iframes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over iframes because it is always clearer and safer.",
-                                          "C":  "Apply iframes according to established HTML implementation practices, considering data handling.",
-                                          "D":  "Avoid iframes entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for iframes under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027head body separation\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply head body separation according to established HTML implementation practices, considering memory model.",
-                                          "B":  "Avoid head body separation entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use head body separation only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over head body separation because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for head body separation under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027block inline elements\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use block inline elements only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over block inline elements because it is always clearer and safer.",
-                                          "C":  "Apply block inline elements according to established HTML implementation practices, considering syntax behavior.",
-                                          "D":  "Avoid block inline elements entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for block inline elements under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027entities\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply entities according to established HTML implementation practices, considering best practices.",
-                                          "B":  "Avoid entities entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use entities only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over entities because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for entities under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027validation\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use validation only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over validation because it is always clearer and safer.",
-                                          "C":  "Apply validation according to established HTML implementation practices, considering error handling.",
-                                          "D":  "Avoid validation entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for validation under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027SEO basics\u0027 and angle \u0027portability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply SEO basics according to established HTML implementation practices, considering portability.",
-                                          "B":  "Avoid SEO basics entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use SEO basics only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over SEO basics because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for SEO basics under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[HTML][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027canvas\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use canvas only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over canvas because it is always clearer and safer.",
-                                          "C":  "Apply canvas according to established HTML implementation practices, considering data handling.",
-                                          "D":  "Avoid canvas entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for canvas under implementation."
-                      }
-                  ]
+{
+  "language": "HTML",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "Which operator is used for strict equality in HTML (if applicable)?",
+      "options": {
+        "A": "===",
+        "B": "==",
+        "C": "eq",
+        "D": "is"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 223 + 34 evaluate to in HTML?",
+      "options": {
+        "A": "Error",
+        "B": "22334",
+        "C": "257",
+        "D": "189"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In HTML, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In HTML, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you handle exceptions or errors in HTML?",
+      "options": {
+        "A": "try/catch",
+        "B": "try/except",
+        "C": "On Error Resume Next",
+        "D": "begin/rescue"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you write a single-line comment in HTML?",
+      "options": {
+        "A": "/* comment */",
+        "B": "// comment",
+        "C": "<!-- comment -->",
+        "D": "# comment"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In HTML, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in HTML?",
+      "options": {
+        "A": "def",
+        "B": "func",
+        "C": "void",
+        "D": "function"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in HTML?",
+      "options": {
+        "A": "int x = 90;",
+        "B": "$x = 90;",
+        "C": "let x = 90;",
+        "D": "var x = 90;"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '209' in HTML?",
+      "options": {
+        "A": "console.log(\"209\")",
+        "B": "print(\"209\")",
+        "C": "System.out.println(\"209\")",
+        "D": "echo \"209\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 377 + 16 evaluate to in HTML?",
+      "options": {
+        "A": "393",
+        "B": "Error",
+        "C": "37716",
+        "D": "361"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in HTML?",
+      "options": {
+        "A": "cmath",
+        "B": "math",
+        "C": "Math",
+        "D": "numpy"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in HTML?",
+      "options": {
+        "A": "It depends",
+        "B": "0",
+        "C": "-1",
+        "D": "1"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '148' in HTML?",
+      "options": {
+        "A": "echo \"148\"",
+        "B": "print(\"148\")",
+        "C": "System.out.println(\"148\")",
+        "D": "console.log(\"148\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 119 + 27 evaluate to in HTML?",
+      "options": {
+        "A": "146",
+        "B": "11927",
+        "C": "Error",
+        "D": "92"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 206 + 21 evaluate to in HTML?",
+      "options": {
+        "A": "227",
+        "B": "185",
+        "C": "Error",
+        "D": "20621"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 721 + 17 evaluate to in HTML?",
+      "options": {
+        "A": "704",
+        "B": "Error",
+        "C": "72117",
+        "D": "738"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '38' in HTML?",
+      "options": {
+        "A": "System.out.println(\"38\")",
+        "B": "console.log(\"38\")",
+        "C": "print(\"38\")",
+        "D": "echo \"38\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '546' in HTML?",
+      "options": {
+        "A": "System.out.println(\"546\")",
+        "B": "console.log(\"546\")",
+        "C": "print(\"546\")",
+        "D": "echo \"546\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '663' in HTML?",
+      "options": {
+        "A": "print(\"663\")",
+        "B": "echo \"663\"",
+        "C": "System.out.println(\"663\")",
+        "D": "console.log(\"663\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 299 + 26 evaluate to in HTML?",
+      "options": {
+        "A": "273",
+        "B": "29926",
+        "C": "325",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '214' in HTML?",
+      "options": {
+        "A": "echo \"214\"",
+        "B": "System.out.println(\"214\")",
+        "C": "print(\"214\")",
+        "D": "console.log(\"214\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 676 + 47 evaluate to in HTML?",
+      "options": {
+        "A": "723",
+        "B": "67647",
+        "C": "629",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 694 + 37 evaluate to in HTML?",
+      "options": {
+        "A": "69437",
+        "B": "Error",
+        "C": "657",
+        "D": "731"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 437 + 46 evaluate to in HTML?",
+      "options": {
+        "A": "483",
+        "B": "43746",
+        "C": "Error",
+        "D": "391"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 473 + 38 evaluate to in HTML?",
+      "options": {
+        "A": "47338",
+        "B": "511",
+        "C": "Error",
+        "D": "435"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 31 + 23 evaluate to in HTML?",
+      "options": {
+        "A": "3123",
+        "B": "Error",
+        "C": "8",
+        "D": "54"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 389 + 14 evaluate to in HTML?",
+      "options": {
+        "A": "375",
+        "B": "Error",
+        "C": "403",
+        "D": "38914"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '332' in HTML?",
+      "options": {
+        "A": "print(\"332\")",
+        "B": "System.out.println(\"332\")",
+        "C": "echo \"332\"",
+        "D": "console.log(\"332\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '102' in HTML?",
+      "options": {
+        "A": "System.out.println(\"102\")",
+        "B": "print(\"102\")",
+        "C": "console.log(\"102\")",
+        "D": "echo \"102\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '303' in HTML?",
+      "options": {
+        "A": "echo \"303\"",
+        "B": "print(\"303\")",
+        "C": "console.log(\"303\")",
+        "D": "System.out.println(\"303\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '685' in HTML?",
+      "options": {
+        "A": "System.out.println(\"685\")",
+        "B": "echo \"685\"",
+        "C": "console.log(\"685\")",
+        "D": "print(\"685\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '835' in HTML?",
+      "options": {
+        "A": "System.out.println(\"835\")",
+        "B": "console.log(\"835\")",
+        "C": "echo \"835\"",
+        "D": "print(\"835\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '286' in HTML?",
+      "options": {
+        "A": "console.log(\"286\")",
+        "B": "print(\"286\")",
+        "C": "System.out.println(\"286\")",
+        "D": "echo \"286\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '310' in HTML?",
+      "options": {
+        "A": "System.out.println(\"310\")",
+        "B": "console.log(\"310\")",
+        "C": "print(\"310\")",
+        "D": "echo \"310\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 224 + 45 evaluate to in HTML?",
+      "options": {
+        "A": "269",
+        "B": "22445",
+        "C": "179",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 366 + 34 evaluate to in HTML?",
+      "options": {
+        "A": "400",
+        "B": "332",
+        "C": "36634",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 839 + 37 evaluate to in HTML?",
+      "options": {
+        "A": "876",
+        "B": "Error",
+        "C": "802",
+        "D": "83937"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 474 + 12 evaluate to in HTML?",
+      "options": {
+        "A": "486",
+        "B": "Error",
+        "C": "462",
+        "D": "47412"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 798 + 43 evaluate to in HTML?",
+      "options": {
+        "A": "79843",
+        "B": "755",
+        "C": "841",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 50 + 18 evaluate to in HTML?",
+      "options": {
+        "A": "5018",
+        "B": "32",
+        "C": "Error",
+        "D": "68"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '117' in HTML?",
+      "options": {
+        "A": "console.log(\"117\")",
+        "B": "print(\"117\")",
+        "C": "echo \"117\"",
+        "D": "System.out.println(\"117\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 595 + 44 evaluate to in HTML?",
+      "options": {
+        "A": "551",
+        "B": "Error",
+        "C": "639",
+        "D": "59544"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '747' in HTML?",
+      "options": {
+        "A": "console.log(\"747\")",
+        "B": "print(\"747\")",
+        "C": "echo \"747\"",
+        "D": "System.out.println(\"747\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 345 + 23 evaluate to in HTML?",
+      "options": {
+        "A": "368",
+        "B": "322",
+        "C": "Error",
+        "D": "34523"
+      },
+      "answer": "A"
+    }
+  ]
 }

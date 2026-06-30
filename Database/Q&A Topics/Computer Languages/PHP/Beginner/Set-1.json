@@ -1,268 +1,506 @@
-﻿{
-    "language":  "PHP",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027syntax basics\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply syntax basics according to established PHP fundamentals practices, considering readability.",
-                                          "B":  "Avoid syntax basics entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use syntax basics only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over syntax basics because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for syntax basics under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027variables\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use variables only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over variables because it is always clearer and safer.",
-                                          "C":  "Apply variables according to established PHP fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid variables entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for variables under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply arrays according to established PHP fundamentals practices, considering type safety.",
-                                          "B":  "Avoid arrays entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use arrays only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027strings\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use strings only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over strings because it is always clearer and safer.",
-                                          "C":  "Apply strings according to established PHP fundamentals practices, considering modularity.",
-                                          "D":  "Avoid strings entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for strings under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply functions according to established PHP fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid functions entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027forms\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use forms only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over forms because it is always clearer and safer.",
-                                          "C":  "Apply forms according to established PHP fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid forms entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for forms under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027sessions\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply sessions according to established PHP fundamentals practices, considering readability.",
-                                          "B":  "Avoid sessions entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use sessions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over sessions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for sessions under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027cookies\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use cookies only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over cookies because it is always clearer and safer.",
-                                          "C":  "Apply cookies according to established PHP fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid cookies entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for cookies under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027file uploads\u0027 and angle \u0027type safety\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply file uploads according to established PHP fundamentals practices, considering type safety.",
-                                          "B":  "Avoid file uploads entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use file uploads only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over file uploads because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for file uploads under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027include require\u0027 and angle \u0027modularity\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use include require only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over include require because it is always clearer and safer.",
-                                          "C":  "Apply include require according to established PHP fundamentals practices, considering modularity.",
-                                          "D":  "Avoid include require entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for include require under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027classes\u0027 and angle \u0027runtime behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply classes according to established PHP fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid classes entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use classes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over classes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for classes under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027inheritance\u0027 and angle \u0027edge cases\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use inheritance only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over inheritance because it is always clearer and safer.",
-                                          "C":  "Apply inheritance according to established PHP fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid inheritance entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for inheritance under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027interfaces\u0027 and angle \u0027readability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply interfaces according to established PHP fundamentals practices, considering readability.",
-                                          "B":  "Avoid interfaces entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use interfaces only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over interfaces because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for interfaces under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027exceptions\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use exceptions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over exceptions because it is always clearer and safer.",
-                                          "C":  "Apply exceptions according to established PHP fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid exceptions entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for exceptions under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027PDO\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply PDO according to established PHP fundamentals practices, considering type safety.",
-                                          "B":  "Avoid PDO entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use PDO only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over PDO because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for PDO under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027prepared statements\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use prepared statements only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over prepared statements because it is always clearer and safer.",
-                                          "C":  "Apply prepared statements according to established PHP fundamentals practices, considering modularity.",
-                                          "D":  "Avoid prepared statements entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for prepared statements under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027REST APIs\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply REST APIs according to established PHP fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid REST APIs entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use REST APIs only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over REST APIs because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for REST APIs under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027JSON handling\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use JSON handling only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over JSON handling because it is always clearer and safer.",
-                                          "C":  "Apply JSON handling according to established PHP fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid JSON handling entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for JSON handling under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027Composer\u0027 and angle \u0027readability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply Composer according to established PHP fundamentals practices, considering readability.",
-                                          "B":  "Avoid Composer entirely in PHP because it never appears in real projects.",
-                                          "C":  "Use Composer only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over Composer because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for Composer under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[PHP][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027namespaces\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use namespaces only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over namespaces because it is always clearer and safer.",
-                                          "C":  "Apply namespaces according to established PHP fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid namespaces entirely in PHP because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for namespaces under fundamentals."
-                      }
-                  ]
+{
+  "language": "PHP",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "Which keyword is used to define a function/method in PHP?",
+      "options": {
+        "A": "function",
+        "B": "def",
+        "C": "void",
+        "D": "func"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '576' in PHP?",
+      "options": {
+        "A": "System.out.println(\"576\")",
+        "B": "echo \"576\"",
+        "C": "print(\"576\")",
+        "D": "console.log(\"576\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you handle exceptions or errors in PHP?",
+      "options": {
+        "A": "On Error Resume Next",
+        "B": "try/except",
+        "C": "begin/rescue",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in PHP?",
+      "options": {
+        "A": "int x = 709;",
+        "B": "let x = 709;",
+        "C": "$x = 709;",
+        "D": "var x = 709;"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In PHP, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you write a single-line comment in PHP?",
+      "options": {
+        "A": "# comment",
+        "B": "/* comment */",
+        "C": "<!-- comment -->",
+        "D": "// comment"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in PHP?",
+      "options": {
+        "A": "Math",
+        "B": "math",
+        "C": "numpy",
+        "D": "cmath"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 492 + 24 evaluate to in PHP?",
+      "options": {
+        "A": "468",
+        "B": "49224",
+        "C": "516",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '209' in PHP?",
+      "options": {
+        "A": "echo \"209\"",
+        "B": "System.out.println(\"209\")",
+        "C": "console.log(\"209\")",
+        "D": "print(\"209\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '138' in PHP?",
+      "options": {
+        "A": "print(\"138\")",
+        "B": "System.out.println(\"138\")",
+        "C": "echo \"138\"",
+        "D": "console.log(\"138\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In PHP, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In PHP, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '413' in PHP?",
+      "options": {
+        "A": "System.out.println(\"413\")",
+        "B": "console.log(\"413\")",
+        "C": "print(\"413\")",
+        "D": "echo \"413\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 199 + 27 evaluate to in PHP?",
+      "options": {
+        "A": "172",
+        "B": "226",
+        "C": "Error",
+        "D": "19927"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in PHP?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "-1",
+        "D": "It depends"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 86 + 14 evaluate to in PHP?",
+      "options": {
+        "A": "72",
+        "B": "8614",
+        "C": "Error",
+        "D": "100"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which operator is used for strict equality in PHP (if applicable)?",
+      "options": {
+        "A": "eq",
+        "B": "===",
+        "C": "==",
+        "D": "is"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In PHP, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '442' in PHP?",
+      "options": {
+        "A": "console.log(\"442\")",
+        "B": "print(\"442\")",
+        "C": "echo \"442\"",
+        "D": "System.out.println(\"442\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 1000 + 13 evaluate to in PHP?",
+      "options": {
+        "A": "100013",
+        "B": "987",
+        "C": "1013",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '117' in PHP?",
+      "options": {
+        "A": "System.out.println(\"117\")",
+        "B": "echo \"117\"",
+        "C": "print(\"117\")",
+        "D": "console.log(\"117\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 731 + 23 evaluate to in PHP?",
+      "options": {
+        "A": "754",
+        "B": "73123",
+        "C": "Error",
+        "D": "708"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 678 + 32 evaluate to in PHP?",
+      "options": {
+        "A": "Error",
+        "B": "67832",
+        "C": "710",
+        "D": "646"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 41 + 10 evaluate to in PHP?",
+      "options": {
+        "A": "Error",
+        "B": "31",
+        "C": "4110",
+        "D": "51"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '176' in PHP?",
+      "options": {
+        "A": "console.log(\"176\")",
+        "B": "print(\"176\")",
+        "C": "echo \"176\"",
+        "D": "System.out.println(\"176\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 186 + 28 evaluate to in PHP?",
+      "options": {
+        "A": "18628",
+        "B": "Error",
+        "C": "158",
+        "D": "214"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '66' in PHP?",
+      "options": {
+        "A": "print(\"66\")",
+        "B": "System.out.println(\"66\")",
+        "C": "console.log(\"66\")",
+        "D": "echo \"66\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 616 + 31 evaluate to in PHP?",
+      "options": {
+        "A": "61631",
+        "B": "647",
+        "C": "Error",
+        "D": "585"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In PHP, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '225' in PHP?",
+      "options": {
+        "A": "echo \"225\"",
+        "B": "System.out.println(\"225\")",
+        "C": "console.log(\"225\")",
+        "D": "print(\"225\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In PHP, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '342' in PHP?",
+      "options": {
+        "A": "console.log(\"342\")",
+        "B": "System.out.println(\"342\")",
+        "C": "echo \"342\"",
+        "D": "print(\"342\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '360' in PHP?",
+      "options": {
+        "A": "print(\"360\")",
+        "B": "console.log(\"360\")",
+        "C": "System.out.println(\"360\")",
+        "D": "echo \"360\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 954 + 22 evaluate to in PHP?",
+      "options": {
+        "A": "95422",
+        "B": "Error",
+        "C": "932",
+        "D": "976"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '536' in PHP?",
+      "options": {
+        "A": "System.out.println(\"536\")",
+        "B": "echo \"536\"",
+        "C": "print(\"536\")",
+        "D": "console.log(\"536\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 551 + 21 evaluate to in PHP?",
+      "options": {
+        "A": "530",
+        "B": "572",
+        "C": "Error",
+        "D": "55121"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In PHP, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '626' in PHP?",
+      "options": {
+        "A": "console.log(\"626\")",
+        "B": "echo \"626\"",
+        "C": "System.out.println(\"626\")",
+        "D": "print(\"626\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In PHP, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '484' in PHP?",
+      "options": {
+        "A": "System.out.println(\"484\")",
+        "B": "console.log(\"484\")",
+        "C": "print(\"484\")",
+        "D": "echo \"484\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 725 + 38 evaluate to in PHP?",
+      "options": {
+        "A": "Error",
+        "B": "72538",
+        "C": "763",
+        "D": "687"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 758 + 14 evaluate to in PHP?",
+      "options": {
+        "A": "772",
+        "B": "Error",
+        "C": "744",
+        "D": "75814"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 452 + 13 evaluate to in PHP?",
+      "options": {
+        "A": "45213",
+        "B": "Error",
+        "C": "439",
+        "D": "465"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '781' in PHP?",
+      "options": {
+        "A": "console.log(\"781\")",
+        "B": "print(\"781\")",
+        "C": "System.out.println(\"781\")",
+        "D": "echo \"781\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '229' in PHP?",
+      "options": {
+        "A": "console.log(\"229\")",
+        "B": "echo \"229\"",
+        "C": "System.out.println(\"229\")",
+        "D": "print(\"229\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '501' in PHP?",
+      "options": {
+        "A": "print(\"501\")",
+        "B": "console.log(\"501\")",
+        "C": "System.out.println(\"501\")",
+        "D": "echo \"501\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '231' in PHP?",
+      "options": {
+        "A": "System.out.println(\"231\")",
+        "B": "print(\"231\")",
+        "C": "echo \"231\"",
+        "D": "console.log(\"231\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 213 + 30 evaluate to in PHP?",
+      "options": {
+        "A": "183",
+        "B": "21330",
+        "C": "Error",
+        "D": "243"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 100 + 14 evaluate to in PHP?",
+      "options": {
+        "A": "114",
+        "B": "10014",
+        "C": "86",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '785' in PHP?",
+      "options": {
+        "A": "print(\"785\")",
+        "B": "console.log(\"785\")",
+        "C": "echo \"785\"",
+        "D": "System.out.println(\"785\")"
+      },
+      "answer": "A"
+    }
+  ]
 }

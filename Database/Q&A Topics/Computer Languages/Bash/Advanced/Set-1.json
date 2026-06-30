@@ -1,268 +1,506 @@
-﻿{
-    "language":  "Bash",
-    "level":  "Advanced",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q1] In a in production code scenario focused on optimization, for topic \u0027variables\u0027 and angle \u0027portability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply variables according to established Bash optimization practices, considering portability.",
-                                          "B":  "Avoid variables entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use variables only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over variables because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for variables under optimization."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q2] In a in interview-style problems scenario focused on optimization, for topic \u0027quoting\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use quoting only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over quoting because it is always clearer and safer.",
-                                          "C":  "Apply quoting according to established Bash optimization practices, considering data handling.",
-                                          "D":  "Avoid quoting entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for quoting under optimization."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q3] In a for maintainable project design scenario focused on optimization, for topic \u0027pipes\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply pipes according to established Bash optimization practices, considering memory model.",
-                                          "B":  "Avoid pipes entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use pipes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over pipes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for pipes under optimization."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q4] In a for secure implementation scenario focused on optimization, for topic \u0027redirection\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use redirection only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over redirection because it is always clearer and safer.",
-                                          "C":  "Apply redirection according to established Bash optimization practices, considering syntax behavior.",
-                                          "D":  "Avoid redirection entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for redirection under optimization."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q5] In a for performance-sensitive code scenario focused on optimization, for topic \u0027grep\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply grep according to established Bash optimization practices, considering best practices.",
-                                          "B":  "Avoid grep entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use grep only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over grep because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for grep under optimization."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q6] In a for team collaboration scenario focused on optimization, for topic \u0027awk\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use awk only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over awk because it is always clearer and safer.",
-                                          "C":  "Apply awk according to established Bash optimization practices, considering error handling.",
-                                          "D":  "Avoid awk entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for awk under optimization."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q7] In a during code review scenario focused on optimization, for topic \u0027sed\u0027 and angle \u0027portability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply sed according to established Bash optimization practices, considering portability.",
-                                          "B":  "Avoid sed entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use sed only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over sed because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for sed under optimization."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q8] In a while debugging scenario focused on optimization, for topic \u0027loops\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use loops only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over loops because it is always clearer and safer.",
-                                          "C":  "Apply loops according to established Bash optimization practices, considering data handling.",
-                                          "D":  "Avoid loops entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for loops under optimization."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q9] In a in production code scenario focused on optimization, for topic \u0027conditions\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply conditions according to established Bash optimization practices, considering memory model.",
-                                          "B":  "Avoid conditions entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use conditions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over conditions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for conditions under optimization."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q10] In a in interview-style problems scenario focused on optimization, for topic \u0027functions\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use functions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over functions because it is always clearer and safer.",
-                                          "C":  "Apply functions according to established Bash optimization practices, considering syntax behavior.",
-                                          "D":  "Avoid functions entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for functions under optimization."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q11] In a for maintainable project design scenario focused on optimization, for topic \u0027exit codes\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply exit codes according to established Bash optimization practices, considering best practices.",
-                                          "B":  "Avoid exit codes entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use exit codes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over exit codes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for exit codes under optimization."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q12] In a for secure implementation scenario focused on optimization, for topic \u0027cron\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use cron only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over cron because it is always clearer and safer.",
-                                          "C":  "Apply cron according to established Bash optimization practices, considering error handling.",
-                                          "D":  "Avoid cron entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for cron under optimization."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q13] In a for performance-sensitive code scenario focused on optimization, for topic \u0027environment variables\u0027 and angle \u0027portability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply environment variables according to established Bash optimization practices, considering portability.",
-                                          "B":  "Avoid environment variables entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use environment variables only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over environment variables because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for environment variables under optimization."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q14] In a for team collaboration scenario focused on optimization, for topic \u0027permissions\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use permissions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over permissions because it is always clearer and safer.",
-                                          "C":  "Apply permissions according to established Bash optimization practices, considering data handling.",
-                                          "D":  "Avoid permissions entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for permissions under optimization."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q15] In a during code review scenario focused on optimization, for topic \u0027process control\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply process control according to established Bash optimization practices, considering memory model.",
-                                          "B":  "Avoid process control entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use process control only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over process control because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for process control under optimization."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q16] In a while debugging scenario focused on optimization, for topic \u0027signal handling\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use signal handling only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over signal handling because it is always clearer and safer.",
-                                          "C":  "Apply signal handling according to established Bash optimization practices, considering syntax behavior.",
-                                          "D":  "Avoid signal handling entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for signal handling under optimization."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q17] In a in production code scenario focused on optimization, for topic \u0027arrays\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply arrays according to established Bash optimization practices, considering best practices.",
-                                          "B":  "Avoid arrays entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use arrays only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for arrays under optimization."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q18] In a in interview-style problems scenario focused on optimization, for topic \u0027string expansion\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use string expansion only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over string expansion because it is always clearer and safer.",
-                                          "C":  "Apply string expansion according to established Bash optimization practices, considering error handling.",
-                                          "D":  "Avoid string expansion entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for string expansion under optimization."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q19] In a for maintainable project design scenario focused on optimization, for topic \u0027command substitution\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply command substitution according to established Bash optimization practices, considering portability.",
-                                          "B":  "Avoid command substitution entirely in Bash because it never appears in real projects.",
-                                          "C":  "Use command substitution only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over command substitution because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for command substitution under optimization."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[Bash][Advanced][Set-1][Q20] In a for secure implementation scenario focused on optimization, for topic \u0027script safety\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use script safety only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over script safety because it is always clearer and safer.",
-                                          "C":  "Apply script safety according to established Bash optimization practices, considering data handling.",
-                                          "D":  "Avoid script safety entirely in Bash because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for script safety under optimization."
-                      }
-                  ]
+{
+  "language": "Bash",
+  "level": "Advanced",
+  "questions": [
+    {
+      "question": "Which library/module is commonly used for math operations in Bash?",
+      "options": {
+        "A": "math",
+        "B": "Math",
+        "C": "numpy",
+        "D": "cmath"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which operator is used for strict equality in Bash (if applicable)?",
+      "options": {
+        "A": "==",
+        "B": "===",
+        "C": "is",
+        "D": "eq"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in Bash?",
+      "options": {
+        "A": "var x = 724;",
+        "B": "$x = 724;",
+        "C": "let x = 724;",
+        "D": "int x = 724;"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Bash, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Bash, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '735' in Bash?",
+      "options": {
+        "A": "System.out.println(\"735\")",
+        "B": "print(\"735\")",
+        "C": "console.log(\"735\")",
+        "D": "echo \"735\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '267' in Bash?",
+      "options": {
+        "A": "System.out.println(\"267\")",
+        "B": "console.log(\"267\")",
+        "C": "print(\"267\")",
+        "D": "echo \"267\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you write a single-line comment in Bash?",
+      "options": {
+        "A": "// comment",
+        "B": "/* comment */",
+        "C": "# comment",
+        "D": "<!-- comment -->"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 710 + 41 evaluate to in Bash?",
+      "options": {
+        "A": "669",
+        "B": "751",
+        "C": "71041",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '334' in Bash?",
+      "options": {
+        "A": "echo \"334\"",
+        "B": "System.out.println(\"334\")",
+        "C": "console.log(\"334\")",
+        "D": "print(\"334\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in Bash?",
+      "options": {
+        "A": "It depends",
+        "B": "1",
+        "C": "0",
+        "D": "-1"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '932' in Bash?",
+      "options": {
+        "A": "echo \"932\"",
+        "B": "print(\"932\")",
+        "C": "console.log(\"932\")",
+        "D": "System.out.println(\"932\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 305 + 12 evaluate to in Bash?",
+      "options": {
+        "A": "30512",
+        "B": "Error",
+        "C": "293",
+        "D": "317"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '743' in Bash?",
+      "options": {
+        "A": "print(\"743\")",
+        "B": "console.log(\"743\")",
+        "C": "System.out.println(\"743\")",
+        "D": "echo \"743\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Bash, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you handle exceptions or errors in Bash?",
+      "options": {
+        "A": "On Error Resume Next",
+        "B": "try/except",
+        "C": "begin/rescue",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '563' in Bash?",
+      "options": {
+        "A": "echo \"563\"",
+        "B": "System.out.println(\"563\")",
+        "C": "console.log(\"563\")",
+        "D": "print(\"563\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 945 + 42 evaluate to in Bash?",
+      "options": {
+        "A": "903",
+        "B": "Error",
+        "C": "94542",
+        "D": "987"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '47' in Bash?",
+      "options": {
+        "A": "echo \"47\"",
+        "B": "System.out.println(\"47\")",
+        "C": "console.log(\"47\")",
+        "D": "print(\"47\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in Bash?",
+      "options": {
+        "A": "func",
+        "B": "function",
+        "C": "void",
+        "D": "def"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 249 + 41 evaluate to in Bash?",
+      "options": {
+        "A": "208",
+        "B": "290",
+        "C": "Error",
+        "D": "24941"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 167 + 33 evaluate to in Bash?",
+      "options": {
+        "A": "16733",
+        "B": "Error",
+        "C": "200",
+        "D": "134"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '191' in Bash?",
+      "options": {
+        "A": "console.log(\"191\")",
+        "B": "echo \"191\"",
+        "C": "print(\"191\")",
+        "D": "System.out.println(\"191\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '623' in Bash?",
+      "options": {
+        "A": "echo \"623\"",
+        "B": "print(\"623\")",
+        "C": "console.log(\"623\")",
+        "D": "System.out.println(\"623\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '459' in Bash?",
+      "options": {
+        "A": "console.log(\"459\")",
+        "B": "print(\"459\")",
+        "C": "System.out.println(\"459\")",
+        "D": "echo \"459\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Bash, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 560 + 27 evaluate to in Bash?",
+      "options": {
+        "A": "Error",
+        "B": "56027",
+        "C": "533",
+        "D": "587"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '687' in Bash?",
+      "options": {
+        "A": "print(\"687\")",
+        "B": "System.out.println(\"687\")",
+        "C": "console.log(\"687\")",
+        "D": "echo \"687\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '1' in Bash?",
+      "options": {
+        "A": "console.log(\"1\")",
+        "B": "System.out.println(\"1\")",
+        "C": "print(\"1\")",
+        "D": "echo \"1\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 801 + 26 evaluate to in Bash?",
+      "options": {
+        "A": "827",
+        "B": "775",
+        "C": "80126",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 801 + 27 evaluate to in Bash?",
+      "options": {
+        "A": "Error",
+        "B": "828",
+        "C": "80127",
+        "D": "774"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '64' in Bash?",
+      "options": {
+        "A": "console.log(\"64\")",
+        "B": "print(\"64\")",
+        "C": "echo \"64\"",
+        "D": "System.out.println(\"64\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '849' in Bash?",
+      "options": {
+        "A": "System.out.println(\"849\")",
+        "B": "echo \"849\"",
+        "C": "console.log(\"849\")",
+        "D": "print(\"849\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 938 + 16 evaluate to in Bash?",
+      "options": {
+        "A": "93816",
+        "B": "Error",
+        "C": "922",
+        "D": "954"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '877' in Bash?",
+      "options": {
+        "A": "console.log(\"877\")",
+        "B": "echo \"877\"",
+        "C": "System.out.println(\"877\")",
+        "D": "print(\"877\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 361 + 35 evaluate to in Bash?",
+      "options": {
+        "A": "36135",
+        "B": "326",
+        "C": "396",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 594 + 28 evaluate to in Bash?",
+      "options": {
+        "A": "Error",
+        "B": "622",
+        "C": "59428",
+        "D": "566"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 856 + 12 evaluate to in Bash?",
+      "options": {
+        "A": "868",
+        "B": "Error",
+        "C": "844",
+        "D": "85612"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 12 + 23 evaluate to in Bash?",
+      "options": {
+        "A": "35",
+        "B": "Error",
+        "C": "1223",
+        "D": "-11"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Bash, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '233' in Bash?",
+      "options": {
+        "A": "echo \"233\"",
+        "B": "console.log(\"233\")",
+        "C": "System.out.println(\"233\")",
+        "D": "print(\"233\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 383 + 32 evaluate to in Bash?",
+      "options": {
+        "A": "351",
+        "B": "415",
+        "C": "38332",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '914' in Bash?",
+      "options": {
+        "A": "System.out.println(\"914\")",
+        "B": "print(\"914\")",
+        "C": "echo \"914\"",
+        "D": "console.log(\"914\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Bash, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 171 + 14 evaluate to in Bash?",
+      "options": {
+        "A": "17114",
+        "B": "157",
+        "C": "185",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '609' in Bash?",
+      "options": {
+        "A": "System.out.println(\"609\")",
+        "B": "print(\"609\")",
+        "C": "console.log(\"609\")",
+        "D": "echo \"609\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 571 + 37 evaluate to in Bash?",
+      "options": {
+        "A": "57137",
+        "B": "608",
+        "C": "534",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 801 + 43 evaluate to in Bash?",
+      "options": {
+        "A": "758",
+        "B": "844",
+        "C": "Error",
+        "D": "80143"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '804' in Bash?",
+      "options": {
+        "A": "System.out.println(\"804\")",
+        "B": "echo \"804\"",
+        "C": "console.log(\"804\")",
+        "D": "print(\"804\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 457 + 18 evaluate to in Bash?",
+      "options": {
+        "A": "45718",
+        "B": "475",
+        "C": "Error",
+        "D": "439"
+      },
+      "answer": "B"
+    }
+  ]
 }

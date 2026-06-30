@@ -1,268 +1,506 @@
-﻿{
-    "language":  "C",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027variables\u0027 and angle \u0027edge cases\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply variables according to established C fundamentals practices, considering edge cases.",
-                                          "B":  "Avoid variables entirely in C because it never appears in real projects.",
-                                          "C":  "Use variables only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over variables because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for variables under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027operators\u0027 and angle \u0027readability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use operators only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over operators because it is always clearer and safer.",
-                                          "C":  "Apply operators according to established C fundamentals practices, considering readability.",
-                                          "D":  "Avoid operators entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for operators under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027control flow\u0027 and angle \u0027tooling and workflow\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply control flow according to established C fundamentals practices, considering tooling and workflow.",
-                                          "B":  "Avoid control flow entirely in C because it never appears in real projects.",
-                                          "C":  "Use control flow only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over control flow because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for control flow under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027loops\u0027 and angle \u0027type safety\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use loops only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over loops because it is always clearer and safer.",
-                                          "C":  "Apply loops according to established C fundamentals practices, considering type safety.",
-                                          "D":  "Avoid loops entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for loops under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027modularity\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply functions according to established C fundamentals practices, considering modularity.",
-                                          "B":  "Avoid functions entirely in C because it never appears in real projects.",
-                                          "C":  "Use functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027runtime behavior\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use arrays only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over arrays because it is always clearer and safer.",
-                                          "C":  "Apply arrays according to established C fundamentals practices, considering runtime behavior.",
-                                          "D":  "Avoid arrays entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027strings\u0027 and angle \u0027edge cases\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply strings according to established C fundamentals practices, considering edge cases.",
-                                          "B":  "Avoid strings entirely in C because it never appears in real projects.",
-                                          "C":  "Use strings only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over strings because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for strings under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027pointers\u0027 and angle \u0027readability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use pointers only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over pointers because it is always clearer and safer.",
-                                          "C":  "Apply pointers according to established C fundamentals practices, considering readability.",
-                                          "D":  "Avoid pointers entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for pointers under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027pointer arithmetic\u0027 and angle \u0027tooling and workflow\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply pointer arithmetic according to established C fundamentals practices, considering tooling and workflow.",
-                                          "B":  "Avoid pointer arithmetic entirely in C because it never appears in real projects.",
-                                          "C":  "Use pointer arithmetic only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over pointer arithmetic because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for pointer arithmetic under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027memory allocation\u0027 and angle \u0027type safety\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use memory allocation only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over memory allocation because it is always clearer and safer.",
-                                          "C":  "Apply memory allocation according to established C fundamentals practices, considering type safety.",
-                                          "D":  "Avoid memory allocation entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for memory allocation under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027structures\u0027 and angle \u0027modularity\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply structures according to established C fundamentals practices, considering modularity.",
-                                          "B":  "Avoid structures entirely in C because it never appears in real projects.",
-                                          "C":  "Use structures only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over structures because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for structures under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027unions\u0027 and angle \u0027runtime behavior\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use unions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over unions because it is always clearer and safer.",
-                                          "C":  "Apply unions according to established C fundamentals practices, considering runtime behavior.",
-                                          "D":  "Avoid unions entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for unions under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027enums\u0027 and angle \u0027edge cases\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply enums according to established C fundamentals practices, considering edge cases.",
-                                          "B":  "Avoid enums entirely in C because it never appears in real projects.",
-                                          "C":  "Use enums only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over enums because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for enums under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027file I O\u0027 and angle \u0027readability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use file I O only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over file I O because it is always clearer and safer.",
-                                          "C":  "Apply file I O according to established C fundamentals practices, considering readability.",
-                                          "D":  "Avoid file I O entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for file I O under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027header files\u0027 and angle \u0027tooling and workflow\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply header files according to established C fundamentals practices, considering tooling and workflow.",
-                                          "B":  "Avoid header files entirely in C because it never appears in real projects.",
-                                          "C":  "Use header files only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over header files because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for header files under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027preprocessor macros\u0027 and angle \u0027type safety\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use preprocessor macros only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over preprocessor macros because it is always clearer and safer.",
-                                          "C":  "Apply preprocessor macros according to established C fundamentals practices, considering type safety.",
-                                          "D":  "Avoid preprocessor macros entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for preprocessor macros under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027command-line arguments\u0027 and angle \u0027modularity\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply command-line arguments according to established C fundamentals practices, considering modularity.",
-                                          "B":  "Avoid command-line arguments entirely in C because it never appears in real projects.",
-                                          "C":  "Use command-line arguments only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over command-line arguments because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for command-line arguments under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027recursion\u0027 and angle \u0027runtime behavior\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use recursion only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over recursion because it is always clearer and safer.",
-                                          "C":  "Apply recursion according to established C fundamentals practices, considering runtime behavior.",
-                                          "D":  "Avoid recursion entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for recursion under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027sorting logic\u0027 and angle \u0027edge cases\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply sorting logic according to established C fundamentals practices, considering edge cases.",
-                                          "B":  "Avoid sorting logic entirely in C because it never appears in real projects.",
-                                          "C":  "Use sorting logic only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over sorting logic because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for sorting logic under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[C][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027searching logic\u0027 and angle \u0027readability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use searching logic only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over searching logic because it is always clearer and safer.",
-                                          "C":  "Apply searching logic according to established C fundamentals practices, considering readability.",
-                                          "D":  "Avoid searching logic entirely in C because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for searching logic under fundamentals."
-                      }
-                  ]
+{
+  "language": "C",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "What is the correct syntax to output '722' in C?",
+      "options": {
+        "A": "print(\"722\")",
+        "B": "System.out.println(\"722\")",
+        "C": "echo \"722\"",
+        "D": "console.log(\"722\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '927' in C?",
+      "options": {
+        "A": "print(\"927\")",
+        "B": "System.out.println(\"927\")",
+        "C": "console.log(\"927\")",
+        "D": "echo \"927\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in C?",
+      "options": {
+        "A": "void",
+        "B": "function",
+        "C": "func",
+        "D": "def"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in C?",
+      "options": {
+        "A": "It depends",
+        "B": "-1",
+        "C": "0",
+        "D": "1"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '211' in C?",
+      "options": {
+        "A": "System.out.println(\"211\")",
+        "B": "console.log(\"211\")",
+        "C": "echo \"211\"",
+        "D": "print(\"211\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in C?",
+      "options": {
+        "A": "$x = 921;",
+        "B": "let x = 921;",
+        "C": "var x = 921;",
+        "D": "int x = 921;"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you handle exceptions or errors in C?",
+      "options": {
+        "A": "On Error Resume Next",
+        "B": "begin/rescue",
+        "C": "try/catch",
+        "D": "try/except"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 475 + 49 evaluate to in C?",
+      "options": {
+        "A": "Error",
+        "B": "524",
+        "C": "47549",
+        "D": "426"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In C, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you write a single-line comment in C?",
+      "options": {
+        "A": "// comment",
+        "B": "<!-- comment -->",
+        "C": "/* comment */",
+        "D": "# comment"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 243 + 44 evaluate to in C?",
+      "options": {
+        "A": "287",
+        "B": "199",
+        "C": "Error",
+        "D": "24344"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which operator is used for strict equality in C (if applicable)?",
+      "options": {
+        "A": "eq",
+        "B": "===",
+        "C": "is",
+        "D": "=="
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in C?",
+      "options": {
+        "A": "numpy",
+        "B": "math",
+        "C": "Math",
+        "D": "cmath"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 889 + 33 evaluate to in C?",
+      "options": {
+        "A": "88933",
+        "B": "922",
+        "C": "Error",
+        "D": "856"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 23 + 32 evaluate to in C?",
+      "options": {
+        "A": "-9",
+        "B": "Error",
+        "C": "55",
+        "D": "2332"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '485' in C?",
+      "options": {
+        "A": "echo \"485\"",
+        "B": "System.out.println(\"485\")",
+        "C": "console.log(\"485\")",
+        "D": "print(\"485\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 368 + 40 evaluate to in C?",
+      "options": {
+        "A": "36840",
+        "B": "Error",
+        "C": "328",
+        "D": "408"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In C, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 733 + 29 evaluate to in C?",
+      "options": {
+        "A": "73329",
+        "B": "762",
+        "C": "704",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In C, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 841 + 29 evaluate to in C?",
+      "options": {
+        "A": "84129",
+        "B": "870",
+        "C": "812",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 318 + 22 evaluate to in C?",
+      "options": {
+        "A": "Error",
+        "B": "340",
+        "C": "31822",
+        "D": "296"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 759 + 15 evaluate to in C?",
+      "options": {
+        "A": "75915",
+        "B": "744",
+        "C": "Error",
+        "D": "774"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 936 + 43 evaluate to in C?",
+      "options": {
+        "A": "93643",
+        "B": "Error",
+        "C": "979",
+        "D": "893"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '322' in C?",
+      "options": {
+        "A": "print(\"322\")",
+        "B": "console.log(\"322\")",
+        "C": "echo \"322\"",
+        "D": "System.out.println(\"322\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '824' in C?",
+      "options": {
+        "A": "console.log(\"824\")",
+        "B": "System.out.println(\"824\")",
+        "C": "print(\"824\")",
+        "D": "echo \"824\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '890' in C?",
+      "options": {
+        "A": "echo \"890\"",
+        "B": "console.log(\"890\")",
+        "C": "System.out.println(\"890\")",
+        "D": "print(\"890\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '173' in C?",
+      "options": {
+        "A": "echo \"173\"",
+        "B": "System.out.println(\"173\")",
+        "C": "print(\"173\")",
+        "D": "console.log(\"173\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '268' in C?",
+      "options": {
+        "A": "print(\"268\")",
+        "B": "echo \"268\"",
+        "C": "System.out.println(\"268\")",
+        "D": "console.log(\"268\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 514 + 13 evaluate to in C?",
+      "options": {
+        "A": "527",
+        "B": "Error",
+        "C": "501",
+        "D": "51413"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '531' in C?",
+      "options": {
+        "A": "console.log(\"531\")",
+        "B": "System.out.println(\"531\")",
+        "C": "print(\"531\")",
+        "D": "echo \"531\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 551 + 18 evaluate to in C?",
+      "options": {
+        "A": "55118",
+        "B": "533",
+        "C": "Error",
+        "D": "569"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '344' in C?",
+      "options": {
+        "A": "System.out.println(\"344\")",
+        "B": "console.log(\"344\")",
+        "C": "echo \"344\"",
+        "D": "print(\"344\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '738' in C?",
+      "options": {
+        "A": "print(\"738\")",
+        "B": "console.log(\"738\")",
+        "C": "System.out.println(\"738\")",
+        "D": "echo \"738\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '351' in C?",
+      "options": {
+        "A": "print(\"351\")",
+        "B": "console.log(\"351\")",
+        "C": "System.out.println(\"351\")",
+        "D": "echo \"351\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 61 + 43 evaluate to in C?",
+      "options": {
+        "A": "6143",
+        "B": "Error",
+        "C": "18",
+        "D": "104"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 67 + 36 evaluate to in C?",
+      "options": {
+        "A": "103",
+        "B": "31",
+        "C": "6736",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '79' in C?",
+      "options": {
+        "A": "console.log(\"79\")",
+        "B": "echo \"79\"",
+        "C": "print(\"79\")",
+        "D": "System.out.println(\"79\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 916 + 22 evaluate to in C?",
+      "options": {
+        "A": "938",
+        "B": "Error",
+        "C": "894",
+        "D": "91622"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 179 + 17 evaluate to in C?",
+      "options": {
+        "A": "17917",
+        "B": "162",
+        "C": "196",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '994' in C?",
+      "options": {
+        "A": "echo \"994\"",
+        "B": "console.log(\"994\")",
+        "C": "print(\"994\")",
+        "D": "System.out.println(\"994\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In C, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '840' in C?",
+      "options": {
+        "A": "console.log(\"840\")",
+        "B": "System.out.println(\"840\")",
+        "C": "print(\"840\")",
+        "D": "echo \"840\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '593' in C?",
+      "options": {
+        "A": "echo \"593\"",
+        "B": "console.log(\"593\")",
+        "C": "System.out.println(\"593\")",
+        "D": "print(\"593\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '3' in C?",
+      "options": {
+        "A": "echo \"3\"",
+        "B": "console.log(\"3\")",
+        "C": "System.out.println(\"3\")",
+        "D": "print(\"3\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 433 + 16 evaluate to in C?",
+      "options": {
+        "A": "43316",
+        "B": "417",
+        "C": "Error",
+        "D": "449"
+      },
+      "answer": "D"
+    }
+  ]
 }

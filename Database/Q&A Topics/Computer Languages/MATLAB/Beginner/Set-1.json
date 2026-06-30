@@ -1,268 +1,506 @@
-﻿{
-    "language":  "MATLAB",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027matrices\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply matrices according to established MATLAB fundamentals practices, considering data handling.",
-                                          "B":  "Avoid matrices entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use matrices only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over matrices because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for matrices under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027vectorization\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use vectorization only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over vectorization because it is always clearer and safer.",
-                                          "C":  "Apply vectorization according to established MATLAB fundamentals practices, considering memory model.",
-                                          "D":  "Avoid vectorization entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for vectorization under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027plotting\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply plotting according to established MATLAB fundamentals practices, considering syntax behavior.",
-                                          "B":  "Avoid plotting entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use plotting only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over plotting because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for plotting under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use functions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over functions because it is always clearer and safer.",
-                                          "C":  "Apply functions according to established MATLAB fundamentals practices, considering best practices.",
-                                          "D":  "Avoid functions entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027scripts\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply scripts according to established MATLAB fundamentals practices, considering error handling.",
-                                          "B":  "Avoid scripts entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use scripts only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over scripts because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for scripts under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027if else\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use if else only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over if else because it is always clearer and safer.",
-                                          "C":  "Apply if else according to established MATLAB fundamentals practices, considering portability.",
-                                          "D":  "Avoid if else entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for if else under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027loops\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply loops according to established MATLAB fundamentals practices, considering data handling.",
-                                          "B":  "Avoid loops entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use loops only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over loops because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for loops under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027logical indexing\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use logical indexing only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over logical indexing because it is always clearer and safer.",
-                                          "C":  "Apply logical indexing according to established MATLAB fundamentals practices, considering memory model.",
-                                          "D":  "Avoid logical indexing entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for logical indexing under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027file I O\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply file I O according to established MATLAB fundamentals practices, considering syntax behavior.",
-                                          "B":  "Avoid file I O entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use file I O only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over file I O because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for file I O under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027toolboxes\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use toolboxes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over toolboxes because it is always clearer and safer.",
-                                          "C":  "Apply toolboxes according to established MATLAB fundamentals practices, considering best practices.",
-                                          "D":  "Avoid toolboxes entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for toolboxes under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027anonymous functions\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply anonymous functions according to established MATLAB fundamentals practices, considering error handling.",
-                                          "B":  "Avoid anonymous functions entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use anonymous functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over anonymous functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for anonymous functions under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027cell arrays\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use cell arrays only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over cell arrays because it is always clearer and safer.",
-                                          "C":  "Apply cell arrays according to established MATLAB fundamentals practices, considering portability.",
-                                          "D":  "Avoid cell arrays entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for cell arrays under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027structures\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply structures according to established MATLAB fundamentals practices, considering data handling.",
-                                          "B":  "Avoid structures entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use structures only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over structures because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for structures under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027symbolic math\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use symbolic math only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over symbolic math because it is always clearer and safer.",
-                                          "C":  "Apply symbolic math according to established MATLAB fundamentals practices, considering memory model.",
-                                          "D":  "Avoid symbolic math entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for symbolic math under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027optimization toolbox\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply optimization toolbox according to established MATLAB fundamentals practices, considering syntax behavior.",
-                                          "B":  "Avoid optimization toolbox entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use optimization toolbox only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over optimization toolbox because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for optimization toolbox under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027numerical methods\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use numerical methods only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over numerical methods because it is always clearer and safer.",
-                                          "C":  "Apply numerical methods according to established MATLAB fundamentals practices, considering best practices.",
-                                          "D":  "Avoid numerical methods entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for numerical methods under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027signal processing\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply signal processing according to established MATLAB fundamentals practices, considering error handling.",
-                                          "B":  "Avoid signal processing entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use signal processing only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over signal processing because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for signal processing under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027image processing\u0027 and angle \u0027portability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use image processing only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over image processing because it is always clearer and safer.",
-                                          "C":  "Apply image processing according to established MATLAB fundamentals practices, considering portability.",
-                                          "D":  "Avoid image processing entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for image processing under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027debugging\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply debugging according to established MATLAB fundamentals practices, considering data handling.",
-                                          "B":  "Avoid debugging entirely in MATLAB because it never appears in real projects.",
-                                          "C":  "Use debugging only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over debugging because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for debugging under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[MATLAB][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027workspace management\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use workspace management only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over workspace management because it is always clearer and safer.",
-                                          "C":  "Apply workspace management according to established MATLAB fundamentals practices, considering memory model.",
-                                          "D":  "Avoid workspace management entirely in MATLAB because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for workspace management under fundamentals."
-                      }
-                  ]
+{
+  "language": "MATLAB",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "Which keyword is used to define a function/method in MATLAB?",
+      "options": {
+        "A": "def",
+        "B": "function",
+        "C": "func",
+        "D": "void"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in MATLAB?",
+      "options": {
+        "A": "math",
+        "B": "Math",
+        "C": "cmath",
+        "D": "numpy"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in MATLAB?",
+      "options": {
+        "A": "0",
+        "B": "-1",
+        "C": "1",
+        "D": "It depends"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '66' in MATLAB?",
+      "options": {
+        "A": "print(\"66\")",
+        "B": "echo \"66\"",
+        "C": "console.log(\"66\")",
+        "D": "System.out.println(\"66\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you handle exceptions or errors in MATLAB?",
+      "options": {
+        "A": "try/except",
+        "B": "try/catch",
+        "C": "begin/rescue",
+        "D": "On Error Resume Next"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 830 + 34 evaluate to in MATLAB?",
+      "options": {
+        "A": "Error",
+        "B": "83034",
+        "C": "864",
+        "D": "796"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which operator is used for strict equality in MATLAB (if applicable)?",
+      "options": {
+        "A": "==",
+        "B": "is",
+        "C": "eq",
+        "D": "==="
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '850' in MATLAB?",
+      "options": {
+        "A": "echo \"850\"",
+        "B": "System.out.println(\"850\")",
+        "C": "console.log(\"850\")",
+        "D": "print(\"850\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in MATLAB?",
+      "options": {
+        "A": "var x = 95;",
+        "B": "int x = 95;",
+        "C": "$x = 95;",
+        "D": "let x = 95;"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '182' in MATLAB?",
+      "options": {
+        "A": "print(\"182\")",
+        "B": "echo \"182\"",
+        "C": "System.out.println(\"182\")",
+        "D": "console.log(\"182\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you write a single-line comment in MATLAB?",
+      "options": {
+        "A": "/* comment */",
+        "B": "<!-- comment -->",
+        "C": "// comment",
+        "D": "# comment"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '667' in MATLAB?",
+      "options": {
+        "A": "System.out.println(\"667\")",
+        "B": "console.log(\"667\")",
+        "C": "echo \"667\"",
+        "D": "print(\"667\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '447' in MATLAB?",
+      "options": {
+        "A": "console.log(\"447\")",
+        "B": "System.out.println(\"447\")",
+        "C": "print(\"447\")",
+        "D": "echo \"447\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 374 + 47 evaluate to in MATLAB?",
+      "options": {
+        "A": "421",
+        "B": "Error",
+        "C": "37447",
+        "D": "327"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 968 + 17 evaluate to in MATLAB?",
+      "options": {
+        "A": "Error",
+        "B": "96817",
+        "C": "985",
+        "D": "951"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '299' in MATLAB?",
+      "options": {
+        "A": "echo \"299\"",
+        "B": "System.out.println(\"299\")",
+        "C": "console.log(\"299\")",
+        "D": "print(\"299\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 418 + 18 evaluate to in MATLAB?",
+      "options": {
+        "A": "400",
+        "B": "Error",
+        "C": "436",
+        "D": "41818"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '464' in MATLAB?",
+      "options": {
+        "A": "echo \"464\"",
+        "B": "console.log(\"464\")",
+        "C": "print(\"464\")",
+        "D": "System.out.println(\"464\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 18 + 17 evaluate to in MATLAB?",
+      "options": {
+        "A": "1",
+        "B": "1817",
+        "C": "35",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '599' in MATLAB?",
+      "options": {
+        "A": "System.out.println(\"599\")",
+        "B": "echo \"599\"",
+        "C": "print(\"599\")",
+        "D": "console.log(\"599\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 17 + 32 evaluate to in MATLAB?",
+      "options": {
+        "A": "-15",
+        "B": "1732",
+        "C": "Error",
+        "D": "49"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '42' in MATLAB?",
+      "options": {
+        "A": "console.log(\"42\")",
+        "B": "print(\"42\")",
+        "C": "System.out.println(\"42\")",
+        "D": "echo \"42\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 324 + 29 evaluate to in MATLAB?",
+      "options": {
+        "A": "32429",
+        "B": "Error",
+        "C": "295",
+        "D": "353"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '26' in MATLAB?",
+      "options": {
+        "A": "echo \"26\"",
+        "B": "print(\"26\")",
+        "C": "console.log(\"26\")",
+        "D": "System.out.println(\"26\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 587 + 44 evaluate to in MATLAB?",
+      "options": {
+        "A": "Error",
+        "B": "58744",
+        "C": "543",
+        "D": "631"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 979 + 41 evaluate to in MATLAB?",
+      "options": {
+        "A": "938",
+        "B": "1020",
+        "C": "Error",
+        "D": "97941"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '411' in MATLAB?",
+      "options": {
+        "A": "print(\"411\")",
+        "B": "echo \"411\"",
+        "C": "System.out.println(\"411\")",
+        "D": "console.log(\"411\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 688 + 25 evaluate to in MATLAB?",
+      "options": {
+        "A": "663",
+        "B": "Error",
+        "C": "713",
+        "D": "68825"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '898' in MATLAB?",
+      "options": {
+        "A": "console.log(\"898\")",
+        "B": "System.out.println(\"898\")",
+        "C": "print(\"898\")",
+        "D": "echo \"898\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '387' in MATLAB?",
+      "options": {
+        "A": "print(\"387\")",
+        "B": "System.out.println(\"387\")",
+        "C": "console.log(\"387\")",
+        "D": "echo \"387\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '505' in MATLAB?",
+      "options": {
+        "A": "System.out.println(\"505\")",
+        "B": "console.log(\"505\")",
+        "C": "echo \"505\"",
+        "D": "print(\"505\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '74' in MATLAB?",
+      "options": {
+        "A": "print(\"74\")",
+        "B": "echo \"74\"",
+        "C": "System.out.println(\"74\")",
+        "D": "console.log(\"74\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '358' in MATLAB?",
+      "options": {
+        "A": "echo \"358\"",
+        "B": "print(\"358\")",
+        "C": "System.out.println(\"358\")",
+        "D": "console.log(\"358\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '684' in MATLAB?",
+      "options": {
+        "A": "print(\"684\")",
+        "B": "console.log(\"684\")",
+        "C": "System.out.println(\"684\")",
+        "D": "echo \"684\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In MATLAB, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 837 + 37 evaluate to in MATLAB?",
+      "options": {
+        "A": "Error",
+        "B": "83737",
+        "C": "800",
+        "D": "874"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '243' in MATLAB?",
+      "options": {
+        "A": "print(\"243\")",
+        "B": "console.log(\"243\")",
+        "C": "System.out.println(\"243\")",
+        "D": "echo \"243\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 720 + 14 evaluate to in MATLAB?",
+      "options": {
+        "A": "706",
+        "B": "72014",
+        "C": "Error",
+        "D": "734"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '745' in MATLAB?",
+      "options": {
+        "A": "print(\"745\")",
+        "B": "echo \"745\"",
+        "C": "console.log(\"745\")",
+        "D": "System.out.println(\"745\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 949 + 19 evaluate to in MATLAB?",
+      "options": {
+        "A": "968",
+        "B": "94919",
+        "C": "930",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 70 + 38 evaluate to in MATLAB?",
+      "options": {
+        "A": "108",
+        "B": "7038",
+        "C": "32",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '570' in MATLAB?",
+      "options": {
+        "A": "console.log(\"570\")",
+        "B": "print(\"570\")",
+        "C": "System.out.println(\"570\")",
+        "D": "echo \"570\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '652' in MATLAB?",
+      "options": {
+        "A": "console.log(\"652\")",
+        "B": "System.out.println(\"652\")",
+        "C": "echo \"652\"",
+        "D": "print(\"652\")"
+      },
+      "answer": "D"
+    }
+  ]
 }

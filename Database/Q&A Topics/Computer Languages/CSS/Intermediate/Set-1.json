@@ -1,268 +1,506 @@
-﻿{
-    "language":  "CSS",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027selectors\u0027 and angle \u0027readability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply selectors according to established CSS implementation practices, considering readability.",
-                                          "B":  "Avoid selectors entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use selectors only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over selectors because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for selectors under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027specificity\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use specificity only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over specificity because it is always clearer and safer.",
-                                          "C":  "Apply specificity according to established CSS implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid specificity entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for specificity under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027box model\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply box model according to established CSS implementation practices, considering type safety.",
-                                          "B":  "Avoid box model entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use box model only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over box model because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for box model under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027display property\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use display property only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over display property because it is always clearer and safer.",
-                                          "C":  "Apply display property according to established CSS implementation practices, considering modularity.",
-                                          "D":  "Avoid display property entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for display property under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027positioning\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply positioning according to established CSS implementation practices, considering runtime behavior.",
-                                          "B":  "Avoid positioning entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use positioning only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over positioning because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for positioning under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027flexbox\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use flexbox only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over flexbox because it is always clearer and safer.",
-                                          "C":  "Apply flexbox according to established CSS implementation practices, considering edge cases.",
-                                          "D":  "Avoid flexbox entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for flexbox under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027grid\u0027 and angle \u0027readability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply grid according to established CSS implementation practices, considering readability.",
-                                          "B":  "Avoid grid entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use grid only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over grid because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for grid under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027media queries\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use media queries only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over media queries because it is always clearer and safer.",
-                                          "C":  "Apply media queries according to established CSS implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid media queries entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for media queries under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027units\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply units according to established CSS implementation practices, considering type safety.",
-                                          "B":  "Avoid units entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use units only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over units because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for units under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027colors\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use colors only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over colors because it is always clearer and safer.",
-                                          "C":  "Apply colors according to established CSS implementation practices, considering modularity.",
-                                          "D":  "Avoid colors entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for colors under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027typography\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply typography according to established CSS implementation practices, considering runtime behavior.",
-                                          "B":  "Avoid typography entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use typography only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over typography because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for typography under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027pseudo classes\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use pseudo classes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over pseudo classes because it is always clearer and safer.",
-                                          "C":  "Apply pseudo classes according to established CSS implementation practices, considering edge cases.",
-                                          "D":  "Avoid pseudo classes entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for pseudo classes under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027pseudo elements\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply pseudo elements according to established CSS implementation practices, considering readability.",
-                                          "B":  "Avoid pseudo elements entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use pseudo elements only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over pseudo elements because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for pseudo elements under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027transitions\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use transitions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over transitions because it is always clearer and safer.",
-                                          "C":  "Apply transitions according to established CSS implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid transitions entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for transitions under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027animations\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply animations according to established CSS implementation practices, considering type safety.",
-                                          "B":  "Avoid animations entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use animations only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over animations because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for animations under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027transforms\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use transforms only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over transforms because it is always clearer and safer.",
-                                          "C":  "Apply transforms according to established CSS implementation practices, considering modularity.",
-                                          "D":  "Avoid transforms entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for transforms under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027z index\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply z index according to established CSS implementation practices, considering runtime behavior.",
-                                          "B":  "Avoid z index entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use z index only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over z index because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for z index under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027overflow\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use overflow only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over overflow because it is always clearer and safer.",
-                                          "C":  "Apply overflow according to established CSS implementation practices, considering edge cases.",
-                                          "D":  "Avoid overflow entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for overflow under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027responsive design\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply responsive design according to established CSS implementation practices, considering readability.",
-                                          "B":  "Avoid responsive design entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use responsive design only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over responsive design because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for responsive design under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[CSS][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027custom properties\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use custom properties only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over custom properties because it is always clearer and safer.",
-                                          "C":  "Apply custom properties according to established CSS implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid custom properties entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for custom properties under implementation."
-                      }
-                  ]
+{
+  "language": "CSS",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "Which library/module is commonly used for math operations in CSS?",
+      "options": {
+        "A": "cmath",
+        "B": "numpy",
+        "C": "math",
+        "D": "Math"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 893 + 49 evaluate to in CSS?",
+      "options": {
+        "A": "89349",
+        "B": "942",
+        "C": "844",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you handle exceptions or errors in CSS?",
+      "options": {
+        "A": "try/except",
+        "B": "begin/rescue",
+        "C": "On Error Resume Next",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in CSS?",
+      "options": {
+        "A": "void",
+        "B": "func",
+        "C": "def",
+        "D": "function"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '528' in CSS?",
+      "options": {
+        "A": "System.out.println(\"528\")",
+        "B": "echo \"528\"",
+        "C": "console.log(\"528\")",
+        "D": "print(\"528\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you write a single-line comment in CSS?",
+      "options": {
+        "A": "/* comment */",
+        "B": "# comment",
+        "C": "<!-- comment -->",
+        "D": "// comment"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '149' in CSS?",
+      "options": {
+        "A": "print(\"149\")",
+        "B": "echo \"149\"",
+        "C": "System.out.println(\"149\")",
+        "D": "console.log(\"149\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '917' in CSS?",
+      "options": {
+        "A": "System.out.println(\"917\")",
+        "B": "print(\"917\")",
+        "C": "console.log(\"917\")",
+        "D": "echo \"917\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in CSS?",
+      "options": {
+        "A": "1",
+        "B": "It depends",
+        "C": "-1",
+        "D": "0"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In CSS, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in CSS?",
+      "options": {
+        "A": "$x = 446;",
+        "B": "var x = 446;",
+        "C": "let x = 446;",
+        "D": "int x = 446;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator is used for strict equality in CSS (if applicable)?",
+      "options": {
+        "A": "is",
+        "B": "==",
+        "C": "===",
+        "D": "eq"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 218 + 38 evaluate to in CSS?",
+      "options": {
+        "A": "180",
+        "B": "21838",
+        "C": "Error",
+        "D": "256"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '319' in CSS?",
+      "options": {
+        "A": "echo \"319\"",
+        "B": "System.out.println(\"319\")",
+        "C": "print(\"319\")",
+        "D": "console.log(\"319\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 929 + 47 evaluate to in CSS?",
+      "options": {
+        "A": "92947",
+        "B": "976",
+        "C": "882",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In CSS, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 14 + 45 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "1445",
+        "C": "-31",
+        "D": "59"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In CSS, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 96 + 48 evaluate to in CSS?",
+      "options": {
+        "A": "144",
+        "B": "48",
+        "C": "Error",
+        "D": "9648"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '307' in CSS?",
+      "options": {
+        "A": "echo \"307\"",
+        "B": "System.out.println(\"307\")",
+        "C": "print(\"307\")",
+        "D": "console.log(\"307\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 644 + 15 evaluate to in CSS?",
+      "options": {
+        "A": "629",
+        "B": "659",
+        "C": "Error",
+        "D": "64415"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '194' in CSS?",
+      "options": {
+        "A": "echo \"194\"",
+        "B": "console.log(\"194\")",
+        "C": "print(\"194\")",
+        "D": "System.out.println(\"194\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 83 + 38 evaluate to in CSS?",
+      "options": {
+        "A": "121",
+        "B": "45",
+        "C": "Error",
+        "D": "8338"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In CSS, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 433 + 28 evaluate to in CSS?",
+      "options": {
+        "A": "405",
+        "B": "Error",
+        "C": "43328",
+        "D": "461"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 525 + 30 evaluate to in CSS?",
+      "options": {
+        "A": "52530",
+        "B": "Error",
+        "C": "555",
+        "D": "495"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 740 + 31 evaluate to in CSS?",
+      "options": {
+        "A": "709",
+        "B": "771",
+        "C": "74031",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 239 + 48 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "191",
+        "C": "23948",
+        "D": "287"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 841 + 35 evaluate to in CSS?",
+      "options": {
+        "A": "876",
+        "B": "806",
+        "C": "84135",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '543' in CSS?",
+      "options": {
+        "A": "echo \"543\"",
+        "B": "System.out.println(\"543\")",
+        "C": "print(\"543\")",
+        "D": "console.log(\"543\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 528 + 17 evaluate to in CSS?",
+      "options": {
+        "A": "52817",
+        "B": "Error",
+        "C": "511",
+        "D": "545"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In CSS, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 339 + 13 evaluate to in CSS?",
+      "options": {
+        "A": "352",
+        "B": "Error",
+        "C": "326",
+        "D": "33913"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 933 + 12 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "921",
+        "C": "93312",
+        "D": "945"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 70 + 44 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "26",
+        "C": "114",
+        "D": "7044"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '310' in CSS?",
+      "options": {
+        "A": "print(\"310\")",
+        "B": "console.log(\"310\")",
+        "C": "System.out.println(\"310\")",
+        "D": "echo \"310\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In CSS, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '407' in CSS?",
+      "options": {
+        "A": "echo \"407\"",
+        "B": "print(\"407\")",
+        "C": "console.log(\"407\")",
+        "D": "System.out.println(\"407\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '825' in CSS?",
+      "options": {
+        "A": "echo \"825\"",
+        "B": "print(\"825\")",
+        "C": "console.log(\"825\")",
+        "D": "System.out.println(\"825\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '427' in CSS?",
+      "options": {
+        "A": "echo \"427\"",
+        "B": "print(\"427\")",
+        "C": "console.log(\"427\")",
+        "D": "System.out.println(\"427\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 179 + 34 evaluate to in CSS?",
+      "options": {
+        "A": "17934",
+        "B": "213",
+        "C": "145",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 865 + 29 evaluate to in CSS?",
+      "options": {
+        "A": "86529",
+        "B": "894",
+        "C": "Error",
+        "D": "836"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '93' in CSS?",
+      "options": {
+        "A": "System.out.println(\"93\")",
+        "B": "print(\"93\")",
+        "C": "console.log(\"93\")",
+        "D": "echo \"93\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '241' in CSS?",
+      "options": {
+        "A": "console.log(\"241\")",
+        "B": "print(\"241\")",
+        "C": "System.out.println(\"241\")",
+        "D": "echo \"241\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 303 + 13 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "290",
+        "C": "316",
+        "D": "30313"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '967' in CSS?",
+      "options": {
+        "A": "System.out.println(\"967\")",
+        "B": "echo \"967\"",
+        "C": "print(\"967\")",
+        "D": "console.log(\"967\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In CSS, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 505 + 45 evaluate to in CSS?",
+      "options": {
+        "A": "460",
+        "B": "Error",
+        "C": "550",
+        "D": "50545"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 170 + 45 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "125",
+        "C": "215",
+        "D": "17045"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 809 + 16 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "825",
+        "C": "80916",
+        "D": "793"
+      },
+      "answer": "B"
+    }
+  ]
 }

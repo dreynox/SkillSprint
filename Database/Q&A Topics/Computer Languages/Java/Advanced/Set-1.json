@@ -1,268 +1,506 @@
-﻿{
-    "language":  "Java",
-    "level":  "Advanced",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q1] In a in production code scenario focused on optimization, for topic \u0027primitive types\u0027 and angle \u0027portability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply primitive types according to established Java optimization practices, considering portability.",
-                                          "B":  "Avoid primitive types entirely in Java because it never appears in real projects.",
-                                          "C":  "Use primitive types only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over primitive types because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for primitive types under optimization."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q2] In a in interview-style problems scenario focused on optimization, for topic \u0027control flow\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use control flow only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over control flow because it is always clearer and safer.",
-                                          "C":  "Apply control flow according to established Java optimization practices, considering data handling.",
-                                          "D":  "Avoid control flow entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for control flow under optimization."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q3] In a for maintainable project design scenario focused on optimization, for topic \u0027arrays\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply arrays according to established Java optimization practices, considering memory model.",
-                                          "B":  "Avoid arrays entirely in Java because it never appears in real projects.",
-                                          "C":  "Use arrays only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for arrays under optimization."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q4] In a for secure implementation scenario focused on optimization, for topic \u0027strings\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use strings only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over strings because it is always clearer and safer.",
-                                          "C":  "Apply strings according to established Java optimization practices, considering syntax behavior.",
-                                          "D":  "Avoid strings entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for strings under optimization."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q5] In a for performance-sensitive code scenario focused on optimization, for topic \u0027methods\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply methods according to established Java optimization practices, considering best practices.",
-                                          "B":  "Avoid methods entirely in Java because it never appears in real projects.",
-                                          "C":  "Use methods only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over methods because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for methods under optimization."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q6] In a for team collaboration scenario focused on optimization, for topic \u0027classes\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use classes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over classes because it is always clearer and safer.",
-                                          "C":  "Apply classes according to established Java optimization practices, considering error handling.",
-                                          "D":  "Avoid classes entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for classes under optimization."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q7] In a during code review scenario focused on optimization, for topic \u0027objects\u0027 and angle \u0027portability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply objects according to established Java optimization practices, considering portability.",
-                                          "B":  "Avoid objects entirely in Java because it never appears in real projects.",
-                                          "C":  "Use objects only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over objects because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for objects under optimization."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q8] In a while debugging scenario focused on optimization, for topic \u0027constructors\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use constructors only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over constructors because it is always clearer and safer.",
-                                          "C":  "Apply constructors according to established Java optimization practices, considering data handling.",
-                                          "D":  "Avoid constructors entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for constructors under optimization."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q9] In a in production code scenario focused on optimization, for topic \u0027inheritance\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply inheritance according to established Java optimization practices, considering memory model.",
-                                          "B":  "Avoid inheritance entirely in Java because it never appears in real projects.",
-                                          "C":  "Use inheritance only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over inheritance because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for inheritance under optimization."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q10] In a in interview-style problems scenario focused on optimization, for topic \u0027interfaces\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use interfaces only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over interfaces because it is always clearer and safer.",
-                                          "C":  "Apply interfaces according to established Java optimization practices, considering syntax behavior.",
-                                          "D":  "Avoid interfaces entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for interfaces under optimization."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q11] In a for maintainable project design scenario focused on optimization, for topic \u0027abstract classes\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply abstract classes according to established Java optimization practices, considering best practices.",
-                                          "B":  "Avoid abstract classes entirely in Java because it never appears in real projects.",
-                                          "C":  "Use abstract classes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over abstract classes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for abstract classes under optimization."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q12] In a for secure implementation scenario focused on optimization, for topic \u0027exceptions\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use exceptions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over exceptions because it is always clearer and safer.",
-                                          "C":  "Apply exceptions according to established Java optimization practices, considering error handling.",
-                                          "D":  "Avoid exceptions entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for exceptions under optimization."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q13] In a for performance-sensitive code scenario focused on optimization, for topic \u0027collections\u0027 and angle \u0027portability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply collections according to established Java optimization practices, considering portability.",
-                                          "B":  "Avoid collections entirely in Java because it never appears in real projects.",
-                                          "C":  "Use collections only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over collections because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for collections under optimization."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q14] In a for team collaboration scenario focused on optimization, for topic \u0027generics\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use generics only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over generics because it is always clearer and safer.",
-                                          "C":  "Apply generics according to established Java optimization practices, considering data handling.",
-                                          "D":  "Avoid generics entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for generics under optimization."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q15] In a during code review scenario focused on optimization, for topic \u0027streams API\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply streams API according to established Java optimization practices, considering memory model.",
-                                          "B":  "Avoid streams API entirely in Java because it never appears in real projects.",
-                                          "C":  "Use streams API only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over streams API because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for streams API under optimization."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q16] In a while debugging scenario focused on optimization, for topic \u0027lambda expressions\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use lambda expressions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over lambda expressions because it is always clearer and safer.",
-                                          "C":  "Apply lambda expressions according to established Java optimization practices, considering syntax behavior.",
-                                          "D":  "Avoid lambda expressions entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for lambda expressions under optimization."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q17] In a in production code scenario focused on optimization, for topic \u0027multithreading\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply multithreading according to established Java optimization practices, considering best practices.",
-                                          "B":  "Avoid multithreading entirely in Java because it never appears in real projects.",
-                                          "C":  "Use multithreading only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over multithreading because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for multithreading under optimization."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q18] In a in interview-style problems scenario focused on optimization, for topic \u0027synchronization\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use synchronization only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over synchronization because it is always clearer and safer.",
-                                          "C":  "Apply synchronization according to established Java optimization practices, considering error handling.",
-                                          "D":  "Avoid synchronization entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for synchronization under optimization."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q19] In a for maintainable project design scenario focused on optimization, for topic \u0027JVM basics\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply JVM basics according to established Java optimization practices, considering portability.",
-                                          "B":  "Avoid JVM basics entirely in Java because it never appears in real projects.",
-                                          "C":  "Use JVM basics only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over JVM basics because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for JVM basics under optimization."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[Java][Advanced][Set-1][Q20] In a for secure implementation scenario focused on optimization, for topic \u0027garbage collection\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use garbage collection only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over garbage collection because it is always clearer and safer.",
-                                          "C":  "Apply garbage collection according to established Java optimization practices, considering data handling.",
-                                          "D":  "Avoid garbage collection entirely in Java because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for garbage collection under optimization."
-                      }
-                  ]
+{
+  "language": "Java",
+  "level": "Advanced",
+  "questions": [
+    {
+      "question": "What is the zero-based index of the first element of an array in Java?",
+      "options": {
+        "A": "0",
+        "B": "-1",
+        "C": "1",
+        "D": "It depends"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 412 + 41 evaluate to in Java?",
+      "options": {
+        "A": "Error",
+        "B": "41241",
+        "C": "453",
+        "D": "371"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '562' in Java?",
+      "options": {
+        "A": "echo \"562\"",
+        "B": "System.out.println(\"562\")",
+        "C": "console.log(\"562\")",
+        "D": "print(\"562\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in Java?",
+      "options": {
+        "A": "$x = 571;",
+        "B": "var x = 571;",
+        "C": "let x = 571;",
+        "D": "int x = 571;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 339 + 33 evaluate to in Java?",
+      "options": {
+        "A": "306",
+        "B": "372",
+        "C": "Error",
+        "D": "33933"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in Java?",
+      "options": {
+        "A": "numpy",
+        "B": "Math",
+        "C": "cmath",
+        "D": "math"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you handle exceptions or errors in Java?",
+      "options": {
+        "A": "begin/rescue",
+        "B": "try/catch",
+        "C": "On Error Resume Next",
+        "D": "try/except"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator is used for strict equality in Java (if applicable)?",
+      "options": {
+        "A": "===",
+        "B": "eq",
+        "C": "==",
+        "D": "is"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 818 + 45 evaluate to in Java?",
+      "options": {
+        "A": "Error",
+        "B": "773",
+        "C": "863",
+        "D": "81845"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you write a single-line comment in Java?",
+      "options": {
+        "A": "// comment",
+        "B": "<!-- comment -->",
+        "C": "/* comment */",
+        "D": "# comment"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 443 + 25 evaluate to in Java?",
+      "options": {
+        "A": "418",
+        "B": "44325",
+        "C": "Error",
+        "D": "468"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in Java?",
+      "options": {
+        "A": "def",
+        "B": "void",
+        "C": "function",
+        "D": "func"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '926' in Java?",
+      "options": {
+        "A": "console.log(\"926\")",
+        "B": "System.out.println(\"926\")",
+        "C": "print(\"926\")",
+        "D": "echo \"926\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '759' in Java?",
+      "options": {
+        "A": "print(\"759\")",
+        "B": "System.out.println(\"759\")",
+        "C": "console.log(\"759\")",
+        "D": "echo \"759\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 274 + 24 evaluate to in Java?",
+      "options": {
+        "A": "298",
+        "B": "27424",
+        "C": "Error",
+        "D": "250"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '529' in Java?",
+      "options": {
+        "A": "console.log(\"529\")",
+        "B": "echo \"529\"",
+        "C": "print(\"529\")",
+        "D": "System.out.println(\"529\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 331 + 28 evaluate to in Java?",
+      "options": {
+        "A": "359",
+        "B": "33128",
+        "C": "303",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Java, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '277' in Java?",
+      "options": {
+        "A": "console.log(\"277\")",
+        "B": "print(\"277\")",
+        "C": "echo \"277\"",
+        "D": "System.out.println(\"277\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 985 + 30 evaluate to in Java?",
+      "options": {
+        "A": "1015",
+        "B": "Error",
+        "C": "98530",
+        "D": "955"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '385' in Java?",
+      "options": {
+        "A": "echo \"385\"",
+        "B": "System.out.println(\"385\")",
+        "C": "print(\"385\")",
+        "D": "console.log(\"385\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '133' in Java?",
+      "options": {
+        "A": "echo \"133\"",
+        "B": "console.log(\"133\")",
+        "C": "System.out.println(\"133\")",
+        "D": "print(\"133\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 214 + 43 evaluate to in Java?",
+      "options": {
+        "A": "171",
+        "B": "257",
+        "C": "Error",
+        "D": "21443"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 121 + 13 evaluate to in Java?",
+      "options": {
+        "A": "108",
+        "B": "134",
+        "C": "12113",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '593' in Java?",
+      "options": {
+        "A": "echo \"593\"",
+        "B": "print(\"593\")",
+        "C": "console.log(\"593\")",
+        "D": "System.out.println(\"593\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '287' in Java?",
+      "options": {
+        "A": "print(\"287\")",
+        "B": "echo \"287\"",
+        "C": "System.out.println(\"287\")",
+        "D": "console.log(\"287\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '527' in Java?",
+      "options": {
+        "A": "print(\"527\")",
+        "B": "echo \"527\"",
+        "C": "System.out.println(\"527\")",
+        "D": "console.log(\"527\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '874' in Java?",
+      "options": {
+        "A": "console.log(\"874\")",
+        "B": "System.out.println(\"874\")",
+        "C": "echo \"874\"",
+        "D": "print(\"874\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 565 + 12 evaluate to in Java?",
+      "options": {
+        "A": "Error",
+        "B": "553",
+        "C": "577",
+        "D": "56512"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 338 + 48 evaluate to in Java?",
+      "options": {
+        "A": "290",
+        "B": "386",
+        "C": "33848",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 441 + 19 evaluate to in Java?",
+      "options": {
+        "A": "460",
+        "B": "422",
+        "C": "44119",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '916' in Java?",
+      "options": {
+        "A": "System.out.println(\"916\")",
+        "B": "console.log(\"916\")",
+        "C": "echo \"916\"",
+        "D": "print(\"916\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 131 + 37 evaluate to in Java?",
+      "options": {
+        "A": "13137",
+        "B": "168",
+        "C": "Error",
+        "D": "94"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 980 + 14 evaluate to in Java?",
+      "options": {
+        "A": "Error",
+        "B": "994",
+        "C": "966",
+        "D": "98014"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 777 + 29 evaluate to in Java?",
+      "options": {
+        "A": "806",
+        "B": "77729",
+        "C": "748",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '797' in Java?",
+      "options": {
+        "A": "print(\"797\")",
+        "B": "console.log(\"797\")",
+        "C": "System.out.println(\"797\")",
+        "D": "echo \"797\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 481 + 35 evaluate to in Java?",
+      "options": {
+        "A": "516",
+        "B": "Error",
+        "C": "446",
+        "D": "48135"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 533 + 48 evaluate to in Java?",
+      "options": {
+        "A": "Error",
+        "B": "485",
+        "C": "53348",
+        "D": "581"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '137' in Java?",
+      "options": {
+        "A": "echo \"137\"",
+        "B": "print(\"137\")",
+        "C": "System.out.println(\"137\")",
+        "D": "console.log(\"137\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 337 + 41 evaluate to in Java?",
+      "options": {
+        "A": "296",
+        "B": "33741",
+        "C": "Error",
+        "D": "378"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '51' in Java?",
+      "options": {
+        "A": "console.log(\"51\")",
+        "B": "print(\"51\")",
+        "C": "System.out.println(\"51\")",
+        "D": "echo \"51\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '487' in Java?",
+      "options": {
+        "A": "echo \"487\"",
+        "B": "print(\"487\")",
+        "C": "console.log(\"487\")",
+        "D": "System.out.println(\"487\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 242 + 36 evaluate to in Java?",
+      "options": {
+        "A": "206",
+        "B": "278",
+        "C": "Error",
+        "D": "24236"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '680' in Java?",
+      "options": {
+        "A": "print(\"680\")",
+        "B": "echo \"680\"",
+        "C": "console.log(\"680\")",
+        "D": "System.out.println(\"680\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Java, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In Java, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 186 + 33 evaluate to in Java?",
+      "options": {
+        "A": "153",
+        "B": "Error",
+        "C": "219",
+        "D": "18633"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 377 + 21 evaluate to in Java?",
+      "options": {
+        "A": "356",
+        "B": "398",
+        "C": "Error",
+        "D": "37721"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 966 + 50 evaluate to in Java?",
+      "options": {
+        "A": "916",
+        "B": "96650",
+        "C": "Error",
+        "D": "1016"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In Java, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    }
+  ]
 }

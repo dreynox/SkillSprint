@@ -1,268 +1,506 @@
-﻿{
-    "language":  "HTML",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027document structure\u0027 and angle \u0027portability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply document structure according to established HTML fundamentals practices, considering portability.",
-                                          "B":  "Avoid document structure entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use document structure only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over document structure because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for document structure under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027semantic tags\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use semantic tags only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over semantic tags because it is always clearer and safer.",
-                                          "C":  "Apply semantic tags according to established HTML fundamentals practices, considering data handling.",
-                                          "D":  "Avoid semantic tags entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for semantic tags under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027forms\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply forms according to established HTML fundamentals practices, considering memory model.",
-                                          "B":  "Avoid forms entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use forms only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over forms because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for forms under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027input types\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use input types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over input types because it is always clearer and safer.",
-                                          "C":  "Apply input types according to established HTML fundamentals practices, considering syntax behavior.",
-                                          "D":  "Avoid input types entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for input types under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027labels\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply labels according to established HTML fundamentals practices, considering best practices.",
-                                          "B":  "Avoid labels entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use labels only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over labels because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for labels under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027tables\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use tables only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over tables because it is always clearer and safer.",
-                                          "C":  "Apply tables according to established HTML fundamentals practices, considering error handling.",
-                                          "D":  "Avoid tables entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for tables under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027lists\u0027 and angle \u0027portability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply lists according to established HTML fundamentals practices, considering portability.",
-                                          "B":  "Avoid lists entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use lists only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lists because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lists under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027links\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use links only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over links because it is always clearer and safer.",
-                                          "C":  "Apply links according to established HTML fundamentals practices, considering data handling.",
-                                          "D":  "Avoid links entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for links under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027images\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply images according to established HTML fundamentals practices, considering memory model.",
-                                          "B":  "Avoid images entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use images only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over images because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for images under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027audio video\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use audio video only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over audio video because it is always clearer and safer.",
-                                          "C":  "Apply audio video according to established HTML fundamentals practices, considering syntax behavior.",
-                                          "D":  "Avoid audio video entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for audio video under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027meta tags\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply meta tags according to established HTML fundamentals practices, considering best practices.",
-                                          "B":  "Avoid meta tags entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use meta tags only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over meta tags because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for meta tags under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027accessibility\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use accessibility only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over accessibility because it is always clearer and safer.",
-                                          "C":  "Apply accessibility according to established HTML fundamentals practices, considering error handling.",
-                                          "D":  "Avoid accessibility entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for accessibility under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027ARIA\u0027 and angle \u0027portability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply ARIA according to established HTML fundamentals practices, considering portability.",
-                                          "B":  "Avoid ARIA entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use ARIA only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over ARIA because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for ARIA under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027iframes\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use iframes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over iframes because it is always clearer and safer.",
-                                          "C":  "Apply iframes according to established HTML fundamentals practices, considering data handling.",
-                                          "D":  "Avoid iframes entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for iframes under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027head body separation\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply head body separation according to established HTML fundamentals practices, considering memory model.",
-                                          "B":  "Avoid head body separation entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use head body separation only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over head body separation because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for head body separation under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027block inline elements\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use block inline elements only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over block inline elements because it is always clearer and safer.",
-                                          "C":  "Apply block inline elements according to established HTML fundamentals practices, considering syntax behavior.",
-                                          "D":  "Avoid block inline elements entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for block inline elements under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027entities\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply entities according to established HTML fundamentals practices, considering best practices.",
-                                          "B":  "Avoid entities entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use entities only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over entities because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for entities under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027validation\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use validation only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over validation because it is always clearer and safer.",
-                                          "C":  "Apply validation according to established HTML fundamentals practices, considering error handling.",
-                                          "D":  "Avoid validation entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for validation under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027SEO basics\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply SEO basics according to established HTML fundamentals practices, considering portability.",
-                                          "B":  "Avoid SEO basics entirely in HTML because it never appears in real projects.",
-                                          "C":  "Use SEO basics only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over SEO basics because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for SEO basics under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[HTML][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027canvas\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use canvas only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over canvas because it is always clearer and safer.",
-                                          "C":  "Apply canvas according to established HTML fundamentals practices, considering data handling.",
-                                          "D":  "Avoid canvas entirely in HTML because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for canvas under fundamentals."
-                      }
-                  ]
+{
+  "language": "HTML",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "Which library/module is commonly used for math operations in HTML?",
+      "options": {
+        "A": "Math",
+        "B": "math",
+        "C": "cmath",
+        "D": "numpy"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you write a single-line comment in HTML?",
+      "options": {
+        "A": "/* comment */",
+        "B": "// comment",
+        "C": "# comment",
+        "D": "<!-- comment -->"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 568 + 38 evaluate to in HTML?",
+      "options": {
+        "A": "530",
+        "B": "56838",
+        "C": "Error",
+        "D": "606"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 268 + 49 evaluate to in HTML?",
+      "options": {
+        "A": "317",
+        "B": "219",
+        "C": "Error",
+        "D": "26849"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in HTML?",
+      "options": {
+        "A": "def",
+        "B": "void",
+        "C": "function",
+        "D": "func"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '900' in HTML?",
+      "options": {
+        "A": "echo \"900\"",
+        "B": "System.out.println(\"900\")",
+        "C": "print(\"900\")",
+        "D": "console.log(\"900\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in HTML?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "It depends",
+        "D": "-1"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you handle exceptions or errors in HTML?",
+      "options": {
+        "A": "try/except",
+        "B": "On Error Resume Next",
+        "C": "begin/rescue",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '372' in HTML?",
+      "options": {
+        "A": "console.log(\"372\")",
+        "B": "System.out.println(\"372\")",
+        "C": "echo \"372\"",
+        "D": "print(\"372\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in HTML?",
+      "options": {
+        "A": "$x = 888;",
+        "B": "var x = 888;",
+        "C": "int x = 888;",
+        "D": "let x = 888;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator is used for strict equality in HTML (if applicable)?",
+      "options": {
+        "A": "===",
+        "B": "==",
+        "C": "eq",
+        "D": "is"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In HTML, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In HTML, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In HTML, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 15 + 11 evaluate to in HTML?",
+      "options": {
+        "A": "4",
+        "B": "26",
+        "C": "Error",
+        "D": "1511"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 412 + 12 evaluate to in HTML?",
+      "options": {
+        "A": "Error",
+        "B": "41212",
+        "C": "400",
+        "D": "424"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '359' in HTML?",
+      "options": {
+        "A": "echo \"359\"",
+        "B": "print(\"359\")",
+        "C": "System.out.println(\"359\")",
+        "D": "console.log(\"359\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 315 + 40 evaluate to in HTML?",
+      "options": {
+        "A": "355",
+        "B": "31540",
+        "C": "Error",
+        "D": "275"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 180 + 20 evaluate to in HTML?",
+      "options": {
+        "A": "160",
+        "B": "Error",
+        "C": "18020",
+        "D": "200"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '690' in HTML?",
+      "options": {
+        "A": "System.out.println(\"690\")",
+        "B": "echo \"690\"",
+        "C": "console.log(\"690\")",
+        "D": "print(\"690\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '399' in HTML?",
+      "options": {
+        "A": "System.out.println(\"399\")",
+        "B": "echo \"399\"",
+        "C": "print(\"399\")",
+        "D": "console.log(\"399\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 691 + 14 evaluate to in HTML?",
+      "options": {
+        "A": "705",
+        "B": "Error",
+        "C": "69114",
+        "D": "677"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '417' in HTML?",
+      "options": {
+        "A": "System.out.println(\"417\")",
+        "B": "echo \"417\"",
+        "C": "print(\"417\")",
+        "D": "console.log(\"417\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '244' in HTML?",
+      "options": {
+        "A": "echo \"244\"",
+        "B": "System.out.println(\"244\")",
+        "C": "console.log(\"244\")",
+        "D": "print(\"244\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In HTML, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 254 + 30 evaluate to in HTML?",
+      "options": {
+        "A": "224",
+        "B": "25430",
+        "C": "Error",
+        "D": "284"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 939 + 15 evaluate to in HTML?",
+      "options": {
+        "A": "924",
+        "B": "954",
+        "C": "Error",
+        "D": "93915"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '354' in HTML?",
+      "options": {
+        "A": "echo \"354\"",
+        "B": "console.log(\"354\")",
+        "C": "print(\"354\")",
+        "D": "System.out.println(\"354\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '41' in HTML?",
+      "options": {
+        "A": "echo \"41\"",
+        "B": "System.out.println(\"41\")",
+        "C": "print(\"41\")",
+        "D": "console.log(\"41\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '737' in HTML?",
+      "options": {
+        "A": "echo \"737\"",
+        "B": "console.log(\"737\")",
+        "C": "System.out.println(\"737\")",
+        "D": "print(\"737\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '655' in HTML?",
+      "options": {
+        "A": "echo \"655\"",
+        "B": "console.log(\"655\")",
+        "C": "print(\"655\")",
+        "D": "System.out.println(\"655\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In HTML, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '162' in HTML?",
+      "options": {
+        "A": "console.log(\"162\")",
+        "B": "echo \"162\"",
+        "C": "System.out.println(\"162\")",
+        "D": "print(\"162\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '539' in HTML?",
+      "options": {
+        "A": "print(\"539\")",
+        "B": "console.log(\"539\")",
+        "C": "echo \"539\"",
+        "D": "System.out.println(\"539\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '840' in HTML?",
+      "options": {
+        "A": "print(\"840\")",
+        "B": "echo \"840\"",
+        "C": "System.out.println(\"840\")",
+        "D": "console.log(\"840\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '445' in HTML?",
+      "options": {
+        "A": "System.out.println(\"445\")",
+        "B": "console.log(\"445\")",
+        "C": "print(\"445\")",
+        "D": "echo \"445\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 591 + 48 evaluate to in HTML?",
+      "options": {
+        "A": "59148",
+        "B": "543",
+        "C": "639",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 383 + 46 evaluate to in HTML?",
+      "options": {
+        "A": "38346",
+        "B": "337",
+        "C": "429",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '801' in HTML?",
+      "options": {
+        "A": "echo \"801\"",
+        "B": "print(\"801\")",
+        "C": "System.out.println(\"801\")",
+        "D": "console.log(\"801\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 696 + 38 evaluate to in HTML?",
+      "options": {
+        "A": "Error",
+        "B": "69638",
+        "C": "658",
+        "D": "734"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 325 + 13 evaluate to in HTML?",
+      "options": {
+        "A": "312",
+        "B": "32513",
+        "C": "338",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '490' in HTML?",
+      "options": {
+        "A": "echo \"490\"",
+        "B": "print(\"490\")",
+        "C": "System.out.println(\"490\")",
+        "D": "console.log(\"490\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '373' in HTML?",
+      "options": {
+        "A": "echo \"373\"",
+        "B": "console.log(\"373\")",
+        "C": "print(\"373\")",
+        "D": "System.out.println(\"373\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '270' in HTML?",
+      "options": {
+        "A": "echo \"270\"",
+        "B": "System.out.println(\"270\")",
+        "C": "print(\"270\")",
+        "D": "console.log(\"270\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 705 + 45 evaluate to in HTML?",
+      "options": {
+        "A": "660",
+        "B": "70545",
+        "C": "750",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 187 + 20 evaluate to in HTML?",
+      "options": {
+        "A": "Error",
+        "B": "207",
+        "C": "18720",
+        "D": "167"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 861 + 32 evaluate to in HTML?",
+      "options": {
+        "A": "829",
+        "B": "893",
+        "C": "86132",
+        "D": "Error"
+      },
+      "answer": "B"
+    }
+  ]
 }

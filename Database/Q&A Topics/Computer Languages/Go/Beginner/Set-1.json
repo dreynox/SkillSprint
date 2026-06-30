@@ -1,268 +1,506 @@
-﻿{
-    "language":  "Go",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027variables\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply variables according to established Go fundamentals practices, considering error handling.",
-                                          "B":  "Avoid variables entirely in Go because it never appears in real projects.",
-                                          "C":  "Use variables only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over variables because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for variables under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027type inference\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use type inference only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over type inference because it is always clearer and safer.",
-                                          "C":  "Apply type inference according to established Go fundamentals practices, considering portability.",
-                                          "D":  "Avoid type inference entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for type inference under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027if switch\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply if switch according to established Go fundamentals practices, considering data handling.",
-                                          "B":  "Avoid if switch entirely in Go because it never appears in real projects.",
-                                          "C":  "Use if switch only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over if switch because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for if switch under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027for loop\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use for loop only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over for loop because it is always clearer and safer.",
-                                          "C":  "Apply for loop according to established Go fundamentals practices, considering memory model.",
-                                          "D":  "Avoid for loop entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for for loop under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027functions\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply functions according to established Go fundamentals practices, considering syntax behavior.",
-                                          "B":  "Avoid functions entirely in Go because it never appears in real projects.",
-                                          "C":  "Use functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for functions under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027multiple returns\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use multiple returns only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over multiple returns because it is always clearer and safer.",
-                                          "C":  "Apply multiple returns according to established Go fundamentals practices, considering best practices.",
-                                          "D":  "Avoid multiple returns entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for multiple returns under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027arrays\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply arrays according to established Go fundamentals practices, considering error handling.",
-                                          "B":  "Avoid arrays entirely in Go because it never appears in real projects.",
-                                          "C":  "Use arrays only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over arrays because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for arrays under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027slices\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use slices only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over slices because it is always clearer and safer.",
-                                          "C":  "Apply slices according to established Go fundamentals practices, considering portability.",
-                                          "D":  "Avoid slices entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for slices under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027maps\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply maps according to established Go fundamentals practices, considering data handling.",
-                                          "B":  "Avoid maps entirely in Go because it never appears in real projects.",
-                                          "C":  "Use maps only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over maps because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for maps under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027structs\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use structs only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over structs because it is always clearer and safer.",
-                                          "C":  "Apply structs according to established Go fundamentals practices, considering memory model.",
-                                          "D":  "Avoid structs entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for structs under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027interfaces\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply interfaces according to established Go fundamentals practices, considering syntax behavior.",
-                                          "B":  "Avoid interfaces entirely in Go because it never appears in real projects.",
-                                          "C":  "Use interfaces only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over interfaces because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for interfaces under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027goroutines\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use goroutines only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over goroutines because it is always clearer and safer.",
-                                          "C":  "Apply goroutines according to established Go fundamentals practices, considering best practices.",
-                                          "D":  "Avoid goroutines entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for goroutines under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027channels\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply channels according to established Go fundamentals practices, considering error handling.",
-                                          "B":  "Avoid channels entirely in Go because it never appears in real projects.",
-                                          "C":  "Use channels only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over channels because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for channels under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027error handling\u0027 and angle \u0027portability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use error handling only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over error handling because it is always clearer and safer.",
-                                          "C":  "Apply error handling according to established Go fundamentals practices, considering portability.",
-                                          "D":  "Avoid error handling entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for error handling under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027defer\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply defer according to established Go fundamentals practices, considering data handling.",
-                                          "B":  "Avoid defer entirely in Go because it never appears in real projects.",
-                                          "C":  "Use defer only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over defer because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for defer under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027packages\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use packages only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over packages because it is always clearer and safer.",
-                                          "C":  "Apply packages according to established Go fundamentals practices, considering memory model.",
-                                          "D":  "Avoid packages entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for packages under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027modules\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply modules according to established Go fundamentals practices, considering syntax behavior.",
-                                          "B":  "Avoid modules entirely in Go because it never appears in real projects.",
-                                          "C":  "Use modules only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over modules because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for modules under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027testing\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use testing only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over testing because it is always clearer and safer.",
-                                          "C":  "Apply testing according to established Go fundamentals practices, considering best practices.",
-                                          "D":  "Avoid testing entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for testing under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027context package\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply context package according to established Go fundamentals practices, considering error handling.",
-                                          "B":  "Avoid context package entirely in Go because it never appears in real projects.",
-                                          "C":  "Use context package only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over context package because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for context package under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[Go][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027concurrency patterns\u0027 and angle \u0027portability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use concurrency patterns only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over concurrency patterns because it is always clearer and safer.",
-                                          "C":  "Apply concurrency patterns according to established Go fundamentals practices, considering portability.",
-                                          "D":  "Avoid concurrency patterns entirely in Go because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for concurrency patterns under fundamentals."
-                      }
-                  ]
+{
+  "language": "Go",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "In Go, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you handle exceptions or errors in Go?",
+      "options": {
+        "A": "begin/rescue",
+        "B": "On Error Resume Next",
+        "C": "try/except",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in Go?",
+      "options": {
+        "A": "void",
+        "B": "def",
+        "C": "function",
+        "D": "func"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you write a single-line comment in Go?",
+      "options": {
+        "A": "# comment",
+        "B": "// comment",
+        "C": "/* comment */",
+        "D": "<!-- comment -->"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in Go?",
+      "options": {
+        "A": "It depends",
+        "B": "-1",
+        "C": "0",
+        "D": "1"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in Go?",
+      "options": {
+        "A": "let x = 88;",
+        "B": "var x = 88;",
+        "C": "int x = 88;",
+        "D": "$x = 88;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator is used for strict equality in Go (if applicable)?",
+      "options": {
+        "A": "is",
+        "B": "===",
+        "C": "==",
+        "D": "eq"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '405' in Go?",
+      "options": {
+        "A": "console.log(\"405\")",
+        "B": "print(\"405\")",
+        "C": "echo \"405\"",
+        "D": "System.out.println(\"405\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '558' in Go?",
+      "options": {
+        "A": "echo \"558\"",
+        "B": "System.out.println(\"558\")",
+        "C": "print(\"558\")",
+        "D": "console.log(\"558\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 432 + 44 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "476",
+        "C": "388",
+        "D": "43244"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '419' in Go?",
+      "options": {
+        "A": "console.log(\"419\")",
+        "B": "print(\"419\")",
+        "C": "System.out.println(\"419\")",
+        "D": "echo \"419\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '598' in Go?",
+      "options": {
+        "A": "System.out.println(\"598\")",
+        "B": "print(\"598\")",
+        "C": "echo \"598\"",
+        "D": "console.log(\"598\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '931' in Go?",
+      "options": {
+        "A": "print(\"931\")",
+        "B": "echo \"931\"",
+        "C": "System.out.println(\"931\")",
+        "D": "console.log(\"931\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in Go?",
+      "options": {
+        "A": "numpy",
+        "B": "math",
+        "C": "Math",
+        "D": "cmath"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Go, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 643 + 23 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "64323",
+        "C": "666",
+        "D": "620"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 66 + 11 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "77",
+        "C": "55",
+        "D": "6611"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '696' in Go?",
+      "options": {
+        "A": "print(\"696\")",
+        "B": "console.log(\"696\")",
+        "C": "System.out.println(\"696\")",
+        "D": "echo \"696\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '304' in Go?",
+      "options": {
+        "A": "System.out.println(\"304\")",
+        "B": "console.log(\"304\")",
+        "C": "print(\"304\")",
+        "D": "echo \"304\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '65' in Go?",
+      "options": {
+        "A": "echo \"65\"",
+        "B": "console.log(\"65\")",
+        "C": "print(\"65\")",
+        "D": "System.out.println(\"65\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 11 + 11 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "22",
+        "C": "1111",
+        "D": "0"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '8' in Go?",
+      "options": {
+        "A": "echo \"8\"",
+        "B": "print(\"8\")",
+        "C": "System.out.println(\"8\")",
+        "D": "console.log(\"8\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 157 + 33 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "124",
+        "C": "190",
+        "D": "15733"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '48' in Go?",
+      "options": {
+        "A": "System.out.println(\"48\")",
+        "B": "console.log(\"48\")",
+        "C": "print(\"48\")",
+        "D": "echo \"48\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In Go, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 468 + 27 evaluate to in Go?",
+      "options": {
+        "A": "495",
+        "B": "46827",
+        "C": "441",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '473' in Go?",
+      "options": {
+        "A": "print(\"473\")",
+        "B": "System.out.println(\"473\")",
+        "C": "console.log(\"473\")",
+        "D": "echo \"473\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Go, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 644 + 38 evaluate to in Go?",
+      "options": {
+        "A": "682",
+        "B": "606",
+        "C": "Error",
+        "D": "64438"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 868 + 12 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "86812",
+        "C": "880",
+        "D": "856"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '984' in Go?",
+      "options": {
+        "A": "System.out.println(\"984\")",
+        "B": "console.log(\"984\")",
+        "C": "echo \"984\"",
+        "D": "print(\"984\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 487 + 18 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "48718",
+        "C": "469",
+        "D": "505"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 992 + 40 evaluate to in Go?",
+      "options": {
+        "A": "952",
+        "B": "1032",
+        "C": "Error",
+        "D": "99240"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 861 + 42 evaluate to in Go?",
+      "options": {
+        "A": "819",
+        "B": "903",
+        "C": "Error",
+        "D": "86142"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 273 + 18 evaluate to in Go?",
+      "options": {
+        "A": "Error",
+        "B": "291",
+        "C": "27318",
+        "D": "255"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 201 + 44 evaluate to in Go?",
+      "options": {
+        "A": "20144",
+        "B": "245",
+        "C": "Error",
+        "D": "157"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Go, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 120 + 48 evaluate to in Go?",
+      "options": {
+        "A": "168",
+        "B": "12048",
+        "C": "Error",
+        "D": "72"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Go, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 523 + 18 evaluate to in Go?",
+      "options": {
+        "A": "505",
+        "B": "Error",
+        "C": "52318",
+        "D": "541"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '162' in Go?",
+      "options": {
+        "A": "System.out.println(\"162\")",
+        "B": "echo \"162\"",
+        "C": "print(\"162\")",
+        "D": "console.log(\"162\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '309' in Go?",
+      "options": {
+        "A": "echo \"309\"",
+        "B": "System.out.println(\"309\")",
+        "C": "print(\"309\")",
+        "D": "console.log(\"309\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '472' in Go?",
+      "options": {
+        "A": "console.log(\"472\")",
+        "B": "echo \"472\"",
+        "C": "print(\"472\")",
+        "D": "System.out.println(\"472\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 862 + 30 evaluate to in Go?",
+      "options": {
+        "A": "86230",
+        "B": "Error",
+        "C": "892",
+        "D": "832"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '595' in Go?",
+      "options": {
+        "A": "print(\"595\")",
+        "B": "echo \"595\"",
+        "C": "System.out.println(\"595\")",
+        "D": "console.log(\"595\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '200' in Go?",
+      "options": {
+        "A": "print(\"200\")",
+        "B": "console.log(\"200\")",
+        "C": "echo \"200\"",
+        "D": "System.out.println(\"200\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 850 + 46 evaluate to in Go?",
+      "options": {
+        "A": "896",
+        "B": "85046",
+        "C": "Error",
+        "D": "804"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Go, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 516 + 20 evaluate to in Go?",
+      "options": {
+        "A": "51620",
+        "B": "536",
+        "C": "Error",
+        "D": "496"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 70 + 34 evaluate to in Go?",
+      "options": {
+        "A": "7034",
+        "B": "36",
+        "C": "104",
+        "D": "Error"
+      },
+      "answer": "C"
+    }
+  ]
 }

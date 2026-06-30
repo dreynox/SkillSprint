@@ -1,268 +1,506 @@
-﻿{
-    "language":  "R",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027vectors\u0027 and angle \u0027edge cases\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply vectors according to established R implementation practices, considering edge cases.",
-                                          "B":  "Avoid vectors entirely in R because it never appears in real projects.",
-                                          "C":  "Use vectors only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over vectors because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for vectors under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027data frames\u0027 and angle \u0027readability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use data frames only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over data frames because it is always clearer and safer.",
-                                          "C":  "Apply data frames according to established R implementation practices, considering readability.",
-                                          "D":  "Avoid data frames entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for data frames under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027lists\u0027 and angle \u0027tooling and workflow\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply lists according to established R implementation practices, considering tooling and workflow.",
-                                          "B":  "Avoid lists entirely in R because it never appears in real projects.",
-                                          "C":  "Use lists only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lists because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lists under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027factors\u0027 and angle \u0027type safety\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use factors only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over factors because it is always clearer and safer.",
-                                          "C":  "Apply factors according to established R implementation practices, considering type safety.",
-                                          "D":  "Avoid factors entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for factors under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027functions\u0027 and angle \u0027modularity\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply functions according to established R implementation practices, considering modularity.",
-                                          "B":  "Avoid functions entirely in R because it never appears in real projects.",
-                                          "C":  "Use functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for functions under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027apply family\u0027 and angle \u0027runtime behavior\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use apply family only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over apply family because it is always clearer and safer.",
-                                          "C":  "Apply apply family according to established R implementation practices, considering runtime behavior.",
-                                          "D":  "Avoid apply family entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for apply family under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027loops\u0027 and angle \u0027edge cases\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply loops according to established R implementation practices, considering edge cases.",
-                                          "B":  "Avoid loops entirely in R because it never appears in real projects.",
-                                          "C":  "Use loops only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over loops because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for loops under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027conditions\u0027 and angle \u0027readability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use conditions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over conditions because it is always clearer and safer.",
-                                          "C":  "Apply conditions according to established R implementation practices, considering readability.",
-                                          "D":  "Avoid conditions entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for conditions under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027tidyverse\u0027 and angle \u0027tooling and workflow\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply tidyverse according to established R implementation practices, considering tooling and workflow.",
-                                          "B":  "Avoid tidyverse entirely in R because it never appears in real projects.",
-                                          "C":  "Use tidyverse only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over tidyverse because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for tidyverse under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027ggplot2\u0027 and angle \u0027type safety\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use ggplot2 only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over ggplot2 because it is always clearer and safer.",
-                                          "C":  "Apply ggplot2 according to established R implementation practices, considering type safety.",
-                                          "D":  "Avoid ggplot2 entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for ggplot2 under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027dplyr verbs\u0027 and angle \u0027modularity\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply dplyr verbs according to established R implementation practices, considering modularity.",
-                                          "B":  "Avoid dplyr verbs entirely in R because it never appears in real projects.",
-                                          "C":  "Use dplyr verbs only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over dplyr verbs because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for dplyr verbs under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027joins\u0027 and angle \u0027runtime behavior\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use joins only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over joins because it is always clearer and safer.",
-                                          "C":  "Apply joins according to established R implementation practices, considering runtime behavior.",
-                                          "D":  "Avoid joins entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for joins under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027missing values\u0027 and angle \u0027edge cases\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply missing values according to established R implementation practices, considering edge cases.",
-                                          "B":  "Avoid missing values entirely in R because it never appears in real projects.",
-                                          "C":  "Use missing values only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over missing values because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for missing values under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027stringr\u0027 and angle \u0027readability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use stringr only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over stringr because it is always clearer and safer.",
-                                          "C":  "Apply stringr according to established R implementation practices, considering readability.",
-                                          "D":  "Avoid stringr entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for stringr under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027date handling\u0027 and angle \u0027tooling and workflow\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply date handling according to established R implementation practices, considering tooling and workflow.",
-                                          "B":  "Avoid date handling entirely in R because it never appears in real projects.",
-                                          "C":  "Use date handling only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over date handling because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for date handling under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027statistical tests\u0027 and angle \u0027type safety\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use statistical tests only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over statistical tests because it is always clearer and safer.",
-                                          "C":  "Apply statistical tests according to established R implementation practices, considering type safety.",
-                                          "D":  "Avoid statistical tests entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for statistical tests under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027linear models\u0027 and angle \u0027modularity\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply linear models according to established R implementation practices, considering modularity.",
-                                          "B":  "Avoid linear models entirely in R because it never appears in real projects.",
-                                          "C":  "Use linear models only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over linear models because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for linear models under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027packages\u0027 and angle \u0027runtime behavior\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use packages only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over packages because it is always clearer and safer.",
-                                          "C":  "Apply packages according to established R implementation practices, considering runtime behavior.",
-                                          "D":  "Avoid packages entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for packages under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027RMarkdown\u0027 and angle \u0027edge cases\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply RMarkdown according to established R implementation practices, considering edge cases.",
-                                          "B":  "Avoid RMarkdown entirely in R because it never appears in real projects.",
-                                          "C":  "Use RMarkdown only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over RMarkdown because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for RMarkdown under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[R][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027Shiny\u0027 and angle \u0027readability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use Shiny only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over Shiny because it is always clearer and safer.",
-                                          "C":  "Apply Shiny according to established R implementation practices, considering readability.",
-                                          "D":  "Avoid Shiny entirely in R because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for Shiny under implementation."
-                      }
-                  ]
+{
+  "language": "R",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "Which library/module is commonly used for math operations in R?",
+      "options": {
+        "A": "numpy",
+        "B": "cmath",
+        "C": "math",
+        "D": "Math"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in R?",
+      "options": {
+        "A": "def",
+        "B": "function",
+        "C": "func",
+        "D": "void"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In R, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in R?",
+      "options": {
+        "A": "int x = 127;",
+        "B": "var x = 127;",
+        "C": "let x = 127;",
+        "D": "$x = 127;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in R?",
+      "options": {
+        "A": "It depends",
+        "B": "0",
+        "C": "-1",
+        "D": "1"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '104' in R?",
+      "options": {
+        "A": "echo \"104\"",
+        "B": "console.log(\"104\")",
+        "C": "print(\"104\")",
+        "D": "System.out.println(\"104\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '155' in R?",
+      "options": {
+        "A": "System.out.println(\"155\")",
+        "B": "print(\"155\")",
+        "C": "console.log(\"155\")",
+        "D": "echo \"155\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '916' in R?",
+      "options": {
+        "A": "System.out.println(\"916\")",
+        "B": "echo \"916\"",
+        "C": "print(\"916\")",
+        "D": "console.log(\"916\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In R, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In R, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which operator is used for strict equality in R (if applicable)?",
+      "options": {
+        "A": "===",
+        "B": "is",
+        "C": "==",
+        "D": "eq"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 518 + 23 evaluate to in R?",
+      "options": {
+        "A": "495",
+        "B": "541",
+        "C": "Error",
+        "D": "51823"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '142' in R?",
+      "options": {
+        "A": "print(\"142\")",
+        "B": "console.log(\"142\")",
+        "C": "System.out.println(\"142\")",
+        "D": "echo \"142\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In R, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '642' in R?",
+      "options": {
+        "A": "console.log(\"642\")",
+        "B": "print(\"642\")",
+        "C": "System.out.println(\"642\")",
+        "D": "echo \"642\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you handle exceptions or errors in R?",
+      "options": {
+        "A": "try/except",
+        "B": "On Error Resume Next",
+        "C": "try/catch",
+        "D": "begin/rescue"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 613 + 27 evaluate to in R?",
+      "options": {
+        "A": "586",
+        "B": "640",
+        "C": "61327",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 851 + 50 evaluate to in R?",
+      "options": {
+        "A": "901",
+        "B": "801",
+        "C": "85150",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 150 + 50 evaluate to in R?",
+      "options": {
+        "A": "100",
+        "B": "200",
+        "C": "15050",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 664 + 29 evaluate to in R?",
+      "options": {
+        "A": "66429",
+        "B": "Error",
+        "C": "693",
+        "D": "635"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you write a single-line comment in R?",
+      "options": {
+        "A": "# comment",
+        "B": "<!-- comment -->",
+        "C": "// comment",
+        "D": "/* comment */"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '128' in R?",
+      "options": {
+        "A": "System.out.println(\"128\")",
+        "B": "console.log(\"128\")",
+        "C": "print(\"128\")",
+        "D": "echo \"128\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 468 + 36 evaluate to in R?",
+      "options": {
+        "A": "432",
+        "B": "Error",
+        "C": "504",
+        "D": "46836"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 973 + 10 evaluate to in R?",
+      "options": {
+        "A": "97310",
+        "B": "983",
+        "C": "963",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 97 + 24 evaluate to in R?",
+      "options": {
+        "A": "73",
+        "B": "121",
+        "C": "Error",
+        "D": "9724"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In R, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 146 + 12 evaluate to in R?",
+      "options": {
+        "A": "134",
+        "B": "Error",
+        "C": "158",
+        "D": "14612"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In R, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 151 + 13 evaluate to in R?",
+      "options": {
+        "A": "15113",
+        "B": "Error",
+        "C": "138",
+        "D": "164"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 143 + 44 evaluate to in R?",
+      "options": {
+        "A": "99",
+        "B": "187",
+        "C": "Error",
+        "D": "14344"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 499 + 34 evaluate to in R?",
+      "options": {
+        "A": "49934",
+        "B": "Error",
+        "C": "465",
+        "D": "533"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '384' in R?",
+      "options": {
+        "A": "print(\"384\")",
+        "B": "echo \"384\"",
+        "C": "System.out.println(\"384\")",
+        "D": "console.log(\"384\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 669 + 25 evaluate to in R?",
+      "options": {
+        "A": "644",
+        "B": "Error",
+        "C": "66925",
+        "D": "694"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '627' in R?",
+      "options": {
+        "A": "echo \"627\"",
+        "B": "print(\"627\")",
+        "C": "console.log(\"627\")",
+        "D": "System.out.println(\"627\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '735' in R?",
+      "options": {
+        "A": "console.log(\"735\")",
+        "B": "System.out.println(\"735\")",
+        "C": "echo \"735\"",
+        "D": "print(\"735\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '526' in R?",
+      "options": {
+        "A": "console.log(\"526\")",
+        "B": "print(\"526\")",
+        "C": "echo \"526\"",
+        "D": "System.out.println(\"526\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '480' in R?",
+      "options": {
+        "A": "print(\"480\")",
+        "B": "console.log(\"480\")",
+        "C": "System.out.println(\"480\")",
+        "D": "echo \"480\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '968' in R?",
+      "options": {
+        "A": "console.log(\"968\")",
+        "B": "print(\"968\")",
+        "C": "System.out.println(\"968\")",
+        "D": "echo \"968\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 114 + 36 evaluate to in R?",
+      "options": {
+        "A": "11436",
+        "B": "150",
+        "C": "Error",
+        "D": "78"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '129' in R?",
+      "options": {
+        "A": "console.log(\"129\")",
+        "B": "echo \"129\"",
+        "C": "System.out.println(\"129\")",
+        "D": "print(\"129\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '271' in R?",
+      "options": {
+        "A": "console.log(\"271\")",
+        "B": "echo \"271\"",
+        "C": "System.out.println(\"271\")",
+        "D": "print(\"271\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 749 + 21 evaluate to in R?",
+      "options": {
+        "A": "770",
+        "B": "Error",
+        "C": "728",
+        "D": "74921"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 997 + 29 evaluate to in R?",
+      "options": {
+        "A": "1026",
+        "B": "99729",
+        "C": "968",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 4 + 39 evaluate to in R?",
+      "options": {
+        "A": "-35",
+        "B": "439",
+        "C": "43",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '264' in R?",
+      "options": {
+        "A": "console.log(\"264\")",
+        "B": "echo \"264\"",
+        "C": "System.out.println(\"264\")",
+        "D": "print(\"264\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '687' in R?",
+      "options": {
+        "A": "echo \"687\"",
+        "B": "print(\"687\")",
+        "C": "System.out.println(\"687\")",
+        "D": "console.log(\"687\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '990' in R?",
+      "options": {
+        "A": "System.out.println(\"990\")",
+        "B": "console.log(\"990\")",
+        "C": "echo \"990\"",
+        "D": "print(\"990\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '520' in R?",
+      "options": {
+        "A": "System.out.println(\"520\")",
+        "B": "echo \"520\"",
+        "C": "console.log(\"520\")",
+        "D": "print(\"520\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '54' in R?",
+      "options": {
+        "A": "System.out.println(\"54\")",
+        "B": "print(\"54\")",
+        "C": "console.log(\"54\")",
+        "D": "echo \"54\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '882' in R?",
+      "options": {
+        "A": "echo \"882\"",
+        "B": "console.log(\"882\")",
+        "C": "System.out.println(\"882\")",
+        "D": "print(\"882\")"
+      },
+      "answer": "D"
+    }
+  ]
 }

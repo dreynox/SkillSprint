@@ -16,40 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerInterval;
     let timeRemaining = 0;
 
-    // Mock questions based on selections
     const generateQuestions = (lang, level, num) => {
-        const qList = [];
-        for (let i = 0; i < num; i++) {
-            let codeSnippet, options, answer;
-            if (lang === 'Python') {
-                codeSnippet = `def greet(name):\n    <span class="gap-blank">____</span> f"Hello, {name}"`;
-                options = ['print', 'return', 'echo', 'yield'];
-                answer = 'return';
-            } else if (lang === 'JavaScript') {
-                codeSnippet = `const arr = [1, 2, 3];\narr.<span class="gap-blank">____</span>((x) => x * 2);`;
-                options = ['map', 'forEach', 'filter', 'reduce'];
-                answer = 'map';
-            } else if (lang === 'Java') {
-                codeSnippet = `public static void <span class="gap-blank">____</span>(String[] args) {\n    System.out.println("Hello");\n}`;
-                options = ['Main', 'start', 'main', 'run'];
-                answer = 'main';
-            } else {
-                codeSnippet = `int a = 5;\n<span class="gap-blank">____</span> << a << std::endl;`;
-                options = ['cout', 'std::cout', 'printf', 'print'];
-                answer = 'std::cout';
-            }
-            
-            // Randomize options
-            options.sort(() => Math.random() - 0.5);
-
-            qList.push({
-                text: "Fill in the blank to complete the code correctly.",
-                code: codeSnippet,
-                options: options,
-                answer: answer
-            });
+        let qList = [];
+        if (window.PRACTICE_QUESTIONS && window.PRACTICE_QUESTIONS[lang] && window.PRACTICE_QUESTIONS[lang][level]) {
+            // Clone and shuffle to avoid reusing same order
+            qList = [...window.PRACTICE_QUESTIONS[lang][level]];
+            qList.sort(() => Math.random() - 0.5);
+        } else {
+            console.warn("Could not find practice data for", lang, level);
+            qList = [{text: "Error loading questions", code: "Error", options: [], answer: ""}];
         }
-        return qList;
+        
+        // Return only the requested amount
+        return qList.slice(0, num);
     };
 
     const startPractice = () => {

@@ -1,268 +1,506 @@
-﻿{
-    "language":  "Python",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027variables\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply variables according to established Python implementation practices, considering data handling.",
-                                          "B":  "Avoid variables entirely in Python because it never appears in real projects.",
-                                          "C":  "Use variables only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over variables because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for variables under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027data types\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use data types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over data types because it is always clearer and safer.",
-                                          "C":  "Apply data types according to established Python implementation practices, considering memory model.",
-                                          "D":  "Avoid data types entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for data types under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027lists\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply lists according to established Python implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid lists entirely in Python because it never appears in real projects.",
-                                          "C":  "Use lists only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lists because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lists under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027tuples\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use tuples only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over tuples because it is always clearer and safer.",
-                                          "C":  "Apply tuples according to established Python implementation practices, considering best practices.",
-                                          "D":  "Avoid tuples entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for tuples under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027dictionaries\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply dictionaries according to established Python implementation practices, considering error handling.",
-                                          "B":  "Avoid dictionaries entirely in Python because it never appears in real projects.",
-                                          "C":  "Use dictionaries only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over dictionaries because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for dictionaries under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027sets\u0027 and angle \u0027portability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use sets only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over sets because it is always clearer and safer.",
-                                          "C":  "Apply sets according to established Python implementation practices, considering portability.",
-                                          "D":  "Avoid sets entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for sets under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027loops\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply loops according to established Python implementation practices, considering data handling.",
-                                          "B":  "Avoid loops entirely in Python because it never appears in real projects.",
-                                          "C":  "Use loops only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over loops because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for loops under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027functions\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use functions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over functions because it is always clearer and safer.",
-                                          "C":  "Apply functions according to established Python implementation practices, considering memory model.",
-                                          "D":  "Avoid functions entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for functions under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027lambda\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply lambda according to established Python implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid lambda entirely in Python because it never appears in real projects.",
-                                          "C":  "Use lambda only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lambda because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lambda under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027comprehensions\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use comprehensions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over comprehensions because it is always clearer and safer.",
-                                          "C":  "Apply comprehensions according to established Python implementation practices, considering best practices.",
-                                          "D":  "Avoid comprehensions entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for comprehensions under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027classes\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply classes according to established Python implementation practices, considering error handling.",
-                                          "B":  "Avoid classes entirely in Python because it never appears in real projects.",
-                                          "C":  "Use classes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over classes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for classes under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027inheritance\u0027 and angle \u0027portability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use inheritance only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over inheritance because it is always clearer and safer.",
-                                          "C":  "Apply inheritance according to established Python implementation practices, considering portability.",
-                                          "D":  "Avoid inheritance entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for inheritance under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027exceptions\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply exceptions according to established Python implementation practices, considering data handling.",
-                                          "B":  "Avoid exceptions entirely in Python because it never appears in real projects.",
-                                          "C":  "Use exceptions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over exceptions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for exceptions under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027file handling\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use file handling only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over file handling because it is always clearer and safer.",
-                                          "C":  "Apply file handling according to established Python implementation practices, considering memory model.",
-                                          "D":  "Avoid file handling entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for file handling under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027modules\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply modules according to established Python implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid modules entirely in Python because it never appears in real projects.",
-                                          "C":  "Use modules only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over modules because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for modules under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027virtual environments\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use virtual environments only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over virtual environments because it is always clearer and safer.",
-                                          "C":  "Apply virtual environments according to established Python implementation practices, considering best practices.",
-                                          "D":  "Avoid virtual environments entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for virtual environments under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027decorators\u0027 and angle \u0027error handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply decorators according to established Python implementation practices, considering error handling.",
-                                          "B":  "Avoid decorators entirely in Python because it never appears in real projects.",
-                                          "C":  "Use decorators only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over decorators because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for decorators under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027generators\u0027 and angle \u0027portability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use generators only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over generators because it is always clearer and safer.",
-                                          "C":  "Apply generators according to established Python implementation practices, considering portability.",
-                                          "D":  "Avoid generators entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for generators under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027iterators\u0027 and angle \u0027data handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply iterators according to established Python implementation practices, considering data handling.",
-                                          "B":  "Avoid iterators entirely in Python because it never appears in real projects.",
-                                          "C":  "Use iterators only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over iterators because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for iterators under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[Python][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027context managers\u0027 and angle \u0027memory model\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use context managers only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over context managers because it is always clearer and safer.",
-                                          "C":  "Apply context managers according to established Python implementation practices, considering memory model.",
-                                          "D":  "Avoid context managers entirely in Python because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for context managers under implementation."
-                      }
-                  ]
+{
+  "language": "Python",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "In Python, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in Python?",
+      "options": {
+        "A": "int x = 993;",
+        "B": "var x = 993;",
+        "C": "$x = 993;",
+        "D": "let x = 993;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in Python?",
+      "options": {
+        "A": "function",
+        "B": "def",
+        "C": "func",
+        "D": "void"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in Python?",
+      "options": {
+        "A": "numpy",
+        "B": "Math",
+        "C": "math",
+        "D": "cmath"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in Python?",
+      "options": {
+        "A": "It depends",
+        "B": "1",
+        "C": "0",
+        "D": "-1"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you write a single-line comment in Python?",
+      "options": {
+        "A": "<!-- comment -->",
+        "B": "/* comment */",
+        "C": "// comment",
+        "D": "# comment"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 920 + 16 evaluate to in Python?",
+      "options": {
+        "A": "936",
+        "B": "92016",
+        "C": "Error",
+        "D": "904"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Python, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator is used for strict equality in Python (if applicable)?",
+      "options": {
+        "A": "is",
+        "B": "==",
+        "C": "===",
+        "D": "eq"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you handle exceptions or errors in Python?",
+      "options": {
+        "A": "try/catch",
+        "B": "begin/rescue",
+        "C": "On Error Resume Next",
+        "D": "try/except"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 421 + 39 evaluate to in Python?",
+      "options": {
+        "A": "42139",
+        "B": "460",
+        "C": "382",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 629 + 31 evaluate to in Python?",
+      "options": {
+        "A": "598",
+        "B": "62931",
+        "C": "660",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '440' in Python?",
+      "options": {
+        "A": "print(\"440\")",
+        "B": "echo \"440\"",
+        "C": "System.out.println(\"440\")",
+        "D": "console.log(\"440\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '802' in Python?",
+      "options": {
+        "A": "print(\"802\")",
+        "B": "System.out.println(\"802\")",
+        "C": "echo \"802\"",
+        "D": "console.log(\"802\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 827 + 31 evaluate to in Python?",
+      "options": {
+        "A": "Error",
+        "B": "858",
+        "C": "82731",
+        "D": "796"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '362' in Python?",
+      "options": {
+        "A": "print(\"362\")",
+        "B": "console.log(\"362\")",
+        "C": "System.out.println(\"362\")",
+        "D": "echo \"362\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 367 + 38 evaluate to in Python?",
+      "options": {
+        "A": "405",
+        "B": "Error",
+        "C": "329",
+        "D": "36738"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '849' in Python?",
+      "options": {
+        "A": "print(\"849\")",
+        "B": "System.out.println(\"849\")",
+        "C": "console.log(\"849\")",
+        "D": "echo \"849\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '365' in Python?",
+      "options": {
+        "A": "console.log(\"365\")",
+        "B": "echo \"365\"",
+        "C": "System.out.println(\"365\")",
+        "D": "print(\"365\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In Python, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '169' in Python?",
+      "options": {
+        "A": "console.log(\"169\")",
+        "B": "print(\"169\")",
+        "C": "echo \"169\"",
+        "D": "System.out.println(\"169\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '112' in Python?",
+      "options": {
+        "A": "print(\"112\")",
+        "B": "echo \"112\"",
+        "C": "console.log(\"112\")",
+        "D": "System.out.println(\"112\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 911 + 47 evaluate to in Python?",
+      "options": {
+        "A": "Error",
+        "B": "864",
+        "C": "91147",
+        "D": "958"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '361' in Python?",
+      "options": {
+        "A": "console.log(\"361\")",
+        "B": "print(\"361\")",
+        "C": "echo \"361\"",
+        "D": "System.out.println(\"361\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '925' in Python?",
+      "options": {
+        "A": "System.out.println(\"925\")",
+        "B": "console.log(\"925\")",
+        "C": "print(\"925\")",
+        "D": "echo \"925\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In Python, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To declare a variable",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '33' in Python?",
+      "options": {
+        "A": "console.log(\"33\")",
+        "B": "System.out.println(\"33\")",
+        "C": "echo \"33\"",
+        "D": "print(\"33\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '246' in Python?",
+      "options": {
+        "A": "System.out.println(\"246\")",
+        "B": "echo \"246\"",
+        "C": "print(\"246\")",
+        "D": "console.log(\"246\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '263' in Python?",
+      "options": {
+        "A": "print(\"263\")",
+        "B": "System.out.println(\"263\")",
+        "C": "console.log(\"263\")",
+        "D": "echo \"263\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '496' in Python?",
+      "options": {
+        "A": "echo \"496\"",
+        "B": "System.out.println(\"496\")",
+        "C": "print(\"496\")",
+        "D": "console.log(\"496\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 487 + 41 evaluate to in Python?",
+      "options": {
+        "A": "446",
+        "B": "48741",
+        "C": "528",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 346 + 41 evaluate to in Python?",
+      "options": {
+        "A": "34641",
+        "B": "305",
+        "C": "Error",
+        "D": "387"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In Python, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 737 + 27 evaluate to in Python?",
+      "options": {
+        "A": "73727",
+        "B": "764",
+        "C": "710",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 511 + 34 evaluate to in Python?",
+      "options": {
+        "A": "Error",
+        "B": "477",
+        "C": "51134",
+        "D": "545"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In Python, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '85' in Python?",
+      "options": {
+        "A": "print(\"85\")",
+        "B": "echo \"85\"",
+        "C": "console.log(\"85\")",
+        "D": "System.out.println(\"85\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 999 + 27 evaluate to in Python?",
+      "options": {
+        "A": "99927",
+        "B": "Error",
+        "C": "972",
+        "D": "1026"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '981' in Python?",
+      "options": {
+        "A": "console.log(\"981\")",
+        "B": "echo \"981\"",
+        "C": "System.out.println(\"981\")",
+        "D": "print(\"981\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '776' in Python?",
+      "options": {
+        "A": "console.log(\"776\")",
+        "B": "print(\"776\")",
+        "C": "echo \"776\"",
+        "D": "System.out.println(\"776\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '959' in Python?",
+      "options": {
+        "A": "System.out.println(\"959\")",
+        "B": "console.log(\"959\")",
+        "C": "print(\"959\")",
+        "D": "echo \"959\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '438' in Python?",
+      "options": {
+        "A": "echo \"438\"",
+        "B": "print(\"438\")",
+        "C": "System.out.println(\"438\")",
+        "D": "console.log(\"438\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '875' in Python?",
+      "options": {
+        "A": "echo \"875\"",
+        "B": "print(\"875\")",
+        "C": "console.log(\"875\")",
+        "D": "System.out.println(\"875\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 473 + 48 evaluate to in Python?",
+      "options": {
+        "A": "521",
+        "B": "47348",
+        "C": "425",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 706 + 10 evaluate to in Python?",
+      "options": {
+        "A": "716",
+        "B": "70610",
+        "C": "Error",
+        "D": "696"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Python, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '229' in Python?",
+      "options": {
+        "A": "System.out.println(\"229\")",
+        "B": "console.log(\"229\")",
+        "C": "echo \"229\"",
+        "D": "print(\"229\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '663' in Python?",
+      "options": {
+        "A": "console.log(\"663\")",
+        "B": "System.out.println(\"663\")",
+        "C": "print(\"663\")",
+        "D": "echo \"663\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 239 + 21 evaluate to in Python?",
+      "options": {
+        "A": "Error",
+        "B": "260",
+        "C": "23921",
+        "D": "218"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 66 + 23 evaluate to in Python?",
+      "options": {
+        "A": "43",
+        "B": "89",
+        "C": "6623",
+        "D": "Error"
+      },
+      "answer": "B"
+    }
+  ]
 }

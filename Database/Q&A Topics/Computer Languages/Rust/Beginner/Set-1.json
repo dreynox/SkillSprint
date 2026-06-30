@@ -1,268 +1,506 @@
-﻿{
-    "language":  "Rust",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027ownership\u0027 and angle \u0027portability\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply ownership according to established Rust fundamentals practices, considering portability.",
-                                          "B":  "Avoid ownership entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use ownership only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over ownership because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for ownership under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027borrowing\u0027 and angle \u0027data handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use borrowing only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over borrowing because it is always clearer and safer.",
-                                          "C":  "Apply borrowing according to established Rust fundamentals practices, considering data handling.",
-                                          "D":  "Avoid borrowing entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for borrowing under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027lifetimes\u0027 and angle \u0027memory model\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply lifetimes according to established Rust fundamentals practices, considering memory model.",
-                                          "B":  "Avoid lifetimes entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use lifetimes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over lifetimes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for lifetimes under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027structs\u0027 and angle \u0027syntax behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use structs only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over structs because it is always clearer and safer.",
-                                          "C":  "Apply structs according to established Rust fundamentals practices, considering syntax behavior.",
-                                          "D":  "Avoid structs entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for structs under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027enums\u0027 and angle \u0027best practices\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply enums according to established Rust fundamentals practices, considering best practices.",
-                                          "B":  "Avoid enums entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use enums only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over enums because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for enums under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027pattern matching\u0027 and angle \u0027error handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use pattern matching only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over pattern matching because it is always clearer and safer.",
-                                          "C":  "Apply pattern matching according to established Rust fundamentals practices, considering error handling.",
-                                          "D":  "Avoid pattern matching entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for pattern matching under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027traits\u0027 and angle \u0027portability\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply traits according to established Rust fundamentals practices, considering portability.",
-                                          "B":  "Avoid traits entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use traits only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over traits because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for traits under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027generics\u0027 and angle \u0027data handling\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use generics only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over generics because it is always clearer and safer.",
-                                          "C":  "Apply generics according to established Rust fundamentals practices, considering data handling.",
-                                          "D":  "Avoid generics entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for generics under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027vectors\u0027 and angle \u0027memory model\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply vectors according to established Rust fundamentals practices, considering memory model.",
-                                          "B":  "Avoid vectors entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use vectors only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over vectors because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for vectors under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027hash maps\u0027 and angle \u0027syntax behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use hash maps only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over hash maps because it is always clearer and safer.",
-                                          "C":  "Apply hash maps according to established Rust fundamentals practices, considering syntax behavior.",
-                                          "D":  "Avoid hash maps entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for hash maps under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027error handling\u0027 and angle \u0027best practices\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply error handling according to established Rust fundamentals practices, considering best practices.",
-                                          "B":  "Avoid error handling entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use error handling only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over error handling because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for error handling under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027Option Result\u0027 and angle \u0027error handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use Option Result only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over Option Result because it is always clearer and safer.",
-                                          "C":  "Apply Option Result according to established Rust fundamentals practices, considering error handling.",
-                                          "D":  "Avoid Option Result entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for Option Result under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027modules\u0027 and angle \u0027portability\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply modules according to established Rust fundamentals practices, considering portability.",
-                                          "B":  "Avoid modules entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use modules only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over modules because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for modules under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027crates\u0027 and angle \u0027data handling\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use crates only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over crates because it is always clearer and safer.",
-                                          "C":  "Apply crates according to established Rust fundamentals practices, considering data handling.",
-                                          "D":  "Avoid crates entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for crates under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027iterators\u0027 and angle \u0027memory model\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply iterators according to established Rust fundamentals practices, considering memory model.",
-                                          "B":  "Avoid iterators entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use iterators only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over iterators because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for iterators under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027closures\u0027 and angle \u0027syntax behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use closures only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over closures because it is always clearer and safer.",
-                                          "C":  "Apply closures according to established Rust fundamentals practices, considering syntax behavior.",
-                                          "D":  "Avoid closures entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for closures under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027smart pointers\u0027 and angle \u0027best practices\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply smart pointers according to established Rust fundamentals practices, considering best practices.",
-                                          "B":  "Avoid smart pointers entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use smart pointers only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over smart pointers because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for smart pointers under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027concurrency\u0027 and angle \u0027error handling\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use concurrency only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over concurrency because it is always clearer and safer.",
-                                          "C":  "Apply concurrency according to established Rust fundamentals practices, considering error handling.",
-                                          "D":  "Avoid concurrency entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for concurrency under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027channels\u0027 and angle \u0027portability\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply channels according to established Rust fundamentals practices, considering portability.",
-                                          "B":  "Avoid channels entirely in Rust because it never appears in real projects.",
-                                          "C":  "Use channels only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over channels because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for channels under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[Rust][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027macros\u0027 and angle \u0027data handling\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use macros only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over macros because it is always clearer and safer.",
-                                          "C":  "Apply macros according to established Rust fundamentals practices, considering data handling.",
-                                          "D":  "Avoid macros entirely in Rust because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for macros under fundamentals."
-                      }
-                  ]
+{
+  "language": "Rust",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "Which keyword is used to define a function/method in Rust?",
+      "options": {
+        "A": "def",
+        "B": "function",
+        "C": "func",
+        "D": "void"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you handle exceptions or errors in Rust?",
+      "options": {
+        "A": "begin/rescue",
+        "B": "On Error Resume Next",
+        "C": "try/catch",
+        "D": "try/except"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in Rust?",
+      "options": {
+        "A": "let x = 823;",
+        "B": "int x = 823;",
+        "C": "var x = 823;",
+        "D": "$x = 823;"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in Rust?",
+      "options": {
+        "A": "-1",
+        "B": "1",
+        "C": "0",
+        "D": "It depends"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 196 + 17 evaluate to in Rust?",
+      "options": {
+        "A": "Error",
+        "B": "213",
+        "C": "179",
+        "D": "19617"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 531 + 44 evaluate to in Rust?",
+      "options": {
+        "A": "575",
+        "B": "53144",
+        "C": "487",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you write a single-line comment in Rust?",
+      "options": {
+        "A": "// comment",
+        "B": "/* comment */",
+        "C": "# comment",
+        "D": "<!-- comment -->"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 821 + 23 evaluate to in Rust?",
+      "options": {
+        "A": "Error",
+        "B": "798",
+        "C": "844",
+        "D": "82123"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 220 + 50 evaluate to in Rust?",
+      "options": {
+        "A": "170",
+        "B": "270",
+        "C": "22050",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 148 + 19 evaluate to in Rust?",
+      "options": {
+        "A": "129",
+        "B": "Error",
+        "C": "167",
+        "D": "14819"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in Rust?",
+      "options": {
+        "A": "numpy",
+        "B": "Math",
+        "C": "math",
+        "D": "cmath"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which operator is used for strict equality in Rust (if applicable)?",
+      "options": {
+        "A": "===",
+        "B": "eq",
+        "C": "==",
+        "D": "is"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Rust, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 308 + 46 evaluate to in Rust?",
+      "options": {
+        "A": "Error",
+        "B": "30846",
+        "C": "262",
+        "D": "354"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In Rust, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '242' in Rust?",
+      "options": {
+        "A": "System.out.println(\"242\")",
+        "B": "console.log(\"242\")",
+        "C": "print(\"242\")",
+        "D": "echo \"242\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In Rust, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Rust, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '370' in Rust?",
+      "options": {
+        "A": "console.log(\"370\")",
+        "B": "System.out.println(\"370\")",
+        "C": "echo \"370\"",
+        "D": "print(\"370\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 246 + 10 evaluate to in Rust?",
+      "options": {
+        "A": "236",
+        "B": "Error",
+        "C": "24610",
+        "D": "256"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 213 + 23 evaluate to in Rust?",
+      "options": {
+        "A": "Error",
+        "B": "236",
+        "C": "21323",
+        "D": "190"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Rust, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '182' in Rust?",
+      "options": {
+        "A": "echo \"182\"",
+        "B": "print(\"182\")",
+        "C": "System.out.println(\"182\")",
+        "D": "console.log(\"182\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Rust, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 10 + 29 evaluate to in Rust?",
+      "options": {
+        "A": "-19",
+        "B": "1029",
+        "C": "39",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '983' in Rust?",
+      "options": {
+        "A": "echo \"983\"",
+        "B": "print(\"983\")",
+        "C": "System.out.println(\"983\")",
+        "D": "console.log(\"983\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In Rust, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 506 + 27 evaluate to in Rust?",
+      "options": {
+        "A": "533",
+        "B": "Error",
+        "C": "50627",
+        "D": "479"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In Rust, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 986 + 41 evaluate to in Rust?",
+      "options": {
+        "A": "98641",
+        "B": "945",
+        "C": "Error",
+        "D": "1027"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '368' in Rust?",
+      "options": {
+        "A": "echo \"368\"",
+        "B": "print(\"368\")",
+        "C": "console.log(\"368\")",
+        "D": "System.out.println(\"368\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '474' in Rust?",
+      "options": {
+        "A": "console.log(\"474\")",
+        "B": "print(\"474\")",
+        "C": "echo \"474\"",
+        "D": "System.out.println(\"474\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 147 + 12 evaluate to in Rust?",
+      "options": {
+        "A": "14712",
+        "B": "Error",
+        "C": "159",
+        "D": "135"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '433' in Rust?",
+      "options": {
+        "A": "System.out.println(\"433\")",
+        "B": "print(\"433\")",
+        "C": "echo \"433\"",
+        "D": "console.log(\"433\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 443 + 44 evaluate to in Rust?",
+      "options": {
+        "A": "Error",
+        "B": "487",
+        "C": "44344",
+        "D": "399"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 843 + 41 evaluate to in Rust?",
+      "options": {
+        "A": "884",
+        "B": "Error",
+        "C": "84341",
+        "D": "802"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '261' in Rust?",
+      "options": {
+        "A": "print(\"261\")",
+        "B": "echo \"261\"",
+        "C": "System.out.println(\"261\")",
+        "D": "console.log(\"261\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 619 + 23 evaluate to in Rust?",
+      "options": {
+        "A": "61923",
+        "B": "642",
+        "C": "Error",
+        "D": "596"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 529 + 26 evaluate to in Rust?",
+      "options": {
+        "A": "52926",
+        "B": "555",
+        "C": "503",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '207' in Rust?",
+      "options": {
+        "A": "console.log(\"207\")",
+        "B": "echo \"207\"",
+        "C": "print(\"207\")",
+        "D": "System.out.println(\"207\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '645' in Rust?",
+      "options": {
+        "A": "print(\"645\")",
+        "B": "echo \"645\"",
+        "C": "console.log(\"645\")",
+        "D": "System.out.println(\"645\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '117' in Rust?",
+      "options": {
+        "A": "console.log(\"117\")",
+        "B": "echo \"117\"",
+        "C": "System.out.println(\"117\")",
+        "D": "print(\"117\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '600' in Rust?",
+      "options": {
+        "A": "console.log(\"600\")",
+        "B": "echo \"600\"",
+        "C": "print(\"600\")",
+        "D": "System.out.println(\"600\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '469' in Rust?",
+      "options": {
+        "A": "print(\"469\")",
+        "B": "System.out.println(\"469\")",
+        "C": "console.log(\"469\")",
+        "D": "echo \"469\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '938' in Rust?",
+      "options": {
+        "A": "console.log(\"938\")",
+        "B": "System.out.println(\"938\")",
+        "C": "print(\"938\")",
+        "D": "echo \"938\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 763 + 10 evaluate to in Rust?",
+      "options": {
+        "A": "Error",
+        "B": "76310",
+        "C": "753",
+        "D": "773"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 383 + 47 evaluate to in Rust?",
+      "options": {
+        "A": "430",
+        "B": "38347",
+        "C": "336",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 635 + 16 evaluate to in Rust?",
+      "options": {
+        "A": "63516",
+        "B": "Error",
+        "C": "651",
+        "D": "619"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 454 + 34 evaluate to in Rust?",
+      "options": {
+        "A": "45434",
+        "B": "Error",
+        "C": "420",
+        "D": "488"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '802' in Rust?",
+      "options": {
+        "A": "console.log(\"802\")",
+        "B": "print(\"802\")",
+        "C": "echo \"802\"",
+        "D": "System.out.println(\"802\")"
+      },
+      "answer": "B"
+    }
+  ]
 }

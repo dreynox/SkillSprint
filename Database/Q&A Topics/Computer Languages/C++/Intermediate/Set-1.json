@@ -1,268 +1,506 @@
-﻿{
-    "language":  "C++",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027references\u0027 and angle \u0027readability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply references according to established C++ implementation practices, considering readability.",
-                                          "B":  "Avoid references entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use references only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over references because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for references under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027pointers\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use pointers only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over pointers because it is always clearer and safer.",
-                                          "C":  "Apply pointers according to established C++ implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid pointers entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for pointers under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027classes\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply classes according to established C++ implementation practices, considering type safety.",
-                                          "B":  "Avoid classes entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use classes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over classes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for classes under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027constructors\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use constructors only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over constructors because it is always clearer and safer.",
-                                          "C":  "Apply constructors according to established C++ implementation practices, considering modularity.",
-                                          "D":  "Avoid constructors entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for constructors under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027destructors\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply destructors according to established C++ implementation practices, considering runtime behavior.",
-                                          "B":  "Avoid destructors entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use destructors only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over destructors because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for destructors under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027inheritance\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use inheritance only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over inheritance because it is always clearer and safer.",
-                                          "C":  "Apply inheritance according to established C++ implementation practices, considering edge cases.",
-                                          "D":  "Avoid inheritance entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for inheritance under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027polymorphism\u0027 and angle \u0027readability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply polymorphism according to established C++ implementation practices, considering readability.",
-                                          "B":  "Avoid polymorphism entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use polymorphism only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over polymorphism because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for polymorphism under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027templates\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use templates only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over templates because it is always clearer and safer.",
-                                          "C":  "Apply templates according to established C++ implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid templates entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for templates under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027STL vector\u0027 and angle \u0027type safety\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply STL vector according to established C++ implementation practices, considering type safety.",
-                                          "B":  "Avoid STL vector entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use STL vector only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over STL vector because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for STL vector under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027STL map\u0027 and angle \u0027modularity\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use STL map only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over STL map because it is always clearer and safer.",
-                                          "C":  "Apply STL map according to established C++ implementation practices, considering modularity.",
-                                          "D":  "Avoid STL map entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for STL map under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027iterators\u0027 and angle \u0027runtime behavior\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply iterators according to established C++ implementation practices, considering runtime behavior.",
-                                          "B":  "Avoid iterators entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use iterators only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over iterators because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for iterators under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027smart pointers\u0027 and angle \u0027edge cases\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use smart pointers only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over smart pointers because it is always clearer and safer.",
-                                          "C":  "Apply smart pointers according to established C++ implementation practices, considering edge cases.",
-                                          "D":  "Avoid smart pointers entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for smart pointers under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027RAII\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply RAII according to established C++ implementation practices, considering readability.",
-                                          "B":  "Avoid RAII entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use RAII only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over RAII because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for RAII under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027operator overloading\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use operator overloading only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over operator overloading because it is always clearer and safer.",
-                                          "C":  "Apply operator overloading according to established C++ implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid operator overloading entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for operator overloading under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027file streams\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply file streams according to established C++ implementation practices, considering type safety.",
-                                          "B":  "Avoid file streams entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use file streams only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over file streams because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for file streams under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027exceptions\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use exceptions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over exceptions because it is always clearer and safer.",
-                                          "C":  "Apply exceptions according to established C++ implementation practices, considering modularity.",
-                                          "D":  "Avoid exceptions entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for exceptions under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027move semantics\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply move semantics according to established C++ implementation practices, considering runtime behavior.",
-                                          "B":  "Avoid move semantics entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use move semantics only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over move semantics because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for move semantics under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027lambda expressions\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use lambda expressions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over lambda expressions because it is always clearer and safer.",
-                                          "C":  "Apply lambda expressions according to established C++ implementation practices, considering edge cases.",
-                                          "D":  "Avoid lambda expressions entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for lambda expressions under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027algorithms library\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply algorithms library according to established C++ implementation practices, considering readability.",
-                                          "B":  "Avoid algorithms library entirely in C++ because it never appears in real projects.",
-                                          "C":  "Use algorithms library only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over algorithms library because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for algorithms library under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[C++][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027namespaces\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use namespaces only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over namespaces because it is always clearer and safer.",
-                                          "C":  "Apply namespaces according to established C++ implementation practices, considering tooling and workflow.",
-                                          "D":  "Avoid namespaces entirely in C++ because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for namespaces under implementation."
-                      }
-                  ]
+{
+  "language": "C++",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "Which of the following is a valid variable declaration in C++?",
+      "options": {
+        "A": "$x = 906;",
+        "B": "int x = 906;",
+        "C": "var x = 906;",
+        "D": "let x = 906;"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in C++?",
+      "options": {
+        "A": "cmath",
+        "B": "math",
+        "C": "numpy",
+        "D": "Math"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you write a single-line comment in C++?",
+      "options": {
+        "A": "# comment",
+        "B": "// comment",
+        "C": "/* comment */",
+        "D": "<!-- comment -->"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in C++?",
+      "options": {
+        "A": "func",
+        "B": "void",
+        "C": "def",
+        "D": "function"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you handle exceptions or errors in C++?",
+      "options": {
+        "A": "On Error Resume Next",
+        "B": "try/except",
+        "C": "begin/rescue",
+        "D": "try/catch"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in C++?",
+      "options": {
+        "A": "-1",
+        "B": "1",
+        "C": "It depends",
+        "D": "0"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which operator is used for strict equality in C++ (if applicable)?",
+      "options": {
+        "A": "is",
+        "B": "==",
+        "C": "===",
+        "D": "eq"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In C++, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In C++, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 24 + 39 evaluate to in C++?",
+      "options": {
+        "A": "-15",
+        "B": "63",
+        "C": "2439",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '932' in C++?",
+      "options": {
+        "A": "console.log(\"932\")",
+        "B": "System.out.println(\"932\")",
+        "C": "print(\"932\")",
+        "D": "echo \"932\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 629 + 12 evaluate to in C++?",
+      "options": {
+        "A": "62912",
+        "B": "641",
+        "C": "617",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 646 + 12 evaluate to in C++?",
+      "options": {
+        "A": "634",
+        "B": "658",
+        "C": "64612",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '892' in C++?",
+      "options": {
+        "A": "System.out.println(\"892\")",
+        "B": "console.log(\"892\")",
+        "C": "echo \"892\"",
+        "D": "print(\"892\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '751' in C++?",
+      "options": {
+        "A": "echo \"751\"",
+        "B": "console.log(\"751\")",
+        "C": "print(\"751\")",
+        "D": "System.out.println(\"751\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '35' in C++?",
+      "options": {
+        "A": "echo \"35\"",
+        "B": "console.log(\"35\")",
+        "C": "System.out.println(\"35\")",
+        "D": "print(\"35\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 204 + 21 evaluate to in C++?",
+      "options": {
+        "A": "225",
+        "B": "183",
+        "C": "Error",
+        "D": "20421"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 995 + 20 evaluate to in C++?",
+      "options": {
+        "A": "Error",
+        "B": "1015",
+        "C": "99520",
+        "D": "975"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In C++, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '376' in C++?",
+      "options": {
+        "A": "System.out.println(\"376\")",
+        "B": "echo \"376\"",
+        "C": "console.log(\"376\")",
+        "D": "print(\"376\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 992 + 16 evaluate to in C++?",
+      "options": {
+        "A": "976",
+        "B": "Error",
+        "C": "1008",
+        "D": "99216"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 991 + 14 evaluate to in C++?",
+      "options": {
+        "A": "Error",
+        "B": "977",
+        "C": "1005",
+        "D": "99114"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 363 + 38 evaluate to in C++?",
+      "options": {
+        "A": "Error",
+        "B": "325",
+        "C": "401",
+        "D": "36338"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '168' in C++?",
+      "options": {
+        "A": "print(\"168\")",
+        "B": "echo \"168\"",
+        "C": "console.log(\"168\")",
+        "D": "System.out.println(\"168\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '931' in C++?",
+      "options": {
+        "A": "console.log(\"931\")",
+        "B": "System.out.println(\"931\")",
+        "C": "print(\"931\")",
+        "D": "echo \"931\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '360' in C++?",
+      "options": {
+        "A": "console.log(\"360\")",
+        "B": "echo \"360\"",
+        "C": "print(\"360\")",
+        "D": "System.out.println(\"360\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '54' in C++?",
+      "options": {
+        "A": "console.log(\"54\")",
+        "B": "System.out.println(\"54\")",
+        "C": "print(\"54\")",
+        "D": "echo \"54\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In C++, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To loop over elements"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 829 + 16 evaluate to in C++?",
+      "options": {
+        "A": "Error",
+        "B": "82916",
+        "C": "813",
+        "D": "845"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 619 + 20 evaluate to in C++?",
+      "options": {
+        "A": "61920",
+        "B": "599",
+        "C": "639",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 206 + 30 evaluate to in C++?",
+      "options": {
+        "A": "176",
+        "B": "20630",
+        "C": "236",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 276 + 22 evaluate to in C++?",
+      "options": {
+        "A": "298",
+        "B": "254",
+        "C": "Error",
+        "D": "27622"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '394' in C++?",
+      "options": {
+        "A": "echo \"394\"",
+        "B": "print(\"394\")",
+        "C": "System.out.println(\"394\")",
+        "D": "console.log(\"394\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '156' in C++?",
+      "options": {
+        "A": "echo \"156\"",
+        "B": "print(\"156\")",
+        "C": "System.out.println(\"156\")",
+        "D": "console.log(\"156\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '279' in C++?",
+      "options": {
+        "A": "System.out.println(\"279\")",
+        "B": "print(\"279\")",
+        "C": "echo \"279\"",
+        "D": "console.log(\"279\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '180' in C++?",
+      "options": {
+        "A": "echo \"180\"",
+        "B": "System.out.println(\"180\")",
+        "C": "print(\"180\")",
+        "D": "console.log(\"180\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '225' in C++?",
+      "options": {
+        "A": "print(\"225\")",
+        "B": "echo \"225\"",
+        "C": "console.log(\"225\")",
+        "D": "System.out.println(\"225\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 851 + 46 evaluate to in C++?",
+      "options": {
+        "A": "897",
+        "B": "Error",
+        "C": "805",
+        "D": "85146"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '629' in C++?",
+      "options": {
+        "A": "print(\"629\")",
+        "B": "echo \"629\"",
+        "C": "console.log(\"629\")",
+        "D": "System.out.println(\"629\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 417 + 32 evaluate to in C++?",
+      "options": {
+        "A": "385",
+        "B": "449",
+        "C": "Error",
+        "D": "41732"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '582' in C++?",
+      "options": {
+        "A": "System.out.println(\"582\")",
+        "B": "print(\"582\")",
+        "C": "console.log(\"582\")",
+        "D": "echo \"582\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 447 + 14 evaluate to in C++?",
+      "options": {
+        "A": "44714",
+        "B": "461",
+        "C": "Error",
+        "D": "433"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 567 + 11 evaluate to in C++?",
+      "options": {
+        "A": "556",
+        "B": "56711",
+        "C": "578",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 276 + 44 evaluate to in C++?",
+      "options": {
+        "A": "27644",
+        "B": "Error",
+        "C": "320",
+        "D": "232"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '492' in C++?",
+      "options": {
+        "A": "echo \"492\"",
+        "B": "console.log(\"492\")",
+        "C": "print(\"492\")",
+        "D": "System.out.println(\"492\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 835 + 48 evaluate to in C++?",
+      "options": {
+        "A": "787",
+        "B": "83548",
+        "C": "Error",
+        "D": "883"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 392 + 14 evaluate to in C++?",
+      "options": {
+        "A": "Error",
+        "B": "406",
+        "C": "378",
+        "D": "39214"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 6 + 48 evaluate to in C++?",
+      "options": {
+        "A": "648",
+        "B": "Error",
+        "C": "54",
+        "D": "-42"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '607' in C++?",
+      "options": {
+        "A": "console.log(\"607\")",
+        "B": "System.out.println(\"607\")",
+        "C": "echo \"607\"",
+        "D": "print(\"607\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In C++, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    }
+  ]
 }

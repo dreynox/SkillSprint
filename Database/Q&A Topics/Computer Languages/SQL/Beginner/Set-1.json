@@ -1,268 +1,506 @@
-﻿{
-    "language":  "SQL",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027SELECT\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply SELECT according to established SQL fundamentals practices, considering readability.",
-                                          "B":  "Avoid SELECT entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use SELECT only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over SELECT because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for SELECT under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027WHERE\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use WHERE only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over WHERE because it is always clearer and safer.",
-                                          "C":  "Apply WHERE according to established SQL fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid WHERE entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for WHERE under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027ORDER BY\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply ORDER BY according to established SQL fundamentals practices, considering type safety.",
-                                          "B":  "Avoid ORDER BY entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use ORDER BY only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over ORDER BY because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for ORDER BY under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027GROUP BY\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use GROUP BY only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over GROUP BY because it is always clearer and safer.",
-                                          "C":  "Apply GROUP BY according to established SQL fundamentals practices, considering modularity.",
-                                          "D":  "Avoid GROUP BY entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for GROUP BY under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027HAVING\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply HAVING according to established SQL fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid HAVING entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use HAVING only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over HAVING because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for HAVING under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027JOINs\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use JOINs only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over JOINs because it is always clearer and safer.",
-                                          "C":  "Apply JOINs according to established SQL fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid JOINs entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for JOINs under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027subqueries\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply subqueries according to established SQL fundamentals practices, considering readability.",
-                                          "B":  "Avoid subqueries entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use subqueries only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over subqueries because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for subqueries under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027CTEs\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use CTEs only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over CTEs because it is always clearer and safer.",
-                                          "C":  "Apply CTEs according to established SQL fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid CTEs entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for CTEs under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027window functions\u0027 and angle \u0027type safety\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply window functions according to established SQL fundamentals practices, considering type safety.",
-                                          "B":  "Avoid window functions entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use window functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over window functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for window functions under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027indexes\u0027 and angle \u0027modularity\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use indexes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over indexes because it is always clearer and safer.",
-                                          "C":  "Apply indexes according to established SQL fundamentals practices, considering modularity.",
-                                          "D":  "Avoid indexes entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for indexes under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027normalization\u0027 and angle \u0027runtime behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply normalization according to established SQL fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid normalization entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use normalization only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over normalization because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for normalization under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027transactions\u0027 and angle \u0027edge cases\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use transactions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over transactions because it is always clearer and safer.",
-                                          "C":  "Apply transactions according to established SQL fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid transactions entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for transactions under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027ACID\u0027 and angle \u0027readability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply ACID according to established SQL fundamentals practices, considering readability.",
-                                          "B":  "Avoid ACID entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use ACID only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over ACID because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for ACID under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027constraints\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use constraints only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over constraints because it is always clearer and safer.",
-                                          "C":  "Apply constraints according to established SQL fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid constraints entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for constraints under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027views\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply views according to established SQL fundamentals practices, considering type safety.",
-                                          "B":  "Avoid views entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use views only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over views because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for views under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027stored procedures\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use stored procedures only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over stored procedures because it is always clearer and safer.",
-                                          "C":  "Apply stored procedures according to established SQL fundamentals practices, considering modularity.",
-                                          "D":  "Avoid stored procedures entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for stored procedures under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027user functions\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply user functions according to established SQL fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid user functions entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use user functions only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over user functions because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for user functions under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027triggers\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use triggers only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over triggers because it is always clearer and safer.",
-                                          "C":  "Apply triggers according to established SQL fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid triggers entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for triggers under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027aggregates\u0027 and angle \u0027readability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply aggregates according to established SQL fundamentals practices, considering readability.",
-                                          "B":  "Avoid aggregates entirely in SQL because it never appears in real projects.",
-                                          "C":  "Use aggregates only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over aggregates because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for aggregates under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[SQL][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027NULL handling\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use NULL handling only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over NULL handling because it is always clearer and safer.",
-                                          "C":  "Apply NULL handling according to established SQL fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid NULL handling entirely in SQL because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for NULL handling under fundamentals."
-                      }
-                  ]
+{
+  "language": "SQL",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "In SQL, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in SQL?",
+      "options": {
+        "A": "$x = 742;",
+        "B": "let x = 742;",
+        "C": "var x = 742;",
+        "D": "int x = 742;"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which operator is used for strict equality in SQL (if applicable)?",
+      "options": {
+        "A": "===",
+        "B": "is",
+        "C": "==",
+        "D": "eq"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in SQL?",
+      "options": {
+        "A": "1",
+        "B": "-1",
+        "C": "0",
+        "D": "It depends"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '944' in SQL?",
+      "options": {
+        "A": "System.out.println(\"944\")",
+        "B": "print(\"944\")",
+        "C": "echo \"944\"",
+        "D": "console.log(\"944\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you write a single-line comment in SQL?",
+      "options": {
+        "A": "# comment",
+        "B": "<!-- comment -->",
+        "C": "// comment",
+        "D": "/* comment */"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in SQL?",
+      "options": {
+        "A": "numpy",
+        "B": "cmath",
+        "C": "Math",
+        "D": "math"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you handle exceptions or errors in SQL?",
+      "options": {
+        "A": "try/catch",
+        "B": "On Error Resume Next",
+        "C": "begin/rescue",
+        "D": "try/except"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 247 + 33 evaluate to in SQL?",
+      "options": {
+        "A": "214",
+        "B": "Error",
+        "C": "280",
+        "D": "24733"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In SQL, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To loop over elements",
+        "C": "To define a class",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 913 + 47 evaluate to in SQL?",
+      "options": {
+        "A": "Error",
+        "B": "91347",
+        "C": "960",
+        "D": "866"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In SQL, what is the purpose of the var keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To define a class",
+        "D": "To loop over elements"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '345' in SQL?",
+      "options": {
+        "A": "System.out.println(\"345\")",
+        "B": "echo \"345\"",
+        "C": "print(\"345\")",
+        "D": "console.log(\"345\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In SQL, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '19' in SQL?",
+      "options": {
+        "A": "print(\"19\")",
+        "B": "echo \"19\"",
+        "C": "console.log(\"19\")",
+        "D": "System.out.println(\"19\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '210' in SQL?",
+      "options": {
+        "A": "console.log(\"210\")",
+        "B": "echo \"210\"",
+        "C": "print(\"210\")",
+        "D": "System.out.println(\"210\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '31' in SQL?",
+      "options": {
+        "A": "System.out.println(\"31\")",
+        "B": "echo \"31\"",
+        "C": "console.log(\"31\")",
+        "D": "print(\"31\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in SQL?",
+      "options": {
+        "A": "func",
+        "B": "void",
+        "C": "def",
+        "D": "function"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 125 + 42 evaluate to in SQL?",
+      "options": {
+        "A": "167",
+        "B": "Error",
+        "C": "12542",
+        "D": "83"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '897' in SQL?",
+      "options": {
+        "A": "print(\"897\")",
+        "B": "System.out.println(\"897\")",
+        "C": "echo \"897\"",
+        "D": "console.log(\"897\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 327 + 33 evaluate to in SQL?",
+      "options": {
+        "A": "360",
+        "B": "Error",
+        "C": "294",
+        "D": "32733"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 754 + 49 evaluate to in SQL?",
+      "options": {
+        "A": "705",
+        "B": "Error",
+        "C": "803",
+        "D": "75449"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 70 + 29 evaluate to in SQL?",
+      "options": {
+        "A": "7029",
+        "B": "99",
+        "C": "Error",
+        "D": "41"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 674 + 27 evaluate to in SQL?",
+      "options": {
+        "A": "701",
+        "B": "67427",
+        "C": "Error",
+        "D": "647"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In SQL, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '766' in SQL?",
+      "options": {
+        "A": "print(\"766\")",
+        "B": "console.log(\"766\")",
+        "C": "System.out.println(\"766\")",
+        "D": "echo \"766\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '108' in SQL?",
+      "options": {
+        "A": "System.out.println(\"108\")",
+        "B": "echo \"108\"",
+        "C": "console.log(\"108\")",
+        "D": "print(\"108\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 307 + 23 evaluate to in SQL?",
+      "options": {
+        "A": "Error",
+        "B": "330",
+        "C": "284",
+        "D": "30723"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In SQL, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To handle exceptions",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '978' in SQL?",
+      "options": {
+        "A": "console.log(\"978\")",
+        "B": "echo \"978\"",
+        "C": "System.out.println(\"978\")",
+        "D": "print(\"978\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '319' in SQL?",
+      "options": {
+        "A": "System.out.println(\"319\")",
+        "B": "echo \"319\"",
+        "C": "print(\"319\")",
+        "D": "console.log(\"319\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '846' in SQL?",
+      "options": {
+        "A": "System.out.println(\"846\")",
+        "B": "console.log(\"846\")",
+        "C": "echo \"846\"",
+        "D": "print(\"846\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 423 + 35 evaluate to in SQL?",
+      "options": {
+        "A": "388",
+        "B": "42335",
+        "C": "Error",
+        "D": "458"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '249' in SQL?",
+      "options": {
+        "A": "print(\"249\")",
+        "B": "System.out.println(\"249\")",
+        "C": "echo \"249\"",
+        "D": "console.log(\"249\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '496' in SQL?",
+      "options": {
+        "A": "print(\"496\")",
+        "B": "System.out.println(\"496\")",
+        "C": "console.log(\"496\")",
+        "D": "echo \"496\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '452' in SQL?",
+      "options": {
+        "A": "System.out.println(\"452\")",
+        "B": "echo \"452\"",
+        "C": "console.log(\"452\")",
+        "D": "print(\"452\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In SQL, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To handle exceptions",
+        "C": "To declare a variable",
+        "D": "To define a class"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 462 + 49 evaluate to in SQL?",
+      "options": {
+        "A": "46249",
+        "B": "Error",
+        "C": "511",
+        "D": "413"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '233' in SQL?",
+      "options": {
+        "A": "echo \"233\"",
+        "B": "console.log(\"233\")",
+        "C": "System.out.println(\"233\")",
+        "D": "print(\"233\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '874' in SQL?",
+      "options": {
+        "A": "print(\"874\")",
+        "B": "System.out.println(\"874\")",
+        "C": "console.log(\"874\")",
+        "D": "echo \"874\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '632' in SQL?",
+      "options": {
+        "A": "System.out.println(\"632\")",
+        "B": "echo \"632\"",
+        "C": "print(\"632\")",
+        "D": "console.log(\"632\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '662' in SQL?",
+      "options": {
+        "A": "System.out.println(\"662\")",
+        "B": "console.log(\"662\")",
+        "C": "echo \"662\"",
+        "D": "print(\"662\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 472 + 13 evaluate to in SQL?",
+      "options": {
+        "A": "459",
+        "B": "Error",
+        "C": "47213",
+        "D": "485"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 657 + 35 evaluate to in SQL?",
+      "options": {
+        "A": "692",
+        "B": "622",
+        "C": "65735",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 231 + 45 evaluate to in SQL?",
+      "options": {
+        "A": "23145",
+        "B": "Error",
+        "C": "186",
+        "D": "276"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 457 + 12 evaluate to in SQL?",
+      "options": {
+        "A": "469",
+        "B": "45712",
+        "C": "Error",
+        "D": "445"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '371' in SQL?",
+      "options": {
+        "A": "print(\"371\")",
+        "B": "console.log(\"371\")",
+        "C": "System.out.println(\"371\")",
+        "D": "echo \"371\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 271 + 12 evaluate to in SQL?",
+      "options": {
+        "A": "259",
+        "B": "Error",
+        "C": "283",
+        "D": "27112"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '205' in SQL?",
+      "options": {
+        "A": "console.log(\"205\")",
+        "B": "echo \"205\"",
+        "C": "System.out.println(\"205\")",
+        "D": "print(\"205\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '215' in SQL?",
+      "options": {
+        "A": "print(\"215\")",
+        "B": "System.out.println(\"215\")",
+        "C": "console.log(\"215\")",
+        "D": "echo \"215\""
+      },
+      "answer": "A"
+    }
+  ]
 }

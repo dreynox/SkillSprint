@@ -1,268 +1,506 @@
-﻿{
-    "language":  "CSS",
-    "level":  "Beginner",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q1] In a in production code scenario focused on fundamentals, for topic \u0027selectors\u0027 and angle \u0027readability\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply selectors according to established CSS fundamentals practices, considering readability.",
-                                          "B":  "Avoid selectors entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use selectors only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over selectors because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for selectors under fundamentals."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q2] In a in interview-style problems scenario focused on fundamentals, for topic \u0027specificity\u0027 and angle \u0027tooling and workflow\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use specificity only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over specificity because it is always clearer and safer.",
-                                          "C":  "Apply specificity according to established CSS fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid specificity entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for specificity under fundamentals."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q3] In a for maintainable project design scenario focused on fundamentals, for topic \u0027box model\u0027 and angle \u0027type safety\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply box model according to established CSS fundamentals practices, considering type safety.",
-                                          "B":  "Avoid box model entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use box model only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over box model because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for box model under fundamentals."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q4] In a for secure implementation scenario focused on fundamentals, for topic \u0027display property\u0027 and angle \u0027modularity\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use display property only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over display property because it is always clearer and safer.",
-                                          "C":  "Apply display property according to established CSS fundamentals practices, considering modularity.",
-                                          "D":  "Avoid display property entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for display property under fundamentals."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q5] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027positioning\u0027 and angle \u0027runtime behavior\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply positioning according to established CSS fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid positioning entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use positioning only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over positioning because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for positioning under fundamentals."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q6] In a for team collaboration scenario focused on fundamentals, for topic \u0027flexbox\u0027 and angle \u0027edge cases\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use flexbox only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over flexbox because it is always clearer and safer.",
-                                          "C":  "Apply flexbox according to established CSS fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid flexbox entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for flexbox under fundamentals."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q7] In a during code review scenario focused on fundamentals, for topic \u0027grid\u0027 and angle \u0027readability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply grid according to established CSS fundamentals practices, considering readability.",
-                                          "B":  "Avoid grid entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use grid only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over grid because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for grid under fundamentals."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q8] In a while debugging scenario focused on fundamentals, for topic \u0027media queries\u0027 and angle \u0027tooling and workflow\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use media queries only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over media queries because it is always clearer and safer.",
-                                          "C":  "Apply media queries according to established CSS fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid media queries entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for media queries under fundamentals."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q9] In a in production code scenario focused on fundamentals, for topic \u0027units\u0027 and angle \u0027type safety\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply units according to established CSS fundamentals practices, considering type safety.",
-                                          "B":  "Avoid units entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use units only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over units because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for units under fundamentals."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q10] In a in interview-style problems scenario focused on fundamentals, for topic \u0027colors\u0027 and angle \u0027modularity\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use colors only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over colors because it is always clearer and safer.",
-                                          "C":  "Apply colors according to established CSS fundamentals practices, considering modularity.",
-                                          "D":  "Avoid colors entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for colors under fundamentals."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q11] In a for maintainable project design scenario focused on fundamentals, for topic \u0027typography\u0027 and angle \u0027runtime behavior\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply typography according to established CSS fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid typography entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use typography only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over typography because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for typography under fundamentals."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q12] In a for secure implementation scenario focused on fundamentals, for topic \u0027pseudo classes\u0027 and angle \u0027edge cases\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use pseudo classes only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over pseudo classes because it is always clearer and safer.",
-                                          "C":  "Apply pseudo classes according to established CSS fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid pseudo classes entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for pseudo classes under fundamentals."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q13] In a for performance-sensitive code scenario focused on fundamentals, for topic \u0027pseudo elements\u0027 and angle \u0027readability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Apply pseudo elements according to established CSS fundamentals practices, considering readability.",
-                                          "B":  "Avoid pseudo elements entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use pseudo elements only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over pseudo elements because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for pseudo elements under fundamentals."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q14] In a for team collaboration scenario focused on fundamentals, for topic \u0027transitions\u0027 and angle \u0027tooling and workflow\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Use transitions only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over transitions because it is always clearer and safer.",
-                                          "C":  "Apply transitions according to established CSS fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid transitions entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for transitions under fundamentals."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q15] In a during code review scenario focused on fundamentals, for topic \u0027animations\u0027 and angle \u0027type safety\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Apply animations according to established CSS fundamentals practices, considering type safety.",
-                                          "B":  "Avoid animations entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use animations only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over animations because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for animations under fundamentals."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q16] In a while debugging scenario focused on fundamentals, for topic \u0027transforms\u0027 and angle \u0027modularity\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Use transforms only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over transforms because it is always clearer and safer.",
-                                          "C":  "Apply transforms according to established CSS fundamentals practices, considering modularity.",
-                                          "D":  "Avoid transforms entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for transforms under fundamentals."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q17] In a in production code scenario focused on fundamentals, for topic \u0027z index\u0027 and angle \u0027runtime behavior\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Apply z index according to established CSS fundamentals practices, considering runtime behavior.",
-                                          "B":  "Avoid z index entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use z index only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over z index because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for z index under fundamentals."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q18] In a in interview-style problems scenario focused on fundamentals, for topic \u0027overflow\u0027 and angle \u0027edge cases\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Use overflow only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over overflow because it is always clearer and safer.",
-                                          "C":  "Apply overflow according to established CSS fundamentals practices, considering edge cases.",
-                                          "D":  "Avoid overflow entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for overflow under fundamentals."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q19] In a for maintainable project design scenario focused on fundamentals, for topic \u0027responsive design\u0027 and angle \u0027readability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Apply responsive design according to established CSS fundamentals practices, considering readability.",
-                                          "B":  "Avoid responsive design entirely in CSS because it never appears in real projects.",
-                                          "C":  "Use responsive design only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over responsive design because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for responsive design under fundamentals."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[CSS][Beginner][Set-1][Q20] In a for secure implementation scenario focused on fundamentals, for topic \u0027custom properties\u0027 and angle \u0027tooling and workflow\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Use custom properties only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over custom properties because it is always clearer and safer.",
-                                          "C":  "Apply custom properties according to established CSS fundamentals practices, considering tooling and workflow.",
-                                          "D":  "Avoid custom properties entirely in CSS because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for custom properties under fundamentals."
-                      }
-                  ]
+{
+  "language": "CSS",
+  "level": "Beginner",
+  "questions": [
+    {
+      "question": "Which of the following is a valid variable declaration in CSS?",
+      "options": {
+        "A": "let x = 479;",
+        "B": "int x = 479;",
+        "C": "var x = 479;",
+        "D": "$x = 479;"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which operator is used for strict equality in CSS (if applicable)?",
+      "options": {
+        "A": "is",
+        "B": "===",
+        "C": "eq",
+        "D": "=="
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in CSS?",
+      "options": {
+        "A": "void",
+        "B": "function",
+        "C": "def",
+        "D": "func"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in CSS?",
+      "options": {
+        "A": "0",
+        "B": "It depends",
+        "C": "-1",
+        "D": "1"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '553' in CSS?",
+      "options": {
+        "A": "print(\"553\")",
+        "B": "echo \"553\"",
+        "C": "System.out.println(\"553\")",
+        "D": "console.log(\"553\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you handle exceptions or errors in CSS?",
+      "options": {
+        "A": "try/catch",
+        "B": "On Error Resume Next",
+        "C": "try/except",
+        "D": "begin/rescue"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '626' in CSS?",
+      "options": {
+        "A": "System.out.println(\"626\")",
+        "B": "echo \"626\"",
+        "C": "print(\"626\")",
+        "D": "console.log(\"626\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in CSS?",
+      "options": {
+        "A": "cmath",
+        "B": "math",
+        "C": "Math",
+        "D": "numpy"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '769' in CSS?",
+      "options": {
+        "A": "System.out.println(\"769\")",
+        "B": "print(\"769\")",
+        "C": "echo \"769\"",
+        "D": "console.log(\"769\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '763' in CSS?",
+      "options": {
+        "A": "console.log(\"763\")",
+        "B": "System.out.println(\"763\")",
+        "C": "print(\"763\")",
+        "D": "echo \"763\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 764 + 13 evaluate to in CSS?",
+      "options": {
+        "A": "751",
+        "B": "777",
+        "C": "Error",
+        "D": "76413"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '375' in CSS?",
+      "options": {
+        "A": "console.log(\"375\")",
+        "B": "echo \"375\"",
+        "C": "print(\"375\")",
+        "D": "System.out.println(\"375\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "How do you write a single-line comment in CSS?",
+      "options": {
+        "A": "<!-- comment -->",
+        "B": "# comment",
+        "C": "// comment",
+        "D": "/* comment */"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 380 + 24 evaluate to in CSS?",
+      "options": {
+        "A": "38024",
+        "B": "356",
+        "C": "Error",
+        "D": "404"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In CSS, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To loop over elements",
+        "C": "To handle exceptions",
+        "D": "To declare a variable"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In CSS, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 611 + 10 evaluate to in CSS?",
+      "options": {
+        "A": "61110",
+        "B": "621",
+        "C": "Error",
+        "D": "601"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 827 + 47 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "82747",
+        "C": "874",
+        "D": "780"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '60' in CSS?",
+      "options": {
+        "A": "print(\"60\")",
+        "B": "console.log(\"60\")",
+        "C": "echo \"60\"",
+        "D": "System.out.println(\"60\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '909' in CSS?",
+      "options": {
+        "A": "echo \"909\"",
+        "B": "console.log(\"909\")",
+        "C": "print(\"909\")",
+        "D": "System.out.println(\"909\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '194' in CSS?",
+      "options": {
+        "A": "print(\"194\")",
+        "B": "System.out.println(\"194\")",
+        "C": "echo \"194\"",
+        "D": "console.log(\"194\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 663 + 35 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "628",
+        "C": "698",
+        "D": "66335"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '988' in CSS?",
+      "options": {
+        "A": "System.out.println(\"988\")",
+        "B": "echo \"988\"",
+        "C": "print(\"988\")",
+        "D": "console.log(\"988\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In CSS, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To define a class"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In CSS, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In CSS, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 674 + 36 evaluate to in CSS?",
+      "options": {
+        "A": "67436",
+        "B": "Error",
+        "C": "710",
+        "D": "638"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '190' in CSS?",
+      "options": {
+        "A": "console.log(\"190\")",
+        "B": "System.out.println(\"190\")",
+        "C": "echo \"190\"",
+        "D": "print(\"190\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '24' in CSS?",
+      "options": {
+        "A": "print(\"24\")",
+        "B": "System.out.println(\"24\")",
+        "C": "console.log(\"24\")",
+        "D": "echo \"24\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '85' in CSS?",
+      "options": {
+        "A": "System.out.println(\"85\")",
+        "B": "console.log(\"85\")",
+        "C": "print(\"85\")",
+        "D": "echo \"85\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '950' in CSS?",
+      "options": {
+        "A": "print(\"950\")",
+        "B": "console.log(\"950\")",
+        "C": "System.out.println(\"950\")",
+        "D": "echo \"950\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 484 + 39 evaluate to in CSS?",
+      "options": {
+        "A": "445",
+        "B": "Error",
+        "C": "523",
+        "D": "48439"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 406 + 17 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "389",
+        "C": "40617",
+        "D": "423"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 816 + 20 evaluate to in CSS?",
+      "options": {
+        "A": "81620",
+        "B": "836",
+        "C": "Error",
+        "D": "796"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '364' in CSS?",
+      "options": {
+        "A": "print(\"364\")",
+        "B": "console.log(\"364\")",
+        "C": "System.out.println(\"364\")",
+        "D": "echo \"364\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 845 + 18 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "827",
+        "C": "863",
+        "D": "84518"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 296 + 30 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "326",
+        "C": "266",
+        "D": "29630"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '184' in CSS?",
+      "options": {
+        "A": "console.log(\"184\")",
+        "B": "System.out.println(\"184\")",
+        "C": "echo \"184\"",
+        "D": "print(\"184\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 270 + 43 evaluate to in CSS?",
+      "options": {
+        "A": "227",
+        "B": "Error",
+        "C": "27043",
+        "D": "313"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 708 + 22 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "730",
+        "C": "686",
+        "D": "70822"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 420 + 40 evaluate to in CSS?",
+      "options": {
+        "A": "380",
+        "B": "460",
+        "C": "42040",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In CSS, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 576 + 31 evaluate to in CSS?",
+      "options": {
+        "A": "607",
+        "B": "57631",
+        "C": "545",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 903 + 40 evaluate to in CSS?",
+      "options": {
+        "A": "Error",
+        "B": "90340",
+        "C": "943",
+        "D": "863"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '108' in CSS?",
+      "options": {
+        "A": "System.out.println(\"108\")",
+        "B": "print(\"108\")",
+        "C": "console.log(\"108\")",
+        "D": "echo \"108\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 311 + 18 evaluate to in CSS?",
+      "options": {
+        "A": "293",
+        "B": "Error",
+        "C": "329",
+        "D": "31118"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 19 + 38 evaluate to in CSS?",
+      "options": {
+        "A": "57",
+        "B": "1938",
+        "C": "-19",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '4' in CSS?",
+      "options": {
+        "A": "echo \"4\"",
+        "B": "console.log(\"4\")",
+        "C": "System.out.println(\"4\")",
+        "D": "print(\"4\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '551' in CSS?",
+      "options": {
+        "A": "console.log(\"551\")",
+        "B": "System.out.println(\"551\")",
+        "C": "print(\"551\")",
+        "D": "echo \"551\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '561' in CSS?",
+      "options": {
+        "A": "console.log(\"561\")",
+        "B": "System.out.println(\"561\")",
+        "C": "print(\"561\")",
+        "D": "echo \"561\""
+      },
+      "answer": "C"
+    }
+  ]
 }

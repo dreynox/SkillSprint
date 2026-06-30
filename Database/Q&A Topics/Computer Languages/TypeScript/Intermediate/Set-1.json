@@ -1,268 +1,506 @@
-﻿{
-    "language":  "TypeScript",
-    "level":  "Intermediate",
-    "set":  "Set-1",
-    "questionCount":  20,
-    "questions":  [
-                      {
-                          "id":  1,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q1] In a in production code scenario focused on implementation, for topic \u0027basic types\u0027 and angle \u0027syntax behavior\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply basic types according to established TypeScript implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid basic types entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use basic types only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over basic types because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for basic types under implementation."
-                      },
-                      {
-                          "id":  2,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q2] In a in interview-style problems scenario focused on implementation, for topic \u0027interfaces\u0027 and angle \u0027best practices\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use interfaces only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over interfaces because it is always clearer and safer.",
-                                          "C":  "Apply interfaces according to established TypeScript implementation practices, considering best practices.",
-                                          "D":  "Avoid interfaces entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for interfaces under implementation."
-                      },
-                      {
-                          "id":  3,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q3] In a for maintainable project design scenario focused on implementation, for topic \u0027type aliases\u0027 and angle \u0027error handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply type aliases according to established TypeScript implementation practices, considering error handling.",
-                                          "B":  "Avoid type aliases entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use type aliases only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over type aliases because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for type aliases under implementation."
-                      },
-                      {
-                          "id":  4,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q4] In a for secure implementation scenario focused on implementation, for topic \u0027generics\u0027 and angle \u0027portability\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use generics only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over generics because it is always clearer and safer.",
-                                          "C":  "Apply generics according to established TypeScript implementation practices, considering portability.",
-                                          "D":  "Avoid generics entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for generics under implementation."
-                      },
-                      {
-                          "id":  5,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q5] In a for performance-sensitive code scenario focused on implementation, for topic \u0027enums\u0027 and angle \u0027data handling\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply enums according to established TypeScript implementation practices, considering data handling.",
-                                          "B":  "Avoid enums entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use enums only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over enums because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for enums under implementation."
-                      },
-                      {
-                          "id":  6,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q6] In a for team collaboration scenario focused on implementation, for topic \u0027union types\u0027 and angle \u0027memory model\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use union types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over union types because it is always clearer and safer.",
-                                          "C":  "Apply union types according to established TypeScript implementation practices, considering memory model.",
-                                          "D":  "Avoid union types entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for union types under implementation."
-                      },
-                      {
-                          "id":  7,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q7] In a during code review scenario focused on implementation, for topic \u0027intersection types\u0027 and angle \u0027syntax behavior\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply intersection types according to established TypeScript implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid intersection types entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use intersection types only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over intersection types because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for intersection types under implementation."
-                      },
-                      {
-                          "id":  8,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q8] In a while debugging scenario focused on implementation, for topic \u0027type guards\u0027 and angle \u0027best practices\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use type guards only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over type guards because it is always clearer and safer.",
-                                          "C":  "Apply type guards according to established TypeScript implementation practices, considering best practices.",
-                                          "D":  "Avoid type guards entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for type guards under implementation."
-                      },
-                      {
-                          "id":  9,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q9] In a in production code scenario focused on implementation, for topic \u0027classes\u0027 and angle \u0027error handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply classes according to established TypeScript implementation practices, considering error handling.",
-                                          "B":  "Avoid classes entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use classes only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over classes because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for classes under implementation."
-                      },
-                      {
-                          "id":  10,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q10] In a in interview-style problems scenario focused on implementation, for topic \u0027access modifiers\u0027 and angle \u0027portability\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use access modifiers only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over access modifiers because it is always clearer and safer.",
-                                          "C":  "Apply access modifiers according to established TypeScript implementation practices, considering portability.",
-                                          "D":  "Avoid access modifiers entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for access modifiers under implementation."
-                      },
-                      {
-                          "id":  11,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q11] In a for maintainable project design scenario focused on implementation, for topic \u0027modules\u0027 and angle \u0027data handling\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply modules according to established TypeScript implementation practices, considering data handling.",
-                                          "B":  "Avoid modules entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use modules only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over modules because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for modules under implementation."
-                      },
-                      {
-                          "id":  12,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q12] In a for secure implementation scenario focused on implementation, for topic \u0027decorators\u0027 and angle \u0027memory model\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use decorators only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over decorators because it is always clearer and safer.",
-                                          "C":  "Apply decorators according to established TypeScript implementation practices, considering memory model.",
-                                          "D":  "Avoid decorators entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for decorators under implementation."
-                      },
-                      {
-                          "id":  13,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q13] In a for performance-sensitive code scenario focused on implementation, for topic \u0027async await\u0027 and angle \u0027syntax behavior\u0027, select the safest implementation.",
-                          "options":  {
-                                          "A":  "Apply async await according to established TypeScript implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid async await entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use async await only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over async await because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for async await under implementation."
-                      },
-                      {
-                          "id":  14,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q14] In a for team collaboration scenario focused on implementation, for topic \u0027utility types\u0027 and angle \u0027best practices\u0027, pick the standards-compliant option.",
-                          "options":  {
-                                          "A":  "Use utility types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over utility types because it is always clearer and safer.",
-                                          "C":  "Apply utility types according to established TypeScript implementation practices, considering best practices.",
-                                          "D":  "Avoid utility types entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for utility types under implementation."
-                      },
-                      {
-                          "id":  15,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q15] In a during code review scenario focused on implementation, for topic \u0027mapped types\u0027 and angle \u0027error handling\u0027, determine the best explanation.",
-                          "options":  {
-                                          "A":  "Apply mapped types according to established TypeScript implementation practices, considering error handling.",
-                                          "B":  "Avoid mapped types entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use mapped types only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over mapped types because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for mapped types under implementation."
-                      },
-                      {
-                          "id":  16,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q16] In a while debugging scenario focused on implementation, for topic \u0027conditional types\u0027 and angle \u0027portability\u0027, find the logically correct result.",
-                          "options":  {
-                                          "A":  "Use conditional types only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over conditional types because it is always clearer and safer.",
-                                          "C":  "Apply conditional types according to established TypeScript implementation practices, considering portability.",
-                                          "D":  "Avoid conditional types entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for conditional types under implementation."
-                      },
-                      {
-                          "id":  17,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q17] In a in production code scenario focused on implementation, for topic \u0027literal types\u0027 and angle \u0027data handling\u0027, choose the most maintainable design.",
-                          "options":  {
-                                          "A":  "Apply literal types according to established TypeScript implementation practices, considering data handling.",
-                                          "B":  "Avoid literal types entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use literal types only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over literal types because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for literal types under implementation."
-                      },
-                      {
-                          "id":  18,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q18] In a in interview-style problems scenario focused on implementation, for topic \u0027strict mode\u0027 and angle \u0027memory model\u0027, identify the correct statement.",
-                          "options":  {
-                                          "A":  "Use strict mode only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over strict mode because it is always clearer and safer.",
-                                          "C":  "Apply strict mode according to established TypeScript implementation practices, considering memory model.",
-                                          "D":  "Avoid strict mode entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for strict mode under implementation."
-                      },
-                      {
-                          "id":  19,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q19] In a for maintainable project design scenario focused on implementation, for topic \u0027tsconfig\u0027 and angle \u0027syntax behavior\u0027, choose the valid approach.",
-                          "options":  {
-                                          "A":  "Apply tsconfig according to established TypeScript implementation practices, considering syntax behavior.",
-                                          "B":  "Avoid tsconfig entirely in TypeScript because it never appears in real projects.",
-                                          "C":  "Use tsconfig only in comments; executable code should not include it.",
-                                          "D":  "Prefer global state over tsconfig because it is always clearer and safer."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Correct option follows language-specific best practice for tsconfig under implementation."
-                      },
-                      {
-                          "id":  20,
-                          "type":  "mcq",
-                          "question":  "[TypeScript][Intermediate][Set-1][Q20] In a for secure implementation scenario focused on implementation, for topic \u0027declaration files\u0027 and angle \u0027best practices\u0027, predict the most likely outcome.",
-                          "options":  {
-                                          "A":  "Use declaration files only in comments; executable code should not include it.",
-                                          "B":  "Prefer global state over declaration files because it is always clearer and safer.",
-                                          "C":  "Apply declaration files according to established TypeScript implementation practices, considering best practices.",
-                                          "D":  "Avoid declaration files entirely in TypeScript because it never appears in real projects."
-                                      },
-                          "answer":  "C",
-                          "explanation":  "Correct option follows language-specific best practice for declaration files under implementation."
-                      }
-                  ]
+{
+  "language": "TypeScript",
+  "level": "Intermediate",
+  "questions": [
+    {
+      "question": "What will 672 + 21 evaluate to in TypeScript?",
+      "options": {
+        "A": "651",
+        "B": "67221",
+        "C": "693",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which operator is used for strict equality in TypeScript (if applicable)?",
+      "options": {
+        "A": "eq",
+        "B": "is",
+        "C": "===",
+        "D": "=="
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which of the following is a valid variable declaration in TypeScript?",
+      "options": {
+        "A": "int x = 986;",
+        "B": "$x = 986;",
+        "C": "let x = 986;",
+        "D": "var x = 986;"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you write a single-line comment in TypeScript?",
+      "options": {
+        "A": "# comment",
+        "B": "// comment",
+        "C": "<!-- comment -->",
+        "D": "/* comment */"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "How do you handle exceptions or errors in TypeScript?",
+      "options": {
+        "A": "try/catch",
+        "B": "try/except",
+        "C": "begin/rescue",
+        "D": "On Error Resume Next"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the class keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 958 + 17 evaluate to in TypeScript?",
+      "options": {
+        "A": "941",
+        "B": "Error",
+        "C": "95817",
+        "D": "975"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '513' in TypeScript?",
+      "options": {
+        "A": "console.log(\"513\")",
+        "B": "System.out.println(\"513\")",
+        "C": "print(\"513\")",
+        "D": "echo \"513\""
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will 784 + 43 evaluate to in TypeScript?",
+      "options": {
+        "A": "Error",
+        "B": "78443",
+        "C": "827",
+        "D": "741"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which library/module is commonly used for math operations in TypeScript?",
+      "options": {
+        "A": "Math",
+        "B": "math",
+        "C": "numpy",
+        "D": "cmath"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 802 + 13 evaluate to in TypeScript?",
+      "options": {
+        "A": "789",
+        "B": "Error",
+        "C": "815",
+        "D": "80213"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '552' in TypeScript?",
+      "options": {
+        "A": "console.log(\"552\")",
+        "B": "print(\"552\")",
+        "C": "echo \"552\"",
+        "D": "System.out.println(\"552\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the def keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the struct keyword?",
+      "options": {
+        "A": "To loop over elements",
+        "B": "To define a class",
+        "C": "To declare a variable",
+        "D": "To handle exceptions"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the zero-based index of the first element of an array in TypeScript?",
+      "options": {
+        "A": "-1",
+        "B": "It depends",
+        "C": "1",
+        "D": "0"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "Which keyword is used to define a function/method in TypeScript?",
+      "options": {
+        "A": "def",
+        "B": "function",
+        "C": "func",
+        "D": "void"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '116' in TypeScript?",
+      "options": {
+        "A": "System.out.println(\"116\")",
+        "B": "print(\"116\")",
+        "C": "echo \"116\"",
+        "D": "console.log(\"116\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 384 + 35 evaluate to in TypeScript?",
+      "options": {
+        "A": "38435",
+        "B": "Error",
+        "C": "419",
+        "D": "349"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '759' in TypeScript?",
+      "options": {
+        "A": "System.out.println(\"759\")",
+        "B": "echo \"759\"",
+        "C": "print(\"759\")",
+        "D": "console.log(\"759\")"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '670' in TypeScript?",
+      "options": {
+        "A": "print(\"670\")",
+        "B": "System.out.println(\"670\")",
+        "C": "echo \"670\"",
+        "D": "console.log(\"670\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 824 + 24 evaluate to in TypeScript?",
+      "options": {
+        "A": "800",
+        "B": "848",
+        "C": "Error",
+        "D": "82424"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '640' in TypeScript?",
+      "options": {
+        "A": "echo \"640\"",
+        "B": "System.out.println(\"640\")",
+        "C": "console.log(\"640\")",
+        "D": "print(\"640\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '805' in TypeScript?",
+      "options": {
+        "A": "print(\"805\")",
+        "B": "System.out.println(\"805\")",
+        "C": "console.log(\"805\")",
+        "D": "echo \"805\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '861' in TypeScript?",
+      "options": {
+        "A": "print(\"861\")",
+        "B": "System.out.println(\"861\")",
+        "C": "echo \"861\"",
+        "D": "console.log(\"861\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 193 + 47 evaluate to in TypeScript?",
+      "options": {
+        "A": "240",
+        "B": "146",
+        "C": "Error",
+        "D": "19347"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 10 + 25 evaluate to in TypeScript?",
+      "options": {
+        "A": "-15",
+        "B": "35",
+        "C": "1025",
+        "D": "Error"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '989' in TypeScript?",
+      "options": {
+        "A": "System.out.println(\"989\")",
+        "B": "echo \"989\"",
+        "C": "console.log(\"989\")",
+        "D": "print(\"989\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '163' in TypeScript?",
+      "options": {
+        "A": "echo \"163\"",
+        "B": "print(\"163\")",
+        "C": "console.log(\"163\")",
+        "D": "System.out.println(\"163\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 257 + 11 evaluate to in TypeScript?",
+      "options": {
+        "A": "268",
+        "B": "246",
+        "C": "25711",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '269' in TypeScript?",
+      "options": {
+        "A": "print(\"269\")",
+        "B": "console.log(\"269\")",
+        "C": "System.out.println(\"269\")",
+        "D": "echo \"269\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '848' in TypeScript?",
+      "options": {
+        "A": "System.out.println(\"848\")",
+        "B": "print(\"848\")",
+        "C": "echo \"848\"",
+        "D": "console.log(\"848\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 482 + 13 evaluate to in TypeScript?",
+      "options": {
+        "A": "Error",
+        "B": "48213",
+        "C": "469",
+        "D": "495"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the final keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To define a class",
+        "C": "To loop over elements",
+        "D": "To handle exceptions"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 288 + 34 evaluate to in TypeScript?",
+      "options": {
+        "A": "254",
+        "B": "28834",
+        "C": "322",
+        "D": "Error"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the let keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 150 + 34 evaluate to in TypeScript?",
+      "options": {
+        "A": "15034",
+        "B": "Error",
+        "C": "184",
+        "D": "116"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What is the correct syntax to output '292' in TypeScript?",
+      "options": {
+        "A": "print(\"292\")",
+        "B": "console.log(\"292\")",
+        "C": "System.out.println(\"292\")",
+        "D": "echo \"292\""
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 533 + 25 evaluate to in TypeScript?",
+      "options": {
+        "A": "53325",
+        "B": "508",
+        "C": "Error",
+        "D": "558"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the static keyword?",
+      "options": {
+        "A": "To declare a variable",
+        "B": "To handle exceptions",
+        "C": "To loop over elements",
+        "D": "To define a class"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '624' in TypeScript?",
+      "options": {
+        "A": "console.log(\"624\")",
+        "B": "System.out.println(\"624\")",
+        "C": "echo \"624\"",
+        "D": "print(\"624\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What is the correct syntax to output '550' in TypeScript?",
+      "options": {
+        "A": "System.out.println(\"550\")",
+        "B": "print(\"550\")",
+        "C": "console.log(\"550\")",
+        "D": "echo \"550\""
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 160 + 40 evaluate to in TypeScript?",
+      "options": {
+        "A": "Error",
+        "B": "200",
+        "C": "120",
+        "D": "16040"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '825' in TypeScript?",
+      "options": {
+        "A": "echo \"825\"",
+        "B": "print(\"825\")",
+        "C": "console.log(\"825\")",
+        "D": "System.out.println(\"825\")"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What will 484 + 29 evaluate to in TypeScript?",
+      "options": {
+        "A": "513",
+        "B": "48429",
+        "C": "455",
+        "D": "Error"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 392 + 39 evaluate to in TypeScript?",
+      "options": {
+        "A": "Error",
+        "B": "353",
+        "C": "39239",
+        "D": "431"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What will 813 + 17 evaluate to in TypeScript?",
+      "options": {
+        "A": "830",
+        "B": "Error",
+        "C": "796",
+        "D": "81317"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct syntax to output '823' in TypeScript?",
+      "options": {
+        "A": "echo \"823\"",
+        "B": "console.log(\"823\")",
+        "C": "System.out.println(\"823\")",
+        "D": "print(\"823\")"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "In TypeScript, what is the purpose of the const keyword?",
+      "options": {
+        "A": "To define a class",
+        "B": "To declare a variable",
+        "C": "To handle exceptions",
+        "D": "To loop over elements"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What is the correct syntax to output '64' in TypeScript?",
+      "options": {
+        "A": "print(\"64\")",
+        "B": "echo \"64\"",
+        "C": "System.out.println(\"64\")",
+        "D": "console.log(\"64\")"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What will 499 + 36 evaluate to in TypeScript?",
+      "options": {
+        "A": "49936",
+        "B": "463",
+        "C": "Error",
+        "D": "535"
+      },
+      "answer": "D"
+    }
+  ]
 }
