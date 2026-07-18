@@ -9,14 +9,24 @@
 }
 
 body {
-  height: 100vh;
-  background: #050505;
-  color: #e0ffe8;
-  overflow: hidden;
+    min-height: 100vh;
+    background: #050505;
+    color: #e0ffe8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 40px 20px 80px;  
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 600px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding: 20px 10px 80px;  
+    }
 }
 
 /* =========================
@@ -252,6 +262,34 @@ button.loading {
 .login-card.signup-card {
   width: 650px;
   max-width: 95vw;
+  padding: 24px 32px;
+}
+
+.login-card.signup-card .subtitle {
+  margin-bottom: 14px;
+}
+
+.login-card.signup-card .input-group {
+  margin-bottom: 14px;
+}
+
+.login-card.signup-card .input-group input,
+.login-card.signup-card .input-group select {
+  padding: 10px 12px;
+}
+
+.login-card.signup-card button {
+  padding: 10px;
+}
+
+.login-card.signup-card .strength-meter {
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+.login-card.signup-card .helper-text {
+  margin-top: -4px;
+  margin-bottom: 10px;
 }
 
 .signup-grid {
@@ -274,4 +312,13 @@ button.loading {
 
 .footer-links .footer-text {
   margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 20px 10px;
+  }
 }
