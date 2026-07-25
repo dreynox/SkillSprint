@@ -20,7 +20,7 @@
         <div id="generalError" class="error-message full-width" role="alert" aria-live="assertive"></div>
         <p id="signupStatus" class="helper-text full-width" role="status" aria-live="polite">Fill details to create your account.</p>
 
-        <form id="signupForm" class="signup-grid">
+        <form id="signupForm" class="signup-grid" novalidate>
             <div class="input-group">
                 <input type="text" id="name" name="name" required placeholder="Full Name" autocomplete="name" />
                 <span class="error-message" id="nameError"></span>
@@ -63,13 +63,13 @@
 
             <div class="input-group password">
                 <input type="password" id="password" name="password" required placeholder="Password" autocomplete="new-password" aria-describedby="passwordHelp" />
-                <span id="togglePassword">👁</span>
+                <span id="togglePassword" class="toggle-icon">👁</span>
                 <span class="error-message" id="passwordError"></span>
             </div>
 
             <div class="input-group password">
                 <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" autocomplete="new-password" />
-                <span id="toggleConfirmPassword">👁</span>
+                <span id="toggleConfirmPassword" class="toggle-icon">👁</span>
                 <span class="error-message" id="confirmPasswordError"></span>
             </div>
 

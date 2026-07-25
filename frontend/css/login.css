@@ -175,7 +175,7 @@ body {
 /* =========================
    PASSWORD TOGGLE
 ========================= */
-.input-group.password span {
+.input-group.password .toggle-icon {
   position: absolute;
   right: 12px;
   top: 50%;
@@ -184,7 +184,7 @@ body {
   opacity: 0.6;
 }
 
-.input-group.password span:hover {
+.input-group.password .toggle-icon:hover {
   opacity: 1;
 }
 

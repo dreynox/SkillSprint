@@ -24,24 +24,43 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     clearErrors();
 
     // Validation
-    if (!name || !email || !password || !confirmPassword) {
-        showError("generalError", "Please fill in all required fields");
-        if (statusEl) statusEl.textContent = "Complete required fields before submitting.";
-        return;
+    // Validation — shown inline per field since native browser validation is disabled (novalidate)
+    let firstInvalidFieldId = null;
+
+    if (!name) {
+        showError("nameError", "Full name is required");
+        firstInvalidFieldId = firstInvalidFieldId || "name";
     }
 
-    if (password.length < 6) {
+    if (!email) {
+        showError("emailError", "Email is required");
+        firstInvalidFieldId = firstInvalidFieldId || "email";
+    } else if (!isValidEmail(email)) {
+        showError("emailError", "Enter a valid email address");
+        firstInvalidFieldId = firstInvalidFieldId || "email";
+    }
+
+    if (!password) {
+        showError("passwordError", "Password is required");
+        firstInvalidFieldId = firstInvalidFieldId || "password";
+    } else if (password.length < 6) {
         showError("passwordError", "Password must be at least 6 characters");
-        if (statusEl) statusEl.textContent = "Choose a stronger password.";
-        return;
+        firstInvalidFieldId = firstInvalidFieldId || "password";
     }
 
-    if (password !== confirmPassword) {
+    if (!confirmPassword) {
+        showError("confirmPasswordError", "Please confirm your password");
+        firstInvalidFieldId = firstInvalidFieldId || "confirmPassword";
+    } else if (password !== confirmPassword) {
         showError("confirmPasswordError", "Passwords do not match");
-        if (statusEl) statusEl.textContent = "Passwords must match exactly.";
-        return;
+        firstInvalidFieldId = firstInvalidFieldId || "confirmPassword";
     }
 
+    if (firstInvalidFieldId) {
+        if (statusEl) statusEl.textContent = "Please fix the highlighted fields.";
+        document.getElementById(firstInvalidFieldId)?.focus();
+        return;
+    }
     const submitBtn = document.getElementById("signupBtn");
     const submitLabel = submitBtn ? submitBtn.querySelector("span") : null;
     submitBtn.disabled = true;
@@ -130,7 +149,9 @@ function getPasswordScore(value) {
     if (/[^A-Za-z0-9]/.test(value) || value.length >= 10) score += 1;
     return score;
 }
-
+function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
 function showError(elementId, message) {
     document.getElementById(elementId).textContent = message;
 }
