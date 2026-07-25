@@ -49,7 +49,7 @@
         }
 
         const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
-        if (submitBtn && !submitBtn.dataset.uxLoadingAttached) {
+        if (submitBtn && !submitBtn.dataset.uxLoadingAttached && !submitBtn.hasAttribute('data-custom-loading')) {
           submitBtn.dataset.uxLoadingAttached = '1';
           submitBtn.dataset.uxOriginalText = submitBtn.textContent || 'Submit';
           submitBtn.disabled = true;
