@@ -370,6 +370,13 @@ body {
   text-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
 }
 
+.footer-links a.disabled-link,
+.social-icons a.disabled-link {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .social-icons {
   display: flex;
   gap: 0.75rem;
