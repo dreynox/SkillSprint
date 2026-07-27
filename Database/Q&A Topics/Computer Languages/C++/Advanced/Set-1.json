@@ -3,504 +3,84 @@
   "level": "Advanced",
   "questions": [
     {
-      "question": "Which keyword is used to define a function/method in C++?",
+      "question": "Which of the following is the safest way to manage a mutex lock in C++ to prevent deadlocks when an exception is thrown?",
       "options": {
-        "A": "func",
-        "B": "function",
-        "C": "def",
-        "D": "void"
+        "A": "Manually calling mtx.lock() and mtx.unlock()",
+        "B": "std::lock_guard<std::mutex>",
+        "C": "Using a global boolean flag",
+        "D": "std::mutex::try_lock()"
       },
       "answer": "B"
     },
     {
-      "question": "Which operator is used for strict equality in C++ (if applicable)?",
+      "question": "What is the Curiously Recurring Template Pattern (CRTP) primarily used for in C++?",
       "options": {
-        "A": "==",
-        "B": "is",
-        "C": "===",
-        "D": "eq"
+        "A": "Dynamic polymorphism and runtime type checking",
+        "B": "Static polymorphism and avoiding virtual function call overhead",
+        "C": "Preventing memory leaks in circular dependencies",
+        "D": "Enabling garbage collection for specific class hierarchies"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In C++11 and later, what does the 'mutable' keyword do when applied to a lambda expression?",
+      "options": {
+        "A": "It allows the lambda to modify variables captured by value.",
+        "B": "It forces the lambda to capture all variables by reference.",
+        "C": "It prevents the lambda from being copied.",
+        "D": "It allows the lambda to execute asynchronously."
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which C++ cast should be used to safely cast down a class hierarchy (from a base pointer to a derived pointer) and returns nullptr on failure?",
+      "options": {
+        "A": "static_cast",
+        "B": "reinterpret_cast",
+        "C": "dynamic_cast",
+        "D": "const_cast"
       },
       "answer": "C"
     },
     {
-      "question": "How do you write a single-line comment in C++?",
+      "question": "What is the primary advantage of using std::optional (introduced in C++17)?",
       "options": {
-        "A": "/* comment */",
-        "B": "// comment",
-        "C": "<!-- comment -->",
-        "D": "# comment"
+        "A": "It automatically initializes pointers to nullptr.",
+        "B": "It provides a type-safe way to represent a value that may or may not be present, avoiding magic values like -1.",
+        "C": "It improves the performance of standard library containers by skipping empty elements.",
+        "D": "It allows multiple inheritance without the diamond problem."
       },
       "answer": "B"
     },
     {
-      "question": "What will 759 + 15 evaluate to in C++?",
+      "question": "When defining a template class, why is it common practice to put the implementation in the header file instead of a .cpp file?",
       "options": {
-        "A": "774",
-        "B": "75915",
-        "C": "744",
-        "D": "Error"
+        "A": "Templates cannot be compiled into object files because the compiler needs to see the definition to instantiate it for specific types.",
+        "B": "The C++ standard explicitly forbids using .cpp files for templates.",
+        "C": "It speeds up the compilation process by avoiding linking steps.",
+        "D": "Header files have fewer strict syntax rules than .cpp files."
       },
       "answer": "A"
     },
     {
-      "question": "Which library/module is commonly used for math operations in C++?",
+      "question": "What happens if a std::unique_ptr is passed by value to a function?",
       "options": {
-        "A": "numpy",
-        "B": "math",
-        "C": "cmath",
-        "D": "Math"
+        "A": "The pointer is copied, and both point to the same memory.",
+        "B": "The program will not compile because std::unique_ptr deleted its copy constructor.",
+        "C": "The ownership is temporarily shared until the function returns.",
+        "D": "A runtime exception is thrown."
       },
       "answer": "B"
     },
     {
-      "question": "What is the zero-based index of the first element of an array in C++?",
+      "question": "What is the purpose of the 'noexcept' specifier?",
       "options": {
-        "A": "It depends",
-        "B": "-1",
-        "C": "1",
-        "D": "0"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "How do you handle exceptions or errors in C++?",
-      "options": {
-        "A": "begin/rescue",
-        "B": "On Error Resume Next",
-        "C": "try/catch",
-        "D": "try/except"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What will 934 + 33 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "901",
-        "C": "967",
-        "D": "93433"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '903' in C++?",
-      "options": {
-        "A": "console.log(\"903\")",
-        "B": "echo \"903\"",
-        "C": "System.out.println(\"903\")",
-        "D": "print(\"903\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 859 + 24 evaluate to in C++?",
-      "options": {
-        "A": "85924",
-        "B": "835",
-        "C": "Error",
-        "D": "883"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '812' in C++?",
-      "options": {
-        "A": "console.log(\"812\")",
-        "B": "print(\"812\")",
-        "C": "System.out.println(\"812\")",
-        "D": "echo \"812\""
+        "A": "It disables all exception handling in the entire program.",
+        "B": "It tells the compiler that the function does not throw exceptions, allowing for specific optimizations (like in std::vector reallocation).",
+        "C": "It catches any unhandled exceptions and terminates the program silently.",
+        "D": "It forces the function to return an error code instead of throwing."
       },
       "answer": "B"
-    },
-    {
-      "question": "What is the correct syntax to output '359' in C++?",
-      "options": {
-        "A": "System.out.println(\"359\")",
-        "B": "echo \"359\"",
-        "C": "console.log(\"359\")",
-        "D": "print(\"359\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "In C++, what is the purpose of the var keyword?",
-      "options": {
-        "A": "To declare a variable",
-        "B": "To loop over elements",
-        "C": "To define a class",
-        "D": "To handle exceptions"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 129 + 35 evaluate to in C++?",
-      "options": {
-        "A": "94",
-        "B": "164",
-        "C": "Error",
-        "D": "12935"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What will 518 + 37 evaluate to in C++?",
-      "options": {
-        "A": "555",
-        "B": "481",
-        "C": "51837",
-        "D": "Error"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 583 + 17 evaluate to in C++?",
-      "options": {
-        "A": "600",
-        "B": "566",
-        "C": "58317",
-        "D": "Error"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 587 + 11 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "598",
-        "C": "58711",
-        "D": "576"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What is the correct syntax to output '777' in C++?",
-      "options": {
-        "A": "console.log(\"777\")",
-        "B": "print(\"777\")",
-        "C": "System.out.println(\"777\")",
-        "D": "echo \"777\""
-      },
-      "answer": "B"
-    },
-    {
-      "question": "In C++, what is the purpose of the struct keyword?",
-      "options": {
-        "A": "To loop over elements",
-        "B": "To define a class",
-        "C": "To handle exceptions",
-        "D": "To declare a variable"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "In C++, what is the purpose of the final keyword?",
-      "options": {
-        "A": "To define a class",
-        "B": "To declare a variable",
-        "C": "To loop over elements",
-        "D": "To handle exceptions"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "Which of the following is a valid variable declaration in C++?",
-      "options": {
-        "A": "var x = 497;",
-        "B": "let x = 497;",
-        "C": "int x = 497;",
-        "D": "$x = 497;"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 366 + 30 evaluate to in C++?",
-      "options": {
-        "A": "36630",
-        "B": "396",
-        "C": "336",
-        "D": "Error"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What is the correct syntax to output '543' in C++?",
-      "options": {
-        "A": "console.log(\"543\")",
-        "B": "echo \"543\"",
-        "C": "System.out.println(\"543\")",
-        "D": "print(\"543\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "In C++, what is the purpose of the class keyword?",
-      "options": {
-        "A": "To declare a variable",
-        "B": "To define a class",
-        "C": "To loop over elements",
-        "D": "To handle exceptions"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 420 + 26 evaluate to in C++?",
-      "options": {
-        "A": "446",
-        "B": "42026",
-        "C": "Error",
-        "D": "394"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '191' in C++?",
-      "options": {
-        "A": "print(\"191\")",
-        "B": "echo \"191\"",
-        "C": "console.log(\"191\")",
-        "D": "System.out.println(\"191\")"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '824' in C++?",
-      "options": {
-        "A": "echo \"824\"",
-        "B": "console.log(\"824\")",
-        "C": "System.out.println(\"824\")",
-        "D": "print(\"824\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "In C++, what is the purpose of the static keyword?",
-      "options": {
-        "A": "To declare a variable",
-        "B": "To loop over elements",
-        "C": "To handle exceptions",
-        "D": "To define a class"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '707' in C++?",
-      "options": {
-        "A": "console.log(\"707\")",
-        "B": "System.out.println(\"707\")",
-        "C": "print(\"707\")",
-        "D": "echo \"707\""
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What will 815 + 48 evaluate to in C++?",
-      "options": {
-        "A": "863",
-        "B": "Error",
-        "C": "81548",
-        "D": "767"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '395' in C++?",
-      "options": {
-        "A": "console.log(\"395\")",
-        "B": "echo \"395\"",
-        "C": "System.out.println(\"395\")",
-        "D": "print(\"395\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 496 + 37 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "533",
-        "C": "49637",
-        "D": "459"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What will 579 + 11 evaluate to in C++?",
-      "options": {
-        "A": "568",
-        "B": "590",
-        "C": "57911",
-        "D": "Error"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What is the correct syntax to output '203' in C++?",
-      "options": {
-        "A": "System.out.println(\"203\")",
-        "B": "echo \"203\"",
-        "C": "print(\"203\")",
-        "D": "console.log(\"203\")"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "In C++, what is the purpose of the let keyword?",
-      "options": {
-        "A": "To loop over elements",
-        "B": "To define a class",
-        "C": "To handle exceptions",
-        "D": "To declare a variable"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '883' in C++?",
-      "options": {
-        "A": "console.log(\"883\")",
-        "B": "print(\"883\")",
-        "C": "System.out.println(\"883\")",
-        "D": "echo \"883\""
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What is the correct syntax to output '530' in C++?",
-      "options": {
-        "A": "System.out.println(\"530\")",
-        "B": "console.log(\"530\")",
-        "C": "echo \"530\"",
-        "D": "print(\"530\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 493 + 19 evaluate to in C++?",
-      "options": {
-        "A": "512",
-        "B": "474",
-        "C": "Error",
-        "D": "49319"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 769 + 21 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "748",
-        "C": "76921",
-        "D": "790"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 93 + 14 evaluate to in C++?",
-      "options": {
-        "A": "79",
-        "B": "Error",
-        "C": "9314",
-        "D": "107"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '299' in C++?",
-      "options": {
-        "A": "echo \"299\"",
-        "B": "print(\"299\")",
-        "C": "System.out.println(\"299\")",
-        "D": "console.log(\"299\")"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What is the correct syntax to output '586' in C++?",
-      "options": {
-        "A": "console.log(\"586\")",
-        "B": "echo \"586\"",
-        "C": "print(\"586\")",
-        "D": "System.out.println(\"586\")"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What will 616 + 26 evaluate to in C++?",
-      "options": {
-        "A": "590",
-        "B": "Error",
-        "C": "642",
-        "D": "61626"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '832' in C++?",
-      "options": {
-        "A": "console.log(\"832\")",
-        "B": "System.out.println(\"832\")",
-        "C": "print(\"832\")",
-        "D": "echo \"832\""
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '84' in C++?",
-      "options": {
-        "A": "print(\"84\")",
-        "B": "echo \"84\"",
-        "C": "console.log(\"84\")",
-        "D": "System.out.println(\"84\")"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '313' in C++?",
-      "options": {
-        "A": "echo \"313\"",
-        "B": "console.log(\"313\")",
-        "C": "print(\"313\")",
-        "D": "System.out.println(\"313\")"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What will 934 + 42 evaluate to in C++?",
-      "options": {
-        "A": "93442",
-        "B": "976",
-        "C": "892",
-        "D": "Error"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "What will 675 + 44 evaluate to in C++?",
-      "options": {
-        "A": "719",
-        "B": "67544",
-        "C": "Error",
-        "D": "631"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 656 + 50 evaluate to in C++?",
-      "options": {
-        "A": "65650",
-        "B": "Error",
-        "C": "606",
-        "D": "706"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '397' in C++?",
-      "options": {
-        "A": "print(\"397\")",
-        "B": "console.log(\"397\")",
-        "C": "echo \"397\"",
-        "D": "System.out.println(\"397\")"
-      },
-      "answer": "A"
     }
   ]
 }

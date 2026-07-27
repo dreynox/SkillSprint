@@ -3,502 +3,502 @@
   "level": "Beginner",
   "questions": [
     {
-      "question": "Which of the following is a valid variable declaration in C++?",
+      "question": "What is the correct file extension for C++ source files?",
       "options": {
-        "A": "let x = 99;",
-        "B": "var x = 99;",
-        "C": "int x = 99;",
-        "D": "$x = 99;"
+        "A": ".c",
+        "B": ".cpp",
+        "C": ".cp",
+        "D": ".cplus"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which function is the entry point of a C++ program?",
+      "options": {
+        "A": "start()",
+        "B": "init()",
+        "C": "main()",
+        "D": "begin()"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which standard library header must be included to use std::cout and std::cin?",
+      "options": {
+        "A": "<inputoutput>",
+        "B": "<stdio.h>",
+        "C": "<math.h>",
+        "D": "<iostream>"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "How do you output \"Hello World\" to the console in C++?",
+      "options": {
+        "A": "console.log(\"Hello World\");",
+        "B": "std::cout << \"Hello World\";",
+        "C": "print(\"Hello World\");",
+        "D": "System.out.println(\"Hello World\");"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What punctuation mark is used to end a statement in C++?",
+      "options": {
+        "A": "Colon (:)",
+        "B": "Period (.)",
+        "C": "Semicolon (;)",
+        "D": "Comma (,)"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which data type is used to store whole numbers (e.g., 5, -10)?",
+      "options": {
+        "A": "int",
+        "B": "float",
+        "C": "string",
+        "D": "char"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which data type is used to store true or false values?",
+      "options": {
+        "A": "boolean",
+        "B": "bool",
+        "C": "bit",
+        "D": "binary"
       },
       "answer": "B"
     },
     {
       "question": "How do you write a single-line comment in C++?",
       "options": {
-        "A": "// comment",
-        "B": "<!-- comment -->",
-        "C": "/* comment */",
-        "D": "# comment"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "How do you handle exceptions or errors in C++?",
-      "options": {
-        "A": "On Error Resume Next",
-        "B": "try/except",
-        "C": "try/catch",
-        "D": "begin/rescue"
+        "A": "# This is a comment",
+        "B": "/* This is a comment */",
+        "C": "// This is a comment",
+        "D": "<!-- This is a comment -->"
       },
       "answer": "C"
     },
     {
-      "question": "Which keyword is used to define a function/method in C++?",
+      "question": "How do you write a multi-line comment in C++?",
       "options": {
-        "A": "def",
-        "B": "function",
-        "C": "void",
-        "D": "func"
+        "A": "/* Comment */",
+        "B": "/// Comment ///",
+        "C": "## Comment ##",
+        "D": "** Comment **"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What is the correct way to declare an integer variable named 'score' with a value of 100?",
+      "options": {
+        "A": "int score = 100;",
+        "B": "score = 100;",
+        "C": "var score = 100;",
+        "D": "integer score = 100;"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which operator is used to assign a value to a variable?",
+      "options": {
+        "A": "==",
+        "B": "=",
+        "C": ":=",
+        "D": "=>"
       },
       "answer": "B"
     },
     {
-      "question": "Which library/module is commonly used for math operations in C++?",
+      "question": "Which operator is used to check if two values are equal?",
       "options": {
-        "A": "Math",
-        "B": "numpy",
-        "C": "cmath",
-        "D": "math"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the zero-based index of the first element of an array in C++?",
-      "options": {
-        "A": "It depends",
-        "B": "0",
-        "C": "1",
-        "D": "-1"
-      },
-      "answer": "B"
-    },
-    {
-      "question": "Which operator is used for strict equality in C++ (if applicable)?",
-      "options": {
-        "A": "is",
-        "B": "eq",
+        "A": "=",
+        "B": "===",
         "C": "==",
-        "D": "==="
+        "D": "!="
       },
-      "answer": "D"
+      "answer": "C"
     },
     {
-      "question": "What will 999 + 33 evaluate to in C++?",
+      "question": "What is the output of 5 / 2 in C++ when both numbers are integers?",
       "options": {
-        "A": "966",
-        "B": "99933",
-        "C": "1032",
+        "A": "2.5",
+        "B": "2",
+        "C": "3",
         "D": "Error"
       },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator gives the remainder of integer division?",
+      "options": {
+        "A": "/",
+        "B": "//",
+        "C": "%",
+        "D": "mod"
+      },
       "answer": "C"
     },
     {
-      "question": "What is the correct syntax to output '82' in C++?",
+      "question": "How do you declare a variable that cannot be changed (a constant)?",
       "options": {
-        "A": "console.log(\"82\")",
-        "B": "print(\"82\")",
-        "C": "System.out.println(\"82\")",
-        "D": "echo \"82\""
+        "A": "static int x = 5;",
+        "B": "final int x = 5;",
+        "C": "const int x = 5;",
+        "D": "let int x = 5;"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What does the ++ operator do?",
+      "options": {
+        "A": "Adds two numbers together",
+        "B": "Increments a variable's value by 1",
+        "C": "Multiplies a variable by 2",
+        "D": "Concatenates two strings"
       },
       "answer": "B"
     },
     {
-      "question": "In C++, what is the purpose of the final keyword?",
+      "question": "Which logical operator represents \"AND\"?",
       "options": {
-        "A": "To define a class",
-        "B": "To declare a variable",
-        "C": "To handle exceptions",
-        "D": "To loop over elements"
+        "A": "||",
+        "B": "&&",
+        "C": "!",
+        "D": "&"
       },
       "answer": "B"
     },
     {
-      "question": "What will 884 + 36 evaluate to in C++?",
+      "question": "Which logical operator represents \"OR\"?",
       "options": {
-        "A": "88436",
-        "B": "848",
-        "C": "Error",
-        "D": "920"
+        "A": "||",
+        "B": "&&",
+        "C": "!",
+        "D": "|"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "Which logical operator represents \"NOT\"?",
+      "options": {
+        "A": "||",
+        "B": "&&",
+        "C": "~",
+        "D": "!"
       },
       "answer": "D"
     },
     {
-      "question": "What will 785 + 15 evaluate to in C++?",
+      "question": "What characters are used to enclose a block of code (like an if-statement or a function)?",
       "options": {
-        "A": "Error",
-        "B": "78515",
-        "C": "800",
-        "D": "770"
+        "A": "( )",
+        "B": "[ ]",
+        "C": "{ }",
+        "D": "< >"
       },
       "answer": "C"
     },
     {
-      "question": "What will 788 + 20 evaluate to in C++?",
+      "question": "Which keyword is used to make decisions based on a condition?",
       "options": {
-        "A": "Error",
-        "B": "808",
-        "C": "78820",
-        "D": "768"
+        "A": "choose",
+        "B": "check",
+        "C": "if",
+        "D": "switch"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "Which keyword is used to specify an alternative block of code to execute if an 'if' condition is false?",
+      "options": {
+        "A": "otherwise",
+        "B": "else",
+        "C": "elif",
+        "D": "except"
       },
       "answer": "B"
     },
     {
-      "question": "What will 996 + 11 evaluate to in C++?",
+      "question": "Which loop will always execute its code block at least once?",
       "options": {
-        "A": "1007",
-        "B": "985",
-        "C": "Error",
-        "D": "99611"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 658 + 47 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "65847",
-        "C": "611",
-        "D": "705"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "In C++, what is the purpose of the const keyword?",
-      "options": {
-        "A": "To loop over elements",
-        "B": "To handle exceptions",
-        "C": "To define a class",
-        "D": "To declare a variable"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '878' in C++?",
-      "options": {
-        "A": "print(\"878\")",
-        "B": "System.out.println(\"878\")",
-        "C": "console.log(\"878\")",
-        "D": "echo \"878\""
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 392 + 38 evaluate to in C++?",
-      "options": {
-        "A": "354",
-        "B": "Error",
-        "C": "430",
-        "D": "39238"
+        "A": "for loop",
+        "B": "while loop",
+        "C": "do-while loop",
+        "D": "infinite loop"
       },
       "answer": "C"
     },
     {
-      "question": "What is the correct syntax to output '698' in C++?",
+      "question": "What is the correct syntax for a while loop?",
       "options": {
-        "A": "echo \"698\"",
-        "B": "print(\"698\")",
-        "C": "System.out.println(\"698\")",
-        "D": "console.log(\"698\")"
+        "A": "while (x > 5) { }",
+        "B": "while x > 5 { }",
+        "C": "while x > 5:",
+        "D": "loop while (x > 5) { }"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What keyword is used to stop a loop prematurely and exit it completely?",
+      "options": {
+        "A": "stop",
+        "B": "exit",
+        "C": "return",
+        "D": "break"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What keyword skips the rest of the current loop iteration and moves to the next one?",
+      "options": {
+        "A": "skip",
+        "B": "continue",
+        "C": "next",
+        "D": "pass"
       },
       "answer": "B"
     },
     {
-      "question": "In C++, what is the purpose of the struct keyword?",
+      "question": "How do you declare an array of 5 integers named 'numbers'?",
       "options": {
-        "A": "To declare a variable",
-        "B": "To handle exceptions",
-        "C": "To loop over elements",
-        "D": "To define a class"
+        "A": "int numbers[5];",
+        "B": "array<int> numbers = 5;",
+        "C": "int numbers = [5];",
+        "D": "int[5] numbers;"
       },
       "answer": "A"
     },
     {
-      "question": "What is the correct syntax to output '297' in C++?",
+      "question": "What is the index of the first element in a C++ array?",
       "options": {
-        "A": "System.out.println(\"297\")",
-        "B": "print(\"297\")",
-        "C": "echo \"297\"",
-        "D": "console.log(\"297\")"
+        "A": "1",
+        "B": "0",
+        "C": "-1",
+        "D": "It depends on the array type"
       },
       "answer": "B"
     },
     {
-      "question": "What will 253 + 29 evaluate to in C++?",
+      "question": "Which index accesses the third element of an array named 'arr'?",
       "options": {
-        "A": "Error",
-        "B": "224",
-        "C": "25329",
-        "D": "282"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '171' in C++?",
-      "options": {
-        "A": "System.out.println(\"171\")",
-        "B": "echo \"171\"",
-        "C": "print(\"171\")",
-        "D": "console.log(\"171\")"
+        "A": "arr[3]",
+        "B": "arr(2)",
+        "C": "arr[2]",
+        "D": "arr{3}"
       },
       "answer": "C"
     },
     {
-      "question": "In C++, what is the purpose of the var keyword?",
+      "question": "What characters are used to enclose a single character literal in C++ (like the letter A)?",
       "options": {
-        "A": "To loop over elements",
-        "B": "To handle exceptions",
-        "C": "To define a class",
-        "D": "To declare a variable"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 480 + 15 evaluate to in C++?",
-      "options": {
-        "A": "465",
-        "B": "Error",
-        "C": "495",
-        "D": "48015"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "In C++, what is the purpose of the static keyword?",
-      "options": {
-        "A": "To declare a variable",
-        "B": "To handle exceptions",
-        "C": "To loop over elements",
-        "D": "To define a class"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 547 + 38 evaluate to in C++?",
-      "options": {
-        "A": "585",
-        "B": "Error",
-        "C": "509",
-        "D": "54738"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "In C++, what is the purpose of the let keyword?",
-      "options": {
-        "A": "To handle exceptions",
-        "B": "To declare a variable",
-        "C": "To define a class",
-        "D": "To loop over elements"
+        "A": "\" \" (Double quotes)",
+        "B": "' ' (Single quotes)",
+        "C": "` ` (Backticks)",
+        "D": "< > (Angle brackets)"
       },
       "answer": "B"
     },
     {
-      "question": "What is the correct syntax to output '989' in C++?",
+      "question": "What characters are used to enclose a string literal in C++ (like a word)?",
       "options": {
-        "A": "console.log(\"989\")",
-        "B": "print(\"989\")",
-        "C": "System.out.println(\"989\")",
-        "D": "echo \"989\""
+        "A": "\" \" (Double quotes)",
+        "B": "' ' (Single quotes)",
+        "C": "` ` (Backticks)",
+        "D": "{ } (Curly braces)"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "What does 'std::endl' do when used with std::cout?",
+      "options": {
+        "A": "Ends the program",
+        "B": "Inserts a newline character and flushes the output buffer",
+        "C": "Clears the screen",
+        "D": "Prints the word 'endl'"
       },
       "answer": "B"
     },
     {
-      "question": "What will 914 + 27 evaluate to in C++?",
+      "question": "What does the escape sequence '\\n' represent?",
       "options": {
-        "A": "887",
-        "B": "Error",
-        "C": "91427",
-        "D": "941"
+        "A": "Null character",
+        "B": "Tab space",
+        "C": "Newline",
+        "D": "Backslash"
       },
-      "answer": "D"
+      "answer": "C"
     },
     {
-      "question": "What will 212 + 49 evaluate to in C++?",
+      "question": "What does the escape sequence '\\t' represent?",
       "options": {
-        "A": "261",
-        "B": "21249",
-        "C": "Error",
-        "D": "163"
+        "A": "Tab space",
+        "B": "Text",
+        "C": "Terminal",
+        "D": "Top"
       },
       "answer": "A"
     },
     {
-      "question": "What will 671 + 29 evaluate to in C++?",
+      "question": "Which operator is used to take input from the keyboard using std::cin?",
       "options": {
-        "A": "Error",
-        "B": "700",
-        "C": "67129",
-        "D": "642"
+        "A": "<<",
+        "B": ">>",
+        "C": "->",
+        "D": "<-"
       },
       "answer": "B"
     },
     {
-      "question": "What will 613 + 33 evaluate to in C++?",
+      "question": "What is the return type of a function that does not return any value?",
       "options": {
-        "A": "Error",
-        "B": "61333",
-        "C": "580",
-        "D": "646"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What is the correct syntax to output '741' in C++?",
-      "options": {
-        "A": "echo \"741\"",
-        "B": "System.out.println(\"741\")",
-        "C": "console.log(\"741\")",
-        "D": "print(\"741\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 955 + 19 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "936",
-        "C": "95519",
-        "D": "974"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 438 + 41 evaluate to in C++?",
-      "options": {
-        "A": "479",
-        "B": "397",
-        "C": "Error",
-        "D": "43841"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 202 + 31 evaluate to in C++?",
-      "options": {
-        "A": "233",
-        "B": "171",
-        "C": "Error",
-        "D": "20231"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '220' in C++?",
-      "options": {
-        "A": "print(\"220\")",
-        "B": "System.out.println(\"220\")",
-        "C": "echo \"220\"",
-        "D": "console.log(\"220\")"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What is the correct syntax to output '736' in C++?",
-      "options": {
-        "A": "print(\"736\")",
-        "B": "echo \"736\"",
-        "C": "console.log(\"736\")",
-        "D": "System.out.println(\"736\")"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "In C++, what is the purpose of the def keyword?",
-      "options": {
-        "A": "To handle exceptions",
-        "B": "To define a class",
-        "C": "To declare a variable",
-        "D": "To loop over elements"
+        "A": "null",
+        "B": "empty",
+        "C": "void",
+        "D": "none"
       },
       "answer": "C"
     },
     {
-      "question": "What will 357 + 49 evaluate to in C++?",
+      "question": "How do you call a function named 'greet' that takes no arguments?",
       "options": {
-        "A": "Error",
-        "B": "35749",
-        "C": "406",
-        "D": "308"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '159' in C++?",
-      "options": {
-        "A": "echo \"159\"",
-        "B": "System.out.println(\"159\")",
-        "C": "console.log(\"159\")",
-        "D": "print(\"159\")"
-      },
-      "answer": "D"
-    },
-    {
-      "question": "What will 165 + 26 evaluate to in C++?",
-      "options": {
-        "A": "139",
-        "B": "16526",
-        "C": "191",
-        "D": "Error"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '642' in C++?",
-      "options": {
-        "A": "print(\"642\")",
-        "B": "System.out.println(\"642\")",
-        "C": "echo \"642\"",
-        "D": "console.log(\"642\")"
-      },
-      "answer": "A"
-    },
-    {
-      "question": "What will 917 + 26 evaluate to in C++?",
-      "options": {
-        "A": "Error",
-        "B": "91726",
-        "C": "943",
-        "D": "891"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '446' in C++?",
-      "options": {
-        "A": "echo \"446\"",
-        "B": "print(\"446\")",
-        "C": "console.log(\"446\")",
-        "D": "System.out.println(\"446\")"
+        "A": "greet;",
+        "B": "greet();",
+        "C": "call greet();",
+        "D": "greet[]"
       },
       "answer": "B"
     },
     {
-      "question": "What is the correct syntax to output '685' in C++?",
+      "question": "Which statement usually appears at the end of the main() function to indicate successful execution?",
       "options": {
-        "A": "System.out.println(\"685\")",
-        "B": "echo \"685\"",
-        "C": "print(\"685\")",
-        "D": "console.log(\"685\")"
+        "A": "exit 1;",
+        "B": "return true;",
+        "C": "end;",
+        "D": "return 0;"
+      },
+      "answer": "D"
+    },
+    {
+      "question": "What does the 'sizeof' operator do?",
+      "options": {
+        "A": "Returns the number of elements in an array",
+        "B": "Returns the size of a variable or data type in bytes",
+        "C": "Returns the length of a string",
+        "D": "Resizes an array"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which loop is best suited for executing a block of code a known number of times?",
+      "options": {
+        "A": "while loop",
+        "B": "do-while loop",
+        "C": "for loop",
+        "D": "if loop"
       },
       "answer": "C"
     },
     {
-      "question": "What will 488 + 48 evaluate to in C++?",
+      "question": "What are the three parts of a 'for' loop declaration in C++?",
       "options": {
-        "A": "Error",
-        "B": "440",
-        "C": "536",
-        "D": "48848"
-      },
-      "answer": "C"
-    },
-    {
-      "question": "What is the correct syntax to output '291' in C++?",
-      "options": {
-        "A": "print(\"291\")",
-        "B": "console.log(\"291\")",
-        "C": "System.out.println(\"291\")",
-        "D": "echo \"291\""
+        "A": "Initialization, Condition, Increment/Decrement",
+        "B": "Start, Stop, Step",
+        "C": "Condition, Body, Exit",
+        "D": "Variable, Array, Action"
       },
       "answer": "A"
     },
     {
-      "question": "What is the correct syntax to output '682' in C++?",
+      "question": "What happens if you access an array out of its bounds (e.g., arr[10] when it only has 5 elements)?",
       "options": {
-        "A": "echo \"682\"",
-        "B": "System.out.println(\"682\")",
-        "C": "print(\"682\")",
-        "D": "console.log(\"682\")"
+        "A": "The compiler automatically resizes the array.",
+        "B": "It results in undefined behavior and might crash or read garbage memory.",
+        "C": "It returns a default value of 0.",
+        "D": "The compiler catches it as a syntax error."
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What does 'using namespace std;' do?",
+      "options": {
+        "A": "Imports all standard library functions so you don't have to prefix them with 'std::'",
+        "B": "Creates a new standard variable",
+        "C": "Makes the program run faster",
+        "D": "Includes the standard math library"
+      },
+      "answer": "A"
+    },
+    {
+      "question": "How do you declare a variable of type double with the value 3.14?",
+      "options": {
+        "A": "float pi = 3.14;",
+        "B": "double pi = 3.14;",
+        "C": "dec pi = 3.14;",
+        "D": "decimal pi = 3.14;"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which operator is the \"Not Equal To\" relational operator?",
+      "options": {
+        "A": "!==",
+        "B": "<>",
+        "C": "not=",
+        "D": "!="
+      },
+      "answer": "D"
+    },
+    {
+      "question": "If x = 5 and y = 10, what is the result of (x > 3 && y < 20)?",
+      "options": {
+        "A": "false",
+        "B": "true",
+        "C": "5",
+        "D": "10"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "What does a compiler do in C++?",
+      "options": {
+        "A": "Executes the code line by line at runtime",
+        "B": "Translates the human-readable source code into machine code",
+        "C": "Formats the code to make it look pretty",
+        "D": "Uploads the code to GitHub"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "Which of the following variable names is INVALID in C++?",
+      "options": {
+        "A": "playerScore",
+        "B": "_score",
+        "C": "1stPlayer",
+        "D": "player_1"
+      },
+      "answer": "C"
+    },
+    {
+      "question": "What will `cout << 5 + 3 * 2;` print to the screen?",
+      "options": {
+        "A": "16",
+        "B": "11",
+        "C": "10",
+        "D": "532"
+      },
+      "answer": "B"
+    },
+    {
+      "question": "In a switch statement, what happens if you forget to include a 'break' at the end of a case?",
+      "options": {
+        "A": "The program will crash.",
+        "B": "The compiler will throw an error.",
+        "C": "Execution will 'fall through' to the next case.",
+        "D": "The switch statement will exit immediately."
       },
       "answer": "C"
     }
