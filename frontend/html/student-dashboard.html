@@ -425,10 +425,17 @@
 
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand">Skill<span>Sprint</span> Student Dashboard</div>
-      <div style="flex: 1; display: flex; gap: 0.8rem; padding: 0 1rem;">
-        <input type="text" id="searchInput" placeholder="Search users, events, hackathons..." aria-label="Search users, events, and hackathons" style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 0.5rem 0.8rem; font-size: 0.9rem; width: 200px; flex: 1; max-width: 300px;" />
-      </div>
+     <div class="brand">Skill<span>Sprint</span> Student Dashboard</div>
+  <div style="flex: 1; display: flex; gap: 0.8rem; padding: 0 1rem; position: relative;">
+  <input type="text" id="searchInput" placeholder="Search users, events, hackathons..." aria-label="Search users, events, and hackathons" style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 0.5rem 0.8rem; font-size: 0.9rem; width: 200px; flex: 1; max-width: 300px;" />
+  
+  <!-- Dropdown Results Container (This fixes the null 'style' error) -->
+  <div id="searchDropdown" style="display: none; position: fixed; top: 60px; width: 300px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; max-height: 300px; overflow-y: auto; box-shadow: var(--shadow); z-index: 9999; padding: 0.5rem;">
+    <div id="searchResults" style="display: grid; gap: 0.4rem;">
+      <div style="text-align: center; color: var(--muted); padding: 0.5rem;">Start typing to search...</div>
+    </div>
+  </div>
+</div>
       <div class="topbar-right">
         <a class="icon-btn" id="messagesTopLink" href="message.html" aria-label="Open Messages" title="Messages">💬</a>
         <div class="profile-menu" id="profileMenu">
@@ -833,12 +840,12 @@
     document.getElementById("searchInput").addEventListener("input", function (event) {
       clearTimeout(searchTimeout);
       const query = event.target.value.trim();
-      const modal = document.getElementById("searchModal");
+      const dropdown = document.getElementById("searchDropdown"); // Changed from searchModal
       const resultsContainer = document.getElementById("searchResults");
       const dashboardStatus = document.getElementById("dashboardStatus");
 
       if (!query || query.length < 2) {
-        modal.style.display = "none";
+        dropdown.style.display = "none"; // Hide dropdown
         if (dashboardStatus) {
           dashboardStatus.textContent = "Search closed.";
         }
@@ -862,8 +869,8 @@
           })
           .then(function (results) {
             if (!results || results.length === 0) {
-              resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">No results found</div>";
-              modal.style.display = "flex";
+              resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted); padding: 0.5rem;\">No results found</div>";
+              dropdown.style.display = "block"; // Show dropdown as block instead of flex modal
               if (dashboardStatus) {
                 dashboardStatus.textContent = "No results found.";
               }
@@ -872,34 +879,34 @@
 
             const html = results.map(function (result) {
               if (result.type === "user") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem; cursor: pointer; transition: background 0.2s;\" class=\"search-result-user\" data-user-id=\"" + result.id + "\" onmouseover=\"this.style.background='rgba(0,255,136,0.05)'\" onmouseout=\"this.style.background='transparent'\" onclick=\"if(event.target.classList.contains('follow-btn')) return; window.location.href='profile.html?user_id=" + result.id + "';\">" +
+                return "<div style=\"border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem; cursor: pointer; transition: background 0.2s; background: rgba(255,255,255,0.02);\" class=\"search-result-user\" data-user-id=\"" + result.id + "\" onmouseover=\"this.style.background='rgba(0,255,136,0.05)'\" onmouseout=\"this.style.background='rgba(255,255,255,0.02)'\" onclick=\"if(event.target.classList.contains('follow-btn')) return; window.location.href='profile.html?user_id=" + result.id + "';\">" +
                   "<div style=\"display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;\">" +
                   "<div style=\"flex: 1; cursor: pointer;\">" +
-                  "<div style=\"font-weight: 600;\">" + escapeHtml(result.name) + "</div>" +
-                  "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.email) + "</div>" +
-                  (result.bio ? "<div style=\"font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem;\">" + escapeHtml(result.bio) + "</div>" : "") +
+                  "<div style=\"font-weight: 600; font-size: 0.9rem;\">" + escapeHtml(result.name) + "</div>" +
+                  "<div style=\"font-size: 0.8rem; color: var(--muted);\">" + escapeHtml(result.email) + "</div>" +
+                  (result.bio ? "<div style=\"font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem;\">" + escapeHtml(result.bio) + "</div>" : "") +
                   "</div>" +
-                  "<button class=\"btn follow-btn\" data-user-id=\"" + result.id + "\" style=\"padding: 0.4rem 0.8rem; white-space: nowrap;\">Follow</button>" +
+                  "<button class=\"btn follow-btn\" data-user-id=\"" + result.id + "\" style=\"padding: 0.3rem 0.6rem; font-size: 0.8rem; white-space: nowrap;\">Follow</button>" +
                   "</div>" +
                   "</div>";
               } else if (result.type === "contest") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\">" +
+                return "<div style=\"border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem; background: rgba(255,255,255,0.02);\">" +
                   "<div style=\"display: flex; justify-content: space-between; align-items: center;\">" +
                   "<div>" +
-                  "<div style=\"font-weight: 600;\">[Contest] " + escapeHtml(result.title) + "</div>" +
-                  (result.description ? "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 100)) + "...</div>" : "") +
+                  "<div style=\"font-weight: 600; font-size: 0.9rem;\">[Contest] " + escapeHtml(result.title) + "</div>" +
+                  (result.description ? "<div style=\"font-size: 0.8rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 80)) + "...</div>" : "") +
                   "</div>" +
-                  "<span class=\"badge\" style=\"margin-left: 0.5rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
+                  "<span class=\"badge\" style=\"margin-left: 0.5rem; font-size: 0.75rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
                   "</div>" +
                   "</div>";
               } else if (result.type === "hackathon") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\">" +
+                return "<div style=\"border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem; background: rgba(255,255,255,0.02);\">" +
                   "<div style=\"display: flex; justify-content: space-between; align-items: center;\">" +
                   "<div>" +
-                  "<div style=\"font-weight: 600;\">[Hackathon] " + escapeHtml(result.title) + "</div>" +
-                  (result.description ? "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 100)) + "...</div>" : "") +
+                  "<div style=\"font-weight: 600; font-size: 0.9rem;\">[Hackathon] " + escapeHtml(result.title) + "</div>" +
+                  (result.description ? "<div style=\"font-size: 0.8rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 80)) + "...</div>" : "") +
                   "</div>" +
-                  "<span class=\"badge\" style=\"margin-left: 0.5rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
+                  "<span class=\"badge\" style=\"margin-left: 0.5rem; font-size: 0.75rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
                   "</div>" +
                   "</div>";
               }
@@ -907,51 +914,20 @@
             }).join("");
 
             resultsContainer.innerHTML = html;
-            modal.style.display = "flex";
+            dropdown.style.display = "block"; // Show dropdown list cleanly
             if (dashboardStatus) {
               dashboardStatus.textContent = results.length + " result(s) found.";
             }
-
-            // Add follow button listeners
-            resultsContainer.querySelectorAll(".follow-btn").forEach(function (btn) {
-              btn.addEventListener("click", function () {
-                const userId = btn.getAttribute("data-user-id");
-                const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
-                const token = localStorage.getItem("access_token");
-
-                fetch(API_BASE + "/users/" + userId + "/follow", {
-                  method: "POST",
-                  headers: { Authorization: "Bearer " + token }
-                })
-                  .then(function (response) {
-                    if (!response.ok) return response.json().then(function (e) { throw new Error(e.detail); });
-                    return response.json();
-                  })
-                  .then(function () {
-                    btn.textContent = "Following";
-                    btn.disabled = true;
-                  })
-                  .catch(function (error) {
-                    alert("Error: " + (error.message || "Failed to follow user"));
-                  });
-              });
-            });
-          })
-          .catch(function () {
-            resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">Error fetching results</div>";
-            modal.style.display = "flex";
-            if (dashboardStatus) {
-              dashboardStatus.textContent = "Search failed.";
-            }
           });
-      }, 300);
+      }, 300); // 300ms debounce
     });
 
-    document.getElementById("closeSearchBtn").addEventListener("click", function () {
-      document.getElementById("searchModal").style.display = "none";
-      const dashboardStatus = document.getElementById("dashboardStatus");
-      if (dashboardStatus) {
-        dashboardStatus.textContent = "Search closed.";
+    // Optional: Close dropdown when clicking outside of search bar/dropdown
+    document.addEventListener("click", function(event) {
+      const searchInput = document.getElementById("searchInput");
+      const dropdown = document.getElementById("searchDropdown");
+      if (dropdown && !searchInput.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = "none";
       }
     });
 
