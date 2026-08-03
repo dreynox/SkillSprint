@@ -10,7 +10,8 @@
         "C": "Using a global boolean flag",
         "D": "std::mutex::try_lock()"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`std::lock_guard` uses RAII to automatically unlock the mutex when it goes out of scope, including during exception-driven stack unwinding, avoiding a stuck lock."
     },
     {
       "question": "What is the Curiously Recurring Template Pattern (CRTP) primarily used for in C++?",
@@ -20,7 +21,8 @@
         "C": "Preventing memory leaks in circular dependencies",
         "D": "Enabling garbage collection for specific class hierarchies"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "CRTP lets a base class be templated on its derived class, enabling compile-time (static) polymorphism and avoiding the runtime overhead of virtual function calls."
     },
     {
       "question": "In C++11 and later, what does the 'mutable' keyword do when applied to a lambda expression?",
@@ -30,7 +32,8 @@
         "C": "It prevents the lambda from being copied.",
         "D": "It allows the lambda to execute asynchronously."
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "By default, a lambda's by-value captures are read-only inside the body. Marking the lambda `mutable` allows it to modify those captured-by-value variables."
     },
     {
       "question": "Which C++ cast should be used to safely cast down a class hierarchy (from a base pointer to a derived pointer) and returns nullptr on failure?",
@@ -40,7 +43,8 @@
         "C": "dynamic_cast",
         "D": "const_cast"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`dynamic_cast` performs a runtime-checked downcast and returns `nullptr` (for pointers) if the object isn't actually of the target type, unlike `static_cast` which performs no such check."
     },
     {
       "question": "What is the primary advantage of using std::optional (introduced in C++17)?",
@@ -50,7 +54,8 @@
         "C": "It improves the performance of standard library containers by skipping empty elements.",
         "D": "It allows multiple inheritance without the diamond problem."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`std::optional<T>` explicitly represents 'a value or nothing' at the type level, replacing error-prone conventions like returning `-1` or a null pointer to signal absence."
     },
     {
       "question": "When defining a template class, why is it common practice to put the implementation in the header file instead of a .cpp file?",
@@ -60,7 +65,8 @@
         "C": "It speeds up the compilation process by avoiding linking steps.",
         "D": "Header files have fewer strict syntax rules than .cpp files."
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "Templates are instantiated per concrete type at compile time, so the compiler needs to see the full definition wherever the template is used — keeping it in the header makes that possible."
     },
     {
       "question": "What happens if a std::unique_ptr is passed by value to a function?",
@@ -70,7 +76,8 @@
         "C": "The ownership is temporarily shared until the function returns.",
         "D": "A runtime exception is thrown."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`std::unique_ptr` has its copy constructor deleted to enforce single ownership, so passing it by value fails to compile; it must be moved or passed by reference instead."
     },
     {
       "question": "What is the purpose of the 'noexcept' specifier?",
@@ -80,7 +87,8 @@
         "C": "It catches any unhandled exceptions and terminates the program silently.",
         "D": "It forces the function to return an error code instead of throwing."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`noexcept` tells the compiler a function guarantees it won't throw, which enables optimizations such as `std::vector` using moves instead of copies during reallocation."
     }
   ]
 }

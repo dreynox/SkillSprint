@@ -15,6 +15,7 @@ from models import Question, QuizSubmission, Test, User
 from schemas import (
     QuizAdminSubmissionOut,
     QuizQuestionCreate,
+    QuizReviewItem,
     QuizTestCreate,
     QuestionOut,
     QuizSubmissionRequest,
@@ -90,6 +91,8 @@ def _load_language_level_questions(language: str, level: str) -> list[dict]:
                             "D": options.get("D", ""),
                         },
                         "answer": answer,
+                        # Older sets may not have been backfilled yet, so default to "".
+                        "explanation": str(item.get("explanation", "")).strip(),
                     }
                 )
 
@@ -183,13 +186,34 @@ def submit_test_answers(
     if not questions:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This test has no questions")
 
-    question_map = {question.id: question for question in questions}
-    score = 0
+    selected_by_question = {answer.question_id: answer.selected.upper() for answer in payload.answers}
 
-    for answer in payload.answers:
-        question = question_map.get(answer.question_id)
-        if question and answer.selected.upper() == question.correct_option.upper():
+    score = 0
+    review: list[QuizReviewItem] = []
+
+    for question in sorted(questions, key=lambda q: q.id):
+        correct = question.correct_option.upper()
+        user_selected = selected_by_question.get(question.id)
+        is_correct = bool(user_selected) and user_selected == correct
+        if is_correct:
             score += 1
+
+        review.append(
+            QuizReviewItem(
+                question_id=question.id,
+                question=question.text,
+                options={
+                    "A": question.option_a,
+                    "B": question.option_b,
+                    "C": question.option_c,
+                    "D": question.option_d,
+                },
+                correct_answer=correct,
+                selected_answer=user_selected,
+                is_correct=is_correct,
+                explanation=(question.explanation or ""),
+            )
+        )
 
     submission = QuizSubmission(
         user_id=current_user.id,
@@ -200,7 +224,7 @@ def submit_test_answers(
     db.add(submission)
     db.commit()
 
-    return QuizSubmissionResponse(score=score, total=len(questions))
+    return QuizSubmissionResponse(score=score, total=len(questions), review=review)
 
 
 @router.get("/admin/tests/{test_id}/submissions")
@@ -249,10 +273,10 @@ def start_random_bank_session(payload: RandomQuizStartRequest):
 
     session_id = str(uuid.uuid4())
     questions_for_client = []
-    answers = {}
+    session_questions = {}
 
     for index, question in enumerate(selected, start=1):
-        answers[index] = question["answer"]
+        session_questions[index] = question
         questions_for_client.append(
             {
                 "question_id": index,
@@ -265,7 +289,7 @@ def start_random_bank_session(payload: RandomQuizStartRequest):
         "created_at": time.time(),
         "language": payload.language,
         "level": payload.level,
-        "answers": answers,
+        "questions": session_questions,
         "total": payload.question_count,
     }
 
@@ -287,17 +311,41 @@ def submit_random_bank_session(session_id: str, payload: RandomQuizSubmitRequest
     if not session:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Session not found or expired")
 
-    answers_map = session["answers"]
+    session_questions = session["questions"]
     total = session["total"]
+    selected_by_question = {answer.question_id: answer.selected.upper() for answer in payload.answers}
+
     answered = 0
     score = 0
+    review: list[QuizReviewItem] = []
 
-    for answer in payload.answers:
-        correct = answers_map.get(answer.question_id)
-        if not correct:
-            continue
-        answered += 1
-        if answer.selected.upper() == correct:
+    for question_id, question in session_questions.items():
+        correct = question["answer"]
+        user_selected = selected_by_question.get(question_id)
+
+        if user_selected:
+            answered += 1
+        is_correct = bool(user_selected) and user_selected == correct
+        if is_correct:
             score += 1
 
-    return RandomQuizSubmitResponse(score=score, total=total, unanswered=max(total - answered, 0))
+        review.append(
+            QuizReviewItem(
+                question_id=question_id,
+                question=question["question"],
+                options=question["options"],
+                correct_answer=correct,
+                selected_answer=user_selected,
+                is_correct=is_correct,
+                explanation=question.get("explanation", ""),
+            )
+        )
+
+    review.sort(key=lambda item: item.question_id)
+
+    return RandomQuizSubmitResponse(
+        score=score,
+        total=total,
+        unanswered=max(total - answered, 0),
+        review=review,
+    )

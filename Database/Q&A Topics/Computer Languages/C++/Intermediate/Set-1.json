@@ -10,7 +10,8 @@
         "C": "new",
         "D": "create"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`new` allocates memory on the heap for a single object and returns a pointer to it. `malloc` is the C-style allocator and doesn't call constructors."
     },
     {
       "question": "What is the main difference between a pointer and a reference in C++?",
@@ -20,7 +21,8 @@
         "C": "Pointers are used for primitive types, references for classes.",
         "D": "There is no difference; they are exactly the same."
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "A pointer can be reassigned to point at different objects (or be null), while a reference is bound to one object at initialization and can never be reseated."
     },
     {
       "question": "Which STL container stores elements in contiguous memory locations?",
@@ -30,7 +32,8 @@
         "C": "std::vector",
         "D": "std::set"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`std::vector` stores its elements contiguously in memory, similar to a dynamic array, which is why it supports fast random access and pointer arithmetic."
     },
     {
       "question": "Which keyword is required in a base class to allow a derived class to override its member function?",
@@ -40,7 +43,8 @@
         "C": "abstract",
         "D": "static"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "Marking a base-class member function `virtual` enables dynamic dispatch, allowing derived classes to override it and have the correct version called through a base pointer/reference."
     },
     {
       "question": "How do you pass a large object to a function efficiently without making a copy and without allowing the function to modify it?",
@@ -50,7 +54,8 @@
         "C": "Pass by const reference (const Type&)",
         "D": "Pass by static variable"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`const Type&` passes by reference (avoiding a copy) while `const` prevents the function from modifying the original object."
     },
     {
       "question": "What happens if you use the 'delete' operator on a pointer that was not allocated with 'new'?",
@@ -60,7 +65,8 @@
         "C": "The compiler will always catch it as a syntax error.",
         "D": "It simply frees the stack memory."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "Calling `delete` on memory not allocated by `new` is undefined behavior, commonly leading to crashes or heap corruption; the compiler cannot detect this at compile time."
     },
     {
       "question": "Which standard library stream is used specifically for outputting error messages?",
@@ -70,7 +76,8 @@
         "C": "std::cerr",
         "D": "std::out"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`std::cerr` is the standard stream intended for error output and is unbuffered by default, unlike `std::cout`."
     },
     {
       "question": "In C++, what does a pure virtual function look like?",
@@ -80,7 +87,8 @@
         "C": "void func() pure;",
         "D": "abstract void func();"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "A pure virtual function is declared with `= 0`, e.g. `virtual void func() = 0;`, forcing derived classes to provide an implementation and making the class abstract."
     },
     {
       "question": "What is the primary purpose of the 'this' pointer in C++?",
@@ -90,7 +98,8 @@
         "C": "It is a hidden pointer passed to non-static member functions that points to the object calling the function.",
         "D": "It points to the next object in a linked list."
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`this` is an implicit pointer passed to every non-static member function, pointing to the object on which the function was called."
     },
     {
       "question": "What is function overloading?",
@@ -100,7 +109,8 @@
         "C": "Overriding a base class function in a derived class.",
         "D": "Assigning multiple return types to a single function."
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "Function overloading lets multiple functions share the same name as long as their parameter lists differ, letting the compiler pick the right one based on arguments."
     },
     {
       "question": "Which of the following is true about a 'friend' function in C++?",
@@ -110,7 +120,8 @@
         "C": "It must be a member function of another class.",
         "D": "It is automatically called when an object is destroyed."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "A `friend` function is granted access to a class's private and protected members, even though it isn't a member of that class itself, and this access is not inherited."
     },
     {
       "question": "How are static member variables initialized in C++?",
@@ -120,7 +131,8 @@
         "C": "Outside the class definition, typically in a source file.",
         "D": "Using an initializer list in every object creation."
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "Static member variables are declared in the class but must be defined (and typically initialized) once outside the class, usually in a source file."
     },
     {
       "question": "What is a major advantage of using std::array over a raw C-style array?",
@@ -130,7 +142,8 @@
         "C": "std::array is allocated on the heap rather than the stack.",
         "D": "std::array allows storing elements of varying data types."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`std::array` retains knowledge of its own size (via `.size()`) and doesn't decay into a bare pointer when passed to functions, unlike a C-style array."
     },
     {
       "question": "Which keyword is used to bring an entire namespace into the current scope?",
@@ -140,7 +153,8 @@
         "C": "using",
         "D": "namespace"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "The `using` keyword, as in `using namespace std;`, brings all names from a namespace into the current scope."
     },
     {
       "question": "What does the 'inline' keyword suggest to the C++ compiler?",
@@ -150,7 +164,8 @@
         "C": "The function must never throw an exception.",
         "D": "The function can only be called from within the same file."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`inline` hints that the compiler should substitute the function's body directly at each call site, avoiding the overhead of a separate function call — though the compiler may ignore the hint."
     },
     {
       "question": "In a range-based for loop (e.g., for(auto& x : arr)), what does the '&' signify?",
@@ -160,7 +175,8 @@
         "C": "It accesses elements by reference, allowing modification and avoiding unnecessary copying.",
         "D": "It performs a bitwise AND operation on each element."
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "The `&` makes `x` a reference to each element in turn, so the loop body can modify the original elements without copying them."
     },
     {
       "question": "Which class is used for writing data to a file in C++?",
@@ -170,7 +186,8 @@
         "C": "std::ofstream",
         "D": "std::filewrite"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`std::ofstream` ('output file stream') is used to write data to files. `std::ifstream` is for reading, and `std::filewrite` doesn't exist."
     },
     {
       "question": "When an exception is thrown in C++, what happens to local objects in the current scope before the catch block is executed?",
@@ -180,7 +197,8 @@
         "C": "Their destructors are skipped to save time.",
         "D": "They are copied to the global scope."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "C++ performs stack unwinding: as the exception propagates, destructors for local objects run in reverse order of their construction."
     },
     {
       "question": "What is the correct way to provide a default value for a function parameter in C++?",
@@ -190,7 +208,8 @@
         "C": "void func(int x) { x = 10; }",
         "D": "void func(int x : 10);"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "A default parameter value is specified directly in the declaration: `void func(int x = 10);`, which lets callers omit that argument."
     },
     {
       "question": "Which operator cannot be overloaded in C++?",
@@ -200,7 +219,8 @@
         "C": ":: (scope resolution operator)",
         "D": "+ (addition operator)"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "The scope resolution operator `::` cannot be overloaded in C++, unlike most other operators including `==`, `[]`, and `+`."
     }
   ]
 }
