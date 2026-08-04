@@ -377,6 +377,10 @@ class CompilerRunResponse(BaseModel):
     exit_code: int = 0
     execution_time_ms: int = 0
     message: Optional[str] = None
+    # Audit / observability fields
+    sandbox_used: bool = False
+    submission_id: Optional[str] = None
+
 
 
 class CompilerDebugRequest(BaseModel):
