@@ -82,6 +82,14 @@ def _build_docker_command(
     The container root filesystem is ``--read-only``; only ``/sandbox`` (via
     bind-mount) and ``/tmp`` (via tmpfs) are writable.
     """
+    # tempfile.TemporaryDirectory() creates the directory with mode 0o700,
+    # owned by the API process user (appuser).  The container runs as 'nobody',
+    # which would otherwise be denied any access.  Open the workspace to
+    # world-readable/writable so the container user can read sources and write
+    # compiled artifacts back through the bind-mount, while --user nobody still
+    # prevents privilege escalation inside the container.
+    host_src_dir.chmod(0o777)
+
     cmd = [
         "docker", "run",
         "--rm",                                              # auto-remove on exit
