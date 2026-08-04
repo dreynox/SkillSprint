@@ -276,7 +276,11 @@ def execute_language_code(language: str, code: str, stdin: str = "", timeout: in
                 raise CompilationError(stderr)
 
             if spec.needs_output_binary and not (workspace / EXECUTABLE_NAME).exists():
+                # In Docker-sandbox mode the container writes the binary back to
+                # the bind-mounted workspace (= this host-side tmpdir), so this
+                # check works correctly in both sandbox and direct modes.
                 raise CompilationError("Compilation succeeded but executable not found")
+
 
         start = time.perf_counter()
         run_result = _run_subprocess(

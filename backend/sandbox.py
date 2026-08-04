@@ -63,10 +63,24 @@ def _build_docker_command(
     """
     Assemble the full ``docker run`` command with all hardening flags.
 
-    The *host_src_dir* directory is bind-mounted read-only at /sandbox/src so
-    the container can read source files without any writable access to the host.
-    The container is given a writable tmpfs at /sandbox for compiled artifacts
-    and any runtime-generated files.
+    The *host_src_dir* directory (the API server's tempfile workspace) is
+    bind-mounted **read-write** at ``/sandbox`` inside the container.  This is
+    the container's working directory so that:
+
+    * Source files written by the API process are immediately visible to the
+      container without a copy step.
+    * Compiled artifacts (e.g. ``main_exec``) produced during the compile
+      phase are written back to the same host-side directory and are available
+      to subsequent calls that share the same *host_src_dir* (i.e. the run
+      phase in ``compiler.py``).
+    * The host-side binary-existence check in ``compiler.py`` works correctly
+      because the binary lands in the shared host directory.
+
+    ``/tmp`` inside the container is a separate, isolated tmpfs so that the
+    runtime can create temporary files without touching the host filesystem.
+
+    The container root filesystem is ``--read-only``; only ``/sandbox`` (via
+    bind-mount) and ``/tmp`` (via tmpfs) are writable.
     """
     cmd = [
         "docker", "run",
@@ -77,18 +91,21 @@ def _build_docker_command(
         "--memory-swap", config.COMPILER_MEM_LIMIT,          # disable swap
         "--pids-limit", str(config.COMPILER_PID_LIMIT),      # block fork bombs
         "--read-only",                                       # read-only root FS
-        "--tmpfs", "/sandbox:rw,size=64m,mode=1777",        # writable scratch dir
+        # /tmp: isolated tmpfs for runtime scratch (does NOT overlap /sandbox)
+        "--tmpfs", "/tmp:rw,size=32m,mode=1777",
         "--user", "nobody",                                  # non-root user
         "--cap-drop", "ALL",                                 # drop all capabilities
         "--security-opt", "no-new-privileges:true",         # block privilege escalation
         "--stop-timeout", "1",                              # fast stop on kill signal
         "--workdir", "/sandbox",
-        # Bind-mount source files read-only
-        "--volume", f"{host_src_dir}:/sandbox/src:ro",
+        # Bind-mount the shared workspace read-write so compile + run phases
+        # can both access source files and produced artifacts.
+        "--volume", f"{host_src_dir}:/sandbox:rw",
         config.COMPILER_SANDBOX_IMAGE,
     ]
     cmd.extend(inner_command)
     return cmd
+
 
 
 def _kill_container(container_id: str) -> None:
