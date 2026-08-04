@@ -167,6 +167,7 @@ class QuizQuestionCreate(BaseModel):
     option_c: str
     option_d: str
     correct_option: str
+    explanation: Optional[str] = None
 
     @field_validator("correct_option")
     @classmethod
@@ -208,9 +209,20 @@ class QuizSubmissionRequest(BaseModel):
     answers: List[Answer]
 
 
+class QuizReviewItem(BaseModel):
+    question_id: int
+    question: str
+    options: dict[str, str]
+    correct_answer: str
+    selected_answer: Optional[str] = None
+    is_correct: bool
+    explanation: str = ""
+
+
 class QuizSubmissionResponse(BaseModel):
     score: int
     total: int
+    review: List[QuizReviewItem] = []
 
 
 class RandomQuizStartRequest(BaseModel):
@@ -243,6 +255,7 @@ class RandomQuizSubmitResponse(BaseModel):
     score: int
     total: int
     unanswered: int
+    review: List[QuizReviewItem] = []
 
 
 class QuizSubmissionOut(BaseModel):

@@ -8,6 +8,7 @@
   --primary-dark: #00ccaa;
   --success: #00ff88;
   --warn: #fbbf24;
+  --danger: #ff4d6d;
   --radius: 14px;
   --shadow: 0 0 28px rgba(0, 255, 136, 0.16), 0 30px 90px rgba(0, 0, 0, 0.55);
 }
@@ -248,7 +249,7 @@ main {
 
 .action-buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   grid-column: 1 / -1;
   margin-top: 0.5rem;
@@ -265,6 +266,11 @@ main {
   cursor: pointer;
   transition: all 0.2s ease;
   border: 1px solid transparent;
+}
+
+.btn-small {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
 }
 
 .btn-primary {
@@ -286,6 +292,12 @@ main {
 
 .btn-secondary:hover {
   background: rgba(0, 255, 136, 0.22);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
@@ -314,5 +326,176 @@ main {
 
   main {
     padding: 0.8rem 0.5rem;
+  }
+}
+
+/* ---------- Review Mode ---------- */
+
+.review-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.review-panel-header h2 {
+  margin-bottom: 0;
+}
+
+.review-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.review-empty {
+  padding: 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.review-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.review-item.is-correct {
+  border-color: rgba(0, 255, 136, 0.45);
+}
+
+.review-item.is-incorrect {
+  border-color: rgba(255, 77, 109, 0.5);
+}
+
+.review-item-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.review-question {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.review-status-badge {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.review-status-badge.correct {
+  color: var(--success);
+  background: rgba(0, 255, 136, 0.12);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+}
+
+.review-status-badge.incorrect {
+  color: var(--danger);
+  background: rgba(255, 77, 109, 0.12);
+  border: 1px solid rgba(255, 77, 109, 0.4);
+}
+
+.review-status-badge.unanswered {
+  color: var(--warn);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.review-options {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.review-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid rgba(224, 255, 232, 0.14);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.review-option-label {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.review-option-tag {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.review-option.option-correct {
+  border-color: rgba(0, 255, 136, 0.55);
+  background: rgba(0, 255, 136, 0.08);
+  color: var(--text);
+}
+
+.review-option.option-correct .review-option-tag {
+  color: var(--success);
+}
+
+.review-option.option-wrong-selected {
+  border-color: rgba(255, 77, 109, 0.6);
+  background: rgba(255, 77, 109, 0.1);
+  color: var(--text);
+}
+
+.review-option.option-wrong-selected .review-option-tag {
+  color: var(--danger);
+}
+
+.explanation-box {
+  border-left: 3px solid var(--primary);
+  background: rgba(0, 255, 136, 0.06);
+  border-radius: 6px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.explanation-box-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.explanation-box code {
+  font-family: "JetBrains Mono", monospace;
+  background: rgba(0, 255, 136, 0.14);
+  border-radius: 4px;
+  padding: 0.05rem 0.35rem;
+  color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .review-item-head {
+    flex-direction: column;
   }
 }

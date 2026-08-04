@@ -10,7 +10,8 @@
         "C": ".cp",
         "D": ".cplus"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "C++ source files use the `.cpp` extension (short for 'C plus plus'); `.c` is reserved for plain C source files."
     },
     {
       "question": "Which function is the entry point of a C++ program?",
@@ -20,7 +21,8 @@
         "C": "main()",
         "D": "begin()"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "Execution of every C++ program starts in `main()`. The other names (`start`, `init`, `begin`) are not recognized by the compiler as entry points."
     },
     {
       "question": "Which standard library header must be included to use std::cout and std::cin?",
@@ -30,7 +32,8 @@
         "C": "<math.h>",
         "D": "<iostream>"
       },
-      "answer": "D"
+      "answer": "D",
+      "explanation": "`std::cout` and `std::cin` are declared in `<iostream>`. `<stdio.h>` is the C I/O header and does not provide these C++ stream objects."
     },
     {
       "question": "How do you output \"Hello World\" to the console in C++?",
@@ -40,7 +43,8 @@
         "C": "print(\"Hello World\");",
         "D": "System.out.println(\"Hello World\");"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`std::cout << \"Hello World\";` streams text to standard output using the insertion operator `<<`. The other lines are JavaScript, Python, and Java syntax."
     },
     {
       "question": "What punctuation mark is used to end a statement in C++?",
@@ -50,7 +54,8 @@
         "C": "Semicolon (;)",
         "D": "Comma (,)"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "C++ statements are terminated with a semicolon `;`. Leaving it off causes a compilation error."
     },
     {
       "question": "Which data type is used to store whole numbers (e.g., 5, -10)?",
@@ -60,7 +65,8 @@
         "C": "string",
         "D": "char"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "`int` stores whole numbers. `float` is for decimals, `string` for text, and `char` for a single character."
     },
     {
       "question": "Which data type is used to store true or false values?",
@@ -70,7 +76,8 @@
         "C": "bit",
         "D": "binary"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "C++ uses `bool` for boolean values (`true`/`false`). `boolean` is Java's keyword, not C++'s."
     },
     {
       "question": "How do you write a single-line comment in C++?",
@@ -80,7 +87,8 @@
         "C": "// This is a comment",
         "D": "<!-- This is a comment -->"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`//` starts a single-line comment. `/* */` is for multi-line comments, and the other options are not valid C++ comment syntax."
     },
     {
       "question": "How do you write a multi-line comment in C++?",
@@ -90,7 +98,8 @@
         "C": "## Comment ##",
         "D": "** Comment **"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "`/* ... */` wraps a comment that can span multiple lines. `//` only comments out a single line."
     },
     {
       "question": "What is the correct way to declare an integer variable named 'score' with a value of 100?",
@@ -100,7 +109,8 @@
         "C": "var score = 100;",
         "D": "integer score = 100;"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "C++ requires an explicit type when declaring a variable, so `int score = 100;` is correct. `var` and `integer` are not valid C++ keywords."
     },
     {
       "question": "Which operator is used to assign a value to a variable?",
@@ -110,7 +120,8 @@
         "C": ":=",
         "D": "=>"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "A single `=` assigns a value. `==` compares for equality, and `:=`/`=>` are not C++ assignment operators."
     },
     {
       "question": "Which operator is used to check if two values are equal?",
@@ -120,7 +131,8 @@
         "C": "==",
         "D": "!="
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`==` compares two values for equality. `=` assigns, `===` is not a valid C++ operator, and `!=` checks for inequality."
     },
     {
       "question": "What is the output of 5 / 2 in C++ when both numbers are integers?",
@@ -130,7 +142,8 @@
         "C": "3",
         "D": "Error"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "Integer division in C++ truncates the fractional part, so `5 / 2` evaluates to `2`, not `2.5`."
     },
     {
       "question": "Which operator gives the remainder of integer division?",
@@ -140,7 +153,8 @@
         "C": "%",
         "D": "mod"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "The modulo operator `%` returns the remainder of an integer division, e.g. `5 % 2` is `1`."
     },
     {
       "question": "How do you declare a variable that cannot be changed (a constant)?",
@@ -150,7 +164,8 @@
         "C": "const int x = 5;",
         "D": "let int x = 5;"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "The `const` keyword marks a variable as immutable after initialization. `final` is Java's keyword and `static` controls storage duration, not mutability."
     },
     {
       "question": "What does the ++ operator do?",
@@ -160,7 +175,8 @@
         "C": "Multiplies a variable by 2",
         "D": "Concatenates two strings"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`++` is the increment operator; it increases a variable's value by 1 (e.g., `x++` or `++x`)."
     },
     {
       "question": "Which logical operator represents \"AND\"?",
@@ -170,7 +186,8 @@
         "C": "!",
         "D": "&"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`&&` is the logical AND operator, returning true only if both operands are true. `&` is the bitwise AND."
     },
     {
       "question": "Which logical operator represents \"OR\"?",
@@ -180,7 +197,8 @@
         "C": "!",
         "D": "|"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "`||` is the logical OR operator, returning true if at least one operand is true. `|` is the bitwise OR."
     },
     {
       "question": "Which logical operator represents \"NOT\"?",
@@ -190,7 +208,8 @@
         "C": "~",
         "D": "!"
       },
-      "answer": "D"
+      "answer": "D",
+      "explanation": "`!` negates a boolean value, turning `true` into `false` and vice versa. `~` is the bitwise NOT operator."
     },
     {
       "question": "What characters are used to enclose a block of code (like an if-statement or a function)?",
@@ -200,7 +219,8 @@
         "C": "{ }",
         "D": "< >"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "Curly braces `{ }` define a block/scope in C++, grouping multiple statements together."
     },
     {
       "question": "Which keyword is used to make decisions based on a condition?",
@@ -210,7 +230,8 @@
         "C": "if",
         "D": "switch"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`if` evaluates a condition and executes a block only when it's true."
     },
     {
       "question": "Which keyword is used to specify an alternative block of code to execute if an 'if' condition is false?",
@@ -220,7 +241,8 @@
         "C": "elif",
         "D": "except"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`else` provides the fallback branch that runs when the preceding `if` condition is false."
     },
     {
       "question": "Which loop will always execute its code block at least once?",
@@ -230,7 +252,8 @@
         "C": "do-while loop",
         "D": "infinite loop"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "A `do-while` loop checks its condition after running the body, so the body always executes at least once, unlike `for` or `while`."
     },
     {
       "question": "What is the correct syntax for a while loop?",
@@ -240,7 +263,8 @@
         "C": "while x > 5:",
         "D": "loop while (x > 5) { }"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "A `while` loop's condition is written in parentheses followed by a braced body: `while (x > 5) { }`."
     },
     {
       "question": "What keyword is used to stop a loop prematurely and exit it completely?",
@@ -250,7 +274,8 @@
         "C": "return",
         "D": "break"
       },
-      "answer": "D"
+      "answer": "D",
+      "explanation": "`break` immediately terminates the nearest enclosing loop (or switch), skipping any remaining iterations."
     },
     {
       "question": "What keyword skips the rest of the current loop iteration and moves to the next one?",
@@ -260,7 +285,8 @@
         "C": "next",
         "D": "pass"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`continue` skips the rest of the current iteration's body and jumps to the loop's next iteration check."
     },
     {
       "question": "How do you declare an array of 5 integers named 'numbers'?",
@@ -270,7 +296,8 @@
         "C": "int numbers = [5];",
         "D": "int[5] numbers;"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "`int numbers[5];` declares a fixed-size C-style array of 5 integers. The other forms are not valid C++ array declarations."
     },
     {
       "question": "What is the index of the first element in a C++ array?",
@@ -280,7 +307,8 @@
         "C": "-1",
         "D": "It depends on the array type"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "C++ arrays are zero-indexed, so the first element is at index `0`."
     },
     {
       "question": "Which index accesses the third element of an array named 'arr'?",
@@ -290,7 +318,8 @@
         "C": "arr[2]",
         "D": "arr{3}"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "Because arrays are zero-indexed, the third element is at index `2`, accessed as `arr[2]`."
     },
     {
       "question": "What characters are used to enclose a single character literal in C++ (like the letter A)?",
@@ -300,7 +329,8 @@
         "C": "` ` (Backticks)",
         "D": "< > (Angle brackets)"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "A single character literal uses single quotes, e.g. `'A'`. Double quotes are reserved for string literals."
     },
     {
       "question": "What characters are used to enclose a string literal in C++ (like a word)?",
@@ -310,7 +340,8 @@
         "C": "` ` (Backticks)",
         "D": "{ } (Curly braces)"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "String literals are enclosed in double quotes, e.g. `\"Hello\"`. Single quotes are for individual `char` literals."
     },
     {
       "question": "What does 'std::endl' do when used with std::cout?",
@@ -320,7 +351,8 @@
         "C": "Clears the screen",
         "D": "Prints the word 'endl'"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`std::endl` inserts a newline character into the stream and flushes the output buffer, unlike `'\\n'` which only inserts the newline."
     },
     {
       "question": "What does the escape sequence '\\n' represent?",
@@ -330,7 +362,8 @@
         "C": "Newline",
         "D": "Backslash"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "`\\n` is the newline escape sequence, moving output to the next line."
     },
     {
       "question": "What does the escape sequence '\\t' represent?",
@@ -340,7 +373,8 @@
         "C": "Terminal",
         "D": "Top"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "`\\t` inserts a horizontal tab space in the output."
     },
     {
       "question": "Which operator is used to take input from the keyboard using std::cin?",
@@ -350,7 +384,8 @@
         "C": "->",
         "D": "<-"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "The extraction operator `>>` reads data from an input stream like `std::cin` into a variable."
     },
     {
       "question": "What is the return type of a function that does not return any value?",
@@ -360,7 +395,8 @@
         "C": "void",
         "D": "none"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "A function that returns nothing is declared with the `void` return type."
     },
     {
       "question": "How do you call a function named 'greet' that takes no arguments?",
@@ -370,7 +406,8 @@
         "C": "call greet();",
         "D": "greet[]"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "Calling a function requires parentheses even with no arguments: `greet();`."
     },
     {
       "question": "Which statement usually appears at the end of the main() function to indicate successful execution?",
@@ -380,7 +417,8 @@
         "C": "end;",
         "D": "return 0;"
       },
-      "answer": "D"
+      "answer": "D",
+      "explanation": "`return 0;` signals successful program termination to the operating system by convention."
     },
     {
       "question": "What does the 'sizeof' operator do?",
@@ -390,7 +428,8 @@
         "C": "Returns the length of a string",
         "D": "Resizes an array"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`sizeof` returns the size, in bytes, that a variable or data type occupies in memory."
     },
     {
       "question": "Which loop is best suited for executing a block of code a known number of times?",
@@ -400,7 +439,8 @@
         "C": "for loop",
         "D": "if loop"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "A `for` loop bundles initialization, condition, and increment together, making it the natural choice when the number of iterations is known in advance."
     },
     {
       "question": "What are the three parts of a 'for' loop declaration in C++?",
@@ -410,7 +450,8 @@
         "C": "Condition, Body, Exit",
         "D": "Variable, Array, Action"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "A C++ `for` loop header has three parts separated by semicolons: initialization, condition, and increment/decrement, e.g. `for (int i = 0; i < n; i++)`."
     },
     {
       "question": "What happens if you access an array out of its bounds (e.g., arr[10] when it only has 5 elements)?",
@@ -420,7 +461,8 @@
         "C": "It returns a default value of 0.",
         "D": "The compiler catches it as a syntax error."
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "C++ does not perform automatic bounds checking on raw arrays, so out-of-bounds access is undefined behavior — it may read garbage memory or crash, but the compiler won't catch it."
     },
     {
       "question": "What does 'using namespace std;' do?",
@@ -430,7 +472,8 @@
         "C": "Makes the program run faster",
         "D": "Includes the standard math library"
       },
-      "answer": "A"
+      "answer": "A",
+      "explanation": "It brings every identifier from the `std` namespace into scope so you can write `cout` instead of `std::cout`."
     },
     {
       "question": "How do you declare a variable of type double with the value 3.14?",
@@ -440,7 +483,8 @@
         "C": "dec pi = 3.14;",
         "D": "decimal pi = 3.14;"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`double pi = 3.14;` declares a double-precision floating-point variable. `float` is a different, lower-precision type, and `dec`/`decimal` aren't C++ keywords."
     },
     {
       "question": "Which operator is the \"Not Equal To\" relational operator?",
@@ -450,7 +494,8 @@
         "C": "not=",
         "D": "!="
       },
-      "answer": "D"
+      "answer": "D",
+      "explanation": "`!=` checks whether two values are not equal. `<>` and `not=` are not valid C++ operators, and `!==` is JavaScript's strict-inequality operator."
     },
     {
       "question": "If x = 5 and y = 10, what is the result of (x > 3 && y < 20)?",
@@ -460,7 +505,8 @@
         "C": "5",
         "D": "10"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "`x > 3` is true and `y < 20` is true, so the `&&` combination evaluates to `true`."
     },
     {
       "question": "What does a compiler do in C++?",
@@ -470,7 +516,8 @@
         "C": "Formats the code to make it look pretty",
         "D": "Uploads the code to GitHub"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "A C++ compiler translates human-readable source code into machine code before the program runs, unlike an interpreter which executes line by line."
     },
     {
       "question": "Which of the following variable names is INVALID in C++?",
@@ -480,7 +527,8 @@
         "C": "1stPlayer",
         "D": "player_1"
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "C++ identifiers cannot start with a digit, so `1stPlayer` is invalid. Identifiers may start with a letter or underscore."
     },
     {
       "question": "What will `cout << 5 + 3 * 2;` print to the screen?",
@@ -490,7 +538,8 @@
         "C": "10",
         "D": "532"
       },
-      "answer": "B"
+      "answer": "B",
+      "explanation": "Multiplication has higher precedence than addition, so this evaluates as `5 + (3 * 2) = 11`."
     },
     {
       "question": "In a switch statement, what happens if you forget to include a 'break' at the end of a case?",
@@ -500,7 +549,8 @@
         "C": "Execution will 'fall through' to the next case.",
         "D": "The switch statement will exit immediately."
       },
-      "answer": "C"
+      "answer": "C",
+      "explanation": "Without a `break`, execution 'falls through' into the next case's statements, regardless of whether that case's condition matches."
     }
   ]
 }

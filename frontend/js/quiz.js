@@ -416,6 +416,7 @@ async function submitAnswers(options = {}) {
       language: currentMode === "random" ? (languageInput ? languageInput.value : "C") : null,
       level: currentMode === "random" ? (levelInput ? levelInput.value : "Beginner") : null,
       submitted_at: new Date().toISOString(),
+      review: Array.isArray(data.review) ? data.review : [],
     });
 
     // Award XP for correct answers (both test and random modes)

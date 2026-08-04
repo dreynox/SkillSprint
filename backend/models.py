@@ -62,6 +62,7 @@ class Question(Base):
     option_c = Column(String, nullable=False)
     option_d = Column(String, nullable=False)
     correct_option = Column(String(1), nullable=False)
+    explanation = Column(Text, nullable=True)
 
     test = relationship("Test", back_populates="questions")
 

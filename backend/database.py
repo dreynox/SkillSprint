@@ -76,6 +76,11 @@ def ensure_sqlite_compatibility():
             if "extra_xp" not in user_columns:
                 connection.execute(text("ALTER TABLE users ADD COLUMN extra_xp INTEGER DEFAULT 0"))
 
+        if "questions" in tables:
+            question_columns = {column["name"] for column in inspector.get_columns("questions")}
+            if "explanation" not in question_columns:
+                connection.execute(text("ALTER TABLE questions ADD COLUMN explanation TEXT"))
+
         if "messages" in tables:
             message_columns = {column["name"] for column in inspector.get_columns("messages")}
             if "expires_at" not in message_columns:
