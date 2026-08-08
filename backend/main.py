@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from database import Base, engine, ensure_sqlite_compatibility
+from database import Base, engine, ensure_database_indexes, ensure_sqlite_compatibility
 from routes import auth_routes, chatbot_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
 
 # ---------- APP & DATABASE SETUP ----------
@@ -19,6 +19,7 @@ def initialize_database():
     try:
         ensure_sqlite_compatibility()
         Base.metadata.create_all(bind=engine)
+        ensure_database_indexes()
         print("[startup] Database initialization completed")
     except Exception as exc:
         print(f"[startup] Database initialization failed: {exc}")

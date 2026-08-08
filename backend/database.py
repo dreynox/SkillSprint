@@ -97,6 +97,50 @@ def ensure_sqlite_compatibility():
             if "submitted_at" not in submission_columns:
                 connection.execute(text("ALTER TABLE contest_submissions ADD COLUMN submitted_at DATETIME"))
 
+
+def ensure_database_indexes(bind=None):
+    """Create declared application indexes on existing databases safely.
+
+    SQLAlchemy's ``Index.create(checkfirst=True)`` works with both SQLite and
+    PostgreSQL and makes this compatibility step idempotent. Importing models
+    inside the function avoids a circular import during module initialization.
+
+    Only explicitly declared composite indexes are created here. Unique
+    constraints such as ``uq_user_contest`` already create supporting indexes
+    and are intentionally not duplicated.
+    """
+    from models import (
+        ContestSubmission,
+        Message,
+        PasswordResetOTP,
+        QuizSubmission,
+    )
+
+    target_bind = bind or engine
+
+    indexes = (
+        QuizSubmission.__table__.indexes,
+        ContestSubmission.__table__.indexes,
+        Message.__table__.indexes,
+        PasswordResetOTP.__table__.indexes,
+    )
+
+    with target_bind.begin() as connection:
+        existing_tables = set(inspect(connection).get_table_names())
+
+        for table_indexes in indexes:
+            for index in table_indexes:
+                if index.table.name not in existing_tables:
+                    continue
+                # Skip SQLAlchemy's single-column primary-key/index=True
+                # indexes. Only issue #26's explicitly named composite indexes
+                # are managed by this helper.
+                if not index.name or not index.name.startswith("ix_"):
+                    continue
+                if len(index.columns) < 2:
+                    continue
+                index.create(bind=connection, checkfirst=True)
+
 def get_db():
     db = SessionLocal()
     try:
