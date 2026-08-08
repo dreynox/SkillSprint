@@ -270,6 +270,41 @@ class QuizSubmissionOut(BaseModel):
         from_attributes = True
 
 
+class PaginationMeta(BaseModel):
+    limit: int
+    offset: int
+    total: int
+    has_more: bool
+
+
+class QuizSubmissionPage(BaseModel):
+    items: List[QuizSubmissionOut]
+    pagination: PaginationMeta
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "items": [
+                    {
+                        "id": 42,
+                        "user_id": 7,
+                        "test_id": 3,
+                        "score": 8,
+                        "total_questions": 10,
+                        "submitted_at": "2026-08-01T10:30:00",
+                    }
+                ],
+                "pagination": {
+                    "limit": 20,
+                    "offset": 0,
+                    "total": 1,
+                    "has_more": False,
+                },
+            }
+        }
+    }
+
+
 class QuizAdminSubmissionOut(BaseModel):
     user_id: int
     user_name: str
@@ -428,6 +463,38 @@ class ContestSubmissionOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class ContestSubmissionPage(BaseModel):
+    items: List[ContestSubmissionOut]
+    pagination: PaginationMeta
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "items": [
+                    {
+                        "id": 103,
+                        "user_id": 7,
+                        "contest_id": 5,
+                        "problem_id": 12,
+                        "language": "python",
+                        "code": "print('hello')",
+                        "verdict": "ACCEPTED",
+                        "score": 100,
+                        "execution_results": None,
+                        "submitted_at": "2026-08-01T11:00:00",
+                    }
+                ],
+                "pagination": {
+                    "limit": 20,
+                    "offset": 0,
+                    "total": 1,
+                    "has_more": False,
+                },
+            }
+        }
+    }
 
 
 class ContestSubmissionAdminOut(BaseModel):
