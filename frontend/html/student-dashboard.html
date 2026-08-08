@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -416,9 +417,10 @@
       }
     }
   </style>
-    <link rel="stylesheet" href="../css/ux-foundation.css">
-    <link rel="stylesheet" href="../css/chat-widget.css">
+  <link rel="stylesheet" href="../css/ux-foundation.css">
+  <link rel="stylesheet" href="../css/chat-widget.css">
 </head>
+
 <body>
   <div class="cursor-glow"></div>
   <canvas id="matrix"></canvas>
@@ -427,12 +429,22 @@
     <div class="topbar-inner">
       <div class="brand">Skill<span>Sprint</span> Student Dashboard</div>
       <div style="flex: 1; display: flex; gap: 0.8rem; padding: 0 1rem;">
-        <input type="text" id="searchInput" placeholder="Search users, events, hackathons..." aria-label="Search users, events, and hackathons" style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 0.5rem 0.8rem; font-size: 0.9rem; width: 200px; flex: 1; max-width: 300px;" />
+        <input type="text" id="searchInput" placeholder="Search SkillSprint..." aria-label="Search SkillSprint"
+          autocomplete="off" style="background: rgba(0, 0, 0, 0.5);
+           border: 1px solid var(--line);
+           color: var(--text);
+           border-radius: 8px;
+           padding: 0.5rem 0.8rem;
+           font-size: 0.9rem;
+           width: 200px;
+           flex: 1;
+           max-width: 300px;" />
       </div>
       <div class="topbar-right">
         <a class="icon-btn" id="messagesTopLink" href="message.html" aria-label="Open Messages" title="Messages">💬</a>
         <div class="profile-menu" id="profileMenu">
-          <button class="profile-menu-trigger" id="profileMenuBtn" type="button" aria-label="Open profile menu" aria-haspopup="true" aria-expanded="false">
+          <button class="profile-menu-trigger" id="profileMenuBtn" type="button" aria-label="Open profile menu"
+            aria-haspopup="true" aria-expanded="false">
             <img id="profileMenuAvatar" class="profile-avatar" src="../images/default-avatar.svg" alt="User avatar" />
             <span class="profile-menu-label" id="profileMenuLabel">Profile</span>
             <span class="profile-caret" aria-hidden="true">▾</span>
@@ -448,11 +460,14 @@
   </header>
 
   <!-- Search Results Modal -->
-  <div id="searchModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); z-index: 100; align-items: center; justify-content: center;">
-    <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 1.5rem; box-shadow: var(--shadow);">
+  <div id="searchModal"
+    style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); z-index: 100; align-items: center; justify-content: center;">
+    <div
+      style="background: var(--surface); border: 1px solid var(--line); border-radius: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 1.5rem; box-shadow: var(--shadow);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
         <h2 id="searchModalTitle" style="margin: 0;">Search Results</h2>
-        <button id="closeSearchBtn" type="button" aria-label="Close search results" style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">✕</button>
+        <button id="closeSearchBtn" type="button" aria-label="Close search results"
+          style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">✕</button>
       </div>
       <div id="searchResults" style="display: grid; gap: 0.8rem;">
         <div style="text-align: center; color: var(--muted);">Start typing to search...</div>
@@ -464,7 +479,8 @@
     <section class="hero">
       <h1 id="heroTitle">Welcome to your learning dashboard</h1>
       <p>Track progress, join contests, and launch quizzes from one place.</p>
-      <p id="dashboardStatus" role="status" aria-live="polite" style="margin-top: 0.25rem; color: rgba(224, 255, 232, 0.72); font-size: 0.92rem;">Loading dashboard...</p>
+      <p id="dashboardStatus" role="status" aria-live="polite"
+        style="margin-top: 0.25rem; color: rgba(224, 255, 232, 0.72); font-size: 0.92rem;">Loading dashboard...</p>
       <div class="ux-purpose-block" style="margin: 0;">
         <h3>How to use this page</h3>
         <p>This is your launch pad. Open one module, complete one task, then return here to track progress.</p>
@@ -829,122 +845,230 @@
     }
 
     // Search functionality
-    let searchTimeout;
-    document.getElementById("searchInput").addEventListener("input", function (event) {
-      clearTimeout(searchTimeout);
-      const query = event.target.value.trim();
-      const modal = document.getElementById("searchModal");
-      const resultsContainer = document.getElementById("searchResults");
-      const dashboardStatus = document.getElementById("dashboardStatus");
+    // ==========================================
+    // GLOBAL CLIENT-SIDE SEARCH
+    // ==========================================
 
-      if (!query || query.length < 2) {
-        modal.style.display = "none";
-        if (dashboardStatus) {
-          dashboardStatus.textContent = "Search closed.";
-        }
+    const searchInput = document.getElementById("searchInput");
+    const searchModal = document.getElementById("searchModal");
+    const searchResults = document.getElementById("searchResults");
+    const dashboardStatus = document.getElementById("dashboardStatus");
+
+    // Content available directly inside the dashboard
+    const localSearchData = [
+      {
+        title: "Contests",
+        category: "Module",
+        description: "Browse active coding contests and register quickly.",
+        keywords: ["contest", "contests", "competition", "coding competition"],
+        url: "contests.html"
+      },
+
+      {
+        title: "Quiz",
+        category: "Module",
+        description: "Practice with timed MCQ rounds and improve your speed.",
+        keywords: ["quiz", "quizzes", "mcq", "assessment", "questions"],
+        url: "quiz.html"
+      },
+
+      {
+        title: "Practice Coding",
+        category: "Module",
+        description: "Fill-in-the-blank coding challenges to test your skills.",
+        keywords: [
+          "practice",
+          "coding",
+          "code",
+          "programming",
+          "coding practice",
+          "challenges"
+        ],
+        url: "practice.html"
+      },
+
+      {
+        title: "Leaderboard",
+        category: "Module",
+        description: "Check top ranks and compare your performance.",
+        keywords: [
+          "leaderboard",
+          "ranking",
+          "rank",
+          "score",
+          "top students"
+        ],
+        url: "leaderboard.html"
+      },
+
+      {
+        title: "Profile",
+        category: "Module",
+        description: "Review badges, activity, and personal metrics.",
+        keywords: [
+          "profile",
+          "badges",
+          "activity",
+          "metrics",
+          "account"
+        ],
+        url: "profile.html"
+      },
+
+      {
+        title: "AI Chat",
+        category: "Module",
+        description: "Ask SkillSprint AI anything about coding and learning.",
+        keywords: [
+          "ai",
+          "chat",
+          "ai chat",
+          "artificial intelligence",
+          "learning",
+          "help"
+        ],
+        url: "chat.html"
+      },
+
+      {
+        title: "Hackathons",
+        category: "Events",
+        description: "Explore hackathons and upcoming events.",
+        keywords: [
+          "hackathon",
+          "hackathons",
+          "hack",
+          "events",
+          "event"
+        ],
+        url: "hackathons.html"
+      }
+    ];
+
+
+    // ------------------------------------------
+    // Display search results
+    // ------------------------------------------
+
+    function displaySearchResults(results) {
+
+      if (!results || results.length === 0) {
+
+        searchResults.innerHTML = `
+      <div style="
+        text-align: center;
+        color: var(--muted);
+        padding: 1.5rem;
+      ">
+        No results found.
+      </div>
+    `;
+
+        searchModal.style.display = "flex";
+
         return;
       }
 
-      if (dashboardStatus) {
-        dashboardStatus.textContent = "Searching...";
+      searchResults.innerHTML = results.map(function (item) {
+
+        return `
+      <a
+        href="${item.url}"
+        style="
+          display: block;
+          text-decoration: none;
+          color: var(--text);
+          border: 1px solid var(--line);
+          border-radius: 10px;
+          padding: 0.9rem;
+          transition: background 0.2s;
+        "
+        onmouseover="this.style.background='rgba(0,255,136,0.08)'"
+        onmouseout="this.style.background='transparent'"
+      >
+
+        <div style="
+          color: var(--primary);
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+        ">
+          ${escapeHtml(item.title)}
+        </div>
+
+        <div style="
+          color: #fbbf24;
+          font-size: 0.75rem;
+          margin-bottom: 0.35rem;
+        ">
+          ${escapeHtml(item.category)}
+        </div>
+
+        <div style="
+          color: var(--muted);
+          font-size: 0.85rem;
+        ">
+          ${escapeHtml(item.description)}
+        </div>
+
+      </a>
+    `;
+
+      }).join("");
+
+      searchModal.style.display = "flex";
+    }
+
+
+    // ------------------------------------------
+    // Search input
+    // ------------------------------------------
+
+    searchInput.addEventListener("input", function () {
+
+      const query = searchInput.value
+        .trim()
+        .toLowerCase();
+
+      // Empty search
+      if (!query) {
+
+        searchModal.style.display = "none";
+
+        if (dashboardStatus) {
+          dashboardStatus.textContent = "Search closed.";
+        }
+
+        return;
       }
 
-      searchTimeout = setTimeout(function () {
-        const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
-        const token = localStorage.getItem("access_token");
 
-        fetch(API_BASE + "/users/search?q=" + encodeURIComponent(query), {
-          headers: { Authorization: "Bearer " + token }
-        })
-          .then(function (response) {
-            if (!response.ok) return [];
-            return response.json();
-          })
-          .then(function (results) {
-            if (!results || results.length === 0) {
-              resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">No results found</div>";
-              modal.style.display = "flex";
-              if (dashboardStatus) {
-                dashboardStatus.textContent = "No results found.";
-              }
-              return;
-            }
+      // Search local dashboard content
+      const localResults = localSearchData.filter(function (item) {
 
-            const html = results.map(function (result) {
-              if (result.type === "user") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem; cursor: pointer; transition: background 0.2s;\" class=\"search-result-user\" data-user-id=\"" + result.id + "\" onmouseover=\"this.style.background='rgba(0,255,136,0.05)'\" onmouseout=\"this.style.background='transparent'\" onclick=\"if(event.target.classList.contains('follow-btn')) return; window.location.href='profile.html?user_id=" + result.id + "';\">" +
-                  "<div style=\"display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;\">" +
-                  "<div style=\"flex: 1; cursor: pointer;\">" +
-                  "<div style=\"font-weight: 600;\">" + escapeHtml(result.name) + "</div>" +
-                  "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.email) + "</div>" +
-                  (result.bio ? "<div style=\"font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem;\">" + escapeHtml(result.bio) + "</div>" : "") +
-                  "</div>" +
-                  "<button class=\"btn follow-btn\" data-user-id=\"" + result.id + "\" style=\"padding: 0.4rem 0.8rem; white-space: nowrap;\">Follow</button>" +
-                  "</div>" +
-                  "</div>";
-              } else if (result.type === "contest") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\">" +
-                  "<div style=\"display: flex; justify-content: space-between; align-items: center;\">" +
-                  "<div>" +
-                  "<div style=\"font-weight: 600;\">[Contest] " + escapeHtml(result.title) + "</div>" +
-                  (result.description ? "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 100)) + "...</div>" : "") +
-                  "</div>" +
-                  "<span class=\"badge\" style=\"margin-left: 0.5rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
-                  "</div>" +
-                  "</div>";
-              } else if (result.type === "hackathon") {
-                return "<div style=\"border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem;\">" +
-                  "<div style=\"display: flex; justify-content: space-between; align-items: center;\">" +
-                  "<div>" +
-                  "<div style=\"font-weight: 600;\">[Hackathon] " + escapeHtml(result.title) + "</div>" +
-                  (result.description ? "<div style=\"font-size: 0.85rem; color: var(--muted);\">" + escapeHtml(result.description.substring(0, 100)) + "...</div>" : "") +
-                  "</div>" +
-                  "<span class=\"badge\" style=\"margin-left: 0.5rem;\">" + (result.is_active ? "Active" : "Inactive") + "</span>" +
-                  "</div>" +
-                  "</div>";
-              }
-              return "";
-            }).join("");
+        const searchableText = [
+          item.title,
+          item.category,
+          item.description,
+          ...item.keywords
+        ]
+          .join(" ")
+          .toLowerCase();
 
-            resultsContainer.innerHTML = html;
-            modal.style.display = "flex";
-            if (dashboardStatus) {
-              dashboardStatus.textContent = results.length + " result(s) found.";
-            }
+        return searchableText.includes(query);
 
-            // Add follow button listeners
-            resultsContainer.querySelectorAll(".follow-btn").forEach(function (btn) {
-              btn.addEventListener("click", function () {
-                const userId = btn.getAttribute("data-user-id");
-                const API_BASE = window.API_BASE_URL || "http://127.0.0.1:8000";
-                const token = localStorage.getItem("access_token");
+      });
 
-                fetch(API_BASE + "/users/" + userId + "/follow", {
-                  method: "POST",
-                  headers: { Authorization: "Bearer " + token }
-                })
-                  .then(function (response) {
-                    if (!response.ok) return response.json().then(function (e) { throw new Error(e.detail); });
-                    return response.json();
-                  })
-                  .then(function () {
-                    btn.textContent = "Following";
-                    btn.disabled = true;
-                  })
-                  .catch(function (error) {
-                    alert("Error: " + (error.message || "Failed to follow user"));
-                  });
-              });
-            });
-          })
-          .catch(function () {
-            resultsContainer.innerHTML = "<div style=\"text-align: center; color: var(--muted);\">Error fetching results</div>";
-            modal.style.display = "flex";
-            if (dashboardStatus) {
-              dashboardStatus.textContent = "Search failed.";
-            }
-          });
-      }, 300);
+
+      // Show local results immediately
+      displaySearchResults(localResults);
+
+
+      if (dashboardStatus) {
+        dashboardStatus.textContent =
+          localResults.length +
+          " result(s) found.";
+      }
+
     });
 
     document.getElementById("closeSearchBtn").addEventListener("click", function () {
@@ -957,8 +1081,8 @@
 
     loadDashboard();
   </script>
-    <script src="../js/chat-widget.js"></script>
-    <script src="../js/ux-foundation.js"></script>
+  <script src="../js/chat-widget.js"></script>
+  <script src="../js/ux-foundation.js"></script>
 </body>
-</html>
 
+</html>
