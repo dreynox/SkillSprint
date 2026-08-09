@@ -16,6 +16,7 @@ SMTP_USE_TLS = os.getenv("SMTP_USE_TLS", "true").lower() in {"1", "true", "yes"}
 OTP_EXPIRY_MINUTES = int(os.getenv("OTP_EXPIRY_MINUTES", "5"))
 OTP_MAX_ATTEMPTS = int(os.getenv("OTP_MAX_ATTEMPTS", "5"))
 
+<<<<<<< HEAD
 
 # Authentication abuse-protection defaults. These can be overridden by
 # environment variables without changing endpoint code.
@@ -39,3 +40,22 @@ AUTH_OTP_VERIFY_RATE_LIMIT = int(
 AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS = int(
     os.getenv("AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS", "900")
 )
+=======
+# ── Compiler / Sandbox ────────────────────────────────────────────────────────
+# Set COMPILER_SANDBOX_ENABLED=true on any host that has the Docker socket
+# available (/var/run/docker.sock mounted). When false the engine falls back to
+# direct subprocess execution (suitable for local development only).
+COMPILER_SANDBOX_ENABLED = os.getenv("COMPILER_SANDBOX_ENABLED", "false").lower() in {"1", "true", "yes"}
+
+# Docker image used as the ephemeral execution sandbox.
+# Build it with:  docker build -t skillsprint-sandbox:latest .
+COMPILER_SANDBOX_IMAGE = os.getenv("COMPILER_SANDBOX_IMAGE", "skillsprint-sandbox:latest")
+
+# Resource limits applied to every sandbox container.
+COMPILER_CPU_LIMIT = os.getenv("COMPILER_CPU_LIMIT", "0.5")          # fractional CPUs
+COMPILER_MEM_LIMIT = os.getenv("COMPILER_MEM_LIMIT", "256m")         # Docker memory string
+COMPILER_PID_LIMIT = int(os.getenv("COMPILER_PID_LIMIT", "64"))      # max processes (blocks fork bombs)
+COMPILER_TIMEOUT_SECONDS = int(os.getenv("COMPILER_TIMEOUT_SECONDS", "10"))  # hard wall-clock cap
+COMPILER_NETWORK_MODE = os.getenv("COMPILER_NETWORK_MODE", "none")   # "none" = no outbound network
+
+>>>>>>> 356efb0ddc3267a829ba130d7cd47c67a548b9f0

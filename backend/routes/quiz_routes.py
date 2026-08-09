@@ -9,6 +9,8 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
+from pagination import PaginationParams
+
 from auth import get_current_user, require_admin
 from database import get_db
 from models import Question, QuizSubmission, Test, User
@@ -20,6 +22,8 @@ from schemas import (
     QuestionOut,
     QuizSubmissionRequest,
     QuizSubmissionResponse,
+    QuizSubmissionPage,
+    PaginationMeta,
     RandomQuizStartRequest,
     RandomQuizStartResponse,
     RandomQuizSubmitRequest,
@@ -225,6 +229,107 @@ def submit_test_answers(
     db.commit()
 
     return QuizSubmissionResponse(score=score, total=len(questions), review=review)
+
+
+@router.get(
+    "/submissions/me",
+    response_model=QuizSubmissionPage,
+    summary="List the current user's quiz submission history",
+)
+def list_my_quiz_submissions(
+    test_id: int | None = Query(
+        None,
+        ge=1,
+        description="Optionally restrict results to one quiz/test ID.",
+        examples=[3],
+    ),
+    pagination: PaginationParams = Depends(),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Return bounded, deterministic quiz history for the authenticated user."""
+    query = db.query(QuizSubmission).filter(
+        QuizSubmission.user_id == current_user.id
+    )
+
+    if test_id is not None:
+        query = query.filter(QuizSubmission.test_id == test_id)
+
+    total = query.count()
+
+    if pagination.sort == "oldest":
+        query = query.order_by(
+            QuizSubmission.submitted_at.asc(),
+            QuizSubmission.id.asc(),
+        )
+    else:
+        query = query.order_by(
+            QuizSubmission.submitted_at.desc(),
+            QuizSubmission.id.desc(),
+        )
+
+    items = (
+        query.offset(pagination.offset)
+        .limit(pagination.limit)
+        .all()
+    )
+
+    return QuizSubmissionPage(
+        items=items,
+        pagination=PaginationMeta(
+            limit=pagination.limit,
+            offset=pagination.offset,
+            total=total,
+            has_more=(pagination.offset + len(items)) < total,
+        ),
+    )
+
+
+@router.get(
+    "/tests/{test_id}/my-submissions",
+    response_model=QuizSubmissionPage,
+    summary="List the current user's submissions for one quiz/test",
+)
+def list_my_quiz_submissions_for_test(
+    test_id: int,
+    pagination: PaginationParams = Depends(),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Backward-compatible test-specific history path documented by SkillSprint."""
+    query = db.query(QuizSubmission).filter(
+        QuizSubmission.user_id == current_user.id,
+        QuizSubmission.test_id == test_id,
+    )
+
+    total = query.count()
+
+    if pagination.sort == "oldest":
+        query = query.order_by(
+            QuizSubmission.submitted_at.asc(),
+            QuizSubmission.id.asc(),
+        )
+    else:
+        query = query.order_by(
+            QuizSubmission.submitted_at.desc(),
+            QuizSubmission.id.desc(),
+        )
+
+    items = (
+        query.offset(pagination.offset)
+        .limit(pagination.limit)
+        .all()
+    )
+
+    return QuizSubmissionPage(
+        items=items,
+        pagination=PaginationMeta(
+            limit=pagination.limit,
+            offset=pagination.offset,
+            total=total,
+            has_more=(pagination.offset + len(items)) < total,
+        ),
+    )
 
 
 @router.get("/admin/tests/{test_id}/submissions")

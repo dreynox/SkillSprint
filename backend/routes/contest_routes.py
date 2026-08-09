@@ -6,6 +6,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from pagination import PaginationParams
+
 from auth import get_current_user, require_admin
 from database import get_db
 from models import Contest, ContestParticipation, ContestProblem, ContestSubmission, TestCase, User
@@ -19,6 +21,8 @@ from schemas import (
     ContestSubmissionCreate,
     ContestSubmissionDirectCreate,
     ContestSubmissionOut,
+    ContestSubmissionPage,
+    PaginationMeta,
     ContestWithProblems,
     TestCaseCreate,
     TestCaseOut,
@@ -166,6 +170,82 @@ def list_all_submissions_for_admin(
         )
 
     return result
+
+
+@router.get(
+    "/submissions/me",
+    response_model=ContestSubmissionPage,
+    summary="List the current user's contest submission history",
+)
+def list_my_contest_submissions(
+    verdict: str | None = Query(
+        None,
+        min_length=1,
+        description="Optionally filter by verdict, for example ACCEPTED.",
+        examples=["ACCEPTED"],
+    ),
+    contest_id: int | None = Query(
+        None,
+        ge=1,
+        description="Optionally filter by contest ID.",
+        examples=[5],
+    ),
+    problem_id: int | None = Query(
+        None,
+        ge=1,
+        description="Optionally filter by problem ID.",
+        examples=[12],
+    ),
+    pagination: PaginationParams = Depends(),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Return bounded, filtered contest history for the authenticated user."""
+    query = db.query(ContestSubmission).filter(
+        ContestSubmission.user_id == current_user.id
+    )
+
+    if verdict is not None:
+        query = query.filter(
+            ContestSubmission.verdict == verdict.strip().upper()
+        )
+    if contest_id is not None:
+        query = query.filter(
+            ContestSubmission.contest_id == contest_id
+        )
+    if problem_id is not None:
+        query = query.filter(
+            ContestSubmission.problem_id == problem_id
+        )
+
+    total = query.count()
+
+    if pagination.sort == "oldest":
+        query = query.order_by(
+            ContestSubmission.submitted_at.asc(),
+            ContestSubmission.id.asc(),
+        )
+    else:
+        query = query.order_by(
+            ContestSubmission.submitted_at.desc(),
+            ContestSubmission.id.desc(),
+        )
+
+    items = (
+        query.offset(pagination.offset)
+        .limit(pagination.limit)
+        .all()
+    )
+
+    return ContestSubmissionPage(
+        items=items,
+        pagination=PaginationMeta(
+            limit=pagination.limit,
+            offset=pagination.offset,
+            total=total,
+            has_more=(pagination.offset + len(items)) < total,
+        ),
+    )
 
 
 @router.get("/{contest_id}", response_model=ContestWithProblems)
@@ -331,6 +411,74 @@ def submit_code_legacy_path(
             detail=f"Failed to persist contest submission: {exc.__class__.__name__}",
         ) from exc
     return submission
+
+
+@router.get(
+    "/{contest_id}/my-submissions",
+    response_model=ContestSubmissionPage,
+    summary="List the current user's submissions for one contest",
+)
+def list_my_submissions_for_contest(
+    contest_id: int,
+    verdict: str | None = Query(
+        None,
+        min_length=1,
+        description="Optionally filter by verdict.",
+        examples=["ACCEPTED"],
+    ),
+    problem_id: int | None = Query(
+        None,
+        ge=1,
+        description="Optionally filter by problem ID.",
+        examples=[12],
+    ),
+    pagination: PaginationParams = Depends(),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Return the authenticated user's bounded history for one contest."""
+    query = db.query(ContestSubmission).filter(
+        ContestSubmission.user_id == current_user.id,
+        ContestSubmission.contest_id == contest_id,
+    )
+
+    if verdict is not None:
+        query = query.filter(
+            ContestSubmission.verdict == verdict.strip().upper()
+        )
+    if problem_id is not None:
+        query = query.filter(
+            ContestSubmission.problem_id == problem_id
+        )
+
+    total = query.count()
+
+    if pagination.sort == "oldest":
+        query = query.order_by(
+            ContestSubmission.submitted_at.asc(),
+            ContestSubmission.id.asc(),
+        )
+    else:
+        query = query.order_by(
+            ContestSubmission.submitted_at.desc(),
+            ContestSubmission.id.desc(),
+        )
+
+    items = (
+        query.offset(pagination.offset)
+        .limit(pagination.limit)
+        .all()
+    )
+
+    return ContestSubmissionPage(
+        items=items,
+        pagination=PaginationMeta(
+            limit=pagination.limit,
+            offset=pagination.offset,
+            total=total,
+            has_more=(pagination.offset + len(items)) < total,
+        ),
+    )
 
 
 @router.get("/{contest_id}/submissions", response_model=List[ContestSubmissionOut])
