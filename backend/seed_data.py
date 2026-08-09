@@ -1,6 +1,6 @@
 from datetime import UTC, datetime, timedelta
 
-from database import Base, SessionLocal, engine, ensure_sqlite_compatibility
+from database import Base, SessionLocal, engine, ensure_database_indexes, ensure_sqlite_compatibility
 from models import Contest, ContestProblem, Question, RoleEnum, Test, User
 from auth import hash_password
 
@@ -123,6 +123,7 @@ def seed_contest(db):
 if __name__ == "__main__":
     ensure_sqlite_compatibility()
     Base.metadata.create_all(bind=engine)
+    ensure_database_indexes()
     db = SessionLocal()
     try:
         seed_users(db)
