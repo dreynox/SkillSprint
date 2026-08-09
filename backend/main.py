@@ -17,7 +17,17 @@ from middleware.request_context import (
 )
 
 from database import Base, engine, ensure_sqlite_compatibility
-from routes import auth_routes, chatbot_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
+from routes import (
+    auth_routes,
+    chatbot_routes,
+    compiler_routes,
+    contest_routes,
+    hackathon_routes,
+    health_routes,
+    message_routes,
+    quiz_routes,
+    user_routes,
+)
 
 # ---------- APP & DATABASE SETUP ----------
 
@@ -66,6 +76,7 @@ def read_root():
     return {"message": "SkillSprint API is running", "docs": "/docs"}
 
 
+app.include_router(health_routes.router, prefix="/health", tags=["health"])
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 app.include_router(quiz_routes.router, prefix="/quiz", tags=["quiz"])
 app.include_router(contest_routes.router, prefix="/contests", tags=["contests"])

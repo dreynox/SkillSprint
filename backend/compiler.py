@@ -7,11 +7,16 @@ import shutil
 import subprocess
 import tempfile
 import time
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-TIME_LIMIT = 5  # seconds
+import config
+import sandbox
+
+# Default wall-clock time limit for a single run (overridden by config env var).
+TIME_LIMIT = config.COMPILER_TIMEOUT_SECONDS
 OUTPUT_SIZE_LIMIT = 10000  # chars
 
 
@@ -152,18 +157,28 @@ def _ensure_dependencies(spec: LanguageSpec):
         raise ToolUnavailableError(f"Missing runtime/compiler tools: {', '.join(missing)}")
 
 
-def _run_subprocess(command: list[str], cwd: Path, stdin_data: str, timeout: int) -> subprocess.CompletedProcess[str]:
+def _run_subprocess(
+    command: list[str],
+    cwd: Path,
+    stdin_data: str,
+    timeout: int,
+    submission_id: str | None = None,
+) -> subprocess.CompletedProcess[str]:
+    """Route execution through the hardened sandbox layer."""
+    # Enforce the server-side hard cap so callers cannot exceed policy.
+    capped_timeout = min(timeout, config.COMPILER_TIMEOUT_SECONDS)
     try:
-        return subprocess.run(
-            command,
-            input=stdin_data,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-            cwd=str(cwd),
+        return sandbox.run_sandboxed(
+            command=command,
+            cwd=cwd,
+            stdin_data=stdin_data,
+            timeout=capped_timeout,
+            submission_id=submission_id,
         )
     except subprocess.TimeoutExpired as exc:
-        raise ExecutionTimeoutError(f"Execution exceeded {timeout}s timeout") from exc
+        raise ExecutionTimeoutError(
+            f"Execution exceeded {capped_timeout}s timeout"
+        ) from exc
 
 
 def list_supported_languages() -> list[dict[str, Any]]:
@@ -223,6 +238,8 @@ def execute_language_code(language: str, code: str, stdin: str = "", timeout: in
             "exit_code": 0,
             "execution_time_ms": 0,
             "message": WEB_ONLY_LANGUAGES[lang],
+            "sandbox_used": False,
+            "submission_id": None,
         }
 
     spec = LANGUAGE_SPECS.get(lang)
@@ -235,9 +252,15 @@ def execute_language_code(language: str, code: str, stdin: str = "", timeout: in
             "exit_code": 1,
             "execution_time_ms": 0,
             "message": "Language is not configured in this deployment.",
+            "sandbox_used": False,
+            "submission_id": None,
         }
 
     _ensure_dependencies(spec)
+
+    # Generate a unique ID for audit log correlation.
+    sid = str(uuid.uuid4())
+    sandbox_used = config.COMPILER_SANDBOX_ENABLED
 
     with tempfile.TemporaryDirectory() as tmpdir:
         workspace = Path(tmpdir)
@@ -245,16 +268,24 @@ def execute_language_code(language: str, code: str, stdin: str = "", timeout: in
         source_file.write_text(code, encoding="utf-8")
 
         if spec.compile_command:
-            compile_result = _run_subprocess(spec.compile_command, workspace, "", timeout)
+            compile_result = _run_subprocess(
+                spec.compile_command, workspace, "", timeout, submission_id=sid
+            )
             if compile_result.returncode != 0:
                 stderr = (compile_result.stderr or compile_result.stdout or "Compilation failed")[:OUTPUT_SIZE_LIMIT]
                 raise CompilationError(stderr)
 
             if spec.needs_output_binary and not (workspace / EXECUTABLE_NAME).exists():
+                # In Docker-sandbox mode the container writes the binary back to
+                # the bind-mounted workspace (= this host-side tmpdir), so this
+                # check works correctly in both sandbox and direct modes.
                 raise CompilationError("Compilation succeeded but executable not found")
 
+
         start = time.perf_counter()
-        run_result = _run_subprocess(spec.run_command, workspace, stdin, timeout)
+        run_result = _run_subprocess(
+            spec.run_command, workspace, stdin, timeout, submission_id=sid
+        )
         elapsed_ms = int((time.perf_counter() - start) * 1000)
 
         stdout = (run_result.stdout or "")[:OUTPUT_SIZE_LIMIT]
@@ -271,6 +302,8 @@ def execute_language_code(language: str, code: str, stdin: str = "", timeout: in
             "exit_code": run_result.returncode,
             "execution_time_ms": elapsed_ms,
             "message": message,
+            "sandbox_used": sandbox_used,
+            "submission_id": sid,
         }
 
 
