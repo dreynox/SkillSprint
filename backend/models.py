@@ -1,7 +1,7 @@
 from datetime import datetime
 import enum
 
-from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Index, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -69,6 +69,18 @@ class Question(Base):
 
 class QuizSubmission(Base):
     __tablename__ = "quiz_submissions"
+    __table_args__ = (
+        Index(
+            "ix_quiz_submissions_user_submitted_at",
+            "user_id",
+            "submitted_at",
+        ),
+        Index(
+            "ix_quiz_submissions_test_submitted_at",
+            "quiz_id",
+            "submitted_at",
+        ),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
@@ -113,6 +125,18 @@ class ContestProblem(Base):
 
 class ContestSubmission(Base):
     __tablename__ = "contest_submissions"
+    __table_args__ = (
+        Index(
+            "ix_contest_submissions_user_submitted_at",
+            "user_id",
+            "submitted_at",
+        ),
+        Index(
+            "ix_contest_submissions_contest_submitted_at",
+            "contest_id",
+            "submitted_at",
+        ),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
@@ -169,6 +193,14 @@ class TestCase(Base):
 
 class PasswordResetOTP(Base):
     __tablename__ = "password_reset_otps"
+    __table_args__ = (
+        Index(
+            "ix_password_reset_otps_email_consumed_created_at",
+            "email",
+            "consumed",
+            "created_at",
+        ),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, index=True, nullable=False)
@@ -181,6 +213,20 @@ class PasswordResetOTP(Base):
 
 class Message(Base):
     __tablename__ = "messages"
+    __table_args__ = (
+        Index(
+            "ix_messages_sender_recipient_created_at",
+            "sender_id",
+            "recipient_id",
+            "created_at",
+        ),
+        Index(
+            "ix_messages_recipient_sender_created_at",
+            "recipient_id",
+            "sender_id",
+            "created_at",
+        ),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     sender_id = Column(Integer, ForeignKey("users.id"), nullable=False)
