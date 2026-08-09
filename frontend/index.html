@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkillSprint | Competitive Coding and Hackathon Portal</title>
-  <meta
-    name="description"
-    content="SkillSprint is a competitive coding and hackathon portal for college students to practice coding, join contests, track rankings, and grow with structured learning tracks."
-  />
+  <meta name="description"
+    content="SkillSprint is a competitive coding and hackathon portal for college students to practice coding, join contests, track rankings, and grow with structured learning tracks." />
   <link rel="stylesheet" href="css/landing.css" />
   <link rel="stylesheet" href="css/ux-foundation.css" />
+  <link rel="stylesheet" href="frontend/css/theme.css">
 </head>
+
 <body>
   <div class="landing-bg" aria-hidden="true"></div>
   <canvas id="matrix" aria-hidden="true"></canvas>
@@ -18,6 +19,11 @@
   <header class="landing-topbar">
     <a class="brand" href="index.html">Skill<span>Sprint</span></a>
     <div class="top-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode"
+        aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☀️</span>
+      </button>
+
       <a class="ghost-btn" href="html/login.html">Login</a>
       <a class="primary-btn" href="html/signup.html">Sign Up</a>
     </div>
@@ -83,5 +89,8 @@
   </main>
 
   <script src="js/info-pages.js"></script>
+  <script src="js/theme-toggle.js"></script>
+
 </body>
+
 </html>

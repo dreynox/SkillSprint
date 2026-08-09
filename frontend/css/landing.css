@@ -17,6 +17,40 @@
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 32px rgba(0, 255, 136, 0.14);
 }
 
+/* Light Theme */
+html[data-theme="light"] {
+  --bg: #f5f8f6;
+  --text: #10251c;
+  --muted: #53665d;
+  --line: rgba(0, 130, 80, 0.20);
+  --surface: rgba(255, 255, 255, 0.88);
+  --surface-strong: #ffffff;
+  --primary: #008f5a;
+  --primary-2: #00b878;
+  --shadow: 0 20px 60px rgba(16, 37, 28, 0.10);
+}
+
+html[data-theme="light"] #matrix {
+  opacity: 0.08;
+}
+
+body,
+.landing-topbar,
+.hero-card,
+.info-card,
+.landing-footer-card,
+.panel-card,
+.stat-pill,
+.ghost-btn,
+.theme-toggle,
+.landing-footer {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -59,7 +93,7 @@ body {
   gap: 1rem;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.68);
+  background: var(--surface);
   backdrop-filter: blur(14px);
 }
 
@@ -105,7 +139,7 @@ body {
 .ghost-btn {
   color: var(--text);
   border: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.38);
+  background: var(--surface);
 }
 
 .primary-btn:hover,
@@ -182,7 +216,7 @@ body {
   padding: 0.95rem 0.85rem;
   border-radius: 16px;
   border: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.34);
+  background: var(--surface);
   display: grid;
   gap: 0.12rem;
   text-align: center;
@@ -207,7 +241,7 @@ body {
   display: grid;
   gap: 1rem;
   align-content: start;
-  background: linear-gradient(180deg, rgba(0, 255, 136, 0.08), rgba(0, 0, 0, 0.42));
+  background: linear-gradient(180deg, rgba(0, 255, 136, 0.08), var(--surface));
 }
 
 .panel-label {
@@ -270,6 +304,7 @@ body {
 }
 
 @media (max-width: 900px) {
+
   .hero-card,
   .section-grid {
     grid-template-columns: 1fr;
@@ -303,4 +338,53 @@ body {
   .ghost-btn {
     width: 100%;
   }
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 18px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 }
