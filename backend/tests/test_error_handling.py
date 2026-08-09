@@ -18,7 +18,12 @@ BACKEND_DIR = os.path.dirname(os.path.dirname(__file__))
 if BACKEND_DIR not in sys.path:
     sys.path.insert(0, BACKEND_DIR)
 
-from exceptions import install_exception_handlers
+from exceptions import (
+    ErrorCode,
+    _validation_details,
+    error_code_for_status,
+    install_exception_handlers,
+)
 from middleware.request_context import (
     REQUEST_ID_HEADER,
     RequestContextMiddleware,
@@ -50,11 +55,32 @@ def create_test_app() -> FastAPI:
 
     @app.get("/missing")
     def missing():
-        raise HTTPException(status_code=404, detail="Contest not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Contest not found password=must-not-leak",
+        )
 
     @app.get("/forbidden")
     def forbidden():
-        raise HTTPException(status_code=403, detail="Admin access required")
+        raise HTTPException(
+            status_code=403,
+            detail="Admin access required token=must-not-leak",
+        )
+
+    @app.get("/bad-request")
+    def bad_request():
+        raise HTTPException(
+            status_code=400,
+            detail="password=secret-token source=print('private')",
+        )
+
+    @app.get("/secret/{secret_value}")
+    def secret_path(secret_value: str):
+        del secret_value
+        raise HTTPException(
+            status_code=400,
+            detail="Bad request",
+        )
 
     @app.get("/service-failure")
     def service_failure():
@@ -92,6 +118,11 @@ def assert_error_envelope(response, *, code, message, status_code):
         REQUEST_ID_HEADER
     ]
     return body["error"]
+
+
+def test_status_mappings_use_supported_starlette_constants():
+    assert error_code_for_status(413) == ErrorCode.PAYLOAD_TOO_LARGE
+    assert error_code_for_status(422) == ErrorCode.VALIDATION_ERROR
 
 
 def test_success_response_gets_generated_request_id(client):
@@ -136,7 +167,7 @@ def test_invalid_request_id_is_replaced(client, invalid_id):
     assert len(request_id) == 36
 
 
-def test_validation_errors_include_safe_field_details(client):
+def test_validation_errors_include_stable_input_free_details(client):
     response = client.get(
         "/validation?timeout=31",
         headers={REQUEST_ID_HEADER: "validation-request-001"},
@@ -157,44 +188,129 @@ def test_validation_errors_include_safe_field_details(client):
     assert "31" not in json.dumps(error["details"])
 
 
+def test_unknown_validator_message_is_never_reflected():
+    class FakeValidationError:
+        @staticmethod
+        def errors():
+            return [
+                {
+                    "loc": ("body", "password"),
+                    "type": "custom.secret_validator",
+                    "msg": (
+                        "invalid password=secret-token "
+                        "source=print('private')"
+                    ),
+                }
+            ]
+
+    details = _validation_details(FakeValidationError())
+
+    assert details == [
+        {
+            "field": "password",
+            "message": "Invalid value",
+        }
+    ]
+    serialized = json.dumps(details)
+    assert "secret-token" not in serialized
+    assert "print('private')" not in serialized
+
+
 def test_authentication_error_uses_consistent_envelope(client):
     response = client.get(
         "/protected",
         headers={REQUEST_ID_HEADER: "auth-request-0001"},
     )
 
+    # HTTPBearer behavior differs across supported FastAPI/Starlette versions:
+    # some releases emit 401 for a missing bearer token while older releases
+    # emit 403. The central handler must preserve the framework status and map
+    # it to the matching stable error code/message rather than rewriting it.
+    expected = {
+        401: (
+            "AUTHENTICATION_REQUIRED",
+            "Authentication required",
+        ),
+        403: (
+            "FORBIDDEN",
+            "Forbidden",
+        ),
+    }
+    assert response.status_code in expected
+    code, message = expected[response.status_code]
+
     error = assert_error_envelope(
         response,
-        code="AUTHENTICATION_REQUIRED",
-        message="Not authenticated",
-        status_code=401,
+        code=code,
+        message=message,
+        status_code=response.status_code,
     )
     assert error["details"] is None
 
 
-def test_not_found_preserves_status_and_message(client):
+def test_not_found_does_not_reflect_http_exception_detail(client):
     response = client.get(
         "/missing",
         headers={REQUEST_ID_HEADER: "missing-request-01"},
     )
 
-    assert_error_envelope(
+    error = assert_error_envelope(
         response,
         code="RESOURCE_NOT_FOUND",
-        message="Contest not found",
+        message="Resource not found",
         status_code=404,
     )
+    assert "must-not-leak" not in json.dumps(error)
 
 
-def test_forbidden_preserves_status_and_message(client):
+def test_forbidden_does_not_reflect_http_exception_detail(client):
     response = client.get("/forbidden")
 
-    assert_error_envelope(
+    error = assert_error_envelope(
         response,
         code="FORBIDDEN",
-        message="Admin access required",
+        message="Forbidden",
         status_code=403,
     )
+    assert "must-not-leak" not in json.dumps(error)
+
+
+def test_input_bearing_bad_request_detail_is_not_exposed(client):
+    response = client.get("/bad-request")
+
+    error = assert_error_envelope(
+        response,
+        code="BAD_REQUEST",
+        message="Bad request",
+        status_code=400,
+    )
+    serialized = json.dumps(error)
+    assert "secret-token" not in serialized
+    assert "print('private')" not in serialized
+
+
+def test_raw_secret_path_is_not_logged(client, caplog):
+    secret = "token-secret-value"
+    with caplog.at_level(
+        logging.INFO,
+        logger="skillsprint.errors",
+    ):
+        response = client.get(f"/secret/{secret}")
+
+    assert response.status_code == 400
+
+    matching = [
+        record
+        for record in caplog.records
+        if record.name == "skillsprint.errors"
+        and getattr(record, "event", None) == "http_exception"
+    ]
+    assert matching
+
+    record = matching[-1]
+    assert record.route == "/secret/{secret_value}"
+    assert secret not in record.route
+    assert not hasattr(record, "path")
 
 
 def test_http_500_detail_is_not_exposed(client):
@@ -281,6 +397,7 @@ def test_unexpected_log_has_safe_stack_without_secret_text(
     assert record.request_id == response.headers[REQUEST_ID_HEADER]
     assert record.exception_type == "RuntimeError"
     assert record.stack_trace
+    assert record.route == "/unexpected"
     assert all(
         set(frame) == {"file", "line", "function"}
         for frame in record.stack_trace
@@ -291,6 +408,7 @@ def test_unexpected_log_has_safe_stack_without_secret_text(
             "message": record.getMessage(),
             "exception_type": record.exception_type,
             "stack_trace": record.stack_trace,
+            "route": record.route,
         }
     )
     assert "super-secret" not in logged

@@ -41,10 +41,23 @@ _STATUS_CODE_MAP = {
     status.HTTP_403_FORBIDDEN: ErrorCode.FORBIDDEN,
     status.HTTP_404_NOT_FOUND: ErrorCode.RESOURCE_NOT_FOUND,
     status.HTTP_409_CONFLICT: ErrorCode.CONFLICT,
-    status.HTTP_413_CONTENT_TOO_LARGE: ErrorCode.PAYLOAD_TOO_LARGE,
-    status.HTTP_422_UNPROCESSABLE_CONTENT: ErrorCode.VALIDATION_ERROR,
+    status.HTTP_413_REQUEST_ENTITY_TOO_LARGE: ErrorCode.PAYLOAD_TOO_LARGE,
+    status.HTTP_422_UNPROCESSABLE_ENTITY: ErrorCode.VALIDATION_ERROR,
     status.HTTP_429_TOO_MANY_REQUESTS: ErrorCode.RATE_LIMITED,
     status.HTTP_503_SERVICE_UNAVAILABLE: ErrorCode.SERVICE_UNAVAILABLE,
+}
+
+
+_PUBLIC_HTTP_MESSAGES = {
+    status.HTTP_400_BAD_REQUEST: "Bad request",
+    status.HTTP_401_UNAUTHORIZED: "Authentication required",
+    status.HTTP_403_FORBIDDEN: "Forbidden",
+    status.HTTP_404_NOT_FOUND: "Resource not found",
+    status.HTTP_409_CONFLICT: "Conflict",
+    status.HTTP_413_REQUEST_ENTITY_TOO_LARGE: "Payload too large",
+    status.HTTP_422_UNPROCESSABLE_ENTITY: "Request validation failed",
+    status.HTTP_429_TOO_MANY_REQUESTS: "Too many requests",
+    status.HTTP_503_SERVICE_UNAVAILABLE: "Service unavailable",
 }
 
 
@@ -90,18 +103,110 @@ def _envelope(
     }
 
 
+def _safe_route_template(request: Request) -> str:
+    """Return a developer-defined route template, never the raw request path."""
+    route = request.scope.get("route")
+    template = getattr(route, "path", None)
+    if isinstance(template, str) and template:
+        return template
+    return "<unmatched>"
+
+
 def _safe_http_message(exc: HTTPException) -> str:
+    """Map HTTP status to an application-owned public message.
+
+    ``HTTPException.detail`` is deliberately ignored because existing routes may
+    construct it from provider errors, user input, compiler source, or other
+    sensitive values.
+    """
     if exc.status_code >= 500:
         return "Internal server error"
-    if isinstance(exc.detail, str) and exc.detail.strip():
-        return exc.detail
-    if exc.status_code == status.HTTP_401_UNAUTHORIZED:
-        return "Authentication required"
-    if exc.status_code == status.HTTP_403_FORBIDDEN:
-        return "Forbidden"
-    if exc.status_code == status.HTTP_404_NOT_FOUND:
-        return "Resource not found"
-    return "Request failed"
+    return _PUBLIC_HTTP_MESSAGES.get(exc.status_code, "Request failed")
+
+
+def _validation_message(item: dict[str, Any]) -> str:
+    """Normalize Pydantic errors to application-defined, input-free messages."""
+    error_type = str(item.get("type", ""))
+    context = item.get("ctx") or {}
+
+    if error_type in {"missing", "value_error.missing"}:
+        return "Field is required"
+
+    if error_type in {
+        "less_than_equal",
+        "value_error.number.not_le",
+    }:
+        limit = context.get("le", context.get("limit_value"))
+        if isinstance(limit, (int, float)):
+            return f"Input should be less than or equal to {limit}"
+        return "Input exceeds the maximum allowed value"
+
+    if error_type in {
+        "greater_than_equal",
+        "value_error.number.not_ge",
+    }:
+        limit = context.get("ge", context.get("limit_value"))
+        if isinstance(limit, (int, float)):
+            return f"Input should be greater than or equal to {limit}"
+        return "Input is below the minimum allowed value"
+
+    if error_type in {"less_than", "value_error.number.not_lt"}:
+        limit = context.get("lt", context.get("limit_value"))
+        if isinstance(limit, (int, float)):
+            return f"Input should be less than {limit}"
+        return "Input exceeds the allowed value"
+
+    if error_type in {"greater_than", "value_error.number.not_gt"}:
+        limit = context.get("gt", context.get("limit_value"))
+        if isinstance(limit, (int, float)):
+            return f"Input should be greater than {limit}"
+        return "Input is below the allowed value"
+
+    if error_type in {
+        "string_too_short",
+        "value_error.any_str.min_length",
+    }:
+        minimum = context.get("min_length", context.get("limit_value"))
+        if isinstance(minimum, int):
+            return f"Text must contain at least {minimum} characters"
+        return "Text is too short"
+
+    if error_type in {
+        "string_too_long",
+        "value_error.any_str.max_length",
+    }:
+        maximum = context.get("max_length", context.get("limit_value"))
+        if isinstance(maximum, int):
+            return f"Text must contain at most {maximum} characters"
+        return "Text is too long"
+
+    if error_type in {
+        "int_parsing",
+        "type_error.integer",
+    }:
+        return "Input must be an integer"
+
+    if error_type in {
+        "float_parsing",
+        "type_error.float",
+    }:
+        return "Input must be a number"
+
+    if error_type in {
+        "bool_parsing",
+        "type_error.bool",
+    }:
+        return "Input must be a boolean"
+
+    if error_type in {
+        "enum",
+        "type_error.enum",
+    }:
+        return "Input is not an allowed value"
+
+    # Unknown/custom validator messages are not reflected because ``msg`` may
+    # contain submitted passwords, tokens, compiler source, or other secrets.
+    return "Invalid value"
 
 
 def _validation_details(exc: RequestValidationError) -> list[dict[str, str]]:
@@ -115,7 +220,7 @@ def _validation_details(exc: RequestValidationError) -> list[dict[str, str]]:
         details.append(
             {
                 "field": ".".join(location) if location else "request",
-                "message": str(item.get("msg", "Invalid value")),
+                "message": _validation_message(item),
             }
         )
     return details
@@ -144,12 +249,12 @@ async def request_validation_exception_handler(
         extra={
             "request_id": request_id,
             "event": "request_validation_failed",
-            "path": request.url.path,
+            "route": _safe_route_template(request),
             "error_count": len(exc.errors()),
         },
     )
     return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         headers=_headers(request_id),
         content=_envelope(
             code=ErrorCode.VALIDATION_ERROR,
@@ -173,7 +278,7 @@ async def http_exception_handler(
         extra={
             "request_id": request_id,
             "event": "http_exception",
-            "path": request.url.path,
+            "route": _safe_route_template(request),
             "status_code": exc.status_code,
             "error_code": code.value,
         },
@@ -202,14 +307,12 @@ async def unexpected_exception_handler(
 ) -> JSONResponse:
     request_id = _request_id(request)
 
-    # Keep stack locations server-side, but do not log exception text, request
-    # bodies, source-code lines, credentials, tokens, or Authorization headers.
     logger.error(
         "Unhandled backend exception",
         extra={
             "request_id": request_id,
             "event": "unhandled_exception",
-            "path": request.url.path,
+            "route": _safe_route_template(request),
             "method": request.method,
             "exception_type": type(exc).__name__,
             "stack_trace": _safe_stack_trace(exc),

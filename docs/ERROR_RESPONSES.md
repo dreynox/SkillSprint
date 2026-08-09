@@ -24,35 +24,40 @@ The same ID is attached to backend error logs as `request_id`.
 {
   "error": {
     "code": "RESOURCE_NOT_FOUND",
-    "message": "Contest not found",
+    "message": "Resource not found",
     "request_id": "7b530f9e-...",
     "details": null
   }
 }
 ```
 
-HTTP status codes remain unchanged, so existing clients may continue using the
-status while adopting the new body gradually.
+HTTP status codes remain unchanged. Public error messages are application-owned
+and are selected from the status code; arbitrary `HTTPException.detail` text is
+not reflected to clients.
 
-## Error codes
+Authentication dependencies may emit either `401` or `403` for a missing bearer token depending on the installed FastAPI/Starlette version. The central handler intentionally preserves that framework status and maps it to the corresponding stable error code/message.
 
-| HTTP status | Error code |
-|---|---|
-| 400 | `BAD_REQUEST` |
-| 401 | `AUTHENTICATION_REQUIRED` |
-| 403 | `FORBIDDEN` |
-| 404 | `RESOURCE_NOT_FOUND` |
-| 409 | `CONFLICT` |
-| 413 | `PAYLOAD_TOO_LARGE` |
-| 422 | `VALIDATION_ERROR` |
-| 429 | `RATE_LIMITED` |
-| 503 | `SERVICE_UNAVAILABLE` |
-| other 5xx | `INTERNAL_ERROR` |
+## Error codes and public messages
+
+| HTTP status | Error code | Public message |
+|---|---|---|
+| 400 | `BAD_REQUEST` | `Bad request` |
+| 401 | `AUTHENTICATION_REQUIRED` | `Authentication required` |
+| 403 | `FORBIDDEN` | `Forbidden` |
+| 404 | `RESOURCE_NOT_FOUND` | `Resource not found` |
+| 409 | `CONFLICT` | `Conflict` |
+| 413 | `PAYLOAD_TOO_LARGE` | `Payload too large` |
+| 422 | `VALIDATION_ERROR` | `Request validation failed` |
+| 429 | `RATE_LIMITED` | `Too many requests` |
+| 503 | `SERVICE_UNAVAILABLE` | `Service unavailable` |
+| other 5xx | `INTERNAL_ERROR` | `Internal server error` |
+
+The implementation uses the Starlette 0.27-compatible constant names
+`HTTP_413_REQUEST_ENTITY_TOO_LARGE` and `HTTP_422_UNPROCESSABLE_ENTITY`.
 
 ## Validation errors
 
-Validation responses contain field names and validator messages, but not the
-submitted values:
+Validation responses include safe field names and application-defined messages:
 
 ```json
 {
@@ -70,12 +75,16 @@ submitted values:
 }
 ```
 
-Omitting raw input values protects passwords, access tokens, compiler source
-code, and other request content.
+Pydantic's raw `msg` text and submitted input values are not returned. Known
+validation types are normalized to stable application messages; unknown or
+custom validator failures return `Invalid value`.
 
-## Unexpected exceptions
+This prevents a custom validator message from echoing a password, token,
+compiler source, or other submitted content.
 
-Clients receive only:
+## Internal errors
+
+Unexpected exceptions return only:
 
 ```json
 {
@@ -88,14 +97,24 @@ Clients receive only:
 }
 ```
 
-Server logs receive the exception type and a stack-location list containing
-only file basename, line number, and function name. Exception messages and
-source-code lines are not logged by this handler, preventing passwords, tokens,
-submitted code, or other sensitive values embedded in exceptions from leaking
-into logs.
+Server logs receive the exception type and safe stack locations containing only
+file basename, line number, and function name. Exception messages and source
+lines are not logged by the central handler.
 
-Existing routes that raise an `HTTPException` with a 5xx status are also
-generalized to `Internal server error` rather than returning `detail=str(exc)`.
+## Sanitized route logging
+
+Error logs use the developer-defined route template in a `route` field, for
+example:
+
+```text
+/contests/{contest_id}
+/secret/{secret_value}
+```
+
+They do **not** log `request.url.path`. Therefore an actual path parameter such
+as a reset token, secret ID, or user-provided string is not copied into central
+error logs. When no matched route template exists, the value is
+`<unmatched>`.
 
 ## Structured log fields
 
@@ -104,7 +123,7 @@ Error handlers log safe metadata such as:
 ```text
 request_id
 event
-path
+route
 method
 status_code
 error_code
@@ -112,8 +131,8 @@ exception_type
 stack_trace
 ```
 
-They do not log request bodies, Authorization headers, cookies, compiler source
-code, passwords, or tokens.
+They do not log request bodies, raw request paths, Authorization headers,
+cookies, compiler source code, passwords, tokens, or raw validation messages.
 
 ## Tests
 
@@ -121,3 +140,7 @@ code, passwords, or tokens.
 cd backend
 python -m pytest tests/test_error_handling.py -v
 ```
+
+The focused suite includes regression coverage for the Starlette 0.27 status
+constants, sensitive `HTTPException.detail`, sensitive validator messages, and
+route-template logging.
