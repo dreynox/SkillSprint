@@ -1,15 +1,27 @@
 import hashlib
 import hmac
+import ipaddress
+import logging
 import random
+import secrets
 import smtplib
 from datetime import datetime, timedelta
 from email.mime.text import MIMEText
 
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    HTTPException,
+    Request,
+    status,
+)
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from config import (
+    AUTH_LOGIN_ACCOUNT_RATE_LIMIT,
     AUTH_LOGIN_RATE_LIMIT,
     AUTH_LOGIN_RATE_WINDOW_SECONDS,
     AUTH_OTP_REQUEST_RATE_LIMIT,
@@ -18,6 +30,7 @@ from config import (
     AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS,
     AUTH_REGISTER_RATE_LIMIT,
     AUTH_REGISTER_RATE_WINDOW_SECONDS,
+    AUTH_TRUSTED_PROXY_HOPS,
     OTP_EXPIRY_MINUTES,
     OTP_MAX_ATTEMPTS,
     SECRET_KEY,
@@ -40,6 +53,7 @@ from schemas import (
 )
 from auth import create_access_token, hash_password, verify_password
 from services.rate_limiter import (
+    RateLimitDecision,
     RateLimiter,
     build_rate_limit_key,
     normalize_identifier,
@@ -47,22 +61,62 @@ from services.rate_limiter import (
 
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 rate_limiter = RateLimiter()
+
+# Password verification is intentionally performed even when no matching user
+# exists so login timing does not trivially reveal registered email addresses.
+DUMMY_PASSWORD_HASH = hash_password(secrets.token_urlsafe(32))
 
 GENERIC_OTP_RESPONSE = (
     "If an account exists for that email, a password-reset OTP has been sent."
 )
 GENERIC_OTP_FAILURE = "Invalid or expired OTP"
+GENERIC_REGISTRATION_FAILURE = "Unable to register with the provided details"
+
+
+def _valid_ip(value: str) -> str | None:
+    try:
+        return str(ipaddress.ip_address(value.strip()))
+    except ValueError:
+        return None
+
+
+def _peer_is_trusted_proxy(host: str) -> bool:
+    """Trust proxy headers only from loopback/private platform peers."""
+    if host in {"localhost", "testclient"}:
+        return True
+    parsed = _valid_ip(host)
+    if parsed is None:
+        return False
+    ip = ipaddress.ip_address(parsed)
+    return ip.is_private or ip.is_loopback
 
 
 def _requester_ip(request: Request) -> str:
-    """Return the direct peer address without trusting spoofable forwarding headers."""
-    if request.client and request.client.host:
-        return request.client.host
-    return "unknown"
+    """Resolve the requester from a validated right-to-left proxy chain.
+
+    On Render/reverse-proxy deployments the direct peer is private/loopback.
+    Only in that case do we inspect X-Forwarded-For, and we select from the
+    trusted right side rather than the spoofable leftmost entry.
+    """
+    peer = request.client.host if request.client else ""
+    forwarded = request.headers.get("x-forwarded-for", "")
+
+    if forwarded and _peer_is_trusted_proxy(peer):
+        valid_chain = [
+            parsed
+            for part in forwarded.split(",")
+            if (parsed := _valid_ip(part)) is not None
+        ]
+        if len(valid_chain) >= AUTH_TRUSTED_PROXY_HOPS:
+            return valid_chain[-AUTH_TRUSTED_PROXY_HOPS]
+
+    parsed_peer = _valid_ip(peer)
+    return parsed_peer or "unknown"
 
 
-def _rate_limited(decision) -> None:
+def _rate_limited(decision: RateLimitDecision) -> None:
     if decision.allowed:
         return
     raise HTTPException(
@@ -81,9 +135,19 @@ def _hash_otp(email: str, otp: str) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def _decoy_email(email: str) -> str:
+    """Create a non-reversible placeholder for unknown-account work."""
+    digest = hmac.new(
+        SECRET_KEY.encode("utf-8"),
+        normalize_identifier(email).encode("utf-8"),
+        hashlib.sha256,
+    ).hexdigest()[:32]
+    return f"unknown-{digest}@invalid.local"
+
+
 def _send_otp_email(email: str, otp: str) -> None:
     if not SMTP_HOST or not SMTP_FROM_EMAIL:
-        # Dev fallback retained for local development only.
+        # Local-development fallback retained from the existing application.
         print(f"[OTP][DEV] Password reset OTP for {email}: {otp}")
         return
 
@@ -110,6 +174,21 @@ def _send_otp_email(email: str, otp: str) -> None:
         server.quit()
 
 
+def _deliver_otp_email_safely(email: str, otp: str) -> None:
+    """Deliver OTP outside the request path and contain SMTP failures."""
+    try:
+        _send_otp_email(email, otp)
+    except Exception:
+        # Do not log the email, OTP, SMTP password, or provider exception text.
+        logger.error(
+            "Password-reset OTP delivery failed",
+            extra={
+                "event": "password_reset_otp_delivery_failed",
+                "recipient_key": _decoy_email(email).split("@", 1)[0],
+            },
+        )
+
+
 @router.post(
     "/register",
     response_model=AuthResponse,
@@ -123,17 +202,11 @@ def register_user(
     requester = _requester_ip(request)
     key = build_rate_limit_key("register", requester=requester)
     _rate_limited(
-        rate_limiter.check(
+        rate_limiter.consume(
             key,
             limit=AUTH_REGISTER_RATE_LIMIT,
             window_seconds=AUTH_REGISTER_RATE_WINDOW_SECONDS,
         )
-    )
-    # Registration is a sensitive action, so every request consumes capacity.
-    rate_limiter.record(
-        key,
-        limit=AUTH_REGISTER_RATE_LIMIT,
-        window_seconds=AUTH_REGISTER_RATE_WINDOW_SECONDS,
     )
 
     normalized_email = normalize_identifier(payload.email)
@@ -145,7 +218,7 @@ def register_user(
     if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Unable to register with the provided details",
+            detail=GENERIC_REGISTRATION_FAILURE,
         )
 
     role_value = payload.role.lower().strip()
@@ -165,7 +238,14 @@ def register_user(
         roll_no=payload.roll_no,
     )
     db.add(user)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=GENERIC_REGISTRATION_FAILURE,
+        )
     db.refresh(user)
 
     token = create_access_token(
@@ -185,9 +265,16 @@ def login_user(
     db: Session = Depends(get_db),
 ):
     normalized_email = normalize_identifier(payload.email)
+    requester = _requester_ip(request)
+
     key = build_rate_limit_key(
         "login",
-        requester=_requester_ip(request),
+        requester=requester,
+        identifier=normalized_email,
+    )
+    account_key = build_rate_limit_key(
+        "login-account",
+        requester="account",
         identifier=normalized_email,
     )
 
@@ -198,19 +285,39 @@ def login_user(
             window_seconds=AUTH_LOGIN_RATE_WINDOW_SECONDS,
         )
     )
+    _rate_limited(
+        rate_limiter.check(
+            account_key,
+            limit=AUTH_LOGIN_ACCOUNT_RATE_LIMIT,
+            window_seconds=AUTH_LOGIN_RATE_WINDOW_SECONDS,
+        )
+    )
 
     user = (
         db.query(User)
         .filter(func.lower(User.email) == normalized_email)
         .first()
     )
-    if not user or not verify_password(
+
+    password_hash = (
+        user.password_hash
+        if user is not None
+        else DUMMY_PASSWORD_HASH
+    )
+    password_valid = verify_password(
         payload.password,
-        user.password_hash,
-    ):
+        password_hash,
+    )
+
+    if user is None or not password_valid:
         rate_limiter.record(
             key,
             limit=AUTH_LOGIN_RATE_LIMIT,
+            window_seconds=AUTH_LOGIN_RATE_WINDOW_SECONDS,
+        )
+        rate_limiter.record(
+            account_key,
+            limit=AUTH_LOGIN_ACCOUNT_RATE_LIMIT,
             window_seconds=AUTH_LOGIN_RATE_WINDOW_SECONDS,
         )
         raise HTTPException(
@@ -218,8 +325,8 @@ def login_user(
             detail="Invalid email or password",
         )
 
-    # A valid login clears previous failed-attempt state.
     rate_limiter.reset(key)
+    rate_limiter.reset(account_key)
 
     token = create_access_token(
         {"sub": str(user.id), "role": user.role.value}
@@ -238,6 +345,7 @@ def login_user(
 def request_forgot_password_otp(
     payload: ForgotPasswordRequest,
     request: Request,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
 ):
     email = normalize_identifier(payload.email)
@@ -246,49 +354,70 @@ def request_forgot_password_otp(
         requester=_requester_ip(request),
         identifier=email,
     )
-
     _rate_limited(
-        rate_limiter.check(
+        rate_limiter.consume(
             key,
             limit=AUTH_OTP_REQUEST_RATE_LIMIT,
             window_seconds=AUTH_OTP_REQUEST_RATE_WINDOW_SECONDS,
         )
     )
-    # Count requests whether or not the account exists to keep observable
-    # behavior consistent and prevent enumeration.
-    rate_limiter.record(
-        key,
-        limit=AUTH_OTP_REQUEST_RATE_LIMIT,
-        window_seconds=AUTH_OTP_REQUEST_RATE_WINDOW_SECONDS,
-    )
 
     user = db.query(User).filter(func.lower(User.email) == email).first()
 
-    if user:
-        active_codes = (
-            db.query(PasswordResetOTP)
-            .filter(
-                PasswordResetOTP.email == email,
-                PasswordResetOTP.consumed.is_(False),
-            )
-            .all()
+    # Query active OTP state for both known and unknown accounts to reduce
+    # account-existence timing differences.
+    active_codes = (
+        db.query(PasswordResetOTP)
+        .filter(
+            PasswordResetOTP.email == email,
+            PasswordResetOTP.consumed.is_(False),
         )
-        for code in active_codes:
-            code.consumed = True
-            db.add(code)
+        .all()
+    )
+    for code in active_codes:
+        code.consumed = True
+        db.add(code)
 
-        otp = _generate_otp()
-        otp_record = PasswordResetOTP(
-            email=email,
-            otp_hash=_hash_otp(email, otp),
-            expires_at=datetime.utcnow()
-            + timedelta(minutes=OTP_EXPIRY_MINUTES),
-            consumed=False,
+    otp = _generate_otp()
+    otp_hash = _hash_otp(email, otp)
+    expires_at = datetime.utcnow() + timedelta(
+        minutes=OTP_EXPIRY_MINUTES
+    )
+
+    if user is not None:
+        db.add(
+            PasswordResetOTP(
+                email=email,
+                otp_hash=otp_hash,
+                expires_at=expires_at,
+                consumed=False,
+                attempts=0,
+            )
+        )
+    else:
+        # Perform comparable insert/delete work without persisting the unknown
+        # address. The decoy identifier is HMAC-derived and non-reversible.
+        decoy = PasswordResetOTP(
+            email=_decoy_email(email),
+            otp_hash=otp_hash,
+            expires_at=expires_at,
+            consumed=True,
             attempts=0,
         )
-        db.add(otp_record)
-        db.commit()
-        _send_otp_email(email, otp)
+        db.add(decoy)
+        db.flush()
+        db.delete(decoy)
+
+    db.commit()
+
+    if user is not None:
+        # No durable worker exists in this repository, so FastAPI BackgroundTasks
+        # is the minimal non-blocking fallback recommended by the review.
+        background_tasks.add_task(
+            _deliver_otp_email_safely,
+            email,
+            otp,
+        )
 
     return MessageResponse(message=GENERIC_OTP_RESPONSE)
 
@@ -370,8 +499,7 @@ def verify_forgot_password_otp(
             limit=AUTH_OTP_VERIFY_RATE_LIMIT,
             window_seconds=AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS,
         )
-        if not decision.allowed:
-            _rate_limited(decision)
+        _rate_limited(decision)
 
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

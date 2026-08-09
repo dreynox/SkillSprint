@@ -3,59 +3,71 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+def _positive_int_env(name: str, default: str) -> int:
+    """Read a positive integer environment variable or fail during startup."""
+    try:
+        value = int(os.getenv(name, default))
+    except ValueError as exc:
+        raise ValueError(f"{name} must be an integer") from exc
+    if value < 1:
+        raise ValueError(f"{name} must be at least 1")
+    return value
+
+
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
 ALGORITHM = "HS256"
 
 SMTP_HOST = os.getenv("SMTP_HOST", "")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_PORT = _positive_int_env("SMTP_PORT", "587")
 SMTP_USER = os.getenv("SMTP_USER", "")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 SMTP_FROM_EMAIL = os.getenv("SMTP_FROM_EMAIL", SMTP_USER)
 SMTP_USE_TLS = os.getenv("SMTP_USE_TLS", "true").lower() in {"1", "true", "yes"}
 
-OTP_EXPIRY_MINUTES = int(os.getenv("OTP_EXPIRY_MINUTES", "5"))
-OTP_MAX_ATTEMPTS = int(os.getenv("OTP_MAX_ATTEMPTS", "5"))
+OTP_EXPIRY_MINUTES = _positive_int_env("OTP_EXPIRY_MINUTES", "5")
+OTP_MAX_ATTEMPTS = _positive_int_env("OTP_MAX_ATTEMPTS", "5")
 
-<<<<<<< HEAD
+# Authentication abuse-protection defaults. Every limit/window is validated
+# during module import so invalid deployment configuration fails fast.
+AUTH_LOGIN_RATE_LIMIT = _positive_int_env("AUTH_LOGIN_RATE_LIMIT", "5")
+AUTH_LOGIN_ACCOUNT_RATE_LIMIT = _positive_int_env(
+    "AUTH_LOGIN_ACCOUNT_RATE_LIMIT",
+    "20",
+)
+AUTH_LOGIN_RATE_WINDOW_SECONDS = _positive_int_env(
+    "AUTH_LOGIN_RATE_WINDOW_SECONDS",
+    "600",
+)
+AUTH_REGISTER_RATE_LIMIT = _positive_int_env(
+    "AUTH_REGISTER_RATE_LIMIT",
+    "10",
+)
+AUTH_REGISTER_RATE_WINDOW_SECONDS = _positive_int_env(
+    "AUTH_REGISTER_RATE_WINDOW_SECONDS",
+    "3600",
+)
+AUTH_OTP_REQUEST_RATE_LIMIT = _positive_int_env(
+    "AUTH_OTP_REQUEST_RATE_LIMIT",
+    "3",
+)
+AUTH_OTP_REQUEST_RATE_WINDOW_SECONDS = _positive_int_env(
+    "AUTH_OTP_REQUEST_RATE_WINDOW_SECONDS",
+    "900",
+)
+AUTH_OTP_VERIFY_RATE_LIMIT = _positive_int_env(
+    "AUTH_OTP_VERIFY_RATE_LIMIT",
+    str(OTP_MAX_ATTEMPTS),
+)
+AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS = _positive_int_env(
+    "AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS",
+    "900",
+)
 
-# Authentication abuse-protection defaults. These can be overridden by
-# environment variables without changing endpoint code.
-AUTH_LOGIN_RATE_LIMIT = int(os.getenv("AUTH_LOGIN_RATE_LIMIT", "5"))
-AUTH_LOGIN_RATE_WINDOW_SECONDS = int(
-    os.getenv("AUTH_LOGIN_RATE_WINDOW_SECONDS", "600")
+# Render and similar reverse-proxy deployments append the real client address
+# to X-Forwarded-For. We only trust that header when the direct peer is a
+# loopback/private proxy and select from the right side of the chain.
+AUTH_TRUSTED_PROXY_HOPS = _positive_int_env(
+    "AUTH_TRUSTED_PROXY_HOPS",
+    "1",
 )
-AUTH_REGISTER_RATE_LIMIT = int(os.getenv("AUTH_REGISTER_RATE_LIMIT", "10"))
-AUTH_REGISTER_RATE_WINDOW_SECONDS = int(
-    os.getenv("AUTH_REGISTER_RATE_WINDOW_SECONDS", "3600")
-)
-AUTH_OTP_REQUEST_RATE_LIMIT = int(
-    os.getenv("AUTH_OTP_REQUEST_RATE_LIMIT", "3")
-)
-AUTH_OTP_REQUEST_RATE_WINDOW_SECONDS = int(
-    os.getenv("AUTH_OTP_REQUEST_RATE_WINDOW_SECONDS", "900")
-)
-AUTH_OTP_VERIFY_RATE_LIMIT = int(
-    os.getenv("AUTH_OTP_VERIFY_RATE_LIMIT", str(OTP_MAX_ATTEMPTS))
-)
-AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS = int(
-    os.getenv("AUTH_OTP_VERIFY_RATE_WINDOW_SECONDS", "900")
-)
-=======
-# ── Compiler / Sandbox ────────────────────────────────────────────────────────
-# Set COMPILER_SANDBOX_ENABLED=true on any host that has the Docker socket
-# available (/var/run/docker.sock mounted). When false the engine falls back to
-# direct subprocess execution (suitable for local development only).
-COMPILER_SANDBOX_ENABLED = os.getenv("COMPILER_SANDBOX_ENABLED", "false").lower() in {"1", "true", "yes"}
-
-# Docker image used as the ephemeral execution sandbox.
-# Build it with:  docker build -t skillsprint-sandbox:latest .
-COMPILER_SANDBOX_IMAGE = os.getenv("COMPILER_SANDBOX_IMAGE", "skillsprint-sandbox:latest")
-
-# Resource limits applied to every sandbox container.
-COMPILER_CPU_LIMIT = os.getenv("COMPILER_CPU_LIMIT", "0.5")          # fractional CPUs
-COMPILER_MEM_LIMIT = os.getenv("COMPILER_MEM_LIMIT", "256m")         # Docker memory string
-COMPILER_PID_LIMIT = int(os.getenv("COMPILER_PID_LIMIT", "64"))      # max processes (blocks fork bombs)
-COMPILER_TIMEOUT_SECONDS = int(os.getenv("COMPILER_TIMEOUT_SECONDS", "10"))  # hard wall-clock cap
-COMPILER_NETWORK_MODE = os.getenv("COMPILER_NETWORK_MODE", "none")   # "none" = no outbound network
-
->>>>>>> 356efb0ddc3267a829ba130d7cd47c67a548b9f0

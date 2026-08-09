@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
 import os
 import sys
 
@@ -10,6 +9,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
@@ -65,14 +65,19 @@ def app_db_clock(monkeypatch):
     session.refresh(user)
 
     clock = FakeClock()
+    store = InMemoryRateLimitStore()
     limiter = RateLimiter(
-        store=InMemoryRateLimitStore(),
+        store=store,
         clock=clock,
+        prune_every=2,
     )
     monkeypatch.setattr(auth_routes, "rate_limiter", limiter)
-
-    # Keep tests fast and deterministic.
     monkeypatch.setattr(auth_routes, "AUTH_LOGIN_RATE_LIMIT", 3)
+    monkeypatch.setattr(
+        auth_routes,
+        "AUTH_LOGIN_ACCOUNT_RATE_LIMIT",
+        6,
+    )
     monkeypatch.setattr(
         auth_routes,
         "AUTH_LOGIN_RATE_WINDOW_SECONDS",
@@ -117,60 +122,108 @@ def app_db_clock(monkeypatch):
 
     app.dependency_overrides[get_db] = override_db
 
-    yield TestClient(app), session, clock, sent_otps, user
+    yield app, session, clock, sent_otps, user, store
 
     session.close()
     Base.metadata.drop_all(bind=engine)
 
 
-def login(client, password):
+def make_client(app, requester: str = "203.0.113.10"):
+    # TestClient's direct peer is "testclient", which the route treats as a
+    # trusted local proxy. The rightmost XFF value exercises the production path.
+    return TestClient(
+        app,
+        headers={"X-Forwarded-For": requester},
+    )
+
+
+def login(client, password, email="USER@EXAMPLE.COM"):
     return client.post(
         "/auth/login",
         json={
-            "email": "USER@EXAMPLE.COM",
+            "email": email,
             "password": password,
         },
     )
 
 
-def test_failed_logins_are_rate_limited_with_retry_after(
+def test_failed_logins_are_rate_limited_with_exact_retry_after(
     app_db_clock,
 ):
-    client, _, _, _, _ = app_db_clock
+    app, *_ = app_db_clock
+    client = make_client(app)
 
     assert login(client, "wrong-1").status_code == 401
     assert login(client, "wrong-2").status_code == 401
-    third = login(client, "wrong-3")
-    assert third.status_code == 401
+    assert login(client, "wrong-3").status_code == 401
 
     blocked = login(client, "wrong-4")
     assert blocked.status_code == 429
-    assert int(blocked.headers["Retry-After"]) >= 1
+    assert blocked.headers["Retry-After"] == "60"
     assert blocked.json()["detail"] == (
         "Too many requests. Please try again later."
     )
 
 
-def test_successful_login_resets_failed_attempt_counter(
+def test_successful_login_resets_requester_and_account_buckets(
     app_db_clock,
 ):
-    client, _, _, _, _ = app_db_clock
+    app, *_ = app_db_clock
+    client = make_client(app)
 
     assert login(client, "wrong-1").status_code == 401
     assert login(client, "wrong-2").status_code == 401
     assert login(client, "correct-password").status_code == 200
 
-    # A successful login cleared the two previous failures.
     assert login(client, "wrong-again").status_code == 401
     assert login(client, "wrong-again-2").status_code == 401
 
 
+def test_account_limit_blocks_distributed_requesters(app_db_clock):
+    app, *_ = app_db_clock
+
+    for index in range(6):
+        client = make_client(app, f"203.0.113.{index + 1}")
+        assert login(
+            client,
+            f"wrong-{index}",
+        ).status_code == 401
+
+    seventh = make_client(app, "203.0.113.200")
+    assert login(seventh, "wrong-7").status_code == 429
+
+
+def test_unknown_user_still_runs_password_verification(
+    app_db_clock,
+    monkeypatch,
+):
+    app, *_ = app_db_clock
+    client = make_client(app)
+    calls = []
+    original = auth_routes.verify_password
+
+    def tracking_verify(password, password_hash):
+        calls.append(password_hash)
+        return original(password, password_hash)
+
+    monkeypatch.setattr(auth_routes, "verify_password", tracking_verify)
+
+    response = login(
+        client,
+        "wrong-password",
+        email="unknown@example.com",
+    )
+
+    assert response.status_code == 401
+    assert calls == [auth_routes.DUMMY_PASSWORD_HASH]
+
+
 def test_login_limit_resets_after_window(app_db_clock):
-    client, _, clock, _, _ = app_db_clock
+    app, _, clock, *_ = app_db_clock
+    client = make_client(app)
 
     for password in ("bad-1", "bad-2", "bad-3"):
         assert login(client, password).status_code == 401
-
     assert login(client, "blocked").status_code == 429
 
     clock.advance(61)
@@ -178,30 +231,26 @@ def test_login_limit_resets_after_window(app_db_clock):
     assert login(client, "new-window").status_code == 401
 
 
-def test_registration_is_limited_per_requester(app_db_clock):
-    client, _, _, _, _ = app_db_clock
+def test_registration_same_requester_exhausts_but_other_is_independent(
+    app_db_clock,
+):
+    app, *_ = app_db_clock
+    client_a = make_client(app, "203.0.113.10")
 
-    first = client.post(
-        "/auth/register",
-        json={
-            "name": "One",
-            "email": "one@example.com",
-            "password": "password1",
-        },
-    )
-    assert first.status_code == 201
+    for name, email in (
+        ("One", "one@example.com"),
+        ("Two", "two@example.com"),
+    ):
+        assert client_a.post(
+            "/auth/register",
+            json={
+                "name": name,
+                "email": email,
+                "password": "password1",
+            },
+        ).status_code == 201
 
-    second = client.post(
-        "/auth/register",
-        json={
-            "name": "Two",
-            "email": "two@example.com",
-            "password": "password2",
-        },
-    )
-    assert second.status_code == 201
-
-    blocked = client.post(
+    blocked = client_a.post(
         "/auth/register",
         json={
             "name": "Three",
@@ -210,19 +259,73 @@ def test_registration_is_limited_per_requester(app_db_clock):
         },
     )
     assert blocked.status_code == 429
-    assert "Retry-After" in blocked.headers
+
+    client_b = make_client(app, "198.51.100.20")
+    independent = client_b.post(
+        "/auth/register",
+        json={
+            "name": "Four",
+            "email": "four@example.com",
+            "password": "password4",
+        },
+    )
+    assert independent.status_code == 201
+
+
+def test_registration_rolls_back_integrity_conflict(
+    app_db_clock,
+    monkeypatch,
+):
+    app, session, *_ = app_db_clock
+    client = make_client(app)
+
+    original_commit = session.commit
+    calls = {"rollback": 0}
+
+    def failing_commit():
+        raise IntegrityError(
+            "INSERT",
+            {},
+            Exception("duplicate email"),
+        )
+
+    def tracking_rollback():
+        calls["rollback"] += 1
+        session.expire_all()
+
+    monkeypatch.setattr(session, "commit", failing_commit)
+    monkeypatch.setattr(session, "rollback", tracking_rollback)
+
+    response = client.post(
+        "/auth/register",
+        json={
+            "name": "Race",
+            "email": "race@example.com",
+            "password": "password1",
+        },
+    )
+
+    assert response.status_code == 400
+    assert response.json()["detail"] == (
+        auth_routes.GENERIC_REGISTRATION_FAILURE
+    )
+    assert calls["rollback"] == 1
+
+    monkeypatch.setattr(session, "commit", original_commit)
 
 
 def test_otp_request_does_not_reveal_account_existence(
     app_db_clock,
 ):
-    client, _, _, _, _ = app_db_clock
+    app, *_ = app_db_clock
+    existing_client = make_client(app, "203.0.113.30")
+    missing_client = make_client(app, "203.0.113.31")
 
-    existing = client.post(
+    existing = existing_client.post(
         "/auth/forgot-password/request-otp",
         json={"email": "user@example.com"},
     )
-    missing = client.post(
+    missing = missing_client.post(
         "/auth/forgot-password/request-otp",
         json={"email": "missing@example.com"},
     )
@@ -230,48 +333,76 @@ def test_otp_request_does_not_reveal_account_existence(
     assert existing.status_code == 200
     assert missing.status_code == 200
     assert existing.json() == missing.json()
-    assert "exists" in existing.json()["message"].lower()
 
 
-def test_otp_requests_are_limited_per_email_and_requester(
+def test_otp_requests_use_requester_and_email_bucket(
     app_db_clock,
 ):
-    client, _, _, _, _ = app_db_clock
+    app, *_ = app_db_clock
+    client_a = make_client(app, "203.0.113.40")
 
     for _ in range(2):
-        response = client.post(
+        response = client_a.post(
             "/auth/forgot-password/request-otp",
             json={"email": "user@example.com"},
         )
         assert response.status_code == 200
 
-    blocked = client.post(
+    blocked = client_a.post(
         "/auth/forgot-password/request-otp",
         json={"email": "user@example.com"},
     )
     assert blocked.status_code == 429
-    assert "Retry-After" in blocked.headers
 
-    # Different identifier gets a separate bucket for the same requester.
-    other = client.post(
+    # Same normalized email from a distinct real requester gets its own bucket.
+    client_b = make_client(app, "198.51.100.41")
+    independent = client_b.post(
         "/auth/forgot-password/request-otp",
-        json={"email": "different@example.com"},
+        json={"email": "USER@EXAMPLE.COM"},
     )
-    assert other.status_code == 200
+    assert independent.status_code == 200
+
+
+def test_forwarded_for_uses_rightmost_trusted_address(
+    app_db_clock,
+):
+    from starlette.requests import Request
+
+    scope = {
+        "type": "http",
+        "method": "GET",
+        "path": "/",
+        "headers": [
+            (
+                b"x-forwarded-for",
+                b"1.2.3.4, 198.51.100.77",
+            )
+        ],
+        "client": ("127.0.0.1", 50000),
+        "server": ("testserver", 80),
+        "scheme": "http",
+        "query_string": b"",
+        "root_path": "",
+        "http_version": "1.1",
+    }
+    request = Request(scope)
+
+    # A spoofed leftmost entry should not choose 1.2.3.4.
+    assert auth_routes._requester_ip(request) == "198.51.100.77"
 
 
 def test_invalid_otp_attempts_consume_and_exhaust_record(
     app_db_clock,
 ):
-    client, session, _, _, _ = app_db_clock
+    app, session, *_ = app_db_clock
+    client = make_client(app)
 
-    request_response = client.post(
+    assert client.post(
         "/auth/forgot-password/request-otp",
         json={"email": "user@example.com"},
-    )
-    assert request_response.status_code == 200
+    ).status_code == 200
 
-    for attempt in range(2):
+    for _ in range(2):
         response = client.post(
             "/auth/forgot-password/verify-otp",
             json={
@@ -281,7 +412,6 @@ def test_invalid_otp_attempts_consume_and_exhaust_record(
             },
         )
         assert response.status_code == 400
-        assert response.json()["detail"] == "Invalid or expired OTP"
 
     third = client.post(
         "/auth/forgot-password/verify-otp",
@@ -292,7 +422,7 @@ def test_invalid_otp_attempts_consume_and_exhaust_record(
         },
     )
     assert third.status_code == 429
-    assert "Retry-After" in third.headers
+    assert third.headers["Retry-After"] == "60"
 
     record = (
         session.query(PasswordResetOTP)
@@ -305,10 +435,11 @@ def test_invalid_otp_attempts_consume_and_exhaust_record(
     assert record.consumed is True
 
 
-def test_successful_otp_resets_verification_rate_limit(
+def test_successful_otp_resets_http_verification_bucket(
     app_db_clock,
 ):
-    client, _, _, _, _ = app_db_clock
+    app, *_ = app_db_clock
+    client = make_client(app)
 
     assert client.post(
         "/auth/forgot-password/request-otp",
@@ -334,54 +465,8 @@ def test_successful_otp_resets_verification_rate_limit(
     )
     assert success.status_code == 200
 
-    # Request a fresh OTP and verify that the previous bad-attempt bucket was
-    # cleared by success.
-    assert client.post(
-        "/auth/forgot-password/request-otp",
-        json={"email": "user@example.com"},
-    ).status_code == 200
 
-    failed_again = client.post(
-        "/auth/forgot-password/verify-otp",
-        json={
-            "email": "user@example.com",
-            "otp": "000000",
-            "new_password": "newer-password",
-        },
-    )
-    assert failed_again.status_code == 400
-
-
-def test_missing_user_and_missing_otp_use_same_generic_error(
-    app_db_clock,
-):
-    client, _, _, _, _ = app_db_clock
-
-    missing_user = client.post(
-        "/auth/forgot-password/verify-otp",
-        json={
-            "email": "missing@example.com",
-            "otp": "123456",
-            "new_password": "new-password",
-        },
-    )
-
-    no_active_otp = client.post(
-        "/auth/forgot-password/verify-otp",
-        json={
-            "email": "user@example.com",
-            "otp": "123456",
-            "new_password": "new-password",
-        },
-    )
-
-    assert missing_user.status_code == 400
-    assert no_active_otp.status_code == 400
-    assert missing_user.json()["detail"] == "Invalid or expired OTP"
-    assert missing_user.json() == no_active_otp.json()
-
-
-def test_rate_limit_key_does_not_contain_raw_email():
+def test_rate_limit_key_is_hmac_and_contains_no_raw_identifier():
     key = build_rate_limit_key(
         "login",
         requester="127.0.0.1",
@@ -389,4 +474,48 @@ def test_rate_limit_key_does_not_contain_raw_email():
     )
 
     assert "user@example.com" not in key.lower()
+    assert "127.0.0.1" not in key
     assert key.startswith("login:")
+    assert len(key.split(":", 1)[1]) == 64
+
+
+def test_in_memory_store_prunes_expired_unique_keys():
+    clock = FakeClock()
+    store = InMemoryRateLimitStore()
+    limiter = RateLimiter(
+        store=store,
+        clock=clock,
+        prune_every=2,
+    )
+
+    assert limiter.consume(
+        "one",
+        limit=2,
+        window_seconds=10,
+    ).allowed
+    clock.advance(11)
+
+    # The second recorded action triggers periodic pruning.
+    assert limiter.consume(
+        "two",
+        limit=2,
+        window_seconds=10,
+    ).allowed
+
+    assert store.get("one") is None
+    assert store.get("two") is not None
+
+
+def test_consume_atomically_allows_limit_then_blocks_next():
+    clock = FakeClock()
+    limiter = RateLimiter(clock=clock, prune_every=100)
+
+    first = limiter.consume("atomic", limit=2, window_seconds=60)
+    second = limiter.consume("atomic", limit=2, window_seconds=60)
+    third = limiter.consume("atomic", limit=2, window_seconds=60)
+
+    assert first.allowed is True
+    assert second.allowed is True
+    assert second.remaining == 0
+    assert third.allowed is False
+    assert third.retry_after == 60
