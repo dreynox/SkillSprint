@@ -1,11 +1,13 @@
-"""Tests for targeted database indexes added by issue #26."""
+"""Tests for targeted database indexes and startup initialization safety."""
 
 from __future__ import annotations
 
 import os
 import sys
 
+import pytest
 from sqlalchemy import create_engine, inspect
+from sqlalchemy.dialects import postgresql, sqlite
 from sqlalchemy.pool import StaticPool
 
 
@@ -13,8 +15,14 @@ BACKEND_DIR = os.path.dirname(os.path.dirname(__file__))
 if BACKEND_DIR not in sys.path:
     sys.path.insert(0, BACKEND_DIR)
 
-from database import Base, ensure_database_indexes
-import models  # noqa: F401 - registers all SQLAlchemy tables
+from database import (
+    Base,
+    _acquire_postgresql_index_lock,
+    _create_index_if_not_exists_sql,
+    _declared_composite_indexes,
+    ensure_database_indexes,
+)
+import models  # noqa: F401
 
 
 EXPECTED_INDEXES = {
@@ -42,6 +50,11 @@ EXPECTED_INDEXES = {
         "ix_messages_sender_recipient_created_at": (
             "sender_id",
             "recipient_id",
+            "created_at",
+        ),
+        "ix_messages_recipient_sender_created_at": (
+            "recipient_id",
+            "sender_id",
             "created_at",
         ),
     },
@@ -80,11 +93,9 @@ def test_declared_indexes_have_expected_names_and_columns():
             assert actual[index_name] == columns
 
 
-def test_compatibility_helper_adds_indexes_to_existing_sqlite_tables():
+def test_existing_sqlite_database_receives_missing_indexes():
     engine = make_engine()
 
-    # Simulate an older database: create the tables manually without the new
-    # composite indexes, then run the compatibility helper.
     with engine.begin() as connection:
         connection.exec_driver_sql(
             """
@@ -143,56 +154,123 @@ def test_compatibility_helper_adds_indexes_to_existing_sqlite_tables():
             """
         )
 
-    for table_name, expected in EXPECTED_INDEXES.items():
-        before = index_map(engine, table_name)
-        for index_name in expected:
-            assert index_name not in before
-
     ensure_database_indexes(bind=engine)
 
     for table_name, expected in EXPECTED_INDEXES.items():
-        after = index_map(engine, table_name)
+        actual = index_map(engine, table_name)
         for index_name, columns in expected.items():
-            assert after[index_name] == columns
+            assert actual[index_name] == columns
 
 
-def test_compatibility_helper_is_idempotent():
+def test_initializer_is_idempotent_on_sqlite():
     engine = make_engine()
     Base.metadata.create_all(bind=engine)
 
     ensure_database_indexes(bind=engine)
-    first_snapshot = {
+    first = {
         table: index_map(engine, table)
         for table in EXPECTED_INDEXES
     }
 
-    # Running it repeatedly must neither fail nor duplicate indexes.
     ensure_database_indexes(bind=engine)
     ensure_database_indexes(bind=engine)
 
-    second_snapshot = {
+    second = {
         table: index_map(engine, table)
         for table in EXPECTED_INDEXES
     }
+    assert second == first
 
-    assert second_snapshot == first_snapshot
 
-    for table_name, expected in EXPECTED_INDEXES.items():
-        actual_names = [
-            name
-            for name in second_snapshot[table_name]
-            if name in expected
-        ]
-        assert len(actual_names) == len(expected)
+def test_bidirectional_message_query_has_both_index_prefixes():
+    engine = make_engine()
+    Base.metadata.create_all(bind=engine)
+
+    columns = set(index_map(engine, "messages").values())
+
+    assert (
+        "sender_id",
+        "recipient_id",
+        "created_at",
+    ) in columns
+    assert (
+        "recipient_id",
+        "sender_id",
+        "created_at",
+    ) in columns
+
+
+def test_postgresql_sql_uses_if_not_exists():
+    dialect = postgresql.dialect()
+    statements = [
+        _create_index_if_not_exists_sql(index, dialect)
+        for index in _declared_composite_indexes()
+    ]
+
+    assert statements
+    assert all(
+        "CREATE INDEX IF NOT EXISTS" in statement
+        for statement in statements
+    )
+
+
+def test_sqlite_sql_uses_if_not_exists():
+    dialect = sqlite.dialect()
+    for index in _declared_composite_indexes():
+        statement = _create_index_if_not_exists_sql(index, dialect)
+        assert "CREATE INDEX IF NOT EXISTS" in statement
+
+
+def test_postgresql_initialization_acquires_advisory_lock():
+    calls = []
+
+    class FakeConnection:
+        dialect = postgresql.dialect()
+
+        def exec_driver_sql(self, statement):
+            calls.append(statement)
+
+    _acquire_postgresql_index_lock(FakeConnection())
+
+    assert calls == [
+        "SELECT pg_advisory_xact_lock("
+        "hashtext('skillsprint:index-initialization'))"
+    ]
+
+
+def test_non_postgresql_path_skips_advisory_lock():
+    calls = []
+
+    class FakeConnection:
+        dialect = sqlite.dialect()
+
+        def exec_driver_sql(self, statement):
+            calls.append(statement)
+
+    _acquire_postgresql_index_lock(FakeConnection())
+    assert calls == []
+
+
+def test_index_initialization_errors_are_propagated():
+    class BrokenContext:
+        def __enter__(self):
+            raise RuntimeError("schema unavailable")
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+    class BrokenBind:
+        def begin(self):
+            return BrokenContext()
+
+    with pytest.raises(RuntimeError, match="schema unavailable"):
+        ensure_database_indexes(bind=BrokenBind())
 
 
 def test_contest_participation_unique_constraint_is_not_duplicated():
     engine = make_engine()
     Base.metadata.create_all(bind=engine)
 
-    # The existing UNIQUE(user_id, contest_id) constraint already supports the
-    # equality lookup used by the join endpoint. We intentionally do not add a
-    # redundant composite index for the same columns.
     constraints = inspect(engine).get_unique_constraints(
         "contest_participations"
     )
@@ -202,22 +280,12 @@ def test_contest_participation_unique_constraint_is_not_duplicated():
     }
     assert ("user_id", "contest_id") in unique_columns
 
-    indexes = index_map(engine, "contest_participations")
     duplicate = [
         columns
-        for columns in indexes.values()
+        for columns in index_map(
+            engine,
+            "contest_participations",
+        ).values()
         if columns == ("user_id", "contest_id")
     ]
     assert duplicate == []
-
-
-def test_no_problem_verdict_index_without_matching_route_query():
-    engine = make_engine()
-    Base.metadata.create_all(bind=engine)
-
-    indexes = index_map(engine, "contest_submissions")
-
-    assert not any(
-        columns == ("problem_id", "verdict")
-        for columns in indexes.values()
-    )

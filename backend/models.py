@@ -220,6 +220,12 @@ class Message(Base):
             "recipient_id",
             "created_at",
         ),
+        Index(
+            "ix_messages_recipient_sender_created_at",
+            "recipient_id",
+            "sender_id",
+            "created_at",
+        ),
     )
 
     id = Column(Integer, primary_key=True, index=True)

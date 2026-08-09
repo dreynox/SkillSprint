@@ -98,17 +98,11 @@ def ensure_sqlite_compatibility():
                 connection.execute(text("ALTER TABLE contest_submissions ADD COLUMN submitted_at DATETIME"))
 
 
-def ensure_database_indexes(bind=None):
-    """Create declared application indexes on existing databases safely.
+_INDEX_INITIALIZATION_LOCK_KEY = "skillsprint:index-initialization"
 
-    SQLAlchemy's ``Index.create(checkfirst=True)`` works with both SQLite and
-    PostgreSQL and makes this compatibility step idempotent. Importing models
-    inside the function avoids a circular import during module initialization.
 
-    Only explicitly declared composite indexes are created here. Unique
-    constraints such as ``uq_user_contest`` already create supporting indexes
-    and are intentionally not duplicated.
-    """
+def _declared_composite_indexes():
+    """Return the explicitly declared composite indexes managed at startup."""
     from models import (
         ContestSubmission,
         Message,
@@ -116,30 +110,74 @@ def ensure_database_indexes(bind=None):
         QuizSubmission,
     )
 
-    target_bind = bind or engine
-
-    indexes = (
-        QuizSubmission.__table__.indexes,
-        ContestSubmission.__table__.indexes,
-        Message.__table__.indexes,
-        PasswordResetOTP.__table__.indexes,
+    tables = (
+        QuizSubmission.__table__,
+        ContestSubmission.__table__,
+        Message.__table__,
+        PasswordResetOTP.__table__,
     )
 
-    with target_bind.begin() as connection:
-        existing_tables = set(inspect(connection).get_table_names())
+    indexes = []
+    for table in tables:
+        for index in sorted(table.indexes, key=lambda item: item.name or ""):
+            if (
+                index.name
+                and index.name.startswith("ix_")
+                and len(index.columns) >= 2
+            ):
+                indexes.append(index)
+    return tuple(indexes)
 
-        for table_indexes in indexes:
-            for index in table_indexes:
-                if index.table.name not in existing_tables:
-                    continue
-                # Skip SQLAlchemy's single-column primary-key/index=True
-                # indexes. Only issue #26's explicitly named composite indexes
-                # are managed by this helper.
-                if not index.name or not index.name.startswith("ix_"):
-                    continue
-                if len(index.columns) < 2:
-                    continue
-                index.create(bind=connection, checkfirst=True)
+
+def _create_index_if_not_exists_sql(index, dialect) -> str:
+    """Render CREATE INDEX IF NOT EXISTS with dialect-safe identifier quoting."""
+    quote = dialect.identifier_preparer.quote
+    index_name = quote(index.name)
+    table_name = quote(index.table.name)
+    columns = ", ".join(quote(column.name) for column in index.columns)
+    unique = "UNIQUE " if index.unique else ""
+    return (
+        f"CREATE {unique}INDEX IF NOT EXISTS {index_name} "
+        f"ON {table_name} ({columns})"
+    )
+
+
+def _acquire_postgresql_index_lock(connection) -> None:
+    """Serialize index initialization across concurrent PostgreSQL workers."""
+    if connection.dialect.name != "postgresql":
+        return
+
+    connection.exec_driver_sql(
+        "SELECT pg_advisory_xact_lock("
+        "hashtext('skillsprint:index-initialization'))"
+    )
+
+
+def ensure_database_indexes(bind=None):
+    """Create missing declared indexes and propagate schema failures.
+
+    PostgreSQL workers are serialized with a transaction-scoped advisory lock.
+    PostgreSQL and SQLite use ``CREATE INDEX IF NOT EXISTS`` so repeated
+    initialization is idempotent.
+    """
+    target_bind = bind or engine
+    indexes = _declared_composite_indexes()
+
+    with target_bind.begin() as connection:
+        _acquire_postgresql_index_lock(connection)
+
+        inspector = inspect(connection)
+        existing_tables = set(inspector.get_table_names())
+
+        for index in indexes:
+            if index.table.name not in existing_tables:
+                continue
+            connection.exec_driver_sql(
+                _create_index_if_not_exists_sql(
+                    index,
+                    connection.dialect,
+                )
+            )
 
 def get_db():
     db = SessionLocal()

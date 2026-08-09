@@ -24,6 +24,9 @@ def initialize_database():
     except Exception as exc:
         print(f"[startup] Database initialization failed: {exc}")
         traceback.print_exc()
+        raise RuntimeError(
+            "SkillSprint database schema initialization failed"
+        ) from exc
 
 
 initialize_database()

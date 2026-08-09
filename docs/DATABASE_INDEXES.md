@@ -1,145 +1,92 @@
 # Database Indexes
 
-Issue #26 adds targeted composite indexes for high-frequency backend query
-patterns. The index set is intentionally small: indexes were added only when a
-current route or established history lookup benefits from the column prefix.
+The indexes in this change are tied to current backend query patterns.
 
-## Added indexes
-
-### Quiz submissions
+## Submission indexes
 
 ```text
-ix_quiz_submissions_user_submitted_at
+quiz_submissions:
 (user_id, submitted_at)
-```
-
-Supports per-user quiz statistics/history lookups and keeps timestamp-ordered
-history efficient as a user's submission count grows.
-
-```text
-ix_quiz_submissions_test_submitted_at
 (quiz_id, submitted_at)
-```
 
-Supports quiz/test submission history filtered by `test_id` and ordered by
-submission time. The physical database column is `quiz_id` even though the
-SQLAlchemy attribute is `test_id`.
-
-### Contest submissions
-
-```text
-ix_contest_submissions_user_submitted_at
+contest_submissions:
 (user_id, submitted_at)
-```
-
-Supports per-user contest statistics/history queries.
-
-```text
-ix_contest_submissions_contest_submitted_at
 (contest_id, submitted_at)
 ```
 
-Directly supports:
+These support user/test/contest history lookups ordered by submission time.
 
-```python
-.filter(ContestSubmission.contest_id == contest_id)
-.order_by(ContestSubmission.submitted_at.asc())
-```
+## Bidirectional message query
 
-used by the contest-submission listing endpoint.
-
-### Messages
+`GET /messages/with/{user_id}` queries both conversation directions:
 
 ```text
-ix_messages_sender_recipient_created_at
+sender=current AND recipient=peer
+OR
+sender=peer AND recipient=current
+```
+
+One index cannot efficiently lead with both sender and recipient, so both are
+declared:
+
+```text
 (sender_id, recipient_id, created_at)
+(recipient_id, sender_id, created_at)
 ```
 
-Supports each branch of the two-user conversation query, which filters by
-sender and recipient and orders messages chronologically.
+This directly addresses both branches of the existing OR query.
 
-### Password reset OTP
+## Password-reset OTP
 
 ```text
-ix_password_reset_otps_email_consumed_created_at
 (email, consumed, created_at)
 ```
 
-Matches the password-reset lookup:
+This matches the active-code lookup and newest-first ordering.
 
-```python
-.filter(
-    PasswordResetOTP.email == email,
-    PasswordResetOTP.consumed.is_(False),
-)
-.order_by(PasswordResetOTP.created_at.desc())
+## PostgreSQL startup concurrency
+
+The earlier `Index.create(checkfirst=True)` approach performed an existence
+check before creation and could race when multiple workers started together.
+
+The PostgreSQL path now uses a transaction-scoped advisory lock:
+
+```sql
+SELECT pg_advisory_xact_lock(
+  hashtext('skillsprint:index-initialization')
+);
 ```
 
-`created_at` is indexed instead of `expires_at` because the current route
-actually orders by creation time.
+and creates indexes with:
 
-## Intentionally not added
+```sql
+CREATE INDEX IF NOT EXISTS ...
+```
 
-### Contest participation duplicate index
+The advisory lock serializes competing SkillSprint startup workers and is
+released automatically when the transaction commits or rolls back.
 
-`ContestParticipation` already has:
+SQLite also uses `CREATE INDEX IF NOT EXISTS`, keeping repeated initialization
+idempotent.
+
+## Failure behavior
+
+Index setup failures are no longer treated as successful startup.
+`initialize_database()` prints the original traceback and then raises:
 
 ```text
-UNIQUE(user_id, contest_id)
+RuntimeError: SkillSprint database schema initialization failed
 ```
 
-That unique constraint creates a supporting index and serves the current join
-lookup where both columns are equality predicates. Adding another
-`(user_id, contest_id)` index would be redundant.
+so a partially initialized schema does not silently continue serving traffic.
 
-### Contest submission `(problem_id, verdict)`
+## PostgreSQL-path testing
 
-No current route filters `ContestSubmission` by both `problem_id` and
-`verdict`, so this candidate was not added. It should be introduced only when a
-real query pattern requires it.
+The focused tests verify PostgreSQL SQL generation and that the PostgreSQL path
+requests the transaction advisory lock. A live PostgreSQL server is not
+required for those unit tests.
 
-### Message `(recipient_id, is_read, created_at)`
+## Intentionally omitted duplicate index
 
-Unread counts are currently computed from the already-loaded conversation
-messages rather than queried with `recipient_id + is_read`. Adding this index
-now would increase write/storage cost without serving an existing database
-query.
-
-## Existing database compatibility
-
-`ensure_database_indexes()` uses SQLAlchemy's:
-
-```python
-index.create(checkfirst=True)
-```
-
-This makes the migration step:
-
-- idempotent;
-- safe for existing data;
-- compatible with SQLite;
-- compatible with PostgreSQL through SQLAlchemy's dialect layer.
-
-Startup order is:
-
-```text
-ensure_sqlite_compatibility()
-Base.metadata.create_all()
-ensure_database_indexes()
-```
-
-New databases receive the indexes through model metadata; existing databases
-receive any missing declared composite indexes from the compatibility helper.
-
-## Tests
-
-Run:
-
-```powershell
-cd backend
-python -m pytest tests/test_database_indexes.py -v
-```
-
-The tests inspect exact SQLite index names and column order, simulate an older
-database without indexes, rerun the helper multiple times, and verify that
-redundant candidate indexes are not introduced.
+`ContestParticipation` already has `UNIQUE(user_id, contest_id)`, so an
+additional identical composite index remains unnecessary.
