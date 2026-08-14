@@ -10,6 +10,24 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from exceptions import install_exception_handlers
+from middleware.request_context import (
+    RequestContextMiddleware,
+    install_request_id_log_filter,
+)
+
+from database import Base, engine, ensure_sqlite_compatibility
+from routes import (
+    auth_routes,
+    chatbot_routes,
+    compiler_routes,
+    contest_routes,
+    hackathon_routes,
+    health_routes,
+    message_routes,
+    quiz_routes,
+    user_routes,
+)
 from database import Base, engine, ensure_database_indexes, ensure_sqlite_compatibility
 from routes import auth_routes, chatbot_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
 
@@ -36,6 +54,10 @@ app = FastAPI(
     description="SkillSprint - Competitive Coding and Hackathon Portal",
     version="1.0.0",
 )
+
+app.add_middleware(RequestContextMiddleware)
+install_exception_handlers(app)
+install_request_id_log_filter()
 
 UPLOADS_DIR = os.path.join(os.path.dirname(__file__), "uploads")
 os.makedirs(UPLOADS_DIR, exist_ok=True)
