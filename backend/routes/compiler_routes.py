@@ -1,3 +1,5 @@
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from typing import List
 
 from fastapi import APIRouter
@@ -24,11 +26,13 @@ router = APIRouter()
 
 
 @router.get("/languages", response_model=List[CompilerLanguageOut])
+@inject
 def get_supported_languages():
     return [CompilerLanguageOut(**item) for item in list_supported_languages()]
 
 
 @router.post("/run", response_model=CompilerRunResponse)
+@inject
 def run_code(payload: CompilerRunRequest):
     try:
         result = execute_language_code(
@@ -81,6 +85,7 @@ def run_code(payload: CompilerRunRequest):
 
 
 @router.post("/debug", response_model=CompilerDebugResponse)
+@inject
 def debug_code(payload: CompilerDebugRequest):
     result = debug_c_cpp_with_gdb(
         language=payload.language,

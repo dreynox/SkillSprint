@@ -1,5 +1,7 @@
 import os
 import google.generativeai as genAI
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import List, Optional

@@ -18,8 +18,10 @@ BACKEND_DIR = os.path.dirname(os.path.dirname(__file__))
 if BACKEND_DIR not in sys.path:
     sys.path.insert(0, BACKEND_DIR)
 
-from database import Base, get_db
+from database import Base
 from models import PasswordResetOTP, RoleEnum, User
+from container import Container
+from dependency_injector import providers
 from routes import auth_routes
 from services.rate_limiter import (
     InMemoryRateLimitStore,
@@ -114,13 +116,14 @@ def app_db_clock(monkeypatch):
     app = FastAPI()
     app.include_router(auth_routes.router, prefix="/auth")
 
+    container = Container()
+    container.wire(modules=[auth_routes])
+    
     def override_db():
-        try:
-            yield session
-        finally:
-            pass
-
-    app.dependency_overrides[get_db] = override_db
+        yield session
+        
+    container.db_session.override(providers.Resource(override_db))
+    app.container = container
 
     yield app, session, clock, sent_otps, user, store
 

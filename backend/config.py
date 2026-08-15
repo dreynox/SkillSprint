@@ -17,6 +17,7 @@ def _positive_int_env(name: str, default: str) -> int:
 
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
 ALGORITHM = "HS256"
+COMPILER_TIMEOUT_SECONDS = int(os.getenv("COMPILER_TIMEOUT_SECONDS", "5"))
 
 SMTP_HOST = os.getenv("SMTP_HOST", "")
 SMTP_PORT = _positive_int_env("SMTP_PORT", "587")

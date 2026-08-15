@@ -3,6 +3,8 @@ import base64
 from pathlib import Path
 from uuid import uuid4
 
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
@@ -23,7 +25,7 @@ UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 @router.post("/me/avatar", response_model=UserOut)
 async def upload_my_avatar(
     file: UploadFile = File(...),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     if not file.content_type or not file.content_type.startswith("image/"):
@@ -58,14 +60,16 @@ async def upload_my_avatar(
 
 
 @router.get("/me", response_model=UserOut)
+@inject
 def get_my_profile(current_user: User = Depends(get_current_user)):
     return current_user
 
 
 @router.patch("/me", response_model=UserOut)
+@inject
 def update_my_profile(
     payload: UserProfileUpdate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     updates = payload.model_dump(exclude_unset=True)
@@ -79,8 +83,9 @@ def update_my_profile(
 
 
 @router.delete("/me", response_model=MessageResponse)
+@inject
 def delete_my_account(
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     # Remove dependent rows first to avoid foreign key violations.
@@ -106,7 +111,8 @@ def delete_my_account(
 
 
 @router.get("/me/stats", response_model=UserStatsOut)
-def get_my_stats(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+@inject
+def get_my_stats(db: Session = Depends(Provide[Container.db_session]), current_user: User = Depends(get_current_user)):
     contests_joined = (
         db.query(func.count(ContestParticipation.id))
         .filter(ContestParticipation.user_id == current_user.id)
@@ -152,9 +158,10 @@ def get_my_stats(db: Session = Depends(get_db), current_user: User = Depends(get
 
 
 @router.post("/me/add-xp", response_model=UserOut)
+@inject
 def add_my_xp(
     payload: AddXPRequest,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Award extra XP to the logged-in user (from Practice or Quiz)."""
@@ -180,7 +187,8 @@ def _badge_for_points(points: int) -> str:
 
 
 @router.get("/leaderboard", response_model=List[LeaderboardEntryOut])
-def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(get_db)):
+@inject
+def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(Provide[Container.db_session])):
     quiz_stats = (
         db.query(
             QuizSubmission.user_id.label("user_id"),
@@ -268,8 +276,9 @@ def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(g
 
 
 @router.get("", response_model=List[UserOut])
+@inject
 def list_all_users(
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """List all users for messaging"""
@@ -278,9 +287,10 @@ def list_all_users(
 
 
 @router.get("/search", response_model=List[SearchResult])
+@inject
 def search(
     q: str,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Search for users, contests, and hackathons"""
@@ -368,9 +378,10 @@ def search(
 
 
 @router.get("/{user_id}", response_model=UserOut)
+@inject
 def get_user_by_id(
     user_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Get a user's public profile by ID"""
@@ -384,9 +395,10 @@ def get_user_by_id(
 
 
 @router.post("/{user_id}/follow", response_model=FollowOut)
+@inject
 def follow_user(
     user_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Follow a user"""
@@ -422,9 +434,10 @@ def follow_user(
 
 
 @router.delete("/{user_id}/follow", response_model=MessageResponse)
+@inject
 def unfollow_user(
     user_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Unfollow a user"""
@@ -445,8 +458,9 @@ def unfollow_user(
 
 
 @router.get("/me/following", response_model=List[UserOut])
+@inject
 def get_my_following(
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Get list of users that current user is following"""
@@ -461,9 +475,10 @@ def get_my_following(
 
 
 @router.get("/{user_id}/followers", response_model=List[UserOut])
+@inject
 def get_user_followers(
     user_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Get list of followers for a user"""
@@ -485,9 +500,10 @@ def get_user_followers(
 
 
 @router.get("/{user_id}/is-following")
+@inject
 def check_if_following(
     user_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Check if current user is following the specified user"""

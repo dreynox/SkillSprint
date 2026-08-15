@@ -165,12 +165,14 @@ def app_and_db():
     app.include_router(contest_routes.router, prefix="/contests")
 
     def override_db():
-        try:
-            yield session
-        finally:
-            pass
+        yield session
 
-    app.dependency_overrides[get_db] = override_db
+    from container import Container
+    from dependency_injector import providers
+    container = Container()
+    container.wire(modules=[quiz_routes, contest_routes])
+    container.db_session.override(providers.Resource(override_db))
+    app.container = container
     app.dependency_overrides[get_current_user] = lambda: user_one
 
     yield app, session, {

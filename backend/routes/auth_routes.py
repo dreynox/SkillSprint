@@ -5,6 +5,8 @@ import logging
 import random
 import secrets
 import smtplib
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from datetime import datetime, timedelta
 from email.mime.text import MIMEText
 
@@ -194,10 +196,11 @@ def _deliver_otp_email_safely(email: str, otp: str) -> None:
     response_model=AuthResponse,
     status_code=status.HTTP_201_CREATED,
 )
+@inject
 def register_user(
     payload: UserCreate,
     request: Request,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     requester = _requester_ip(request)
     key = build_rate_limit_key("register", requester=requester)
@@ -259,10 +262,11 @@ def register_user(
 
 
 @router.post("/login", response_model=AuthResponse)
+@inject
 def login_user(
     payload: UserLogin,
     request: Request,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     normalized_email = normalize_identifier(payload.email)
     requester = _requester_ip(request)
@@ -342,11 +346,12 @@ def login_user(
     "/forgot-password/request-otp",
     response_model=MessageResponse,
 )
+@inject
 def request_forgot_password_otp(
     payload: ForgotPasswordRequest,
     request: Request,
     background_tasks: BackgroundTasks,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     email = normalize_identifier(payload.email)
     key = build_rate_limit_key(
@@ -426,10 +431,11 @@ def request_forgot_password_otp(
     "/forgot-password/verify-otp",
     response_model=MessageResponse,
 )
+@inject
 def verify_forgot_password_otp(
     payload: ForgotPasswordVerifyRequest,
     request: Request,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     email = normalize_identifier(payload.email)
     key = build_rate_limit_key(

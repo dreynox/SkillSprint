@@ -1,3 +1,5 @@
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from datetime import datetime
 from typing import List
 import json
@@ -101,7 +103,8 @@ def _evaluate_submission(db: Session, problem_id: int, language: str, code: str)
 
 
 @router.post("", response_model=ContestOut, status_code=status.HTTP_201_CREATED)
-def create_contest(payload: ContestCreate, db: Session = Depends(get_db), _admin: User = Depends(require_admin)):
+@inject
+def create_contest(payload: ContestCreate, db: Session = Depends(Provide[Container.db_session]), _admin: User = Depends(require_admin)):
     contest = Contest(**payload.model_dump())
     db.add(contest)
     db.commit()
@@ -110,7 +113,8 @@ def create_contest(payload: ContestCreate, db: Session = Depends(get_db), _admin
 
 
 @router.get("", response_model=List[ContestOut])
-def list_contests(active_only: bool = Query(False), db: Session = Depends(get_db)):
+@inject
+def list_contests(active_only: bool = Query(False), db: Session = Depends(Provide[Container.db_session])):
     contests = db.query(Contest).order_by(Contest.id.asc()).all()
     for contest in contests:
         _sync_expired_contest(contest, db)
@@ -122,8 +126,9 @@ def list_contests(active_only: bool = Query(False), db: Session = Depends(get_db
 
 
 @router.get("/admin/submissions", response_model=List[ContestSubmissionAdminOut])
+@inject
 def list_all_submissions_for_admin(
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     submissions = (
@@ -177,6 +182,7 @@ def list_all_submissions_for_admin(
     response_model=ContestSubmissionPage,
     summary="List the current user's contest submission history",
 )
+@inject
 def list_my_contest_submissions(
     verdict: str | None = Query(
         None,
@@ -197,7 +203,7 @@ def list_my_contest_submissions(
         examples=[12],
     ),
     pagination: PaginationParams = Depends(),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Return bounded, filtered contest history for the authenticated user."""
@@ -249,7 +255,8 @@ def list_my_contest_submissions(
 
 
 @router.get("/{contest_id}", response_model=ContestWithProblems)
-def get_contest(contest_id: int, db: Session = Depends(get_db)):
+@inject
+def get_contest(contest_id: int, db: Session = Depends(Provide[Container.db_session])):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
@@ -260,9 +267,10 @@ def get_contest(contest_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/{contest_id}/admin", response_model=ContestWithProblems)
+@inject
 def get_contest_for_admin(
     contest_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
@@ -272,7 +280,8 @@ def get_contest_for_admin(
 
 
 @router.post("/{contest_id}/problems", response_model=ContestProblemOut, status_code=status.HTTP_201_CREATED)
-def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = Depends(get_db), _admin: User = Depends(require_admin)):
+@inject
+def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = Depends(Provide[Container.db_session]), _admin: User = Depends(require_admin)):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
@@ -288,7 +297,8 @@ def add_problem(contest_id: int, payload: ContestProblemCreate, db: Session = De
 
 
 @router.get("/{contest_id}/problems/{problem_id}", response_model=ContestProblemOut)
-def get_problem(contest_id: int, problem_id: int, db: Session = Depends(get_db)):
+@inject
+def get_problem(contest_id: int, problem_id: int, db: Session = Depends(Provide[Container.db_session])):
     problem = (
         db.query(ContestProblem)
         .filter(ContestProblem.id == problem_id, ContestProblem.contest_id == contest_id)
@@ -308,7 +318,7 @@ def submit_code(
     contest_id: int,
     problem_id: int,
     payload: ContestSubmissionCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
@@ -364,7 +374,7 @@ def submit_code(
 def submit_code_legacy_path(
     contest_id: int,
     payload: ContestSubmissionDirectCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Backward-compatible submission path used by older frontend builds."""
@@ -418,6 +428,7 @@ def submit_code_legacy_path(
     response_model=ContestSubmissionPage,
     summary="List the current user's submissions for one contest",
 )
+@inject
 def list_my_submissions_for_contest(
     contest_id: int,
     verdict: str | None = Query(
@@ -433,7 +444,7 @@ def list_my_submissions_for_contest(
         examples=[12],
     ),
     pagination: PaginationParams = Depends(),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Return the authenticated user's bounded history for one contest."""
@@ -482,7 +493,8 @@ def list_my_submissions_for_contest(
 
 
 @router.get("/{contest_id}/submissions", response_model=List[ContestSubmissionOut])
-def list_contest_submissions(contest_id: int, db: Session = Depends(get_db)):
+@inject
+def list_contest_submissions(contest_id: int, db: Session = Depends(Provide[Container.db_session])):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
     if not contest:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contest not found")
@@ -497,9 +509,10 @@ def list_contest_submissions(contest_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/{contest_id}/join", response_model=ContestParticipationOut, status_code=status.HTTP_201_CREATED)
+@inject
 def join_contest(
     contest_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     contest = db.query(Contest).filter(Contest.id == contest_id).first()
@@ -536,7 +549,7 @@ def add_test_case(
     contest_id: int,
     problem_id: int,
     payload: TestCaseCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     """Add a test case to a problem (admin only)"""
@@ -566,10 +579,11 @@ def add_test_case(
 
 
 @router.get("/{contest_id}/problems/{problem_id}/test-cases", response_model=List[TestCaseOut])
+@inject
 def get_problem_test_cases(
     contest_id: int,
     problem_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Get all test cases for a problem"""
     problem = (
@@ -592,7 +606,7 @@ def execute_code_for_problem(
     contest_id: int,
     problem_id: int,
     payload: ContestSubmissionCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Execute code against test cases and return results"""

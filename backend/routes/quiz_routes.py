@@ -2,6 +2,8 @@ import json
 import random
 import time
 import uuid
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List
@@ -107,7 +109,8 @@ def _load_language_level_questions(language: str, level: str) -> list[dict]:
 
 
 @router.get("/tests", response_model=List[TestOut])
-def list_tests(active_only: bool = Query(False), db: Session = Depends(get_db)):
+@inject
+def list_tests(active_only: bool = Query(False), db: Session = Depends(Provide[Container.db_session])):
     query = db.query(Test)
     if active_only:
         query = query.filter(Test.is_active.is_(True))
@@ -115,17 +118,19 @@ def list_tests(active_only: bool = Query(False), db: Session = Depends(get_db)):
 
 
 @router.get("/admin/tests", response_model=List[TestOut])
+@inject
 def list_tests_for_admin(
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     return db.query(Test).order_by(Test.id.asc()).all()
 
 
 @router.post("/admin/tests", response_model=TestOut, status_code=status.HTTP_201_CREATED)
+@inject
 def create_test(
     payload: QuizTestCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     test = Test(**payload.model_dump())
@@ -136,10 +141,11 @@ def create_test(
 
 
 @router.post("/admin/tests/{test_id}/questions", response_model=QuestionOut, status_code=status.HTTP_201_CREATED)
+@inject
 def add_test_question(
     test_id: int,
     payload: QuizQuestionCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     test = db.query(Test).filter(Test.id == test_id).first()
@@ -154,7 +160,8 @@ def add_test_question(
 
 
 @router.get("/tests/{test_id}/questions", response_model=List[QuestionOut])
-def get_test_questions(test_id: int, db: Session = Depends(get_db)):
+@inject
+def get_test_questions(test_id: int, db: Session = Depends(Provide[Container.db_session])):
     test = db.query(Test).filter(Test.id == test_id).first()
     if not test:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Test not found")
@@ -170,10 +177,11 @@ def get_test_questions(test_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/tests/{test_id}/submit", response_model=QuizSubmissionResponse)
+@inject
 def submit_test_answers(
     test_id: int,
     payload: QuizSubmissionRequest,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     test = db.query(Test).filter(Test.id == test_id).first()
@@ -236,6 +244,7 @@ def submit_test_answers(
     response_model=QuizSubmissionPage,
     summary="List the current user's quiz submission history",
 )
+@inject
 def list_my_quiz_submissions(
     test_id: int | None = Query(
         None,
@@ -244,7 +253,7 @@ def list_my_quiz_submissions(
         examples=[3],
     ),
     pagination: PaginationParams = Depends(),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Return bounded, deterministic quiz history for the authenticated user."""
@@ -290,10 +299,11 @@ def list_my_quiz_submissions(
     response_model=QuizSubmissionPage,
     summary="List the current user's submissions for one quiz/test",
 )
+@inject
 def list_my_quiz_submissions_for_test(
     test_id: int,
     pagination: PaginationParams = Depends(),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     current_user: User = Depends(get_current_user),
 ):
     """Backward-compatible test-specific history path documented by SkillSprint."""
@@ -333,9 +343,10 @@ def list_my_quiz_submissions_for_test(
 
 
 @router.get("/admin/tests/{test_id}/submissions")
+@inject
 def get_test_submissions(
     test_id: int,
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
     _admin: User = Depends(require_admin),
 ):
     test = db.query(Test).filter(Test.id == test_id).first()
@@ -364,6 +375,7 @@ def get_test_submissions(
 
 
 @router.post("/random-bank/start", response_model=RandomQuizStartResponse)
+@inject
 def start_random_bank_session(payload: RandomQuizStartRequest):
     _cleanup_expired_sessions()
 
@@ -409,6 +421,7 @@ def start_random_bank_session(payload: RandomQuizStartRequest):
 
 
 @router.post("/random-bank/{session_id}/submit", response_model=RandomQuizSubmitResponse)
+@inject
 def submit_random_bank_session(session_id: str, payload: RandomQuizSubmitRequest):
     _cleanup_expired_sessions()
 

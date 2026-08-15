@@ -1,4 +1,6 @@
 import os
+from dependency_injector.wiring import Provide, inject
+from container import Container
 from datetime import datetime
 from typing import List
 
@@ -26,9 +28,10 @@ def get_db():
 
 
 @router.get("/conversations", response_model=List[dict])
+@inject
 def get_conversations(
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Get list of all conversations for the current user"""
     conversations = (
@@ -69,10 +72,11 @@ def get_conversations(
 
 
 @router.get("/with/{user_id}", response_model=List[MessageOut])
+@inject
 def get_messages_with_user(
     user_id: int,
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Get all messages between current user and another user"""
     messages = (
@@ -122,10 +126,11 @@ def get_messages_with_user(
 
 
 @router.post("/send", response_model=MessageOut)
+@inject
 def send_message(
     msg_data: MessageCreate,
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Send a text message"""
     if not msg_data.content and msg_data.media_type == "text":
@@ -166,7 +171,7 @@ async def upload_and_send_media(
     file: UploadFile = File(...),
     media_type: str = "file",
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Upload a file/image/video and send as message"""
     if media_type not in ["image", "video", "file", "voice"]:
@@ -216,10 +221,11 @@ async def get_file(filename: str):
 
 
 @router.get("/{message_id}/read")
+@inject
 def mark_as_read(
     message_id: int,
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Mark message as read"""
     message = (
@@ -238,10 +244,11 @@ def mark_as_read(
 
 
 @router.delete("/{message_id}")
+@inject
 def delete_message(
     message_id: int,
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(Provide[Container.db_session]),
 ):
     """Delete a message sent by current user"""
     message = (

@@ -16,6 +16,7 @@ from middleware.request_context import (
     install_request_id_log_filter,
 )
 
+from container import Container
 from database import Base, engine, ensure_sqlite_compatibility
 from routes import (
     auth_routes,
@@ -28,8 +29,6 @@ from routes import (
     quiz_routes,
     user_routes,
 )
-from database import Base, engine, ensure_database_indexes, ensure_sqlite_compatibility
-from routes import auth_routes, chatbot_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
 
 # ---------- APP & DATABASE SETUP ----------
 
@@ -49,11 +48,15 @@ def initialize_database():
 
 initialize_database()
 
+container = Container()
+container.init_resources()
+
 app = FastAPI(
     title="SkillSprint API",
     description="SkillSprint - Competitive Coding and Hackathon Portal",
     version="1.0.0",
 )
+app.container = container
 
 app.add_middleware(RequestContextMiddleware)
 install_exception_handlers(app)
