@@ -56,6 +56,8 @@ app = FastAPI(
 )
 
 app.add_middleware(RequestContextMiddleware)
+from middleware.sanitize import SanitizeASGIMiddleware
+app.add_middleware(SanitizeASGIMiddleware)
 install_exception_handlers(app)
 install_request_id_log_filter()
 
