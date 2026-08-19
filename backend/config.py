@@ -17,6 +17,7 @@ def _positive_int_env(name: str, default: str) -> int:
 
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
 ALGORITHM = "HS256"
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 
 SMTP_HOST = os.getenv("SMTP_HOST", "")
 SMTP_PORT = _positive_int_env("SMTP_PORT", "587")
@@ -24,6 +25,9 @@ SMTP_USER = os.getenv("SMTP_USER", "")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 SMTP_FROM_EMAIL = os.getenv("SMTP_FROM_EMAIL", SMTP_USER)
 SMTP_USE_TLS = os.getenv("SMTP_USE_TLS", "true").lower() in {"1", "true", "yes"}
+
+COMPILER_TIMEOUT_SECONDS = _positive_int_env("COMPILER_TIMEOUT_SECONDS", "5")
+COMPILER_SANDBOX_ENABLED = os.getenv("COMPILER_SANDBOX_ENABLED", "false").lower() in {"1", "true", "yes"}
 
 OTP_EXPIRY_MINUTES = _positive_int_env("OTP_EXPIRY_MINUTES", "5")
 OTP_MAX_ATTEMPTS = _positive_int_env("OTP_MAX_ATTEMPTS", "5")

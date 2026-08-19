@@ -3,7 +3,7 @@ import base64
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status, BackgroundTasks
 from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
@@ -154,6 +154,7 @@ def get_my_stats(db: Session = Depends(get_db), current_user: User = Depends(get
 @router.post("/me/add-xp", response_model=UserOut)
 def add_my_xp(
     payload: AddXPRequest,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -164,6 +165,10 @@ def add_my_xp(
     db.add(current_user)
     db.commit()
     db.refresh(current_user)
+    
+    from services.leaderboard import update_user_leaderboard_cache
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+    
     return current_user
 
 
@@ -179,8 +184,18 @@ def _badge_for_points(points: int) -> str:
     return "Starter"
 
 
+from fastapi import BackgroundTasks
+
 @router.get("/leaderboard", response_model=List[LeaderboardEntryOut])
 def get_leaderboard(limit: int = Query(50, ge=1, le=50), db: Session = Depends(get_db)):
+    from services.leaderboard import get_top_users_from_redis
+    
+    # Try fetching from Redis first
+    cached_leaderboard = get_top_users_from_redis(limit)
+    if cached_leaderboard:
+        return cached_leaderboard
+
+    # Fallback to DB if Redis is empty or down
     quiz_stats = (
         db.query(
             QuizSubmission.user_id.label("user_id"),

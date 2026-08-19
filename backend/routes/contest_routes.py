@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List
 import json
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status, BackgroundTasks
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -308,6 +308,7 @@ def submit_code(
     contest_id: int,
     problem_id: int,
     payload: ContestSubmissionCreate,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -353,6 +354,10 @@ def submit_code(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to persist contest submission: {exc.__class__.__name__}",
         ) from exc
+
+    from services.leaderboard import update_user_leaderboard_cache
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+
     return submission
 
 
@@ -364,6 +369,7 @@ def submit_code(
 def submit_code_legacy_path(
     contest_id: int,
     payload: ContestSubmissionDirectCreate,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -410,6 +416,10 @@ def submit_code_legacy_path(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to persist contest submission: {exc.__class__.__name__}",
         ) from exc
+
+    from services.leaderboard import update_user_leaderboard_cache
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+
     return submission
 
 
@@ -499,6 +509,7 @@ def list_contest_submissions(contest_id: int, db: Session = Depends(get_db)):
 @router.post("/{contest_id}/join", response_model=ContestParticipationOut, status_code=status.HTTP_201_CREATED)
 def join_contest(
     contest_id: int,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -524,6 +535,10 @@ def join_contest(
     db.add(participation)
     db.commit()
     db.refresh(participation)
+    
+    from services.leaderboard import update_user_leaderboard_cache
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+
     return participation
 
 

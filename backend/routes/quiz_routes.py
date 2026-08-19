@@ -169,10 +169,13 @@ def get_test_questions(test_id: int, db: Session = Depends(get_db)):
     return questions
 
 
+from fastapi import BackgroundTasks
+
 @router.post("/tests/{test_id}/submit", response_model=QuizSubmissionResponse)
 def submit_test_answers(
     test_id: int,
     payload: QuizSubmissionRequest,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -227,6 +230,9 @@ def submit_test_answers(
     )
     db.add(submission)
     db.commit()
+
+    from services.leaderboard import update_user_leaderboard_cache
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
 
     return QuizSubmissionResponse(score=score, total=len(questions), review=review)
 
