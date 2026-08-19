@@ -126,6 +126,8 @@ def _rate_limited(decision: RateLimitDecision) -> None:
     )
 
 
+from services.email_service import EmailService, get_email_service
+
 def _generate_otp() -> str:
     return f"{random.randint(0, 999999):06d}"
 
@@ -143,50 +145,6 @@ def _decoy_email(email: str) -> str:
         hashlib.sha256,
     ).hexdigest()[:32]
     return f"unknown-{digest}@invalid.local"
-
-
-def _send_otp_email(email: str, otp: str) -> None:
-    if not SMTP_HOST or not SMTP_FROM_EMAIL:
-        # Local-development fallback retained from the existing application.
-        print(f"[OTP][DEV] Password reset OTP for {email}: {otp}")
-        return
-
-    subject = "SkillSprint Password Reset OTP"
-    body = (
-        f"Your SkillSprint OTP is: {otp}\n\n"
-        f"This code expires in {OTP_EXPIRY_MINUTES} minutes."
-    )
-    msg = MIMEText(body)
-    msg["Subject"] = subject
-    msg["From"] = SMTP_FROM_EMAIL
-    msg["To"] = email
-
-    server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=20)
-    try:
-        server.ehlo()
-        if SMTP_USE_TLS:
-            server.starttls()
-            server.ehlo()
-        if SMTP_USER and SMTP_PASSWORD:
-            server.login(SMTP_USER, SMTP_PASSWORD)
-        server.sendmail(SMTP_FROM_EMAIL, [email], msg.as_string())
-    finally:
-        server.quit()
-
-
-def _deliver_otp_email_safely(email: str, otp: str) -> None:
-    """Deliver OTP outside the request path and contain SMTP failures."""
-    try:
-        _send_otp_email(email, otp)
-    except Exception:
-        # Do not log the email, OTP, SMTP password, or provider exception text.
-        logger.error(
-            "Password-reset OTP delivery failed",
-            extra={
-                "event": "password_reset_otp_delivery_failed",
-                "recipient_key": _decoy_email(email).split("@", 1)[0],
-            },
-        )
 
 
 @router.post(
@@ -347,6 +305,7 @@ def request_forgot_password_otp(
     request: Request,
     background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
+    email_service: EmailService = Depends(get_email_service),
 ):
     email = normalize_identifier(payload.email)
     key = build_rate_limit_key(
@@ -414,9 +373,10 @@ def request_forgot_password_otp(
         # No durable worker exists in this repository, so FastAPI BackgroundTasks
         # is the minimal non-blocking fallback recommended by the review.
         background_tasks.add_task(
-            _deliver_otp_email_safely,
+            email_service.send_otp_email,
             email,
             otp,
+            _decoy_email(email).split("@", 1)[0]
         )
 
     return MessageResponse(message=GENERIC_OTP_RESPONSE)
