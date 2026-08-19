@@ -71,3 +71,5 @@ AUTH_TRUSTED_PROXY_HOPS = _positive_int_env(
     "AUTH_TRUSTED_PROXY_HOPS",
     "1",
 )
+COMPILER_TIMEOUT_SECONDS = int(os.getenv('COMPILER_TIMEOUT_SECONDS', '10'))
+COMPILER_SANDBOX_ENABLED = os.getenv('COMPILER_SANDBOX_ENABLED', 'true').lower() in {'1', 'true', 'yes'}

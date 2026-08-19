@@ -105,14 +105,20 @@ def app_db_clock(monkeypatch):
 
     sent_otps = {}
 
-    def fake_send(email, otp):
-        sent_otps[email] = otp
+    class FakeEmailService:
+        def send_otp_email(self, email: str, otp: str, decoy_key: str = None) -> None:
+            sent_otps[email] = otp
 
-    monkeypatch.setattr(auth_routes, "_send_otp_email", fake_send)
+    def override_get_email_service():
+        return FakeEmailService()
+
     monkeypatch.setattr(auth_routes, "_generate_otp", lambda: "123456")
 
     app = FastAPI()
     app.include_router(auth_routes.router, prefix="/auth")
+
+    from services.email_service import get_email_service
+    app.dependency_overrides[get_email_service] = override_get_email_service
 
     def override_db():
         try:
