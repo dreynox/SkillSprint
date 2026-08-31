@@ -29,6 +29,7 @@ from routes import (
     user_routes,
 )
 from database import Base, engine, ensure_database_indexes, ensure_sqlite_compatibility
+from middleware.sanitize import SanitizeMiddleware
 from routes import auth_routes, chatbot_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
 
 # ---------- APP & DATABASE SETUP ----------
@@ -76,6 +77,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.add_middleware(SanitizeMiddleware)
 
 @app.get("/")
 def read_root():
