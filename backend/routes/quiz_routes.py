@@ -232,7 +232,7 @@ def submit_test_answers(
     db.commit()
 
     from services.leaderboard import update_user_leaderboard_cache
-    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id)
 
     return QuizSubmissionResponse(score=score, total=len(questions), review=review)
 

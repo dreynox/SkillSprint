@@ -356,7 +356,7 @@ def submit_code(
         ) from exc
 
     from services.leaderboard import update_user_leaderboard_cache
-    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id)
 
     return submission
 
@@ -418,7 +418,7 @@ def submit_code_legacy_path(
         ) from exc
 
     from services.leaderboard import update_user_leaderboard_cache
-    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id)
 
     return submission
 
@@ -537,7 +537,7 @@ def join_contest(
     db.refresh(participation)
     
     from services.leaderboard import update_user_leaderboard_cache
-    background_tasks.add_task(update_user_leaderboard_cache, current_user.id, db)
+    background_tasks.add_task(update_user_leaderboard_cache, current_user.id)
 
     return participation
 

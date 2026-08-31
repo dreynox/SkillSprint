@@ -18,6 +18,8 @@ def _positive_int_env(name: str, default: str) -> int:
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
 ALGORITHM = "HS256"
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+REDIS_SOCKET_CONNECT_TIMEOUT = int(os.getenv("REDIS_SOCKET_CONNECT_TIMEOUT", "2"))
+REDIS_SOCKET_TIMEOUT = int(os.getenv("REDIS_SOCKET_TIMEOUT", "2"))
 
 SMTP_HOST = os.getenv("SMTP_HOST", "")
 SMTP_PORT = _positive_int_env("SMTP_PORT", "587")
