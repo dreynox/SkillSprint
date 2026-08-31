@@ -127,6 +127,10 @@ def app_db_clock(monkeypatch):
 
     yield app, session, clock, sent_otps, user, store
 
+    container.db_session.reset_override()
+    container.shutdown_resources()
+    container.unwire()
+
     session.close()
     Base.metadata.drop_all(bind=engine)
 

@@ -23,6 +23,7 @@ UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 @router.post("/me/avatar", response_model=UserOut)
+@inject
 async def upload_my_avatar(
     file: UploadFile = File(...),
     db: Session = Depends(Provide[Container.db_session]),

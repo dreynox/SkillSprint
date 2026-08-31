@@ -314,6 +314,7 @@ def get_problem(contest_id: int, problem_id: int, db: Session = Depends(Provide[
     response_model=ContestSubmissionOut,
     status_code=status.HTTP_201_CREATED,
 )
+@inject
 def submit_code(
     contest_id: int,
     problem_id: int,
@@ -371,6 +372,7 @@ def submit_code(
     response_model=ContestSubmissionOut,
     status_code=status.HTTP_201_CREATED,
 )
+@inject
 def submit_code_legacy_path(
     contest_id: int,
     payload: ContestSubmissionDirectCreate,
@@ -545,6 +547,7 @@ def join_contest(
     response_model=TestCaseOut,
     status_code=status.HTTP_201_CREATED,
 )
+@inject
 def add_test_case(
     contest_id: int,
     problem_id: int,
@@ -602,6 +605,7 @@ def get_problem_test_cases(
     "/{contest_id}/problems/{problem_id}/execute",
     response_model=CodeExecutionResponse,
 )
+@inject
 def execute_code_for_problem(
     contest_id: int,
     problem_id: int,

@@ -77,7 +77,6 @@ def check_compiler_readiness() -> dict[str, Any]:
 
 
 @router.get("/live")
-@inject
 def liveness():
     """Confirm that the FastAPI process is running."""
     return {
@@ -87,7 +86,6 @@ def liveness():
 
 
 @router.get("/ready")
-@inject
 def readiness():
     """Check database connectivity and compiler/runtime availability."""
     database_check = check_database_readiness()

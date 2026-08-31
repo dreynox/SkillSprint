@@ -1,12 +1,5 @@
 from dependency_injector import containers, providers
-from database import SessionLocal
-
-def get_db_session():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+from database import get_db
 
 class Container(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(
@@ -23,4 +16,4 @@ class Container(containers.DeclarativeContainer):
         ]
     )
     
-    db_session = providers.Resource(get_db_session)
+    db_session = providers.Resource(get_db)

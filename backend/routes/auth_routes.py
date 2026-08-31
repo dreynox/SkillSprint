@@ -200,7 +200,7 @@ def _deliver_otp_email_safely(email: str, otp: str) -> None:
 def register_user(
     payload: UserCreate,
     request: Request,
-    db: Session = Depends(Provide[Container.db_session]),
+    db: Session = Depends(Provide[Container.db_session]),  # noqa: B008
 ):
     requester = _requester_ip(request)
     key = build_rate_limit_key("register", requester=requester)
@@ -266,7 +266,7 @@ def register_user(
 def login_user(
     payload: UserLogin,
     request: Request,
-    db: Session = Depends(Provide[Container.db_session]),
+    db: Session = Depends(Provide[Container.db_session]),  # noqa: B008
 ):
     normalized_email = normalize_identifier(payload.email)
     requester = _requester_ip(request)
@@ -351,7 +351,7 @@ def request_forgot_password_otp(
     payload: ForgotPasswordRequest,
     request: Request,
     background_tasks: BackgroundTasks,
-    db: Session = Depends(Provide[Container.db_session]),
+    db: Session = Depends(Provide[Container.db_session]),  # noqa: B008
 ):
     email = normalize_identifier(payload.email)
     key = build_rate_limit_key(
@@ -435,7 +435,7 @@ def request_forgot_password_otp(
 def verify_forgot_password_otp(
     payload: ForgotPasswordVerifyRequest,
     request: Request,
-    db: Session = Depends(Provide[Container.db_session]),
+    db: Session = Depends(Provide[Container.db_session]),  # noqa: B008
 ):
     email = normalize_identifier(payload.email)
     key = build_rate_limit_key(

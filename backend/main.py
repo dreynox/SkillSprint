@@ -17,7 +17,7 @@ from middleware.request_context import (
 )
 
 from container import Container
-from database import Base, engine, ensure_sqlite_compatibility
+from database import Base, engine, ensure_sqlite_compatibility, ensure_database_indexes
 from routes import (
     auth_routes,
     chatbot_routes,
@@ -49,7 +49,6 @@ def initialize_database():
 initialize_database()
 
 container = Container()
-container.init_resources()
 
 app = FastAPI(
     title="SkillSprint API",

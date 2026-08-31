@@ -166,6 +166,7 @@ def send_message(
 
 
 @router.post("/upload/{user_id}", response_model=MessageOut)
+@inject
 async def upload_and_send_media(
     user_id: int,
     file: UploadFile = File(...),

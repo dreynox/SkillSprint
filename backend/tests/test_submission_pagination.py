@@ -187,6 +187,10 @@ def app_and_db():
         "problem_three": problem_three,
     }
 
+    container.db_session.reset_override()
+    container.shutdown_resources()
+    container.unwire()
+
     session.close()
     Base.metadata.drop_all(bind=engine)
 

@@ -26,7 +26,6 @@ router = APIRouter()
 
 
 @router.get("/languages", response_model=List[CompilerLanguageOut])
-@inject
 def get_supported_languages():
     return [CompilerLanguageOut(**item) for item in list_supported_languages()]
 
