@@ -1,5 +1,6 @@
 import json
-import bleach
+import nh3
+import re
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.types import Message
@@ -9,18 +10,18 @@ from starlette.types import Message
 EXEMPT_FIELDS = {"password", "new_password", "token", "refresh_token"}
 
 def sanitize_value(key, val):
-    if key in EXEMPT_FIELDS:
-        return val
-
-    if isinstance(val, str):
-        # We allow a limited set of tags if needed, but for strict XSS
-        # prevention on payloads that shouldn't have raw HTML, we strip it.
-        # This prevents <script> or on-event attributes.
-        return bleach.clean(val, strip=True)
-    elif isinstance(val, dict):
+    if isinstance(val, dict):
         return {k: sanitize_value(k, v) for k, v in val.items()}
     elif isinstance(val, list):
         return [sanitize_value(key, v) for v in val]
+    elif isinstance(val, str):
+        if key in EXEMPT_FIELDS:
+            return val
+        
+        # Remove script elements and their contents
+        val = re.sub(r'(?is)<script[^>]*>.*?</script>', '', val)
+        # nh3.clean with tags=set() strips all HTML tags leaving just the text
+        return nh3.clean(val, tags=set())
     
     return val
 
@@ -43,18 +44,38 @@ class SanitizeMiddleware:
             return
 
         headers = dict(scope.get("headers", []))
-        content_type = headers.get(b"content-type", b"").decode("utf-8")
-        if not content_type.startswith("application/json"):
+        content_type = headers.get(b"content-type", b"").decode("utf-8").lower()
+        if not (content_type.startswith("application/json") or 
+                (content_type.startswith("application/") and "+json" in content_type)):
             await self.app(scope, receive, send)
             return
 
-        # Read the body
-        body = b""
+        MAX_BODY_SIZE = 5 * 1024 * 1024  # 5MB limit
+        
+        chunks = []
+        body_size = 0
         more_body = True
         while more_body:
             message = await receive()
-            body += message.get("body", b"")
+            chunk = message.get("body", b"")
+            body_size += len(chunk)
+            if body_size > MAX_BODY_SIZE:
+                async def send_413(send):
+                    await send({
+                        "type": "http.response.start",
+                        "status": 413,
+                        "headers": [(b"content-type", b"application/json")],
+                    })
+                    await send({
+                        "type": "http.response.body",
+                        "body": b'{"detail": "Request Entity Too Large"}',
+                    })
+                await send_413(send)
+                return
+            chunks.append(chunk)
             more_body = message.get("more_body", False)
+            
+        body = b"".join(chunks)
 
         try:
             payload = json.loads(body)
