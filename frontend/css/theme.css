@@ -1,0 +1,19 @@
+:root {
+    --bg: #020605;
+    --text: #e8fff4;
+    --muted: rgba(232, 255, 244, 0.75);
+    --line: rgba(0, 255, 136, 0.22);
+    --surface: rgba(6, 14, 10, 0.82);
+    --primary: #00ff88;
+    --primary-2: #00ccaa;
+}
+
+html[data-theme="light"] {
+    --bg: #f5f8f6;
+    --text: #10251c;
+    --muted: #53665d;
+    --line: rgba(0, 130, 80, 0.20);
+    --surface: rgba(255, 255, 255, 0.9);
+    --primary: #008f5a;
+    --primary-2: #00b878;
+}

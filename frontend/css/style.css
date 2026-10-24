@@ -58,7 +58,8 @@ label {
     font-size: 14px;
 }
 
-input, select {
+input,
+select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -67,7 +68,8 @@ input, select {
     transition: border-color 0.3s;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 5px rgba(102, 126, 234, 0.1);
@@ -103,19 +105,617 @@ input:focus, select:focus {
     margin-top: 5px;
 }
 
-.signup-link, .login-link {
+.signup-link,
+.login-link {
     text-align: center;
     margin-top: 20px;
     color: #666;
     font-size: 14px;
 }
 
-.signup-link a, .login-link a {
+.signup-link a,
+.login-link a {
     color: #667eea;
     text-decoration: none;
     font-weight: 600;
 }
 
-.signup-link a:hover, .login-link a:hover {
+.signup-link a:hover,
+.login-link a:hover {
     text-decoration: underline;
+}
+
+/* =========================================================
+   SKILLSPRINT — COMPLETE LIGHT THEME
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   LIGHT THEME VARIABLES
+   Supports BOTH possible theme implementations:
+   html[data-theme="light"]
+   body.light-theme
+   --------------------------------------------------------- */
+
+html[data-theme="light"],
+body.light-theme {
+    --bg: #f7faf9;
+    --text: #172331;
+    --muted: #5f6b78;
+
+    --line: #d7e5df;
+
+    --surface: #ffffff;
+    --surface-strong: #ffffff;
+
+    --primary: #09a875;
+    --primary-2: #13bd88;
+
+    --shadow:
+        0 10px 30px rgba(25, 70, 55, 0.08);
+}
+
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+html[data-theme="light"] body,
+body.light-theme {
+    background:
+        radial-gradient(circle at 10% 0%,
+            rgba(9, 168, 117, 0.06),
+            transparent 30%),
+        radial-gradient(circle at 90% 100%,
+            rgba(19, 189, 136, 0.05),
+            transparent 30%),
+        #f7faf9;
+
+    color: #172331;
+}
+
+
+/* =========================================================
+   MATRIX BACKGROUND
+   ========================================================= */
+
+html[data-theme="light"] #matrix,
+body.light-theme #matrix {
+    opacity: 0.08;
+}
+
+html[data-theme="light"] .landing-bg,
+body.light-theme .landing-bg {
+    background:
+        linear-gradient(180deg,
+            rgba(9, 168, 117, 0.025),
+            transparent 30%),
+        radial-gradient(circle at 50% 0%,
+            rgba(9, 168, 117, 0.04),
+            transparent 40%);
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+   ========================================================= */
+
+html[data-theme="light"] .landing-topbar,
+body.light-theme .landing-topbar {
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #172331;
+
+    border-bottom: 1px solid #e1ebe7;
+
+    box-shadow:
+        0 4px 18px rgba(25, 70, 55, 0.07);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* Logo */
+
+html[data-theme="light"] .brand,
+body.light-theme .brand {
+    color: #172331;
+    text-shadow: none;
+}
+
+html[data-theme="light"] .brand span,
+body.light-theme .brand span {
+    color: #09a875;
+}
+
+
+/* =========================================================
+   TOP ACTIONS
+   ========================================================= */
+
+html[data-theme="light"] .top-actions,
+body.light-theme .top-actions {
+    align-items: center;
+}
+
+
+/* Login */
+
+html[data-theme="light"] .top-actions .ghost-btn,
+body.light-theme .top-actions .ghost-btn {
+    background: #ffffff;
+    color: #172331;
+
+    border: 1px solid #d5e1dc;
+
+    box-shadow: none;
+}
+
+
+/* Sign Up */
+
+html[data-theme="light"] .top-actions .primary-btn,
+body.light-theme .top-actions .primary-btn {
+    color: #ffffff;
+
+    background: #09b77b;
+
+    border: 1px solid #09b77b;
+
+    box-shadow:
+        0 5px 16px rgba(9, 183, 123, 0.18);
+}
+
+
+/* Hover */
+
+html[data-theme="light"] .top-actions .ghost-btn:hover,
+body.light-theme .top-actions .ghost-btn:hover {
+    background: #f1f9f6;
+    color: #087d5b;
+
+    border-color: #9bd8c3;
+}
+
+html[data-theme="light"] .top-actions .primary-btn:hover,
+body.light-theme .top-actions .primary-btn:hover {
+    background: #079b69;
+    border-color: #079b69;
+
+    box-shadow:
+        0 8px 20px rgba(9, 183, 123, 0.22);
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+html[data-theme="light"] .theme-toggle,
+body.light-theme .theme-toggle {
+    background: #ffffff;
+
+    color: #f5a900;
+
+    border: 1px solid #d7e3de;
+
+    box-shadow: none;
+}
+
+
+html[data-theme="light"] .theme-toggle:hover,
+body.light-theme .theme-toggle:hover {
+    background: #fffaf0;
+
+    border-color: #efca73;
+
+    box-shadow:
+        0 4px 12px rgba(180, 130, 20, 0.08);
+}
+
+
+/* =========================================================
+   MAIN HERO CARD
+   ========================================================= */
+
+html[data-theme="light"] .hero-card,
+body.light-theme .hero-card {
+    background: #ffffff;
+
+    color: #172331;
+
+    border: 1px solid #e0ebe7;
+
+    box-shadow:
+        0 12px 35px rgba(25, 70, 55, 0.08);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+/* =========================================================
+   HERO HEADING
+   ========================================================= */
+
+html[data-theme="light"] .hero-copy h1,
+body.light-theme .hero-copy h1 {
+    color: #172331;
+}
+
+
+/* If part of heading uses span */
+
+html[data-theme="light"] .hero-copy h1 span,
+body.light-theme .hero-copy h1 span {
+    color: #09a875;
+}
+
+
+/* =========================================================
+   EYEBROW / BUILT FOR COLLEGE PROGRAMMERS
+   ========================================================= */
+
+html[data-theme="light"] .eyebrow,
+body.light-theme .eyebrow {
+    color: #087d5b;
+
+    background: #e9f8f2;
+
+    border: 1px solid #bfe6d6;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+html[data-theme="light"] .hero-text,
+body.light-theme .hero-text {
+    color: #5f6b78;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+html[data-theme="light"] .hero-actions .primary-btn,
+body.light-theme .hero-actions .primary-btn {
+    color: #ffffff;
+
+    background: #09b77b;
+
+    border: 1px solid #09b77b;
+
+    box-shadow:
+        0 6px 16px rgba(9, 183, 123, 0.18);
+}
+
+
+html[data-theme="light"] .hero-actions .primary-btn:hover,
+body.light-theme .hero-actions .primary-btn:hover {
+    background: #079b69;
+    border-color: #079b69;
+}
+
+
+html[data-theme="light"] .hero-actions .ghost-btn,
+body.light-theme .hero-actions .ghost-btn {
+    color: #172331;
+
+    background: #ffffff;
+
+    border: 1px solid #20b889;
+
+    box-shadow: none;
+}
+
+
+html[data-theme="light"] .hero-actions .ghost-btn:hover,
+body.light-theme .hero-actions .ghost-btn:hover {
+    color: #087d5b;
+
+    background: #eef9f4;
+
+    border-color: #09a875;
+}
+
+
+/* =========================================================
+   HERO STAT CARDS
+   Live / Quiz / Contest / Hack
+   ========================================================= */
+
+html[data-theme="light"] .stat-pill,
+body.light-theme .stat-pill {
+    background: #f3faf7;
+
+    color: #172331;
+
+    border: 1px solid #dcebe5;
+
+    box-shadow: none;
+}
+
+
+html[data-theme="light"] .stat-pill strong,
+body.light-theme .stat-pill strong {
+    color: #09a875;
+}
+
+
+html[data-theme="light"] .stat-pill span,
+body.light-theme .stat-pill span {
+    color: #5f6b78;
+}
+
+
+/* =========================================================
+   RIGHT SIDE — WHAT YOU CAN DO
+   ========================================================= */
+
+html[data-theme="light"] .hero-panel,
+body.light-theme .hero-panel {
+    background: transparent;
+}
+
+
+html[data-theme="light"] .panel-card,
+body.light-theme .panel-card {
+    background:
+        linear-gradient(145deg,
+            #f8fcfa,
+            #eef8f4);
+
+    color: #172331;
+
+    border: 1px solid #cfe7dd;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+/* Panel heading */
+
+html[data-theme="light"] .panel-label,
+body.light-theme .panel-label {
+    color: #087d5b;
+}
+
+
+/* Panel list */
+
+html[data-theme="light"] .feature-list li,
+body.light-theme .feature-list li {
+    color: #5f6b78;
+}
+
+
+/* Green bullets */
+
+html[data-theme="light"] .feature-list li::before,
+body.light-theme .feature-list li::before {
+    background: #09b77b;
+
+    box-shadow:
+        0 0 8px rgba(9, 183, 123, 0.25);
+}
+
+
+/* =========================================================
+   THREE INFORMATION CARDS
+   ========================================================= */
+
+html[data-theme="light"] .info-card,
+body.light-theme .info-card {
+    background: #ffffff;
+
+    color: #172331;
+
+    border: 1px solid #e0ebe7;
+
+    box-shadow:
+        0 8px 24px rgba(25, 70, 55, 0.06);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+/* Titles */
+
+html[data-theme="light"] .info-card h2,
+body.light-theme .info-card h2 {
+    color: #087d5b;
+}
+
+
+/* Description */
+
+html[data-theme="light"] .info-card p,
+body.light-theme .info-card p {
+    color: #5f6b78;
+}
+
+
+/* =========================================================
+   ACCOUNT / FOOTER CTA CARD
+   ========================================================= */
+
+html[data-theme="light"] .landing-footer-card,
+body.light-theme .landing-footer-card {
+    background:
+        linear-gradient(135deg,
+            #f1faf6,
+            #e9f7f1);
+
+    color: #172331;
+
+    border: 1px solid #cde8dc;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+html[data-theme="light"] .landing-footer-card h2,
+body.light-theme .landing-footer-card h2 {
+    color: #087d5b;
+}
+
+
+html[data-theme="light"] .landing-footer-card p,
+body.light-theme .landing-footer-card p {
+    color: #5f6b78;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+html[data-theme="light"] .landing-footer,
+body.light-theme .landing-footer {
+    background: #ffffff;
+
+    border-top: 1px solid #dfe9e5;
+
+    box-shadow:
+        0 -4px 20px rgba(25, 70, 55, 0.04);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+/* Footer text */
+
+html[data-theme="light"] .footer-tagline,
+body.light-theme .footer-tagline {
+    color: #65736e;
+}
+
+
+html[data-theme="light"] .footer-title,
+body.light-theme .footer-title {
+    color: #087d5b;
+}
+
+
+html[data-theme="light"] .footer-links a,
+body.light-theme .footer-links a {
+    color: #65736e;
+}
+
+
+html[data-theme="light"] .footer-links a:hover,
+body.light-theme .footer-links a:hover {
+    color: #09a875;
+
+    text-shadow: none;
+}
+
+
+/* Social buttons */
+
+html[data-theme="light"] .social-icons a,
+body.light-theme .social-icons a {
+    background: #f5faf8;
+
+    color: #53635d;
+
+    border: 1px solid #d7e5df;
+}
+
+
+html[data-theme="light"] .social-icons a:hover,
+body.light-theme .social-icons a:hover {
+    color: #09a875;
+
+    border-color: #09a875;
+
+    background: #eef9f4;
+
+    box-shadow:
+        0 5px 14px rgba(9, 183, 123, 0.10);
+}
+
+
+/* Footer bottom */
+
+html[data-theme="light"] .footer-bottom,
+body.light-theme .footer-bottom {
+    color: #6b7773;
+
+    border-top-color: #e2ebe7;
+}
+
+
+/* =========================================================
+   GENERIC PANELS
+   ========================================================= */
+
+html[data-theme="light"] .panel-card,
+html[data-theme="light"] .info-card,
+html[data-theme="light"] .hero-card,
+html[data-theme="light"] .landing-footer-card,
+body.light-theme .panel-card,
+body.light-theme .info-card,
+body.light-theme .hero-card,
+body.light-theme .landing-footer-card {
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   REMOVE DARK GLOW EFFECTS IN LIGHT MODE
+   ========================================================= */
+
+html[data-theme="light"] .brand,
+body.light-theme .brand {
+    text-shadow: none;
+}
+
+
+html[data-theme="light"] .primary-btn,
+html[data-theme="light"] .ghost-btn,
+body.light-theme .primary-btn,
+body.light-theme .ghost-btn {
+    text-shadow: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    html[data-theme="light"] .landing-topbar,
+    body.light-theme .landing-topbar {
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    html[data-theme="light"] .hero-card,
+    body.light-theme .hero-card {
+        box-shadow:
+            0 8px 24px rgba(25, 70, 55, 0.07);
+    }
+
+    html[data-theme="light"] .panel-card,
+    body.light-theme .panel-card {
+        background: #f1f9f6;
+    }
 }
