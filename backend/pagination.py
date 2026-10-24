@@ -28,7 +28,7 @@ class PaginationParams:
             description="Number of matching records to skip.",
             examples=[0],
         ),
-        sort: SortOrder = Query(
+        sort: Literal["newest", "oldest"] = Query(
             "newest",
             description="Sort submission history by submission time.",
             examples=["newest"],
