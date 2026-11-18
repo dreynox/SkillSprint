@@ -16,7 +16,7 @@ from middleware.request_context import (
     install_request_id_log_filter,
 )
 
-from database import Base, engine, ensure_sqlite_compatibility
+from database import Base, engine, ensure_sqlite_compatibility, ensure_database_indexes
 from routes import (
     auth_routes,
     chatbot_routes,
@@ -28,8 +28,6 @@ from routes import (
     quiz_routes,
     user_routes,
 )
-from database import Base, engine, ensure_database_indexes, ensure_sqlite_compatibility
-from routes import auth_routes, chatbot_routes, compiler_routes, contest_routes, hackathon_routes, message_routes, quiz_routes, user_routes
 
 # ---------- APP & DATABASE SETUP ----------
 
