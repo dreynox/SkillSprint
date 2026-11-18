@@ -9,24 +9,24 @@
 }
 
 body {
-    min-height: 100vh;
-    background: #050505;
-    color: #e0ffe8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 40px 20px 80px;  
+  min-height: 100vh;
+  background: #050505;
+  color: #e0ffe8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 40px 20px 80px;
 }
 
 @media (max-width: 600px) {
-    body {
-        height: auto;
-        min-height: 100vh;
-        overflow-y: auto;
-        padding: 20px 10px 80px;  
-    }
+  body {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 20px 10px 80px;
+  }
 }
 
 /* =========================
@@ -45,7 +45,7 @@ body {
   position: fixed;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(0,255,136,0.25), transparent 65%);
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.25), transparent 65%);
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -84,7 +84,7 @@ body {
   margin-bottom: 8px;
   font-size: 26px;
   color: #00ff88;
-  text-shadow: 0 0 14px rgba(0,255,136,0.9);
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.9);
 }
 
 .cursor {
@@ -92,7 +92,9 @@ body {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .subtitle {
@@ -168,14 +170,14 @@ body {
 .input-group select:focus {
   border-color: #00ff88;
   box-shadow:
-    0 0 0 1px rgba(0,255,136,0.6),
-    0 0 18px rgba(0,255,136,0.6);
+    0 0 0 1px rgba(0, 255, 136, 0.6),
+    0 0 18px rgba(0, 255, 136, 0.6);
 }
 
 /* =========================
    PASSWORD TOGGLE
 ========================= */
-.input-group.password .toggle-icon {
+.input-group.password span {
   position: absolute;
   right: 12px;
   top: 50%;
@@ -184,7 +186,7 @@ body {
   opacity: 0.6;
 }
 
-.input-group.password .toggle-icon:hover {
+.input-group.password span:hover {
   opacity: 1;
 }
 
@@ -213,7 +215,7 @@ button {
 }
 
 button:hover {
-  box-shadow: 0 0 28px rgba(0,255,136,0.9);
+  box-shadow: 0 0 28px rgba(0, 255, 136, 0.9);
   transform: translateY(-1px);
 }
 
@@ -250,6 +252,7 @@ button.loading {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
