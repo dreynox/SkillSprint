@@ -1,53 +1,41 @@
+import logging
 import os
-import google.generativeai as genAI
-from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel
 from typing import List, Optional
+
 from dotenv import load_dotenv
+from fastapi import APIRouter, HTTPException
+import google.generativeai as genAI
+from pydantic import BaseModel
 
 load_dotenv()
 
+logger = logging.getLogger("chatbot")
 router = APIRouter()
 
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
-
-# Safety check for leaked keys (AIzaSyDNA2... was the leaked prefix)
-if api_key and api_key.startswith("AIzaSyDNA2"):
-    print("[Chat] WARNING: Detected leaked key from file. Attempting to override with OS environment...")
-    # Try to find a key that isn't the leaked one
-    if "GEMINI_API_KEY" in os.environ and not os.environ["GEMINI_API_KEY"].startswith("AIzaSyDNA2"):
-        api_key = os.environ["GEMINI_API_KEY"]
-        print("[Chat] SUCCESS: Found valid key in OS environment.")
-    else:
-        print("[Chat] ERROR: No valid key found. Please update Render environment variables.")
-        api_key = None
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
 
 if api_key:
-    print(f"[Chat] API Key initialized. Prefix: {api_key[:8]}...")
-    genAI.configure(api_key=api_key, transport='rest')
-    # Print available models for debugging
-    try:
-        print("--- Available Gemini Models ---")
-        for m in genAI.list_models():
-            if 'generateContent' in m.supported_generation_methods:
-                print(f"  - {m.name}")
-        print("-------------------------------")
-    except Exception as e:
-        print(f"Error listing models: {e}")
+    logger.info("Configuring Gemini API client")
+    genAI.configure(api_key=api_key, transport="rest")
+
 
 class ChatMessage(BaseModel):
     role: str
     content: str
+
 
 class ChatRequest(BaseModel):
     message: str
     history: List[ChatMessage] = []
     language: Optional[str] = "en"
 
+
 class TranslateRequest(BaseModel):
     text: str
     target_lang: str
+
 
 SYSTEM_PROMPT = """You are SkillSprint Assistant, a premium AI tutor and guide for the SkillSprint platform.
 SkillSprint is a competitive coding and educational portal where students can take quizzes, participate in hackathons, and solve coding challenges.
@@ -65,17 +53,18 @@ Guidelines:
 - Always maintain a "Premium" and "Supportive" tone.
 """
 
+
 @router.post("/chat")
 async def chat(request: ChatRequest):
     if not api_key:
-        print("[Chat] ERROR: GEMINI_API_KEY is missing")
+        logger.error("GEMINI_API_KEY is missing")
         raise HTTPException(status_code=500, detail="Gemini API Key not configured on server")
 
     try:
-        print(f"[Chat] Incoming request: {request.message[:50]}...")
+        logger.info(f"Incoming chat request: {request.message[:50]}...")
         # Initialize model
         model = genAI.GenerativeModel(
-            model_name="models/gemini-flash-latest",
+            model_name=GEMINI_MODEL,
             system_instruction=SYSTEM_PROMPT
         )
 
@@ -88,15 +77,16 @@ async def chat(request: ChatRequest):
         chat_session = model.start_chat(history=gemini_history)
         
         response = chat_session.send_message(request.message)
-        print("[Chat] Response generated successfully")
+        logger.info("Chat response generated successfully")
         
         return {
             "response": response.text,
             "status": "success"
         }
     except Exception as e:
-        print(f"[Chat] EXCEPTION: {str(e)}")
+        logger.error(f"Chat generation exception: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @router.post("/translate")
 async def translate(request: TranslateRequest):
@@ -104,7 +94,7 @@ async def translate(request: TranslateRequest):
         raise HTTPException(status_code=500, detail="Gemini API Key not configured on server")
 
     try:
-        model = genAI.GenerativeModel("models/gemini-flash-latest")
+        model = genAI.GenerativeModel(GEMINI_MODEL)
         prompt = f"Translate the following text to {request.target_lang}. Only return the translated text, nothing else:\n\n{request.text}"
         
         response = model.generate_content(prompt)
@@ -114,5 +104,5 @@ async def translate(request: TranslateRequest):
             "status": "success"
         }
     except Exception as e:
-        print(f"DEBUG: Gemini Translate Error: {str(e)}")
+        logger.error(f"Gemini translate error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
