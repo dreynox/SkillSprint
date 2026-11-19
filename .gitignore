@@ -10,7 +10,12 @@ env/
 .env
 
 # Database
+*.db
+*.sqlite
 *.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
 Database/*.sqlite3
 
 # IDEs
