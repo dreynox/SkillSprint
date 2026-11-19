@@ -58,6 +58,7 @@ FastAPI (High-performance web framework)
 ├── SQLAlchemy (ORM for database operations)
 ├── SQLite (Local database)
 ├── PostgreSQL (Production database on Render)
+├── Google Gemini AI (AI tutor and translation assistant)
 └── Docker (Containerization for compiler toolchains)
 ```
 
