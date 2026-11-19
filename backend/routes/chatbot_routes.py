@@ -1,20 +1,17 @@
 import logging
-import os
 from typing import List, Optional
 
-from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException
 import google.generativeai as genAI
 from pydantic import BaseModel
 
-load_dotenv()
+from config import GEMINI_API_KEY, GEMINI_MODEL
 
 logger = logging.getLogger("chatbot")
 router = APIRouter()
 
 # Configure Gemini
-api_key = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+api_key = GEMINI_API_KEY
 
 if api_key:
     logger.info("Configuring Gemini API client")
